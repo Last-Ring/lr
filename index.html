@@ -8183,6 +8183,1331 @@ body::after {
 #tab-char .faction-content-panel[data-faction-panel="hostile"].active{
   display:block!important;
 }
+</style><style>
+/* =========================================================
+   WORLD INTRO — HOVER INTERACTION
+   세계관 소개 카드와 이미지에 은은한 반응
+   ========================================================= */
+
+/* 세계관 소개의 주요 박스 */
+#tab-world .world-chapter,
+#tab-world .world-section,
+#tab-world .feature-block,
+#tab-world .map-wrap,
+#tab-world .hunter-gate-hero-image{
+  transition:
+    transform .28s cubic-bezier(.22,.72,.26,1),
+    border-color .28s ease,
+    box-shadow .28s ease,
+    background .28s ease !important;
+}
+
+/* 박스 hover */
+#tab-world .world-chapter:hover,
+#tab-world .world-section:hover,
+#tab-world .feature-block:hover{
+  transform:translateY(-3px) !important;
+  border-color:rgba(151,126,205,.26) !important;
+  box-shadow:
+    0 14px 34px rgba(0,0,0,.18),
+    0 0 24px rgba(113,82,174,.055) !important;
+}
+
+/* 이미지 컨테이너 */
+#tab-world .world-chapter img,
+#tab-world .world-section img,
+#tab-world .feature-block img,
+#tab-world .hunter-gate-hero-image img,
+#tab-world .world-hero-image img,
+#tab-world .world-image img{
+  transition:
+    transform .42s cubic-bezier(.22,.72,.26,1),
+    filter .32s ease !important;
+  transform-origin:center center !important;
+  backface-visibility:hidden;
+}
+
+/* 해당 이미지에 직접 마우스를 올렸을 때만 확대 */
+#tab-world .world-chapter img:hover,
+#tab-world .world-section img:hover,
+#tab-world .feature-block img:hover,
+#tab-world .hunter-gate-hero-image:hover img,
+#tab-world .world-hero-image:hover img,
+#tab-world .world-image:hover img{
+  transform:scale(1.025) !important;
+  filter:brightness(1.045) !important;
+}
+
+/* 이미지가 박스 밖으로 튀어나오지 않게 */
+#tab-world .hunter-gate-hero-image,
+#tab-world .world-hero-image,
+#tab-world .world-image,
+#tab-world .world-chapter figure,
+#tab-world .world-section figure{
+  overflow:hidden !important;
+}
+
+/* 지도 지역 박스도 반응 */
+#tab-world .map-node,
+#tab-world .region-node,
+#tab-world .world-map-node{
+  transition:
+    transform .22s ease,
+    filter .22s ease,
+    box-shadow .22s ease !important;
+}
+
+#tab-world .map-node:hover,
+#tab-world .region-node:hover,
+#tab-world .world-map-node:hover{
+  transform:translateY(-2px) scale(1.015) !important;
+  filter:brightness(1.08) !important;
+}
+
+/* 모바일에서는 과한 이동 제거 */
+@media(max-width:700px){
+  #tab-world .world-chapter:hover,
+  #tab-world .world-section:hover,
+  #tab-world .feature-block:hover{
+    transform:none !important;
+  }
+}
+
+@media(prefers-reduced-motion:reduce){
+  #tab-world .world-chapter,
+  #tab-world .world-section,
+  #tab-world .feature-block,
+  #tab-world img,
+  #tab-world .map-node,
+  #tab-world .region-node,
+  #tab-world .world-map-node{
+    transition:none !important;
+  }
+}
+</style>
+<style>
+.hero .subtitle,
+.subtitle{
+  color:#fff !important;
+  font-weight:400 !important;
+}
+</style><style>
+/* =========================================================
+   ORBIS OVERVIEW — FINAL CLEAN LAYOUT
+   ========================================================= */
+
+#tab-world .orbis-map{
+  position:relative !important;
+  height:470px !important;
+  overflow:hidden !important;
+}
+
+/* 공통 노드 크기 */
+#tab-world .orbis-map .map-node{
+  position:absolute !important;
+  z-index:4 !important;
+  min-width:168px !important;
+  max-width:190px !important;
+  padding:12px 14px !important;
+  text-align:center !important;
+  transform:none;
+  transition:
+    border-color .2s ease,
+    background .2s ease,
+    box-shadow .2s ease,
+    filter .2s ease !important;
+}
+
+/* WEST */
+#tab-world .orbis-map .node-west{
+  left:7% !important;
+  right:auto !important;
+  top:43% !important;
+  bottom:auto !important;
+  transform:none !important;
+}
+
+/* EAST */
+#tab-world .orbis-map .node-east{
+  left:auto !important;
+  right:7% !important;
+  top:43% !important;
+  bottom:auto !important;
+  transform:none !important;
+}
+
+/* NORTH */
+#tab-world .orbis-map .node-north{
+  left:50% !important;
+  right:auto !important;
+  top:9% !important;
+  bottom:auto !important;
+  transform:translateX(-50%) !important;
+}
+
+/* SOUTH */
+#tab-world .orbis-map .node-south{
+  left:50% !important;
+  right:auto !important;
+  top:auto !important;
+  bottom:8% !important;
+  transform:translateX(-50%) !important;
+}
+
+/* CENTRAL */
+#tab-world .orbis-map .node-central-alliance{
+  left:50% !important;
+  right:auto !important;
+  top:50% !important;
+  bottom:auto !important;
+  min-width:196px !important;
+  transform:translate(-50%,-50%) !important;
+}
+
+/* hover는 위치를 절대 바꾸지 않고 빛만 반응 */
+#tab-world .orbis-map .map-node:hover,
+#tab-world .orbis-map .map-node:focus{
+  z-index:20 !important;
+  filter:brightness(1.10) !important;
+  outline:none !important;
+  box-shadow:
+    0 8px 20px rgba(0,0,0,.20),
+    0 0 15px rgba(150,130,200,.10) !important;
+}
+
+#tab-world .orbis-map .node-west:hover,
+#tab-world .orbis-map .node-west:focus,
+#tab-world .orbis-map .node-east:hover,
+#tab-world .orbis-map .node-east:focus{
+  transform:none !important;
+}
+
+#tab-world .orbis-map .node-north:hover,
+#tab-world .orbis-map .node-north:focus,
+#tab-world .orbis-map .node-south:hover,
+#tab-world .orbis-map .node-south:focus{
+  transform:translateX(-50%) !important;
+}
+
+#tab-world .orbis-map .node-central-alliance:hover,
+#tab-world .orbis-map .node-central-alliance:focus{
+  transform:translate(-50%,-50%) !important;
+}
+
+/* 툴팁 */
+#tab-world .orbis-map .map-node:hover .map-tooltip,
+#tab-world .orbis-map .map-node:focus .map-tooltip{
+  opacity:1 !important;
+  visibility:visible !important;
+}
+
+/* 판테온 아카데미 — 남부 아스트라에서 오른쪽으로 한 줄 분기 */
+#tab-world .orbis-map .pantheon-map-branch{
+  position:absolute !important;
+  z-index:6 !important;
+  left:calc(50% + 92px) !important;
+  right:auto !important;
+  top:auto !important;
+  bottom:8% !important;
+  width:300px !important;
+  height:58px !important;
+  transform:none !important;
+  pointer-events:none !important;
+}
+
+#tab-world .orbis-map .pantheon-branch-line{
+  position:absolute !important;
+  left:0 !important;
+  top:50% !important;
+  width:145px !important;
+  height:0 !important;
+  border-top:1px dashed rgba(147,119,205,.52) !important;
+}
+
+#tab-world .orbis-map .pantheon-map-label{
+  position:absolute !important;
+  left:145px !important;
+  top:50% !important;
+  transform:translateY(-50%) !important;
+  min-width:170px !important;
+  pointer-events:auto !important;
+}
+
+/* 방향문자 */
+#tab-world .orbis-map .map-direction.north{
+  left:50% !important;
+  top:2.5% !important;
+  transform:translateX(-50%) !important;
+}
+#tab-world .orbis-map .map-direction.south{
+  left:50% !important;
+  bottom:2.5% !important;
+  transform:translateX(-50%) !important;
+}
+#tab-world .orbis-map .map-direction.west{
+  left:1.2% !important;
+  top:50% !important;
+  transform:translateY(-50%) !important;
+}
+#tab-world .orbis-map .map-direction.east{
+  right:1.2% !important;
+  top:50% !important;
+  transform:translateY(-50%) !important;
+}
+
+/* 균열지대 / 오염심역 위치 */
+#tab-world .orbis-map .map-frontier-west{
+  left:10.5% !important;
+  top:28% !important;
+}
+#tab-world .orbis-map .map-frontier-east{
+  right:10.5% !important;
+  top:62% !important;
+}
+#tab-world .orbis-map .map-frontier-south{
+  left:20% !important;
+  bottom:3% !important;
+}
+
+/* 모바일 */
+@media(max-width:760px){
+  #tab-world .orbis-map{
+    height:420px !important;
+  }
+
+  #tab-world .orbis-map .map-node{
+    min-width:135px !important;
+    max-width:150px !important;
+    padding:10px 11px !important;
+  }
+
+  #tab-world .orbis-map .node-west{left:3% !important;}
+  #tab-world .orbis-map .node-east{right:3% !important;}
+
+  #tab-world .orbis-map .pantheon-map-branch{
+    left:calc(50% + 68px) !important;
+    width:210px !important;
+  }
+
+  #tab-world .orbis-map .pantheon-branch-line{
+    width:90px !important;
+  }
+
+  #tab-world .orbis-map .pantheon-map-label{
+    left:90px !important;
+    min-width:145px !important;
+  }
+}
+</style><style>
+/* =========================================================
+   WORLD INNER CARDS HOVER — FINAL
+   바깥 챕터/섹션은 절대 반응하지 않음
+   ========================================================= */
+
+/* 바깥 박스 완전 고정 */
+#tab-world .world-chapter,
+#tab-world .world-section,
+#tab-world .world-prose,
+#tab-world .orbis-map-wrap,
+#tab-world .hunter-rank-block,
+#tab-world .gate-laws,
+#tab-world .guild-world-grid,
+#tab-world .regional-calendar,
+#tab-world .student-order-cards{
+  transform:none !important;
+  filter:none !important;
+}
+
+#tab-world .world-chapter:hover,
+#tab-world .world-section:hover,
+#tab-world .world-prose:hover,
+#tab-world .orbis-map-wrap:hover,
+#tab-world .hunter-rank-block:hover,
+#tab-world .gate-laws:hover,
+#tab-world .guild-world-grid:hover,
+#tab-world .regional-calendar:hover,
+#tab-world .student-order-cards:hover{
+  transform:none !important;
+  filter:none !important;
+  box-shadow:inherit !important;
+  border-color:inherit !important;
+  background:inherit !important;
+}
+
+/* ---------------------------------------------------------
+   공통 내부 카드
+   --------------------------------------------------------- */
+#tab-world .gate-law,
+#tab-world .hunter-rank,
+#tab-world .frontline-card,
+#tab-world .org-card,
+#tab-world .student-rank-card,
+#tab-world .event-item{
+  position:relative;
+  transition:
+    transform .20s ease,
+    filter .20s ease,
+    border-color .20s ease,
+    box-shadow .20s ease,
+    background .20s ease !important;
+}
+
+/* 카드 하나하나만 살짝 반응 */
+#tab-world .gate-law:hover,
+#tab-world .hunter-rank:hover,
+#tab-world .frontline-card:hover,
+#tab-world .org-card:hover,
+#tab-world .student-rank-card:hover,
+#tab-world .event-item:hover{
+  transform:translateY(-2px) !important;
+  filter:brightness(1.055) !important;
+  z-index:4 !important;
+}
+
+/* ---------------------------------------------------------
+   코어 / 클리어 / 브리치 카드
+   --------------------------------------------------------- */
+#tab-world .gate-law:hover{
+  box-shadow:
+    0 8px 18px rgba(0,0,0,.14),
+    0 0 14px rgba(126,105,178,.055) !important;
+}
+
+/* ---------------------------------------------------------
+   헌터 등급 각각
+   --------------------------------------------------------- */
+#tab-world .hunter-rank:hover{
+  box-shadow:
+    0 8px 18px rgba(0,0,0,.14),
+    0 0 14px rgba(135,121,177,.055) !important;
+}
+
+/* ---------------------------------------------------------
+   균열지대 / 오염심역
+   --------------------------------------------------------- */
+#tab-world .frontline-card:hover{
+  box-shadow:
+    0 8px 18px rgba(0,0,0,.15),
+    0 0 15px rgba(181,78,85,.06) !important;
+}
+
+/* ---------------------------------------------------------
+   팬텀 스트라이크 / 노블레스 / 월하
+   --------------------------------------------------------- */
+#tab-world .org-card:hover{
+  box-shadow:
+    0 8px 18px rgba(0,0,0,.14),
+    0 0 15px rgba(138,116,179,.055) !important;
+}
+
+/* 학생 서열 카드도 각 카드만 */
+#tab-world .student-rank-card:hover{
+  transform:translateY(-2px) !important;
+}
+
+/* 지도는 기존 지도 전용 hover만 유지 */
+#tab-world .orbis-map .map-node{
+  transition:
+    border-color .2s ease,
+    background .2s ease,
+    box-shadow .2s ease,
+    filter .2s ease !important;
+}
+
+/* 이미지 역시 이미지 자체/이미지 컨테이너만 */
+#tab-world .hunter-gate-hero-image{
+  overflow:hidden !important;
+}
+#tab-world .hunter-gate-hero-image img{
+  transition:transform .32s ease,filter .26s ease !important;
+}
+#tab-world .hunter-gate-hero-image:hover img{
+  transform:scale(1.018) !important;
+  filter:brightness(1.035) !important;
+}
+
+/* 모바일에서는 이동 제거 */
+@media(max-width:700px){
+  #tab-world .gate-law:hover,
+  #tab-world .hunter-rank:hover,
+  #tab-world .frontline-card:hover,
+  #tab-world .org-card:hover,
+  #tab-world .student-rank-card:hover,
+  #tab-world .event-item:hover{
+    transform:none !important;
+  }
+}
+</style>
+<style>
+/* =========================================================
+   4재앙 요약 박스 개별 HOVER
+   실제 구조: .calamity-world-list > div
+   ========================================================= */
+
+#tab-world .calamity-world-list > div{
+  position:relative;
+  transition:
+    transform .20s ease,
+    filter .20s ease,
+    border-color .20s ease,
+    box-shadow .20s ease,
+    background .20s ease !important;
+}
+
+#tab-world .calamity-world-list > div:hover{
+  transform:translateY(-2px) !important;
+  filter:brightness(1.06) !important;
+  z-index:4 !important;
+  box-shadow:
+    0 8px 18px rgba(0,0,0,.16),
+    0 0 15px rgba(147,71,96,.06) !important;
+}
+
+@media(max-width:700px){
+  #tab-world .calamity-world-list > div:hover{
+    transform:none !important;
+  }
+}
+</style>
+<style>
+/* =========================================================
+   판테온 교수진 라인업 — 개별 박스 HOVER
+   과학기술 / 검술 / 마도 / 신성 / 전술 / 정령 / 생존 / 무술 / 인술
+   ========================================================= */
+
+/* 교수진 개별 셀 */
+#tab-world .faculty-item,
+#tab-world .faculty-card,
+#tab-world .professor-item,
+#tab-world .professor-card,
+#tab-world .faculty-grid > div,
+#tab-world .professor-grid > div{
+  position:relative;
+  transition:
+    transform .20s ease,
+    filter .20s ease,
+    border-color .20s ease,
+    box-shadow .20s ease,
+    background .20s ease !important;
+}
+
+/* 각 박스만 살짝 반응 */
+#tab-world .faculty-item:hover,
+#tab-world .faculty-card:hover,
+#tab-world .professor-item:hover,
+#tab-world .professor-card:hover,
+#tab-world .faculty-grid > div:hover,
+#tab-world .professor-grid > div:hover{
+  transform:translateY(-2px) !important;
+  filter:brightness(1.06) !important;
+  z-index:4 !important;
+  box-shadow:
+    0 8px 18px rgba(0,0,0,.15),
+    0 0 15px rgba(120,105,165,.06) !important;
+}
+
+/* 모바일에서는 이동 제거 */
+@media(max-width:700px){
+  #tab-world .faculty-item:hover,
+  #tab-world .faculty-card:hover,
+  #tab-world .professor-item:hover,
+  #tab-world .professor-card:hover,
+  #tab-world .faculty-grid > div:hover,
+  #tab-world .professor-grid > div:hover{
+    transform:none !important;
+  }
+}
+</style><style>
+#tab-world .world-inner-hover-card{
+  position:relative;
+  transition:
+    transform .20s ease,
+    filter .20s ease,
+    border-color .20s ease,
+    box-shadow .20s ease,
+    background .20s ease !important;
+}
+
+#tab-world .world-inner-hover-card:hover{
+  transform:translateY(-2px) !important;
+  filter:brightness(1.06) !important;
+  z-index:4 !important;
+  box-shadow:
+    0 8px 18px rgba(0,0,0,.15),
+    0 0 15px rgba(120,105,165,.06) !important;
+}
+
+@media(max-width:700px){
+  #tab-world .world-inner-hover-card:hover{
+    transform:none !important;
+  }
+}
+</style><style>
+/* =========================================================
+   판테온 교수진 — 실제 구조(.org-professors > span) HOVER
+   ========================================================= */
+
+#tab-world .org-professors > span{
+  position:relative;
+  display:flex;
+  flex-direction:column;
+  transition:
+    transform .20s ease,
+    filter .20s ease,
+    border-color .20s ease,
+    box-shadow .20s ease,
+    background .20s ease !important;
+}
+
+#tab-world .org-professors > span:hover{
+  transform:translateY(-2px) !important;
+  filter:brightness(1.06) !important;
+  z-index:4 !important;
+  box-shadow:
+    0 8px 18px rgba(0,0,0,.15),
+    0 0 15px rgba(120,105,165,.06) !important;
+}
+
+@media(max-width:700px){
+  #tab-world .org-professors > span:hover{
+    transform:none !important;
+  }
+}
+</style><style>
+/* =========================================================
+   3대 길드 — 동일 행/열 정렬 + 각기 다른 실루엣
+   ========================================================= */
+
+#tab-world .guild-world-grid{
+  display:grid !important;
+  grid-template-columns:repeat(3,minmax(0,1fr)) !important;
+  gap:14px !important;
+  align-items:stretch !important;
+}
+
+/* 공통: 높이, 패딩, 텍스트 시작점 통일 */
+#tab-world .guild-world-grid > .org-card{
+  position:relative !important;
+  min-height:154px !important;
+  height:100% !important;
+  padding:20px 20px 18px !important;
+  margin:0 !important;
+
+  display:flex !important;
+  flex-direction:column !important;
+  justify-content:flex-start !important;
+
+  transition:
+    transform .20s ease,
+    filter .20s ease,
+    border-color .20s ease,
+    box-shadow .20s ease,
+    background .20s ease !important;
+}
+
+/* 제목 시작선 통일 */
+#tab-world .guild-world-grid > .org-card > b:first-child,
+#tab-world .guild-world-grid > .org-card > strong:first-child{
+  display:block !important;
+  min-height:28px !important;
+  margin:0 0 10px 0 !important;
+  line-height:1.35 !important;
+}
+
+/* 설명 시작점/행간 통일 */
+#tab-world .guild-world-grid > .org-card p{
+  margin:0 !important;
+  line-height:1.75 !important;
+}
+
+/* hover: 카드 하나씩만 */
+#tab-world .guild-world-grid > .org-card:hover{
+  transform:translateY(-2px) !important;
+  filter:brightness(1.055) !important;
+  z-index:4 !important;
+}
+
+/* ---------------------------------------------------------
+   팬텀 스트라이크
+   절단된 전투 프레임 / 붉은 전선 느낌
+   --------------------------------------------------------- */
+#tab-world .guild-phantom-card{
+  border:0 !important;
+  border-radius:0 !important;
+  clip-path:polygon(
+    0 0,
+    calc(100% - 16px) 0,
+    100% 16px,
+    100% 100%,
+    16px 100%,
+    0 calc(100% - 16px)
+  ) !important;
+
+  background:
+    linear-gradient(135deg,rgba(164,50,62,.12),transparent 46%),
+    rgba(17,9,11,.92) !important;
+
+  box-shadow:
+    inset 0 0 0 1px rgba(190,69,81,.34) !important;
+}
+
+#tab-world .guild-phantom-card::before{
+  content:"";
+  position:absolute;
+  left:0;
+  top:0;
+  width:3px;
+  height:100%;
+  background:linear-gradient(to bottom,#bf4b58,rgba(191,75,88,.08));
+}
+
+#tab-world .guild-phantom-card:hover{
+  box-shadow:
+    inset 0 0 0 1px rgba(210,81,94,.52),
+    0 8px 18px rgba(0,0,0,.15),
+    0 0 16px rgba(174,52,66,.075) !important;
+}
+
+/* ---------------------------------------------------------
+   노블레스
+   금빛 귀족 문장형 / 상단 중앙 장식
+   --------------------------------------------------------- */
+#tab-world .guild-noblesse-card{
+  border:0 !important;
+  border-radius:0 !important;
+  clip-path:polygon(
+    0 10px,
+    38% 10px,
+    43% 0,
+    57% 0,
+    62% 10px,
+    100% 10px,
+    100% 100%,
+    0 100%
+  ) !important;
+
+  background:
+    radial-gradient(circle at 50% 0,rgba(218,177,88,.14),transparent 30%),
+    linear-gradient(135deg,rgba(203,161,70,.09),transparent 48%),
+    rgba(16,13,8,.94) !important;
+
+  box-shadow:
+    inset 0 0 0 1px rgba(216,176,92,.38) !important;
+}
+
+#tab-world .guild-noblesse-card::before{
+  content:"◇";
+  position:absolute;
+  left:50%;
+  top:1px;
+  transform:translateX(-50%);
+  color:#d7b36a;
+  font-size:9px;
+  line-height:1;
+}
+
+#tab-world .guild-noblesse-card:hover{
+  box-shadow:
+    inset 0 0 0 1px rgba(229,190,105,.56),
+    0 8px 18px rgba(0,0,0,.15),
+    0 0 16px rgba(202,159,70,.08) !important;
+}
+
+/* ---------------------------------------------------------
+   월하
+   월광 / 은밀한 팔각 프레임
+   --------------------------------------------------------- */
+#tab-world .guild-wolha-card{
+  border:0 !important;
+  border-radius:0 !important;
+
+  clip-path:polygon(
+    10px 0,
+    calc(100% - 10px) 0,
+    100% 10px,
+    100% calc(100% - 10px),
+    calc(100% - 10px) 100%,
+    10px 100%,
+    0 calc(100% - 10px),
+    0 10px
+  ) !important;
+
+  background:
+    linear-gradient(135deg,rgba(111,105,183,.10),transparent 48%),
+    rgba(9,10,17,.94) !important;
+
+  box-shadow:
+    inset 0 0 0 1px rgba(129,136,205,.34) !important;
+}
+
+#tab-world .guild-wolha-card::before{
+  content:"☾";
+  position:absolute;
+  right:11px;
+  top:8px;
+  color:rgba(166,174,229,.58);
+  font-size:12px;
+  line-height:1;
+}
+
+#tab-world .guild-wolha-card:hover{
+  box-shadow:
+    inset 0 0 0 1px rgba(150,159,225,.50),
+    0 8px 18px rgba(0,0,0,.15),
+    0 0 16px rgba(115,124,196,.075) !important;
+}
+
+/* 모바일 */
+@media(max-width:760px){
+  #tab-world .guild-world-grid{
+    grid-template-columns:1fr !important;
+  }
+
+  #tab-world .guild-world-grid > .org-card{
+    min-height:auto !important;
+  }
+
+  #tab-world .guild-world-grid > .org-card:hover{
+    transform:none !important;
+  }
+}
+</style>
+<style>
+/* =========================================================
+   3대 길드 카드 — CLEAN REDESIGN
+   크기/정렬은 완전히 동일, 차이는 디테일만
+   ========================================================= */
+
+#tab-world .guild-world-grid{
+  display:grid !important;
+  grid-template-columns:repeat(3,minmax(0,1fr)) !important;
+  gap:14px !important;
+  align-items:stretch !important;
+}
+
+/* 공통 실루엣: 세 카드 완전히 동일한 외곽 크기 */
+#tab-world .guild-world-grid > div{
+  position:relative !important;
+  min-height:158px !important;
+  height:100% !important;
+  padding:20px 20px 18px !important;
+  margin:0 !important;
+
+  display:flex !important;
+  flex-direction:column !important;
+  justify-content:flex-start !important;
+
+  border-radius:3px !important;
+  clip-path:none !important;
+  overflow:hidden !important;
+
+  transition:
+    transform .20s ease,
+    filter .20s ease,
+    border-color .20s ease,
+    box-shadow .20s ease,
+    background .20s ease !important;
+}
+
+/* 제목/본문 시작선 통일 */
+#tab-world .guild-world-grid > div > b:first-child{
+  display:block !important;
+  min-height:29px !important;
+  margin:0 0 9px 0 !important;
+  line-height:1.35 !important;
+}
+
+#tab-world .guild-world-grid > div > p{
+  margin:0 !important;
+  line-height:1.75 !important;
+}
+
+/* hover는 셋 다 동일 강도 */
+#tab-world .guild-world-grid > div:hover{
+  transform:translateY(-2px) !important;
+  filter:brightness(1.045) !important;
+  z-index:4 !important;
+}
+
+/* ---------------------------------------------------------
+   팬텀 스트라이크
+   - 어두운 적색 전술 프레임
+   - 왼쪽 세로선 + 우상단 짧은 절단선
+   --------------------------------------------------------- */
+#tab-world .guild-phantom-card{
+  border:1px solid rgba(178,65,76,.34) !important;
+  background:
+    linear-gradient(135deg,rgba(145,43,54,.075),transparent 46%),
+    rgba(16,10,12,.94) !important;
+
+  box-shadow:
+    inset 3px 0 0 rgba(181,58,70,.34) !important;
+}
+
+#tab-world .guild-phantom-card::before{
+  content:"" !important;
+  position:absolute !important;
+  top:0 !important;
+  right:0 !important;
+  width:38px !important;
+  height:1px !important;
+  background:linear-gradient(90deg,transparent,#b84551) !important;
+}
+
+#tab-world .guild-phantom-card::after{
+  content:"" !important;
+  position:absolute !important;
+  right:0 !important;
+  top:0 !important;
+  width:1px !important;
+  height:28px !important;
+  background:linear-gradient(#b84551,transparent) !important;
+}
+
+#tab-world .guild-phantom-card:hover{
+  border-color:rgba(200,78,90,.50) !important;
+  box-shadow:
+    inset 3px 0 0 rgba(201,70,82,.48),
+    0 8px 18px rgba(0,0,0,.14),
+    0 0 14px rgba(172,56,68,.055) !important;
+}
+
+/* ---------------------------------------------------------
+   노블레스
+   - 샴페인 골드
+   - 외곽은 평범하게, 안쪽 이중선만
+   --------------------------------------------------------- */
+#tab-world .guild-noblesse-card{
+  border:1px solid rgba(210,171,88,.34) !important;
+  background:
+    radial-gradient(circle at 50% 0,rgba(210,170,84,.065),transparent 42%),
+    rgba(15,13,9,.94) !important;
+
+  box-shadow:
+    inset 0 0 0 4px rgba(215,175,91,.025) !important;
+}
+
+#tab-world .guild-noblesse-card::before{
+  content:"◇" !important;
+  position:absolute !important;
+  top:8px !important;
+  right:10px !important;
+  color:rgba(218,181,104,.48) !important;
+  font-size:10px !important;
+  line-height:1 !important;
+}
+
+#tab-world .guild-noblesse-card::after{
+  content:"" !important;
+  position:absolute !important;
+  left:11px !important;
+  right:11px !important;
+  bottom:9px !important;
+  height:1px !important;
+  background:linear-gradient(90deg,transparent,rgba(211,173,95,.24),transparent) !important;
+}
+
+#tab-world .guild-noblesse-card:hover{
+  border-color:rgba(226,187,101,.50) !important;
+  box-shadow:
+    inset 0 0 0 4px rgba(222,183,98,.04),
+    0 8px 18px rgba(0,0,0,.14),
+    0 0 14px rgba(196,157,73,.055) !important;
+}
+
+/* ---------------------------------------------------------
+   월하
+   - 청보라/은빛
+   - 네 모서리에 짧은 코너 라인
+   --------------------------------------------------------- */
+#tab-world .guild-wolha-card{
+  border:1px solid rgba(124,132,196,.34) !important;
+  background:
+    linear-gradient(135deg,rgba(94,100,166,.065),transparent 48%),
+    rgba(9,10,16,.94) !important;
+
+  box-shadow:none !important;
+}
+
+#tab-world .guild-wolha-card::before{
+  content:"☾" !important;
+  position:absolute !important;
+  top:8px !important;
+  right:10px !important;
+  color:rgba(166,174,229,.48) !important;
+  font-size:11px !important;
+  line-height:1 !important;
+}
+
+#tab-world .guild-wolha-card::after{
+  content:"" !important;
+  position:absolute !important;
+  inset:7px !important;
+  pointer-events:none !important;
+  background:
+    linear-gradient(#8790cc,#8790cc) left top/16px 1px no-repeat,
+    linear-gradient(#8790cc,#8790cc) left top/1px 16px no-repeat,
+    linear-gradient(#8790cc,#8790cc) right bottom/16px 1px no-repeat,
+    linear-gradient(#8790cc,#8790cc) right bottom/1px 16px no-repeat !important;
+  opacity:.20 !important;
+}
+
+#tab-world .guild-wolha-card:hover{
+  border-color:rgba(146,155,220,.50) !important;
+  box-shadow:
+    0 8px 18px rgba(0,0,0,.14),
+    0 0 14px rgba(110,120,188,.055) !important;
+}
+
+/* 제목색은 컨셉에 맞게 */
+#tab-world .guild-phantom-card > b:first-child{
+  color:#d98189 !important;
+}
+#tab-world .guild-noblesse-card > b:first-child{
+  color:#d9b66f !important;
+}
+#tab-world .guild-wolha-card > b:first-child{
+  color:#a8b1df !important;
+}
+
+/* 모바일 */
+@media(max-width:760px){
+  #tab-world .guild-world-grid{
+    grid-template-columns:1fr !important;
+  }
+
+  #tab-world .guild-world-grid > div{
+    min-height:auto !important;
+  }
+
+  #tab-world .guild-world-grid > div:hover{
+    transform:none !important;
+  }
+}
+</style>
+<style>
+/* =========================================================
+   게이트 진행 단계 — 코어 / 붕괴 / 침식
+   실제 개별 박스 hover + 제목 확대
+   ========================================================= */
+
+/* 실제 3개 카드 컨테이너 */
+#tab-world .gate-flow > div,
+#tab-world .gate-state-grid > div,
+#tab-world .gate-process > div{
+  position:relative;
+  transition:
+    transform .20s ease,
+    filter .20s ease,
+    border-color .20s ease,
+    box-shadow .20s ease,
+    background .20s ease !important;
+}
+
+/* 각각 따로 반응 */
+#tab-world .gate-flow > div:hover,
+#tab-world .gate-state-grid > div:hover,
+#tab-world .gate-process > div:hover{
+  transform:translateY(-2px) !important;
+  filter:brightness(1.06) !important;
+  z-index:4 !important;
+  box-shadow:
+    0 8px 18px rgba(0,0,0,.15),
+    0 0 14px rgba(108,132,178,.06) !important;
+}
+
+/* 코어 / 붕괴 / 침식 제목 */
+#tab-world .gate-flow > div > b:first-child,
+#tab-world .gate-flow > div > strong:first-child,
+#tab-world .gate-state-grid > div > b:first-child,
+#tab-world .gate-state-grid > div > strong:first-child,
+#tab-world .gate-process > div > b:first-child,
+#tab-world .gate-process > div > strong:first-child{
+  font-size:16px !important;
+  line-height:1.35 !important;
+}
+
+/* 모바일 */
+@media(max-width:700px){
+  #tab-world .gate-flow > div:hover,
+  #tab-world .gate-state-grid > div:hover,
+  #tab-world .gate-process > div:hover{
+    transform:none !important;
+  }
+}
+</style><style>
+#tab-world .gate-stage-card-hover{
+  position:relative;
+  transition:
+    transform .20s ease,
+    filter .20s ease,
+    border-color .20s ease,
+    box-shadow .20s ease !important;
+}
+#tab-world .gate-stage-card-hover:hover{
+  transform:translateY(-2px) !important;
+  filter:brightness(1.06) !important;
+  z-index:4 !important;
+  box-shadow:
+    0 8px 18px rgba(0,0,0,.15),
+    0 0 14px rgba(108,132,178,.06) !important;
+}
+#tab-world .gate-stage-card-hover > b:first-child,
+#tab-world .gate-stage-card-hover > strong:first-child,
+#tab-world .gate-stage-card-hover > span:first-child{
+  font-size:16px !important;
+}
+</style><style>
+/* 코어 / 붕괴 / 침식 — 실제 구조 최종 지정 */
+#tab-world .gate-laws > div{
+  position:relative;
+  transition:transform .20s ease,filter .20s ease,
+             border-color .20s ease,box-shadow .20s ease,
+             background .20s ease !important;
+}
+#tab-world .gate-laws > div:hover{
+  transform:translateY(-2px) !important;
+  filter:brightness(1.06) !important;
+  z-index:4 !important;
+  box-shadow:0 8px 18px rgba(0,0,0,.15),
+             0 0 14px rgba(108,132,178,.06) !important;
+}
+#tab-world .gate-laws > div > em:first-child{
+  font-size:16px !important;
+  line-height:1.35 !important;
+}
+@media(max-width:700px){
+  #tab-world .gate-laws > div:hover{transform:none !important;}
+}
+</style><style>
+/* =========================================================
+   아스트라 연방 ↔ 판테온 아카데미 간격 축소
+   ========================================================= */
+
+/* 기존 남부 노드 위치 유지 */
+#tab-world .orbis-map .node-south{
+  left:50% !important;
+  bottom:8% !important;
+  transform:translateX(-50%) !important;
+}
+
+/* 점선과 아카데미를 연방 바로 옆으로 당김 */
+#tab-world .orbis-map .pantheon-map-branch{
+  left:calc(50% + 86px) !important;
+  bottom:8% !important;
+  width:225px !important;
+  height:58px !important;
+}
+
+#tab-world .orbis-map .pantheon-branch-line{
+  left:0 !important;
+  top:50% !important;
+  width:62px !important;
+}
+
+#tab-world .orbis-map .pantheon-map-label{
+  left:62px !important;
+  top:50% !important;
+  min-width:158px !important;
+  transform:translateY(-50%) !important;
+}
+
+/* =========================================================
+   세계관 소개 — 세력 및 캐릭터 소개
+   바깥 섹션이 아니라 내부 세력 카드/캐릭터만 반응
+   ========================================================= */
+
+/* 세력 소개 카드 */
+#tab-world .faction-card,
+#tab-world .faction-block,
+#tab-world .nation-card,
+#tab-world .force-card,
+#tab-world .org-section{
+  transition:
+    transform .20s ease,
+    filter .20s ease,
+    border-color .20s ease,
+    box-shadow .20s ease !important;
+}
+
+#tab-world .faction-card:hover,
+#tab-world .faction-block:hover,
+#tab-world .nation-card:hover,
+#tab-world .force-card:hover,
+#tab-world .org-section:hover{
+  transform:translateY(-2px) !important;
+  filter:brightness(1.035) !important;
+  z-index:3 !important;
+}
+
+/* 세력 안의 캐릭터 초상/카드 각각 */
+#tab-world .faction-card .character-card,
+#tab-world .faction-block .character-card,
+#tab-world .nation-card .character-card,
+#tab-world .force-card .character-card,
+#tab-world .org-section .character-card,
+#tab-world .faction-card .char-card,
+#tab-world .faction-block .char-card,
+#tab-world .nation-card .char-card,
+#tab-world .force-card .char-card,
+#tab-world .org-section .char-card{
+  transition:
+    transform .20s ease,
+    filter .20s ease,
+    box-shadow .20s ease !important;
+}
+
+#tab-world .faction-card .character-card:hover,
+#tab-world .faction-block .character-card:hover,
+#tab-world .nation-card .character-card:hover,
+#tab-world .force-card .character-card:hover,
+#tab-world .org-section .character-card:hover,
+#tab-world .faction-card .char-card:hover,
+#tab-world .faction-block .char-card:hover,
+#tab-world .nation-card .char-card:hover,
+#tab-world .force-card .char-card:hover,
+#tab-world .org-section .char-card:hover{
+  transform:translateY(-2px) scale(1.012) !important;
+  filter:brightness(1.045) !important;
+  z-index:5 !important;
+}
+
+/* 이미지 자체도 해당 이미지만 아주 약하게 확대 */
+#tab-world .faction-card img,
+#tab-world .faction-block img,
+#tab-world .nation-card img,
+#tab-world .force-card img,
+#tab-world .org-section img{
+  transition:transform .28s ease,filter .24s ease !important;
+}
+
+#tab-world .faction-card img:hover,
+#tab-world .faction-block img:hover,
+#tab-world .nation-card img:hover,
+#tab-world .force-card img:hover,
+#tab-world .org-section img:hover{
+  transform:scale(1.018) !important;
+  filter:brightness(1.04) !important;
+}
+
+@media(max-width:700px){
+  #tab-world .faction-card:hover,
+  #tab-world .faction-block:hover,
+  #tab-world .nation-card:hover,
+  #tab-world .force-card:hover,
+  #tab-world .org-section:hover,
+  #tab-world .character-card:hover,
+  #tab-world .char-card:hover{
+    transform:none !important;
+  }
+}
+</style><style>
+#tab-world .world-faction-hover{
+  transition:transform .20s ease,filter .20s ease,
+             border-color .20s ease,box-shadow .20s ease !important;
+}
+#tab-world .world-faction-hover:hover{
+  transform:translateY(-2px) !important;
+  filter:brightness(1.035) !important;
+}
+</style><style>
+/* =========================================================
+   상단 메인 탭 HOVER
+   세계관 소개 / 세력 및 캐릭터 소개
+   ========================================================= */
+
+.tab-btn{
+  position:relative !important;
+  transition:
+    transform .20s ease,
+    color .20s ease,
+    filter .20s ease,
+    background .20s ease !important;
+}
+
+/* 탭 전체가 살짝 반응 */
+.tab-btn:hover{
+  transform:translateY(-2px) !important;
+  filter:brightness(1.08) !important;
+}
+
+/* 한글 제목 */
+.tab-btn .tab-title,
+.tab-btn strong,
+.tab-btn b{
+  transition:
+    color .20s ease,
+    text-shadow .20s ease !important;
+}
+
+.tab-btn:hover .tab-title,
+.tab-btn:hover strong,
+.tab-btn:hover b{
+  color:#f2edf8 !important;
+  text-shadow:0 0 10px rgba(143,105,224,.20) !important;
+}
+
+/* 영문 서브 타이틀 */
+.tab-btn .tab-sub,
+.tab-btn small,
+.tab-btn span{
+  transition:
+    color .20s ease,
+    letter-spacing .20s ease,
+    text-shadow .20s ease !important;
+}
+
+.tab-btn:hover .tab-sub,
+.tab-btn:hover small{
+  color:#9b83d7 !important;
+  letter-spacing:.20em !important;
+  text-shadow:0 0 8px rgba(139,92,246,.18) !important;
+}
+
+/* 하단 라인 — hover 시 짧은 빛이 안쪽에서 퍼짐 */
+.tab-btn::after{
+  content:"" !important;
+  position:absolute !important;
+  left:50% !important;
+  bottom:-1px !important;
+  width:0 !important;
+  height:2px !important;
+  transform:translateX(-50%) !important;
+  background:linear-gradient(
+    90deg,
+    transparent,
+    rgba(139,92,246,.88),
+    transparent
+  ) !important;
+  opacity:0 !important;
+  transition:
+    width .24s ease,
+    opacity .24s ease !important;
+}
+
+.tab-btn:hover::after{
+  width:72% !important;
+  opacity:1 !important;
+}
+
+/* 현재 활성 탭은 기존 긴 라인 유지 */
+.tab-btn.active::after{
+  width:100% !important;
+  opacity:1 !important;
+}
+
+/* 활성 탭도 hover 시 과하게 움직이지 않도록 */
+.tab-btn.active:hover{
+  transform:translateY(-1px) !important;
+}
+
+/* 모바일 */
+@media(max-width:700px){
+  .tab-btn:hover,
+  .tab-btn.active:hover{
+    transform:none !important;
+  }
+}
 </style></head>
 <body><div aria-hidden="true" class="shooting-stars"><span class="shooting-star star-a"></span><span class="shooting-star star-b"></span><span class="shooting-star star-c"></span></div>
 <section class="hero">
@@ -8220,7 +9545,7 @@ body::after {
 <div class="hero-coordinate coord-right">E · 04</div>
 </div>
 <div class="hero-logo"><img alt="LAST RING" src="img/lg.png"/></div>
-<p class="subtitle"><span class="bar">::</span>인류 최후의 생존권<span class="bar">::</span></p>
+<p class="subtitle" style=";color:#fff!important;font-weight:400!important;"><span class="bar">::</span>인류 최후의 생존권<span class="bar">::</span></p>
 <p class="desc">
     게이트 너머에서 밀려오는 <strong>괴수</strong>들에게 세계는 이미 절반 넘게 잠식당했다.
     사람들이 발 딛고 설 수 있는 땅은 오직 마지막 방어선, <strong>단 하나의 고리</strong>뿐.
@@ -8324,9 +9649,9 @@ body::after {
 <p>괴수를 몰아냈다고 해서 세계가 돌아온 것은 아니다. 옛 세계의 탈환은 실패했고, 인류가 지켜낸 것은 현재의 <strong>중심 생존권</strong>뿐이다. 지금도 곳곳에서 새로운 게이트가 열리고 있으며, 끝없는 균열전쟁 속에서 생존권을 유지하기 위해 헌터는 반드시 필요하다.</p>
 <p>게이트는 이계와 연결된 공간이다. 내부에는 저마다 다른 환경과 괴수가 존재하고, 등급이 높을수록 환경 역시 극단적으로 변한다. 괴수는 마력원을 포식하려는 본능을 지니며, 재앙을 제외하면 지성을 갖지 않는다.</p>
 <div class="gate-laws">
-<div><em>코어</em><strong>보스가 살아 있는 동안 게이트는 유지된다.</strong><span>보스는 코어룸에 존재하며, 보스가 생존하는 한 게이트 역시 사라지지 않는다.</span></div>
-<div><em>붕괴</em><strong>보스를 쓰러뜨리면 게이트가 붕괴한다.</strong><span>붕괴가 시작되면 내부에 있던 인원은 처음 진입했던 위치로 자동 귀환한다.</span></div>
-<div><em>침식</em><strong>방치된 게이트는 주변 생존권을 잠식한다.</strong><span>주변 일대를 게이트의 환경으로 바꾸며, 등급이 높을수록 확산이 빨라지고 괴수가 외부로 유출된다.</span></div>
+<div class="gate-stage-card-hover"><em>코어</em><strong>보스가 살아 있는 동안 게이트는 유지된다.</strong><span>보스는 코어룸에 존재하며, 보스가 생존하는 한 게이트 역시 사라지지 않는다.</span></div>
+<div class="gate-stage-card-hover"><em>붕괴</em><strong>보스를 쓰러뜨리면 게이트가 붕괴한다.</strong><span>붕괴가 시작되면 내부에 있던 인원은 처음 진입했던 위치로 자동 귀환한다.</span></div>
+<div class="gate-stage-card-hover"><em>침식</em><strong>방치된 게이트는 주변 생존권을 잠식한다.</strong><span>주변 일대를 게이트의 환경으로 바꾸며, 등급이 높을수록 확산이 빨라지고 괴수가 외부로 유출된다.</span></div>
 </div>
 <div class="hunter-rank-block">
 <div class="hunter-rank-title">헌터 등급 <small>HUNTER RANK</small></div>
@@ -8341,6 +9666,41 @@ body::after {
 <span class="rss">SS</span><i>＜</i><span class="rss">SS+</span><i>＜</i>
 <span class="rsss">SSS</span>
 </div>
+</div>
+</section>
+<section class="world-chapter">
+<div class="world-kicker">FRONT LINE</div>
+<h2>문명의 끝, 전선의 시작</h2>
+<p>중심 생존권의 바깥에는 옛 문명의 흔적과 게이트가 뒤섞인 전선이 펼쳐져 있다. 헌터들이 일상적으로 마주하는 최전선은 <strong>균열지대</strong>와 <strong>오염심역</strong>으로 나뉜다.</p>
+<div class="frontline-grid">
+<div class="frontline-card">
+<b>균열지대 · 외곽</b>
+<span>파괴된 문명의 잔해가 남아 있는 전선. F급부터 B+급 게이트가 출현한다.</span>
+</div>
+<div class="frontline-card">
+<b>오염심역 · 최외곽</b>
+<span>풍화된 구세계가 남아 있는 최외곽 전선. A급 이상의 게이트가 출현한다.</span>
+</div>
+</div>
+</section>
+<section class="world-chapter">
+<div class="world-kicker">THREE GUILDS</div>
+<h2>전선을 누비는 3대 길드</h2>
+<div class="guild-world-grid">
+<div class="guild-phantom-card"><b>팬텀 스트라이크</b><span>실력주의를 내세우며 최전선 공략을 주도한다. 입단 최소 등급은 A급 이상.</span></div>
+<div class="guild-noblesse-card"><b>노블레스</b><span>명예를 중시하며 구호 활동에 힘을 쏟는 길드.</span></div>
+<div class="guild-wolha-card"><b>월하</b><span>암행과 정보 활동에 특화된 길드.</span></div>
+</div>
+</section>
+<section class="world-chapter">
+<div class="world-kicker">FOUR CALAMITIES</div>
+<h2>오염심역 최심부, 4재앙</h2>
+<p>각 오염심역의 최심부에는 인류의 적 또는 배반자로 규정된 <strong>4재앙</strong>이 자리한다. 그들이 머무는 영역은 최고위 게이트와 맞물려 있으며, 각 방향의 전선을 대표하는 가장 거대한 위협이다.</p>
+<div class="calamity-world-list">
+<div><b>서부 · 옵시디언 레어</b><span>SS+ · 에이브릴</span></div>
+<div><b>동부 · 천귀궁</b><span>SSS · 노타마야</span></div>
+<div><b>남부 · 만상의 성소</b><span>SSS · 닉스</span></div>
+<div><b>북부 · 선큰스론</b><span>SSS · 칼립사</span></div>
 </div>
 </section>
 <section class="world-chapter">
@@ -8404,43 +9764,7 @@ body::after {
 </div>
 <p class="student-order-note">한 해가 저물면 학생들은 다음 이름을 받는다. 한 계절을 무사히 건너온 시간만큼, 후보생은 정규생으로, 정규생은 정예생으로 올라선다.</p>
 </div>
-</section>
-<section class="world-chapter">
-<div class="world-kicker">FRONT LINE</div>
-<h2>문명의 끝, 전선의 시작</h2>
-<p>중심 생존권의 바깥에는 옛 문명의 흔적과 게이트가 뒤섞인 전선이 펼쳐져 있다. 헌터들이 일상적으로 마주하는 최전선은 <strong>균열지대</strong>와 <strong>오염심역</strong>으로 나뉜다.</p>
-<div class="frontline-grid">
-<div class="frontline-card">
-<b>균열지대 · 외곽</b>
-<span>파괴된 문명의 잔해가 남아 있는 전선. F급부터 B+급 게이트가 출현한다.</span>
-</div>
-<div class="frontline-card">
-<b>오염심역 · 최외곽</b>
-<span>풍화된 구세계가 남아 있는 최외곽 전선. A급 이상의 게이트가 출현한다.</span>
-</div>
-</div>
-</section>
-<section class="world-chapter">
-<div class="world-kicker">THREE GUILDS</div>
-<h2>전선을 누비는 3대 길드</h2>
-<div class="guild-world-grid">
-<div><b>팬텀 스트라이크</b><span>실력주의를 내세우며 최전선 공략을 주도한다. 입단 최소 등급은 A급 이상.</span></div>
-<div><b>노블레스</b><span>명예를 중시하며 구호 활동에 힘을 쏟는 길드.</span></div>
-<div><b>월하</b><span>암행과 정보 활동에 특화된 길드.</span></div>
-</div>
-</section>
-<section class="world-chapter">
-<div class="world-kicker">FOUR CALAMITIES</div>
-<h2>오염심역 최심부, 4재앙</h2>
-<p>각 오염심역의 최심부에는 인류의 적 또는 배반자로 규정된 <strong>4재앙</strong>이 자리한다. 그들이 머무는 영역은 최고위 게이트와 맞물려 있으며, 각 방향의 전선을 대표하는 가장 거대한 위협이다.</p>
-<div class="calamity-world-list">
-<div><b>서부 · 옵시디언 레어</b><span>SS+ · 에이브릴</span></div>
-<div><b>동부 · 천귀궁</b><span>SSS · 노타마야</span></div>
-<div><b>남부 · 만상의 성소</b><span>SSS · 닉스</span></div>
-<div><b>북부 · 선큰스론</b><span>SSS · 칼립사</span></div>
-</div>
-</section>
-<section class="world-chapter">
+</section><section class="world-chapter">
 <div class="world-kicker">CALENDAR</div>
 <h2>판테온과 오르비스를 흐르는 한 해</h2>
 <p>
@@ -8552,16 +9876,6 @@ body::after {
 <span>청운가의 겨울밤을 수많은 천등이 밝힌다. 사람들은 저마다의 소원을 적어 하늘로 띄우고, 토와와 아야나미가 축제를 함께한다.</span>
 </div>
 </div>
-</div>
-</section>
-<section class="world-chapter">
-<div class="world-kicker">ORBIS LIFE</div>
-<h2>균열 속에서도 이어지는 일상</h2>
-<p>오르비스의 공용 화폐는 <strong>오르(Orr)</strong>다. 학생은 아르바이트와 봉사, 장학금으로 오르를 마련하고, 헌터는 의뢰 수행과 마석 정산을 통해 대가를 받는다. 오르는 치료와 각종 시설 이용, 중앙연합의 등급 재심을 비롯한 생활 전반에 사용된다.</p>
-<div class="infra-grid">
-<div><b>가디언 카드</b><span>결제 수단이자 개인의 신분을 증명하는 카드.</span></div>
-<div><b>에테르폰</b><span>통신과 소셜미디어에 사용되는 개인 통신기기.</span></div>
-<div><b>게이트 스캐너</b><span>게이트 내부의 환경과 괴수, 위협을 탐지한다. 내부에서 상시 작동하며 가상균열에서도 사용할 수 있다.</span></div>
 </div>
 </section>
 </div>
@@ -10566,7 +11880,7 @@ document.addEventListener("DOMContentLoaded", function () {
 <div class="character-detail-art"><img alt="닉스 상세 일러스트" src="img/at/68.png"/></div>
 <div class="character-detail-body">
 <div class="character-detail-head">
-<div><div class="character-detail-name">닉스</div><div class="character-detail-role">북부 재앙 - 별의 마녀</div></div>
+<div><div class="character-detail-name">닉스</div><div class="character-detail-role">남부 재앙 - 별의 마녀</div></div>
 <div class="character-detail-code">N68</div>
 </div>
 <div class="character-detail-profile">INFJ · 1w2(125) · so/sx</div>
