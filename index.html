@@ -7154,7 +7154,943 @@ body::after {
 .character-hover-detail.cheon-towa .character-detail-ability strong{color:#c9c4b7!important}
 .character-hover-detail.cheon-ayanami .character-detail-role,
 .character-hover-detail.cheon-ayanami .character-detail-ability strong{color:#7fb7c9!important}
-</style></head>
+</style><style>
+/* =========================================================
+   PANTHEON ACADEMY CHARACTER DETAIL
+   ========================================================= */
+.character-hover-detail.academy-character-detail{
+  border-color:rgba(122,139,184,.36)!important;
+  background:
+    radial-gradient(circle at 84% 12%,rgba(95,111,170,.12),transparent 31%),
+    linear-gradient(145deg,rgba(152,168,215,.024),transparent 46%),
+    rgba(9,11,16,.98)!important;
+  box-shadow:
+    0 22px 58px rgba(0,0,0,.48),
+    0 0 30px rgba(92,108,166,.09),
+    inset 0 1px 0 rgba(221,229,255,.05)!important;
+}
+.character-hover-detail.academy-character-detail .character-detail-role{
+  color:#9ba9d2!important;
+}
+.character-hover-detail.academy-character-detail .character-detail-profile{
+  border-color:rgba(125,142,190,.20)!important;
+  background:rgba(102,119,173,.05)!important;
+}
+.character-hover-detail.academy-character-detail .character-detail-ability{
+  border-left-color:rgba(131,150,204,.60)!important;
+  background:linear-gradient(90deg,rgba(103,120,179,.07),transparent 78%)!important;
+}
+.character-hover-detail.academy-character-detail .character-detail-ability strong{
+  color:#acb9df!important;
+}
+.character-hover-detail.academy-character-detail .character-detail-code{
+  color:#687697!important;
+}
+.character-hover-detail.academy-character-detail .character-detail-art{
+  border-bottom-color:rgba(130,148,199,.16)!important;
+}
+</style>
+<style>
+/* =========================================================
+   천명천관 상세창 색상 완전 통일
+   류카 / 히바나 / 토와 / 아야나미
+   ========================================================= */
+
+.character-hover-detail.cheon-character-detail{
+  border-color:rgba(198,126,102,.38) !important;
+  background:
+    radial-gradient(circle at 82% 12%,rgba(158,79,61,.11),transparent 31%),
+    linear-gradient(145deg,rgba(218,132,104,.022),transparent 46%),
+    rgba(12,9,10,.98) !important;
+  box-shadow:
+    0 22px 58px rgba(0,0,0,.48),
+    0 0 30px rgba(157,81,64,.08),
+    inset 0 1px 0 rgba(255,225,214,.045) !important;
+}
+
+/* 직책 */
+.character-hover-detail.cheon-character-detail .character-detail-role{
+  color:#d88b76 !important;
+}
+
+/* 프로필 */
+.character-hover-detail.cheon-character-detail .character-detail-profile{
+  color:#b6a19b !important;
+  border-color:rgba(201,127,103,.20) !important;
+  background:rgba(178,91,70,.05) !important;
+}
+
+/* 능력 박스 */
+.character-hover-detail.cheon-character-detail .character-detail-ability{
+  border-left-color:rgba(211,132,105,.60) !important;
+  background:
+    linear-gradient(
+      90deg,
+      rgba(184,91,69,.07),
+      transparent 78%
+    ) !important;
+}
+
+/* 능력명 */
+.character-hover-detail.cheon-character-detail .character-detail-ability strong{
+  color:#df927c !important;
+}
+
+/* 능력 설명 */
+.character-hover-detail.cheon-character-detail .character-detail-ability p{
+  color:#b7aaa7 !important;
+}
+
+/* 대사 */
+.character-hover-detail.cheon-character-detail .character-detail-quote{
+  color:#c0b1ad !important;
+  border-top-color:rgba(211,132,105,.12) !important;
+}
+
+.character-hover-detail.cheon-character-detail .character-detail-quote::before{
+  color:#8d5d50 !important;
+}
+
+/* 코드 */
+.character-hover-detail.cheon-character-detail .character-detail-code{
+  color:#93665a !important;
+}
+
+/* 이미지 하단 테두리 */
+.character-hover-detail.cheon-character-detail .character-detail-art{
+  border-bottom-color:rgba(211,132,105,.18) !important;
+}
+
+/* 이전 개별 사신수 색상 완전 덮어쓰기 */
+.character-hover-detail.cheon-ryuka,
+.character-hover-detail.cheon-hibana,
+.character-hover-detail.cheon-towa,
+.character-hover-detail.cheon-ayanami{
+  border-color:rgba(198,126,102,.38) !important;
+}
+
+.character-hover-detail.cheon-ryuka .character-detail-role,
+.character-hover-detail.cheon-hibana .character-detail-role,
+.character-hover-detail.cheon-towa .character-detail-role,
+.character-hover-detail.cheon-ayanami .character-detail-role,
+.character-hover-detail.cheon-ryuka .character-detail-ability strong,
+.character-hover-detail.cheon-hibana .character-detail-ability strong,
+.character-hover-detail.cheon-towa .character-detail-ability strong,
+.character-hover-detail.cheon-ayanami .character-detail-ability strong{
+  color:#df927c !important;
+}
+</style>
+<style>
+/* 판테온 후보생 상세창 */
+.character-hover-detail.student-character-detail{
+ border-color:rgba(154,126,205,.36)!important;
+ background:
+ radial-gradient(circle at 84% 12%,rgba(126,91,187,.12),transparent 31%),
+ linear-gradient(145deg,rgba(177,149,224,.024),transparent 46%),
+ rgba(10,9,16,.98)!important;
+ box-shadow:0 22px 58px rgba(0,0,0,.48),0 0 30px rgba(122,91,181,.09),inset 0 1px 0 rgba(232,220,255,.05)!important;
+}
+.character-hover-detail.student-character-detail .character-detail-role{color:#b49bdc!important}
+.character-hover-detail.student-character-detail .character-detail-profile{
+ border-color:rgba(159,130,208,.20)!important;background:rgba(128,96,181,.05)!important
+}
+.character-hover-detail.student-character-detail .character-detail-ability{
+ border-left-color:rgba(164,135,216,.60)!important;
+ background:linear-gradient(90deg,rgba(127,94,185,.07),transparent 78%)!important
+}
+.character-hover-detail.student-character-detail .character-detail-ability strong{color:#c1a8e7!important}
+.character-hover-detail.student-character-detail .character-detail-code{color:#796796!important}
+</style><style>
+/* 판테온 정규생 상세창 */
+.character-hover-detail.regular-student-character-detail{
+ border-color:rgba(105,139,190,.36)!important;
+ background:
+ radial-gradient(circle at 84% 12%,rgba(83,117,176,.12),transparent 31%),
+ linear-gradient(145deg,rgba(130,157,211,.024),transparent 46%),
+ rgba(8,11,16,.98)!important;
+ box-shadow:0 22px 58px rgba(0,0,0,.48),0 0 30px rgba(79,112,170,.09),inset 0 1px 0 rgba(218,230,255,.05)!important;
+}
+.character-hover-detail.regular-student-character-detail .character-detail-role{color:#90add8!important}
+.character-hover-detail.regular-student-character-detail .character-detail-profile{
+ border-color:rgba(107,141,194,.20)!important;background:rgba(81,113,170,.05)!important
+}
+.character-hover-detail.regular-student-character-detail .character-detail-ability{
+ border-left-color:rgba(111,147,204,.60)!important;
+ background:linear-gradient(90deg,rgba(81,113,174,.07),transparent 78%)!important
+}
+.character-hover-detail.regular-student-character-detail .character-detail-ability strong{color:#9bb7df!important}
+.character-hover-detail.regular-student-character-detail .character-detail-code{color:#62799d!important}
+</style><style>
+/* 판테온 정예생 상세창 */
+.character-hover-detail.elite-student-character-detail{
+ border-color:rgba(206,164,87,.42)!important;
+ background:
+ radial-gradient(circle at 84% 12%,rgba(210,167,84,.14),transparent 31%),
+ linear-gradient(145deg,rgba(224,188,117,.026),transparent 46%),
+ rgba(13,11,8,.98)!important;
+ box-shadow:0 22px 58px rgba(0,0,0,.48),0 0 32px rgba(201,158,76,.11),inset 0 1px 0 rgba(255,239,199,.06)!important;
+}
+.character-hover-detail.elite-student-character-detail .character-detail-role{color:#d6b36c!important}
+.character-hover-detail.elite-student-character-detail .character-detail-profile{
+ border-color:rgba(208,168,92,.22)!important;background:rgba(196,151,69,.055)!important;color:#bdb09a!important
+}
+.character-hover-detail.elite-student-character-detail .character-detail-ability{
+ border-left-color:rgba(218,176,94,.66)!important;
+ background:linear-gradient(90deg,rgba(194,148,65,.08),transparent 78%)!important
+}
+.character-hover-detail.elite-student-character-detail .character-detail-ability strong{color:#e0bd76!important}
+.character-hover-detail.elite-student-character-detail .character-detail-code{color:#927847!important}
+.character-hover-detail.elite-student-character-detail .character-detail-quote::before{color:#8d7344!important}
+</style><style>
+/* =========================================================
+   PHANTOM STRIKE CHARACTER DETAIL
+   ========================================================= */
+
+.character-hover-detail.phantom-character-detail{
+  border-color:rgba(186,67,78,.42)!important;
+  background:
+    radial-gradient(circle at 84% 12%,rgba(134,38,51,.15),transparent 31%),
+    linear-gradient(145deg,rgba(197,64,78,.03),transparent 46%),
+    rgba(14,8,10,.985)!important;
+  box-shadow:
+    0 22px 58px rgba(0,0,0,.50),
+    0 0 32px rgba(156,42,56,.12),
+    inset 0 1px 0 rgba(255,216,220,.05)!important;
+}
+
+.character-hover-detail.phantom-character-detail .character-detail-role{
+  color:#d96f79!important;
+}
+
+.character-hover-detail.phantom-character-detail .character-detail-profile{
+  border-color:rgba(191,73,84,.22)!important;
+  background:rgba(154,47,60,.055)!important;
+  color:#b9a2a5!important;
+}
+
+.character-hover-detail.phantom-character-detail .character-detail-ability{
+  border-left-color:rgba(210,77,89,.66)!important;
+  background:linear-gradient(90deg,rgba(155,43,56,.085),transparent 78%)!important;
+}
+
+.character-hover-detail.phantom-character-detail .character-detail-ability strong{
+  color:#e27c85!important;
+}
+
+.character-hover-detail.phantom-character-detail .character-detail-code{
+  color:#94545b!important;
+}
+
+.character-hover-detail.phantom-character-detail .character-detail-quote::before{
+  color:#8b444d!important;
+}
+
+.character-hover-detail.phantom-character-detail .character-detail-art{
+  border-bottom-color:rgba(203,72,83,.18)!important;
+}
+
+/* 코르비나의 청염 능력은 상세창 전체 색을 바꾸지 않고
+   능력명에만 아주 약한 청색 광원을 얹음 */
+.character-hover-detail[data-detail-popup="corvina"]
+.character-detail-ability strong{
+  text-shadow:
+    0 0 8px rgba(91,151,255,.18),
+    0 0 14px rgba(82,115,255,.08)!important;
+}
+</style><style>
+/* 노블레스 상세창 */
+.character-hover-detail.noblesse-character-detail{
+ border-color:rgba(115,177,199,.40)!important;
+ background:
+ radial-gradient(circle at 84% 12%,rgba(74,147,175,.13),transparent 31%),
+ linear-gradient(145deg,rgba(132,194,213,.026),transparent 46%),
+ rgba(8,12,15,.985)!important;
+ box-shadow:0 22px 58px rgba(0,0,0,.49),0 0 32px rgba(70,145,173,.10),inset 0 1px 0 rgba(218,246,255,.055)!important;
+}
+.character-hover-detail.noblesse-character-detail .character-detail-role{color:#8fc9d8!important}
+.character-hover-detail.noblesse-character-detail .character-detail-profile{
+ border-color:rgba(111,177,199,.22)!important;background:rgba(73,149,176,.055)!important;color:#a9bbc0!important
+}
+.character-hover-detail.noblesse-character-detail .character-detail-ability{
+ border-left-color:rgba(119,190,212,.64)!important;
+ background:linear-gradient(90deg,rgba(69,149,177,.08),transparent 78%)!important
+}
+.character-hover-detail.noblesse-character-detail .character-detail-ability strong{color:#9bd4e2!important}
+.character-hover-detail.noblesse-character-detail .character-detail-code{color:#668d99!important}
+.character-hover-detail.noblesse-character-detail .character-detail-quote::before{color:#557f8a!important}
+.character-hover-detail.noblesse-character-detail .character-detail-art{border-bottom-color:rgba(119,190,212,.18)!important}
+</style>
+<style>
+/* =========================================================
+   NOBLESSE — GOLD THEME OVERRIDE
+   카시아 / 포르모노
+   ========================================================= */
+.character-hover-detail.noblesse-character-detail{
+  border-color:rgba(213,174,91,.44)!important;
+  background:
+    radial-gradient(circle at 84% 12%,rgba(218,177,88,.15),transparent 31%),
+    linear-gradient(145deg,rgba(236,202,126,.032),transparent 46%),
+    rgba(14,11,7,.985)!important;
+  box-shadow:
+    0 22px 58px rgba(0,0,0,.50),
+    0 0 34px rgba(205,160,66,.12),
+    inset 0 1px 0 rgba(255,240,199,.065)!important;
+}
+
+.character-hover-detail.noblesse-character-detail .character-detail-role{
+  color:#d9b66d!important;
+}
+
+.character-hover-detail.noblesse-character-detail .character-detail-profile{
+  border-color:rgba(215,175,91,.24)!important;
+  background:rgba(197,151,61,.06)!important;
+  color:#c1b39a!important;
+}
+
+.character-hover-detail.noblesse-character-detail .character-detail-ability{
+  border-left-color:rgba(224,184,98,.68)!important;
+  background:
+    linear-gradient(90deg,rgba(199,151,58,.09),transparent 78%)!important;
+}
+
+.character-hover-detail.noblesse-character-detail .character-detail-ability strong{
+  color:#e3bf74!important;
+}
+
+.character-hover-detail.noblesse-character-detail .character-detail-ability p{
+  color:#c0b5a3!important;
+}
+
+.character-hover-detail.noblesse-character-detail .character-detail-code{
+  color:#987c48!important;
+}
+
+.character-hover-detail.noblesse-character-detail .character-detail-quote{
+  color:#c8baa2!important;
+  border-top-color:rgba(221,181,94,.13)!important;
+}
+
+.character-hover-detail.noblesse-character-detail .character-detail-quote::before{
+  color:#927440!important;
+}
+
+.character-hover-detail.noblesse-character-detail .character-detail-art{
+  border-bottom-color:rgba(224,184,98,.20)!important;
+}
+</style>
+<style>
+/* =========================================================
+   WOLHA CHARACTER DETAIL — MOONLIGHT THEME
+   ========================================================= */
+
+.character-hover-detail.wolha-character-detail{
+  border-color:rgba(133,145,210,.42)!important;
+  background:
+    radial-gradient(circle at 84% 12%,rgba(108,113,190,.15),transparent 31%),
+    linear-gradient(145deg,rgba(151,158,224,.03),transparent 46%),
+    rgba(8,9,15,.985)!important;
+  box-shadow:
+    0 22px 58px rgba(0,0,0,.50),
+    0 0 34px rgba(102,111,189,.12),
+    inset 0 1px 0 rgba(227,231,255,.06)!important;
+}
+
+.character-hover-detail.wolha-character-detail .character-detail-role{
+  color:#a4afe0!important;
+}
+
+.character-hover-detail.wolha-character-detail .character-detail-profile{
+  border-color:rgba(134,145,210,.22)!important;
+  background:rgba(105,114,188,.06)!important;
+  color:#aaaec2!important;
+}
+
+.character-hover-detail.wolha-character-detail .character-detail-ability{
+  border-left-color:rgba(145,157,224,.68)!important;
+  background:
+    linear-gradient(90deg,rgba(105,115,193,.09),transparent 78%)!important;
+}
+
+.character-hover-detail.wolha-character-detail .character-detail-ability strong{
+  color:#b1bce9!important;
+}
+
+.character-hover-detail.wolha-character-detail .character-detail-ability p{
+  color:#b4b6c4!important;
+}
+
+.character-hover-detail.wolha-character-detail .character-detail-code{
+  color:#727ca7!important;
+}
+
+.character-hover-detail.wolha-character-detail .character-detail-quote{
+  color:#bdbdca!important;
+  border-top-color:rgba(145,157,224,.13)!important;
+}
+
+.character-hover-detail.wolha-character-detail .character-detail-quote::before{
+  color:#6f78a5!important;
+}
+
+.character-hover-detail.wolha-character-detail .character-detail-art{
+  border-bottom-color:rgba(145,157,224,.20)!important;
+}
+
+/* 아주 약한 월광 포인트 */
+.character-hover-detail.wolha-character-detail .character-detail-art::before{
+  content:"";
+  position:absolute;
+  z-index:2;
+  left:0;
+  right:0;
+  bottom:0;
+  height:1px;
+  background:
+    linear-gradient(
+      90deg,
+      transparent,
+      rgba(179,187,239,.58),
+      transparent
+    );
+  pointer-events:none;
+}
+</style><style>
+/* 4재앙 상세창 */
+.character-hover-detail.calamity-character-detail{
+ border-color:rgba(174,73,93,.48)!important;
+ background:
+ radial-gradient(circle at 84% 12%,rgba(130,35,61,.17),transparent 31%),
+ linear-gradient(145deg,rgba(193,63,88,.035),transparent 46%),
+ rgba(13,6,10,.99)!important;
+ box-shadow:0 22px 60px rgba(0,0,0,.55),0 0 38px rgba(147,35,62,.14),inset 0 1px 0 rgba(255,210,220,.055)!important;
+}
+.character-hover-detail.calamity-character-detail .character-detail-role{color:#d16f83!important}
+.character-hover-detail.calamity-character-detail .character-detail-profile{
+ border-color:rgba(185,76,98,.24)!important;background:rgba(143,38,62,.065)!important;color:#b8a1a7!important
+}
+.character-hover-detail.calamity-character-detail .character-detail-ability{
+ border-left-color:rgba(207,78,103,.72)!important;
+ background:linear-gradient(90deg,rgba(151,38,64,.10),transparent 78%)!important
+}
+.character-hover-detail.calamity-character-detail .character-detail-ability strong{color:#df7b8e!important}
+.character-hover-detail.calamity-character-detail .character-detail-code{
+ color:#a65a69!important;font-size:10px!important;letter-spacing:.14em!important
+}
+.character-hover-detail.calamity-character-detail .character-detail-quote::before{color:#8f4354!important}
+.character-hover-detail.calamity-character-detail .character-detail-art{border-bottom-color:rgba(207,78,103,.22)!important}
+</style><style>
+/* =========================================================
+   NYX APOSTLES — DARK VIOLET
+   ========================================================= */
+
+.character-hover-detail.apostle-character-detail{
+  border-color:rgba(128,94,176,.46)!important;
+  background:
+    radial-gradient(circle at 84% 12%,rgba(92,56,145,.17),transparent 31%),
+    linear-gradient(145deg,rgba(143,103,195,.035),transparent 46%),
+    rgba(9,6,14,.99)!important;
+  box-shadow:
+    0 22px 60px rgba(0,0,0,.55),
+    0 0 38px rgba(93,56,148,.14),
+    inset 0 1px 0 rgba(229,213,255,.055)!important;
+}
+
+.character-hover-detail.apostle-character-detail .character-detail-role{
+  color:#ad8ad5!important;
+}
+
+.character-hover-detail.apostle-character-detail .character-detail-profile{
+  border-color:rgba(137,101,184,.24)!important;
+  background:rgba(96,60,145,.065)!important;
+  color:#aea4b9!important;
+}
+
+.character-hover-detail.apostle-character-detail .character-detail-ability{
+  border-left-color:rgba(151,111,201,.72)!important;
+  background:
+    linear-gradient(90deg,rgba(101,61,151,.10),transparent 78%)!important;
+}
+
+.character-hover-detail.apostle-character-detail .character-detail-ability strong{
+  color:#bd98e3!important;
+}
+
+.character-hover-detail.apostle-character-detail .character-detail-ability p{
+  color:#b7aebf!important;
+}
+
+.character-hover-detail.apostle-character-detail .character-detail-code{
+  color:#795e99!important;
+  font-size:10px!important;
+  letter-spacing:.14em!important;
+}
+
+.character-hover-detail.apostle-character-detail .character-detail-quote{
+  color:#c0b5c8!important;
+  border-top-color:rgba(151,111,201,.14)!important;
+}
+
+.character-hover-detail.apostle-character-detail .character-detail-quote::before{
+  color:#70528e!important;
+}
+
+.character-hover-detail.apostle-character-detail .character-detail-art{
+  border-bottom-color:rgba(151,111,201,.22)!important;
+}
+</style><style>
+/* =========================================================
+   FREELANCER CHARACTER DETAIL
+   ========================================================= */
+
+.character-hover-detail.freelancer-character-detail{
+  border-color:rgba(145,145,164,.38)!important;
+
+  background:
+    radial-gradient(
+      circle at 84% 12%,
+      rgba(111,104,139,.12),
+      transparent 31%
+    ),
+    linear-gradient(
+      145deg,
+      rgba(170,165,191,.025),
+      transparent 46%
+    ),
+    rgba(10,10,13,.985)!important;
+
+  box-shadow:
+    0 22px 58px rgba(0,0,0,.50),
+    0 0 30px rgba(101,95,128,.09),
+    inset 0 1px 0 rgba(237,233,255,.05)!important;
+}
+
+.character-hover-detail.freelancer-character-detail
+.character-detail-role{
+  color:#aaa5bd!important;
+}
+
+.character-hover-detail.freelancer-character-detail
+.character-detail-profile{
+  border-color:rgba(148,142,169,.20)!important;
+  background:rgba(110,103,135,.05)!important;
+  color:#b0adb8!important;
+}
+
+.character-hover-detail.freelancer-character-detail
+.character-detail-ability{
+  border-left-color:rgba(157,149,182,.60)!important;
+
+  background:
+    linear-gradient(
+      90deg,
+      rgba(112,103,141,.07),
+      transparent 78%
+    )!important;
+}
+
+.character-hover-detail.freelancer-character-detail
+.character-detail-ability strong{
+  color:#bbb5cf!important;
+}
+
+.character-hover-detail.freelancer-character-detail
+.character-detail-code{
+  color:#777186!important;
+  font-size:9px!important;
+  letter-spacing:.12em!important;
+}
+
+.character-hover-detail.freelancer-character-detail
+.character-detail-quote::before{
+  color:#716b80!important;
+}
+
+.character-hover-detail.freelancer-character-detail
+.character-detail-art{
+  border-bottom-color:rgba(157,149,182,.17)!important;
+}
+</style><style>
+/* =========================================================
+   CALAMITY PORTRAIT HOVER FIX
+   ========================================================= */
+.calamity-portrait.character-detail-trigger{
+  cursor:pointer;
+}
+
+/* =========================================================
+   NYX DETAIL — VIOLET OVERRIDE
+   닉스만 재앙 공통 심홍색이 아니라 보라색
+   ========================================================= */
+.character-hover-detail.calamity-nyx{
+  border-color:rgba(145,103,207,.52)!important;
+  background:
+    radial-gradient(circle at 84% 12%,rgba(105,65,170,.19),transparent 31%),
+    linear-gradient(145deg,rgba(159,116,218,.04),transparent 46%),
+    rgba(9,6,15,.99)!important;
+  box-shadow:
+    0 22px 60px rgba(0,0,0,.56),
+    0 0 40px rgba(111,69,177,.17),
+    inset 0 1px 0 rgba(234,218,255,.065)!important;
+}
+
+.character-hover-detail.calamity-nyx .character-detail-role{
+  color:#b58adb!important;
+}
+
+.character-hover-detail.calamity-nyx .character-detail-profile{
+  border-color:rgba(151,109,207,.27)!important;
+  background:rgba(104,65,158,.075)!important;
+  color:#b9adc4!important;
+}
+
+.character-hover-detail.calamity-nyx .character-detail-ability{
+  border-left-color:rgba(166,119,224,.76)!important;
+  background:
+    linear-gradient(90deg,rgba(108,65,165,.12),transparent 78%)!important;
+}
+
+.character-hover-detail.calamity-nyx .character-detail-ability strong{
+  color:#c49ae8!important;
+}
+
+.character-hover-detail.calamity-nyx .character-detail-ability p{
+  color:#bdb2c6!important;
+}
+
+.character-hover-detail.calamity-nyx .character-detail-code{
+  color:#8866aa!important;
+}
+
+.character-hover-detail.calamity-nyx .character-detail-quote{
+  color:#c6b9cf!important;
+  border-top-color:rgba(166,119,224,.16)!important;
+}
+
+.character-hover-detail.calamity-nyx .character-detail-quote::before{
+  color:#7c589d!important;
+}
+
+.character-hover-detail.calamity-nyx .character-detail-art{
+  border-bottom-color:rgba(166,119,224,.25)!important;
+}
+</style>
+<style>
+/* =========================================================
+   AVRIL — BLACK / ABYSS BORDER OVERRIDE
+   ========================================================= */
+.character-hover-detail.calamity-avril{
+  border-color:rgba(52,52,58,.92)!important;
+  background:
+    radial-gradient(circle at 84% 12%,rgba(35,35,42,.22),transparent 31%),
+    linear-gradient(145deg,rgba(74,74,82,.045),transparent 46%),
+    rgba(5,5,7,.995)!important;
+  box-shadow:
+    0 22px 60px rgba(0,0,0,.72),
+    0 0 38px rgba(0,0,0,.48),
+    inset 0 1px 0 rgba(155,155,165,.055)!important;
+}
+
+.character-hover-detail.calamity-avril .character-detail-role{
+  color:#92929b!important;
+}
+
+.character-hover-detail.calamity-avril .character-detail-profile{
+  border-color:rgba(76,76,84,.58)!important;
+  background:rgba(25,25,30,.72)!important;
+  color:#aaaab1!important;
+}
+
+.character-hover-detail.calamity-avril .character-detail-ability{
+  border-left-color:rgba(78,78,88,.88)!important;
+  background:linear-gradient(90deg,rgba(35,35,42,.52),transparent 78%)!important;
+}
+
+.character-hover-detail.calamity-avril .character-detail-ability strong{
+  color:#b0b0b8!important;
+}
+
+.character-hover-detail.calamity-avril .character-detail-code{
+  color:#696971!important;
+}
+
+.character-hover-detail.calamity-avril .character-detail-quote::before{
+  color:#5e5e66!important;
+}
+
+.character-hover-detail.calamity-avril .character-detail-art{
+  border-bottom-color:rgba(72,72,82,.72)!important;
+}
+</style>
+
+
+<style>
+/* =========================================================
+   4재앙 색상 최종 통일
+   에이브릴 = 검정 / 노타마야 = 분홍 / 칼립사 = 청색 / 닉스 = 보라
+   상세 hover 창 + 소개 카드 모두 적용
+   ========================================================= */
+
+/* ---------- 에이브릴 : BLACK ---------- */
+.character-hover-detail.calamity-avril{
+  border-color:rgba(62,62,70,.95)!important;
+}
+.character-hover-detail.calamity-avril .character-detail-role,
+.character-hover-detail.calamity-avril .character-detail-ability strong{
+  color:#aaaab4!important;
+}
+
+/* 소개 카드 */
+.calamity-card:has([data-character-detail="avril"]),
+.calamity-card:has(img[alt="에이브릴"]){
+  border-color:rgba(62,62,70,.92)!important;
+  box-shadow:0 0 24px rgba(0,0,0,.34), inset 0 0 24px rgba(30,30,36,.14)!important;
+}
+.calamity-card:has([data-character-detail="avril"]) .calamity-name,
+.calamity-card:has(img[alt="에이브릴"]) .calamity-name{
+  color:#b5b5bd!important;
+}
+.calamity-card:has([data-character-detail="avril"]) .calamity-portrait,
+.calamity-card:has(img[alt="에이브릴"]) .calamity-portrait{
+  border-color:rgba(68,68,76,.88)!important;
+}
+
+
+/* ---------- 노타마야 : PINK ---------- */
+.character-hover-detail.calamity-notamaya{
+  border-color:rgba(225,112,166,.60)!important;
+  background:
+    radial-gradient(circle at 84% 12%,rgba(205,80,145,.18),transparent 31%),
+    linear-gradient(145deg,rgba(229,123,174,.04),transparent 46%),
+    rgba(15,7,12,.99)!important;
+  box-shadow:
+    0 22px 60px rgba(0,0,0,.55),
+    0 0 40px rgba(211,83,146,.16),
+    inset 0 1px 0 rgba(255,221,239,.06)!important;
+}
+.character-hover-detail.calamity-notamaya .character-detail-role,
+.character-hover-detail.calamity-notamaya .character-detail-ability strong{
+  color:#e990ba!important;
+}
+.character-hover-detail.calamity-notamaya .character-detail-profile{
+  border-color:rgba(224,111,166,.28)!important;
+  background:rgba(190,67,129,.075)!important;
+}
+.character-hover-detail.calamity-notamaya .character-detail-ability{
+  border-left-color:rgba(230,116,171,.76)!important;
+  background:linear-gradient(90deg,rgba(190,66,128,.11),transparent 78%)!important;
+}
+.character-hover-detail.calamity-notamaya .character-detail-art{
+  border-bottom-color:rgba(230,116,171,.25)!important;
+}
+
+/* 소개 카드 */
+.calamity-card:has([data-character-detail="notamaya"]),
+.calamity-card:has(img[alt="노타마야"]){
+  border-color:rgba(225,112,166,.58)!important;
+  box-shadow:0 0 26px rgba(209,80,144,.13), inset 0 0 24px rgba(197,72,135,.08)!important;
+}
+.calamity-card:has([data-character-detail="notamaya"]) .calamity-name,
+.calamity-card:has(img[alt="노타마야"]) .calamity-name{
+  color:#ed9bc1!important;
+}
+.calamity-card:has([data-character-detail="notamaya"]) .calamity-portrait,
+.calamity-card:has(img[alt="노타마야"]) .calamity-portrait{
+  border-color:rgba(225,112,166,.54)!important;
+}
+
+
+/* ---------- 칼립사 : BLUE ---------- */
+.character-hover-detail.calamity-calypso{
+  border-color:rgba(75,145,220,.62)!important;
+  background:
+    radial-gradient(circle at 84% 12%,rgba(48,112,190,.19),transparent 31%),
+    linear-gradient(145deg,rgba(86,157,225,.04),transparent 46%),
+    rgba(5,10,17,.99)!important;
+  box-shadow:
+    0 22px 60px rgba(0,0,0,.55),
+    0 0 40px rgba(48,116,195,.17),
+    inset 0 1px 0 rgba(214,236,255,.06)!important;
+}
+.character-hover-detail.calamity-calypso .character-detail-role,
+.character-hover-detail.calamity-calypso .character-detail-ability strong{
+  color:#80b6eb!important;
+}
+.character-hover-detail.calamity-calypso .character-detail-profile{
+  border-color:rgba(76,145,217,.28)!important;
+  background:rgba(43,104,173,.075)!important;
+}
+.character-hover-detail.calamity-calypso .character-detail-ability{
+  border-left-color:rgba(82,153,224,.76)!important;
+  background:linear-gradient(90deg,rgba(42,104,176,.11),transparent 78%)!important;
+}
+.character-hover-detail.calamity-calypso .character-detail-art{
+  border-bottom-color:rgba(82,153,224,.25)!important;
+}
+
+/* 소개 카드 */
+.calamity-card:has([data-character-detail="calypso"]),
+.calamity-card:has(img[alt="칼립사"]){
+  border-color:rgba(75,145,220,.60)!important;
+  box-shadow:0 0 26px rgba(48,115,194,.14), inset 0 0 24px rgba(44,105,179,.08)!important;
+}
+.calamity-card:has([data-character-detail="calypso"]) .calamity-name,
+.calamity-card:has(img[alt="칼립사"]) .calamity-name{
+  color:#8fc2ef!important;
+}
+.calamity-card:has([data-character-detail="calypso"]) .calamity-portrait,
+.calamity-card:has(img[alt="칼립사"]) .calamity-portrait{
+  border-color:rgba(75,145,220,.56)!important;
+}
+
+
+/* ---------- 닉스 : VIOLET ---------- */
+/* hover 상세창은 기존 보라색 유지 */
+
+/* 소개 카드 */
+.calamity-card:has([data-character-detail="nyx"]),
+.calamity-card:has(img[alt="닉스"]){
+  border-color:rgba(145,103,207,.62)!important;
+  box-shadow:0 0 27px rgba(111,69,177,.15), inset 0 0 24px rgba(103,63,166,.09)!important;
+}
+.calamity-card:has([data-character-detail="nyx"]) .calamity-name,
+.calamity-card:has(img[alt="닉스"]) .calamity-name{
+  color:#c09ae5!important;
+}
+.calamity-card:has([data-character-detail="nyx"]) .calamity-portrait,
+.calamity-card:has(img[alt="닉스"]) .calamity-portrait{
+  border-color:rgba(145,103,207,.58)!important;
+}
+</style>
+
+
+<style>
+/* =========================================================
+   4재앙 소개 영역 색상 — 실제 .calamity-row 구조에 직접 적용
+   ========================================================= */
+
+/* 공통: 각 행 내부 테두리/텍스트가 해당 재앙 색을 따르도록 */
+.calamity-row{
+  transition:border-color .25s ease, box-shadow .25s ease, background .25s ease;
+}
+.calamity-row .calamity-portrait,
+.calamity-row .calamity-scene{
+  transition:border-color .25s ease, box-shadow .25s ease;
+}
+
+/* ---------- 에이브릴 : BLACK ---------- */
+.calamity-row.calamity-avril{
+  border-color:rgba(65,65,74,.90)!important;
+  background:
+    linear-gradient(100deg,rgba(18,18,22,.92),rgba(8,8,11,.72))!important;
+  box-shadow:inset 0 0 30px rgba(0,0,0,.30),0 0 18px rgba(0,0,0,.18)!important;
+}
+.calamity-row.calamity-avril .calamity-portrait,
+.calamity-row.calamity-avril .calamity-scene{
+  border-color:rgba(67,67,78,.88)!important;
+}
+.calamity-row.calamity-avril .calamity-name,
+.calamity-row.calamity-avril .calamity-sub,
+.calamity-row.calamity-avril .calamity-gate-title{
+  color:#aaaab4!important;
+}
+.calamity-row.calamity-avril .calamity-gate-desc{
+  color:#9c9ca5!important;
+}
+.calamity-row.calamity-avril .calamity-person-info,
+.calamity-row.calamity-avril .calamity-gate-info{
+  border-color:rgba(66,66,76,.52)!important;
+}
+
+/* ---------- 노타마야 : PINK ---------- */
+.calamity-row.calamity-notamaya{
+  border-color:rgba(225,105,163,.48)!important;
+  background:
+    linear-gradient(100deg,rgba(34,12,25,.90),rgba(15,8,13,.74))!important;
+  box-shadow:inset 0 0 30px rgba(207,72,137,.055),0 0 20px rgba(211,79,143,.055)!important;
+}
+.calamity-row.calamity-notamaya .calamity-portrait,
+.calamity-row.calamity-notamaya .calamity-scene{
+  border-color:rgba(224,105,163,.48)!important;
+  box-shadow:0 0 18px rgba(211,79,143,.055)!important;
+}
+.calamity-row.calamity-notamaya .calamity-name,
+.calamity-row.calamity-notamaya .calamity-sub,
+.calamity-row.calamity-notamaya .calamity-gate-title{
+  color:#ed8fba!important;
+}
+.calamity-row.calamity-notamaya .calamity-gate-desc{
+  color:#c6a4b5!important;
+}
+.calamity-row.calamity-notamaya .calamity-person-info,
+.calamity-row.calamity-notamaya .calamity-gate-info{
+  border-color:rgba(224,105,163,.30)!important;
+}
+
+/* ---------- 칼립사 : BLUE ---------- */
+/* 실제 HTML 클래스명이 calamity-kalipsa */
+.calamity-row.calamity-kalipsa{
+  border-color:rgba(66,139,218,.52)!important;
+  background:
+    linear-gradient(100deg,rgba(8,22,38,.92),rgba(6,12,20,.76))!important;
+  box-shadow:inset 0 0 30px rgba(49,116,194,.065),0 0 20px rgba(49,116,194,.06)!important;
+}
+.calamity-row.calamity-kalipsa .calamity-portrait,
+.calamity-row.calamity-kalipsa .calamity-scene{
+  border-color:rgba(66,139,218,.52)!important;
+  box-shadow:0 0 18px rgba(49,116,194,.065)!important;
+}
+.calamity-row.calamity-kalipsa .calamity-name,
+.calamity-row.calamity-kalipsa .calamity-sub,
+.calamity-row.calamity-kalipsa .calamity-gate-title{
+  color:#78b3ec!important;
+}
+.calamity-row.calamity-kalipsa .calamity-gate-desc{
+  color:#9eb7cd!important;
+}
+.calamity-row.calamity-kalipsa .calamity-person-info,
+.calamity-row.calamity-kalipsa .calamity-gate-info{
+  border-color:rgba(66,139,218,.31)!important;
+}
+
+/* ---------- 닉스 : VIOLET ---------- */
+.calamity-row.calamity-nyx{
+  border-color:rgba(142,98,207,.54)!important;
+  background:
+    linear-gradient(100deg,rgba(25,13,40,.92),rgba(11,8,18,.76))!important;
+  box-shadow:inset 0 0 30px rgba(111,68,177,.07),0 0 20px rgba(111,68,177,.065)!important;
+}
+.calamity-row.calamity-nyx .calamity-portrait,
+.calamity-row.calamity-nyx .calamity-scene{
+  border-color:rgba(142,98,207,.54)!important;
+  box-shadow:0 0 18px rgba(111,68,177,.07)!important;
+}
+.calamity-row.calamity-nyx .calamity-name,
+.calamity-row.calamity-nyx .calamity-sub,
+.calamity-row.calamity-nyx .calamity-gate-title{
+  color:#b98ae2!important;
+}
+.calamity-row.calamity-nyx .calamity-gate-desc{
+  color:#b1a1c0!important;
+}
+.calamity-row.calamity-nyx .calamity-person-info,
+.calamity-row.calamity-nyx .calamity-gate-info{
+  border-color:rgba(142,98,207,.32)!important;
+}
+
+/* 닉스 사도 영역도 닉스 카드 안에서는 보라 계열 */
+.calamity-row.calamity-nyx .apostle-area{
+  border-color:rgba(142,98,207,.30)!important;
+  background:rgba(72,43,111,.045)!important;
+}
+.calamity-row.calamity-nyx .apostle-label{
+  color:#aa7bd4!important;
+}
+.calamity-row.calamity-nyx .apostle-card{
+  border-color:rgba(142,98,207,.28)!important;
+}
+</style>
+
+</head>
 <body><div aria-hidden="true" class="shooting-stars"><span class="shooting-star star-a"></span><span class="shooting-star star-b"></span><span class="shooting-star star-c"></span></div>
 <section class="hero">
 <div class="rings-wrap">
@@ -7817,53 +8753,53 @@ body::after {
 <div class="facility-block">
 <div class="facility-title">◇ 교직원</div>
 <div class="char-grid">
-<div class="char-card"><div class="char-portrait"><img alt="카메코" src="img/ch/23.png"/></div><div class="char-name">카메코</div><div class="char-role">총장·현무·S</div></div>
-<div class="char-card"><div class="char-portrait"><img alt="에이미" src="img/ch/24.png"/></div><div class="char-name">에이미</div><div class="char-role">과학기술학교수·인간·S+</div></div>
-<div class="char-card"><div class="char-portrait"><img alt="샤를로트" src="img/ch/25.png"/></div><div class="char-name">샤를로트</div><div class="char-role">검술학교수·인간·S</div></div>
-<div class="char-card"><div class="char-portrait"><img alt="루시엔" src="img/ch/26.png"/></div><div class="char-name">루시엔</div><div class="char-role">마도학교수·인간·S+</div></div>
-<div class="char-card"><div class="char-portrait"><img alt="엘레노아" src="img/ch/27.png"/></div><div class="char-name">엘레노아</div><div class="char-role">신성학교수·인간·S</div></div>
-<div class="char-card"><div class="char-portrait"><img alt="베아트릭스" src="img/ch/28.png"/></div><div class="char-name">베아트릭스</div><div class="char-role">전술학교수·인간·SS</div></div>
-<div class="char-card"><div class="char-portrait"><img alt="벨라리엔시아" src="img/ch/29.png"/></div><div class="char-name">벨라리엔시아</div><div class="char-role">정령학교수·엘프·S</div></div>
-<div class="char-card"><div class="char-portrait"><img alt="세이라" src="img/ch/30.png"/></div><div class="char-name">세이라</div><div class="char-role">생존학교수·매(鷹)수인·S+</div></div>
-<div class="char-card"><div class="char-portrait"><img alt="효우린" src="img/ch/31.png"/></div><div class="char-name">효우린</div><div class="char-role">무술학교수·인간·S</div></div>
-<div class="char-card"><div class="char-portrait"><img alt="히노카" src="img/ch/32.png"/></div><div class="char-name">히노카</div><div class="char-role">인술학교수·인간·S+</div></div>
-<div class="char-card"><div class="char-portrait"><img alt="린" src="img/ch/33.png"/></div><div class="char-name">린</div><div class="char-role">보건교사·인간·E+</div></div>
+<div class="char-card character-detail-trigger kameko-detail-trigger" data-character-detail="kameko"><div class="char-portrait"><img alt="카메코" src="img/ch/23.png"/></div><div class="char-name">카메코</div><div class="char-role">총장·현무·S</div></div>
+<div class="char-card character-detail-trigger amy-detail-trigger" data-character-detail="amy"><div class="char-portrait"><img alt="에이미" src="img/ch/24.png"/></div><div class="char-name">에이미</div><div class="char-role">과학기술학교수·인간·S+</div></div>
+<div class="char-card character-detail-trigger charlotte-detail-trigger" data-character-detail="charlotte"><div class="char-portrait"><img alt="샤를로트" src="img/ch/25.png"/></div><div class="char-name">샤를로트</div><div class="char-role">검술학교수·인간·S</div></div>
+<div class="char-card character-detail-trigger lucien-detail-trigger" data-character-detail="lucien"><div class="char-portrait"><img alt="루시엔" src="img/ch/26.png"/></div><div class="char-name">루시엔</div><div class="char-role">마도학교수·인간·S+</div></div>
+<div class="char-card character-detail-trigger eleonora-detail-trigger" data-character-detail="eleonora"><div class="char-portrait"><img alt="엘레노아" src="img/ch/27.png"/></div><div class="char-name">엘레노아</div><div class="char-role">신성학교수·인간·S</div></div>
+<div class="char-card character-detail-trigger beatrix-detail-trigger" data-character-detail="beatrix"><div class="char-portrait"><img alt="베아트릭스" src="img/ch/28.png"/></div><div class="char-name">베아트릭스</div><div class="char-role">전술학교수·인간·SS</div></div>
+<div class="char-card character-detail-trigger bellariensia-detail-trigger" data-character-detail="bellariensia"><div class="char-portrait"><img alt="벨라리엔시아" src="img/ch/29.png"/></div><div class="char-name">벨라리엔시아</div><div class="char-role">정령학교수·엘프·S</div></div>
+<div class="char-card character-detail-trigger seira-detail-trigger" data-character-detail="seira"><div class="char-portrait"><img alt="세이라" src="img/ch/30.png"/></div><div class="char-name">세이라</div><div class="char-role">생존학교수·매(鷹)수인·S+</div></div>
+<div class="char-card character-detail-trigger hyourin-detail-trigger" data-character-detail="hyourin"><div class="char-portrait"><img alt="효우린" src="img/ch/31.png"/></div><div class="char-name">효우린</div><div class="char-role">무술학교수·인간·S</div></div>
+<div class="char-card character-detail-trigger hinoka-detail-trigger" data-character-detail="hinoka"><div class="char-portrait"><img alt="히노카" src="img/ch/32.png"/></div><div class="char-name">히노카</div><div class="char-role">인술학교수·인간·S+</div></div>
+<div class="char-card character-detail-trigger rin-detail-trigger" data-character-detail="rin"><div class="char-portrait"><img alt="린" src="img/ch/33.png"/></div><div class="char-name">린</div><div class="char-role">보건교사·인간·E+</div></div>
 </div>
 </div>
 <div class="facility-block">
 <div class="facility-title">◇ 후보생</div>
 <div class="char-grid">
-<div class="char-card"><div class="char-portrait"><img alt="루네" src="img/ch/34.png"/></div><div class="char-name">루네</div><div class="char-role">후보생·인간·D+</div></div>
-<div class="char-card"><div class="char-portrait"><img alt="메리" src="img/ch/35.png"/></div><div class="char-name">메리</div><div class="char-role">후보생·인간·D</div></div>
-<div class="char-card"><div class="char-portrait"><img alt="라줄리" src="img/ch/36.png"/></div><div class="char-name">라줄리</div><div class="char-role">후보생·인간·D+</div></div>
-<div class="char-card"><div class="char-portrait"><img alt="후냐르" src="img/ch/37.png"/></div><div class="char-name">후냐르</div><div class="char-role">후보생·늑대수인·C+</div></div>
-<div class="char-card"><div class="char-portrait"><img alt="엘로웬" src="img/ch/38.png"/></div><div class="char-name">엘로웬</div><div class="char-role">후보생·엘프·D</div></div>
-<div class="char-card"><div class="char-portrait"><img alt="후유" src="img/ch/39.png"/></div><div class="char-name">후유</div><div class="char-role">후보생·인간·C</div></div>
-<div class="char-card"><div class="char-portrait"><img alt="알베시아" src="img/ch/40.png"/></div><div class="char-name">알베시아</div><div class="char-role">후보생·흰비둘기수인·D</div></div>
+<div class="char-card character-detail-trigger rune-detail-trigger" data-character-detail="rune"><div class="char-portrait"><img alt="루네" src="img/ch/34.png"/></div><div class="char-name">루네</div><div class="char-role">후보생·인간·D+</div></div>
+<div class="char-card character-detail-trigger mary-detail-trigger" data-character-detail="mary"><div class="char-portrait"><img alt="메리" src="img/ch/35.png"/></div><div class="char-name">메리</div><div class="char-role">후보생·인간·D</div></div>
+<div class="char-card character-detail-trigger lazuli-detail-trigger" data-character-detail="lazuli"><div class="char-portrait"><img alt="라줄리" src="img/ch/36.png"/></div><div class="char-name">라줄리</div><div class="char-role">후보생·인간·D+</div></div>
+<div class="char-card character-detail-trigger hunyar-detail-trigger" data-character-detail="hunyar"><div class="char-portrait"><img alt="후냐르" src="img/ch/37.png"/></div><div class="char-name">후냐르</div><div class="char-role">후보생·늑대수인·C+</div></div>
+<div class="char-card character-detail-trigger elowen-detail-trigger" data-character-detail="elowen"><div class="char-portrait"><img alt="엘로웬" src="img/ch/38.png"/></div><div class="char-name">엘로웬</div><div class="char-role">후보생·엘프·D</div></div>
+<div class="char-card character-detail-trigger fuyu-detail-trigger" data-character-detail="fuyu"><div class="char-portrait"><img alt="후유" src="img/ch/39.png"/></div><div class="char-name">후유</div><div class="char-role">후보생·인간·C</div></div>
+<div class="char-card character-detail-trigger albesia-detail-trigger" data-character-detail="albesia"><div class="char-portrait"><img alt="알베시아" src="img/ch/40.png"/></div><div class="char-name">알베시아</div><div class="char-role">후보생·흰비둘기수인·D</div></div>
 </div>
 </div>
 <div class="facility-block">
 <div class="facility-title">◇ 정규생</div>
 <div class="char-grid">
-<div class="char-card"><div class="char-portrait"><img alt="클로버" src="img/ch/41.png"/></div><div class="char-name">클로버</div><div class="char-role">정규생·인간·C</div></div>
-<div class="char-card"><div class="char-portrait"><img alt="체리" src="img/ch/42.png"/></div><div class="char-name">체리</div><div class="char-role">정규생·토끼수인·C</div></div>
-<div class="char-card"><div class="char-portrait"><img alt="니냐" src="img/ch/43.png"/></div><div class="char-name">니냐</div><div class="char-role">정규생·고양이수인·C+</div></div>
-<div class="char-card"><div class="char-portrait"><img alt="엔잔" src="img/ch/44.png"/></div><div class="char-name">엔잔</div><div class="char-role">정규생·인간·B</div></div>
-<div class="char-card"><div class="char-portrait"><img alt="아마유라" src="img/ch/45.png"/></div><div class="char-name">아마유라</div><div class="char-role">정규생·인간·C+</div></div>
-<div class="char-card"><div class="char-portrait"><img alt="오렐리아" src="img/ch/46.png"/></div><div class="char-name">오렐리아</div><div class="char-role">정규생·인간·C+</div></div>
-<div class="char-card"><div class="char-portrait"><img alt="이브" src="img/ch/47.png"/></div><div class="char-name">이브</div><div class="char-role">정규생·인간·S</div></div>
+<div class="char-card character-detail-trigger clover-detail-trigger" data-character-detail="clover"><div class="char-portrait"><img alt="클로버" src="img/ch/41.png"/></div><div class="char-name">클로버</div><div class="char-role">정규생·인간·C</div></div>
+<div class="char-card character-detail-trigger cherry-detail-trigger" data-character-detail="cherry"><div class="char-portrait"><img alt="체리" src="img/ch/42.png"/></div><div class="char-name">체리</div><div class="char-role">정규생·토끼수인·C</div></div>
+<div class="char-card character-detail-trigger ninya-detail-trigger" data-character-detail="ninya"><div class="char-portrait"><img alt="니냐" src="img/ch/43.png"/></div><div class="char-name">니냐</div><div class="char-role">정규생·고양이수인·C+</div></div>
+<div class="char-card character-detail-trigger enzan-detail-trigger" data-character-detail="enzan"><div class="char-portrait"><img alt="엔잔" src="img/ch/44.png"/></div><div class="char-name">엔잔</div><div class="char-role">정규생·인간·B</div></div>
+<div class="char-card character-detail-trigger amayura-detail-trigger" data-character-detail="amayura"><div class="char-portrait"><img alt="아마유라" src="img/ch/45.png"/></div><div class="char-name">아마유라</div><div class="char-role">정규생·인간·C+</div></div>
+<div class="char-card character-detail-trigger aurelia-detail-trigger" data-character-detail="aurelia"><div class="char-portrait"><img alt="오렐리아" src="img/ch/46.png"/></div><div class="char-name">오렐리아</div><div class="char-role">정규생·인간·C+</div></div>
+<div class="char-card character-detail-trigger eve-detail-trigger" data-character-detail="eve"><div class="char-portrait"><img alt="이브" src="img/ch/47.png"/></div><div class="char-name">이브</div><div class="char-role">정규생·인간·S</div></div>
 </div>
 </div>
 <div class="facility-block">
 <div class="facility-title">◇ 정예생</div>
 <div class="char-grid">
-<div class="char-card"><div class="char-portrait"><img alt="테레제" src="img/ch/48.png"/></div><div class="char-name">테레제</div><div class="char-role">정예생·인간·B</div></div>
-<div class="char-card"><div class="char-portrait"><img alt="아르테미스" src="img/ch/49.png"/></div><div class="char-name">아르테미스</div><div class="char-role">정예생·인간·A</div></div>
-<div class="char-card"><div class="char-portrait"><img alt="샤메이" src="img/ch/50.png"/></div><div class="char-name">샤메이</div><div class="char-role">정예생·상어수인·B+</div></div>
-<div class="char-card"><div class="char-portrait"><img alt="유키노" src="img/ch/51.png"/></div><div class="char-name">유키노</div><div class="char-role">정예생·인간·A+</div></div>
-<div class="char-card"><div class="char-portrait"><img alt="이니샤" src="img/ch/52.png"/></div><div class="char-name">이니샤</div><div class="char-role">황녀·백룡·S</div></div>
-<div class="char-card"><div class="char-portrait"><img alt="이벨리에나" src="img/ch/53.png"/></div><div class="char-name">이벨리에나</div><div class="char-role">정예생·서큐버스·B+</div></div>
-<div class="char-card"><div class="char-portrait"><img alt="모네" src="img/ch/54.png"/></div><div class="char-name">모네</div><div class="char-role">정예생·박쥐수인·B</div></div>
+<div class="char-card character-detail-trigger tereze-detail-trigger" data-character-detail="tereze"><div class="char-portrait"><img alt="테레제" src="img/ch/48.png"/></div><div class="char-name">테레제</div><div class="char-role">정예생·인간·B</div></div>
+<div class="char-card character-detail-trigger artemis-detail-trigger" data-character-detail="artemis"><div class="char-portrait"><img alt="아르테미스" src="img/ch/49.png"/></div><div class="char-name">아르테미스</div><div class="char-role">정예생·인간·A</div></div>
+<div class="char-card character-detail-trigger shamei-detail-trigger" data-character-detail="shamei"><div class="char-portrait"><img alt="샤메이" src="img/ch/50.png"/></div><div class="char-name">샤메이</div><div class="char-role">정예생·상어수인·B+</div></div>
+<div class="char-card character-detail-trigger yukino-detail-trigger" data-character-detail="yukino"><div class="char-portrait"><img alt="유키노" src="img/ch/51.png"/></div><div class="char-name">유키노</div><div class="char-role">정예생·인간·A+</div></div>
+<div class="char-card character-detail-trigger inishia-detail-trigger" data-character-detail="inishia"><div class="char-portrait"><img alt="이니샤" src="img/ch/52.png"/></div><div class="char-name">이니샤</div><div class="char-role">황녀·백룡·S</div></div>
+<div class="char-card character-detail-trigger iveliena-detail-trigger" data-character-detail="iveliena"><div class="char-portrait"><img alt="이벨리에나" src="img/ch/53.png"/></div><div class="char-name">이벨리에나</div><div class="char-role">정예생·서큐버스·B+</div></div>
+<div class="char-card character-detail-trigger monet-detail-trigger" data-character-detail="monet"><div class="char-portrait"><img alt="모네" src="img/ch/54.png"/></div><div class="char-name">모네</div><div class="char-role">정예생·박쥐수인·B</div></div>
 </div>
 </div>
 </div>
@@ -7883,8 +8819,8 @@ body::after {
 <div class="place-info">
 <div class="place-title">◇ 팬텀 스트라이크</div>
 <div class="place-characters char-grid">
-<div class="char-card"><div class="char-portrait"><img alt="코르비나" src="img/ch/55.png"/></div><div class="char-name">코르비나</div><div class="char-role">길드장·까마귀수인·SS+</div></div>
-<div class="char-card"><div class="char-portrait"><img alt="판테라" src="img/ch/56.png"/></div><div class="char-name">판테라</div><div class="char-role">부길드장·구름표범수인·S+</div></div>
+<div class="char-card character-detail-trigger corvina-detail-trigger" data-character-detail="corvina"><div class="char-portrait"><img alt="코르비나" src="img/ch/55.png"/></div><div class="char-name">코르비나</div><div class="char-role">길드장·까마귀수인·SS+</div></div>
+<div class="char-card character-detail-trigger pantera-detail-trigger" data-character-detail="pantera"><div class="char-portrait"><img alt="판테라" src="img/ch/56.png"/></div><div class="char-name">판테라</div><div class="char-role">부길드장·구름표범수인·S+</div></div>
 </div>
 </div>
 </div>
@@ -7905,8 +8841,8 @@ body::after {
 <div class="place-info">
 <div class="place-title">◇ 노블레스</div>
 <div class="place-characters char-grid">
-<div class="char-card"><div class="char-portrait"><img alt="카시아" src="img/ch/57.png"/></div><div class="char-name">카시아</div><div class="char-role">길드장·인간·S</div></div>
-<div class="char-card"><div class="char-portrait"><img alt="포르모노" src="img/ch/58.png"/></div><div class="char-name">포르모노</div><div class="char-role">부길드장·인간·A</div></div>
+<div class="char-card character-detail-trigger cassia-detail-trigger" data-character-detail="cassia"><div class="char-portrait"><img alt="카시아" src="img/ch/57.png"/></div><div class="char-name">카시아</div><div class="char-role">길드장·인간·S</div></div>
+<div class="char-card character-detail-trigger formono-detail-trigger" data-character-detail="formono"><div class="char-portrait"><img alt="포르모노" src="img/ch/58.png"/></div><div class="char-name">포르모노</div><div class="char-role">부길드장·인간·A</div></div>
 </div>
 </div>
 </div>
@@ -7927,8 +8863,8 @@ body::after {
 <div class="place-info">
 <div class="place-title">◇ 월하</div>
 <div class="place-characters char-grid">
-<div class="char-card"><div class="char-portrait"><img alt="카구라" src="img/ch/59.png"/></div><div class="char-name">카구라</div><div class="char-role">길드장·인간·S+</div></div>
-<div class="char-card"><div class="char-portrait"><img alt="은령" src="img/ch/60.png"/></div><div class="char-name">은령</div><div class="char-role">부길드장·요호·A+</div></div>
+<div class="char-card character-detail-trigger kagura-detail-trigger" data-character-detail="kagura"><div class="char-portrait"><img alt="카구라" src="img/ch/59.png"/></div><div class="char-name">카구라</div><div class="char-role">길드장·인간·S+</div></div>
+<div class="char-card character-detail-trigger eunryeong-detail-trigger" data-character-detail="eunryeong"><div class="char-portrait"><img alt="은령" src="img/ch/60.png"/></div><div class="char-name">은령</div><div class="char-role">부길드장·요호·A+</div></div>
 </div>
 </div>
 </div>
@@ -7949,10 +8885,10 @@ body::after {
 <div class="facility-block">
 <div class="facility-title">◇ 등록 헌터</div>
 <div class="char-grid">
-<div class="char-card"><div class="char-portrait"><img alt="크리미" src="img/ch/61.png"/></div><div class="char-name">크리미</div><div class="char-role">프리랜서·인간·B+</div></div>
-<div class="char-card"><div class="char-portrait"><img alt="프시타" src="img/ch/62.png"/></div><div class="char-name">프시타</div><div class="char-role">프리랜서·앵무새수인·A+</div></div>
-<div class="char-card"><div class="char-portrait"><img alt="키리카" src="img/ch/63.png"/></div><div class="char-name">키리카</div><div class="char-role">프리랜서·인간·S+</div></div>
-<div class="char-card"><div class="char-portrait"><img alt="그웬" src="img/ch/64.png"/></div><div class="char-name">그웬</div><div class="char-role">아이돌·인간·B</div></div>
+<div class="char-card character-detail-trigger creamy-detail-trigger" data-character-detail="creamy"><div class="char-portrait"><img alt="크리미" src="img/ch/61.png"/></div><div class="char-name">크리미</div><div class="char-role">프리랜서·인간·B+</div></div>
+<div class="char-card character-detail-trigger psita-detail-trigger" data-character-detail="psita"><div class="char-portrait"><img alt="프시타" src="img/ch/62.png"/></div><div class="char-name">프시타</div><div class="char-role">프리랜서·앵무새수인·A+</div></div>
+<div class="char-card character-detail-trigger kirika-detail-trigger" data-character-detail="kirika"><div class="char-portrait"><img alt="키리카" src="img/ch/63.png"/></div><div class="char-name">키리카</div><div class="char-role">프리랜서·인간·S+</div></div>
+<div class="char-card character-detail-trigger gwen-detail-trigger" data-character-detail="gwen"><div class="char-portrait"><img alt="그웬" src="img/ch/64.png"/></div><div class="char-name">그웬</div><div class="char-role">아이돌·인간·B</div></div>
 </div>
 </div>
 </div>
@@ -7975,7 +8911,7 @@ body::after {
 <!-- 에이브릴 -->
 <div class="calamity-row calamity-avril">
 <div class="calamity-visuals">
-<div class="calamity-portrait">
+<div class="calamity-portrait character-detail-trigger" data-character-detail="avril">
 <img alt="에이브릴" src="img/ch/65.png"/>
 </div>
 <div class="calamity-scene">
@@ -7983,7 +8919,7 @@ body::after {
 </div>
 </div>
 <div class="calamity-meta">
-<div class="calamity-person-info">
+<div class="calamity-person-info character-detail-trigger" data-character-detail="avril">
 <div class="calamity-name">에이브릴</div>
 <div class="calamity-sub">흑룡의딸 · 흑룡 · SS+</div>
 </div>
@@ -7999,7 +8935,7 @@ body::after {
 <!-- 노타마야 -->
 <div class="calamity-row calamity-notamaya">
 <div class="calamity-visuals">
-<div class="calamity-portrait">
+<div class="calamity-portrait character-detail-trigger" data-character-detail="notamaya">
 <img alt="노타마야" src="img/ch/66.png"/>
 </div>
 <div class="calamity-scene">
@@ -8007,7 +8943,7 @@ body::after {
 </div>
 </div>
 <div class="calamity-meta">
-<div class="calamity-person-info">
+<div class="calamity-person-info character-detail-trigger" data-character-detail="notamaya">
 <div class="calamity-name">노타마야</div>
 <div class="calamity-sub">천귀의주인 · 뱀요괴 · SSS</div>
 </div>
@@ -8023,7 +8959,7 @@ body::after {
 <!-- 칼립사 -->
 <div class="calamity-row calamity-kalipsa">
 <div class="calamity-visuals">
-<div class="calamity-portrait">
+<div class="calamity-portrait character-detail-trigger" data-character-detail="calypso">
 <img alt="칼립사" src="img/ch/67.png"/>
 </div>
 <div class="calamity-scene">
@@ -8031,7 +8967,7 @@ body::after {
 </div>
 </div>
 <div class="calamity-meta">
-<div class="calamity-person-info">
+<div class="calamity-person-info character-detail-trigger" data-character-detail="calypso">
 <div class="calamity-name">칼립사</div>
 <div class="calamity-sub">심해의여왕 · 문어괴인 · SSS</div>
 </div>
@@ -8047,7 +8983,7 @@ body::after {
 <!-- 닉스 -->
 <div class="calamity-row calamity-nyx">
 <div class="calamity-visuals">
-<div class="calamity-portrait">
+<div class="calamity-portrait character-detail-trigger" data-character-detail="nyx">
 <img alt="닉스" src="img/ch/68.png"/>
 </div>
 <div class="calamity-scene">
@@ -8055,7 +8991,7 @@ body::after {
 </div>
 </div>
 <div class="calamity-meta">
-<div class="calamity-person-info">
+<div class="calamity-person-info character-detail-trigger" data-character-detail="nyx">
 <div class="calamity-name">닉스</div>
 <div class="calamity-sub">별의마녀 · 인간 · SSS</div>
 </div>
@@ -8070,12 +9006,12 @@ body::after {
 <div class="apostle-area">
 <div class="apostle-label">닉스의 사도</div>
 <div class="apostle-grid">
-<div class="apostle-card">
+<div class="apostle-card character-detail-trigger" data-character-detail="nemesis">
 <img alt="네메시스" src="img/ch/69.png"/>
 <div class="char-name">네메시스</div>
 <div class="char-role">사도 · 인간 · S</div>
 </div>
-<div class="apostle-card">
+<div class="apostle-card character-detail-trigger" data-character-detail="revern">
 <img alt="레베른" src="img/ch/70.png"/>
 <div class="char-name">레베른</div>
 <div class="char-role">사도 · 인간 · A+</div>
@@ -8961,6 +9897,718 @@ document.addEventListener("DOMContentLoaded", function () {
 <p>물을 감응·조작해 수류와 수압을 정밀 제어하며 포박·방어·궤도교란에 응용하는 능력.</p>
 </div>
 <blockquote class="character-detail-quote">“물은 앞을 막는다고 멈추지 않습니다. 길을 바꿀 뿐이지요.”</blockquote>
+</div>
+</div><div aria-hidden="true" class="character-hover-detail academy-character-detail" data-detail-popup="kameko" id="characterDetail_kameko">
+<div class="character-detail-art">
+<img alt="카메코 상세 일러스트" src="img/at/23.png"/>
+</div>
+<div class="character-detail-body">
+<div class="character-detail-head">
+<div>
+<div class="character-detail-name">카메코</div>
+<div class="character-detail-role">판테온 아카데미 총장</div>
+</div>
+<div class="character-detail-code">F01</div>
+</div>
+<div class="character-detail-profile">ISFJ · 2w1(291) · so/sp</div>
+<div class="character-detail-ability">
+<strong>진수천갑(鎭守天甲)</strong>
+<p>현무를 현현해 대지·중압으로 전선을 봉쇄하고 광역방호하며, 받은 충격을 축적해 반사·역류시키는 능력.</p>
+</div>
+<blockquote class="character-detail-quote">“허허, 세상은 생각보다 오래 살아남는 법이지요.”</blockquote>
+</div>
+</div><div aria-hidden="true" class="character-hover-detail academy-character-detail" data-detail-popup="amy" id="characterDetail_amy">
+<div class="character-detail-art">
+<img alt="에이미 상세 일러스트" src="img/at/24.png"/>
+</div>
+<div class="character-detail-body">
+<div class="character-detail-head">
+<div>
+<div class="character-detail-name">에이미</div>
+<div class="character-detail-role">판테온 아카데미 과학기술학 교수</div>
+</div>
+<div class="character-detail-code">F02</div>
+</div>
+<div class="character-detail-profile">ENFJ · 1w2(123) · so/sx</div>
+<div class="character-detail-ability">
+<strong>제니스 플라이트</strong>
+<p>광익으로 초고속 비행·공중기동하며, 광자포와 전방위 광자탄막으로 연속·궤도사격하는 능력.</p>
+</div>
+<blockquote class="character-detail-quote">“하늘을 올려다보는 것만으로 만족하지 마. 언젠가는 그 너머까지 날아가야지!”</blockquote>
+</div>
+</div><div aria-hidden="true" class="character-hover-detail academy-character-detail" data-detail-popup="charlotte" id="characterDetail_charlotte">
+<div class="character-detail-art">
+<img alt="샤를로트 상세 일러스트" src="img/at/25.png"/>
+</div>
+<div class="character-detail-body">
+<div class="character-detail-head">
+<div>
+<div class="character-detail-name">샤를로트</div>
+<div class="character-detail-role">판테온 아카데미 검술학 교수</div>
+</div>
+<div class="character-detail-code">F03</div>
+</div>
+<div class="character-detail-profile">ISTJ · 1w2(126) · sp/so</div>
+<div class="character-detail-ability">
+<strong>크리스탈 아스날</strong>
+<p>보석검을 생성해 속성과 형태에 따라 자유롭게 전환하는 능력.</p>
+</div>
+<blockquote class="character-detail-quote">“검술은 의지와 품격, 그리고 완성도의 예술이다.”</blockquote>
+</div>
+</div><div aria-hidden="true" class="character-hover-detail academy-character-detail" data-detail-popup="lucien" id="characterDetail_lucien">
+<div class="character-detail-art">
+<img alt="루시엔 상세 일러스트" src="img/at/26.png"/>
+</div>
+<div class="character-detail-body">
+<div class="character-detail-head">
+<div>
+<div class="character-detail-name">루시엔</div>
+<div class="character-detail-role">판테온 아카데미 마도학 교수</div>
+</div>
+<div class="character-detail-code">F04</div>
+</div>
+<div class="character-detail-profile">INTP · 5w4(541) · sp/so</div>
+<div class="character-detail-ability">
+<strong>아카식 오디세이</strong>
+<p>다중마도식으로 복수 마법을 병렬·중첩 발동하고, 상대 마법을 역산해 해석·해체·상쇄하는 능력.</p>
+</div>
+<blockquote class="character-detail-quote">“마법은 기적이 아니에요. 아직 해석되지 않은 법칙일 뿐이죠.”</blockquote>
+</div>
+</div><div aria-hidden="true" class="character-hover-detail academy-character-detail" data-detail-popup="eleonora" id="characterDetail_eleonora">
+<div class="character-detail-art">
+<img alt="엘레노아 상세 일러스트" src="img/at/27.png"/>
+</div>
+<div class="character-detail-body">
+<div class="character-detail-head">
+<div>
+<div class="character-detail-name">엘레노아</div>
+<div class="character-detail-role">판테온 아카데미 신성학 교수</div>
+</div>
+<div class="character-detail-code">F05</div>
+</div>
+<div class="character-detail-profile">ISFJ · 1w2(126) · sp/so</div>
+<div class="character-detail-ability">
+<strong>골든 그레이스</strong>
+<p>정화파동으로 오염·저주·이상효과를 제거하고, 성광결계로 아군을 보호하며 충격파로 적을 밀어내는 능력.</p>
+</div>
+<blockquote class="character-detail-quote">“이 팔로도 충분히 지킬 수 있어요. 걱정 말아요.”</blockquote>
+</div>
+</div><div aria-hidden="true" class="character-hover-detail academy-character-detail" data-detail-popup="beatrix" id="characterDetail_beatrix">
+<div class="character-detail-art">
+<img alt="베아트릭스 상세 일러스트" src="img/at/28.png"/>
+</div>
+<div class="character-detail-body">
+<div class="character-detail-head">
+<div>
+<div class="character-detail-name">베아트릭스</div>
+<div class="character-detail-role">오르비스 중앙연합 지휘관 &amp; 판테온 아카데미 전술학 교수</div>
+</div>
+<div class="character-detail-code">F06</div>
+</div>
+<div class="character-detail-profile">ENTJ · 5w1(513) · sp/so</div>
+<div class="character-detail-ability">
+<strong>그랜드 택틱스</strong>
+<p>마력무장을 자유전환해 화력을 전개하고, 환영군세를 소환해 동시공세·포위진형을 형성하는 능력.</p>
+</div>
+<blockquote class="character-detail-quote">“전술이란 우아한 폭력이지.”</blockquote>
+</div>
+</div><div aria-hidden="true" class="character-hover-detail academy-character-detail" data-detail-popup="bellariensia" id="characterDetail_bellariensia">
+<div class="character-detail-art">
+<img alt="벨라리엔시아 상세 일러스트" src="img/at/29.png"/>
+</div>
+<div class="character-detail-body">
+<div class="character-detail-head">
+<div>
+<div class="character-detail-name">벨라리엔시아</div>
+<div class="character-detail-role">판테온 아카데미 정령학 교수</div>
+</div>
+<div class="character-detail-code">F07</div>
+</div>
+<div class="character-detail-profile">INFJ · 9w2(921) · so/sp</div>
+<div class="character-detail-ability">
+<strong>실바 하모니</strong>
+<p>자연정령으로 속성별 정령술을 펼치고, 식물을 생장시켜 구속·방벽·지형변화를 일으키는 능력.</p>
+</div>
+<blockquote class="character-detail-quote">“조용히 귀를 기울여 보세요. 대지는 늘 대답하고 있답니다.”</blockquote>
+</div>
+</div><div aria-hidden="true" class="character-hover-detail academy-character-detail" data-detail-popup="seira" id="characterDetail_seira">
+<div class="character-detail-art">
+<img alt="세이라 상세 일러스트" src="img/at/30.png"/>
+</div>
+<div class="character-detail-body">
+<div class="character-detail-head">
+<div>
+<div class="character-detail-name">세이라</div>
+<div class="character-detail-role">판테온 아카데미 생존학 교수</div>
+</div>
+<div class="character-detail-code">F08</div>
+</div>
+<div class="character-detail-profile">ESTJ · 1w2(126) · sp/so</div>
+<div class="character-detail-ability">
+<strong>아이언 탈론</strong>
+<p>강철날개로 초고속 비행·급강하하며, 강철깃털로 방어·절삭하고 강력한 악력으로 압쇄하는 능력.</p>
+</div>
+<blockquote class="character-detail-quote">“다 보여. 전부. …그러니까 숨기지 말고 나한테 기대.”</blockquote>
+</div>
+</div><div aria-hidden="true" class="character-hover-detail academy-character-detail" data-detail-popup="hyourin" id="characterDetail_hyourin">
+<div class="character-detail-art">
+<img alt="효우린 상세 일러스트" src="img/at/31.png"/>
+</div>
+<div class="character-detail-body">
+<div class="character-detail-head">
+<div>
+<div class="character-detail-name">효우린</div>
+<div class="character-detail-role">판테온 아카데미 무술학 교수</div>
+</div>
+<div class="character-detail-code">F09</div>
+</div>
+<div class="character-detail-profile">ISTJ · 1w2(162) · sp/so</div>
+<div class="character-detail-ability">
+<strong>천설빙옥(天雪氷獄)</strong>
+<p>혹한영역으로 냉기를 누적해 빙결시키고, 카타나 참격에 냉기를 확산시켜 빙결참격을 가하는 능력.</p>
+</div>
+<blockquote class="character-detail-quote">“눈은 소리 없이 쌓인다. 진정한 실력도 그러하다.”</blockquote>
+</div>
+</div><div aria-hidden="true" class="character-hover-detail academy-character-detail" data-detail-popup="hinoka" id="characterDetail_hinoka">
+<div class="character-detail-art">
+<img alt="히노카 상세 일러스트" src="img/at/32.png"/>
+</div>
+<div class="character-detail-body">
+<div class="character-detail-head">
+<div>
+<div class="character-detail-name">히노카</div>
+<div class="character-detail-role">판테온 아카데미 인술학 교수</div>
+</div>
+<div class="character-detail-code">F10</div>
+</div>
+<div class="character-detail-profile">ENTJ · 6w5(612) · sp/so</div>
+<div class="character-detail-ability">
+<strong>환염은영(幻炎隱影)</strong>
+<p>환술로 분신·감각·위치를 교란하고 붉은 이화와 오행인술(火水雷風土)을 구사하는 능력.</p>
+</div>
+<blockquote class="character-detail-quote">“후훗, 그렇게 빤히 보시면 제가 뭘 숨긴 것도 아닌데 수상해 보이잖아요.”</blockquote>
+</div>
+</div><div aria-hidden="true" class="character-hover-detail academy-character-detail" data-detail-popup="rin" id="characterDetail_rin">
+<div class="character-detail-art">
+<img alt="린 상세 일러스트" src="img/at/33.png"/>
+</div>
+<div class="character-detail-body">
+<div class="character-detail-head">
+<div>
+<div class="character-detail-name">린</div>
+<div class="character-detail-role">판테온 아카데미 보건교사</div>
+</div>
+<div class="character-detail-code">F11</div>
+</div>
+<div class="character-detail-profile">ISFJ · 2w1(269) · so/sp</div>
+<div class="character-detail-ability">
+<strong>메디컬 신서시스</strong>
+<p>생체활성을 조절해 지혈·회복촉진·신체기능 안정화를 수행하는 능력.</p>
+</div>
+<blockquote class="character-detail-quote">“아프면 참지 말고 말씀해주세요.”</blockquote>
+</div>
+</div><div aria-hidden="true" class="character-hover-detail student-character-detail" data-detail-popup="rune" id="characterDetail_rune">
+<div class="character-detail-art"><img alt="루네 상세 일러스트" src="img/at/34.png"/></div>
+<div class="character-detail-body">
+<div class="character-detail-head">
+<div><div class="character-detail-name">루네</div><div class="character-detail-role">판테온 아카데미 후보생</div></div>
+<div class="character-detail-code">G01</div>
+</div>
+<div class="character-detail-profile">ESFJ · 2w3(263) · sx/so</div>
+<div class="character-detail-ability"><strong>루나리스 레퀴엠</strong><p>월광영역으로 적의 신체·마력을 약화하고 움직임·공격력을 저하시키며, 초승달형 마력칼날을 구사하는 능력.</p></div>
+<blockquote class="character-detail-quote">“웃으면 조금은 괜찮아질거야. 그러니까… 내가 먼저 웃어볼게!”</blockquote>
+</div>
+</div><div aria-hidden="true" class="character-hover-detail student-character-detail" data-detail-popup="mary" id="characterDetail_mary">
+<div class="character-detail-art"><img alt="메리 상세 일러스트" src="img/at/35.png"/></div>
+<div class="character-detail-body">
+<div class="character-detail-head">
+<div><div class="character-detail-name">메리</div><div class="character-detail-role">판테온 아카데미 후보생</div></div>
+<div class="character-detail-code">G02</div>
+</div>
+<div class="character-detail-profile">ISFJ · 9w1(926) · sp/so</div>
+<div class="character-detail-ability"><strong>페이트 커터</strong><p>마력가위로 적·장애물을 절단하고, 재단선을 전개해 마법구조를 해체하는 능력.</p></div>
+<blockquote class="character-detail-quote">“무섭지만... 해볼게요.”</blockquote>
+</div>
+</div><div aria-hidden="true" class="character-hover-detail student-character-detail" data-detail-popup="lazuli" id="characterDetail_lazuli">
+<div class="character-detail-art"><img alt="라줄리 상세 일러스트" src="img/at/36.png"/></div>
+<div class="character-detail-body">
+<div class="character-detail-head">
+<div><div class="character-detail-name">라줄리</div><div class="character-detail-role">판테온 아카데미 후보생</div></div>
+<div class="character-detail-code">G03</div>
+</div>
+<div class="character-detail-profile">INFP · 9w2(924) · so/sp</div>
+<div class="character-detail-ability"><strong>드림 플러터</strong><p>환몽나비를 칼날처럼 쇄도시켜 시야를 교란하고, 몽환인분으로 의식 둔화·수면을 유도하는 능력.</p></div>
+<blockquote class="character-detail-quote">“나비들은 다 알고 있대요. 당신은 좋은 사람이라고.”</blockquote>
+</div>
+</div><div aria-hidden="true" class="character-hover-detail student-character-detail" data-detail-popup="hunyar" id="characterDetail_hunyar">
+<div class="character-detail-art"><img alt="후냐르 상세 일러스트" src="img/at/37.png"/></div>
+<div class="character-detail-body">
+<div class="character-detail-head">
+<div><div class="character-detail-name">후냐르</div><div class="character-detail-role">판테온 아카데미 후보생</div></div>
+<div class="character-detail-code">G04</div>
+</div>
+<div class="character-detail-profile">ESFP · 7w8(789) · sx/so</div>
+<div class="character-detail-ability"><strong>인페르노 팽</strong><p>홍염늑대화로 신체능력·기동력을 증폭하고, 홍염을 집속해 타격점에서 폭발·화염쇄도를 일으키는 능력.</p></div>
+<blockquote class="character-detail-quote">“재밌겠다! 이거, 누가 먼저 쓰러지는지 승부지?”</blockquote>
+</div>
+</div><div aria-hidden="true" class="character-hover-detail student-character-detail" data-detail-popup="elowen" id="characterDetail_elowen">
+<div class="character-detail-art"><img alt="엘로웬 상세 일러스트" src="img/at/38.png"/></div>
+<div class="character-detail-body">
+<div class="character-detail-head">
+<div><div class="character-detail-name">엘로웬</div><div class="character-detail-role">판테온 아카데미 후보생</div></div>
+<div class="character-detail-code">G05</div>
+</div>
+<div class="character-detail-profile">ESFJ · 9w2 · so/sx</div>
+<div class="character-detail-ability"><strong>윈드 아리아</strong><p>노래로 바람정령을 지휘해 돌풍·풍압을 일으키고, 바람길로 아군의 이동가속·공중기동을 지원하는 능력.</p></div>
+<blockquote class="character-detail-quote">“다치면 안 돼, 알았지?”</blockquote>
+</div>
+</div><div aria-hidden="true" class="character-hover-detail student-character-detail" data-detail-popup="fuyu" id="characterDetail_fuyu">
+<div class="character-detail-art"><img alt="후유 상세 일러스트" src="img/at/39.png"/></div>
+<div class="character-detail-body">
+<div class="character-detail-head">
+<div><div class="character-detail-name">후유</div><div class="character-detail-role">판테온 아카데미 후보생</div></div>
+<div class="character-detail-code">G06</div>
+</div>
+<div class="character-detail-profile">ISTP · 5w6(593) · sp/so</div>
+<div class="character-detail-ability"><strong>질풍비영(疾風飛影)</strong><p>닌자도에 바람을 둘러 참격을 강화하고, 질풍가속·잔상기동과 풍인술을 구사하는 능력.</p></div>
+<blockquote class="character-detail-quote">“…바람이 바뀌었어.”</blockquote>
+</div>
+</div><div aria-hidden="true" class="character-hover-detail student-character-detail" data-detail-popup="albesia" id="characterDetail_albesia">
+<div class="character-detail-art"><img alt="알베시아 상세 일러스트" src="img/at/40.png"/></div>
+<div class="character-detail-body">
+<div class="character-detail-head">
+<div><div class="character-detail-name">알베시아</div><div class="character-detail-role">판테온 아카데미 후보생</div></div>
+<div class="character-detail-code">G07</div>
+</div>
+<div class="character-detail-profile">ENFP · 6w7(629) · so/sp</div>
+<div class="character-detail-ability"><strong>화이트 오멘</strong><p>궤도편향으로 공격의 진행방향을 왜곡하고, 투사체·원거리공격을 반사해 역으로 반격하는 능력.</p></div>
+<blockquote class="character-detail-quote">“후훗! 걱정 마세요! 저는 평화의 상징, 천사 알베시아랍니다! 구구!”</blockquote>
+</div>
+</div><div aria-hidden="true" class="character-hover-detail regular-student-character-detail" data-detail-popup="clover" id="characterDetail_clover">
+<div class="character-detail-art"><img alt="클로버 상세 일러스트" src="img/at/41.png"/></div>
+<div class="character-detail-body">
+<div class="character-detail-head">
+<div><div class="character-detail-name">클로버</div><div class="character-detail-role">판테온 아카데미 정규생</div></div>
+<div class="character-detail-code">G08</div>
+</div>
+<div class="character-detail-profile">ENFP · 7w6(793) · so/sx</div>
+<div class="character-detail-ability"><strong>레스큐비전</strong><p>구조·마력정보를 가시화해 생존자·위험·약점을 파악하고, 가상영상으로 시야·공간인지를 교란하는 능력.</p></div>
+<blockquote class="character-detail-quote">“넘어졌으면 다시 일어나면 돼!”</blockquote>
+</div>
+</div><div aria-hidden="true" class="character-hover-detail regular-student-character-detail" data-detail-popup="cherry" id="characterDetail_cherry">
+<div class="character-detail-art"><img alt="체리 상세 일러스트" src="img/at/42.png"/></div>
+<div class="character-detail-body">
+<div class="character-detail-head">
+<div><div class="character-detail-name">체리</div><div class="character-detail-role">판테온 아카데미 정규생</div></div>
+<div class="character-detail-code">G09</div>
+</div>
+<div class="character-detail-profile">ESFP · 7w6(793) · so/sp</div>
+<div class="character-detail-ability"><strong>리코셰</strong><p>마력탄을 도탄시키며, 도탄이 누적될수록 탄속·관통력이 증폭되는 능력.</p></div>
+<blockquote class="character-detail-quote">“토끼가 왜 강한지 알아? 깡과 총이 있기 때문이지, 깡총~!”</blockquote>
+</div>
+</div><div aria-hidden="true" class="character-hover-detail regular-student-character-detail" data-detail-popup="ninya" id="characterDetail_ninya">
+<div class="character-detail-art"><img alt="니냐 상세 일러스트" src="img/at/43.png"/></div>
+<div class="character-detail-body">
+<div class="character-detail-head">
+<div><div class="character-detail-name">니냐</div><div class="character-detail-role">판테온 아카데미 정규생</div></div>
+<div class="character-detail-code">G10</div>
+</div>
+<div class="character-detail-profile">ISTP · 6w5(649) · sx/sp</div>
+<div class="character-detail-ability"><strong>나이트 위스퍼</strong><p>사일런스 영역으로 소리·마력파동과 감지를 차단하고, 야안으로 암흑 속 움직임·마력윤곽을 포착하는 능력.</p></div>
+<blockquote class="character-detail-quote">“따뜻하다냥... 아니, 아무 말도 안 했다냥...”</blockquote>
+</div>
+</div><div aria-hidden="true" class="character-hover-detail regular-student-character-detail" data-detail-popup="enzan" id="characterDetail_enzan">
+<div class="character-detail-art"><img alt="엔잔 상세 일러스트" src="img/at/44.png"/></div>
+<div class="character-detail-body">
+<div class="character-detail-head">
+<div><div class="character-detail-name">엔잔</div><div class="character-detail-role">판테온 아카데미 정규생</div></div>
+<div class="character-detail-code">G11</div>
+</div>
+<div class="character-detail-profile">ESTP · 3w4(369) · sx/so</div>
+<div class="character-detail-ability"><strong>홍염검무(紅炎劍舞)</strong><p>참격궤적에 홍염검흔을 축적하고 일제히 발화시켜 교차참격·연쇄폭발을 일으키는 능력.</p></div>
+<blockquote class="character-detail-quote">“차, 착각하지 마! 나, 난 그냥… 그게…!”</blockquote>
+</div>
+</div><div aria-hidden="true" class="character-hover-detail regular-student-character-detail" data-detail-popup="amayura" id="characterDetail_amayura">
+<div class="character-detail-art"><img alt="아마유라 상세 일러스트" src="img/at/45.png"/></div>
+<div class="character-detail-body">
+<div class="character-detail-head">
+<div><div class="character-detail-name">아마유라</div><div class="character-detail-role">판테온 아카데미 정규생</div></div>
+<div class="character-detail-code">G12</div>
+</div>
+<div class="character-detail-profile">ESFJ · 2w3(279) · so/sx</div>
+<div class="character-detail-ability"><strong>태허기공(太虛氣功)</strong><p>기탄으로 충격을 내부에 침투·폭발시키고, 기맥순환을 조율해 내상·기혈손상을 회복하는 능력.</p></div>
+<blockquote class="character-detail-quote">“괜찮아~ 누나가 있잖아.”</blockquote>
+</div>
+</div><div aria-hidden="true" class="character-hover-detail regular-student-character-detail" data-detail-popup="aurelia" id="characterDetail_aurelia">
+<div class="character-detail-art"><img alt="오렐리아 상세 일러스트" src="img/at/46.png"/></div>
+<div class="character-detail-body">
+<div class="character-detail-head">
+<div><div class="character-detail-name">오렐리아</div><div class="character-detail-role">판테온 아카데미 정규생</div></div>
+<div class="character-detail-code">G13</div>
+</div>
+<div class="character-detail-profile">ESTJ · 1w2(136) · so/sp</div>
+<div class="character-detail-ability"><strong>산크타하스타</strong><p>성광방패로 받은 충격을 축적해 창으로 이전하고, 관통력·투창위력을 증폭하는 능력.</p></div>
+<blockquote class="character-detail-quote">“실력도 없이 입만 살아서는 곤란합니다.”</blockquote>
+</div>
+</div><div aria-hidden="true" class="character-hover-detail regular-student-character-detail" data-detail-popup="eve" id="characterDetail_eve">
+<div class="character-detail-art"><img alt="이브 상세 일러스트" src="img/at/47.png"/></div>
+<div class="character-detail-body">
+<div class="character-detail-head">
+<div><div class="character-detail-name">이브</div><div class="character-detail-role">판테온 아카데미 정규생</div></div>
+<div class="character-detail-code">G14</div>
+</div>
+<div class="character-detail-profile">ISTJ · 6w5(684) · sp/sx</div>
+<div class="character-detail-ability"><strong>이클립스</strong><p>빛과 어둠을 자유롭게 전환·조작하고, 두 힘을 공명시켜 위력을 증폭하며 연쇄폭발을 일으키는 능력.</p></div>
+<blockquote class="character-detail-quote">“…필요한 말만 해.”</blockquote>
+</div>
+</div><div aria-hidden="true" class="character-hover-detail elite-student-character-detail" data-detail-popup="tereze" id="characterDetail_tereze">
+<div class="character-detail-art"><img alt="테레제 상세 일러스트" src="img/at/48.png"/></div>
+<div class="character-detail-body">
+<div class="character-detail-head">
+<div><div class="character-detail-name">테레제</div><div class="character-detail-role">판테온 아카데미 정예생</div></div>
+<div class="character-detail-code">G15</div>
+</div>
+<div class="character-detail-profile">ISFJ · 2w1(264) · sx/sp</div>
+<div class="character-detail-ability"><strong>루미너스 블레이드</strong><p>다수의 성광검과 광검기를 전개해 공격·방벽으로 활용하고, 성광으로 오염·저주·마력침식을 정화하는 능력.</p></div>
+<blockquote class="character-detail-quote">“괜찮아요. 당신이 무너지지 않도록, 제가 여기 서 있을게요.”</blockquote>
+</div>
+</div><div aria-hidden="true" class="character-hover-detail elite-student-character-detail" data-detail-popup="artemis" id="characterDetail_artemis">
+<div class="character-detail-art"><img alt="아르테미스 상세 일러스트" src="img/at/49.png"/></div>
+<div class="character-detail-body">
+<div class="character-detail-head">
+<div><div class="character-detail-name">아르테미스</div><div class="character-detail-role">판테온 아카데미 정예생</div></div>
+<div class="character-detail-code">G16</div>
+</div>
+<div class="character-detail-profile">INTP · 5w6(592) · sp/so</div>
+<div class="character-detail-ability"><strong>메카 마이스터</strong><p>로봇슈트와 마력을 동조해 장갑·추진·화력을 가변증폭하고, 파손부위를 자가수복하는 능력.</p></div>
+<blockquote class="character-detail-quote">“충전기 누구 있어…? 배터리가 딱 3% 남았어.”</blockquote>
+</div>
+</div><div aria-hidden="true" class="character-hover-detail elite-student-character-detail" data-detail-popup="shamei" id="characterDetail_shamei">
+<div class="character-detail-art"><img alt="샤메이 상세 일러스트" src="img/at/50.png"/></div>
+<div class="character-detail-body">
+<div class="character-detail-head">
+<div><div class="character-detail-name">샤메이</div><div class="character-detail-role">판테온 아카데미 정예생</div></div>
+<div class="character-detail-code">G17</div>
+</div>
+<div class="character-detail-profile">ISTP · 8w9(846) · sx/sp</div>
+<div class="character-detail-ability"><strong>어비스 리퍼</strong><p>고압수탄으로 수압폭발·수류칼날을 일으키고, 수중에서 상대 상처에서 새어나온 마력을 추적·흡인하며 급가속하는 능력.</p></div>
+<blockquote class="character-detail-quote">“내 거야. 누구한테도 안 뺏겨.”</blockquote>
+</div>
+</div><div aria-hidden="true" class="character-hover-detail elite-student-character-detail" data-detail-popup="yukino" id="characterDetail_yukino">
+<div class="character-detail-art"><img alt="유키노 상세 일러스트" src="img/at/51.png"/></div>
+<div class="character-detail-body">
+<div class="character-detail-head">
+<div><div class="character-detail-name">유키노</div><div class="character-detail-role">판테온 아카데미 정예생</div></div>
+<div class="character-detail-code">G18</div>
+</div>
+<div class="character-detail-profile">ISTJ · 6w5(614) · sp/sx</div>
+<div class="character-detail-ability"><strong>설월빙화(雪月氷花)</strong><p>빙화를 개화·연쇄증식시켜 주변을 급속빙결하고, 일제파쇄해 얼음꽃잎과 다방향 참격을 일으키는 능력.</p></div>
+<blockquote class="character-detail-quote">“가까이 오지 마. 필요 이상으로.”</blockquote>
+</div>
+</div><div aria-hidden="true" class="character-hover-detail elite-student-character-detail" data-detail-popup="inishia" id="characterDetail_inishia">
+<div class="character-detail-art"><img alt="이니샤 상세 일러스트" src="img/at/52.png"/></div>
+<div class="character-detail-body">
+<div class="character-detail-head">
+<div><div class="character-detail-name">이니샤</div><div class="character-detail-role">루미나리스 신성제국 황녀 &amp; 판테온 아카데미 정예생</div></div>
+<div class="character-detail-code">G19</div>
+</div>
+<div class="character-detail-profile">ESFP · 3w2(372) · so/sx</div>
+<div class="character-detail-ability"><strong>드래고닉 하임</strong><p>용익으로 공격을 방어해 광휘를 발산하고, 광룡검의 참격궤적을 광흔으로 고정·재점화해 동시 재현하는 능력.</p></div>
+<blockquote class="character-detail-quote">“짐은 반드시 어머님께 부끄럽지 않은 용이 되겠노라.”</blockquote>
+</div>
+</div><div aria-hidden="true" class="character-hover-detail elite-student-character-detail" data-detail-popup="iveliena" id="characterDetail_iveliena">
+<div class="character-detail-art"><img alt="이벨리에나 상세 일러스트" src="img/at/53.png"/></div>
+<div class="character-detail-body">
+<div class="character-detail-head">
+<div><div class="character-detail-name">이벨리에나</div><div class="character-detail-role">판테온 아카데미 정예생</div></div>
+<div class="character-detail-code">G20</div>
+</div>
+<div class="character-detail-profile">INTJ · 1w9(153) · sp/sx</div>
+<div class="character-detail-ability"><strong>나이트메어</strong><p>그림자촉수로 적을 구속하고 가시로 집중관통하며, 그림자잠행으로 그림자 사이를 이동하는 능력.</p></div>
+<blockquote class="character-detail-quote">“...이 정도 유혹쯤은, 충분히 견딜 수 있습니다.”</blockquote>
+</div>
+</div><div aria-hidden="true" class="character-hover-detail elite-student-character-detail" data-detail-popup="monet" id="characterDetail_monet">
+<div class="character-detail-art"><img alt="모네 상세 일러스트" src="img/at/54.png"/></div>
+<div class="character-detail-body">
+<div class="character-detail-head">
+<div><div class="character-detail-name">모네</div><div class="character-detail-role">판테온 아카데미 정예생</div></div>
+<div class="character-detail-code">G21</div>
+</div>
+<div class="character-detail-profile">ISTP · 8w9(874) · sp/sx</div>
+<div class="character-detail-ability"><strong>소닉 블룸</strong><p>반향음파로 지형·생체를 입체탐지하고, 공진을 집속해 내부를 파쇄하며 소닉붐으로 광역 충격파를 가하는 능력.</p></div>
+<blockquote class="character-detail-quote">“깨우지 마... 아직 잘 시간이야...”</blockquote>
+</div>
+</div><div aria-hidden="true" class="character-hover-detail phantom-character-detail" data-detail-popup="corvina" id="characterDetail_corvina">
+<div class="character-detail-art">
+<img alt="코르비나 상세 일러스트" src="img/at/55.png"/>
+</div>
+<div class="character-detail-body">
+<div class="character-detail-head">
+<div>
+<div class="character-detail-name">코르비나</div>
+<div class="character-detail-role">팬텀 스트라이크 길드장</div>
+</div>
+<div class="character-detail-code">P01</div>
+</div>
+<div class="character-detail-profile">ISTJ · 1w2(163) · sp/so</div>
+<div class="character-detail-ability">
+<strong>이모탈 블루</strong>
+<p>청염탄환·깃털로 청염각인을 남겨 연쇄발화시키고, 각인을 공명·연결해 화염선으로 범위를 소각하는 능력.</p>
+</div>
+<blockquote class="character-detail-quote">“…살아 돌아와라. 그게 전부다.”</blockquote>
+</div>
+</div><div aria-hidden="true" class="character-hover-detail phantom-character-detail" data-detail-popup="pantera" id="characterDetail_pantera">
+<div class="character-detail-art">
+<img alt="판테라 상세 일러스트" src="img/at/56.png"/>
+</div>
+<div class="character-detail-body">
+<div class="character-detail-head">
+<div>
+<div class="character-detail-name">판테라</div>
+<div class="character-detail-role">팬텀 스트라이크 부길드장</div>
+</div>
+<div class="character-detail-code">P02</div>
+</div>
+<div class="character-detail-profile">ISTP · 6w5(682) · sx/sp</div>
+<div class="character-detail-ability">
+<strong>포톤 블레이드</strong>
+<p>광입자 칼날의 길이·형태를 변형해 고열로 용융절단하고, 절단궤적에 광열을 잔류시켜 후속 용융을 일으키는 능력.</p>
+</div>
+<blockquote class="character-detail-quote">“누가 손대면… 가만 안 둬.”</blockquote>
+</div>
+</div><div aria-hidden="true" class="character-hover-detail noblesse-character-detail" data-detail-popup="cassia" id="characterDetail_cassia">
+<div class="character-detail-art"><img alt="카시아 상세 일러스트" src="img/at/57.png"/></div>
+<div class="character-detail-body">
+<div class="character-detail-head">
+<div><div class="character-detail-name">카시아</div><div class="character-detail-role">노블레스 길드장</div></div>
+<div class="character-detail-code">Q01</div>
+</div>
+<div class="character-detail-profile">ENFJ · 2w3(293) · so/sx</div>
+<div class="character-detail-ability"><strong>미라마레</strong><p>해파리우산으로 공중부유·낙하제어하고, 마력촉수와 마비전류로 신경마비·감각둔화·연쇄감전을 일으키는 능력.</p></div>
+<blockquote class="character-detail-quote">“차 한 잔 어떠신가요? 이야기는 천천히 들어 드릴게요.”</blockquote>
+</div>
+</div><div aria-hidden="true" class="character-hover-detail noblesse-character-detail" data-detail-popup="formono" id="characterDetail_formono">
+<div class="character-detail-art"><img alt="포르모노 상세 일러스트" src="img/at/58.png"/></div>
+<div class="character-detail-body">
+<div class="character-detail-head">
+<div><div class="character-detail-name">포르모노</div><div class="character-detail-role">노블레스 부길드장</div></div>
+<div class="character-detail-code">Q02</div>
+</div>
+<div class="character-detail-profile">ENFP · 7w6(726) · sx/so</div>
+<div class="character-detail-ability"><strong>운다 세레나</strong><p>수정령으로 수체를 증식시키고 수막으로 충격을 분산하며, 정령을 분열시켜 다중 수막으로 원격 보호하는 능력.</p></div>
+<blockquote class="character-detail-quote">“숨기는 거 없어. 다 보여줘도 상관없거든~”</blockquote>
+</div>
+</div><div aria-hidden="true" class="character-hover-detail wolha-character-detail" data-detail-popup="kagura" id="characterDetail_kagura">
+<div class="character-detail-art">
+<img alt="카구라 상세 일러스트" src="img/at/59.png"/>
+</div>
+<div class="character-detail-body">
+<div class="character-detail-head">
+<div>
+<div class="character-detail-name">카구라</div>
+<div class="character-detail-role">월하 길드장</div>
+</div>
+<div class="character-detail-code">R01</div>
+</div>
+<div class="character-detail-profile">ISTJ · 1w9(156) · sp/sx</div>
+<div class="character-detail-ability">
+<strong>월하천참(月下天斬)</strong>
+<p>초승달형 월광검기를 잔류·중첩해 월륜을 형성하고, 다방향 동시참격과 연속절삭을 가하는 능력.</p>
+</div>
+<blockquote class="character-detail-quote">“자신을 다스리지 못하면 검을 들 자격도 없다.”</blockquote>
+</div>
+</div><div aria-hidden="true" class="character-hover-detail wolha-character-detail" data-detail-popup="eunryeong" id="characterDetail_eunryeong">
+<div class="character-detail-art">
+<img alt="은령 상세 일러스트" src="img/at/60.png"/>
+</div>
+<div class="character-detail-body">
+<div class="character-detail-head">
+<div>
+<div class="character-detail-name">은령</div>
+<div class="character-detail-role">월하 부길드장</div>
+</div>
+<div class="character-detail-code">R02</div>
+</div>
+<div class="character-detail-profile">ENTP · 7w8(738) · sx/so</div>
+<div class="character-detail-ability">
+<strong>요화월영(妖火月影)</strong>
+<p>여우불로 마력을 지속연소시키고 분열·유도해 포위하며, 월영에 은폐시켜 사각에서 기습 발화하는 능력.</p>
+</div>
+<blockquote class="character-detail-quote">“어머~ 그렇게 경계할 필요는 없잖아?”</blockquote>
+</div>
+</div><div aria-hidden="true" class="character-hover-detail calamity-character-detail calamity-avril" data-detail-popup="avril" id="characterDetail_avril">
+<div class="character-detail-art"><img alt="에이브릴 상세 일러스트" src="img/at/61.png"/></div>
+<div class="character-detail-body">
+<div class="character-detail-head">
+<div><div class="character-detail-name">에이브릴</div><div class="character-detail-role">서부 재앙 - 흑룡의 딸</div></div>
+<div class="character-detail-code">CALAMITY</div>
+</div>
+<div class="character-detail-profile">ISTP · 8w9(854) · sp/sx</div>
+<div class="character-detail-ability"><strong>디 엔드</strong><p>심연으로 빛·마력·물질을 침식·붕괴시키고, 흑룡으로 현현해 심연폭류로 전역을 휩쓰는 능력.</p></div>
+<blockquote class="character-detail-quote">“…꺼져. 전부 부숴버리기 전에.”</blockquote>
+</div>
+</div><div aria-hidden="true" class="character-hover-detail calamity-character-detail calamity-notamaya" data-detail-popup="notamaya" id="characterDetail_notamaya">
+<div class="character-detail-art"><img alt="노타마야 상세 일러스트" src="img/at/62.png"/></div>
+<div class="character-detail-body">
+<div class="character-detail-head">
+<div><div class="character-detail-name">노타마야</div><div class="character-detail-role">동부 재앙 - 천귀의 주인</div></div>
+<div class="character-detail-code">CALAMITY</div>
+</div>
+<div class="character-detail-profile">ENTP · 7w2(729) · sx/sp</div>
+<div class="character-detail-ability"><strong>흑사환몽(黑蛇幻夢)</strong><p>그림자뱀 군단과 흑사화로 구속·압살하고, 욕망을 구현한 환몽으로 현실인지를 침식해 의식을 봉쇄하는 능력.</p></div>
+<blockquote class="character-detail-quote">“눈을 뜨고 있어도, 이미 내 꿈속이란다.”</blockquote>
+</div>
+</div><div aria-hidden="true" class="character-hover-detail calamity-character-detail calamity-calypso" data-detail-popup="calypso" id="characterDetail_calypso">
+<div class="character-detail-art"><img alt="칼립사 상세 일러스트" src="img/at/63.png"/></div>
+<div class="character-detail-body">
+<div class="character-detail-head">
+<div><div class="character-detail-name">칼립사</div><div class="character-detail-role">북부 재앙 - 심해의 여왕</div></div>
+<div class="character-detail-code">CALAMITY</div>
+</div>
+<div class="character-detail-profile">INTJ · 8w9(853) · sp/so</div>
+<div class="character-detail-ability"><strong>아비살 크라운</strong><p>심해수압을 재현·상승시켜 범위를 압박하고, 촉수로 구속한 지점에 압력을 집중해 압착하는 능력.</p></div>
+<blockquote class="character-detail-quote">“바다는 원래 내 것이다. 주인이 누구인지 잊은 것은 너희뿐.”</blockquote>
+</div>
+</div><div aria-hidden="true" class="character-hover-detail calamity-character-detail calamity-nyx" data-detail-popup="nyx" id="characterDetail_nyx">
+<div class="character-detail-art"><img alt="닉스 상세 일러스트" src="img/at/64.png"/></div>
+<div class="character-detail-body">
+<div class="character-detail-head">
+<div><div class="character-detail-name">닉스</div><div class="character-detail-role">북부 재앙 - 별의 마녀</div></div>
+<div class="character-detail-code">CALAMITY</div>
+</div>
+<div class="character-detail-profile">INFJ · 1w2(125) · so/sx</div>
+<div class="character-detail-ability"><strong>녹티스 디멘션</strong><p>공간을 절단해 대상을 베고, 공간왜곡으로 공격궤도를 뒤틀며 좌표 간 거리를 접어 순간이동하는 능력.</p></div>
+<blockquote class="character-detail-quote">“어서 오렴. 길을 잃은 아이야.”</blockquote>
+</div>
+</div><div aria-hidden="true" class="character-hover-detail apostle-character-detail" data-detail-popup="nemesis" id="characterDetail_nemesis">
+<div class="character-detail-art">
+<img alt="네메시스 상세 일러스트" src="img/at/65.png"/>
+</div>
+<div class="character-detail-body">
+<div class="character-detail-head">
+<div>
+<div class="character-detail-name">네메시스</div>
+<div class="character-detail-role">닉스의 사도</div>
+</div>
+<div class="character-detail-code">APOSTLE</div>
+</div>
+<div class="character-detail-profile">ISTJ · 6w5(648) · sx/sp</div>
+<div class="character-detail-ability">
+<strong>그래비티 싱귤러티</strong>
+<p>중력의 방향·강도를 조율해 다방향으로 견인·압박하고, 중력점을 중첩해 고중력 붕괴점을 형성하는 능력.</p>
+</div>
+<blockquote class="character-detail-quote">“저항은 자유다. 결과도 감수해야겠지만.”</blockquote>
+</div>
+</div><div aria-hidden="true" class="character-hover-detail apostle-character-detail" data-detail-popup="revern" id="characterDetail_revern">
+<div class="character-detail-art">
+<img alt="레베른 상세 일러스트" src="img/at/66.png"/>
+</div>
+<div class="character-detail-body">
+<div class="character-detail-head">
+<div>
+<div class="character-detail-name">레베른</div>
+<div class="character-detail-role">닉스의 사도</div>
+</div>
+<div class="character-detail-code">APOSTLE</div>
+</div>
+<div class="character-detail-profile">ISFJ · 2w1(269) · sx/sp</div>
+<div class="character-detail-ability">
+<strong>페일 세라프</strong>
+<p>암흑성광을 광선·탄막으로 방출해 마력출력·회복력을 억제하고, 부착된 성광을 일제히 폭발시키는 능력.</p>
+</div>
+<blockquote class="character-detail-quote">“제 목숨은 이미 닉스님께 바쳐진 몸입니다.”</blockquote>
+</div>
+</div><div aria-hidden="true" class="character-hover-detail freelancer-character-detail" data-detail-popup="creamy" id="characterDetail_creamy">
+<div class="character-detail-art">
+<img alt="크리미 상세 일러스트" src="img/at/67.png"/>
+</div>
+<div class="character-detail-body">
+<div class="character-detail-head">
+<div>
+<div class="character-detail-name">크리미</div>
+<div class="character-detail-role">프리랜서</div>
+</div>
+<div class="character-detail-code">FREELANCE</div>
+</div>
+<div class="character-detail-profile">
+      ENFP · 7w6(729) · so/sx
+    </div>
+<div class="character-detail-ability">
+<strong>허니 트리거</strong>
+<p>벌꿀탄으로 점성을 중첩·경화해 움직임을 봉쇄하고, 벌꿀보호막으로 피격무기의 동작을 방해하는 능력.</p>
+</div>
+<blockquote class="character-detail-quote">
+      “이번 의뢰 끝나면 마카롱 사 먹어야지~”
+    </blockquote>
+</div>
+</div><div aria-hidden="true" class="character-hover-detail freelancer-character-detail" data-detail-popup="psita" id="characterDetail_psita">
+<div class="character-detail-art">
+<img alt="프시타 상세 일러스트" src="img/at/68.png"/>
+</div>
+<div class="character-detail-body">
+<div class="character-detail-head">
+<div>
+<div class="character-detail-name">프시타</div>
+<div class="character-detail-role">프리랜서</div>
+</div>
+<div class="character-detail-code">FREELANCE</div>
+</div>
+<div class="character-detail-profile">
+      ESFP · 7w8(738) · so/sx
+    </div>
+<div class="character-detail-ability">
+<strong>재커드 앵커</strong>
+<p>마력닻으로 대상을 구속·지형을 파쇄하고, 마력사슬로 적을 끌어당기거나 자신을 고속이동시키는 능력.</p>
+</div>
+<blockquote class="character-detail-quote">
+      “보물은 못 찾아도 좋아, 이 항해 자체가 이미 낭만이잖아?”
+    </blockquote>
+</div>
+</div><div aria-hidden="true" class="character-hover-detail freelancer-character-detail" data-detail-popup="kirika" id="characterDetail_kirika">
+<div class="character-detail-art">
+<img alt="키리카 상세 일러스트" src="img/at/69.png"/>
+</div>
+<div class="character-detail-body">
+<div class="character-detail-head">
+<div>
+<div class="character-detail-name">키리카</div>
+<div class="character-detail-role">프리랜서</div>
+</div>
+<div class="character-detail-code">FREELANCE</div>
+</div>
+<div class="character-detail-profile">
+      INTJ · 1w9(145) · sp/so
+    </div>
+<div class="character-detail-ability">
+<strong>혈식강림(血蝕降臨)</strong>
+<p>상처의 혈액·생명력을 흡수해 회복·신체강화하고, 혈식이 누적될수록 육체변이와 공격성이 증폭되는 능력.</p>
+</div>
+<blockquote class="character-detail-quote">
+      “...지키지 못한 죄는... 죽을 때까지 내가 짊어진다.”
+    </blockquote>
+</div>
+</div><div aria-hidden="true" class="character-hover-detail freelancer-character-detail" data-detail-popup="gwen" id="characterDetail_gwen">
+<div class="character-detail-art">
+<img alt="그웬 상세 일러스트" src="img/at/70.png"/>
+</div>
+<div class="character-detail-body">
+<div class="character-detail-head">
+<div>
+<div class="character-detail-name">그웬</div>
+<div class="character-detail-role">아이돌 &amp; 프리랜서</div>
+</div>
+<div class="character-detail-code">FREELANCE</div>
+</div>
+<div class="character-detail-profile">
+      ENTJ · 1w2(136) · so/sp
+    </div>
+<div class="character-detail-ability">
+<strong>디바인 크러시</strong>
+<p>빛의 망치의 크기·질량을 증폭시켜 타격하고, 접촉지점을 광폭발·분쇄하는 능력.</p>
+</div>
+<blockquote class="character-detail-quote">
+      “내 노래가 너희에게 힘이 됐으면 좋겠어.”
+    </blockquote>
 </div>
 </div></body>
 </html>
