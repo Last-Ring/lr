@@ -6711,6 +6711,109 @@ body::after {
 }
 </style>
 
+
+<style>
+/* =========================================================
+   개별 이미지 HOVER만 확대
+   ========================================================= */
+
+/* 이전 broad selector 효과 무력화 */
+#tab-char .faction-content-panel img:hover,
+#tab-char .char-card:hover img,
+#tab-char .character-card:hover img,
+#tab-char .member-card:hover img,
+#tab-char .apostle-card:hover img,
+#tab-char .calamity-card:hover img,
+#tab-char .place-card:hover img,
+#tab-char .gate-card:hover img,
+#tab-char .faction-bg:hover img,
+#tab-char .faction-image:hover img,
+#tab-char .location-image:hover img,
+#tab-char .gate-image:hover img{
+  transform:none !important;
+  filter:none !important;
+}
+
+/* 초상화: 해당 초상화 박스에 마우스를 올린 경우에만 */
+#tab-char .char-portrait{
+  overflow:hidden !important;
+}
+#tab-char .char-portrait img{
+  transition:
+    transform .36s cubic-bezier(.22,.72,.26,1),
+    filter .30s ease !important;
+}
+#tab-char .char-portrait:hover img{
+  transform:scale(1.04) !important;
+  filter:brightness(1.045) !important;
+}
+
+/* 사도 */
+#tab-char .apostle-card{
+  overflow:hidden !important;
+}
+#tab-char .apostle-card > img{
+  transition:
+    transform .36s cubic-bezier(.22,.72,.26,1),
+    filter .30s ease !important;
+}
+#tab-char .apostle-card > img:hover{
+  transform:scale(1.04) !important;
+  filter:brightness(1.045) !important;
+}
+
+/* 재앙 초상화 */
+#tab-char .calamity-portrait{
+  overflow:hidden !important;
+}
+#tab-char .calamity-portrait img:hover{
+  transform:scale(1.04) !important;
+  filter:brightness(1.045) !important;
+}
+
+/* 장소/배경: 해당 배경 이미지 영역에 마우스를 올렸을 때만 */
+#tab-char .place-image,
+#tab-char .calamity-scene{
+  overflow:hidden !important;
+}
+#tab-char .place-image img,
+#tab-char .calamity-scene img{
+  transition:
+    transform .40s cubic-bezier(.22,.72,.26,1),
+    filter .32s ease !important;
+}
+#tab-char .place-image:hover img,
+#tab-char .calamity-scene:hover img{
+  transform:scale(1.025) !important;
+  filter:brightness(1.035) !important;
+}
+
+/* 중앙연합 상세정보 대상 카드에 작은 힌트 점 */
+#tab-char .character-detail-trigger{
+  position:relative !important;
+}
+#tab-char .character-detail-trigger::after{
+  content:"";
+  position:absolute;
+  z-index:5;
+  right:7px;
+  top:7px;
+  width:5px;
+  height:5px;
+  border-radius:50%;
+  background:#a98cff;
+  box-shadow:0 0 8px rgba(169,140,255,.70);
+  opacity:.45;
+  pointer-events:none;
+}
+
+/* 상세창 내부 일러스트는 hover 확대 금지 */
+.character-hover-detail img:hover{
+  transform:none !important;
+  filter:none !important;
+}
+</style>
+
 </head>
 <body><div aria-hidden="true" class="shooting-stars"><span class="shooting-star star-a"></span><span class="shooting-star star-b"></span><span class="shooting-star star-c"></span></div>
 <section class="hero">
@@ -7160,11 +7263,11 @@ body::after {
 <div class="place-title">◇ 가디언허브</div>
 <div class="place-desc">헌터 등록·등급 심사·의뢰 접수를 담당하는 중앙연합의 실질적 심장부. 전 지역 헌터가 상시 왕래한다.</div>
 <div class="place-characters char-grid">
-<div class="char-card character-detail-trigger mula-detail-trigger" data-character-detail="mula"><div class="char-portrait"><img alt="뮬라" src="img/ch/01.png"/></div><div class="char-name">뮬라</div><div class="char-role">관측관·인간·B+</div></div>
-<div class="char-card"><div class="char-portrait"><img alt="미스텔라" src="img/ch/02.png"/></div><div class="char-name">미스텔라</div><div class="char-role">의장·엘프·SSS</div></div>
-<div class="char-card"><div class="char-portrait"><img alt="모리건" src="img/ch/03.png"/></div><div class="char-name">모리건</div><div class="char-role">행정관·산양수인·A+</div></div>
-<div class="char-card"><div class="char-portrait"><img alt="아델" src="img/ch/04.png"/></div><div class="char-name">아델</div><div class="char-role">집행관·인간·S+</div></div>
-<div class="char-card"><div class="char-portrait"><img alt="아이리스" src="img/ch/05.png"/></div><div class="char-name">아이리스</div><div class="char-role">접수원·인간·F</div></div>
+<div class="char-card character-detail-trigger mula-detail-trigger mistella-detail-trigger morrigan-detail-trigger adel-detail-trigger iris-detail-trigger lumiere-detail-trigger" data-character-detail="mula" data-character-detail="mula"><div class="char-portrait"><img alt="뮬라" src="img/ch/01.png"/></div><div class="char-name">뮬라</div><div class="char-role">관측관·인간·B+</div data-character-detail="mistella"></div>
+<div class="char-card"><div class="char-portrait"><img alt="미스텔라" src="img/ch/02.png"/></div><div class="char-name">미스텔라</div><div class="char-role">의장·엘프·SSS</div data-character-detail="morrigan"></div>
+<div class="char-card"><div class="char-portrait"><img alt="모리건" src="img/ch/03.png"/></div><div class="char-name">모리건</div><div class="char-role">행정관·산양수인·A+</div data-character-detail="adel"></div>
+<div class="char-card"><div class="char-portrait"><img alt="아델" src="img/ch/04.png"/></div><div class="char-name">아델</div><div class="char-role">집행관·인간·S+</div data-character-detail="iris"></div>
+<div class="char-card"><div class="char-portrait"><img alt="아이리스" src="img/ch/05.png"/></div><div class="char-name">아이리스</div><div class="char-role">접수원·인간·F</div data-character-detail="lumiere"></div>
 </div>
 </div>
 </div>
@@ -7916,13 +8019,147 @@ document.addEventListener("DOMContentLoaded", function () {
 </div>
 
 
+
+
+
+<div id="characterDetail_mula" class="character-hover-detail" data-detail-popup="mula" aria-hidden="true">
+  <div class="character-detail-art">
+    <img src="img/at/01.png" alt="뮬라 상세 일러스트">
+  </div>
+  <div class="character-detail-body">
+    <div class="character-detail-head">
+      <div>
+        <div class="character-detail-name">뮬라</div>
+        <div class="character-detail-role">오르비스 중앙연합 관측관</div>
+      </div>
+      <div class="character-detail-code">A01</div>
+    </div>
+    <div class="character-detail-profile">INTJ · 5w6(513) · sp/so</div>
+    <div class="character-detail-ability">
+      <strong>아스트랄 에코</strong>
+      <p>별빛을 반사해 광범위를 관측하고, 모은 별빛으로 활을 구현해 원거리 표적을 정밀 저격하는 능력.</p>
+    </div>
+    <blockquote class="character-detail-quote">“해석, 형태, 연역. 그리고 생존. 그것이 내가 관측하는 이유.”</blockquote>
+  </div>
+</div>
+
+
+<div id="characterDetail_mistella" class="character-hover-detail" data-detail-popup="mistella" aria-hidden="true">
+  <div class="character-detail-art">
+    <img src="img/at/02.png" alt="미스텔라 상세 일러스트">
+  </div>
+  <div class="character-detail-body">
+    <div class="character-detail-head">
+      <div>
+        <div class="character-detail-name">미스텔라</div>
+        <div class="character-detail-role">오르비스 중앙연합 의장</div>
+      </div>
+      <div class="character-detail-code">A02</div>
+    </div>
+    <div class="character-detail-profile">ENFP · 9w8(948) · sp/sx</div>
+    <div class="character-detail-ability">
+      <strong>크로니클 오브 타임</strong>
+      <p>시간을 조작·왜곡해 대상의 시간 흐름을 교란하고 동작 지연과 감각 오차를 유발하는 능력.</p>
+    </div>
+    <blockquote class="character-detail-quote">“일하기 싫어… 나 오늘만 쉬면 안 돼애? 응? 응?”</blockquote>
+  </div>
+</div>
+
+
+<div id="characterDetail_morrigan" class="character-hover-detail" data-detail-popup="morrigan" aria-hidden="true">
+  <div class="character-detail-art">
+    <img src="img/at/03.png" alt="모리건 상세 일러스트">
+  </div>
+  <div class="character-detail-body">
+    <div class="character-detail-head">
+      <div>
+        <div class="character-detail-name">모리건</div>
+        <div class="character-detail-role">오르비스 중앙연합 행정관</div>
+      </div>
+      <div class="character-detail-code">A03</div>
+    </div>
+    <div class="character-detail-profile">ISFJ · 1w6(162) · sp/so</div>
+    <div class="character-detail-ability">
+      <strong>아케인 혼</strong>
+      <p>마력거각에 마력을 집속해 돌진하며 방어를 관통하고 직선으로 돌파하는 능력.</p>
+    </div>
+    <blockquote class="character-detail-quote">“하아… 퇴근하고 싶네요.”</blockquote>
+  </div>
+</div>
+
+
+<div id="characterDetail_adel" class="character-hover-detail" data-detail-popup="adel" aria-hidden="true">
+  <div class="character-detail-art">
+    <img src="img/at/04.png" alt="아델 상세 일러스트">
+  </div>
+  <div class="character-detail-body">
+    <div class="character-detail-head">
+      <div>
+        <div class="character-detail-name">아델</div>
+        <div class="character-detail-role">오르비스 중앙연합 집행관</div>
+      </div>
+      <div class="character-detail-code">A04</div>
+    </div>
+    <div class="character-detail-profile">ISTP · 8w7(835) · so/sp</div>
+    <div class="character-detail-ability">
+      <strong>사지타리우스</strong>
+      <p>유도형 광휘화살을 분열해 광역 난사하거나 집속해 파괴력을 극대화하는 능력.</p>
+    </div>
+    <blockquote class="character-detail-quote">“난 해야 할 일을 했을 뿐이야.”</blockquote>
+  </div>
+</div>
+
+
+<div id="characterDetail_iris" class="character-hover-detail" data-detail-popup="iris" aria-hidden="true">
+  <div class="character-detail-art">
+    <img src="img/at/05.png" alt="아이리스 상세 일러스트">
+  </div>
+  <div class="character-detail-body">
+    <div class="character-detail-head">
+      <div>
+        <div class="character-detail-name">아이리스</div>
+        <div class="character-detail-role">가디언허브 접수원</div>
+      </div>
+      <div class="character-detail-code">A05</div>
+    </div>
+    <div class="character-detail-profile">ESFJ · 2w3(236) · so/sx</div>
+    <div class="character-detail-ability">
+      <strong>無</strong>
+      <p>호신용 권총.</p>
+    </div>
+    <blockquote class="character-detail-quote">“어서 오세요! 오늘도 안전한 하루 되세요!”</blockquote>
+  </div>
+</div>
+
+
+<div id="characterDetail_lumiere" class="character-hover-detail" data-detail-popup="lumiere" aria-hidden="true">
+  <div class="character-detail-art">
+    <img src="img/at/06.png" alt="르미에르 상세 일러스트">
+  </div>
+  <div class="character-detail-body">
+    <div class="character-detail-head">
+      <div>
+        <div class="character-detail-name">르미에르</div>
+        <div class="character-detail-role">라이프헤븐 의무관</div>
+      </div>
+      <div class="character-detail-code">A06</div>
+    </div>
+    <div class="character-detail-profile">ESTJ · 8w9(826) · sp/so</div>
+    <div class="character-detail-ability">
+      <strong>세인트 블러드</strong>
+      <p>혈액을 조작해 출혈·혈류를 제어하여 치료하거나 응축·변형해 무기화하는 능력.</p>
+    </div>
+    <blockquote class="character-detail-quote">“죽긴 싫잖아. 그럼 얌전히 처 누워, 씨발련아”</blockquote>
+  </div>
+</div>
+
+
 <script>
 (() => {
-  const trigger = document.querySelector('.mula-detail-trigger');
-  const popup = document.getElementById('characterDetailMula');
-  if (!trigger || !popup) return;
+  const triggers = document.querySelectorAll('[data-character-detail]');
+  if (!triggers.length) return;
 
-  function positionPopup() {
+  function positionPopup(trigger, popup) {
     const r = trigger.getBoundingClientRect();
     const safe = 14;
     const gap = 14;
@@ -7952,27 +8189,46 @@ document.addEventListener("DOMContentLoaded", function () {
     popup.style.top = Math.round(top) + 'px';
   }
 
-  function show() {
-    if (window.matchMedia('(hover: none)').matches) return;
-    positionPopup();
-    popup.classList.add('visible');
-    popup.setAttribute('aria-hidden','false');
+  function hideAll() {
+    document.querySelectorAll('[data-detail-popup].visible').forEach(p => {
+      p.classList.remove('visible');
+      p.setAttribute('aria-hidden','true');
+    });
   }
 
-  function hide() {
-    popup.classList.remove('visible');
-    popup.setAttribute('aria-hidden','true');
-  }
+  triggers.forEach(trigger => {
+    const key = trigger.dataset.characterDetail;
+    const popup = document.querySelector(`[data-detail-popup="${key}"]`);
+    if (!popup) return;
 
-  trigger.addEventListener('mouseenter', show);
-  trigger.addEventListener('mouseleave', hide);
+    trigger.addEventListener('mouseenter', () => {
+      if (window.matchMedia('(hover: none)').matches) return;
+      hideAll();
+      positionPopup(trigger, popup);
+      popup.classList.add('visible');
+      popup.setAttribute('aria-hidden','false');
+    });
+
+    trigger.addEventListener('mouseleave', () => {
+      popup.classList.remove('visible');
+      popup.setAttribute('aria-hidden','true');
+    });
+  });
 
   window.addEventListener('scroll', () => {
-    if (popup.classList.contains('visible')) positionPopup();
+    const popup = document.querySelector('[data-detail-popup].visible');
+    if (!popup) return;
+    const key = popup.dataset.detailPopup;
+    const trigger = document.querySelector(`[data-character-detail="${key}"]`);
+    if (trigger) positionPopup(trigger, popup);
   }, {passive:true});
 
   window.addEventListener('resize', () => {
-    if (popup.classList.contains('visible')) positionPopup();
+    const popup = document.querySelector('[data-detail-popup].visible');
+    if (!popup) return;
+    const key = popup.dataset.detailPopup;
+    const trigger = document.querySelector(`[data-character-detail="${key}"]`);
+    if (trigger) positionPopup(trigger, popup);
   });
 })();
 </script>
