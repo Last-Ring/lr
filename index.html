@@ -142,7 +142,7 @@
   @keyframes drop { 0%{opacity:0;} 30%{opacity:1;} 100%{opacity:0; transform: translateY(6px);} }
 
   /* ---------- ARCHIVE SECTION ---------- */
-  .archive { position: relative; max-width: 880px; margin: 0 auto; padding: 30px 20px 140px; }
+  .archive { position: relative; max-width: 1080px; margin: 0 auto; padding: 30px 20px 140px; }
 
   /* ---------- TABS ---------- */
   .tab-bar {
@@ -191,9 +191,9 @@
   .tab-panel { display: none; }
   .tab-panel.active { display: block; }
 
-  /* ---------- WORLD SETTING ---------- */
+  /* ---------- THE LAST HUMAN DOMAIN ---------- */
   .world-setting {
-    max-width: 780px;
+    max-width: 980px;
     margin: 0 auto;
     padding: 8px 0 36px;
   }
@@ -343,25 +343,143 @@
   }
   .info-card strong { color:var(--bone);font-weight:600; }
 
-  .rank-strip {
-    display:flex;
-    flex-wrap:wrap;
-    gap:5px;
-    margin:10px 0 2px;
+  .rank-ladder {
+    margin-top: 12px;
+    display: grid;
+    gap: 10px;
   }
-  .rank-strip span {
-    min-width:34px;
-    padding:5px 6px;
-    text-align:center;
-    border:1px solid #303641;
-    background:#101319;
-    font-family:'JetBrains Mono',monospace;
+
+  .rank-tier {
+    position: relative;
+    overflow: hidden;
+    display: grid;
+    grid-template-columns: 112px 1fr;
+    align-items: stretch;
+    border: 1px solid #303641;
+    background: linear-gradient(135deg, #11141a, #0b0d11);
+  }
+
+  .rank-tier::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    opacity: .45;
+  }
+
+  .rank-tier-label {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 13px 14px;
+    border-right: 1px solid rgba(255,255,255,.08);
+  }
+
+  .rank-tier-label strong {
+    font-family: 'Cinzel', serif;
+    font-size: 17px;
+    letter-spacing: .08em;
+    line-height: 1;
+  }
+
+  .rank-tier-label span {
+    margin-top: 5px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    letter-spacing: .12em;
+    color: #6f7681;
+  }
+
+  .rank-tier-values {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 7px;
+    padding: 12px 14px;
+  }
+
+  .rank-chip {
+    min-width: 42px;
+    padding: 7px 10px;
+    text-align: center;
+    border: 1px solid rgba(255,255,255,.10);
+    background: rgba(255,255,255,.028);
+    font-family: 'JetBrains Mono', monospace;
     font-size: 11.5px;
-    color:#b7bec8;
+    font-weight: 600;
+    letter-spacing: .04em;
   }
-  .rank-strip span:nth-last-child(-n+5) {
-    border-color:rgba(139,92,246,.35);
-    color:#c8b8ff;
+
+  .rank-tier.low {
+    border-color: #39404a;
+  }
+  .rank-tier.low .rank-tier-label strong,
+  .rank-tier.low .rank-chip {
+    color: #aeb5bf;
+  }
+  .rank-tier.low::before {
+    background: linear-gradient(90deg, rgba(160,170,180,.08), transparent 45%);
+  }
+
+  .rank-tier.mid {
+    border-color: rgba(82,143,167,.38);
+  }
+  .rank-tier.mid .rank-tier-label strong,
+  .rank-tier.mid .rank-chip {
+    color: #82bfd2;
+  }
+  .rank-tier.mid::before {
+    background: linear-gradient(90deg, rgba(64,143,170,.11), transparent 50%);
+  }
+
+  .rank-tier.high {
+    border-color: rgba(201,163,94,.42);
+  }
+  .rank-tier.high .rank-tier-label strong,
+  .rank-tier.high .rank-chip {
+    color: #d7b574;
+  }
+  .rank-tier.high::before {
+    background: linear-gradient(90deg, rgba(201,163,94,.12), transparent 55%);
+  }
+
+  .rank-tier.apex {
+    border-color: rgba(139,92,246,.52);
+    box-shadow: inset 0 0 24px rgba(139,92,246,.035);
+  }
+  .rank-tier.apex .rank-tier-label strong,
+  .rank-tier.apex .rank-chip {
+    color: #c1a7ff;
+  }
+  .rank-tier.apex::before {
+    background:
+      radial-gradient(circle at 90% 50%, rgba(139,92,246,.12), transparent 30%),
+      linear-gradient(90deg, rgba(139,92,246,.13), transparent 58%);
+  }
+
+  .rank-tier.catastrophic {
+    border-color: rgba(179,39,44,.58);
+    box-shadow: inset 0 0 26px rgba(179,39,44,.045);
+  }
+  .rank-tier.catastrophic .rank-tier-label strong,
+  .rank-tier.catastrophic .rank-chip {
+    color: #e06f75;
+  }
+  .rank-tier.catastrophic::before {
+    background:
+      linear-gradient(105deg, rgba(179,39,44,.16), transparent 46%),
+      radial-gradient(circle at 88% 50%, rgba(179,39,44,.10), transparent 28%);
+  }
+
+  @media (max-width: 650px) {
+    .rank-tier {
+      grid-template-columns: 1fr;
+    }
+
+    .rank-tier-label {
+      border-right: 0;
+      border-bottom: 1px solid rgba(255,255,255,.08);
+    }
   }
 
   .gate-box {
@@ -469,7 +587,7 @@
 
   .acc-body { max-height: 0; overflow: hidden; transition: max-height 0.4s ease; }
   .acc-body-inner {
-    padding: 0 20px 22px 46px;
+    padding: 0 28px 28px 28px;
     font-size: 16px; line-height: 1.85; color: var(--ash);
   }
   .acc-body-inner p { margin: 0 0 10px; }
@@ -977,7 +1095,7 @@
   .faction-phantom .acc-head::before {
     left: -36px;
     top: -18px;
-    width: 150px;
+    width: 180px;
     height: 120px;
     background:
       linear-gradient(118deg, transparent 0 40%, rgba(193,42,52,.22) 41% 55%, transparent 56%);
@@ -1241,7 +1359,7 @@
 
   /* ---------- PLACE BACKGROUNDS ---------- */
   .place-card {
-    margin-top: 24px;
+    margin-top: 32px;
     border: 1px solid rgba(255,255,255,.09);
     background: rgba(255,255,255,.018);
     overflow: hidden;
@@ -1249,7 +1367,7 @@
 
   .place-image {
     position: relative;
-    aspect-ratio: 8 / 3.35;
+    aspect-ratio: 16 / 7;
     overflow: hidden;
     background: #11141a;
   }
@@ -1306,7 +1424,7 @@
   .gate-visual-grid {
     display: grid;
     grid-template-columns: repeat(2,minmax(0,1fr));
-    gap: 12px;
+    gap: 18px;
     margin-top: 18px;
   }
   .gate-visual-card {
@@ -1317,7 +1435,7 @@
   .gate-visual-card.wide { grid-column: 1 / -1; }
   .gate-visual-card img {
     width: 100%;
-    aspect-ratio: 8 / 3.35;
+    aspect-ratio: 16 / 7;
     object-fit: cover;
     display: block;
   }
@@ -1330,7 +1448,7 @@
   /* ---------- CALAMITY GROUPS ---------- */
   .calamity-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
     gap: 10px;
     margin-top: 20px;
   }
@@ -1459,8 +1577,8 @@
   /* ---------- CHARACTER CARDS ---------- */
   .char-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
-    gap: 10px;
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+    gap: 16px;
     margin-top: 4px;
   }
   .char-card {
@@ -1477,6 +1595,8 @@
     object-position: center top;
     display: block;
     image-rendering: auto;
+    transform: translateZ(0);
+    backface-visibility: hidden;
   }
 
   .char-portrait {
@@ -1490,12 +1610,12 @@
   }
   .char-name {
     font-size: 14.5px; font-weight: 600; color: var(--bone);
-    padding: 6px 4px 1px;
+    padding: 9px 6px 3px;
   }
   .char-role {
     font-family: 'JetBrains Mono', monospace;
     font-size: 11.5px; color: var(--gold);
-    padding: 0 4px 6px;
+    padding: 0 6px 9px;
   }
   .sub-indent { margin-left: 16px; padding-left: 12px; border-left: 1px dashed var(--line); }
 
@@ -1604,7 +1724,7 @@
 
       <div class="setting-intro">
         <div class="setting-kicker">ORBIS // WORLD DATA</div>
-        <h2>오르비스 세계관 설정</h2>
+        <h2>오르비스, 마지막 생존권</h2>
         <p>
           한때 세계는 끝없이 이어져 있었다. 그러나 게이트가 열린 뒤, 인류의 지도에는 돌아갈 수 없는 땅이 하나씩 늘어났다.
           지금 남은 것은 서로의 숨결이 닿을 만큼 가까워진 중심 생존권뿐이다. 그 좁은 고리를 지탱하는 것은 군대도 성벽도 아닌,
@@ -1687,23 +1807,53 @@
       <section class="setting-section">
         <div class="setting-section-head">
           <span class="setting-section-no">03</span>
-          <span class="setting-section-title">헌터와 게이트 시스템</span>
+          <span class="setting-section-title">헌터와 게이트, 생존권의 최전선</span>
           <span class="setting-section-en">SYSTEM</span>
         </div>
         <div class="setting-section-body">
           <div class="info-card wide">
             <div class="info-label">현재 세계의 상태</div>
-            <p>인류는 오래전에 ‘되찾는 전쟁’에서 패배했다. 지금 지키는 것은 <strong>중심 생존권</strong>, 단 하나뿐이다.
-            구세계 탈환은 번번이 실패했고 균열은 멈추지 않는다. 오늘도 생존권이 유지되는 이유는,
-            누군가가 성벽 밖이 아니라 게이트 안쪽에서 싸우고 있기 때문이다.</p>
+            <p>인류는 오래전에 ‘되찾는 전쟁’에서 패배했다. 지금 지켜야 하는 것은 <strong>중심 생존권</strong>, 단 하나뿐이다.
+            구세계 탈환은 번번이 실패했고 균열은 여전히 멈추지 않는다.
+            그래서 헌터는 선택받은 영웅이기 전에, 생존권의 가장 바깥을 떠받치는 마지막 전선이 되었다.</p>
           </div>
 
           <div class="info-card wide" style="margin-top:10px;">
             <div class="info-label">헌터 등급</div>
-            <div class="rank-strip">
-              <span>F</span><span>F+</span><span>E</span><span>E+</span><span>D</span><span>D+</span>
-              <span>C</span><span>C+</span><span>B</span><span>B+</span><span>A</span><span>A+</span>
-              <span>S</span><span>S+</span><span>SS</span><span>SS+</span><span>SSS</span>
+            <div class="hunter-ranks">
+              <span class="hunter-rank r-f">F</span>
+              <span class="rank-separator">&lt;</span>
+              <span class="hunter-rank r-fp">F+</span>
+              <span class="rank-separator">&lt;</span>
+              <span class="hunter-rank r-e">E</span>
+              <span class="rank-separator">&lt;</span>
+              <span class="hunter-rank r-ep">E+</span>
+              <span class="rank-separator">&lt;</span>
+              <span class="hunter-rank r-d">D</span>
+              <span class="rank-separator">&lt;</span>
+              <span class="hunter-rank r-dp">D+</span>
+              <span class="rank-separator">&lt;</span>
+              <span class="hunter-rank r-c">C</span>
+              <span class="rank-separator">&lt;</span>
+              <span class="hunter-rank r-cp">C+</span>
+              <span class="rank-separator">&lt;</span>
+              <span class="hunter-rank r-b">B</span>
+              <span class="rank-separator">&lt;</span>
+              <span class="hunter-rank r-bp">B+</span>
+              <span class="rank-separator">&lt;</span>
+              <span class="hunter-rank r-a">A</span>
+              <span class="rank-separator">&lt;</span>
+              <span class="hunter-rank r-ap">A+</span>
+              <span class="rank-separator">&lt;</span>
+              <span class="hunter-rank r-s">S</span>
+              <span class="rank-separator">&lt;</span>
+              <span class="hunter-rank r-sp">S+</span>
+              <span class="rank-separator">&lt;</span>
+              <span class="hunter-rank r-ss">SS</span>
+              <span class="rank-separator">&lt;</span>
+              <span class="hunter-rank r-ssp">SS+</span>
+              <span class="rank-separator">&lt;</span>
+              <span class="hunter-rank r-sss">SSS</span>
             </div>
           </div>
 
@@ -1713,9 +1863,9 @@
             등급이 높을수록 빛과 온도, 지형과 공기마저 인간에게 적대적으로 변한다. 재앙을 제외한 대부분의 괴수에게 지성은 없고,
             오직 마력원을 찾아 포식하려는 본능만이 남아 있다.</p>
             <div class="gate-box">
-              <div class="gate-line"><span class="gate-mark">CORE</span><span>보스는 코어룸에 존재한다. 보스가 살아 있는 동안 게이트가 유지된다.</span></div>
-              <div class="gate-line"><span class="gate-mark">CLEAR</span><span>보스가 사망하면 게이트가 붕괴하고, 내부 인원은 처음 진입했던 위치로 자동 귀환한다.</span></div>
-              <div class="gate-line"><span class="gate-mark">BREACH</span><span>게이트를 방치하면 주변 일대가 테라포밍되며 괴수가 외부로 유출된다. 확산 속도는 게이트 등급에 비례한다.</span></div>
+              <div class="gate-line"><span class="gate-mark">핵심</span><span>보스는 코어룸에 존재한다. 보스가 살아 있는 동안 게이트가 유지된다.</span></div>
+              <div class="gate-line"><span class="gate-mark">붕괴</span><span>보스가 사망하면 게이트가 붕괴하고, 내부 인원은 처음 진입했던 위치로 자동 귀환한다.</span></div>
+              <div class="gate-line"><span class="gate-mark">침식</span><span>게이트를 방치하면 주변 일대가 테라포밍되며 괴수가 외부로 유출된다. 확산 속도는 게이트 등급에 비례한다.</span></div>
 
           <div class="gate-visual-grid">
             <div class="gate-visual-card">
@@ -1747,29 +1897,32 @@
       <section class="setting-section">
         <div class="setting-section-head">
           <span class="setting-section-no">04</span>
-          <span class="setting-section-title">판테온 아카데미 규칙</span>
-          <span class="setting-section-en">PANTHEON RULES</span>
+          <span class="setting-section-title">판테온 아카데미, 살아 돌아오기 위해 세워진 곳</span>
+          <span class="setting-section-en">PANTHEON ACADEMY</span>
         </div>
 
         <div class="setting-section-body">
 
           <div class="academy-rule">
-            <div class="academy-rule-key">설립 이념</div>
+            <div class="academy-rule-key">영웅보다 생존자를</div>
             <div class="academy-rule-value">
-              판테온이 가장 먼저 가르치는 것은 ‘재능은 축복이 아니다’라는 사실이다.
-              강한 아이일수록 더 빨리 전선에 보내지고, 더 빨리 이름이 묘비에 새겨지던 시대가 있었다.
-              그래서 이곳의 목표는 영웅을 만드는 것이 아니다.
-              <strong>싸운 뒤에도 살아 돌아오는 법을 가르치는 것</strong>,
-              그것이 판테온이 존재하는 이유다.
+              재능이 축복으로만 불리던 시대는 오래전에 끝났다.
+              강한 아이들은 누구보다 먼저 균열 앞에 세워졌고,
+              수많은 이름이 영웅이라는 찬사보다 먼저 묘비에 새겨졌다.
+              판테온은 그 비극을 되풀이하지 않기 위해 세워졌다.
+              이곳에서 가르치는 것은 화려하게 죽는 법이 아니라,
+              <strong>끝까지 싸우고도 살아 돌아오는 법</strong>이다.
             </div>
           </div>
 
           <div class="academy-rule">
-            <div class="academy-rule-key">학생 체계</div>
+            <div class="academy-rule-key">학생 서열</div>
             <div class="academy-rule-value">
-              판테온의 학생은 <strong>후보생·정규생·정예생</strong>으로 나뉜다.
+              판테온 아카데미의 학생은 <strong>후보생·정규생·정예생</strong>으로 나뉜다.
               입학한 학생은 후보생으로 시작하며,
               해가 바뀔 때마다 정규생과 정예생으로 차례로 승급한다.
+              이름이 올라갈수록 수업은 실전에 가까워지고,
+              그들이 마주해야 할 전장 역시 한층 더 깊어진다.
             </div>
           </div>
 
@@ -2413,13 +2566,13 @@
 <!-- redeploy -->
 <style>
   .place-characters.char-grid {
-    grid-template-columns: repeat(auto-fill, minmax(150px, 150px));
+    grid-template-columns: repeat(auto-fill, minmax(180px, 180px));
     justify-content: start;
-    gap: 12px;
+    gap: 18px;
   }
 
   .place-characters .char-card {
-    width: 150px;
+    width: 180px;
   }
 
   .place-characters .char-portrait {
@@ -2436,4 +2589,150 @@
       width: auto;
     }
   }
+</style>
+
+<style>
+  @media (max-width: 900px) {
+    .archive {
+      max-width: 100%;
+      padding-left: 18px;
+      padding-right: 18px;
+    }
+
+    .place-characters.char-grid {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+
+    .place-characters .char-card {
+      width: auto;
+    }
+  }
+
+  @media (max-width: 650px) {
+    .place-characters.char-grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 12px;
+    }
+
+    .acc-body-inner {
+      padding-left: 18px;
+      padding-right: 18px;
+    }
+  }
+
+  /* ---------- HUNTER RANKS ---------- */
+  .hunter-ranks {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 14px;
+    padding: 16px 18px;
+    border: 1px solid var(--line);
+    background: linear-gradient(135deg, rgba(255,255,255,.025), rgba(139,92,246,.018));
+  }
+
+  .hunter-rank {
+    min-width: 48px;
+    padding: 9px 12px;
+    text-align: center;
+    border: 1px solid currentColor;
+    background: rgba(255,255,255,.025);
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 13.5px;
+    font-weight: 700;
+    letter-spacing: .03em;
+    box-shadow: inset 0 0 14px rgba(255,255,255,.015);
+  }
+
+  /* 서로 가까운 등급끼리 비슷한 색, 위로 갈수록 자연스럽게 변화 */
+  .r-f   { color:#8f98a5; }
+  .r-fp  { color:#98a4b2; }
+  .r-e   { color:#91a9bb; }
+  .r-ep  { color:#86b2c6; }
+  .r-d   { color:#70b8cb; }
+  .r-dp  { color:#5ebfd0; }
+  .r-c   { color:#63c7b6; }
+  .r-cp  { color:#79c99a; }
+  .r-b   { color:#94ca7c; }
+  .r-bp  { color:#b2c96d; }
+  .r-a   { color:#d3bd63; }
+  .r-ap  { color:#dda95f; }
+  .r-s   { color:#e49362; }
+  .r-sp  { color:#dd786d; }
+  .r-ss  { color:#c36f9f; }
+  .r-ssp { color:#a873ce; }
+  .r-sss {
+    color:#e15e68;
+    box-shadow:
+      inset 0 0 16px rgba(225,94,104,.05),
+      0 0 10px rgba(225,94,104,.08);
+  }
+
+  /* ---------- CORE / CLEAR / BREACH ALIGNMENT ---------- */
+  .gate-box {
+    margin-top: 14px;
+    padding: 15px 16px;
+  }
+
+  .gate-line {
+    display: grid;
+    grid-template-columns: 88px minmax(0, 1fr);
+    column-gap: 18px;
+    align-items: start;
+    margin-bottom: 12px;
+    color: var(--ash);
+    font-size: 15px;
+    line-height: 1.7;
+  }
+
+  .gate-line:last-child {
+    margin-bottom: 0;
+  }
+
+  .gate-mark {
+    width: 88px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: .05em;
+    text-align: left;
+    white-space: nowrap;
+  }
+
+  .gate-line:nth-child(1) .gate-mark { color:#69a9ff; }
+  .gate-line:nth-child(2) .gate-mark { color:#72ca87; }
+  .gate-line:nth-child(3) .gate-mark { color:#e45d66; }
+
+  @media (max-width:650px) {
+    .hunter-ranks {
+      gap: 6px;
+      padding: 13px;
+    }
+
+    .hunter-rank {
+      min-width: 42px;
+      padding: 8px 9px;
+    }
+
+    .gate-line {
+      grid-template-columns: 72px minmax(0, 1fr);
+      column-gap: 12px;
+    }
+
+    .gate-mark {
+      width: 72px;
+    }
+  }
+
+
+  .rank-separator {
+    align-self: center;
+    color: #59616d;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 15px;
+    font-weight: 600;
+    line-height: 1;
+    opacity: .9;
+  }
+
 </style>
