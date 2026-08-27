@@ -6244,6 +6244,473 @@ body::after {
 }
 </style>
 
+
+<style>
+/* =========================================================
+   MULA CHARACTER HOVER DETAIL
+   ========================================================= */
+#tab-char .mula-detail-trigger{
+  position:relative !important;
+  cursor:default;
+}
+#tab-char .mula-detail-trigger::after{
+  content:"";
+  position:absolute;
+  z-index:4;
+  right:7px;
+  top:7px;
+  width:5px;
+  height:5px;
+  border-radius:50%;
+  background:#a98cff;
+  box-shadow:0 0 8px rgba(169,140,255,.72);
+  opacity:.5;
+  pointer-events:none;
+}
+
+.character-hover-detail{
+  position:fixed;
+  z-index:99999;
+  width:min(500px,calc(100vw - 32px));
+  overflow:hidden;
+  border:1px solid rgba(164,137,218,.36);
+  background:
+    radial-gradient(circle at 82% 12%,rgba(132,98,197,.10),transparent 30%),
+    linear-gradient(145deg,rgba(255,255,255,.02),transparent 45%),
+    rgba(8,10,16,.98);
+  box-shadow:
+    0 22px 58px rgba(0,0,0,.48),
+    0 0 30px rgba(119,85,180,.10),
+    inset 0 1px 0 rgba(255,255,255,.045);
+
+  opacity:0;
+  visibility:hidden;
+  transform:translateY(8px) scale(.985);
+  transform-origin:top left;
+  pointer-events:none;
+
+  transition:
+    opacity .18s ease,
+    visibility .18s ease,
+    transform .20s cubic-bezier(.22,.72,.26,1);
+}
+.character-hover-detail.visible{
+  opacity:1;
+  visibility:visible;
+  transform:translateY(0) scale(1);
+}
+
+.character-detail-art{
+  position:relative;
+  width:100%;
+  aspect-ratio:16 / 7;
+  overflow:hidden;
+  background:#080a10;
+  border-bottom:1px solid rgba(255,255,255,.07);
+}
+.character-detail-art::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  pointer-events:none;
+  background:
+    linear-gradient(to top,rgba(7,8,13,.34),transparent 44%),
+    linear-gradient(90deg,rgba(7,8,13,.10),transparent 26%,transparent 74%,rgba(7,8,13,.10));
+}
+.character-detail-art img{
+  display:block;
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  object-position:center;
+}
+
+.character-detail-body{
+  padding:19px 21px 20px;
+}
+.character-detail-head{
+  display:flex;
+  justify-content:space-between;
+  align-items:flex-start;
+  gap:18px;
+  margin-bottom:11px;
+}
+.character-detail-name{
+  margin-bottom:3px;
+  color:#e6def1;
+  font-size:24px;
+  font-weight:800;
+  line-height:1.25;
+}
+.character-detail-role{
+  color:#aa8bdd;
+  font-size:13.5px;
+  font-weight:700;
+  line-height:1.5;
+}
+.character-detail-code{
+  flex:0 0 auto;
+  margin-top:3px;
+  color:#726686;
+  font-family:'JetBrains Mono',monospace;
+  font-size:10px;
+  font-weight:700;
+  letter-spacing:.12em;
+}
+.character-detail-profile{
+  display:inline-block;
+  margin-bottom:14px;
+  padding:5px 9px;
+  border:1px solid rgba(149,123,201,.18);
+  background:rgba(133,99,189,.045);
+  color:#929aa7;
+  font-family:'JetBrains Mono',monospace;
+  font-size:11px;
+  font-weight:600;
+  letter-spacing:.035em;
+}
+.character-detail-ability{
+  margin-bottom:15px;
+  padding:13px 14px;
+  border-left:2px solid rgba(165,136,220,.55);
+  background:linear-gradient(90deg,rgba(131,96,188,.065),transparent 78%);
+}
+.character-detail-ability strong{
+  display:block;
+  margin-bottom:6px;
+  color:#ba9de9;
+  font-size:14.5px;
+  font-weight:800;
+}
+.character-detail-ability p{
+  margin:0;
+  color:#a5acb7;
+  font-size:13.5px;
+  line-height:1.8;
+  word-break:keep-all;
+}
+.character-detail-quote{
+  position:relative;
+  margin:0;
+  padding:14px 15px 13px 20px;
+  border:0;
+  border-top:1px solid rgba(255,255,255,.06);
+  color:#bbb6c3;
+  font-size:13px;
+  font-style:normal;
+  line-height:1.75;
+  word-break:keep-all;
+}
+.character-detail-quote::before{
+  content:"“";
+  position:absolute;
+  left:2px;
+  top:7px;
+  color:#756390;
+  font-size:24px;
+  line-height:1;
+}
+
+@media(max-width:700px), (hover:none){
+  .character-hover-detail{display:none !important;}
+}
+@media(prefers-reduced-motion:reduce){
+  .character-hover-detail{transition:none !important;}
+}
+</style>
+
+
+<style>
+/* =========================================================
+   HERO EFFECT BOOST
+   ========================================================= */
+
+/* 천구 전체 존재감 강화 */
+.hero-celestial{
+  width:min(1180px,94vw) !important;
+  height:min(760px,76vw) !important;
+  top:44% !important;
+}
+
+/* 궤도선 더 또렷하게 */
+.orbit-a{
+  border-color:rgba(150,158,205,.18) !important;
+  box-shadow:
+    0 0 18px rgba(95,104,166,.04),
+    inset 0 0 24px rgba(119,96,181,.025) !important;
+}
+
+.orbit-b{
+  border-color:rgba(150,123,205,.15) !important;
+  border-width:1px !important;
+}
+
+.orbit-c{
+  border-color:rgba(183,158,224,.13) !important;
+  box-shadow:
+    0 0 0 42px rgba(102,88,157,.03),
+    0 0 0 88px rgba(65,75,129,.018),
+    0 0 34px rgba(118,92,177,.04) !important;
+}
+
+/* 추가 광원 링 */
+.hero-celestial::before{
+  content:"";
+  position:absolute;
+  left:50%;
+  top:50%;
+  width:46%;
+  height:46%;
+  transform:translate(-50%,-50%);
+  border-radius:50%;
+  border:1px solid rgba(202,184,255,.10);
+  box-shadow:
+    0 0 22px rgba(155,126,219,.08),
+    0 0 54px rgba(106,80,170,.05),
+    inset 0 0 26px rgba(206,191,255,.025);
+  animation:heroCorePulse 4.2s ease-in-out infinite alternate;
+}
+
+@keyframes heroCorePulse{
+  from{
+    opacity:.35;
+    transform:translate(-50%,-50%) scale(.97);
+  }
+  to{
+    opacity:.92;
+    transform:translate(-50%,-50%) scale(1.035);
+  }
+}
+
+/* 기존 유성 유지 + 라이트 스윕 추가 */
+.hero-celestial::after{
+  width:170px !important;
+  height:1px !important;
+  background:
+    linear-gradient(
+      90deg,
+      transparent 0%,
+      rgba(170,183,255,.12) 28%,
+      rgba(236,241,255,.72) 76%,
+      rgba(255,255,255,.98) 100%
+    ) !important;
+  filter:
+    drop-shadow(0 0 3px rgba(200,214,255,.32))
+    drop-shadow(0 0 8px rgba(165,181,255,.12)) !important;
+}
+
+/* 별 좌표점 확대 */
+.celestial-node{
+  width:4px !important;
+  height:4px !important;
+  box-shadow:
+    0 0 6px rgba(220,215,255,.92),
+    0 0 14px rgba(155,128,225,.45) !important;
+}
+
+/* 좌우 데이터 글자 키움 */
+.hero-data{
+  width:160px !important;
+  opacity:.82 !important;
+}
+
+.hero-data small{
+  font-size:10px !important;
+  color:#8b819c !important;
+}
+
+.hero-data b{
+  font-size:24px !important;
+  color:#b3a3ca !important;
+  margin-bottom:6px !important;
+}
+
+.hero-data span{
+  font-size:9px !important;
+  color:#6d7180 !important;
+  letter-spacing:.10em !important;
+}
+
+/* 좌우 좌표도 키움 */
+.hero-coordinate{
+  font-size:9px !important;
+  color:#666b79 !important;
+  opacity:.70 !important;
+}
+
+/* 데이터 앞 장식선도 더 명확하게 */
+.hero-data::before{
+  width:72px !important;
+  background:
+    linear-gradient(
+      90deg,
+      rgba(167,140,220,.72),
+      rgba(116,100,175,.22),
+      transparent
+    ) !important;
+}
+
+/* 로고 자체 존재감 강화 */
+.hero-logo{
+  width:min(790px,76vw) !important;
+}
+
+.hero-logo img{
+  animation:logoGlowBreathStrong 3.8s ease-in-out infinite alternate !important;
+}
+
+@keyframes logoGlowBreathStrong{
+  from{
+    filter:
+      drop-shadow(0 0 7px rgba(255,255,255,.10))
+      drop-shadow(0 0 18px rgba(153,131,221,.10))
+      drop-shadow(0 0 34px rgba(111,84,173,.05));
+  }
+  to{
+    filter:
+      drop-shadow(0 0 13px rgba(255,255,255,.19))
+      drop-shadow(0 0 34px rgba(158,132,226,.20))
+      drop-shadow(0 0 64px rgba(112,81,178,.10));
+  }
+}
+
+/* 로고 뒤쪽 광원 더 확실하게 */
+.hero-logo::before{
+  inset:-2% -14% !important;
+  background:
+    radial-gradient(ellipse at 50% 48%,rgba(221,214,255,.11),transparent 46%),
+    radial-gradient(ellipse at 50% 60%,rgba(131,98,195,.10),transparent 64%),
+    radial-gradient(circle at 50% 50%,rgba(85,106,181,.045),transparent 74%) !important;
+  filter:blur(28px) !important;
+}
+
+/* 상단 상태바 글씨 조금 확대 */
+.hero .eyebrow{
+  font-size:12px !important;
+  letter-spacing:.29em !important;
+  color:rgba(197,75,85,.82) !important;
+}
+
+/* 상태바 양옆 라인도 더 보이게 */
+.hero .eyebrow::before,
+.hero .eyebrow::after{
+  height:1px !important;
+  opacity:.8 !important;
+}
+
+/* 부제 강조 */
+.hero .subtitle{
+  font-size:clamp(20px,2.5vw,27px) !important;
+  text-shadow:
+    0 0 10px rgba(154,119,242,.25),
+    0 0 22px rgba(113,80,188,.13) !important;
+}
+
+.hero .subtitle::before,
+.hero .subtitle::after{
+  width:92px !important;
+  background:
+    linear-gradient(
+      90deg,
+      transparent,
+      rgba(157,123,232,.62)
+    ) !important;
+}
+
+/* 설명문은 그대로 읽기 좋게 */
+.hero .desc{
+  max-width:790px !important;
+  font-size:17px !important;
+}
+
+/* 하단 WORLD ARCHIVE 글씨 확대 */
+.hero .scroll-cue{
+  font-size:11px !important;
+  letter-spacing:.28em !important;
+  color:#9298a6 !important;
+  opacity:.84 !important;
+}
+
+.hero .scroll-cue::before{
+  font-size:9px !important;
+  color:#666b79 !important;
+  opacity:.85 !important;
+}
+
+/* 별빛 배경 자체도 한 단계 강화 */
+.hero::before{
+  opacity:.34 !important;
+  background-size:145px 145px,235px 235px !important;
+  animation:heroStarPulseStrong 4.4s ease-in-out infinite alternate !important;
+}
+
+@keyframes heroStarPulseStrong{
+  from{
+    opacity:.24;
+    filter:brightness(.95);
+  }
+  to{
+    opacity:.42;
+    filter:brightness(1.28);
+  }
+}
+
+/* 좌우 가장자리 성운도 더 잘 보이게 */
+.hero::after{
+  background:
+    radial-gradient(circle at 9% 16%,rgba(86,96,178,.15),transparent 20%),
+    radial-gradient(circle at 92% 27%,rgba(105,62,149,.13),transparent 22%),
+    radial-gradient(circle at 15% 87%,rgba(45,80,135,.08),transparent 24%),
+    radial-gradient(circle at 88% 88%,rgba(126,62,105,.075),transparent 23%) !important;
+}
+
+/* 추가 HUD 점멸선 */
+.hero-data-left::after,
+.hero-data-right::after{
+  content:"";
+  position:absolute;
+  top:52px;
+  width:38px;
+  height:1px;
+  background:linear-gradient(90deg,#7f6eb3,transparent);
+  opacity:.35;
+  animation:dataLinePulse 2.8s ease-in-out infinite alternate;
+}
+
+.hero-data-left::after{left:0}
+.hero-data-right::after{
+  right:0;
+  transform:scaleX(-1);
+}
+
+@keyframes dataLinePulse{
+  from{opacity:.15;width:25px}
+  to{opacity:.65;width:48px}
+}
+
+/* 모바일에선 HUD는 기존처럼 숨기되 로고 이펙트는 유지 */
+@media(max-width:800px){
+  .hero-data,
+  .hero-coordinate{
+    display:none !important;
+  }
+
+  .hero-logo{
+    width:min(90vw,720px) !important;
+  }
+}
+
+/* reduced motion */
+@media(prefers-reduced-motion:reduce){
+  .hero-celestial::before,
+  .hero-logo img,
+  .hero-data-left::after,
+  .hero-data-right::after{
+    animation:none !important;
+  }
+}
+</style>
+
 </head>
 <body><div aria-hidden="true" class="shooting-stars"><span class="shooting-star star-a"></span><span class="shooting-star star-b"></span><span class="shooting-star star-c"></span></div>
 <section class="hero">
@@ -6693,7 +7160,7 @@ body::after {
 <div class="place-title">◇ 가디언허브</div>
 <div class="place-desc">헌터 등록·등급 심사·의뢰 접수를 담당하는 중앙연합의 실질적 심장부. 전 지역 헌터가 상시 왕래한다.</div>
 <div class="place-characters char-grid">
-<div class="char-card"><div class="char-portrait"><img alt="뮬라" src="img/ch/01.png"/></div><div class="char-name">뮬라</div><div class="char-role">관측관·인간·B+</div></div>
+<div class="char-card character-detail-trigger mula-detail-trigger" data-character-detail="mula"><div class="char-portrait"><img alt="뮬라" src="img/ch/01.png"/></div><div class="char-name">뮬라</div><div class="char-role">관측관·인간·B+</div></div>
 <div class="char-card"><div class="char-portrait"><img alt="미스텔라" src="img/ch/02.png"/></div><div class="char-name">미스텔라</div><div class="char-role">의장·엘프·SSS</div></div>
 <div class="char-card"><div class="char-portrait"><img alt="모리건" src="img/ch/03.png"/></div><div class="char-name">모리건</div><div class="char-role">행정관·산양수인·A+</div></div>
 <div class="char-card"><div class="char-portrait"><img alt="아델" src="img/ch/04.png"/></div><div class="char-name">아델</div><div class="char-role">집행관·인간·S+</div></div>
@@ -7421,6 +7888,95 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 });
 </script>
+
+<div id="characterDetailMula" class="character-hover-detail mula-hover-detail" aria-hidden="true">
+  <div class="character-detail-art">
+    <img src="img/at/01.png" alt="뮬라 상세 일러스트">
+  </div>
+  <div class="character-detail-body">
+    <div class="character-detail-head">
+      <div>
+        <div class="character-detail-name">뮬라</div>
+        <div class="character-detail-role">오르비스 중앙연합 관측관</div>
+      </div>
+      <div class="character-detail-code">A01</div>
+    </div>
+
+    <div class="character-detail-profile">INTJ · 5w6(513) · sp/so</div>
+
+    <div class="character-detail-ability">
+      <strong>아스트랄 에코</strong>
+      <p>별빛을 반사해 광범위를 관측하고, 모은 별빛으로 활을 구현해 원거리 표적을 정밀 저격하는 능력.</p>
+    </div>
+
+    <blockquote class="character-detail-quote">
+      “해석, 형태, 연역. 그리고 생존. 그것이 내가 관측하는 이유.”
+    </blockquote>
+  </div>
+</div>
+
+
+<script>
+(() => {
+  const trigger = document.querySelector('.mula-detail-trigger');
+  const popup = document.getElementById('characterDetailMula');
+  if (!trigger || !popup) return;
+
+  function positionPopup() {
+    const r = trigger.getBoundingClientRect();
+    const safe = 14;
+    const gap = 14;
+
+    popup.style.left = '0px';
+    popup.style.top = '0px';
+
+    const w = popup.offsetWidth || 500;
+    const h = popup.offsetHeight || 420;
+
+    let left = r.right + gap;
+    let top = r.top;
+
+    if (left + w > window.innerWidth - safe) {
+      left = r.left - w - gap;
+    }
+    if (left < safe) {
+      left = Math.max(safe, window.innerWidth - w - safe);
+    }
+
+    if (top + h > window.innerHeight - safe) {
+      top = window.innerHeight - h - safe;
+    }
+    if (top < safe) top = safe;
+
+    popup.style.left = Math.round(left) + 'px';
+    popup.style.top = Math.round(top) + 'px';
+  }
+
+  function show() {
+    if (window.matchMedia('(hover: none)').matches) return;
+    positionPopup();
+    popup.classList.add('visible');
+    popup.setAttribute('aria-hidden','false');
+  }
+
+  function hide() {
+    popup.classList.remove('visible');
+    popup.setAttribute('aria-hidden','true');
+  }
+
+  trigger.addEventListener('mouseenter', show);
+  trigger.addEventListener('mouseleave', hide);
+
+  window.addEventListener('scroll', () => {
+    if (popup.classList.contains('visible')) positionPopup();
+  }, {passive:true});
+
+  window.addEventListener('resize', () => {
+    if (popup.classList.contains('visible')) positionPopup();
+  });
+})();
+</script>
+
 </body>
 </html>
 <!-- redeploy -->
