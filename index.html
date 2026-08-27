@@ -1743,23 +1743,29 @@
           <span class="setting-section-title">판테온 아카데미 규칙</span>
           <span class="setting-section-en">PANTHEON RULES</span>
         </div>
+
         <div class="setting-section-body">
+
           <div class="academy-rule">
             <div class="academy-rule-key">설립 이념</div>
-            <div class="academy-rule-value">판테온이 가장 먼저 가르치는 것은 ‘재능은 축복이 아니다’라는 사실이다. 강한 아이일수록 더 빨리 전선에 보내지고,
-            더 빨리 이름이 묘비에 새겨지던 시대가 있었다. 그래서 이곳의 목표는 영웅을 만드는 것이 아니다.
-            <strong>싸운 뒤에도 살아 돌아오는 법을 가르치는 것</strong>, 그것이 판테온이 존재하는 이유다.</div>
+            <div class="academy-rule-value">
+              판테온이 가장 먼저 가르치는 것은 ‘재능은 축복이 아니다’라는 사실이다.
+              강한 아이일수록 더 빨리 전선에 보내지고, 더 빨리 이름이 묘비에 새겨지던 시대가 있었다.
+              그래서 이곳의 목표는 영웅을 만드는 것이 아니다.
+              <strong>싸운 뒤에도 살아 돌아오는 법을 가르치는 것</strong>,
+              그것이 판테온이 존재하는 이유다.
+            </div>
           </div>
+
           <div class="academy-rule">
-            <div class="academy-rule-key">등장 범위</div>
-            <div class="academy-rule-value">판테온의 이야기는 판테온 안에서 살아가는 사람들로 채워진다. 아카데미 장면에는
-            <strong>교직원·후보생·정규생·정예생</strong> 등 소속 인물만 등장하며, 비소속 인물은 그 일상에 끼어들지 않는다.</div>
+            <div class="academy-rule-key">학생 체계</div>
+            <div class="academy-rule-value">
+              판테온의 학생은 <strong>후보생·정규생·정예생</strong>으로 나뉜다.
+              입학한 학생은 후보생으로 시작하며,
+              해가 바뀔 때마다 정규생과 정예생으로 차례로 승급한다.
+            </div>
           </div>
-          <div class="academy-rule">
-            <div class="academy-rule-key">학생 서열</div>
-            <div class="academy-rule-value">학생의 위치는 시간이 아니라 증명으로 정해진다. 서열은 <strong>후보생 &lt; 정규생 &lt; 정예생</strong>.
-            해가 바뀐다고 자동으로 올라가지 않으며, 학생의 단계는 오직 이 세 이름으로만 불린다.</div>
-          </div>
+
         </div>
       </section>
 
@@ -2331,6 +2337,22 @@
     });
   });
 
+  function refreshOpenAccordion(body) {
+    if (!body) return;
+
+    const item = body.closest('.acc-item');
+
+    if (item && item.classList.contains('open')) {
+      body.style.maxHeight = body.scrollHeight + 'px';
+    }
+  }
+
+  function refreshAllOpenAccordions() {
+    document.querySelectorAll('.acc-item.open .acc-body').forEach(body => {
+      body.style.maxHeight = body.scrollHeight + 'px';
+    });
+  }
+
   document.querySelectorAll('.acc-item').forEach(item => {
     const head = item.querySelector('.acc-head');
     const body = item.querySelector('.acc-body');
@@ -2352,15 +2374,36 @@
       } else {
         item.classList.add('open');
         body.style.maxHeight = body.scrollHeight + 'px';
+
+        /* 캐시 이미지까지 포함해 펼친 직후 높이를 한 번 더 계산 */
+        requestAnimationFrame(() => refreshOpenAccordion(body));
+        setTimeout(() => refreshOpenAccordion(body), 80);
       }
     });
   });
 
-  window.addEventListener('resize', () => {
-    document.querySelectorAll('.acc-item.open .acc-body').forEach(body => {
-      body.style.maxHeight = body.scrollHeight + 'px';
+  /* 이미지가 늦게 로드되면 열린 아코디언 높이를 다시 계산 */
+  document.querySelectorAll('.acc-body img').forEach(img => {
+    const body = img.closest('.acc-body');
+
+    if (img.complete) {
+      refreshOpenAccordion(body);
+    } else {
+      img.addEventListener('load', () => refreshOpenAccordion(body));
+      img.addEventListener('error', () => refreshOpenAccordion(body));
+    }
+  });
+
+  /* 탭 전환 후 숨겨져 있던 패널의 높이 다시 계산 */
+  document.querySelectorAll('.tab-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      requestAnimationFrame(refreshAllOpenAccordions);
+      setTimeout(refreshAllOpenAccordions, 80);
     });
   });
+
+  window.addEventListener('load', refreshAllOpenAccordions);
+  window.addEventListener('resize', refreshAllOpenAccordions);
 </script>
 
 </body>
