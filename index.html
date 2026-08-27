@@ -1,12 +1,13 @@
 <!DOCTYPE html>
+
 <html lang="ko">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <title>LAST RING :: 인류 최후의 생존권</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Cinzel:wght@500;700;900&family=Noto+Serif+KR:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Black+Han+Sans&amp;family=Cinzel:wght@500;700;900&amp;family=Noto+Serif+KR:wght@400;500;600;700&amp;family=JetBrains+Mono:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
 <style>
   :root{
     --void: #08090c;
@@ -1669,247 +1670,606 @@
     .acc-head { padding-left: 16px; padding-right: 16px; }
     .acc-body-inner { padding-left: 22px; }
   }
+
+
+  /* =========================================================
+     캐릭터 탭 — 상단 세력 선택 버튼 + 단일 콘텐츠
+     ========================================================= */
+
+  #tab-char .faction-switcher {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin: 0 0 24px;
+    padding: 14px;
+    border: 1px solid var(--line);
+    background: linear-gradient(180deg, rgba(255,255,255,.025), rgba(255,255,255,.01));
+  }
+
+  #tab-char .faction-switch-btn {
+    position: relative;
+    min-height: 48px;
+    padding: 10px 16px;
+    border: 1px solid #343a45;
+    border-radius: 4px;
+    background: #101319;
+    color: var(--ash);
+    cursor: pointer;
+    font-family: 'Noto Serif KR', serif;
+    font-size: 15px;
+    font-weight: 700;
+    letter-spacing: -.01em;
+    transition:
+      transform .18s ease,
+      border-color .18s ease,
+      background .18s ease,
+      color .18s ease,
+      box-shadow .18s ease;
+  }
+
+  #tab-char .faction-switch-btn:hover {
+    transform: translateY(-1px);
+    color: var(--bone);
+  }
+
+  #tab-char .faction-switch-btn.active {
+    color: var(--bone);
+    box-shadow: inset 0 -2px 0 currentColor;
+  }
+
+  /* 플레이어 */
+  #tab-char .faction-switch-btn.faction-player {
+    border-color: rgba(201,163,94,.34);
+    background: linear-gradient(135deg,#17140e,#0e1014);
+    color:#d3b576;
+  }
+
+  /* 중앙연합 */
+  #tab-char .faction-switch-btn.faction-central {
+    border-radius: 0;
+    border-color: rgba(154,124,255,.32);
+    background:
+      linear-gradient(90deg,rgba(139,92,246,.11),transparent 62%),
+      #10131a;
+    color:#ae94ff;
+  }
+
+  /* 루미나리스 */
+  #tab-char .faction-switch-btn.faction-luminaris {
+    border-radius: 12px 12px 3px 3px;
+    border-color: rgba(226,199,133,.38);
+    background:
+      radial-gradient(circle at 82% 35%,rgba(255,238,190,.10),transparent 32%),
+      #17140f;
+    color:#e2c785;
+  }
+
+  /* 아스트라 */
+  #tab-char .faction-switch-btn.faction-astra {
+    border-radius:0;
+    clip-path: polygon(8px 0,100% 0,100% calc(100% - 8px),calc(100% - 8px) 100%,0 100%,0 8px);
+    border-color:rgba(72,200,255,.38);
+    background:linear-gradient(135deg,rgba(56,197,255,.11),transparent 58%),#09151c;
+    color:#55cffd;
+  }
+
+  /* 실바니아 */
+  #tab-char .faction-switch-btn.faction-sylvania {
+    border-radius:15px 4px 15px 4px;
+    border-color:rgba(143,207,131,.34);
+    background:linear-gradient(135deg,rgba(111,171,104,.12),transparent 60%),#0e1710;
+    color:#92cf88;
+  }
+
+  /* 천명천관 */
+  #tab-char .faction-switch-btn.faction-cheonmyeong {
+    border-radius:2px;
+    border-color:rgba(211,111,88,.34);
+    background:linear-gradient(100deg,rgba(126,50,37,.16),transparent 62%),#17100e;
+    color:#d98470;
+  }
+
+  /* 판테온 */
+  #tab-char .faction-switch-btn.faction-pantheon {
+    border-color:rgba(185,151,255,.36);
+    background:
+      radial-gradient(circle at 88% 50%,rgba(201,163,94,.08),transparent 25%),
+      linear-gradient(135deg,rgba(154,119,220,.12),transparent 60%),
+      #14101d;
+    color:#c4a8ff;
+  }
+
+  /* 팬텀 */
+  #tab-char .faction-switch-btn.faction-phantom {
+    border-radius:0;
+    border-color:rgba(215,74,81,.40);
+    background:linear-gradient(110deg,rgba(188,56,65,.16),transparent 58%),#150b0d;
+    color:#dc686e;
+  }
+
+  /* 노블레스 */
+  #tab-char .faction-switch-btn.faction-noblesse {
+    border-color:rgba(208,169,107,.38);
+    background:linear-gradient(135deg,rgba(117,53,73,.10),transparent 50%),#181014;
+    color:#d4ae70;
+  }
+
+  /* 월하 */
+  #tab-char .faction-switch-btn.faction-wolha {
+    border-radius:14px 3px 14px 3px;
+    border-color:rgba(143,159,229,.38);
+    background:radial-gradient(circle at 84% 42%,rgba(150,164,225,.12),transparent 28%),#0d1020;
+    color:#9ba9e9;
+  }
+
+  /* 프리랜서 */
+  #tab-char .faction-switch-btn.faction-freelance {
+    border-style:dashed;
+    border-color:#4a515d;
+    background:#111318;
+    color:#aeb4bc;
+  }
+
+  /* 재앙 */
+  #tab-char .faction-switch-btn.faction-calamity {
+    border-radius:0;
+    border-color:rgba(227,69,78,.46);
+    background:
+      linear-gradient(105deg,rgba(179,39,44,.18),transparent 55%),
+      #15090b;
+    color:#e45d66;
+  }
+
+  /* 선택된 버튼은 각 고유색을 조금 더 강조 */
+  #tab-char .faction-switch-btn.active {
+    filter: brightness(1.16);
+  }
+
+  /* 기존 아코디언 헤더는 캐릭터 탭에서만 숨김 */
+  #tab-char .faction-content-panel > .acc-head {
+    display: none !important;
+  }
+
+  /* 선택된 세력 하나만 표시 */
+  #tab-char .faction-content-panel {
+    display: none !important;
+    margin-bottom: 0;
+  }
+
+  #tab-char .faction-content-panel.active {
+    display: block !important;
+  }
+
+  /* 아코디언 높이 제한 해제 */
+  #tab-char .faction-content-panel .acc-body {
+    max-height: none !important;
+    overflow: visible !important;
+    transition: none !important;
+  }
+
+  #tab-char .faction-content-panel .acc-body-inner {
+    padding-top: 24px;
+  }
+
+  @media (max-width:650px) {
+    #tab-char .faction-switcher {
+      gap:8px;
+      padding:10px;
+    }
+
+    #tab-char .faction-switch-btn {
+      flex:1 1 calc(50% - 8px);
+      min-width:0;
+      padding:10px 8px;
+      font-size:13px;
+    }
+  }
 </style>
+
+
+
+
+<style>
+  /* =========================================================
+     LAST RING — BACK TO TOP
+     ========================================================= */
+
+  .back-to-top-wrap {
+    width: 100%;
+    box-sizing: border-box;
+    margin-top: 42px;
+    padding: 24px 0 10px;
+  }
+
+  .back-to-top {
+    width: 100%;
+    display: grid;
+    grid-template-columns: minmax(40px, 1fr) auto minmax(40px, 1fr);
+    align-items: center;
+    gap: 16px;
+
+    padding: 0;
+    border: 0;
+    background: transparent;
+    color: #7d8490;
+
+    cursor: pointer;
+    box-sizing: border-box;
+  }
+
+  .back-to-top-line {
+    display: block;
+    height: 1px;
+    background:
+      linear-gradient(
+        90deg,
+        transparent 0%,
+        rgba(139,92,246,.22) 18%,
+        rgba(201,163,94,.30) 50%,
+        rgba(139,92,246,.22) 82%,
+        transparent 100%
+      );
+  }
+
+  .back-to-top-core {
+    position: relative;
+    min-width: 118px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+    padding: 7px 14px 8px;
+  }
+
+  .back-to-top-core::before {
+    content: "";
+    position: absolute;
+    left: 50%;
+    top: 0;
+    width: 34px;
+    height: 1px;
+    transform: translateX(-50%);
+    background: rgba(201,163,94,.55);
+  }
+
+  .back-to-top-arrow {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 18px;
+    line-height: 1;
+    color: #b79cf3;
+    transition: transform .2s ease, color .2s ease;
+  }
+
+  .back-to-top-text {
+    font-family: 'Noto Serif KR', serif;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: .14em;
+    color: #777f8b;
+    transition: color .2s ease;
+  }
+
+  .back-to-top:hover .back-to-top-arrow {
+    transform: translateY(-3px);
+    color: #cbb7ff;
+  }
+
+  .back-to-top:hover .back-to-top-text {
+    color: #d2d4da;
+  }
+
+  .back-to-top:hover .back-to-top-line {
+    background:
+      linear-gradient(
+        90deg,
+        transparent 0%,
+        rgba(139,92,246,.34) 18%,
+        rgba(201,163,94,.46) 50%,
+        rgba(139,92,246,.34) 82%,
+        transparent 100%
+      );
+  }
+
+  .back-to-top:focus,
+  .back-to-top:focus-visible {
+    outline: none;
+  }
+
+  @media (max-width:560px) {
+    .back-to-top-wrap {
+      margin-top: 34px;
+      padding-top: 18px;
+    }
+
+    .back-to-top {
+      gap: 10px;
+    }
+
+    .back-to-top-core {
+      min-width: 92px;
+      padding-left: 8px;
+      padding-right: 8px;
+    }
+
+    .back-to-top-text {
+      font-size: 11px;
+      letter-spacing: .10em;
+    }
+  }
+</style>
+
+
+<style>
+  /* 푸터 바로 아래 맨 위로 */
+  .back-to-top-wrap { display:none !important; }
+
+  .footer-back-top {
+    display:flex;
+    justify-content:center;
+    margin-top:8px;
+    padding-bottom:4px;
+  }
+
+  .footer-back-top-btn {
+    display:inline-flex;
+    align-items:center;
+    gap:5px;
+    padding:3px 8px;
+    border:0;
+    background:transparent;
+    color:#777f8b;
+    font-family:'Noto Serif KR',serif;
+    font-size:11px;
+    font-weight:700;
+    letter-spacing:.06em;
+    cursor:pointer;
+  }
+
+  .footer-back-top-arrow {
+    display:inline-block;
+    font-family:'JetBrains Mono',monospace;
+    font-size:12px;
+    line-height:1;
+    color:#a58bd9;
+    transition:transform .18s ease;
+  }
+
+  .footer-back-top-btn:hover {
+    color:#c7cbd2;
+  }
+
+  .footer-back-top-btn:hover .footer-back-top-arrow {
+    transform:translateY(-2px);
+  }
+
+  .footer-back-top-btn:focus,
+  .footer-back-top-btn:focus-visible {
+    outline:none;
+  }
+</style>
+
 </head>
 <body>
-
 <section class="hero">
-  <div class="rings-wrap">
-    <svg viewBox="0 0 600 600">
-      <circle class="ring" cx="300" cy="300" r="280"/>
-      <circle class="ring" cx="300" cy="300" r="230"/>
-      <circle class="ring active" cx="300" cy="300" r="180"/>
-      <circle class="ring" cx="300" cy="300" r="130"/>
-      <circle class="ring core" cx="300" cy="300" r="70"/>
-      <path class="crack" d="M 300 20 L 288 90 L 340 150 L 300 220 L 330 260"/>
-      <path class="crack" d="M 580 300 L 480 292 L 430 330 L 380 300" style="animation-delay:0.9s"/>
-    </svg>
-  </div>
-
-  <div class="eyebrow">SURVIVAL ZONE STATUS · CRITICAL</div>
-  <h1 class="title">LAST RING</h1>
-  <p class="subtitle"><span class="bar">::</span>인류 최후의 생존권<span class="bar">::</span></p>
-
-  <p class="desc">
+<div class="rings-wrap">
+<svg viewbox="0 0 600 600">
+<circle class="ring" cx="300" cy="300" r="280"></circle>
+<circle class="ring" cx="300" cy="300" r="230"></circle>
+<circle class="ring active" cx="300" cy="300" r="180"></circle>
+<circle class="ring" cx="300" cy="300" r="130"></circle>
+<circle class="ring core" cx="300" cy="300" r="70"></circle>
+<path class="crack" d="M 300 20 L 288 90 L 340 150 L 300 220 L 330 260"></path>
+<path class="crack" d="M 580 300 L 480 292 L 430 330 L 380 300" style="animation-delay:0.9s"></path>
+</svg>
+</div>
+<div class="eyebrow">SURVIVAL ZONE STATUS · CRITICAL</div>
+<h1 class="title">LAST RING</h1>
+<p class="subtitle"><span class="bar">::</span>인류 최후의 생존권<span class="bar">::</span></p>
+<p class="desc">
     게이트 너머에서 밀려오는 <strong>괴수</strong>들에게 세계는 이미 절반 넘게 잠식당했다.
     사람들이 발 딛고 설 수 있는 땅은 오직 마지막 방어선, <strong>단 하나의 고리</strong>뿐.
     헌터들이 하루씩 밀려나는 균열을 막아서지 않는 한, 그 고리마저 곧 닫힌다 —
     남은 것은 <strong>생존권</strong>이라 불리는 이 좁은 원 안의 삶뿐이다.
   </p>
-
-  <div class="scroll-cue">
-    <span>WORLD ARCHIVE</span>
-    <span class="line"></span>
-  </div>
+<div class="scroll-cue">
+<span>WORLD ARCHIVE</span>
+<span class="line"></span>
+</div>
 </section>
-
 <section class="archive">
-
-  <div class="tab-bar">
-    <button class="tab-btn active" data-tab="world">
+<div class="tab-bar">
+<button class="tab-btn active" data-tab="world">
       세계관 소개
       <span class="tab-en">WORLD STORY</span>
-    </button>
-    <button class="tab-btn" data-tab="char">
+</button>
+<button class="tab-btn" data-tab="char">
       세력 및 캐릭터 소개
-      <span class="tab-en">FACTIONS & CHARACTERS</span>
-    </button>
-  </div>
-
-  <!-- =========================
+      <span class="tab-en">FACTIONS &amp; CHARACTERS</span>
+</button>
+</div>
+<!-- =========================
        세계관 소개
        ========================= -->
-  <div class="tab-panel active" id="tab-world">
-    <div class="world-setting">
-
-      <div class="setting-intro">
-        <div class="setting-kicker">ORBIS // WORLD DATA</div>
-        <h2>오르비스, 마지막 생존권</h2>
-        <p>
+<div class="tab-panel active" id="tab-world">
+<div class="world-setting">
+<div class="setting-intro">
+<div class="setting-kicker">ORBIS // WORLD DATA</div>
+<h2>오르비스, 마지막 생존권</h2>
+<p>
           한때 세계는 끝없이 이어져 있었다. 그러나 게이트가 열린 뒤, 인류의 지도에는 돌아갈 수 없는 땅이 하나씩 늘어났다.
           지금 남은 것은 서로의 숨결이 닿을 만큼 가까워진 중심 생존권뿐이다. 그 좁은 고리를 지탱하는 것은 군대도 성벽도 아닌,
           매일 균열 속으로 들어가는 헌터들의 발걸음이다.
         </p>
-      </div>
-
-      <section class="setting-section">
-        <div class="setting-section-head">
-          <span class="setting-section-no">01</span>
-          <span class="setting-section-title">과거 타임라인</span>
-          <span class="setting-section-en">HISTORY</span>
-        </div>
-        <div class="setting-section-body">
-          <div class="timeline">
-            <div class="timeline-row">
-              <div class="timeline-year">초기</div>
-              <div class="timeline-text">균열이 처음 모습을 드러냈을 때, 누구도 그것이 세계의 끝을 예고하는 문이라는 사실을 알지 못했다.
+</div>
+<section class="setting-section">
+<div class="setting-section-head">
+<span class="setting-section-no">01</span>
+<span class="setting-section-title">과거 타임라인</span>
+<span class="setting-section-en">HISTORY</span>
+</div>
+<div class="setting-section-body">
+<div class="timeline">
+<div class="timeline-row">
+<div class="timeline-year">초기</div>
+<div class="timeline-text">균열이 처음 모습을 드러냈을 때, 누구도 그것이 세계의 끝을 예고하는 문이라는 사실을 알지 못했다.
                 국가는 국경을 닫고, 도시는 문을 걸어 잠갔다. 모두가 서로를 기다리지 않은 채 <strong>각자의 방식으로 살아남으려 했다.</strong></div>
-            </div>
-            <div class="timeline-row catastrophe">
-              <div class="timeline-year">547년</div>
-              <div class="timeline-text">마침내 <strong>SSS급 게이트</strong>가 열렸다. 그 너머에서 쏟아진 괴수는 군대와 도시를 차례로 집어삼켰고,
+</div>
+<div class="timeline-row catastrophe">
+<div class="timeline-year">547년</div>
+<div class="timeline-text">마침내 <strong>SSS급 게이트</strong>가 열렸다. 그 너머에서 쏟아진 괴수는 군대와 도시를 차례로 집어삼켰고,
                 인간이 살 수 있는 땅은 지도 바깥으로 밀려나듯 줄어들었다. 이 해를 기점으로 사람들은 처음으로
                 ‘세계가 무너질 수 있다’는 사실을 현실로 받아들였다.</div>
-            </div>
-            <div class="timeline-row">
-              <div class="timeline-year">558년</div>
-              <div class="timeline-text">붕괴 뒤에 남은 것은 공포와 불신뿐이었다. 그때 SSS급 헌터 <strong>로웰</strong>이 각지의 생존 세력을 하나씩 찾아 나섰다.
+</div>
+<div class="timeline-row">
+<div class="timeline-year">558년</div>
+<div class="timeline-text">붕괴 뒤에 남은 것은 공포와 불신뿐이었다. 그때 SSS급 헌터 <strong>로웰</strong>이 각지의 생존 세력을 하나씩 찾아 나섰다.
                 서로를 믿지 못하던 이들을 한 자리에 세운 끝에 <strong>오르비스 중앙연합</strong>이 탄생했고,
                 로웰은 그 첫 번째 의장이 되었다.</div>
-            </div>
-            <div class="timeline-row catastrophe">
-              <div class="timeline-year">562년</div>
-              <div class="timeline-text">SSS급 재앙 흑룡 <strong>모르드라스</strong>가 루미나리스를 덮쳤다. 로웰·미스텔라·에일로릭스·카메코·플로리아는
+</div>
+<div class="timeline-row catastrophe">
+<div class="timeline-year">562년</div>
+<div class="timeline-text">SSS급 재앙 흑룡 <strong>모르드라스</strong>가 루미나리스를 덮쳤다. 로웰·미스텔라·에일로릭스·카메코·플로리아는
                 무너지는 성역에서 끝까지 싸워 모르드라스를 쓰러뜨렸지만, 그 대가로 로웰을 잃었다.
                 승전보다 장례가 먼저 기록된 전투였다. 이후 <strong>미스텔라가 제2대 의장</strong>에 올라 그의 자리를 이어받았다.</div>
-            </div>
-            <div class="timeline-row">
-              <div class="timeline-year">567년</div>
-              <div class="timeline-text">강한 아이들이 가장 먼저 전선으로 보내지고, 가장 먼저 죽어가던 시대를 끝내기 위해
+</div>
+<div class="timeline-row">
+<div class="timeline-year">567년</div>
+<div class="timeline-text">강한 아이들이 가장 먼저 전선으로 보내지고, 가장 먼저 죽어가던 시대를 끝내기 위해
                 <strong>카메코·에이미·미스텔라</strong>가 뜻을 모았다. 그렇게 <strong>판테온 아카데미</strong>가 세워졌다.
                 이곳이 가르치려 한 것은 영웅이 되는 법이 아니라, 싸우고도 살아 돌아오는 법이었다.</div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section class="setting-section">
-        <div class="setting-section-head">
-          <span class="setting-section-no">02</span>
-          <span class="setting-section-title">생활 인프라</span>
-          <span class="setting-section-en">INFRASTRUCTURE</span>
-        </div>
-        <div class="setting-section-body">
-          <div class="info-grid">
-            <div class="info-card">
-              <div class="info-label">오르 · Orr</div>
-              <p>무너진 세계에서도 사람은 먹고, 사고, 빚지고, 웃으며 살아간다. <strong>오르(Orr)</strong>는 그 일상을 이어주는 공용 화폐다.
+</div>
+</div>
+</div>
+</section>
+<section class="setting-section">
+<div class="setting-section-head">
+<span class="setting-section-no">02</span>
+<span class="setting-section-title">생활 인프라</span>
+<span class="setting-section-en">INFRASTRUCTURE</span>
+</div>
+<div class="setting-section-body">
+<div class="info-grid">
+<div class="info-card">
+<div class="info-label">오르 · Orr</div>
+<p>무너진 세계에서도 사람은 먹고, 사고, 빚지고, 웃으며 살아간다. <strong>오르(Orr)</strong>는 그 일상을 이어주는 공용 화폐다.
               학생은 아르바이트·봉사·장학금으로, 헌터는 의뢰와 마석 정산으로 자신의 몫을 번다.</p>
-            </div>
-            <div class="info-card">
-              <div class="info-label">가디언카드</div>
-              <p>한 장의 카드 안에 이름과 자격, 그리고 일상이 함께 들어 있다. <strong>가디언카드</strong>는 결제수단이자 신분증이며,
+</div>
+<div class="info-card">
+<div class="info-label">가디언카드</div>
+<p>한 장의 카드 안에 이름과 자격, 그리고 일상이 함께 들어 있다. <strong>가디언카드</strong>는 결제수단이자 신분증이며,
               시설 이용부터 헌터 행정까지 대부분의 생활 절차를 연결한다.</p>
-            </div>
-            <div class="info-card">
-              <div class="info-label">에테르폰</div>
-              <p>생존권이 좁아졌다고 해서 사람들의 대화까지 줄어든 것은 아니다. <strong>에테르폰</strong>은 통신과 소셜미디어를 잇는 가장 보편적인 개인 단말기다.</p>
-            </div>
-            <div class="info-card">
-              <div class="info-label">게이트 스캐너</div>
-              <p>균열 안에서는 몇 걸음 앞조차 안전을 약속하지 않는다. <strong>게이트 스캐너</strong>는 환경·괴수·위협 요소를 읽어내며,
+</div>
+<div class="info-card">
+<div class="info-label">에테르폰</div>
+<p>생존권이 좁아졌다고 해서 사람들의 대화까지 줄어든 것은 아니다. <strong>에테르폰</strong>은 통신과 소셜미디어를 잇는 가장 보편적인 개인 단말기다.</p>
+</div>
+<div class="info-card">
+<div class="info-label">게이트 스캐너</div>
+<p>균열 안에서는 몇 걸음 앞조차 안전을 약속하지 않는다. <strong>게이트 스캐너</strong>는 환경·괴수·위협 요소를 읽어내며,
               실제 게이트뿐 아니라 가상균열에서도 끊임없이 작동한다.</p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section class="setting-section">
-        <div class="setting-section-head">
-          <span class="setting-section-no">03</span>
-          <span class="setting-section-title">헌터와 게이트, 생존권의 최전선</span>
-          <span class="setting-section-en">SYSTEM</span>
-        </div>
-        <div class="setting-section-body">
-          <div class="info-card wide">
-            <div class="info-label">현재 세계의 상태</div>
-            <p>인류는 오래전에 ‘되찾는 전쟁’에서 패배했다. 지금 지켜야 하는 것은 <strong>중심 생존권</strong>, 단 하나뿐이다.
+</div>
+</div>
+</div>
+</section>
+<section class="setting-section">
+<div class="setting-section-head">
+<span class="setting-section-no">03</span>
+<span class="setting-section-title">헌터와 게이트, 생존권의 최전선</span>
+<span class="setting-section-en">SYSTEM</span>
+</div>
+<div class="setting-section-body">
+<div class="info-card wide">
+<div class="info-label">현재 세계의 상태</div>
+<p>인류는 오래전에 ‘되찾는 전쟁’에서 패배했다. 지금 지켜야 하는 것은 <strong>중심 생존권</strong>, 단 하나뿐이다.
             구세계 탈환은 번번이 실패했고 균열은 여전히 멈추지 않는다.
             그래서 헌터는 선택받은 영웅이기 전에, 생존권의 가장 바깥을 떠받치는 마지막 전선이 되었다.</p>
-          </div>
-
-          <div class="info-card wide" style="margin-top:10px;">
-            <div class="info-label">헌터 등급</div>
-            <div class="hunter-ranks">
-              <span class="hunter-rank r-f">F</span>
-              <span class="rank-separator">&lt;</span>
-              <span class="hunter-rank r-fp">F+</span>
-              <span class="rank-separator">&lt;</span>
-              <span class="hunter-rank r-e">E</span>
-              <span class="rank-separator">&lt;</span>
-              <span class="hunter-rank r-ep">E+</span>
-              <span class="rank-separator">&lt;</span>
-              <span class="hunter-rank r-d">D</span>
-              <span class="rank-separator">&lt;</span>
-              <span class="hunter-rank r-dp">D+</span>
-              <span class="rank-separator">&lt;</span>
-              <span class="hunter-rank r-c">C</span>
-              <span class="rank-separator">&lt;</span>
-              <span class="hunter-rank r-cp">C+</span>
-              <span class="rank-separator">&lt;</span>
-              <span class="hunter-rank r-b">B</span>
-              <span class="rank-separator">&lt;</span>
-              <span class="hunter-rank r-bp">B+</span>
-              <span class="rank-separator">&lt;</span>
-              <span class="hunter-rank r-a">A</span>
-              <span class="rank-separator">&lt;</span>
-              <span class="hunter-rank r-ap">A+</span>
-              <span class="rank-separator">&lt;</span>
-              <span class="hunter-rank r-s">S</span>
-              <span class="rank-separator">&lt;</span>
-              <span class="hunter-rank r-sp">S+</span>
-              <span class="rank-separator">&lt;</span>
-              <span class="hunter-rank r-ss">SS</span>
-              <span class="rank-separator">&lt;</span>
-              <span class="hunter-rank r-ssp">SS+</span>
-              <span class="rank-separator">&lt;</span>
-              <span class="hunter-rank r-sss">SSS</span>
-            </div>
-          </div>
-
-          <div class="info-card wide" style="margin-top:10px;">
-            <div class="info-label">게이트</div>
-            <p>게이트는 문처럼 보이지만, 그 너머는 하나의 낯선 세계에 가깝다. 위험도는 <strong>F급부터 SSS급</strong>까지 나뉘며,
+</div>
+<div class="info-card wide" style="margin-top:10px;">
+<div class="info-label">헌터 등급</div>
+<div class="hunter-ranks">
+<span class="hunter-rank r-f">F</span>
+<span class="rank-separator">&lt;</span>
+<span class="hunter-rank r-fp">F+</span>
+<span class="rank-separator">&lt;</span>
+<span class="hunter-rank r-e">E</span>
+<span class="rank-separator">&lt;</span>
+<span class="hunter-rank r-ep">E+</span>
+<span class="rank-separator">&lt;</span>
+<span class="hunter-rank r-d">D</span>
+<span class="rank-separator">&lt;</span>
+<span class="hunter-rank r-dp">D+</span>
+<span class="rank-separator">&lt;</span>
+<span class="hunter-rank r-c">C</span>
+<span class="rank-separator">&lt;</span>
+<span class="hunter-rank r-cp">C+</span>
+<span class="rank-separator">&lt;</span>
+<span class="hunter-rank r-b">B</span>
+<span class="rank-separator">&lt;</span>
+<span class="hunter-rank r-bp">B+</span>
+<span class="rank-separator">&lt;</span>
+<span class="hunter-rank r-a">A</span>
+<span class="rank-separator">&lt;</span>
+<span class="hunter-rank r-ap">A+</span>
+<span class="rank-separator">&lt;</span>
+<span class="hunter-rank r-s">S</span>
+<span class="rank-separator">&lt;</span>
+<span class="hunter-rank r-sp">S+</span>
+<span class="rank-separator">&lt;</span>
+<span class="hunter-rank r-ss">SS</span>
+<span class="rank-separator">&lt;</span>
+<span class="hunter-rank r-ssp">SS+</span>
+<span class="rank-separator">&lt;</span>
+<span class="hunter-rank r-sss">SSS</span>
+</div>
+</div>
+<div class="info-card wide" style="margin-top:10px;">
+<div class="info-label">게이트</div>
+<p>게이트는 문처럼 보이지만, 그 너머는 하나의 낯선 세계에 가깝다. 위험도는 <strong>F급부터 SSS급</strong>까지 나뉘며,
             등급이 높을수록 빛과 온도, 지형과 공기마저 인간에게 적대적으로 변한다. 재앙을 제외한 대부분의 괴수에게 지성은 없고,
             오직 마력원을 찾아 포식하려는 본능만이 남아 있다.</p>
-            <div class="gate-box">
-              <div class="gate-line"><span class="gate-mark">핵심</span><span>보스는 코어룸에 존재한다. 보스가 살아 있는 동안 게이트가 유지된다.</span></div>
-              <div class="gate-line"><span class="gate-mark">붕괴</span><span>보스가 사망하면 게이트가 붕괴하고, 내부 인원은 처음 진입했던 위치로 자동 귀환한다.</span></div>
-              <div class="gate-line"><span class="gate-mark">침식</span><span>게이트를 방치하면 주변 일대가 테라포밍되며 괴수가 외부로 유출된다. 확산 속도는 게이트 등급에 비례한다.</span></div>
-
-          <div class="gate-visual-grid">
-            <div class="gate-visual-card">
-              <img src="img/bg/23.png" alt="균열지대">
-              <div class="gate-visual-label">균열지대</div>
-            </div>
-            <div class="gate-visual-card">
-              <img src="img/bg/24.png" alt="오염심역">
-              <div class="gate-visual-label">오염심역</div>
-            </div>
-            <div class="gate-visual-card">
-              <img src="img/bg/25.png" alt="F~D+급 게이트">
-              <div class="gate-visual-label">F~D+급 게이트</div>
-            </div>
-            <div class="gate-visual-card">
-              <img src="img/bg/26.png" alt="C~A+급 게이트">
-              <div class="gate-visual-label">C~A+급 게이트</div>
-            </div>
-            <div class="gate-visual-card wide">
-              <img src="img/bg/27.png" alt="S급 이상 게이트">
-              <div class="gate-visual-label">S급 이상 게이트</div>
-            </div>
-          </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section class="setting-section">
-        <div class="setting-section-head">
-          <span class="setting-section-no">04</span>
-          <span class="setting-section-title">판테온 아카데미, 살아 돌아오기 위해 세워진 곳</span>
-          <span class="setting-section-en">PANTHEON ACADEMY</span>
-        </div>
-
-        <div class="pantheon-setting-bg">
-          <img src="img/bg/97.png" alt="판테온 아카데미">
-        </div>
-
-        <div class="setting-section-body">
-
-          <div class="academy-rule">
-            <div class="academy-rule-key">영웅보다 생존자를</div>
-            <div class="academy-rule-value">
+<div class="gate-box">
+<div class="gate-line"><span class="gate-mark">핵심</span><span>보스는 코어룸에 존재한다. 보스가 살아 있는 동안 게이트가 유지된다.</span></div>
+<div class="gate-line"><span class="gate-mark">붕괴</span><span>보스가 사망하면 게이트가 붕괴하고, 내부 인원은 처음 진입했던 위치로 자동 귀환한다.</span></div>
+<div class="gate-line"><span class="gate-mark">침식</span><span>게이트를 방치하면 주변 일대가 테라포밍되며 괴수가 외부로 유출된다. 확산 속도는 게이트 등급에 비례한다.</span></div>
+<div class="gate-visual-grid">
+<div class="gate-visual-card">
+<img alt="균열지대" src="img/bg/23.png"/>
+<div class="gate-visual-label">균열지대</div>
+</div>
+<div class="gate-visual-card">
+<img alt="오염심역" src="img/bg/24.png"/>
+<div class="gate-visual-label">오염심역</div>
+</div>
+<div class="gate-visual-card">
+<img alt="F~D+급 게이트" src="img/bg/25.png"/>
+<div class="gate-visual-label">F~D+급 게이트</div>
+</div>
+<div class="gate-visual-card">
+<img alt="C~A+급 게이트" src="img/bg/26.png"/>
+<div class="gate-visual-label">C~A+급 게이트</div>
+</div>
+<div class="gate-visual-card wide">
+<img alt="S급 이상 게이트" src="img/bg/27.png"/>
+<div class="gate-visual-label">S급 이상 게이트</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section class="setting-section">
+<div class="setting-section-head">
+<span class="setting-section-no">04</span>
+<span class="setting-section-title">판테온 아카데미, 살아 돌아오기 위해 세워진 곳</span>
+<span class="setting-section-en">PANTHEON ACADEMY</span>
+</div>
+<div class="pantheon-setting-bg">
+<img alt="판테온 아카데미" src="img/bg/97.png"/>
+</div>
+<div class="setting-section-body">
+<div class="academy-rule">
+<div class="academy-rule-key">영웅보다 생존자를</div>
+<div class="academy-rule-value">
               재능이 축복으로만 불리던 시대는 오래전에 끝났다.
               강한 아이들은 누구보다 먼저 균열 앞에 세워졌고,
               수많은 이름이 영웅이라는 찬사보다 먼저 묘비에 새겨졌다.
@@ -1917,637 +2277,573 @@
               이곳에서 가르치는 것은 화려하게 죽는 법이 아니라,
               <strong>끝까지 싸우고도 살아 돌아오는 법</strong>이다.
             </div>
-          </div>
-
-          <div class="academy-rule">
-            <div class="academy-rule-key">학생 서열</div>
-            <div class="academy-rule-value">
+</div>
+<div class="academy-rule">
+<div class="academy-rule-key">학생 서열</div>
+<div class="academy-rule-value">
               판테온 아카데미의 학생은 <strong>후보생·정규생·정예생</strong>으로 나뉜다.
               입학한 학생은 후보생으로 시작하며,
               해가 바뀔 때마다 정규생과 정예생으로 차례로 승급한다.
               이름이 올라갈수록 수업은 실전에 가까워지고,
               그들이 마주해야 할 전장 역시 한층 더 깊어진다.
             </div>
-          </div>
-
-        </div>
-      </section>
-
-    </div>
-  </div>
-
-  <!-- =========================
+</div>
+</div>
+</section>
+</div>
+</div>
+<!-- =========================
        세력 및 캐릭터 소개
        ========================= -->
-  <div class="tab-panel" id="tab-char">
-    <div class="acc-group">
-
-      <div class="acc-item faction-player">
-        <button class="acc-head">
-          <span class="acc-num">PC</span>
-          <span class="acc-title">플레이어블 캐릭터</span>
-          <span class="acc-chevron"></span>
-        </button>
-        <div class="acc-body">
-          <div class="acc-body-inner">
-            <div class="faction-desc">
+<div class="tab-panel" id="tab-char">
+<div class="faction-switcher"><button class="faction-switch-btn faction-player active" data-faction="player" type="button">플레이어블 캐릭터</button><button class="faction-switch-btn faction-central" data-faction="central" type="button">오르비스 중앙연합</button><button class="faction-switch-btn faction-luminaris" data-faction="luminaris" type="button">루미나리스 신성제국</button><button class="faction-switch-btn faction-astra" data-faction="astra" type="button">아스트라 연방</button><button class="faction-switch-btn faction-sylvania" data-faction="sylvania" type="button">실바니아 자연동맹</button><button class="faction-switch-btn faction-cheonmyeong" data-faction="cheonmyeong" type="button">천명천관</button><button class="faction-switch-btn faction-pantheon" data-faction="pantheon" type="button">판테온 아카데미</button><button class="faction-switch-btn faction-phantom" data-faction="phantom" type="button">팬텀 스트라이크</button><button class="faction-switch-btn faction-noblesse" data-faction="noblesse" type="button">노블레스</button><button class="faction-switch-btn faction-wolha" data-faction="wolha" type="button">월하</button><button class="faction-switch-btn faction-freelance" data-faction="freelance" type="button">프리랜서</button><button class="faction-switch-btn faction-calamity" data-faction="calamity" type="button">재앙</button></div><div class="acc-group">
+<div class="acc-item faction-player faction-content-panel active" data-faction-panel="player">
+<button class="acc-head">
+<span class="acc-num">PC</span>
+<span class="acc-title">플레이어블 캐릭터</span>
+<span class="acc-chevron"></span>
+</button>
+<div class="acc-body">
+<div class="acc-body-inner">
+<div class="faction-desc">
               오르비스에서 이야기를 시작할 당신의 캐릭터.
             </div>
-            <div class="char-grid">
-              <div class="char-card">
-                <div class="char-portrait"><img src="img/ch/99.png" alt="남성 플레이어"></div>
-                <div class="char-name">남성</div>
-              </div>
-              <div class="char-card">
-                <div class="char-portrait"><img src="img/ch/98.png" alt="여성 플레이어"></div>
-                <div class="char-name">여성</div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="acc-item faction-central">
-        <button class="acc-head">
-          <span class="acc-num">01</span>
-          <span class="acc-title">오르비스 중앙연합</span>
-          <span class="acc-chevron"></span>
-        </button>
-        <div class="acc-body">
-          <div class="acc-body-inner">
-
-            <div class="faction-desc">
+<div class="char-grid">
+<div class="char-card">
+<div class="char-portrait"><img alt="남성 플레이어" src="img/ch/99.png"/></div>
+<div class="char-name">남성</div>
+</div>
+<div class="char-card">
+<div class="char-portrait"><img alt="여성 플레이어" src="img/ch/98.png"/></div>
+<div class="char-name">여성</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="acc-item faction-central faction-content-panel" data-faction-panel="central">
+<button class="acc-head">
+<span class="acc-num">01</span>
+<span class="acc-title">오르비스 중앙연합</span>
+<span class="acc-chevron"></span>
+</button>
+<div class="acc-body">
+<div class="acc-body-inner">
+<div class="faction-desc">
               중부의 초국가 중립지대이자 오르비스 전역의 행정·헌터 운영 중심지.
               출신·국적·종족보다 실력과 효율을 중시하며, 각국과 길드의 이해관계가 교차하는 활기찬 중립 도시권이다.
             </div>
-
-            <div class="place-card">
-              <div class="place-image"><img src="img/bg/01.png" alt="가디언허브"></div>
-              <div class="place-info">
-                <div class="place-title">◇ 가디언허브</div>
-                <div class="place-desc">헌터 등록·등급 심사·의뢰 접수를 담당하는 중앙연합의 실질적 심장부. 전 지역 헌터가 상시 왕래한다.</div>
-                <div class="place-characters char-grid">
-                  <div class="char-card"><div class="char-portrait"><img src="img/ch/01.png" alt="뮬라"></div><div class="char-name">뮬라</div><div class="char-role">관측관·인간·B+</div></div>
-                  <div class="char-card"><div class="char-portrait"><img src="img/ch/02.png" alt="미스텔라"></div><div class="char-name">미스텔라</div><div class="char-role">의장·엘프·SSS</div></div>
-                  <div class="char-card"><div class="char-portrait"><img src="img/ch/03.png" alt="모리건"></div><div class="char-name">모리건</div><div class="char-role">행정관·산양수인·A+</div></div>
-                  <div class="char-card"><div class="char-portrait"><img src="img/ch/04.png" alt="아델"></div><div class="char-name">아델</div><div class="char-role">집행관·인간·S+</div></div>
-                  <div class="char-card"><div class="char-portrait"><img src="img/ch/05.png" alt="아이리스"></div><div class="char-name">아이리스</div><div class="char-role">접수원·인간·F</div></div>
-                </div>
-              </div>
-            </div>
-
-            <div class="place-card">
-              <div class="place-image"><img src="img/bg/02.png" alt="라이프헤븐"></div>
-              <div class="place-info">
-                <div class="place-title">◇ 라이프헤븐</div>
-                <div class="place-desc">중상급 게이트 부상자를 전문적으로 치료하는 핵심 의료시설. 의료 헌터와 전문 인력이 상주한다.</div>
-                <div class="place-characters char-grid">
-                  <div class="char-card"><div class="char-portrait"><img src="img/ch/06.png" alt="르미에르"></div><div class="char-name">르미에르</div><div class="char-role">의무관·인간·A</div></div>
-                </div>
-              </div>
-            </div>
-
-          </div>
-        </div>
-      </div>
-
-      <div class="acc-item faction-luminaris">
-        <button class="acc-head">
-          <span class="acc-num">02</span>
-          <span class="acc-title">루미나리스 신성제국</span>
-          <span class="acc-chevron"></span>
-        </button>
-        <div class="acc-body">
-          <div class="acc-body-inner">
-
-            <div class="faction-desc">
+<div class="place-card">
+<div class="place-image"><img alt="가디언허브" src="img/bg/01.png"/></div>
+<div class="place-info">
+<div class="place-title">◇ 가디언허브</div>
+<div class="place-desc">헌터 등록·등급 심사·의뢰 접수를 담당하는 중앙연합의 실질적 심장부. 전 지역 헌터가 상시 왕래한다.</div>
+<div class="place-characters char-grid">
+<div class="char-card"><div class="char-portrait"><img alt="뮬라" src="img/ch/01.png"/></div><div class="char-name">뮬라</div><div class="char-role">관측관·인간·B+</div></div>
+<div class="char-card"><div class="char-portrait"><img alt="미스텔라" src="img/ch/02.png"/></div><div class="char-name">미스텔라</div><div class="char-role">의장·엘프·SSS</div></div>
+<div class="char-card"><div class="char-portrait"><img alt="모리건" src="img/ch/03.png"/></div><div class="char-name">모리건</div><div class="char-role">행정관·산양수인·A+</div></div>
+<div class="char-card"><div class="char-portrait"><img alt="아델" src="img/ch/04.png"/></div><div class="char-name">아델</div><div class="char-role">집행관·인간·S+</div></div>
+<div class="char-card"><div class="char-portrait"><img alt="아이리스" src="img/ch/05.png"/></div><div class="char-name">아이리스</div><div class="char-role">접수원·인간·F</div></div>
+</div>
+</div>
+</div>
+<div class="place-card">
+<div class="place-image"><img alt="라이프헤븐" src="img/bg/02.png"/></div>
+<div class="place-info">
+<div class="place-title">◇ 라이프헤븐</div>
+<div class="place-desc">중상급 게이트 부상자를 전문적으로 치료하는 핵심 의료시설. 의료 헌터와 전문 인력이 상주한다.</div>
+<div class="place-characters char-grid">
+<div class="char-card"><div class="char-portrait"><img alt="르미에르" src="img/ch/06.png"/></div><div class="char-name">르미에르</div><div class="char-role">의무관·인간·A</div></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="acc-item faction-luminaris faction-content-panel" data-faction-panel="luminaris">
+<button class="acc-head">
+<span class="acc-num">02</span>
+<span class="acc-title">루미나리스 신성제국</span>
+<span class="acc-chevron"></span>
+</button>
+<div class="acc-body">
+<div class="acc-body-inner">
+<div class="faction-desc">
               서부의 신앙과 질서를 중심으로 세워진 성역국가. 백룡 교황 에일로릭스를 정점으로 성기사단과 사제단의 위계가 촘촘하며,
               백색 대리석과 스테인드글라스의 성스러운 도시경관이 특징이다.
             </div>
-
-            <div class="place-card">
-              <div class="place-image"><img src="img/bg/03.png" alt="셀레스티아 생텀"></div>
-              <div class="place-info">
-                <div class="place-title">◇ 셀레스티아 생텀</div>
-                <div class="place-desc">에일로릭스가 좌정하는 교황청이자 성기사단을 총괄하는 제국 권력의 중심.</div>
-                <div class="place-characters char-grid">
-                  <div class="char-card"><div class="char-portrait"><img src="img/ch/07.png" alt="에일로릭스"></div><div class="char-name">에일로릭스</div><div class="char-role">교황·백룡·SS</div></div>
-                  <div class="char-card"><div class="char-portrait"><img src="img/ch/08.png" alt="헬리아드네"></div><div class="char-name">헬리아드네</div><div class="char-role">심판관·인간·S</div></div>
-                </div>
-              </div>
-            </div>
-
-            <div class="place-card">
-              <div class="place-image"><img src="img/bg/04.png" alt="솔루나 대성당"></div>
-              <div class="place-info">
-                <div class="place-title">◇ 솔루나 대성당</div>
-                <div class="place-desc">예배와 축성 의식이 열리는 신앙의 중심지. 순례자와 성직자가 끊이지 않는 대성당.</div>
-                <div class="place-characters char-grid">
-                  <div class="char-card"><div class="char-portrait"><img src="img/ch/09.png" alt="플뢰르"></div><div class="char-name">플뢰르</div><div class="char-role">성녀·엘프·B+</div></div>
-                  <div class="char-card"><div class="char-portrait"><img src="img/ch/10.png" alt="테오도시아"></div><div class="char-name">테오도시아</div><div class="char-role">교주·인간·A</div></div>
-                </div>
-              </div>
-            </div>
-
-          </div>
-        </div>
-      </div>
-
-      <div class="acc-item faction-astra">
-        <button class="acc-head">
-          <span class="acc-num">03</span>
-          <span class="acc-title">아스트라 연방</span>
-          <span class="acc-chevron"></span>
-        </button>
-        <div class="acc-body">
-          <div class="acc-body-inner">
-
-            <div class="faction-desc">
+<div class="place-card">
+<div class="place-image"><img alt="셀레스티아 생텀" src="img/bg/03.png"/></div>
+<div class="place-info">
+<div class="place-title">◇ 셀레스티아 생텀</div>
+<div class="place-desc">에일로릭스가 좌정하는 교황청이자 성기사단을 총괄하는 제국 권력의 중심.</div>
+<div class="place-characters char-grid">
+<div class="char-card"><div class="char-portrait"><img alt="에일로릭스" src="img/ch/07.png"/></div><div class="char-name">에일로릭스</div><div class="char-role">교황·백룡·SS</div></div>
+<div class="char-card"><div class="char-portrait"><img alt="헬리아드네" src="img/ch/08.png"/></div><div class="char-name">헬리아드네</div><div class="char-role">심판관·인간·S</div></div>
+</div>
+</div>
+</div>
+<div class="place-card">
+<div class="place-image"><img alt="솔루나 대성당" src="img/bg/04.png"/></div>
+<div class="place-info">
+<div class="place-title">◇ 솔루나 대성당</div>
+<div class="place-desc">예배와 축성 의식이 열리는 신앙의 중심지. 순례자와 성직자가 끊이지 않는 대성당.</div>
+<div class="place-characters char-grid">
+<div class="char-card"><div class="char-portrait"><img alt="플뢰르" src="img/ch/09.png"/></div><div class="char-name">플뢰르</div><div class="char-role">성녀·엘프·B+</div></div>
+<div class="char-card"><div class="char-portrait"><img alt="테오도시아" src="img/ch/10.png"/></div><div class="char-name">테오도시아</div><div class="char-role">교주·인간·A</div></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="acc-item faction-astra faction-content-panel" data-faction-panel="astra">
+<button class="acc-head">
+<span class="acc-num">03</span>
+<span class="acc-title">아스트라 연방</span>
+<span class="acc-chevron"></span>
+</button>
+<div class="acc-body">
+<div class="acc-body-inner">
+<div class="faction-desc">
               남부의 첨단과학 도시국가. 침식정화기술 개발을 계기로 약소국에서 기술 강국으로 도약했으며,
               실패와 실험을 두려워하지 않는 연구문화와 강한 기술 실용주의가 특징이다.
             </div>
-
-            <div class="place-card">
-              <div class="place-image"><img src="img/bg/05.png" alt="노바테크노폴리스"></div>
-              <div class="place-info">
-                <div class="place-title">◇ 노바테크노폴리스</div>
-                <div class="place-desc">침식정화기술과 첨단 장비를 연구·개발하는 연방 최대의 연구도시이자 장비 공급 거점.</div>
-                <div class="place-characters char-grid">
-                  <div class="char-card"><div class="char-portrait"><img src="img/ch/11.png" alt="아크"></div><div class="char-name">아크</div><div class="char-role">연방책임자·인간·SS</div></div>
-                  <div class="char-card"><div class="char-portrait"><img src="img/ch/12.png" alt="크리스텔"></div><div class="char-name">크리스텔</div><div class="char-role">수석연구원·인간·E</div></div>
-                  <div class="char-card"><div class="char-portrait"><img src="img/ch/13.png" alt="이스티아"></div><div class="char-name">이스티아</div><div class="char-role">공방기술자·인간·B</div></div>
-                  <div class="char-card"><div class="char-portrait"><img src="img/ch/14.png" alt="카스미"></div><div class="char-name">카스미</div><div class="char-role">수역관리자·무룡·A+</div></div>
-                </div>
-              </div>
-            </div>
-
-            <div class="place-card">
-              <div class="place-image"><img src="img/bg/06.png" alt="아스트라 시티"></div>
-              <div class="place-info">
-                <div class="place-title">◇ 아스트라 시티</div>
-                <div class="place-desc">외출·아르바이트·문화생활·연애 등 일상 활동이 집중된 남부의 문화도시.</div>
-              </div>
-            </div>
-
-            <div class="place-card">
-              <div class="place-image"><img src="img/bg/07.png" alt="스타웨이브 워터파크"></div>
-              <div class="place-info">
-                <div class="place-title">◇ 스타웨이브 워터파크</div>
-                <div class="place-desc">여름철 관광객이 몰리는 대형 수상 휴양시설이자 아스트라의 대표적인 계절 휴양지.</div>
-              </div>
-            </div>
-
-          </div>
-        </div>
-      </div>
-
-      <div class="acc-item faction-sylvania">
-        <button class="acc-head">
-          <span class="acc-num">04</span>
-          <span class="acc-title">실바니아 자연동맹</span>
-          <span class="acc-chevron"></span>
-        </button>
-        <div class="acc-body">
-          <div class="acc-body-inner">
-
-            <div class="faction-desc">
+<div class="place-card">
+<div class="place-image"><img alt="노바테크노폴리스" src="img/bg/05.png"/></div>
+<div class="place-info">
+<div class="place-title">◇ 노바테크노폴리스</div>
+<div class="place-desc">침식정화기술과 첨단 장비를 연구·개발하는 연방 최대의 연구도시이자 장비 공급 거점.</div>
+<div class="place-characters char-grid">
+<div class="char-card"><div class="char-portrait"><img alt="아크" src="img/ch/11.png"/></div><div class="char-name">아크</div><div class="char-role">연방책임자·인간·SS</div></div>
+<div class="char-card"><div class="char-portrait"><img alt="크리스텔" src="img/ch/12.png"/></div><div class="char-name">크리스텔</div><div class="char-role">수석연구원·인간·E</div></div>
+<div class="char-card"><div class="char-portrait"><img alt="이스티아" src="img/ch/13.png"/></div><div class="char-name">이스티아</div><div class="char-role">공방기술자·인간·B</div></div>
+<div class="char-card"><div class="char-portrait"><img alt="카스미" src="img/ch/14.png"/></div><div class="char-name">카스미</div><div class="char-role">수역관리자·무룡·A+</div></div>
+</div>
+</div>
+</div>
+<div class="place-card">
+<div class="place-image"><img alt="아스트라 시티" src="img/bg/06.png"/></div>
+<div class="place-info">
+<div class="place-title">◇ 아스트라 시티</div>
+<div class="place-desc">외출·아르바이트·문화생활·연애 등 일상 활동이 집중된 남부의 문화도시.</div>
+</div>
+</div>
+<div class="place-card">
+<div class="place-image"><img alt="스타웨이브 워터파크" src="img/bg/07.png"/></div>
+<div class="place-info">
+<div class="place-title">◇ 스타웨이브 워터파크</div>
+<div class="place-desc">여름철 관광객이 몰리는 대형 수상 휴양시설이자 아스트라의 대표적인 계절 휴양지.</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="acc-item faction-sylvania faction-content-panel" data-faction-panel="sylvania">
+<button class="acc-head">
+<span class="acc-num">04</span>
+<span class="acc-title">실바니아 자연동맹</span>
+<span class="acc-chevron"></span>
+</button>
+<div class="acc-body">
+<div class="acc-body-inner">
+<div class="faction-desc">
               북부의 세계수 아래 엘프와 수인이 공존하는 자연 기반 동맹. 종족·부족 대표의 합의로 운영되며,
               인위적 개발보다 세계수와의 공생을 우선한다.
             </div>
-
-            <div class="place-card">
-              <div class="place-image"><img src="img/bg/08.png" alt="에버그린"></div>
-              <div class="place-info">
-                <div class="place-title">◇ 에버그린</div>
-                <div class="place-desc">엘프와 수인이 함께 생활하는 동맹의 중심도시. 세계수 정령과 교감하는 정령제가 매년 열린다.</div>
-                <div class="place-characters char-grid">
-                  <div class="char-card"><div class="char-portrait"><img src="img/ch/15.png" alt="플로리아"></div><div class="char-name">플로리아</div><div class="char-role">지도자·엘프·SS</div></div>
-                  <div class="char-card"><div class="char-portrait"><img src="img/ch/17.png" alt="라비"></div><div class="char-name">라비</div><div class="char-role">경비대장·엘프·A+</div></div>
-                </div>
-              </div>
-            </div>
-
-            <div class="place-card">
-              <div class="place-image"><img src="img/bg/09.png" alt="코랄리움"></div>
-              <div class="place-info">
-                <div class="place-title">◇ 코랄리움</div>
-                <div class="place-desc">해양족이 거주하는 산호 바다 도시. 어업과 해상교역이 발달한 북부의 주요 해양 거점.</div>
-                <div class="place-characters char-grid">
-                  <div class="char-card"><div class="char-portrait"><img src="img/ch/16.png" alt="네레이아"></div><div class="char-name">네레이아</div><div class="char-role">수호자·인어·A</div></div>
-                  <div class="char-card"><div class="char-portrait"><img src="img/ch/18.png" alt="귄네"></div><div class="char-name">귄네</div><div class="char-role">전령·펭귄수인·C</div></div>
-                </div>
-              </div>
-            </div>
-
-          </div>
-        </div>
-      </div>
-
-      <div class="acc-item faction-cheonmyeong">
-        <button class="acc-head">
-          <span class="acc-num">05</span>
-          <span class="acc-title">천명천관</span>
-          <span class="acc-chevron"></span>
-        </button>
-        <div class="acc-body">
-          <div class="acc-body-inner">
-
-            <div class="faction-desc">
+<div class="place-card">
+<div class="place-image"><img alt="에버그린" src="img/bg/08.png"/></div>
+<div class="place-info">
+<div class="place-title">◇ 에버그린</div>
+<div class="place-desc">엘프와 수인이 함께 생활하는 동맹의 중심도시. 세계수 정령과 교감하는 정령제가 매년 열린다.</div>
+<div class="place-characters char-grid">
+<div class="char-card"><div class="char-portrait"><img alt="플로리아" src="img/ch/15.png"/></div><div class="char-name">플로리아</div><div class="char-role">지도자·엘프·SS</div></div>
+<div class="char-card"><div class="char-portrait"><img alt="라비" src="img/ch/17.png"/></div><div class="char-name">라비</div><div class="char-role">경비대장·엘프·A+</div></div>
+</div>
+</div>
+</div>
+<div class="place-card">
+<div class="place-image"><img alt="코랄리움" src="img/bg/09.png"/></div>
+<div class="place-info">
+<div class="place-title">◇ 코랄리움</div>
+<div class="place-desc">해양족이 거주하는 산호 바다 도시. 어업과 해상교역이 발달한 북부의 주요 해양 거점.</div>
+<div class="place-characters char-grid">
+<div class="char-card"><div class="char-portrait"><img alt="네레이아" src="img/ch/16.png"/></div><div class="char-name">네레이아</div><div class="char-role">수호자·인어·A</div></div>
+<div class="char-card"><div class="char-portrait"><img alt="귄네" src="img/ch/18.png"/></div><div class="char-name">귄네</div><div class="char-role">전령·펭귄수인·C</div></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="acc-item faction-cheonmyeong faction-content-panel" data-faction-panel="cheonmyeong">
+<button class="acc-head">
+<span class="acc-num">05</span>
+<span class="acc-title">천명천관</span>
+<span class="acc-chevron"></span>
+</button>
+<div class="acc-body">
+<div class="acc-body-inner">
+<div class="faction-desc">
               동부의 무예·수양 국가. 청룡 류카·주작 히바나·백호 토와의 3인 집정관 체제로 운영되며,
               위계보다 실력과 수양의 깊이를 중시한다.
             </div>
-
-            <div class="place-card">
-              <div class="place-image"><img src="img/bg/10.png" alt="천궁"></div>
-              <div class="place-info">
-                <div class="place-title">◇ 천궁</div>
-                <div class="place-desc">사신수 집정관들이 거하며 무도 수련이 이루어지는 천명천관의 정치·무예 중심지.</div>
-                <div class="place-characters char-grid">
-                  <div class="char-card"><div class="char-portrait"><img src="img/ch/19.png" alt="류카"></div><div class="char-name">류카</div><div class="char-role">집정관·청룡·SS+</div></div>
-                  <div class="char-card"><div class="char-portrait"><img src="img/ch/20.png" alt="히바나"></div><div class="char-name">히바나</div><div class="char-role">집정관·주작·SS</div></div>
-                  <div class="char-card"><div class="char-portrait"><img src="img/ch/21.png" alt="토와"></div><div class="char-name">토와</div><div class="char-role">집정관·백호·S+</div></div>
-                  <div class="char-card"><div class="char-portrait"><img src="img/ch/22.png" alt="아야나미"></div><div class="char-name">아야나미</div><div class="char-role">책사·인간·C+</div></div>
-                </div>
-              </div>
-            </div>
-
-            <div class="place-card">
-              <div class="place-image"><img src="img/bg/11.png" alt="청운가"></div>
-              <div class="place-info">
-                <div class="place-title">◇ 청운가</div>
-                <div class="place-desc">무구·영약·정보가 오가는 동부 최대의 상업·교역거리.</div>
-              </div>
-            </div>
-
-            <div class="place-card">
-              <div class="place-image"><img src="img/bg/12.png" alt="설원온천향"></div>
-              <div class="place-info">
-                <div class="place-title">◇ 설원온천향</div>
-                <div class="place-desc">설원 속 온천과 숙박시설이 모여 있는 동부의 대표적인 겨울 휴양지.</div>
-              </div>
-            </div>
-
-          </div>
-        </div>
-      </div>
-
-      <div class="acc-item faction-pantheon">
-        <button class="acc-head">
-          <span class="acc-num">06</span>
-          <span class="acc-title">판테온 아카데미</span>
-          <span class="acc-chevron"></span>
-        </button>
-        <div class="acc-body">
-          <div class="acc-body-inner">
-
-            <div class="faction-desc">
+<div class="place-card">
+<div class="place-image"><img alt="천궁" src="img/bg/10.png"/></div>
+<div class="place-info">
+<div class="place-title">◇ 천궁</div>
+<div class="place-desc">사신수 집정관들이 거하며 무도 수련이 이루어지는 천명천관의 정치·무예 중심지.</div>
+<div class="place-characters char-grid">
+<div class="char-card"><div class="char-portrait"><img alt="류카" src="img/ch/19.png"/></div><div class="char-name">류카</div><div class="char-role">집정관·청룡·SS+</div></div>
+<div class="char-card"><div class="char-portrait"><img alt="히바나" src="img/ch/20.png"/></div><div class="char-name">히바나</div><div class="char-role">집정관·주작·SS</div></div>
+<div class="char-card"><div class="char-portrait"><img alt="토와" src="img/ch/21.png"/></div><div class="char-name">토와</div><div class="char-role">집정관·백호·S+</div></div>
+<div class="char-card"><div class="char-portrait"><img alt="아야나미" src="img/ch/22.png"/></div><div class="char-name">아야나미</div><div class="char-role">책사·인간·C+</div></div>
+</div>
+</div>
+</div>
+<div class="place-card">
+<div class="place-image"><img alt="청운가" src="img/bg/11.png"/></div>
+<div class="place-info">
+<div class="place-title">◇ 청운가</div>
+<div class="place-desc">무구·영약·정보가 오가는 동부 최대의 상업·교역거리.</div>
+</div>
+</div>
+<div class="place-card">
+<div class="place-image"><img alt="설원온천향" src="img/bg/12.png"/></div>
+<div class="place-info">
+<div class="place-title">◇ 설원온천향</div>
+<div class="place-desc">설원 속 온천과 숙박시설이 모여 있는 동부의 대표적인 겨울 휴양지.</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="acc-item faction-pantheon faction-content-panel" data-faction-panel="pantheon">
+<button class="acc-head">
+<span class="acc-num">06</span>
+<span class="acc-title">판테온 아카데미</span>
+<span class="acc-chevron"></span>
+</button>
+<div class="acc-body">
+<div class="acc-body-inner">
+<div class="faction-desc">
               아스트라 연방에 위치한 오르비스 최고의 헌터 양성학원. 전투·마도·정령·과학기술 등 다양한 분야의 인재를 선발하여
               실전형 헌터로 육성한다.
             </div>
-
-            <div class="place-card">
-              <div class="place-image"><img src="img/bg/13.png" alt="센트럴 넥서스"></div>
-              <div class="place-info"><div class="place-title">◇ 센트럴 넥서스</div><div class="place-desc">아카데미 중앙광장. 각종 행사와 부스가 열리며 로웰 기념비가 자리한다.</div></div>
-            </div>
-            <div class="place-card">
-              <div class="place-image"><img src="img/bg/14.png" alt="천명관"></div>
-              <div class="place-info"><div class="place-title">◇ 천명관</div><div class="place-desc">무술과 인술을 교육하는 무예 강의동.</div></div>
-            </div>
-            <div class="place-card">
-              <div class="place-image"><img src="img/bg/15.png" alt="루미나관"></div>
-              <div class="place-info"><div class="place-title">◇ 루미나관</div><div class="place-desc">검술과 신성 능력 교육을 담당하는 신성 강의동.</div></div>
-            </div>
-            <div class="place-card">
-              <div class="place-image"><img src="img/bg/16.png" alt="엘더우드관"></div>
-              <div class="place-info"><div class="place-title">◇ 엘더우드관</div><div class="place-desc">정령술과 야외 생존술을 교육하는 자연계 강의동.</div></div>
-            </div>
-            <div class="place-card">
-              <div class="place-image"><img src="img/bg/17.png" alt="테크노관"></div>
-              <div class="place-info"><div class="place-title">◇ 테크노관</div><div class="place-desc">마도학과 첨단 과학기술을 연구·교육하는 공학 강의동.</div></div>
-            </div>
-            <div class="place-card">
-              <div class="place-image"><img src="img/bg/18.png" alt="가상균열훈련장"></div>
-              <div class="place-info"><div class="place-title">◇ 가상균열훈련장</div><div class="place-desc">전술 및 개인 전투훈련 시설. 실제 상해는 발생하지 않지만 충격은 그대로 전달된다.</div></div>
-            </div>
-            <div class="place-card">
-              <div class="place-image"><img src="img/bg/19.png" alt="보건실"></div>
-              <div class="place-info"><div class="place-title">◇ 보건실</div><div class="place-desc">아카데미 소속 학생을 위한 의료시설.</div></div>
-            </div>
-
-            <div class="facility-block">
-              <div class="facility-title">◇ 교직원</div>
-              <div class="char-grid">
-                <div class="char-card"><div class="char-portrait"><img src="img/ch/23.png" alt="카메코"></div><div class="char-name">카메코</div><div class="char-role">총장·현무·S</div></div>
-                <div class="char-card"><div class="char-portrait"><img src="img/ch/24.png" alt="에이미"></div><div class="char-name">에이미</div><div class="char-role">과학기술학교수·인간·S+</div></div>
-                <div class="char-card"><div class="char-portrait"><img src="img/ch/25.png" alt="샤를로트"></div><div class="char-name">샤를로트</div><div class="char-role">검술학교수·인간·S</div></div>
-                <div class="char-card"><div class="char-portrait"><img src="img/ch/26.png" alt="루시엔"></div><div class="char-name">루시엔</div><div class="char-role">마도학교수·인간·S+</div></div>
-                <div class="char-card"><div class="char-portrait"><img src="img/ch/27.png" alt="엘레노아"></div><div class="char-name">엘레노아</div><div class="char-role">신성학교수·인간·S</div></div>
-                <div class="char-card"><div class="char-portrait"><img src="img/ch/28.png" alt="베아트릭스"></div><div class="char-name">베아트릭스</div><div class="char-role">전술학교수·인간·SS</div></div>
-                <div class="char-card"><div class="char-portrait"><img src="img/ch/29.png" alt="벨라리엔시아"></div><div class="char-name">벨라리엔시아</div><div class="char-role">정령학교수·엘프·S</div></div>
-                <div class="char-card"><div class="char-portrait"><img src="img/ch/30.png" alt="세이라"></div><div class="char-name">세이라</div><div class="char-role">생존학교수·매수인·S+</div></div>
-                <div class="char-card"><div class="char-portrait"><img src="img/ch/31.png" alt="효우린"></div><div class="char-name">효우린</div><div class="char-role">무술학교수·인간·S</div></div>
-                <div class="char-card"><div class="char-portrait"><img src="img/ch/32.png" alt="히노카"></div><div class="char-name">히노카</div><div class="char-role">인술학교수·인간·S+</div></div>
-                <div class="char-card"><div class="char-portrait"><img src="img/ch/33.png" alt="린"></div><div class="char-name">린</div><div class="char-role">보건교사·인간·E+</div></div>
-              </div>
-            </div>
-
-            <div class="facility-block">
-              <div class="facility-title">◇ 후보생</div>
-              <div class="char-grid">
-                <div class="char-card"><div class="char-portrait"><img src="img/ch/34.png" alt="루네"></div><div class="char-name">루네</div><div class="char-role">후보생·인간·D+</div></div>
-                <div class="char-card"><div class="char-portrait"><img src="img/ch/35.png" alt="메리"></div><div class="char-name">메리</div><div class="char-role">후보생·인간·D</div></div>
-                <div class="char-card"><div class="char-portrait"><img src="img/ch/36.png" alt="라줄리"></div><div class="char-name">라줄리</div><div class="char-role">후보생·인간·D+</div></div>
-                <div class="char-card"><div class="char-portrait"><img src="img/ch/37.png" alt="후냐르"></div><div class="char-name">후냐르</div><div class="char-role">후보생·늑대수인·C+</div></div>
-                <div class="char-card"><div class="char-portrait"><img src="img/ch/38.png" alt="엘로웬"></div><div class="char-name">엘로웬</div><div class="char-role">후보생·엘프·D</div></div>
-                <div class="char-card"><div class="char-portrait"><img src="img/ch/39.png" alt="후유"></div><div class="char-name">후유</div><div class="char-role">후보생·인간·C</div></div>
-                <div class="char-card"><div class="char-portrait"><img src="img/ch/40.png" alt="알베시아"></div><div class="char-name">알베시아</div><div class="char-role">후보생·흰비둘기수인·D</div></div>
-              </div>
-            </div>
-
-            <div class="facility-block">
-              <div class="facility-title">◇ 정규생</div>
-              <div class="char-grid">
-                <div class="char-card"><div class="char-portrait"><img src="img/ch/41.png" alt="클로버"></div><div class="char-name">클로버</div><div class="char-role">정규생·인간·C</div></div>
-                <div class="char-card"><div class="char-portrait"><img src="img/ch/42.png" alt="체리"></div><div class="char-name">체리</div><div class="char-role">정규생·토끼수인·C</div></div>
-                <div class="char-card"><div class="char-portrait"><img src="img/ch/43.png" alt="니냐"></div><div class="char-name">니냐</div><div class="char-role">정규생·고양이수인·C+</div></div>
-                <div class="char-card"><div class="char-portrait"><img src="img/ch/44.png" alt="엔잔"></div><div class="char-name">엔잔</div><div class="char-role">정규생·인간·B</div></div>
-                <div class="char-card"><div class="char-portrait"><img src="img/ch/45.png" alt="아마유라"></div><div class="char-name">아마유라</div><div class="char-role">정규생·인간·C+</div></div>
-                <div class="char-card"><div class="char-portrait"><img src="img/ch/46.png" alt="오렐리아"></div><div class="char-name">오렐리아</div><div class="char-role">정규생·인간·C+</div></div>
-                <div class="char-card"><div class="char-portrait"><img src="img/ch/47.png" alt="이브"></div><div class="char-name">이브</div><div class="char-role">정규생·인간·S</div></div>
-              </div>
-            </div>
-
-            <div class="facility-block">
-              <div class="facility-title">◇ 정예생</div>
-              <div class="char-grid">
-                <div class="char-card"><div class="char-portrait"><img src="img/ch/48.png" alt="테레제"></div><div class="char-name">테레제</div><div class="char-role">정예생·인간·B</div></div>
-                <div class="char-card"><div class="char-portrait"><img src="img/ch/49.png" alt="아르테미스"></div><div class="char-name">아르테미스</div><div class="char-role">정예생·인간·A</div></div>
-                <div class="char-card"><div class="char-portrait"><img src="img/ch/50.png" alt="샤메이"></div><div class="char-name">샤메이</div><div class="char-role">정예생·상어수인·B+</div></div>
-                <div class="char-card"><div class="char-portrait"><img src="img/ch/51.png" alt="유키노"></div><div class="char-name">유키노</div><div class="char-role">정예생·인간·A+</div></div>
-                <div class="char-card"><div class="char-portrait"><img src="img/ch/52.png" alt="이니샤"></div><div class="char-name">이니샤</div><div class="char-role">황녀·백룡·S</div></div>
-                <div class="char-card"><div class="char-portrait"><img src="img/ch/53.png" alt="이벨리에나"></div><div class="char-name">이벨리에나</div><div class="char-role">정예생·서큐버스·B+</div></div>
-                <div class="char-card"><div class="char-portrait"><img src="img/ch/54.png" alt="모네"></div><div class="char-name">모네</div><div class="char-role">정예생·박쥐수인·B</div></div>
-              </div>
-            </div>
-
-          </div>
-        </div>
-      </div>
-
-      <div class="acc-item faction-phantom">
-        <button class="acc-head">
-          <span class="acc-num">07</span>
-          <span class="acc-title">팬텀 스트라이크</span>
-          <span class="acc-chevron"></span>
-        </button>
-        <div class="acc-body">
-          <div class="acc-body-inner">
-            <div class="faction-desc">소수 정예와 철저한 실력주의를 표방하는 최상위권 헌터 길드. 고난도 게이트와 위험지역 공략에서 특히 강한 전투력을 보인다.</div>
-            <div class="place-card">
-              <div class="place-image"><img src="img/bg/20.png" alt="팬텀 스트라이크"></div>
-              <div class="place-info">
-                <div class="place-title">◇ 팬텀 스트라이크</div>
-                <div class="place-characters char-grid">
-                  <div class="char-card"><div class="char-portrait"><img src="img/ch/55.png" alt="코르비나"></div><div class="char-name">코르비나</div><div class="char-role">길드장·까마귀수인·SS+</div></div>
-                  <div class="char-card"><div class="char-portrait"><img src="img/ch/56.png" alt="판테라"></div><div class="char-name">판테라</div><div class="char-role">부길드장·구름표범수인·S+</div></div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="acc-item faction-noblesse">
-        <button class="acc-head">
-          <span class="acc-num">08</span>
-          <span class="acc-title">노블레스</span>
-          <span class="acc-chevron"></span>
-        </button>
-        <div class="acc-body">
-          <div class="acc-body-inner">
-            <div class="faction-desc">품격과 책임을 중시하는 명문 헌터 길드. 화려한 이미지와 달리 구조·호위·민간인 보호 임무에 적극적으로 참여한다.</div>
-            <div class="place-card">
-              <div class="place-image"><img src="img/bg/21.png" alt="노블레스"></div>
-              <div class="place-info">
-                <div class="place-title">◇ 노블레스</div>
-                <div class="place-characters char-grid">
-                  <div class="char-card"><div class="char-portrait"><img src="img/ch/57.png" alt="카시아"></div><div class="char-name">카시아</div><div class="char-role">길드장·인간·S</div></div>
-                  <div class="char-card"><div class="char-portrait"><img src="img/ch/58.png" alt="포르모노"></div><div class="char-name">포르모노</div><div class="char-role">부길드장·인간·A</div></div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="acc-item faction-wolha">
-        <button class="acc-head">
-          <span class="acc-num">09</span>
-          <span class="acc-title">월하</span>
-          <span class="acc-chevron"></span>
-        </button>
-        <div class="acc-body">
-          <div class="acc-body-inner">
-            <div class="faction-desc">동양계 검술과 비술을 중심으로 활동하는 헌터 길드. 조용하고 절제된 분위기 속에서 정밀한 전투와 소수 단위 임무를 선호한다.</div>
-            <div class="place-card">
-              <div class="place-image"><img src="img/bg/22.png" alt="월하"></div>
-              <div class="place-info">
-                <div class="place-title">◇ 월하</div>
-                <div class="place-characters char-grid">
-                  <div class="char-card"><div class="char-portrait"><img src="img/ch/59.png" alt="카구라"></div><div class="char-name">카구라</div><div class="char-role">길드장·인간·S+</div></div>
-                  <div class="char-card"><div class="char-portrait"><img src="img/ch/60.png" alt="은령"></div><div class="char-name">은령</div><div class="char-role">부길드장·요호·A+</div></div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="acc-item faction-freelance">
-        <button class="acc-head">
-          <span class="acc-num">10</span>
-          <span class="acc-title">프리랜서</span>
-          <span class="acc-chevron"></span>
-        </button>
-        <div class="acc-body">
-          <div class="acc-body-inner">
-            <div class="faction-desc">
+<div class="place-card">
+<div class="place-image"><img alt="센트럴 넥서스" src="img/bg/13.png"/></div>
+<div class="place-info"><div class="place-title">◇ 센트럴 넥서스</div><div class="place-desc">아카데미 중앙광장. 각종 행사와 부스가 열리며 로웰 기념비가 자리한다.</div></div>
+</div>
+<div class="place-card">
+<div class="place-image"><img alt="천명관" src="img/bg/14.png"/></div>
+<div class="place-info"><div class="place-title">◇ 천명관</div><div class="place-desc">무술과 인술을 교육하는 무예 강의동.</div></div>
+</div>
+<div class="place-card">
+<div class="place-image"><img alt="루미나관" src="img/bg/15.png"/></div>
+<div class="place-info"><div class="place-title">◇ 루미나관</div><div class="place-desc">검술과 신성 능력 교육을 담당하는 신성 강의동.</div></div>
+</div>
+<div class="place-card">
+<div class="place-image"><img alt="엘더우드관" src="img/bg/16.png"/></div>
+<div class="place-info"><div class="place-title">◇ 엘더우드관</div><div class="place-desc">정령술과 야외 생존술을 교육하는 자연계 강의동.</div></div>
+</div>
+<div class="place-card">
+<div class="place-image"><img alt="테크노관" src="img/bg/17.png"/></div>
+<div class="place-info"><div class="place-title">◇ 테크노관</div><div class="place-desc">마도학과 첨단 과학기술을 연구·교육하는 공학 강의동.</div></div>
+</div>
+<div class="place-card">
+<div class="place-image"><img alt="가상균열훈련장" src="img/bg/18.png"/></div>
+<div class="place-info"><div class="place-title">◇ 가상균열훈련장</div><div class="place-desc">전술 및 개인 전투훈련 시설. 실제 상해는 발생하지 않지만 충격은 그대로 전달된다.</div></div>
+</div>
+<div class="place-card">
+<div class="place-image"><img alt="보건실" src="img/bg/19.png"/></div>
+<div class="place-info"><div class="place-title">◇ 보건실</div><div class="place-desc">아카데미 소속 학생을 위한 의료시설.</div></div>
+</div>
+<div class="facility-block">
+<div class="facility-title">◇ 교직원</div>
+<div class="char-grid">
+<div class="char-card"><div class="char-portrait"><img alt="카메코" src="img/ch/23.png"/></div><div class="char-name">카메코</div><div class="char-role">총장·현무·S</div></div>
+<div class="char-card"><div class="char-portrait"><img alt="에이미" src="img/ch/24.png"/></div><div class="char-name">에이미</div><div class="char-role">과학기술학교수·인간·S+</div></div>
+<div class="char-card"><div class="char-portrait"><img alt="샤를로트" src="img/ch/25.png"/></div><div class="char-name">샤를로트</div><div class="char-role">검술학교수·인간·S</div></div>
+<div class="char-card"><div class="char-portrait"><img alt="루시엔" src="img/ch/26.png"/></div><div class="char-name">루시엔</div><div class="char-role">마도학교수·인간·S+</div></div>
+<div class="char-card"><div class="char-portrait"><img alt="엘레노아" src="img/ch/27.png"/></div><div class="char-name">엘레노아</div><div class="char-role">신성학교수·인간·S</div></div>
+<div class="char-card"><div class="char-portrait"><img alt="베아트릭스" src="img/ch/28.png"/></div><div class="char-name">베아트릭스</div><div class="char-role">전술학교수·인간·SS</div></div>
+<div class="char-card"><div class="char-portrait"><img alt="벨라리엔시아" src="img/ch/29.png"/></div><div class="char-name">벨라리엔시아</div><div class="char-role">정령학교수·엘프·S</div></div>
+<div class="char-card"><div class="char-portrait"><img alt="세이라" src="img/ch/30.png"/></div><div class="char-name">세이라</div><div class="char-role">생존학교수·매수인·S+</div></div>
+<div class="char-card"><div class="char-portrait"><img alt="효우린" src="img/ch/31.png"/></div><div class="char-name">효우린</div><div class="char-role">무술학교수·인간·S</div></div>
+<div class="char-card"><div class="char-portrait"><img alt="히노카" src="img/ch/32.png"/></div><div class="char-name">히노카</div><div class="char-role">인술학교수·인간·S+</div></div>
+<div class="char-card"><div class="char-portrait"><img alt="린" src="img/ch/33.png"/></div><div class="char-name">린</div><div class="char-role">보건교사·인간·E+</div></div>
+</div>
+</div>
+<div class="facility-block">
+<div class="facility-title">◇ 후보생</div>
+<div class="char-grid">
+<div class="char-card"><div class="char-portrait"><img alt="루네" src="img/ch/34.png"/></div><div class="char-name">루네</div><div class="char-role">후보생·인간·D+</div></div>
+<div class="char-card"><div class="char-portrait"><img alt="메리" src="img/ch/35.png"/></div><div class="char-name">메리</div><div class="char-role">후보생·인간·D</div></div>
+<div class="char-card"><div class="char-portrait"><img alt="라줄리" src="img/ch/36.png"/></div><div class="char-name">라줄리</div><div class="char-role">후보생·인간·D+</div></div>
+<div class="char-card"><div class="char-portrait"><img alt="후냐르" src="img/ch/37.png"/></div><div class="char-name">후냐르</div><div class="char-role">후보생·늑대수인·C+</div></div>
+<div class="char-card"><div class="char-portrait"><img alt="엘로웬" src="img/ch/38.png"/></div><div class="char-name">엘로웬</div><div class="char-role">후보생·엘프·D</div></div>
+<div class="char-card"><div class="char-portrait"><img alt="후유" src="img/ch/39.png"/></div><div class="char-name">후유</div><div class="char-role">후보생·인간·C</div></div>
+<div class="char-card"><div class="char-portrait"><img alt="알베시아" src="img/ch/40.png"/></div><div class="char-name">알베시아</div><div class="char-role">후보생·흰비둘기수인·D</div></div>
+</div>
+</div>
+<div class="facility-block">
+<div class="facility-title">◇ 정규생</div>
+<div class="char-grid">
+<div class="char-card"><div class="char-portrait"><img alt="클로버" src="img/ch/41.png"/></div><div class="char-name">클로버</div><div class="char-role">정규생·인간·C</div></div>
+<div class="char-card"><div class="char-portrait"><img alt="체리" src="img/ch/42.png"/></div><div class="char-name">체리</div><div class="char-role">정규생·토끼수인·C</div></div>
+<div class="char-card"><div class="char-portrait"><img alt="니냐" src="img/ch/43.png"/></div><div class="char-name">니냐</div><div class="char-role">정규생·고양이수인·C+</div></div>
+<div class="char-card"><div class="char-portrait"><img alt="엔잔" src="img/ch/44.png"/></div><div class="char-name">엔잔</div><div class="char-role">정규생·인간·B</div></div>
+<div class="char-card"><div class="char-portrait"><img alt="아마유라" src="img/ch/45.png"/></div><div class="char-name">아마유라</div><div class="char-role">정규생·인간·C+</div></div>
+<div class="char-card"><div class="char-portrait"><img alt="오렐리아" src="img/ch/46.png"/></div><div class="char-name">오렐리아</div><div class="char-role">정규생·인간·C+</div></div>
+<div class="char-card"><div class="char-portrait"><img alt="이브" src="img/ch/47.png"/></div><div class="char-name">이브</div><div class="char-role">정규생·인간·S</div></div>
+</div>
+</div>
+<div class="facility-block">
+<div class="facility-title">◇ 정예생</div>
+<div class="char-grid">
+<div class="char-card"><div class="char-portrait"><img alt="테레제" src="img/ch/48.png"/></div><div class="char-name">테레제</div><div class="char-role">정예생·인간·B</div></div>
+<div class="char-card"><div class="char-portrait"><img alt="아르테미스" src="img/ch/49.png"/></div><div class="char-name">아르테미스</div><div class="char-role">정예생·인간·A</div></div>
+<div class="char-card"><div class="char-portrait"><img alt="샤메이" src="img/ch/50.png"/></div><div class="char-name">샤메이</div><div class="char-role">정예생·상어수인·B+</div></div>
+<div class="char-card"><div class="char-portrait"><img alt="유키노" src="img/ch/51.png"/></div><div class="char-name">유키노</div><div class="char-role">정예생·인간·A+</div></div>
+<div class="char-card"><div class="char-portrait"><img alt="이니샤" src="img/ch/52.png"/></div><div class="char-name">이니샤</div><div class="char-role">황녀·백룡·S</div></div>
+<div class="char-card"><div class="char-portrait"><img alt="이벨리에나" src="img/ch/53.png"/></div><div class="char-name">이벨리에나</div><div class="char-role">정예생·서큐버스·B+</div></div>
+<div class="char-card"><div class="char-portrait"><img alt="모네" src="img/ch/54.png"/></div><div class="char-name">모네</div><div class="char-role">정예생·박쥐수인·B</div></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="acc-item faction-phantom faction-content-panel" data-faction-panel="phantom">
+<button class="acc-head">
+<span class="acc-num">07</span>
+<span class="acc-title">팬텀 스트라이크</span>
+<span class="acc-chevron"></span>
+</button>
+<div class="acc-body">
+<div class="acc-body-inner">
+<div class="faction-desc">소수 정예와 철저한 실력주의를 표방하는 최상위권 헌터 길드. 고난도 게이트와 위험지역 공략에서 특히 강한 전투력을 보인다.</div>
+<div class="place-card">
+<div class="place-image"><img alt="팬텀 스트라이크" src="img/bg/20.png"/></div>
+<div class="place-info">
+<div class="place-title">◇ 팬텀 스트라이크</div>
+<div class="place-characters char-grid">
+<div class="char-card"><div class="char-portrait"><img alt="코르비나" src="img/ch/55.png"/></div><div class="char-name">코르비나</div><div class="char-role">길드장·까마귀수인·SS+</div></div>
+<div class="char-card"><div class="char-portrait"><img alt="판테라" src="img/ch/56.png"/></div><div class="char-name">판테라</div><div class="char-role">부길드장·구름표범수인·S+</div></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="acc-item faction-noblesse faction-content-panel" data-faction-panel="noblesse">
+<button class="acc-head">
+<span class="acc-num">08</span>
+<span class="acc-title">노블레스</span>
+<span class="acc-chevron"></span>
+</button>
+<div class="acc-body">
+<div class="acc-body-inner">
+<div class="faction-desc">품격과 책임을 중시하는 명문 헌터 길드. 화려한 이미지와 달리 구조·호위·민간인 보호 임무에 적극적으로 참여한다.</div>
+<div class="place-card">
+<div class="place-image"><img alt="노블레스" src="img/bg/21.png"/></div>
+<div class="place-info">
+<div class="place-title">◇ 노블레스</div>
+<div class="place-characters char-grid">
+<div class="char-card"><div class="char-portrait"><img alt="카시아" src="img/ch/57.png"/></div><div class="char-name">카시아</div><div class="char-role">길드장·인간·S</div></div>
+<div class="char-card"><div class="char-portrait"><img alt="포르모노" src="img/ch/58.png"/></div><div class="char-name">포르모노</div><div class="char-role">부길드장·인간·A</div></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="acc-item faction-wolha faction-content-panel" data-faction-panel="wolha">
+<button class="acc-head">
+<span class="acc-num">09</span>
+<span class="acc-title">월하</span>
+<span class="acc-chevron"></span>
+</button>
+<div class="acc-body">
+<div class="acc-body-inner">
+<div class="faction-desc">동양계 검술과 비술을 중심으로 활동하는 헌터 길드. 조용하고 절제된 분위기 속에서 정밀한 전투와 소수 단위 임무를 선호한다.</div>
+<div class="place-card">
+<div class="place-image"><img alt="월하" src="img/bg/22.png"/></div>
+<div class="place-info">
+<div class="place-title">◇ 월하</div>
+<div class="place-characters char-grid">
+<div class="char-card"><div class="char-portrait"><img alt="카구라" src="img/ch/59.png"/></div><div class="char-name">카구라</div><div class="char-role">길드장·인간·S+</div></div>
+<div class="char-card"><div class="char-portrait"><img alt="은령" src="img/ch/60.png"/></div><div class="char-name">은령</div><div class="char-role">부길드장·요호·A+</div></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="acc-item faction-freelance faction-content-panel" data-faction-panel="freelance">
+<button class="acc-head">
+<span class="acc-num">10</span>
+<span class="acc-title">프리랜서</span>
+<span class="acc-chevron"></span>
+</button>
+<div class="acc-body">
+<div class="acc-body-inner">
+<div class="faction-desc">
               특정 길드에 소속되지 않고 개인 계약과 의뢰를 통해 활동하는 헌터들. 활동 방식과 전문 분야가 자유로운 만큼 개성이 강한 이들이 많다.
             </div>
-
-            <div class="facility-block">
-              <div class="facility-title">◇ 등록 헌터</div>
-              <div class="char-grid">
-                <div class="char-card"><div class="char-portrait"><img src="img/ch/61.png" alt="크리미"></div><div class="char-name">크리미</div><div class="char-role">프리랜서·인간·B+</div></div>
-                <div class="char-card"><div class="char-portrait"><img src="img/ch/62.png" alt="프시타"></div><div class="char-name">프시타</div><div class="char-role">프리랜서·앵무새수인·A+</div></div>
-                <div class="char-card"><div class="char-portrait"><img src="img/ch/63.png" alt="키리카"></div><div class="char-name">키리카</div><div class="char-role">프리랜서·인간·S+</div></div>
-                <div class="char-card"><div class="char-portrait"><img src="img/ch/64.png" alt="그웬"></div><div class="char-name">그웬</div><div class="char-role">아이돌·인간·B</div></div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="acc-item faction-calamity">
-        <button class="acc-head">
-          <span class="acc-num">11</span>
-          <span class="acc-title">재앙</span>
-          <span class="acc-chevron"></span>
-        </button>
-
-        <div class="acc-body">
-          <div class="acc-body-inner">
-
-            <div class="faction-desc">
+<div class="facility-block">
+<div class="facility-title">◇ 등록 헌터</div>
+<div class="char-grid">
+<div class="char-card"><div class="char-portrait"><img alt="크리미" src="img/ch/61.png"/></div><div class="char-name">크리미</div><div class="char-role">프리랜서·인간·B+</div></div>
+<div class="char-card"><div class="char-portrait"><img alt="프시타" src="img/ch/62.png"/></div><div class="char-name">프시타</div><div class="char-role">프리랜서·앵무새수인·A+</div></div>
+<div class="char-card"><div class="char-portrait"><img alt="키리카" src="img/ch/63.png"/></div><div class="char-name">키리카</div><div class="char-role">프리랜서·인간·S+</div></div>
+<div class="char-card"><div class="char-portrait"><img alt="그웬" src="img/ch/64.png"/></div><div class="char-name">그웬</div><div class="char-role">아이돌·인간·B</div></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="acc-item faction-calamity faction-content-panel" data-faction-panel="calamity">
+<button class="acc-head">
+<span class="acc-num">11</span>
+<span class="acc-title">재앙</span>
+<span class="acc-chevron"></span>
+</button>
+<div class="acc-body">
+<div class="acc-body-inner">
+<div class="faction-desc">
               인류의 생존권을 위협하는 초월적 존재들.
               서로를 하나의 조직으로 묶을 수 없는 독립된 재앙이며,
               각자의 영역과 방식으로 오르비스 전역에 공포를 남긴다.
             </div>
-
-            <div class="calamity-stack">
-
-              <!-- 에이브릴 -->
-              <div class="calamity-row calamity-avril">
-                <div class="calamity-visuals">
-                  <div class="calamity-portrait">
-                    <img src="img/ch/65.png" alt="에이브릴">
-                  </div>
-                  <div class="calamity-scene">
-                    <img src="img/bg/28.png" alt="옵시디언 레어">
-                  </div>
-                </div>
-
-                <div class="calamity-meta">
-                  <div class="calamity-person-info">
-                    <div class="calamity-name">에이브릴</div>
-                    <div class="calamity-sub">흑룡의딸 · 흑룡 · SS+</div>
-                  </div>
-
-                  <div class="calamity-gate-info">
-                    <div class="calamity-gate-title">SS+ 게이트 · 옵시디언 레어</div>
-                    <div class="calamity-gate-desc">
+<div class="calamity-stack">
+<!-- 에이브릴 -->
+<div class="calamity-row calamity-avril">
+<div class="calamity-visuals">
+<div class="calamity-portrait">
+<img alt="에이브릴" src="img/ch/65.png"/>
+</div>
+<div class="calamity-scene">
+<img alt="옵시디언 레어" src="img/bg/28.png"/>
+</div>
+</div>
+<div class="calamity-meta">
+<div class="calamity-person-info">
+<div class="calamity-name">에이브릴</div>
+<div class="calamity-sub">흑룡의딸 · 흑룡 · SS+</div>
+</div>
+<div class="calamity-gate-info">
+<div class="calamity-gate-title">SS+ 게이트 · 옵시디언 레어</div>
+<div class="calamity-gate-desc">
                       검게 결정화된 암석과 심연의 마력이 뒤엉킨 흑룡의 영역.
                       깊숙이 들어갈수록 빛과 열이 희미해지며, 거대한 흑색 결정과 용의 흔적만이 적막 속에 남아 있다.
                     </div>
-                  </div>
-                </div>
-              </div>
-
-              <!-- 노타마야 -->
-              <div class="calamity-row calamity-notamaya">
-                <div class="calamity-visuals">
-                  <div class="calamity-portrait">
-                    <img src="img/ch/66.png" alt="노타마야">
-                  </div>
-                  <div class="calamity-scene">
-                    <img src="img/bg/29.png" alt="천귀궁">
-                  </div>
-                </div>
-
-                <div class="calamity-meta">
-                  <div class="calamity-person-info">
-                    <div class="calamity-name">노타마야</div>
-                    <div class="calamity-sub">천귀의주인 · 뱀요괴 · SSS</div>
-                  </div>
-
-                  <div class="calamity-gate-info">
-                    <div class="calamity-gate-title">SSS 게이트 · 천귀궁</div>
-                    <div class="calamity-gate-desc">
+</div>
+</div>
+</div>
+<!-- 노타마야 -->
+<div class="calamity-row calamity-notamaya">
+<div class="calamity-visuals">
+<div class="calamity-portrait">
+<img alt="노타마야" src="img/ch/66.png"/>
+</div>
+<div class="calamity-scene">
+<img alt="천귀궁" src="img/bg/29.png"/>
+</div>
+</div>
+<div class="calamity-meta">
+<div class="calamity-person-info">
+<div class="calamity-name">노타마야</div>
+<div class="calamity-sub">천귀의주인 · 뱀요괴 · SSS</div>
+</div>
+<div class="calamity-gate-info">
+<div class="calamity-gate-title">SSS 게이트 · 천귀궁</div>
+<div class="calamity-gate-desc">
                       끝을 가늠할 수 없는 어둠 속에 세워진 천귀들의 궁전.
                       그림자와 환각이 현실의 경계를 흐리며, 발을 들인 순간부터 무엇이 실재하는지조차 확신하기 어렵다.
                     </div>
-                  </div>
-                </div>
-              </div>
-
-              <!-- 칼립사 -->
-              <div class="calamity-row calamity-kalipsa">
-                <div class="calamity-visuals">
-                  <div class="calamity-portrait">
-                    <img src="img/ch/67.png" alt="칼립사">
-                  </div>
-                  <div class="calamity-scene">
-                    <img src="img/bg/31.png" alt="선큰스론">
-                  </div>
-                </div>
-
-                <div class="calamity-meta">
-                  <div class="calamity-person-info">
-                    <div class="calamity-name">칼립사</div>
-                    <div class="calamity-sub">심해의여왕 · 문어괴인 · SSS</div>
-                  </div>
-
-                  <div class="calamity-gate-info">
-                    <div class="calamity-gate-title">SSS 게이트 · 선큰스론</div>
-                    <div class="calamity-gate-desc">
+</div>
+</div>
+</div>
+<!-- 칼립사 -->
+<div class="calamity-row calamity-kalipsa">
+<div class="calamity-visuals">
+<div class="calamity-portrait">
+<img alt="칼립사" src="img/ch/67.png"/>
+</div>
+<div class="calamity-scene">
+<img alt="선큰스론" src="img/bg/31.png"/>
+</div>
+</div>
+<div class="calamity-meta">
+<div class="calamity-person-info">
+<div class="calamity-name">칼립사</div>
+<div class="calamity-sub">심해의여왕 · 문어괴인 · SSS</div>
+</div>
+<div class="calamity-gate-info">
+<div class="calamity-gate-title">SSS 게이트 · 선큰스론</div>
+<div class="calamity-gate-desc">
                       빛조차 닿지 않는 심해에 가라앉은 거대한 왕좌의 영역.
                       압도적인 수압과 기괴한 심해 생태계가 지배하며, 그 가장 깊은 곳에서 칼립사가 침입자를 기다린다.
                     </div>
-                  </div>
-                </div>
-              </div>
-
-              <!-- 닉스 -->
-              <div class="calamity-row calamity-nyx">
-                <div class="calamity-visuals">
-                  <div class="calamity-portrait">
-                    <img src="img/ch/68.png" alt="닉스">
-                  </div>
-                  <div class="calamity-scene">
-                    <img src="img/bg/30.png" alt="만상의 성소">
-                  </div>
-                </div>
-
-                <div class="calamity-meta">
-                  <div class="calamity-person-info">
-                    <div class="calamity-name">닉스</div>
-                    <div class="calamity-sub">별의마녀 · 인간 · SSS</div>
-                  </div>
-
-                  <div class="calamity-gate-info">
-                    <div class="calamity-gate-title">SSS 인공 게이트 · 만상의 성소</div>
-                    <div class="calamity-gate-desc">
+</div>
+</div>
+</div>
+<!-- 닉스 -->
+<div class="calamity-row calamity-nyx">
+<div class="calamity-visuals">
+<div class="calamity-portrait">
+<img alt="닉스" src="img/ch/68.png"/>
+</div>
+<div class="calamity-scene">
+<img alt="만상의 성소" src="img/bg/30.png"/>
+</div>
+</div>
+<div class="calamity-meta">
+<div class="calamity-person-info">
+<div class="calamity-name">닉스</div>
+<div class="calamity-sub">별의마녀 · 인간 · SSS</div>
+</div>
+<div class="calamity-gate-info">
+<div class="calamity-gate-title">SSS 인공 게이트 · 만상의 성소</div>
+<div class="calamity-gate-desc">
                       닉스가 인위적으로 구축한 비정상적인 게이트 공간.
                       별빛과 공허가 뒤섞인 내부에서는 공간의 거리와 방향마저 일정하지 않으며, 성소 전체가 그녀의 의지에 따라 재편된다.
                     </div>
-                  </div>
-                </div>
+</div>
+</div>
+<div class="apostle-area">
+<div class="apostle-label">닉스의 사도</div>
+<div class="apostle-grid">
+<div class="apostle-card">
+<img alt="네메시스" src="img/ch/69.png"/>
+<div class="char-name">네메시스</div>
+<div class="char-role">사도 · 인간 · S</div>
+</div>
+<div class="apostle-card">
+<img alt="레베른" src="img/ch/70.png"/>
+<div class="char-name">레베른</div>
+<div class="char-role">사도 · 인간 · A+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
 
-                <div class="apostle-area">
-                  <div class="apostle-label">닉스의 사도</div>
 
-                  <div class="apostle-grid">
-                    <div class="apostle-card">
-                      <img src="img/ch/69.png" alt="네메시스">
-                      <div class="char-name">네메시스</div>
-                      <div class="char-role">사도 · 인간 · S</div>
-                    </div>
 
-                    <div class="apostle-card">
-                      <img src="img/ch/70.png" alt="레베른">
-                      <div class="char-name">레베른</div>
-                      <div class="char-role">사도 · 인간 · A+</div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-            </div>
-          </div>
-        </div>
-      </div>
-
-            </div>
-          </div>
-        </div>
-      </div>
-
-    </div>
-  </div>
 
 </section>
-
 <footer>LAST RING · WORLD ARCHIVE · CONFIDENTIAL DRAFT</footer>
+<div class="footer-back-top">
+  <button type="button" id="backToTop" class="footer-back-top-btn" aria-label="맨 위로 이동">
+    <span class="footer-back-top-arrow">↑</span><span>맨 위로</span>
+  </button>
+</div>
 
 <script>
   document.querySelectorAll('.tab-btn').forEach(btn => {
@@ -2626,11 +2922,60 @@
 
   window.addEventListener('load', refreshAllOpenAccordions);
   window.addEventListener('resize', refreshAllOpenAccordions);
+
+
+  // 캐릭터 탭: 상단 세력 버튼으로 하나의 콘텐츠만 표시
+  document.querySelectorAll('#tab-char .faction-switch-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const key = btn.dataset.faction;
+
+      document.querySelectorAll('#tab-char .faction-switch-btn').forEach(b => {
+        b.classList.remove('active');
+      });
+
+      document.querySelectorAll('#tab-char .faction-content-panel').forEach(panel => {
+        panel.classList.remove('active');
+      });
+
+      btn.classList.add('active');
+
+      const panel = document.querySelector(
+        '#tab-char .faction-content-panel[data-faction-panel="' + key + '"]'
+      );
+
+      if (panel) {
+        panel.classList.add('active');
+      }
+    });
+  });
+</script>
+
+<!-- 맨 위로 -->
+<div class="back-to-top-wrap">
+  <button type="button" id="backToTop" class="back-to-top" aria-label="맨 위로 이동">
+    <span class="back-to-top-arrow">↑</span>
+    <span>맨 위로</span>
+  </button>
+</div>
+
+
+<script>
+  (() => {
+    const backToTop = document.getElementById('backToTop');
+
+    if (backToTop) {
+      backToTop.addEventListener('click', () => {
+        window.scrollTo({
+          top: 0,
+          behavior: 'smooth'
+        });
+      });
+    }
+  })();
 </script>
 
 </body>
 </html>
-
 <!-- redeploy -->
 <style>
   .place-characters.char-grid {
@@ -2658,7 +3003,6 @@
     }
   }
 </style>
-
 <style>
   @media (max-width: 900px) {
     .archive {
@@ -2999,7 +3343,6 @@
   }
 
 </style>
-
 <style>
   /* ===== 4대 재앙: 세로형 레이아웃 ===== */
 
@@ -3196,7 +3539,6 @@
     }
   }
 </style>
-
 <style>
   /* 판테온 아카데미 세계관 대표 이미지 */
   .pantheon-setting-bg {
@@ -3221,7 +3563,6 @@
     }
   }
 </style>
-
 <style>
   /* ===== 4대 재앙 교차형 세로 레이아웃 ===== */
 
@@ -3414,7 +3755,6 @@
     }
   }
 </style>
-
 <style>
   /* ===== 4대 재앙: 왼쪽 초상화 / 오른쪽 배경 ===== */
 
@@ -3592,7 +3932,6 @@
     }
   }
 </style>
-
 <style>
   /* ===== 4대 재앙 초상화 크기 완전 통일 ===== */
 
@@ -3725,7 +4064,6 @@
     }
   }
 </style>
-
 <style>
   /* =========================================================
      ALL CHARACTER PORTRAITS — GLOBAL FIXED SIZE
@@ -3949,7 +4287,6 @@
     }
   }
 </style>
-
 <style>
   /* ===== 재앙 게이트 장소 정보 ===== */
 
@@ -4013,7 +4350,6 @@
     }
   }
 </style>
-
 <style>
   /* ===== 4대 재앙: 위 이미지 / 아래 정보 2열 ===== */
 
