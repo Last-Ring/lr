@@ -2338,6 +2338,362 @@ body { font-size: 17px !important; }
   }
 </style>
 
+
+<style>
+  /* =========================================================
+     STARFIELD BACKGROUND
+     ========================================================= */
+
+  html, body {
+    background:
+      radial-gradient(circle at 50% 0%, rgba(103,76,166,.10), transparent 34%),
+      radial-gradient(circle at 50% 100%, rgba(139,92,246,.05), transparent 42%),
+      #08090c !important;
+  }
+
+  body {
+    position: relative;
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+
+  body::before,
+  body::after {
+    content: "";
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  body::before {
+    background-image:
+      radial-gradient(circle, rgba(255,255,255,.86) 0 1px, transparent 1.5px),
+      radial-gradient(circle, rgba(186,168,255,.72) 0 1px, transparent 1.45px),
+      radial-gradient(circle, rgba(201,163,94,.55) 0 1px, transparent 1.4px);
+    background-size:
+      170px 170px,
+      240px 240px,
+      320px 320px;
+    background-position:
+      24px 18px,
+      91px 137px,
+      170px 54px;
+    opacity: .22;
+    animation: starDrift 42s linear infinite;
+  }
+
+  body::after {
+    background-image:
+      radial-gradient(circle, rgba(255,255,255,.95) 0 1.15px, transparent 1.7px),
+      radial-gradient(circle, rgba(168,143,255,.8) 0 1.05px, transparent 1.65px);
+    background-size:
+      360px 360px,
+      480px 480px;
+    background-position:
+      70px 40px,
+      210px 180px;
+    opacity: .13;
+    animation: starTwinkle 4.8s ease-in-out infinite alternate;
+  }
+
+  @keyframes starDrift {
+    from { transform: translate3d(0,0,0); }
+    to   { transform: translate3d(-30px,-18px,0); }
+  }
+
+  @keyframes starTwinkle {
+    0%   { opacity: .08; filter: brightness(.9); }
+    50%  { opacity: .17; filter: brightness(1.18); }
+    100% { opacity: .10; filter: brightness(1); }
+  }
+
+  /* 실제 콘텐츠가 별빛 레이어 위에 오도록 */
+  body > * {
+    position: relative;
+    z-index: 1;
+  }
+
+  /* =========================================================
+     SCROLL REVEAL
+     ========================================================= */
+
+  .reveal-on-scroll {
+    opacity: 0;
+    transform: translateY(18px);
+    transition:
+      opacity .62s ease,
+      transform .62s cubic-bezier(.22,.72,.26,1);
+    will-change: opacity, transform;
+  }
+
+  .reveal-on-scroll.revealed {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .reveal-delay-1 { transition-delay: .06s; }
+  .reveal-delay-2 { transition-delay: .12s; }
+  .reveal-delay-3 { transition-delay: .18s; }
+  .reveal-delay-4 { transition-delay: .24s; }
+  .reveal-delay-5 { transition-delay: .30s; }
+
+  /* 4재앙은 조금 더 묵직하게 */
+  .calamity-row.reveal-on-scroll {
+    transform: translateY(24px);
+    transition-duration: .72s;
+  }
+
+  .calamity-row.reveal-on-scroll.revealed {
+    transform: translateY(0);
+  }
+
+  /* 모션 최소화 설정 존중 */
+  @media (prefers-reduced-motion: reduce) {
+    body::before,
+    body::after {
+      animation: none !important;
+    }
+
+    .reveal-on-scroll,
+    .reveal-on-scroll.revealed {
+      opacity: 1 !important;
+      transform: none !important;
+      transition: none !important;
+    }
+  }
+</style>
+
+
+<style>
+  /* =========================================================
+     헌터 등급 제목 / S 이상 광택 효과
+     ========================================================= */
+
+  #tab-world .hunter-rank-title {
+    font-size: 18px !important;
+    font-weight: 900 !important;
+    letter-spacing: .04em !important;
+    color: #d4d0c8 !important;
+    margin-bottom: 15px !important;
+  }
+
+  /* S 이상은 기존 색을 유지하면서 빛이 스쳐 지나가도록 */
+  #tab-world .hunter-ranks .rs,
+  #tab-world .hunter-ranks .rss,
+  #tab-world .hunter-ranks .rsss {
+    position: relative;
+    overflow: hidden;
+    isolation: isolate;
+    box-shadow:
+      inset 0 0 12px rgba(255,255,255,.025),
+      0 0 8px rgba(160,110,200,.06);
+  }
+
+  #tab-world .hunter-ranks .rs::after,
+  #tab-world .hunter-ranks .rss::after,
+  #tab-world .hunter-ranks .rsss::after {
+    content: "";
+    position: absolute;
+    z-index: -1;
+    top: -60%;
+    left: -70%;
+    width: 38%;
+    height: 220%;
+    transform: rotate(18deg);
+    background:
+      linear-gradient(
+        90deg,
+        transparent,
+        rgba(255,255,255,.26),
+        transparent
+      );
+    animation: rankShimmer 4.8s ease-in-out infinite;
+  }
+
+  #tab-world .hunter-ranks .rss::after {
+    animation-delay: .45s;
+  }
+
+  #tab-world .hunter-ranks .rsss::after {
+    animation-delay: .9s;
+    background:
+      linear-gradient(
+        90deg,
+        transparent,
+        rgba(255,231,172,.36),
+        transparent
+      );
+  }
+
+  @keyframes rankShimmer {
+    0%, 58% {
+      left: -70%;
+      opacity: 0;
+    }
+    64% {
+      opacity: .9;
+    }
+    78% {
+      left: 135%;
+      opacity: .15;
+    }
+    100% {
+      left: 135%;
+      opacity: 0;
+    }
+  }
+
+  /* =========================================================
+     판테온 아카데미 조직도
+     ========================================================= */
+
+  #tab-world .pantheon-org {
+    margin-top: 24px;
+    margin-bottom: 22px;
+    padding: 22px;
+    border: 1px solid rgba(174,143,229,.16);
+    background:
+      radial-gradient(circle at 50% 0%, rgba(139,92,246,.07), transparent 38%),
+      rgba(255,255,255,.012);
+  }
+
+  #tab-world .pantheon-org-title {
+    margin-bottom: 18px;
+    color: #c7b4e7;
+    font-size: 17px;
+    font-weight: 900;
+    letter-spacing: .03em;
+  }
+
+  #tab-world .org-root {
+    display: flex;
+    justify-content: center;
+  }
+
+  #tab-world .org-card {
+    border: 1px solid rgba(184,153,237,.25);
+    background: #101019;
+    box-sizing: border-box;
+  }
+
+  #tab-world .org-head {
+    min-width: 210px;
+    padding: 14px 20px;
+    text-align: center;
+  }
+
+  #tab-world .org-role {
+    display: block;
+    margin-bottom: 5px;
+    color: #8f7dad;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: .12em;
+  }
+
+  #tab-world .org-card strong {
+    color: #e3dde9;
+    font-size: 15px;
+  }
+
+  #tab-world .org-line-main {
+    width: 1px;
+    height: 24px;
+    margin: 0 auto;
+    background: rgba(184,153,237,.28);
+  }
+
+  #tab-world .org-branch {
+    position: relative;
+    display: grid;
+    grid-template-columns: minmax(0, 3fr) minmax(210px, 1fr);
+    gap: 18px;
+  }
+
+  #tab-world .org-branch::before {
+    content: "";
+    position: absolute;
+    left: 25%;
+    right: 12.5%;
+    top: -1px;
+    height: 1px;
+    background: rgba(184,153,237,.26);
+  }
+
+  #tab-world .org-column {
+    position: relative;
+    padding-top: 18px;
+  }
+
+  #tab-world .org-column::before {
+    content: "";
+    position: absolute;
+    left: 50%;
+    top: 0;
+    width: 1px;
+    height: 18px;
+    background: rgba(184,153,237,.26);
+  }
+
+  #tab-world .org-group {
+    padding: 13px 16px;
+    text-align: center;
+  }
+
+  #tab-world .org-professors {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0,1fr));
+    gap: 7px;
+    margin-top: 10px;
+  }
+
+  #tab-world .org-professors span {
+    padding: 9px 8px;
+    border: 1px solid rgba(255,255,255,.06);
+    background: rgba(255,255,255,.017);
+    color: #979faa;
+    font-size: 12px;
+    line-height: 1.45;
+    text-align: center;
+  }
+
+  #tab-world .org-health .org-card {
+    height: 100%;
+    min-height: 70px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  @media(max-width:760px) {
+    #tab-world .hunter-rank-title {
+      font-size: 17px !important;
+    }
+
+    #tab-world .org-branch {
+      grid-template-columns: 1fr;
+    }
+
+    #tab-world .org-branch::before {
+      display: none;
+    }
+
+    #tab-world .org-professors {
+      grid-template-columns: repeat(2,minmax(0,1fr));
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    #tab-world .hunter-ranks .rs::after,
+    #tab-world .hunter-ranks .rss::after,
+    #tab-world .hunter-ranks .rsss::after {
+      animation: none !important;
+    }
+  }
+</style>
+
 </head>
 <body>
 <section class="hero">
@@ -2442,6 +2798,48 @@ body { font-size: 17px !important; }
       <p>판테온은 영웅을 만들기 위해 세워진 곳이 아니다. 균열전쟁의 전선에서는 뛰어난 재능을 가진 이들이 충분히 배우기도 전에 싸움에 내몰렸고, 강하다는 이유만으로 수많은 이들이 너무 일찍 목숨을 잃었다.</p>
 
       <p>판테온이 가르치는 것은 <strong>강해지는 방법만이 아니라 살아 돌아오는 방법</strong>이다. 전투와 마도, 신성, 정령, 과학기술은 물론 전술과 생존까지. 자신의 힘을 이해하고 동료와 함께 싸우며, 전장에서 살아남기 위해 필요한 것을 배운다. 판테온에서 강함은 특혜가 되지 않는다.</p>
+
+
+      <div class="pantheon-org">
+        <div class="pantheon-org-title">판테온 아카데미 조직</div>
+
+        <div class="org-root">
+          <div class="org-card org-head">
+            <span class="org-role">총장</span>
+            <strong>카메코</strong>
+          </div>
+        </div>
+
+        <div class="org-line org-line-main"></div>
+
+        <div class="org-branch">
+          <div class="org-column">
+            <div class="org-card org-group">
+              <span class="org-role">교수진</span>
+              <strong>9개 교육 분야</strong>
+            </div>
+
+            <div class="org-professors">
+              <span>과학기술 · 에이미</span>
+              <span>검술 · 샤를로트</span>
+              <span>마도 · 루시엔</span>
+              <span>신성 · 엘레노아</span>
+              <span>전술 · 베아트릭스</span>
+              <span>정령 · 벨라리엔시아</span>
+              <span>생존 · 세이라</span>
+              <span>무술 · 효우린</span>
+              <span>인술 · 히노카</span>
+            </div>
+          </div>
+
+          <div class="org-column org-health">
+            <div class="org-card org-group">
+              <span class="org-role">보건실</span>
+              <strong>보건교사 · 린</strong>
+            </div>
+          </div>
+        </div>
+      </div>
 
       <div class="student-order">
         <b>학생 서열</b>
@@ -3325,6 +3723,63 @@ body { font-size: 17px !important; }
         });
       });
     }
+  })();
+</script>
+
+
+<script>
+  (() => {
+    const targets = [
+      ...document.querySelectorAll('#tab-world .world-chapter'),
+      ...document.querySelectorAll('#tab-char .faction-content-panel .faction-desc'),
+      ...document.querySelectorAll('#tab-char .place-card'),
+      ...document.querySelectorAll('#tab-char .char-card'),
+      ...document.querySelectorAll('#tab-char .calamity-row'),
+      ...document.querySelectorAll('#tab-char .apostle-card')
+    ];
+
+    targets.forEach((el, index) => {
+      el.classList.add('reveal-on-scroll');
+
+      /* 같은 구역에서 카드가 너무 동시에 뜨지 않도록 약한 순차 효과 */
+      if (
+        el.classList.contains('char-card') ||
+        el.classList.contains('apostle-card')
+      ) {
+        const delayClass = 'reveal-delay-' + ((index % 5) + 1);
+        el.classList.add(delayClass);
+      }
+    });
+
+    if (!('IntersectionObserver' in window)) {
+      targets.forEach(el => el.classList.add('revealed'));
+      return;
+    }
+
+    const observer = new IntersectionObserver((entries, obs) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('revealed');
+          obs.unobserve(entry.target);
+        }
+      });
+    }, {
+      threshold: 0.12,
+      rootMargin: '0px 0px -6% 0px'
+    });
+
+    targets.forEach(el => observer.observe(el));
+
+    /* 탭 전환 후 새로 보이는 콘텐츠도 자연스럽게 감지 */
+    document.querySelectorAll('.tab-btn, .faction-switch-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        requestAnimationFrame(() => {
+          document.querySelectorAll('.reveal-on-scroll:not(.revealed)').forEach(el => {
+            observer.observe(el);
+          });
+        });
+      });
+    });
   })();
 </script>
 
