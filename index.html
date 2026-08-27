@@ -3647,6 +3647,731 @@ body::after {
 }
 </style>
 
+
+<style>
+/* =========================================================
+   HERO REDESIGN — img/lg.png 로고 중심
+   ========================================================= */
+.hero{
+  min-height:100vh !important;
+  justify-content:center !important;
+  padding:72px 24px 82px !important;
+  background:
+    radial-gradient(circle at 50% 22%,rgba(119,93,180,.09),transparent 24%),
+    radial-gradient(circle at 20% 78%,rgba(62,92,145,.055),transparent 24%),
+    radial-gradient(circle at 82% 74%,rgba(126,70,105,.045),transparent 22%),
+    #08090c !important;
+}
+
+/* 기존 동심원/균열은 로고 뒤에서 겹치지 않도록 아래쪽 장식으로 이동 */
+.hero .rings-wrap{
+  top:72% !important;
+  width:min(78vw,760px) !important;
+  height:min(78vw,760px) !important;
+  opacity:.24 !important;
+  filter:none !important;
+}
+.hero .ring{
+  stroke:rgba(107,113,132,.36) !important;
+  stroke-width:.8 !important;
+}
+.hero .ring.active{
+  stroke:rgba(139,92,246,.38) !important;
+  stroke-width:1 !important;
+  filter:none !important;
+}
+.hero .ring.core{
+  stroke:rgba(201,163,94,.32) !important;
+  stroke-width:1 !important;
+  filter:none !important;
+}
+.hero .crack{
+  opacity:.22 !important;
+  stroke-width:1 !important;
+  filter:none !important;
+}
+
+/* 상단 경고문은 작은 장식으로 */
+.hero .eyebrow{
+  margin:0 0 24px !important;
+  font-size:11px !important;
+  letter-spacing:.31em !important;
+  color:rgba(179,63,70,.76) !important;
+}
+
+/* 실제 LAST RING 로고 */
+.hero-logo{
+  position:relative;
+  z-index:4;
+  width:min(760px,82vw);
+  margin:0 auto;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+.hero-logo::before{
+  content:"";
+  position:absolute;
+  inset:18% 7%;
+  z-index:-1;
+  background:radial-gradient(ellipse,rgba(211,204,255,.075),transparent 68%);
+  filter:blur(18px);
+}
+.hero-logo img{
+  display:block;
+  width:100%;
+  height:auto;
+  object-fit:contain;
+  filter:
+    drop-shadow(0 0 8px rgba(255,255,255,.10))
+    drop-shadow(0 0 24px rgba(150,130,210,.08));
+}
+
+/* 기존 텍스트 제목은 사용하지 않음 */
+.hero h1.title{display:none !important;}
+
+/* 부제와 본문을 로고 아래 독립 영역으로 */
+.hero .subtitle{
+  z-index:4 !important;
+  margin:24px 0 0 !important;
+  font-size:clamp(18px,2.2vw,24px) !important;
+  letter-spacing:.055em !important;
+  color:#9d79f2 !important;
+  text-shadow:0 0 18px rgba(139,92,246,.15);
+}
+.hero .subtitle .bar{
+  color:#9b3138 !important;
+  opacity:.9;
+}
+
+.hero .desc{
+  z-index:4 !important;
+  max-width:760px !important;
+  margin:27px auto 0 !important;
+  padding:20px 26px 0 !important;
+  border-top:1px solid rgba(255,255,255,.055);
+  font-size:17px !important;
+  line-height:2 !important;
+  color:#a4aab4 !important;
+  text-shadow:none !important;
+}
+.hero .desc strong{
+  color:#ddd9e5 !important;
+}
+
+/* 하단 WORLD ARCHIVE */
+.hero .scroll-cue{
+  z-index:4 !important;
+  bottom:25px !important;
+  opacity:.72;
+}
+
+/* 로고 주변에 아주 약한 별빛만 추가 */
+.hero::before,
+.hero::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  pointer-events:none;
+}
+.hero::before{
+  z-index:1;
+  background-image:
+    radial-gradient(circle,rgba(255,255,255,.8) 0 1px,transparent 1.45px),
+    radial-gradient(circle,rgba(177,157,235,.62) 0 1px,transparent 1.5px);
+  background-size:190px 190px,310px 310px;
+  background-position:33px 18px,151px 97px;
+  opacity:.18;
+  animation:heroStarPulse 5.4s ease-in-out infinite alternate;
+}
+.hero::after{
+  z-index:1;
+  background:
+    radial-gradient(circle at 22% 25%,rgba(255,255,255,.55) 0 1px,transparent 2px),
+    radial-gradient(circle at 77% 31%,rgba(183,162,244,.55) 0 1px,transparent 2px),
+    radial-gradient(circle at 68% 16%,rgba(255,255,255,.38) 0 1px,transparent 2px),
+    radial-gradient(circle at 34% 67%,rgba(137,176,230,.35) 0 1px,transparent 2px);
+  opacity:.6;
+}
+@keyframes heroStarPulse{
+  from{opacity:.11;filter:brightness(.9)}
+  to{opacity:.25;filter:brightness(1.25)}
+}
+
+@media(max-width:760px){
+  .hero{
+    min-height:92vh !important;
+    padding:62px 18px 76px !important;
+  }
+  .hero-logo{
+    width:min(92vw,650px);
+  }
+  .hero .eyebrow{
+    font-size:9px !important;
+    letter-spacing:.23em !important;
+    margin-bottom:19px !important;
+  }
+  .hero .subtitle{
+    margin-top:20px !important;
+    font-size:18px !important;
+  }
+  .hero .desc{
+    padding:17px 4px 0 !important;
+    font-size:15px !important;
+    line-height:1.9 !important;
+  }
+  .hero .rings-wrap{
+    top:72% !important;
+    width:92vw !important;
+    height:92vw !important;
+  }
+}
+
+@media(prefers-reduced-motion:reduce){
+  .hero::before{animation:none !important}
+}
+</style>
+
+
+<style>
+/* =========================================================
+   NIGHT SKY GRADIENT
+   ========================================================= */
+
+html, body {
+  background:
+    linear-gradient(
+      180deg,
+      #050711 0%,
+      #080b18 22%,
+      #0a0d1b 45%,
+      #0d0b17 68%,
+      #09070d 100%
+    ) !important;
+}
+
+body::before {
+  background-image:
+    radial-gradient(circle, rgba(255,255,255,.92) 0 1.1px, transparent 1.7px),
+    radial-gradient(circle, rgba(175,161,255,.82) 0 1.2px, transparent 1.8px),
+    radial-gradient(circle, rgba(111,169,235,.72) 0 1px, transparent 1.65px),
+    radial-gradient(circle, rgba(224,193,128,.55) 0 1px, transparent 1.6px) !important;
+  background-size:
+    128px 128px,
+    196px 196px,
+    286px 286px,
+    390px 390px !important;
+  background-position:
+    17px 29px,
+    87px 121px,
+    159px 63px,
+    247px 187px !important;
+  opacity:.34 !important;
+}
+
+body::after {
+  background:
+    radial-gradient(ellipse at 18% 16%,rgba(72,82,170,.10),transparent 23%),
+    radial-gradient(ellipse at 80% 28%,rgba(93,58,155,.09),transparent 25%),
+    radial-gradient(ellipse at 52% 76%,rgba(74,45,110,.06),transparent 28%) !important;
+  opacity:1 !important;
+  filter:none !important;
+}
+
+/* =========================================================
+   HERO — NEW ANIMATION
+   별빛 궤도 + 유성 라이트 트레일
+   ========================================================= */
+
+.hero {
+  position:relative !important;
+  isolation:isolate;
+  background:
+    radial-gradient(circle at 50% 22%,rgba(126,102,206,.12),transparent 20%),
+    radial-gradient(circle at 22% 70%,rgba(48,91,160,.07),transparent 25%),
+    radial-gradient(circle at 78% 72%,rgba(111,54,116,.055),transparent 23%),
+    linear-gradient(180deg,#050711 0%,#080b18 46%,#0a0912 100%) !important;
+}
+
+/* 기존 링은 거의 제거 */
+.hero .rings-wrap {
+  opacity:.06 !important;
+  top:74% !important;
+}
+
+/* 별 궤도 장식 */
+.hero-logo::after {
+  content:"";
+  position:absolute;
+  z-index:-2;
+  left:50%;
+  top:50%;
+  width:min(820px,92vw);
+  height:min(330px,38vw);
+  transform:translate(-50%,-50%);
+  border:1px solid rgba(179,160,240,.10);
+  border-radius:50%;
+  box-shadow:
+    0 0 0 34px rgba(120,106,170,.025),
+    0 0 0 70px rgba(91,94,140,.018);
+  animation:heroOrbitBreath 5.8s ease-in-out infinite alternate;
+}
+
+@keyframes heroOrbitBreath {
+  0% {
+    opacity:.45;
+    transform:translate(-50%,-50%) scale(.98);
+  }
+  100% {
+    opacity:.9;
+    transform:translate(-50%,-50%) scale(1.02);
+  }
+}
+
+/* 메인 화면 라이트 트레일 */
+.hero .eyebrow::after {
+  width:110px !important;
+  background:linear-gradient(90deg,transparent,#a2495b,transparent) !important;
+  animation:heroLineGlow 3.4s ease-in-out infinite alternate;
+}
+.hero .eyebrow::before {
+  width:110px !important;
+  background:linear-gradient(90deg,transparent,#6554b1,transparent) !important;
+  animation:heroLineGlow 3.4s .4s ease-in-out infinite alternate;
+}
+
+@keyframes heroLineGlow {
+  from { opacity:.18; transform:scaleX(.82); }
+  to   { opacity:.82; transform:scaleX(1.06); }
+}
+
+/* 유성 느낌의 빛줄기 */
+.hero {
+  --meteor1: rgba(176,158,255,.50);
+  --meteor2: rgba(120,173,235,.38);
+}
+
+.hero .scroll-cue::before,
+.hero .scroll-cue::after {
+  content:"";
+  position:absolute;
+  width:170px;
+  height:1px;
+  top:-390px;
+  background:linear-gradient(90deg,transparent,var(--meteor1),transparent);
+  transform:rotate(-28deg);
+  opacity:0;
+  pointer-events:none;
+}
+
+.hero .scroll-cue::before {
+  left:-380px;
+  animation:meteorPass1 7.4s ease-in-out infinite;
+}
+
+.hero .scroll-cue::after {
+  right:-360px;
+  width:130px;
+  background:linear-gradient(90deg,transparent,var(--meteor2),transparent);
+  animation:meteorPass2 9.1s 2.2s ease-in-out infinite;
+}
+
+@keyframes meteorPass1 {
+  0%,55% { opacity:0; transform:translate(-80px,-50px) rotate(-28deg); }
+  60% { opacity:.9; }
+  72% { opacity:0; transform:translate(260px,140px) rotate(-28deg); }
+  100% { opacity:0; }
+}
+
+@keyframes meteorPass2 {
+  0%,60% { opacity:0; transform:translate(80px,-60px) rotate(24deg); }
+  66% { opacity:.75; }
+  78% { opacity:0; transform:translate(-220px,120px) rotate(24deg); }
+  100% { opacity:0; }
+}
+
+/* 로고 자체는 아주 은은하게 호흡 */
+.hero-logo img {
+  animation:logoGlowBreath 4.6s ease-in-out infinite alternate;
+}
+
+@keyframes logoGlowBreath {
+  from {
+    filter:
+      drop-shadow(0 0 5px rgba(255,255,255,.08))
+      drop-shadow(0 0 14px rgba(147,127,211,.07));
+  }
+  to {
+    filter:
+      drop-shadow(0 0 10px rgba(255,255,255,.15))
+      drop-shadow(0 0 30px rgba(147,127,211,.15));
+  }
+}
+
+/* =========================================================
+   HUNTER RANKS — bigger + luxury styling
+   ========================================================= */
+
+#tab-world .hunter-rank-title {
+  font-size:21px !important;
+  font-weight:900 !important;
+  letter-spacing:.05em !important;
+}
+
+#tab-world .hunter-ranks span {
+  min-width:42px !important;
+  padding:8px 11px !important;
+  font-size:15px !important;
+  line-height:1.1 !important;
+  font-weight:900 !important;
+  letter-spacing:.03em !important;
+  border-width:1px !important;
+}
+
+#tab-world .hunter-ranks i {
+  font-size:13px !important;
+  opacity:.72 !important;
+}
+
+/* S, S+ */
+#tab-world .hunter-ranks .rs {
+  font-size:16px !important;
+  box-shadow:
+    inset 0 0 16px rgba(190,92,160,.06),
+    0 0 10px rgba(190,92,160,.08) !important;
+}
+
+/* SS, SS+ 더 화려하게 */
+#tab-world .hunter-ranks .rss {
+  position:relative !important;
+  font-size:17px !important;
+  padding:9px 13px !important;
+  border-color:rgba(233,120,110,.75) !important;
+  background:
+    radial-gradient(circle at 75% 25%,rgba(255,180,147,.13),transparent 28%),
+    linear-gradient(135deg,rgba(168,66,97,.12),rgba(88,51,117,.08)) !important;
+  color:#f08d82 !important;
+  text-shadow:
+    0 0 7px rgba(240,141,130,.28),
+    0 0 14px rgba(196,86,141,.15) !important;
+  box-shadow:
+    inset 0 0 18px rgba(255,151,135,.07),
+    0 0 10px rgba(232,109,105,.16),
+    0 0 22px rgba(161,87,175,.07) !important;
+  animation:ssPulse 3.1s ease-in-out infinite alternate;
+}
+
+@keyframes ssPulse {
+  from { filter:brightness(.94); }
+  to   { filter:brightness(1.14); }
+}
+
+/* SS, SS+ 별빛 점 */
+#tab-world .hunter-ranks .rss::before {
+  content:"✦";
+  position:absolute;
+  right:3px;
+  top:1px;
+  font-size:7px;
+  color:#ffd4c8;
+  opacity:.35;
+  animation:ssStar 2.2s ease-in-out infinite alternate;
+}
+
+@keyframes ssStar {
+  from { opacity:.15; transform:scale(.75) rotate(0deg); }
+  to   { opacity:.95; transform:scale(1.2) rotate(25deg); }
+}
+
+/* SSS 완전 화려하게 */
+#tab-world .hunter-ranks .rsss {
+  position:relative !important;
+  min-width:60px !important;
+  padding:10px 15px !important;
+  font-size:19px !important;
+  color:#ffe0a3 !important;
+  border:1px solid rgba(242,191,94,.85) !important;
+  background:
+    radial-gradient(circle at 50% 10%,rgba(255,229,160,.20),transparent 35%),
+    linear-gradient(135deg,rgba(161,87,164,.18),rgba(218,125,68,.15),rgba(112,73,175,.16)) !important;
+  text-shadow:
+    0 0 8px rgba(255,221,146,.55),
+    0 0 16px rgba(230,148,79,.30),
+    0 0 26px rgba(150,102,225,.22) !important;
+  box-shadow:
+    inset 0 0 22px rgba(255,221,146,.12),
+    0 0 10px rgba(242,191,94,.28),
+    0 0 25px rgba(194,111,126,.18),
+    0 0 42px rgba(122,87,191,.10) !important;
+  animation:sssAura 2.5s ease-in-out infinite alternate !important;
+}
+
+#tab-world .hunter-ranks .rsss::before,
+#tab-world .hunter-ranks .rsss::after {
+  content:"✦";
+  position:absolute;
+  color:#fff0c8;
+  pointer-events:none;
+}
+
+#tab-world .hunter-ranks .rsss::before {
+  left:-7px;
+  top:-7px;
+  font-size:10px;
+  animation:sssStarA 1.8s ease-in-out infinite alternate;
+}
+
+#tab-world .hunter-ranks .rsss::after {
+  right:-7px;
+  bottom:-7px;
+  font-size:8px;
+  animation:sssStarB 2.2s .4s ease-in-out infinite alternate;
+}
+
+@keyframes sssAura {
+  from {
+    filter:brightness(.96) saturate(.95);
+    transform:translateY(0);
+  }
+  to {
+    filter:brightness(1.22) saturate(1.15);
+    transform:translateY(-1px);
+  }
+}
+
+@keyframes sssStarA {
+  from { opacity:.2; transform:scale(.7) rotate(0deg); }
+  to   { opacity:1; transform:scale(1.35) rotate(35deg); }
+}
+
+@keyframes sssStarB {
+  from { opacity:.15; transform:scale(.8) rotate(0deg); }
+  to   { opacity:.9; transform:scale(1.25) rotate(-30deg); }
+}
+
+/* SSS 내부로 흐르는 광택을 더 강하게 */
+#tab-world .hunter-ranks .rsss {
+  background-size:180% 180% !important;
+}
+
+/* 모바일 */
+@media(max-width:760px){
+  #tab-world .hunter-rank-title {
+    font-size:19px !important;
+  }
+
+  #tab-world .hunter-ranks span {
+    font-size:14px !important;
+    min-width:38px !important;
+    padding:7px 9px !important;
+  }
+
+  #tab-world .hunter-ranks .rss {
+    font-size:15px !important;
+  }
+
+  #tab-world .hunter-ranks .rsss {
+    font-size:17px !important;
+    min-width:54px !important;
+  }
+
+  .hero .scroll-cue::before,
+  .hero .scroll-cue::after {
+    display:none;
+  }
+}
+
+/* 모션 최소화 */
+@media(prefers-reduced-motion:reduce){
+  .hero-logo img,
+  .hero-logo::after,
+  .hero .eyebrow::before,
+  .hero .eyebrow::after,
+  #tab-world .hunter-ranks .rss,
+  #tab-world .hunter-ranks .rsss,
+  #tab-world .hunter-ranks .rss::before,
+  #tab-world .hunter-ranks .rsss::before,
+  #tab-world .hunter-ranks .rsss::after {
+    animation:none !important;
+  }
+}
+</style>
+
+
+<style>
+/* =========================================================
+   헌터 등급 타이포 최종 조정
+   ========================================================= */
+
+/* '헌터 등급' 제목은 살짝 축소 */
+#tab-world .hunter-rank-title {
+  font-size:19px !important;
+}
+
+/* 모든 등급 글자 크기/굵기 통일 */
+#tab-world .hunter-ranks span,
+#tab-world .hunter-ranks .rs,
+#tab-world .hunter-ranks .rss,
+#tab-world .hunter-ranks .rsss {
+  font-size:15px !important;
+  font-weight:700 !important;
+  line-height:1.1 !important;
+}
+
+/* SS / SS+ / SSS만 특별히 커지거나 굵어지지 않음 */
+#tab-world .hunter-ranks .rss,
+#tab-world .hunter-ranks .rsss {
+  min-width:42px !important;
+  padding:8px 11px !important;
+}
+
+/* SSS도 크기는 동일, 화려한 시각 효과만 유지 */
+#tab-world .hunter-ranks .rsss {
+  font-size:15px !important;
+  font-weight:700 !important;
+}
+
+@media(max-width:760px){
+  #tab-world .hunter-rank-title {
+    font-size:18px !important;
+  }
+
+  #tab-world .hunter-ranks span,
+  #tab-world .hunter-ranks .rs,
+  #tab-world .hunter-ranks .rss,
+  #tab-world .hunter-ranks .rsss {
+    font-size:14px !important;
+    font-weight:700 !important;
+  }
+}
+</style>
+
+
+<style>
+/* =========================================================
+   헌터 등급 제목 — 영문 서브 라벨
+   ========================================================= */
+#tab-world .hunter-rank-title{
+  display:flex !important;
+  align-items:baseline !important;
+  gap:9px !important;
+}
+
+#tab-world .hunter-rank-title small{
+  color:#686f7c !important;
+  font-family:'JetBrains Mono',monospace !important;
+  font-size:9px !important;
+  font-weight:600 !important;
+  letter-spacing:.16em !important;
+}
+
+/* =========================================================
+   SSS — S / SS 계열처럼 유리창 레이어 추가
+   기존 화려한 광원/별빛 효과는 유지
+   ========================================================= */
+#tab-world .hunter-ranks .rsss{
+  position:relative !important;
+  isolation:isolate !important;
+  overflow:hidden !important;
+
+  /* 반투명 유리 바탕 */
+  background:
+    linear-gradient(
+      135deg,
+      rgba(255,255,255,.105) 0%,
+      rgba(255,255,255,.025) 32%,
+      rgba(255,211,130,.08) 58%,
+      rgba(151,104,220,.10) 100%
+    ),
+    rgba(29,21,35,.56) !important;
+
+  backdrop-filter:blur(7px) saturate(1.28) !important;
+  -webkit-backdrop-filter:blur(7px) saturate(1.28) !important;
+
+  border-color:rgba(244,202,116,.82) !important;
+
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,.22),
+    inset 0 -1px 0 rgba(255,207,119,.08),
+    inset 0 0 16px rgba(255,221,146,.08),
+    0 0 10px rgba(242,191,94,.25),
+    0 0 24px rgba(191,111,143,.14),
+    0 0 38px rgba(122,87,191,.09) !important;
+}
+
+/* 유리 표면을 스치는 얇은 반사광 */
+#tab-world .hunter-ranks .rsss::before{
+  content:"" !important;
+  position:absolute !important;
+  z-index:-1 !important;
+  top:-70% !important;
+  left:-65% !important;
+  width:34% !important;
+  height:240% !important;
+  background:
+    linear-gradient(
+      90deg,
+      transparent,
+      rgba(255,255,255,.42),
+      rgba(255,231,181,.18),
+      transparent
+    ) !important;
+  transform:rotate(18deg) !important;
+  animation:sssGlassSweep 3.8s ease-in-out infinite !important;
+  pointer-events:none !important;
+}
+
+/* 기존 별 포인트는 오른쪽 아래에 유지 */
+#tab-world .hunter-ranks .rsss::after{
+  content:"✦" !important;
+  position:absolute !important;
+  z-index:2 !important;
+  right:2px !important;
+  bottom:0 !important;
+  color:#fff0c8 !important;
+  font-size:7px !important;
+  opacity:.65;
+  animation:sssGlassStar 1.9s ease-in-out infinite alternate !important;
+  pointer-events:none !important;
+}
+
+@keyframes sssGlassSweep{
+  0%,48%{
+    left:-65%;
+    opacity:0;
+  }
+  57%{
+    opacity:.95;
+  }
+  76%{
+    left:135%;
+    opacity:.18;
+  }
+  100%{
+    left:135%;
+    opacity:0;
+  }
+}
+
+@keyframes sssGlassStar{
+  from{
+    opacity:.22;
+    transform:scale(.75) rotate(0deg);
+  }
+  to{
+    opacity:1;
+    transform:scale(1.25) rotate(30deg);
+  }
+}
+
+@media(prefers-reduced-motion:reduce){
+  #tab-world .hunter-ranks .rsss::before,
+  #tab-world .hunter-ranks .rsss::after{
+    animation:none !important;
+  }
+}
+</style>
+
 </head>
 <body>
 <section class="hero">
@@ -3662,7 +4387,7 @@ body::after {
 </svg>
 </div>
 <div class="eyebrow">SURVIVAL ZONE STATUS · CRITICAL</div>
-<h1 class="title">LAST RING</h1>
+<div class="hero-logo"><img src="img/lg.png" alt="LAST RING"></div>
 <p class="subtitle"><span class="bar">::</span>인류 최후의 생존권<span class="bar">::</span></p>
 <p class="desc">
     게이트 너머에서 밀려오는 <strong>괴수</strong>들에게 세계는 이미 절반 넘게 잠식당했다.
@@ -3789,7 +4514,7 @@ body::after {
       </div>
 
       <div class="hunter-rank-block">
-        <div class="hunter-rank-title">헌터 등급</div>
+        <div class="hunter-rank-title">헌터 등급 <small>HUNTER RANK</small></div>
         <div class="hunter-ranks">
           <span class="rf">F</span><i>＜</i><span class="rf">F+</span><i>＜</i>
           <span class="re">E</span><i>＜</i><span class="re">E+</span><i>＜</i>
