@@ -1095,7 +1095,7 @@
   .faction-phantom .acc-head::before {
     left: -36px;
     top: -18px;
-    width: 180px;
+    width: 200px;
     height: 120px;
     background:
       linear-gradient(118deg, transparent 0 40%, rgba(193,42,52,.22) 41% 55%, transparent 56%);
@@ -1367,7 +1367,7 @@
 
   .place-image {
     position: relative;
-    aspect-ratio: 16 / 7;
+    aspect-ratio: 16 / 5;
     overflow: hidden;
     background: #11141a;
   }
@@ -1448,7 +1448,7 @@
   /* ---------- CALAMITY GROUPS ---------- */
   .calamity-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
     gap: 10px;
     margin-top: 20px;
   }
@@ -1577,7 +1577,7 @@
   /* ---------- CHARACTER CARDS ---------- */
   .char-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
     gap: 16px;
     margin-top: 4px;
   }
@@ -2585,13 +2585,13 @@
 <!-- redeploy -->
 <style>
   .place-characters.char-grid {
-    grid-template-columns: repeat(auto-fill, minmax(180px, 180px));
+    grid-template-columns: repeat(auto-fill, minmax(200px, 200px));
     justify-content: start;
     gap: 18px;
   }
 
   .place-characters .char-card {
-    width: 180px;
+    width: 200px;
   }
 
   .place-characters .char-portrait {
@@ -2781,7 +2781,7 @@
 
   .calamity-portrait {
     position: relative;
-    width: 180px;
+    width: 200px;
     height: 240px;
     overflow: hidden;
     border-right: 1px solid rgba(255,255,255,.08);
@@ -2949,4 +2949,201 @@
     }
   }
 
+</style>
+
+<style>
+  /* ===== 4대 재앙: 세로형 레이아웃 ===== */
+
+  .calamity-grid {
+    display: grid !important;
+    grid-template-columns: 1fr !important;
+    gap: 20px !important;
+    margin-top: 24px !important;
+  }
+
+  .calamity-box {
+    width: 100%;
+    border-radius: 6px;
+    overflow: hidden;
+  }
+
+  .calamity-main {
+    display: grid !important;
+    grid-template-columns: 260px minmax(0, 1fr) !important;
+    gap: 20px !important;
+    align-items: center !important;
+    min-height: 0 !important;
+    padding: 18px !important;
+  }
+
+  .calamity-portrait {
+    width: 260px !important;
+    height: 346px !important;
+    overflow: hidden;
+    border: 1px solid rgba(255,255,255,.10) !important;
+    border-right: 1px solid rgba(255,255,255,.10) !important;
+    border-radius: 4px;
+    background: #0b0d11;
+  }
+
+  .calamity-portrait img {
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover !important;
+    object-position: center top !important;
+    display: block !important;
+  }
+
+  .calamity-scene {
+    width: 100% !important;
+    max-width: 560px !important;
+    height: 210px !important;
+    justify-self: start !important;
+    overflow: hidden;
+    border: 1px solid rgba(255,255,255,.08);
+    border-radius: 4px;
+    background: #0b0d11;
+  }
+
+  .calamity-scene img {
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover !important;
+    display: block !important;
+  }
+
+  .calamity-info {
+    padding: 0 18px 18px 298px !important;
+    border-top: 0 !important;
+    margin-top: -74px !important;
+    position: relative;
+    z-index: 2;
+  }
+
+  .calamity-name {
+    font-size: 18px !important;
+    margin-bottom: 5px !important;
+  }
+
+  .calamity-sub {
+    font-size: 12px !important;
+    line-height: 1.6 !important;
+  }
+
+  /* 닉스의 사도는 카드 최하단 */
+  .apostle-area {
+    margin: 18px !important;
+    padding: 16px 0 0 !important;
+    border-top: 1px solid rgba(174,135,226,.22) !important;
+  }
+
+  .apostle-label {
+    margin-bottom: 12px !important;
+    font-size: 12px !important;
+    letter-spacing: .08em !important;
+  }
+
+  .apostle-grid {
+    display: grid !important;
+    grid-template-columns: repeat(auto-fill, minmax(170px, 170px)) !important;
+    gap: 14px !important;
+    justify-content: start !important;
+  }
+
+  .apostle-card {
+    width: 170px !important;
+  }
+
+  .apostle-card img {
+    width: 170px !important;
+    height: 226px !important;
+    aspect-ratio: auto !important;
+    object-fit: cover !important;
+    object-position: center top !important;
+  }
+
+  /* 일반 장소 캐릭터 카드도 확실히 크게 */
+  .place-characters.char-grid {
+    grid-template-columns: repeat(auto-fill, minmax(200px, 200px)) !important;
+    gap: 18px !important;
+    justify-content: start !important;
+  }
+
+  .place-characters .char-card {
+    width: 200px !important;
+  }
+
+  .place-characters .char-portrait {
+    width: 100% !important;
+    aspect-ratio: 3 / 4 !important;
+  }
+
+  @media (max-width: 760px) {
+    .calamity-main {
+      grid-template-columns: 190px minmax(0, 1fr) !important;
+      gap: 14px !important;
+      padding: 14px !important;
+    }
+
+    .calamity-portrait {
+      width: 190px !important;
+      height: 253px !important;
+    }
+
+    .calamity-scene {
+      max-width: none !important;
+      height: 165px !important;
+    }
+
+    .calamity-info {
+      padding: 0 14px 14px 218px !important;
+      margin-top: -62px !important;
+    }
+  }
+
+  @media (max-width: 560px) {
+    .calamity-main {
+      grid-template-columns: 1fr !important;
+    }
+
+    .calamity-portrait {
+      width: 100% !important;
+      height: auto !important;
+      aspect-ratio: 3 / 4 !important;
+    }
+
+    .calamity-scene {
+      width: 100% !important;
+      height: auto !important;
+      aspect-ratio: 16 / 6 !important;
+    }
+
+    .calamity-info {
+      padding: 0 14px 14px !important;
+      margin-top: 0 !important;
+    }
+
+    .apostle-grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    }
+
+    .apostle-card {
+      width: auto !important;
+    }
+
+    .apostle-card img {
+      width: 100% !important;
+      height: auto !important;
+      aspect-ratio: 3 / 4 !important;
+    }
+
+    .place-characters.char-grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+      gap: 12px !important;
+    }
+
+    .place-characters .char-card {
+      width: auto !important;
+    }
+  }
 </style>
