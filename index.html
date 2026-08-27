@@ -1901,6 +1901,10 @@
           <span class="setting-section-en">PANTHEON ACADEMY</span>
         </div>
 
+        <div class="pantheon-setting-bg">
+          <img src="img/bg/97.png" alt="판테온 아카데미">
+        </div>
+
         <div class="setting-section-body">
 
           <div class="academy-rule">
@@ -2400,73 +2404,73 @@
               각자의 영역과 방식으로 오르비스 전역에 공포를 남긴다.
             </div>
 
-            <div class="calamity-grid">
+            <div class="calamity-stack">
 
-              <!-- 에이브릴 -->
-              <div class="calamity-box calamity-avril">
-                <div class="calamity-main">
+              <!-- 에이브릴 : 초상화 | 배경 -->
+              <div class="calamity-row calamity-avril">
+                <div class="calamity-person">
                   <div class="calamity-portrait">
                     <img src="img/ch/65.png" alt="에이브릴">
                   </div>
-                  <div class="calamity-scene">
-                    <img src="img/bg/28.png" alt="옵시디언 레어">
+                  <div class="calamity-person-info">
+                    <div class="calamity-name">에이브릴</div>
+                    <div class="calamity-sub">흑룡의딸 · 흑룡 · SS+</div>
                   </div>
                 </div>
 
-                <div class="calamity-info">
-                  <div class="calamity-name">에이브릴</div>
-                  <div class="calamity-sub">흑룡의딸 · 흑룡 · SS+</div>
+                <div class="calamity-scene">
+                  <img src="img/bg/28.png" alt="옵시디언 레어">
                 </div>
               </div>
 
-              <!-- 노타마야 -->
-              <div class="calamity-box calamity-notamaya">
-                <div class="calamity-main">
+              <!-- 노타마야 : 배경 | 초상화 -->
+              <div class="calamity-row calamity-notamaya reverse">
+                <div class="calamity-person">
                   <div class="calamity-portrait">
                     <img src="img/ch/66.png" alt="노타마야">
                   </div>
-                  <div class="calamity-scene">
-                    <img src="img/bg/29.png" alt="천귀궁">
+                  <div class="calamity-person-info">
+                    <div class="calamity-name">노타마야</div>
+                    <div class="calamity-sub">천귀의주인 · 뱀요괴 · SSS</div>
                   </div>
                 </div>
 
-                <div class="calamity-info">
-                  <div class="calamity-name">노타마야</div>
-                  <div class="calamity-sub">천귀의주인 · 뱀요괴 · SSS</div>
+                <div class="calamity-scene">
+                  <img src="img/bg/29.png" alt="천귀궁">
                 </div>
               </div>
 
-              <!-- 칼립사 -->
-              <div class="calamity-box calamity-kalipsa">
-                <div class="calamity-main">
+              <!-- 칼립사 : 초상화 | 배경 -->
+              <div class="calamity-row calamity-kalipsa">
+                <div class="calamity-person">
                   <div class="calamity-portrait">
                     <img src="img/ch/67.png" alt="칼립사">
                   </div>
-                  <div class="calamity-scene">
-                    <img src="img/bg/31.png" alt="선큰 스론">
+                  <div class="calamity-person-info">
+                    <div class="calamity-name">칼립사</div>
+                    <div class="calamity-sub">심해의여왕 · 문어괴인 · SSS</div>
                   </div>
                 </div>
 
-                <div class="calamity-info">
-                  <div class="calamity-name">칼립사</div>
-                  <div class="calamity-sub">심해의여왕 · 문어괴인 · SSS</div>
+                <div class="calamity-scene">
+                  <img src="img/bg/31.png" alt="선큰 스론">
                 </div>
               </div>
 
-              <!-- 닉스 -->
-              <div class="calamity-box calamity-nyx">
-                <div class="calamity-main">
+              <!-- 닉스 : 배경 | 초상화 -->
+              <div class="calamity-row calamity-nyx reverse">
+                <div class="calamity-person">
                   <div class="calamity-portrait">
                     <img src="img/ch/68.png" alt="닉스">
                   </div>
-                  <div class="calamity-scene">
-                    <img src="img/bg/30.png" alt="만상의 성소">
+                  <div class="calamity-person-info">
+                    <div class="calamity-name">닉스</div>
+                    <div class="calamity-sub">별의마녀 · 인간 · SSS</div>
                   </div>
                 </div>
 
-                <div class="calamity-info">
-                  <div class="calamity-name">닉스</div>
-                  <div class="calamity-sub">별의마녀 · 인간 · SSS</div>
+                <div class="calamity-scene">
+                  <img src="img/bg/30.png" alt="만상의 성소">
                 </div>
 
                 <div class="apostle-area">
@@ -3144,6 +3148,224 @@
 
     .place-characters .char-card {
       width: auto !important;
+    }
+  }
+</style>
+
+<style>
+  /* 판테온 아카데미 세계관 대표 이미지 */
+  .pantheon-setting-bg {
+    width: 100%;
+    aspect-ratio: 16 / 6;
+    overflow: hidden;
+    border-bottom: 1px solid var(--line);
+    background: var(--void-2);
+  }
+
+  .pantheon-setting-bg img {
+    width: 100%;
+    height: 100%;
+    display: block;
+    object-fit: cover;
+    object-position: center;
+  }
+
+  @media (max-width: 560px) {
+    .pantheon-setting-bg {
+      aspect-ratio: 16 / 8;
+    }
+  }
+</style>
+
+<style>
+  /* ===== 4대 재앙 교차형 세로 레이아웃 ===== */
+
+  .calamity-stack {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 22px;
+    margin-top: 24px;
+  }
+
+  .calamity-row {
+    display: grid;
+    grid-template-columns: 300px minmax(0, 1fr);
+    gap: 20px;
+    align-items: start;
+    padding: 18px;
+    border: 1px solid rgba(255,255,255,.10);
+    border-radius: 6px;
+    overflow: hidden;
+  }
+
+  .calamity-row.reverse .calamity-person {
+    grid-column: 2;
+  }
+
+  .calamity-row.reverse .calamity-scene {
+    grid-column: 1;
+    grid-row: 1;
+  }
+
+  .calamity-person {
+    width: 300px;
+  }
+
+  .calamity-portrait {
+    width: 300px;
+    height: 400px;
+    overflow: hidden;
+    border: 1px solid rgba(255,255,255,.10);
+    border-radius: 4px;
+    background: #0b0d11;
+  }
+
+  .calamity-portrait img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center top;
+    display: block;
+  }
+
+  .calamity-person-info {
+    padding: 11px 4px 0;
+    text-align: center;
+  }
+
+  .calamity-name {
+    margin-bottom: 4px;
+    font-size: 18px;
+    font-weight: 700;
+  }
+
+  .calamity-sub {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+    line-height: 1.6;
+  }
+
+  .calamity-scene {
+    width: 100%;
+    height: 240px;
+    overflow: hidden;
+    border: 1px solid rgba(255,255,255,.08);
+    border-radius: 4px;
+    background: #0b0d11;
+  }
+
+  .calamity-scene img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  .calamity-avril {
+    border-color: rgba(158,88,69,.40);
+    background: linear-gradient(145deg,#1b100d,#0a0808);
+  }
+  .calamity-avril .calamity-name,
+  .calamity-avril .calamity-sub { color:#ce806a; }
+
+  .calamity-notamaya {
+    border-color: rgba(176,58,58,.40);
+    background: linear-gradient(145deg,#1a0b0b,#090707);
+  }
+  .calamity-notamaya .calamity-name,
+  .calamity-notamaya .calamity-sub { color:#d55c5c; }
+
+  .calamity-kalipsa {
+    border-color: rgba(62,117,153,.44);
+    background: linear-gradient(145deg,#09131b,#06090d);
+  }
+  .calamity-kalipsa .calamity-name,
+  .calamity-kalipsa .calamity-sub { color:#6eb3df; }
+
+  .calamity-nyx {
+    border-color: rgba(123,82,178,.48);
+    background:
+      radial-gradient(circle at 85% 15%,rgba(130,91,195,.12),transparent 35%),
+      linear-gradient(145deg,#120d1c,#08070b);
+  }
+  .calamity-nyx .calamity-name,
+  .calamity-nyx .calamity-sub { color:#ae87e2; }
+
+  /* 사도는 닉스 카드 아래쪽 전체 폭 */
+  .calamity-row.reverse .apostle-area,
+  .apostle-area {
+    grid-column: 1 / -1;
+    margin-top: 2px;
+    padding-top: 16px;
+    border-top: 1px solid rgba(174,135,226,.22);
+  }
+
+  .apostle-label {
+    margin-bottom: 12px;
+    font-family:'JetBrains Mono',monospace;
+    font-size: 12px;
+    letter-spacing:.08em;
+    color:#a680db;
+  }
+
+  .apostle-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(180px, 180px));
+    gap: 14px;
+    justify-content: start;
+  }
+
+  .apostle-card {
+    width: 180px;
+  }
+
+  .apostle-card img {
+    width: 180px;
+    height: 240px;
+    object-fit: cover;
+    object-position: center top;
+    display: block;
+  }
+
+  @media (max-width: 760px) {
+    .calamity-row,
+    .calamity-row.reverse {
+      grid-template-columns: 1fr;
+    }
+
+    .calamity-row.reverse .calamity-person,
+    .calamity-row.reverse .calamity-scene {
+      grid-column: 1;
+      grid-row: auto;
+    }
+
+    .calamity-person {
+      width: 100%;
+    }
+
+    .calamity-portrait {
+      width: 100%;
+      height: auto;
+      aspect-ratio: 3 / 4;
+    }
+
+    .calamity-scene {
+      height: auto;
+      aspect-ratio: 16 / 6;
+    }
+
+    .apostle-grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .apostle-card {
+      width: auto;
+    }
+
+    .apostle-card img {
+      width: 100%;
+      height: auto;
+      aspect-ratio: 3 / 4;
     }
   }
 </style>
