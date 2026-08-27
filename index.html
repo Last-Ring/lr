@@ -6814,6 +6814,145 @@ body::after {
 }
 </style>
 
+
+<style>
+/* =========================================================
+   CHARACTER DETAIL FONT +2PX
+   오르비스 중앙연합 + 루미나리스 공통
+   ========================================================= */
+.character-hover-detail .character-detail-role{
+  font-size:15.5px !important;
+}
+.character-hover-detail .character-detail-profile{
+  font-size:13px !important;
+}
+.character-hover-detail .character-detail-ability strong{
+  font-size:16.5px !important;
+}
+.character-hover-detail .character-detail-ability p{
+  font-size:15.5px !important;
+  line-height:1.78 !important;
+}
+.character-hover-detail .character-detail-quote{
+  font-size:15px !important;
+  line-height:1.72 !important;
+}
+
+/* 이름도 전체 비율에 맞춰 아주 약간 보강 */
+.character-hover-detail .character-detail-name{
+  font-size:25px !important;
+}
+
+/* 루미나리스 상세창 색상은 신성제국 계열 */
+.character-hover-detail.luminaris-character-detail{
+  border-color:rgba(218,190,116,.36) !important;
+  background:
+    radial-gradient(circle at 82% 12%,rgba(218,180,91,.10),transparent 30%),
+    linear-gradient(145deg,rgba(255,246,205,.022),transparent 45%),
+    rgba(10,10,14,.98) !important;
+  box-shadow:
+    0 22px 58px rgba(0,0,0,.48),
+    0 0 30px rgba(207,171,83,.08),
+    inset 0 1px 0 rgba(255,246,211,.05) !important;
+}
+.character-hover-detail.luminaris-character-detail .character-detail-role{
+  color:#d8bd78 !important;
+}
+.character-hover-detail.luminaris-character-detail .character-detail-profile{
+  border-color:rgba(215,184,107,.19) !important;
+  background:rgba(206,172,89,.045) !important;
+}
+.character-hover-detail.luminaris-character-detail .character-detail-ability{
+  border-left-color:rgba(220,188,108,.58) !important;
+  background:linear-gradient(90deg,rgba(205,169,83,.065),transparent 78%) !important;
+}
+.character-hover-detail.luminaris-character-detail .character-detail-ability strong{
+  color:#e0c47e !important;
+}
+.character-hover-detail.luminaris-character-detail .character-detail-quote::before{
+  color:#887342 !important;
+}
+</style>
+
+
+<style>
+/* =========================================================
+   CHARACTER DETAIL ART — 원본 1216 × 832 비율 보존
+   기존 16:7 cover 때문에 위/아래가 잘리던 문제 수정
+   ========================================================= */
+
+.character-hover-detail .character-detail-art{
+  width:100% !important;
+  aspect-ratio:1216 / 832 !important;
+  height:auto !important;
+  max-height:none !important;
+  overflow:hidden !important;
+  background:#070910 !important;
+}
+
+.character-hover-detail .character-detail-art img{
+  display:block !important;
+  width:100% !important;
+  height:100% !important;
+
+  /* 핵심: 원본 전체가 보이도록 */
+  object-fit:contain !important;
+  object-position:center center !important;
+
+  transform:none !important;
+  filter:none !important;
+}
+
+/* 상세 이미지 위 음영도 원본을 가리지 않게 약화 */
+.character-hover-detail .character-detail-art::after{
+  background:
+    linear-gradient(
+      to top,
+      rgba(7,8,13,.16) 0%,
+      transparent 25%
+    ) !important;
+}
+
+/* 이미지가 세로로 커진 만큼 팝업이 화면을 넘어가지 않도록
+   전체 팝업 높이는 viewport 안에서 제한 */
+.character-hover-detail{
+  max-height:calc(100vh - 28px) !important;
+  overflow-y:auto !important;
+  scrollbar-width:thin;
+  scrollbar-color:rgba(145,125,185,.32) transparent;
+}
+
+.character-hover-detail::-webkit-scrollbar{
+  width:5px;
+}
+
+.character-hover-detail::-webkit-scrollbar-track{
+  background:transparent;
+}
+
+.character-hover-detail::-webkit-scrollbar-thumb{
+  background:rgba(145,125,185,.30);
+  border-radius:10px;
+}
+
+/* 팝업 너비도 원본 비율에서 그림이 너무 작아지지 않게 살짝 확대 */
+.character-hover-detail{
+  width:min(520px,calc(100vw - 32px)) !important;
+}
+
+@media(max-height:760px){
+  .character-hover-detail{
+    width:min(480px,calc(100vw - 32px)) !important;
+  }
+}
+
+@media(max-width:700px), (hover:none){
+  .character-hover-detail{
+    display:none !important;
+  }
+}
+</style>
+
 </head>
 <body><div aria-hidden="true" class="shooting-stars"><span class="shooting-star star-a"></span><span class="shooting-star star-b"></span><span class="shooting-star star-c"></span></div>
 <section class="hero">
@@ -7263,7 +7402,7 @@ body::after {
 <div class="place-title">◇ 가디언허브</div>
 <div class="place-desc">헌터 등록·등급 심사·의뢰 접수를 담당하는 중앙연합의 실질적 심장부. 전 지역 헌터가 상시 왕래한다.</div>
 <div class="place-characters char-grid">
-<div class="char-card character-detail-trigger mula-detail-trigger mistella-detail-trigger morrigan-detail-trigger adel-detail-trigger iris-detail-trigger lumiere-detail-trigger" data-character-detail="mula" data-character-detail="mula"><div class="char-portrait"><img alt="뮬라" src="img/ch/01.png"/></div><div class="char-name">뮬라</div><div class="char-role">관측관·인간·B+</div data-character-detail="mistella"></div>
+<div class="char-card character-detail-trigger mula-detail-trigger mistella-detail-trigger morrigan-detail-trigger adel-detail-trigger iris-detail-trigger lumiere-detail-trigger ailorix-detail-trigger heliadne-detail-trigger fleur-detail-trigger theodosia-detail-trigger" data-character-detail="theodosia" data-character-detail="fleur" data-character-detail="heliadne" data-character-detail="ailorix" data-character-detail="mula" data-character-detail="mula"><div class="char-portrait"><img alt="뮬라" src="img/ch/01.png"/></div><div class="char-name">뮬라</div><div class="char-role">관측관·인간·B+</div data-character-detail="mistella"></div>
 <div class="char-card"><div class="char-portrait"><img alt="미스텔라" src="img/ch/02.png"/></div><div class="char-name">미스텔라</div><div class="char-role">의장·엘프·SSS</div data-character-detail="morrigan"></div>
 <div class="char-card"><div class="char-portrait"><img alt="모리건" src="img/ch/03.png"/></div><div class="char-name">모리건</div><div class="char-role">행정관·산양수인·A+</div data-character-detail="adel"></div>
 <div class="char-card"><div class="char-portrait"><img alt="아델" src="img/ch/04.png"/></div><div class="char-name">아델</div><div class="char-role">집행관·인간·S+</div data-character-detail="iris"></div>
@@ -8232,6 +8371,94 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 })();
 </script>
+
+
+<div id="characterDetail_ailorix" class="character-hover-detail luminaris-character-detail" data-detail-popup="ailorix" aria-hidden="true">
+  <div class="character-detail-art">
+    <img src="img/at/07.png" alt="에일로릭스 상세 일러스트">
+  </div>
+  <div class="character-detail-body">
+    <div class="character-detail-head">
+      <div>
+        <div class="character-detail-name">에일로릭스</div>
+        <div class="character-detail-role">루미나리스 신성제국 교황</div>
+      </div>
+      <div class="character-detail-code">B01</div>
+    </div>
+    <div class="character-detail-profile">ISTJ · 1w2(182) · so/sp</div>
+    <div class="character-detail-ability">
+      <strong>루멘 에테르나</strong>
+      <p>광휘로 광범위를 성역화해 적을 지속 작열시키고, 고출력 광선으로 전방을 광역 섬멸하는 능력.</p>
+    </div>
+    <blockquote class="character-detail-quote">“두려워 말지어다. 짐이 이 땅에 있는 한, 비록 별들이 무너져 내릴지라도 이 성역의 빛은 결코 꺼지지 아니하리라.”</blockquote>
+  </div>
+</div>
+
+
+<div id="characterDetail_heliadne" class="character-hover-detail luminaris-character-detail" data-detail-popup="heliadne" aria-hidden="true">
+  <div class="character-detail-art">
+    <img src="img/at/08.png" alt="헬리아드네 상세 일러스트">
+  </div>
+  <div class="character-detail-body">
+    <div class="character-detail-head">
+      <div>
+        <div class="character-detail-name">헬리아드네</div>
+        <div class="character-detail-role">루미나리스 신성제국 심판관</div>
+      </div>
+      <div class="character-detail-code">B02</div>
+    </div>
+    <div class="character-detail-profile">ISTJ · 1w8(186) · sp/so</div>
+    <div class="character-detail-ability">
+      <strong>솔 인빅투스</strong>
+      <p>태양성창으로 근·중거리 창술을 펼치며, 태양열을 축적해 찌르기나 투척 시 폭발시키는 능력.</p>
+    </div>
+    <blockquote class="character-detail-quote">“빛을 섬긴다는 것은 따스함만을 뜻하지 않는다. 때로는 불길이 되어 부정을 태워야 한다.”</blockquote>
+  </div>
+</div>
+
+
+<div id="characterDetail_fleur" class="character-hover-detail luminaris-character-detail" data-detail-popup="fleur" aria-hidden="true">
+  <div class="character-detail-art">
+    <img src="img/at/09.png" alt="플뢰르 상세 일러스트">
+  </div>
+  <div class="character-detail-body">
+    <div class="character-detail-head">
+      <div>
+        <div class="character-detail-name">플뢰르</div>
+        <div class="character-detail-role">솔루나 대성당 성녀</div>
+      </div>
+      <div class="character-detail-code">B03</div>
+    </div>
+    <div class="character-detail-profile">ISFP · 2w9(294) · sx/so</div>
+    <div class="character-detail-ability">
+      <strong>에덴 블레싱</strong>
+      <p>천익으로 비행·아군 보호 및 피해를 대신 받고, 빛무리를 성광탄으로 변환하는 능력.</p>
+    </div>
+    <blockquote class="character-detail-quote">“포옹에 꼭 특별한 이유가 필요한가요? 따뜻하면 그것만으로 충분하답니다.”</blockquote>
+  </div>
+</div>
+
+
+<div id="characterDetail_theodosia" class="character-hover-detail luminaris-character-detail" data-detail-popup="theodosia" aria-hidden="true">
+  <div class="character-detail-art">
+    <img src="img/at/10.png" alt="테오도시아 상세 일러스트">
+  </div>
+  <div class="character-detail-body">
+    <div class="character-detail-head">
+      <div>
+        <div class="character-detail-name">테오도시아</div>
+        <div class="character-detail-role">솔루나 대성당 교주</div>
+      </div>
+      <div class="character-detail-code">B04</div>
+    </div>
+    <div class="character-detail-profile">ENFJ · 1w2 · so/sp</div>
+    <div class="character-detail-ability">
+      <strong>네뷸라 생크툼</strong>
+      <p>성운의 성광을 응축·폭발시켜 광역 공격하고, 별들을 생성해 유성우처럼 적진에 낙하시키는 능력.</p>
+    </div>
+    <blockquote class="character-detail-quote">“귀엽다니! 교주에게 사용할 수식어를 조금 더 신중히 고르도록 하거라!”</blockquote>
+  </div>
+</div>
 
 </body>
 </html>
