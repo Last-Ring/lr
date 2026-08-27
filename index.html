@@ -1865,10 +1865,6 @@
     }
   }
 </style>
-
-
-
-
 <style>
   /* =========================================================
      LAST RING — BACK TO TOP
@@ -1997,8 +1993,6 @@
     }
   }
 </style>
-
-
 <style>
   /* 푸터 바로 아래 맨 위로 */
   .back-to-top-wrap { display:none !important; }
@@ -2047,8 +2041,6 @@
     outline:none;
   }
 </style>
-
-
 <style>
 #tab-world .world-prose{display:grid;gap:24px}
 #tab-world .world-chapter{position:relative;padding:30px 32px;border:1px solid rgba(255,255,255,.09);background:linear-gradient(145deg,rgba(255,255,255,.025),transparent 45%),#0d1015;overflow:hidden}
@@ -2095,8 +2087,6 @@
  #tab-world .world-timeline>div{grid-template-columns:52px 1fr;gap:9px}
 }
 </style>
-
-
 <style>
 /* =========================================================
    가독성 확대
@@ -2169,8 +2159,6 @@ body { font-size: 17px !important; }
   text-align: left !important;
 }
 </style>
-
-
 <style>
 #tab-world .frontline-grid,
 #tab-world .guild-world-grid{
@@ -2261,8 +2249,6 @@ body { font-size: 17px !important; }
   }
 }
 </style>
-
-
 <style>
   /* =========================================================
      4대 재앙 — 인적사항 / 게이트 설명 가독성 확대
@@ -2337,8 +2323,6 @@ body { font-size: 17px !important; }
     }
   }
 </style>
-
-
 <style>
   /* =========================================================
      STARFIELD BACKGROUND
@@ -2463,8 +2447,6 @@ body { font-size: 17px !important; }
     }
   }
 </style>
-
-
 <style>
   /* =========================================================
      헌터 등급 제목 / S 이상 광택 효과
@@ -2693,8 +2675,6 @@ body { font-size: 17px !important; }
     }
   }
 </style>
-
-
 <style>
 /* =========================================================
    판테온 조직도 — 글자 확대 / 보건실 높이 수정
@@ -2778,8 +2758,6 @@ body { font-size: 17px !important; }
   }
 }
 </style>
-
-
 <style>
 /* =========================================================
    별빛 배경 — 존재감 강화
@@ -2988,8 +2966,6 @@ body::after {
   }
 }
 </style>
-
-
 <style>
 #tab-world .org-professors span {
   line-height: 1.55 !important;
@@ -3000,8 +2976,6 @@ body::after {
   margin-top: 2px;
 }
 </style>
-
-
 <style>
 /* =========================================================
    학생 서열 — 설명 포함
@@ -3254,8 +3228,6 @@ body::after {
   #tab-world .map-tooltip{width:175px}
 }
 </style>
-
-
 <style>
 /* =========================================================
    오르비스 개략도 수정
@@ -3355,8 +3327,6 @@ body::after {
   }
 }
 </style>
-
-
 <style>
 /* =========================================================
    오르비스 개략도 최종 보정
@@ -3494,8 +3464,6 @@ body::after {
   }
 }
 </style>
-
-
 <style>
 /* =========================================================
    오르비스 지도 가독성 / 전선 거리 / 판테온 툴팁 수정
@@ -3646,8 +3614,6 @@ body::after {
   }
 }
 </style>
-
-
 <style>
 /* =========================================================
    HERO REDESIGN — img/lg.png 로고 중심
@@ -3831,8 +3797,6 @@ body::after {
   .hero::before{animation:none !important}
 }
 </style>
-
-
 <style>
 /* =========================================================
    NIGHT SKY GRADIENT
@@ -4196,8 +4160,6 @@ body::after {
   }
 }
 </style>
-
-
 <style>
 /* =========================================================
    헌터 등급 타이포 최종 조정
@@ -4245,8 +4207,6 @@ body::after {
   }
 }
 </style>
-
-
 <style>
 /* =========================================================
    헌터 등급 제목 — 영문 서브 라벨
@@ -4371,9 +4331,1058 @@ body::after {
   }
 }
 </style>
+<style>
+/* =========================================================
+   PLAYABLE CHARACTER — 2WAY SELECT
+   정사각형 초상화 전용
+   ========================================================= */
+
+#tab-char .faction-player .acc-body-inner{
+  padding-top:24px !important;
+}
+
+#tab-char .player-intro-box{
+  display:flex;
+  align-items:flex-start;
+  gap:12px;
+  margin-bottom:22px;
+  padding:17px 19px;
+  border:1px solid rgba(201,163,94,.17);
+  border-left:2px solid rgba(201,163,94,.65);
+  background:
+    linear-gradient(90deg,rgba(201,163,94,.065),transparent 72%),
+    rgba(255,255,255,.012);
+  text-align:left !important;
+}
+
+#tab-char .player-intro-mark{
+  color:#c9a35e;
+  font-size:15px;
+  line-height:1.5;
+}
+
+#tab-char .player-intro-box strong{
+  display:block;
+  margin-bottom:5px;
+  color:#d7c193;
+  font-size:16px;
+  line-height:1.6;
+}
+
+#tab-char .player-intro-box p{
+  margin:0;
+  color:#9098a4;
+  font-size:14px;
+  line-height:1.7;
+}
+
+/* 좌우 2분할 */
+#tab-char .player-select-grid{
+  display:grid;
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:18px;
+  width:100%;
+}
+
+/* 카드 */
+#tab-char .player-select-card{
+  position:relative;
+  overflow:hidden;
+  min-width:0;
+  border:1px solid rgba(255,255,255,.09);
+  background:#0d0f14;
+  transition:
+    transform .22s ease,
+    border-color .22s ease,
+    box-shadow .22s ease,
+    background .22s ease;
+}
+
+#tab-char .player-select-card::before{
+  content:"";
+  position:absolute;
+  z-index:2;
+  inset:0;
+  pointer-events:none;
+  opacity:.55;
+  transition:opacity .22s ease;
+}
+
+/* 정사각형 초상화 */
+#tab-char .player-image{
+  position:relative;
+  width:100%;
+  aspect-ratio:1 / 1;
+  overflow:hidden;
+  background:#0a0c10;
+}
+
+#tab-char .player-image img{
+  display:block;
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  object-position:center;
+  transition:
+    transform .35s cubic-bezier(.22,.72,.26,1),
+    filter .3s ease;
+}
+
+/* 하단 정보 */
+#tab-char .player-card-footer{
+  position:relative;
+  z-index:3;
+  padding:15px 16px 16px;
+  text-align:center !important;
+  border-top:1px solid rgba(255,255,255,.07);
+}
+
+#tab-char .player-card-name{
+  margin-bottom:4px;
+  color:#ece8df;
+  font-size:20px;
+  font-weight:800;
+  letter-spacing:-.02em;
+}
+
+#tab-char .player-card-en{
+  font-family:'JetBrains Mono',monospace;
+  font-size:10px;
+  font-weight:700;
+  letter-spacing:.15em;
+  color:#6d7480;
+}
+
+/* 남성 — 골드/청회색 */
+#tab-char .player-male{
+  border-color:rgba(201,163,94,.24);
+  background:
+    radial-gradient(circle at 80% 15%,rgba(201,163,94,.07),transparent 30%),
+    linear-gradient(145deg,#14130f,#0c0e12);
+}
+
+#tab-char .player-male::before{
+  box-shadow:
+    inset 3px 0 0 rgba(201,163,94,.12),
+    inset -1px 0 0 rgba(255,255,255,.025);
+}
+
+#tab-char .player-male .player-card-name{
+  color:#dbc18d;
+}
+
+/* 여성 — 보라/은빛 */
+#tab-char .player-female{
+  border-color:rgba(157,126,220,.25);
+  background:
+    radial-gradient(circle at 80% 15%,rgba(157,126,220,.08),transparent 30%),
+    linear-gradient(145deg,#121019,#0c0e13);
+}
+
+#tab-char .player-female::before{
+  box-shadow:
+    inset 3px 0 0 rgba(157,126,220,.14),
+    inset -1px 0 0 rgba(255,255,255,.025);
+}
+
+#tab-char .player-female .player-card-name{
+  color:#c8b1ed;
+}
+
+/* hover */
+#tab-char .player-select-card:hover{
+  transform:translateY(-4px);
+}
+
+#tab-char .player-male:hover{
+  border-color:rgba(201,163,94,.55);
+  box-shadow:
+    0 10px 30px rgba(0,0,0,.24),
+    0 0 24px rgba(201,163,94,.07);
+}
+
+#tab-char .player-female:hover{
+  border-color:rgba(157,126,220,.58);
+  box-shadow:
+    0 10px 30px rgba(0,0,0,.24),
+    0 0 26px rgba(139,92,246,.08);
+}
+
+#tab-char .player-select-card:hover .player-image img{
+  transform:scale(1.025);
+  filter:brightness(1.04);
+}
+
+#tab-char .player-select-card:hover::before{
+  opacity:1;
+}
+
+/* 카드 사이 중앙 장식 */
+#tab-char .player-select-grid{
+  position:relative;
+}
+
+#tab-char .player-select-grid::after{
+  content:"";
+  position:absolute;
+  left:50%;
+  top:8%;
+  bottom:8%;
+  width:1px;
+  transform:translateX(-50%);
+  background:
+    linear-gradient(
+      to bottom,
+      transparent,
+      rgba(201,163,94,.16) 25%,
+      rgba(157,126,220,.16) 75%,
+      transparent
+    );
+  pointer-events:none;
+}
+
+/* 모바일 */
+@media(max-width:700px){
+  #tab-char .player-select-grid{
+    grid-template-columns:1fr;
+  }
+
+  #tab-char .player-select-grid::after{
+    display:none;
+  }
+
+  #tab-char .player-card-name{
+    font-size:18px;
+  }
+
+  #tab-char .player-intro-box strong{
+    font-size:15px;
+  }
+
+  #tab-char .player-intro-box p{
+    font-size:13px;
+  }
+}
+</style>
+<style>
+/* =========================================================
+   모든 세력 대표 설명 — 플레이어블 인트로처럼 특수문자 장식
+   ========================================================= */
+
+/* 세력 패널의 대표 설명 영역 */
+#tab-char .faction-content-panel .faction-desc,
+#tab-char .faction-content-panel .faction-description,
+#tab-char .faction-content-panel .group-desc,
+#tab-char .faction-content-panel .section-desc,
+#tab-char .faction-content-panel .acc-body-inner > p:first-of-type {
+  position:relative !important;
+  padding-left:23px !important;
+}
+
+/* 플레이어블 캐릭터 자체는 이미 별도 ◇ 장식이 있으므로 중복 제외 */
+#tab-char .faction-player .acc-body-inner > p:first-of-type {
+  padding-left:0 !important;
+}
+
+/* 모든 세력 설명 앞 ◇ */
+#tab-char .faction-content-panel:not(.faction-player) .faction-desc::before,
+#tab-char .faction-content-panel:not(.faction-player) .faction-description::before,
+#tab-char .faction-content-panel:not(.faction-player) .group-desc::before,
+#tab-char .faction-content-panel:not(.faction-player) .section-desc::before,
+#tab-char .faction-content-panel:not(.faction-player) .acc-body-inner > p:first-of-type::before {
+  content:"◇";
+  position:absolute;
+  left:0;
+  top:.05em;
+  color:#9c7be0;
+  font-size:14px;
+  font-weight:800;
+  line-height:1.65;
+  text-shadow:0 0 8px rgba(156,123,224,.18);
+}
+
+/* 세력별 기존 포인트 컬러가 있으면 자연스럽게 이어지도록 약한 변주 */
+#tab-char .faction-content-panel:nth-of-type(3n+1):not(.faction-player)
+.acc-body-inner > p:first-of-type::before {
+  color:#c6a35f;
+}
+
+#tab-char .faction-content-panel:nth-of-type(3n+2):not(.faction-player)
+.acc-body-inner > p:first-of-type::before {
+  color:#78b8d2;
+}
+
+#tab-char .faction-content-panel:nth-of-type(3n):not(.faction-player)
+.acc-body-inner > p:first-of-type::before {
+  color:#a989db;
+}
+</style>
+<style>
+#tab-char .faction-content-panel:not(.faction-player) .faction-lead-desc{
+  position:relative !important;
+  padding-left:23px !important;
+}
+
+#tab-char .faction-content-panel:not(.faction-player) .faction-lead-desc::before{
+  content:"◇" !important;
+  position:absolute !important;
+  left:0 !important;
+  top:.05em !important;
+  color:#a98be8 !important;
+  font-size:14px !important;
+  font-weight:800 !important;
+  line-height:1.65 !important;
+  text-shadow:0 0 8px rgba(169,139,232,.20) !important;
+}
+</style>
+<style>
+/* =========================================================
+   세력 대표 설명 기호 — 위치 / 색상 통일
+   ========================================================= */
+
+/*
+  기존 ::before 방식은 왼쪽 border와 겹치면서
+  기호가 박스 바깥으로 밀려 보이므로 제거.
+*/
+#tab-char .faction-content-panel:not(.faction-player)
+.faction-lead-desc::before,
+#tab-char .faction-content-panel:not(.faction-player)
+.acc-body-inner > p:first-of-type::before,
+#tab-char .faction-content-panel:not(.faction-player)
+.faction-desc::before,
+#tab-char .faction-content-panel:not(.faction-player)
+.faction-description::before,
+#tab-char .faction-content-panel:not(.faction-player)
+.group-desc::before,
+#tab-char .faction-content-panel:not(.faction-player)
+.section-desc::before{
+  content:none !important;
+}
+
+/* 설명 박스 자체 */
+#tab-char .faction-content-panel:not(.faction-player)
+.faction-lead-desc{
+  position:relative !important;
+  padding-left:42px !important;
+}
+
+/* 기호를 텍스트와 같은 세로 중심에 고정 */
+#tab-char .faction-content-panel:not(.faction-player)
+.faction-lead-desc::after{
+  content:"◇" !important;
+  position:absolute !important;
+  left:16px !important;
+  top:50% !important;
+  transform:translateY(-50%) !important;
+
+  /* 모든 세력 동일 색 */
+  color:#a98be8 !important;
+
+  font-size:15px !important;
+  font-weight:400 !important;
+  line-height:1 !important;
+  text-shadow:0 0 8px rgba(169,139,232,.24) !important;
+  pointer-events:none !important;
+}
+
+/* 이전 nth-child 세력별 색상 규칙 무력화 */
+#tab-char .faction-content-panel:nth-of-type(3n+1):not(.faction-player)
+.acc-body-inner > p:first-of-type::before,
+#tab-char .faction-content-panel:nth-of-type(3n+2):not(.faction-player)
+.acc-body-inner > p:first-of-type::before,
+#tab-char .faction-content-panel:nth-of-type(3n):not(.faction-player)
+.acc-body-inner > p:first-of-type::before{
+  content:none !important;
+}
+
+/* 모바일도 같은 위치감 유지 */
+@media(max-width:700px){
+  #tab-char .faction-content-panel:not(.faction-player)
+  .faction-lead-desc{
+    padding-left:38px !important;
+  }
+
+  #tab-char .faction-content-panel:not(.faction-player)
+  .faction-lead-desc::after{
+    left:14px !important;
+    font-size:14px !important;
+  }
+}
+</style>
+<style>
+/* =========================================================
+   세력 설명 ◇ 최종 수정
+   - 문장 첫 줄의 시작점에 배치
+   - 각 세력의 기존 컨셉 컬러를 그대로 상속
+   ========================================================= */
+
+/* 이전에 추가된 중앙 정렬용 ::after 제거 */
+#tab-char .faction-content-panel:not(.faction-player) .faction-lead-desc::after{
+  content:none !important;
+}
+
+/* 대표 설명 자체의 색을 기호가 그대로 상속하도록 유지 */
+#tab-char .faction-content-panel:not(.faction-player) .faction-lead-desc{
+  position:relative !important;
+  padding-left:27px !important;
+}
+
+/* ◇는 첫 줄 시작 위치에 둔다 */
+#tab-char .faction-content-panel:not(.faction-player) .faction-lead-desc::before{
+  content:"◇" !important;
+  position:absolute !important;
+  left:0 !important;
+  top:.18em !important;
+  transform:none !important;
+
+  color:inherit !important;
+  font-size:14px !important;
+  font-weight:400 !important;
+  line-height:1.5 !important;
+  text-shadow:0 0 8px currentColor !important;
+  opacity:.9 !important;
+  pointer-events:none !important;
+}
+
+/* 기존의 강제 연보라색 규칙 완전 무효화 */
+#tab-char .faction-content-panel:not(.faction-player) .faction-lead-desc::after,
+#tab-char .faction-content-panel:not(.faction-player) .faction-desc::after,
+#tab-char .faction-content-panel:not(.faction-player) .faction-description::after,
+#tab-char .faction-content-panel:not(.faction-player) .group-desc::after,
+#tab-char .faction-content-panel:not(.faction-player) .section-desc::after{
+  content:none !important;
+}
+
+/* 세력별 기존 컬러를 명시적으로 유지 */
+#tab-char .faction-central .faction-lead-desc{color:#a88aff !important;}
+#tab-char .faction-luminaris .faction-lead-desc{color:#e2c785 !important;}
+#tab-char .faction-astra .faction-lead-desc{color:#48c8ff !important;}
+#tab-char .faction-sylvania .faction-lead-desc{color:#8fcf83 !important;}
+#tab-char .faction-cheonmyeong .faction-lead-desc{color:#d36f58 !important;}
+#tab-char .faction-pantheon .faction-lead-desc{color:#b997ff !important;}
+#tab-char .faction-phantom .faction-lead-desc{color:#d74a51 !important;}
+#tab-char .faction-noblesse .faction-lead-desc{color:#d0a96b !important;}
+#tab-char .faction-wolha .faction-lead-desc{color:#8f9fe5 !important;}
+#tab-char .faction-freelance .faction-lead-desc{color:#a1a8b1 !important;}
+#tab-char .faction-calamity .faction-lead-desc{color:#e3454e !important;}
+
+@media(max-width:700px){
+  #tab-char .faction-content-panel:not(.faction-player) .faction-lead-desc{
+    padding-left:24px !important;
+  }
+  #tab-char .faction-content-panel:not(.faction-player) .faction-lead-desc::before{
+    top:.2em !important;
+    font-size:13px !important;
+  }
+}
+</style>
+<style>
+/* =========================================================
+   세력 대표 설명 ◇ 위치 최종 보정
+   ========================================================= */
+
+#tab-char .faction-content-panel:not(.faction-player) .faction-lead-desc{
+  position:relative !important;
+  padding-left:25px !important;
+}
+
+/* 이전 기호 제거 */
+#tab-char .faction-content-panel:not(.faction-player) .faction-lead-desc::after{
+  content:none !important;
+}
+
+/* 첫 줄의 글자 높이에 맞춰 정확히 배치 */
+#tab-char .faction-content-panel:not(.faction-player) .faction-lead-desc::before{
+  content:"◇" !important;
+  position:absolute !important;
+  left:4px !important;
+  top:0 !important;
+  transform:translateY(.16em) !important;
+  width:14px !important;
+  height:1.5em !important;
+  display:flex !important;
+  align-items:flex-start !important;
+  justify-content:center !important;
+
+  color:inherit !important;
+  font-size:13px !important;
+  font-weight:400 !important;
+  line-height:1.5 !important;
+  opacity:.92 !important;
+  text-shadow:0 0 7px currentColor !important;
+  pointer-events:none !important;
+}
+
+/* 설명 박스 자체에 이미 왼쪽 여백이 있을 경우 중복 보정 */
+#tab-char .faction-content-panel:not(.faction-player)
+.acc-body-inner > .faction-lead-desc{
+  margin-left:0 !important;
+}
+
+/* 학생 서열 자동 승급 안내 문구 */
+#tab-world .rank-note,
+#tab-world .student-rank-note,
+#tab-world .student-note{
+  line-height:1.8 !important;
+}
+
+@media(max-width:700px){
+  #tab-char .faction-content-panel:not(.faction-player) .faction-lead-desc{
+    padding-left:23px !important;
+  }
+
+  #tab-char .faction-content-panel:not(.faction-player) .faction-lead-desc::before{
+    left:3px !important;
+    font-size:12px !important;
+  }
+}
+</style>
+<style>
+/* =========================================================
+   세력 대표 설명 — 플레이어블 인트로와 같은 실제 요소 구조
+   ========================================================= */
+
+/* 이전 pseudo 기호 완전 제거 */
+#tab-char .faction-content-panel:not(.faction-player) .faction-lead-desc::before,
+#tab-char .faction-content-panel:not(.faction-player) .faction-lead-desc::after{
+  content:none !important;
+}
+
+#tab-char .faction-content-panel:not(.faction-player) .faction-lead-desc{
+  display:flex !important;
+  align-items:flex-start !important;
+  gap:12px !important;
+  padding-left:16px !important;
+  text-align:left !important;
+}
+
+/* 실제 ◇ — 플레이어블의 player-intro-mark처럼 첫 줄 기준 */
+#tab-char .faction-lead-mark{
+  flex:0 0 auto !important;
+  display:inline-block !important;
+  margin-top:.08em !important;
+  font-size:15px !important;
+  font-weight:400 !important;
+  line-height:1.7 !important;
+  color:currentColor !important;
+  text-shadow:0 0 8px currentColor !important;
+  opacity:.88 !important;
+}
+
+/* 세력별 설명 색상은 기존 콘셉트와 동일 */
+#tab-char .faction-central .faction-lead-desc{color:#a88aff !important;}
+#tab-char .faction-luminaris .faction-lead-desc{color:#e2c785 !important;}
+#tab-char .faction-astra .faction-lead-desc{color:#48c8ff !important;}
+#tab-char .faction-sylvania .faction-lead-desc{color:#8fcf83 !important;}
+#tab-char .faction-cheonmyeong .faction-lead-desc{color:#d36f58 !important;}
+#tab-char .faction-pantheon .faction-lead-desc{color:#b997ff !important;}
+#tab-char .faction-phantom .faction-lead-desc{color:#d74a51 !important;}
+#tab-char .faction-noblesse .faction-lead-desc{color:#d0a96b !important;}
+#tab-char .faction-wolha .faction-lead-desc{color:#8f9fe5 !important;}
+#tab-char .faction-freelance .faction-lead-desc{color:#a1a8b1 !important;}
+#tab-char .faction-calamity .faction-lead-desc{color:#e3454e !important;}
+
+/* =========================================================
+   학생 서열 설명
+   ========================================================= */
+#tab-world .student-rank-card p{
+  font-size:14px !important;
+  line-height:1.82 !important;
+}
+#tab-world .student-order-note{
+  margin-top:13px !important;
+  color:#8f97a3 !important;
+  font-size:13.5px !important;
+  line-height:1.85 !important;
+}
+
+/* =========================================================
+   아주 은은한 별똥별
+   ========================================================= */
+.shooting-stars{
+  position:fixed;
+  inset:0;
+  z-index:0;
+  pointer-events:none;
+  overflow:hidden;
+}
+
+.shooting-star{
+  position:absolute;
+  width:120px;
+  height:1px;
+  opacity:0;
+  background:linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(179,194,255,.10) 20%,
+    rgba(235,241,255,.72) 68%,
+    rgba(255,255,255,.95) 100%
+  );
+  filter:drop-shadow(0 0 3px rgba(190,205,255,.30));
+  transform:rotate(-28deg);
+  transform-origin:right center;
+}
+
+.shooting-star::after{
+  content:"";
+  position:absolute;
+  right:-1px;
+  top:-1px;
+  width:3px;
+  height:3px;
+  border-radius:50%;
+  background:rgba(255,255,255,.94);
+  box-shadow:0 0 7px rgba(214,225,255,.72);
+}
+
+.star-a{
+  top:12%;
+  left:74%;
+  animation:shootA 12s 1.8s ease-in-out infinite;
+}
+.star-b{
+  top:34%;
+  left:18%;
+  width:90px;
+  opacity:0;
+  animation:shootB 16s 6.5s ease-in-out infinite;
+}
+.star-c{
+  top:69%;
+  left:63%;
+  width:75px;
+  animation:shootC 20s 11s ease-in-out infinite;
+}
+
+@keyframes shootA{
+  0%,72%{opacity:0;transform:translate(0,0) rotate(-28deg)}
+  74%{opacity:.72}
+  79%{opacity:0;transform:translate(-280px,165px) rotate(-28deg)}
+  100%{opacity:0}
+}
+@keyframes shootB{
+  0%,80%{opacity:0;transform:translate(0,0) rotate(-24deg)}
+  82%{opacity:.50}
+  86%{opacity:0;transform:translate(-210px,120px) rotate(-24deg)}
+  100%{opacity:0}
+}
+@keyframes shootC{
+  0%,84%{opacity:0;transform:translate(0,0) rotate(-31deg)}
+  86%{opacity:.42}
+  89%{opacity:0;transform:translate(-175px,105px) rotate(-31deg)}
+  100%{opacity:0}
+}
+
+@media(max-width:700px){
+  #tab-char .faction-content-panel:not(.faction-player) .faction-lead-desc{
+    gap:10px !important;
+    padding-left:13px !important;
+  }
+  #tab-char .faction-lead-mark{
+    font-size:14px !important;
+  }
+  .star-c{display:none}
+}
+
+@media(prefers-reduced-motion:reduce){
+  .shooting-star{animation:none !important;display:none !important;}
+}
+</style>
+<style>
+/* =========================================================
+   MAIN HERO — CELESTIAL ARCHIVE REDESIGN
+   로고를 가리지 않는 천구 / 성도 / 아카이브 HUD
+   ========================================================= */
+
+.hero{
+  overflow:hidden !important;
+  min-height:100vh !important;
+  background:
+    radial-gradient(ellipse at 50% 34%,rgba(84,69,144,.115),transparent 30%),
+    radial-gradient(ellipse at 16% 64%,rgba(43,73,125,.075),transparent 27%),
+    radial-gradient(ellipse at 84% 70%,rgba(93,48,104,.065),transparent 28%),
+    linear-gradient(180deg,#050713 0%,#070916 38%,#0a0914 72%,#09070e 100%) !important;
+}
+
+/* 기존 단순 타원은 숨기고 새 천구 장식 사용 */
+.hero .rings-wrap{
+  display:none !important;
+}
+
+/* 메인 천구 */
+.hero-celestial{
+  position:absolute;
+  z-index:1;
+  left:50%;
+  top:45%;
+  width:min(1120px,91vw);
+  height:min(720px,74vw);
+  transform:translate(-50%,-50%);
+  pointer-events:none;
+}
+
+/* 큰 궤도선 */
+.celestial-orbit{
+  position:absolute;
+  left:50%;
+  top:50%;
+  border-radius:50%;
+  transform:translate(-50%,-50%);
+  box-sizing:border-box;
+}
+
+.orbit-a{
+  width:88%;
+  height:72%;
+  border:1px solid rgba(122,128,160,.105);
+  animation:orbitBreathA 7s ease-in-out infinite alternate;
+}
+
+.orbit-b{
+  width:70%;
+  height:92%;
+  border:1px dashed rgba(118,101,168,.09);
+  transform:translate(-50%,-50%) rotate(23deg);
+  animation:orbitRotateB 80s linear infinite;
+}
+
+.orbit-c{
+  width:55%;
+  height:55%;
+  border:1px solid rgba(163,139,207,.075);
+  box-shadow:
+    0 0 0 42px rgba(91,83,138,.018),
+    0 0 0 92px rgba(66,72,116,.012);
+  animation:orbitBreathC 9s ease-in-out infinite alternate;
+}
+
+@keyframes orbitBreathA{
+  from{opacity:.42;transform:translate(-50%,-50%) scale(.985)}
+  to{opacity:.92;transform:translate(-50%,-50%) scale(1.015)}
+}
+
+@keyframes orbitRotateB{
+  from{transform:translate(-50%,-50%) rotate(23deg)}
+  to{transform:translate(-50%,-50%) rotate(383deg)}
+}
+
+@keyframes orbitBreathC{
+  from{opacity:.34}
+  to{opacity:.82}
+}
+
+/* 궤도 위 작은 별 좌표 */
+.celestial-node{
+  position:absolute;
+  width:3px;
+  height:3px;
+  border-radius:50%;
+  background:#d8d3ff;
+  box-shadow:
+    0 0 5px rgba(210,204,255,.8),
+    0 0 12px rgba(144,119,222,.35);
+  animation:nodeTwinkle 2.8s ease-in-out infinite alternate;
+}
+
+.node-a{left:13%;top:43%;animation-delay:.2s}
+.node-b{right:13%;top:43%;animation-delay:1.1s}
+.node-c{left:32%;bottom:10%;animation-delay:1.8s}
+.node-d{right:31%;top:8%;animation-delay:.7s}
+
+@keyframes nodeTwinkle{
+  from{opacity:.18;transform:scale(.7)}
+  to{opacity:.9;transform:scale(1.35)}
+}
+
+/* 좌우 아카이브 데이터 */
+.hero-data{
+  position:absolute;
+  top:47%;
+  width:130px;
+  color:#6f7482;
+  font-family:'JetBrains Mono',monospace;
+  letter-spacing:.12em;
+  opacity:.66;
+}
+
+.hero-data::before{
+  content:"";
+  position:absolute;
+  top:-11px;
+  width:54px;
+  height:1px;
+  background:linear-gradient(90deg,rgba(151,128,205,.55),transparent);
+}
+
+.hero-data-left{
+  left:0;
+  text-align:left;
+}
+.hero-data-left::before{left:0}
+
+.hero-data-right{
+  right:0;
+  text-align:right;
+}
+.hero-data-right::before{
+  right:0;
+  transform:scaleX(-1);
+}
+
+.hero-data small{
+  display:block;
+  margin-bottom:5px;
+  color:#706b83;
+  font-size:8px;
+  font-weight:700;
+}
+
+.hero-data b{
+  display:block;
+  margin-bottom:5px;
+  color:#9b8db8;
+  font-size:19px;
+  font-weight:500;
+  letter-spacing:.08em;
+}
+
+.hero-data span{
+  display:block;
+  font-size:7px;
+  color:#555b69;
+  white-space:nowrap;
+}
+
+/* 좌우 좌표 */
+.hero-coordinate{
+  position:absolute;
+  top:68%;
+  color:#4f5360;
+  font-family:'JetBrains Mono',monospace;
+  font-size:7px;
+  letter-spacing:.22em;
+  opacity:.48;
+}
+.coord-left{left:7%}
+.coord-right{right:7%}
+
+/* 로고는 모든 천구 장식 위 */
+.hero-logo{
+  z-index:5 !important;
+  width:min(750px,72vw) !important;
+}
+
+/* 로고 뒤 빛 번짐을 조금 풍부하게 */
+.hero-logo::before{
+  inset:8% -7% !important;
+  background:
+    radial-gradient(ellipse,rgba(211,204,255,.09),transparent 58%),
+    radial-gradient(ellipse at 50% 60%,rgba(116,89,183,.065),transparent 70%) !important;
+  filter:blur(24px) !important;
+}
+
+/* 기존 hero-logo 타원은 새 천구와 겹치므로 제거 */
+.hero-logo::after{
+  display:none !important;
+}
+
+/* 상단 상태 텍스트 */
+.hero .eyebrow{
+  position:relative;
+  z-index:5 !important;
+  margin-bottom:34px !important;
+}
+
+/* 부제: 양쪽 선 + 선을 따라 움직이는 빛 */
+.hero .subtitle{
+  position:relative !important;
+  z-index:5 !important;
+  display:inline-flex !important;
+  align-items:center !important;
+  justify-content:center !important;
+  gap:13px !important;
+  margin-top:36px !important;
+  padding:0 10px !important;
+}
+
+.hero .subtitle::before,
+.hero .subtitle::after{
+  content:"";
+  display:block;
+  width:74px;
+  height:1px;
+  background:linear-gradient(90deg,transparent,rgba(140,109,215,.48));
+}
+
+.hero .subtitle::after{
+  transform:scaleX(-1);
+}
+
+/* 설명은 별도 영역으로 더 명확하게 */
+.hero .desc{
+  position:relative !important;
+  z-index:5 !important;
+  max-width:760px !important;
+  margin-top:27px !important;
+  padding:23px 26px 0 !important;
+  border-top:1px solid rgba(157,144,194,.10) !important;
+}
+
+.hero .desc::before{
+  content:"";
+  position:absolute;
+  top:-1px;
+  left:50%;
+  width:82px;
+  height:1px;
+  transform:translateX(-50%);
+  background:linear-gradient(90deg,transparent,#7453bc,transparent);
+  animation:archiveLinePulse 3.6s ease-in-out infinite alternate;
+}
+
+@keyframes archiveLinePulse{
+  from{opacity:.22;width:52px}
+  to{opacity:.85;width:118px}
+}
+
+/* WORLD ARCHIVE 위 작은 인덱스 */
+.hero .scroll-cue{
+  z-index:5 !important;
+}
+
+.hero .scroll-cue::before{
+  content:"01 / ORBIS" !important;
+  position:absolute !important;
+  left:50% !important;
+  top:-24px !important;
+  width:auto !important;
+  height:auto !important;
+  transform:translateX(-50%) !important;
+  background:none !important;
+  color:#474b57 !important;
+  font-family:'JetBrains Mono',monospace !important;
+  font-size:7px !important;
+  letter-spacing:.18em !important;
+  opacity:.7 !important;
+  animation:none !important;
+}
+
+.hero .scroll-cue::after{
+  content:"" !important;
+  position:absolute !important;
+  left:50% !important;
+  top:26px !important;
+  width:1px !important;
+  height:28px !important;
+  transform:none !important;
+  background:linear-gradient(to bottom,rgba(131,112,180,.38),transparent) !important;
+  opacity:.65 !important;
+  animation:archiveDrop 2.8s ease-in-out infinite alternate !important;
+}
+
+@keyframes archiveDrop{
+  from{height:17px;opacity:.25}
+  to{height:31px;opacity:.72}
+}
+
+/* 화면 모서리에 아주 희미한 성운 */
+.hero::after{
+  background:
+    radial-gradient(circle at 8% 14%,rgba(81,91,166,.10),transparent 20%),
+    radial-gradient(circle at 93% 28%,rgba(93,57,135,.08),transparent 23%),
+    radial-gradient(circle at 14% 88%,rgba(39,70,117,.055),transparent 23%),
+    radial-gradient(circle at 88% 89%,rgba(112,57,95,.05),transparent 23%) !important;
+  opacity:1 !important;
+}
+
+/* 별빛은 조금 더 보이되 과하지 않게 */
+.hero::before{
+  opacity:.26 !important;
+  background-size:165px 165px,270px 270px !important;
+}
+
+/* =========================================================
+   추가 별똥별 — 메인에서는 한 줄이 아주 드물게
+   ========================================================= */
+.hero-celestial::after{
+  content:"";
+  position:absolute;
+  right:7%;
+  top:14%;
+  width:120px;
+  height:1px;
+  opacity:0;
+  background:linear-gradient(
+    90deg,
+    transparent,
+    rgba(192,202,255,.12),
+    rgba(246,248,255,.8)
+  );
+  transform:rotate(-31deg);
+  filter:drop-shadow(0 0 3px rgba(190,203,255,.24));
+  animation:heroMeteorRare 13s 4s ease-in-out infinite;
+}
+
+@keyframes heroMeteorRare{
+  0%,73%{
+    opacity:0;
+    transform:translate(0,0) rotate(-31deg);
+  }
+  75%{opacity:.7}
+  80%{
+    opacity:0;
+    transform:translate(-260px,155px) rotate(-31deg);
+  }
+  100%{opacity:0}
+}
+
+@media(max-width:800px){
+  .hero-celestial{
+    width:112vw;
+    height:82vw;
+    top:43%;
+  }
+
+  .hero-data,
+  .hero-coordinate{
+    display:none;
+  }
+
+  .hero-logo{
+    width:min(88vw,680px) !important;
+  }
+
+  .hero .subtitle::before,
+  .hero .subtitle::after{
+    width:34px;
+  }
+}
+
+@media(max-width:520px){
+  .hero .subtitle::before,
+  .hero .subtitle::after{
+    display:none;
+  }
+
+  .orbit-b{
+    opacity:.4;
+  }
+}
+
+@media(prefers-reduced-motion:reduce){
+  .celestial-orbit,
+  .celestial-node,
+  .hero-celestial::after,
+  .hero .desc::before,
+  .hero .scroll-cue::after{
+    animation:none !important;
+  }
+}
+</style>
 
 </head>
-<body>
+<body><div aria-hidden="true" class="shooting-stars"><span class="shooting-star star-a"></span><span class="shooting-star star-b"></span><span class="shooting-star star-c"></span></div>
 <section class="hero">
 <div class="rings-wrap">
 <svg viewbox="0 0 600 600">
@@ -4387,7 +5396,34 @@ body::after {
 </svg>
 </div>
 <div class="eyebrow">SURVIVAL ZONE STATUS · CRITICAL</div>
-<div class="hero-logo"><img src="img/lg.png" alt="LAST RING"></div>
+
+<div class="hero-celestial" aria-hidden="true">
+  <div class="celestial-orbit orbit-a"></div>
+  <div class="celestial-orbit orbit-b"></div>
+  <div class="celestial-orbit orbit-c"></div>
+
+  <span class="celestial-node node-a"></span>
+  <span class="celestial-node node-b"></span>
+  <span class="celestial-node node-c"></span>
+  <span class="celestial-node node-d"></span>
+
+  <div class="hero-data hero-data-left">
+    <small>ORBIS ERA</small>
+    <b>581</b>
+    <span>LAST SURVIVAL ZONE</span>
+  </div>
+
+  <div class="hero-data hero-data-right">
+    <small>ARCHIVE</small>
+    <b>01</b>
+    <span>WORLD RECORD</span>
+  </div>
+
+  <div class="hero-coordinate coord-left">W · 04</div>
+  <div class="hero-coordinate coord-right">E · 04</div>
+</div>
+
+<div class="hero-logo"><img alt="LAST RING" src="img/lg.png"/></div>
 <p class="subtitle"><span class="bar">::</span>인류 최후의 생존권<span class="bar">::</span></p>
 <p class="desc">
     게이트 너머에서 밀려오는 <strong>괴수</strong>들에게 세계는 이미 절반 넘게 잠식당했다.
@@ -4415,402 +5451,324 @@ body::after {
        세계관 소개
        ========================= -->
 <div class="tab-panel active" id="tab-world">
-  <div class="world-prose">
-
-    <section class="world-chapter">
-      <div class="world-kicker">ORBIS</div>
-      <h2>오르비스, 균열 이후의 세계</h2>
-
-      <p>한때 세계에는 수많은 도시와 국가가 존재했다. 그러나 547년, <strong>SSS급 게이트</strong>가 열리며 모든 것이 달라졌다. 균열 너머에서 쏟아져 나온 괴수들은 세계를 무너뜨렸고, 인류의 생존권은 빠르게 후퇴했다. 살아남은 사람들은 흩어진 채 각자의 힘으로 하루를 이어가야 했다.</p>
-
-      <p>558년, SSS급 헌터 <strong>로웰</strong>이 흩어진 세력을 규합하며 <strong>오르비스 중앙연합</strong>을 창설했다. 각자도생하던 생존권은 비로소 하나의 체계 아래 연결되기 시작했다.</p>
-
-      <p>562년, 재앙이라 불린 SSS급 흑룡 <strong>모르드라스</strong>가 루미나리스를 침공했다. 로웰은 미스텔라, 에일로릭스, 카메코, 플로리아와 함께 모르드라스를 토벌했으나 전투에서 목숨을 잃었다. 이후 미스텔라가 제2대 중앙연합 의장에 올랐다.</p>
-
-      <p>그리고 567년. 뛰어난 재능을 가졌다는 이유만으로 준비되지 않은 채 전선에 나가 요절하는 이들을 줄이기 위해 <strong>카메코, 에이미, 미스텔라</strong>가 <strong>판테온 아카데미</strong>를 설립했다.</p>
-
-      <div class="world-timeline">
-        <div><b>547</b><span>SSS급 게이트 발생 · 괴수 침공 · 세계 붕괴</span></div>
-        <div><b>558</b><span>로웰, 오르비스 중앙연합 창설 · 초대 의장 취임</span></div>
-        <div><b>562</b><span>모르드라스 토벌 · 로웰 전사 · 미스텔라 제2대 의장 취임</span></div>
-        <div><b>567</b><span>카메코 · 에이미 · 미스텔라, 판테온 아카데미 설립</span></div>
-      </div>
-
-      <div class="orbis-map-wrap">
-        <div class="orbis-map-heading">
-          <div>
-            <span>ORBIS OVERVIEW</span>
-            <strong>오르비스 생존권 개략도</strong>
-          </div>
-          
-        </div>
-
-        <div class="orbis-map" aria-label="오르비스 생존권 개략도">
-          <div class="map-ring ring-outer"></div>
-          <div class="map-ring ring-inner"></div>
-
-          <div class="map-frontier map-frontier-west">균열지대</div>
-          <div class="map-frontier map-frontier-east">균열지대</div>
-          <div class="map-frontier map-frontier-south">오염심역</div>
-          <button class="map-node node-central-alliance" type="button">
-            <small>CENTRAL</small>
-            <b>오르비스 중앙연합</b>
-            <span class="map-tooltip">중부 생존권을 중심으로 오르비스의 각 세력을 연결하는 중앙연합.</span>
-          </button>
-
-          <button class="map-node node-west" type="button">
-            <small>WEST</small>
-            <b>루미나리스 신성제국</b>
-            <span class="map-tooltip">서부 생존권. 신성과 성기사 문화가 깊게 자리한 빛의 도시권.</span>
-          </button>
-
-          <button class="map-node node-east" type="button">
-            <small>EAST</small>
-            <b>천명천관</b>
-            <span class="map-tooltip">동부 생존권. 청운가를 중심으로 동방의 문화와 전통이 이어지는 지역.</span>
-          </button>
-
-          <button class="map-node node-north" type="button">
-            <small>NORTH</small>
-            <b>실바니아 자연동맹</b>
-            <span class="map-tooltip">북부 생존권. 에버그린과 정령 문화가 살아 숨 쉬는 녹음의 지역.</span>
-          </button>
-
-          <button class="map-node node-south" type="button">
-            <small>SOUTH</small>
-            <b>아스트라 연방</b>
-            <span class="map-tooltip">남부 생존권. 노바 테크노폴리스를 품은 과학기술의 중심지.</span>
-          </button>
-
-          <div class="pantheon-map-branch" aria-label="판테온 아카데미 소재지">
-            <span class="pantheon-branch-line"></span>
-            <div class="pantheon-map-label" tabindex="0">
-              <small>ASTRA</small>
-              <b>판테온 아카데미</b>
-              <span class="pantheon-tooltip">아스트라 연방에 자리한 헌터 교육기관. 후보생부터 정예생까지 전선에서 살아남기 위한 교육과 실전을 거친다.</span>
-            </div>
-          </div>
-
-          <div class="map-direction north">N</div>
-          <div class="map-direction west">W</div>
-          <div class="map-direction east">E</div>
-          <div class="map-direction south">S</div>
-        </div>
-      </div>
-    </section>
-
-    <section class="world-chapter">
-      <div class="world-kicker">HUNTER &amp; GATE</div>
-      <h2>헌터와 게이트, 끝나지 않은 균열전쟁</h2>
-
-      <p>괴수를 몰아냈다고 해서 세계가 돌아온 것은 아니다. 옛 세계의 탈환은 실패했고, 인류가 지켜낸 것은 현재의 <strong>중심 생존권</strong>뿐이다. 지금도 곳곳에서 새로운 게이트가 열리고 있으며, 끝없는 균열전쟁 속에서 생존권을 유지하기 위해 헌터는 반드시 필요하다.</p>
-
-      <p>게이트는 이계와 연결된 공간이다. 내부에는 저마다 다른 환경과 괴수가 존재하고, 등급이 높을수록 환경 역시 극단적으로 변한다. 괴수는 마력원을 포식하려는 본능을 지니며, 재앙을 제외하면 지성을 갖지 않는다.</p>
-
-      <div class="gate-laws">
-        <div><em>코어</em><strong>보스가 살아 있는 동안 게이트는 유지된다.</strong><span>보스는 코어룸에 존재하며, 보스가 생존하는 한 게이트 역시 사라지지 않는다.</span></div>
-        <div><em>붕괴</em><strong>보스를 쓰러뜨리면 게이트가 붕괴한다.</strong><span>붕괴가 시작되면 내부에 있던 인원은 처음 진입했던 위치로 자동 귀환한다.</span></div>
-        <div><em>침식</em><strong>방치된 게이트는 주변 생존권을 잠식한다.</strong><span>주변 일대를 게이트의 환경으로 바꾸며, 등급이 높을수록 확산이 빨라지고 괴수가 외부로 유출된다.</span></div>
-      </div>
-
-      <div class="hunter-rank-block">
-        <div class="hunter-rank-title">헌터 등급 <small>HUNTER RANK</small></div>
-        <div class="hunter-ranks">
-          <span class="rf">F</span><i>＜</i><span class="rf">F+</span><i>＜</i>
-          <span class="re">E</span><i>＜</i><span class="re">E+</span><i>＜</i>
-          <span class="rd">D</span><i>＜</i><span class="rd">D+</span><i>＜</i>
-          <span class="rc">C</span><i>＜</i><span class="rc">C+</span><i>＜</i>
-          <span class="rb">B</span><i>＜</i><span class="rb">B+</span><i>＜</i>
-          <span class="ra">A</span><i>＜</i><span class="ra">A+</span><i>＜</i>
-          <span class="rs">S</span><i>＜</i><span class="rs">S+</span><i>＜</i>
-          <span class="rss">SS</span><i>＜</i><span class="rss">SS+</span><i>＜</i>
-          <span class="rsss">SSS</span>
-        </div>
-      </div>
-    </section>
-
-    <section class="world-chapter">
-      <div class="world-kicker">PANTHEON ACADEMY</div>
-      <h2>판테온 아카데미, 살아 돌아오기 위해 세워진 곳</h2>
-
-      <div class="pantheon-world-bg"><img src="img/bg/97.png" alt="판테온 아카데미"></div>
-
-      <p>판테온은 영웅을 만들기 위해 세워진 곳이 아니다. 균열전쟁의 전선에서는 뛰어난 재능을 가진 이들이 충분히 배우기도 전에 싸움에 내몰렸고, 강하다는 이유만으로 수많은 이들이 너무 일찍 목숨을 잃었다.</p>
-
-      <p>판테온이 가르치는 것은 <strong>강해지는 방법만이 아니라 살아 돌아오는 방법</strong>이다. 전투와 마도, 신성, 정령, 과학기술은 물론 전술과 생존까지. 자신의 힘을 이해하고 동료와 함께 싸우며, 전장에서 살아남기 위해 필요한 것을 배운다. 판테온에서 강함은 특혜가 되지 않는다.</p>
-
-
-      <div class="pantheon-org">
-        <div class="pantheon-org-title">판테온 아카데미 조직</div>
-
-        <div class="org-root">
-          <div class="org-card org-head">
-            <span class="org-role">총장</span>
-            <strong>카메코</strong>
-          </div>
-        </div>
-
-        <div class="org-line org-line-main"></div>
-
-        <div class="org-branch">
-          <div class="org-column">
-            <div class="org-card org-group">
-              <span class="org-role">교수진</span>
-              <strong>9개 교육 분야</strong>
-            </div>
-
-            <div class="org-professors">
-              <span>과학기술<br>에이미</span>
-              <span>검술<br>샤를로트</span>
-              <span>마도<br>루시엔</span>
-              <span>신성<br>엘레노아</span>
-              <span>전술<br>베아트릭스</span>
-              <span>정령<br>벨라리엔시아</span>
-              <span>생존<br>세이라</span>
-              <span>무술<br>효우린</span>
-              <span>인술<br>히노카</span>
-            </div>
-          </div>
-
-          <div class="org-column org-health">
-            <div class="org-card org-group">
-              <span class="org-role">보건실</span>
-              <strong>보건교사 · 린</strong>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="student-order">
-        <b>학생 서열</b>
-
-        <div class="student-order-cards">
-          <div class="student-rank-card">
-            <span>후보생</span>
-            <p>판테온에 첫발을 디딘 학생으로, 전투와 생존의 기초를 익히는 단계.</p>
-          </div>
-
-          <i>→</i>
-
-          <div class="student-rank-card">
-            <span>정규생</span>
-            <p>기초를 넘어 실전적인 훈련과 게이트 경험을 본격적으로 쌓아가는 단계.</p>
-          </div>
-
-          <i>→</i>
-
-          <div class="student-rank-card">
-            <span>정예생</span>
-            <p>졸업과 전선을 앞두고 자신의 전투방식과 판단을 완성해가는 마지막 단계.</p>
-          </div>
-        </div>
-
-        <p class="student-order-note">해가 바뀌면 학생은 다음 단계로 자동 승급한다.</p>
-      </div>
-    </section>
-
-    
-    <section class="world-chapter">
-      <div class="world-kicker">FRONT LINE</div>
-      <h2>문명의 끝, 전선의 시작</h2>
-
-      <p>중심 생존권의 바깥에는 옛 문명의 흔적과 게이트가 뒤섞인 전선이 펼쳐져 있다. 헌터들이 일상적으로 마주하는 최전선은 <strong>균열지대</strong>와 <strong>오염심역</strong>으로 나뉜다.</p>
-
-      <div class="frontline-grid">
-        <div class="frontline-card">
-          <b>균열지대 · 외곽</b>
-          <span>파괴된 문명의 잔해가 남아 있는 전선. F급부터 B+급 게이트가 출현한다.</span>
-        </div>
-        <div class="frontline-card">
-          <b>오염심역 · 최외곽</b>
-          <span>풍화된 구세계가 남아 있는 최외곽 전선. A급 이상의 게이트가 출현한다.</span>
-        </div>
-      </div>
-    </section>
-
-    <section class="world-chapter">
-      <div class="world-kicker">THREE GUILDS</div>
-      <h2>전선을 누비는 3대 길드</h2>
-
-      <div class="guild-world-grid">
-        <div><b>팬텀 스트라이크</b><span>실력주의를 내세우며 최전선 공략을 주도한다. 입단 최소 등급은 A급 이상.</span></div>
-        <div><b>노블레스</b><span>명예를 중시하며 구호 활동에 힘을 쏟는 길드.</span></div>
-        <div><b>월하</b><span>암행과 정보 활동에 특화된 길드.</span></div>
-      </div>
-    </section>
-
-    <section class="world-chapter">
-      <div class="world-kicker">FOUR CALAMITIES</div>
-      <h2>오염심역 최심부, 4재앙</h2>
-
-      <p>각 오염심역의 최심부에는 인류의 적 또는 배반자로 규정된 <strong>4재앙</strong>이 자리한다. 그들이 머무는 영역은 최고위 게이트와 맞물려 있으며, 각 방향의 전선을 대표하는 가장 거대한 위협이다.</p>
-
-      <div class="calamity-world-list">
-        <div><b>서부 · 옵시디언 레어</b><span>SS+ · 에이브릴</span></div>
-        <div><b>동부 · 천귀궁</b><span>SSS · 노타마야</span></div>
-        <div><b>남부 · 만상의 성소</b><span>SSS · 닉스</span></div>
-        <div><b>북부 · 선큰스론</b><span>SSS · 칼립사</span></div>
-      </div>
-    </section>
-
-    <section class="world-chapter">
-      <div class="world-kicker">CALENDAR</div>
-      <h2>판테온과 오르비스를 흐르는 한 해</h2>
-
-      <p>
+<div class="world-prose">
+<section class="world-chapter">
+<div class="world-kicker">ORBIS</div>
+<h2>오르비스, 균열 이후의 세계</h2>
+<p>한때 세계에는 수많은 도시와 국가가 존재했다. 그러나 547년, <strong>SSS급 게이트</strong>가 열리며 모든 것이 달라졌다. 균열 너머에서 쏟아져 나온 괴수들은 세계를 무너뜨렸고, 인류의 생존권은 빠르게 후퇴했다. 살아남은 사람들은 흩어진 채 각자의 힘으로 하루를 이어가야 했다.</p>
+<p>558년, SSS급 헌터 <strong>로웰</strong>이 흩어진 세력을 규합하며 <strong>오르비스 중앙연합</strong>을 창설했다. 각자도생하던 생존권은 비로소 하나의 체계 아래 연결되기 시작했다.</p>
+<p>562년, 재앙이라 불린 SSS급 흑룡 <strong>모르드라스</strong>가 루미나리스를 침공했다. 로웰은 미스텔라, 에일로릭스, 카메코, 플로리아와 함께 모르드라스를 토벌했으나 전투에서 목숨을 잃었다. 이후 미스텔라가 제2대 중앙연합 의장에 올랐다.</p>
+<p>그리고 567년. 뛰어난 재능을 가졌다는 이유만으로 준비되지 않은 채 전선에 나가 요절하는 이들을 줄이기 위해 <strong>카메코, 에이미, 미스텔라</strong>가 <strong>판테온 아카데미</strong>를 설립했다.</p>
+<div class="world-timeline">
+<div><b>547</b><span>SSS급 게이트 발생 · 괴수 침공 · 세계 붕괴</span></div>
+<div><b>558</b><span>로웰, 오르비스 중앙연합 창설 · 초대 의장 취임</span></div>
+<div><b>562</b><span>모르드라스 토벌 · 로웰 전사 · 미스텔라 제2대 의장 취임</span></div>
+<div><b>567</b><span>카메코 · 에이미 · 미스텔라, 판테온 아카데미 설립</span></div>
+</div>
+<div class="orbis-map-wrap">
+<div class="orbis-map-heading">
+<div>
+<span>ORBIS OVERVIEW</span>
+<strong>오르비스 생존권 개략도</strong>
+</div>
+</div>
+<div aria-label="오르비스 생존권 개략도" class="orbis-map">
+<div class="map-ring ring-outer"></div>
+<div class="map-ring ring-inner"></div>
+<div class="map-frontier map-frontier-west">균열지대</div>
+<div class="map-frontier map-frontier-east">균열지대</div>
+<div class="map-frontier map-frontier-south">오염심역</div>
+<button class="map-node node-central-alliance" type="button">
+<small>CENTRAL</small>
+<b>오르비스 중앙연합</b>
+<span class="map-tooltip">중부 생존권을 중심으로 오르비스의 각 세력을 연결하는 중앙연합.</span>
+</button>
+<button class="map-node node-west" type="button">
+<small>WEST</small>
+<b>루미나리스 신성제국</b>
+<span class="map-tooltip">서부 생존권. 신성과 성기사 문화가 깊게 자리한 빛의 도시권.</span>
+</button>
+<button class="map-node node-east" type="button">
+<small>EAST</small>
+<b>천명천관</b>
+<span class="map-tooltip">동부 생존권. 청운가를 중심으로 동방의 문화와 전통이 이어지는 지역.</span>
+</button>
+<button class="map-node node-north" type="button">
+<small>NORTH</small>
+<b>실바니아 자연동맹</b>
+<span class="map-tooltip">북부 생존권. 에버그린과 정령 문화가 살아 숨 쉬는 녹음의 지역.</span>
+</button>
+<button class="map-node node-south" type="button">
+<small>SOUTH</small>
+<b>아스트라 연방</b>
+<span class="map-tooltip">남부 생존권. 노바 테크노폴리스를 품은 과학기술의 중심지.</span>
+</button>
+<div aria-label="판테온 아카데미 소재지" class="pantheon-map-branch">
+<span class="pantheon-branch-line"></span>
+<div class="pantheon-map-label" tabindex="0">
+<small>ASTRA</small>
+<b>판테온 아카데미</b>
+<span class="pantheon-tooltip">아스트라 연방에 자리한 헌터 교육기관. 후보생부터 정예생까지 전선에서 살아남기 위한 교육과 실전을 거친다.</span>
+</div>
+</div>
+<div class="map-direction north">N</div>
+<div class="map-direction west">W</div>
+<div class="map-direction east">E</div>
+<div class="map-direction south">S</div>
+</div>
+</div>
+</section>
+<section class="world-chapter">
+<div class="world-kicker">HUNTER &amp; GATE</div>
+<h2>헌터와 게이트, 끝나지 않은 균열전쟁</h2>
+<p>괴수를 몰아냈다고 해서 세계가 돌아온 것은 아니다. 옛 세계의 탈환은 실패했고, 인류가 지켜낸 것은 현재의 <strong>중심 생존권</strong>뿐이다. 지금도 곳곳에서 새로운 게이트가 열리고 있으며, 끝없는 균열전쟁 속에서 생존권을 유지하기 위해 헌터는 반드시 필요하다.</p>
+<p>게이트는 이계와 연결된 공간이다. 내부에는 저마다 다른 환경과 괴수가 존재하고, 등급이 높을수록 환경 역시 극단적으로 변한다. 괴수는 마력원을 포식하려는 본능을 지니며, 재앙을 제외하면 지성을 갖지 않는다.</p>
+<div class="gate-laws">
+<div><em>코어</em><strong>보스가 살아 있는 동안 게이트는 유지된다.</strong><span>보스는 코어룸에 존재하며, 보스가 생존하는 한 게이트 역시 사라지지 않는다.</span></div>
+<div><em>붕괴</em><strong>보스를 쓰러뜨리면 게이트가 붕괴한다.</strong><span>붕괴가 시작되면 내부에 있던 인원은 처음 진입했던 위치로 자동 귀환한다.</span></div>
+<div><em>침식</em><strong>방치된 게이트는 주변 생존권을 잠식한다.</strong><span>주변 일대를 게이트의 환경으로 바꾸며, 등급이 높을수록 확산이 빨라지고 괴수가 외부로 유출된다.</span></div>
+</div>
+<div class="hunter-rank-block">
+<div class="hunter-rank-title">헌터 등급 <small>HUNTER RANK</small></div>
+<div class="hunter-ranks">
+<span class="rf">F</span><i>＜</i><span class="rf">F+</span><i>＜</i>
+<span class="re">E</span><i>＜</i><span class="re">E+</span><i>＜</i>
+<span class="rd">D</span><i>＜</i><span class="rd">D+</span><i>＜</i>
+<span class="rc">C</span><i>＜</i><span class="rc">C+</span><i>＜</i>
+<span class="rb">B</span><i>＜</i><span class="rb">B+</span><i>＜</i>
+<span class="ra">A</span><i>＜</i><span class="ra">A+</span><i>＜</i>
+<span class="rs">S</span><i>＜</i><span class="rs">S+</span><i>＜</i>
+<span class="rss">SS</span><i>＜</i><span class="rss">SS+</span><i>＜</i>
+<span class="rsss">SSS</span>
+</div>
+</div>
+</section>
+<section class="world-chapter">
+<div class="world-kicker">PANTHEON ACADEMY</div>
+<h2>판테온 아카데미, 살아 돌아오기 위해 세워진 곳</h2>
+<div class="pantheon-world-bg"><img alt="판테온 아카데미" src="img/bg/97.png"/></div>
+<p>판테온은 영웅을 만들기 위해 세워진 곳이 아니다. 균열전쟁의 전선에서는 뛰어난 재능을 가진 이들이 충분히 배우기도 전에 싸움에 내몰렸고, 강하다는 이유만으로 수많은 이들이 너무 일찍 목숨을 잃었다.</p>
+<p>판테온이 가르치는 것은 <strong>강해지는 방법만이 아니라 살아 돌아오는 방법</strong>이다. 전투와 마도, 신성, 정령, 과학기술은 물론 전술과 생존까지. 자신의 힘을 이해하고 동료와 함께 싸우며, 전장에서 살아남기 위해 필요한 것을 배운다. 판테온에서 강함은 특혜가 되지 않는다.</p>
+<div class="pantheon-org">
+<div class="pantheon-org-title">판테온 아카데미 조직</div>
+<div class="org-root">
+<div class="org-card org-head">
+<span class="org-role">총장</span>
+<strong>카메코</strong>
+</div>
+</div>
+<div class="org-line org-line-main"></div>
+<div class="org-branch">
+<div class="org-column">
+<div class="org-card org-group">
+<span class="org-role">교수진</span>
+<strong>9개 교육 분야</strong>
+</div>
+<div class="org-professors">
+<span>과학기술<br/>에이미</span>
+<span>검술<br/>샤를로트</span>
+<span>마도<br/>루시엔</span>
+<span>신성<br/>엘레노아</span>
+<span>전술<br/>베아트릭스</span>
+<span>정령<br/>벨라리엔시아</span>
+<span>생존<br/>세이라</span>
+<span>무술<br/>효우린</span>
+<span>인술<br/>히노카</span>
+</div>
+</div>
+<div class="org-column org-health">
+<div class="org-card org-group">
+<span class="org-role">보건실</span>
+<strong>보건교사 · 린</strong>
+</div>
+</div>
+</div>
+</div>
+<div class="student-order">
+<b>학생 서열</b>
+<div class="student-order-cards">
+<div class="student-rank-card">
+<span>후보생</span>
+<p>아직 자신의 전투방식을 찾아가는 시기. 대개 D급 언저리의 힘으로 판테온의 첫 훈련과 생존법을 배운다.</p>
+</div>
+<i>→</i>
+<div class="student-rank-card">
+<span>정규생</span>
+<p>한 차례 계절을 건너며 힘의 윤곽이 또렷해진다. 대부분 C급에 닿아, 실전과 게이트 경험을 본격적으로 쌓는다.</p>
+</div>
+<i>→</i>
+<div class="student-rank-card">
+<span>정예생</span>
+<p>졸업과 전선을 눈앞에 둔 마지막 단계. 평균적으로 B급에 이르며, 각자의 전투방식과 판단을 완성해간다.</p>
+</div>
+</div>
+<p class="student-order-note">한 해가 저물면 학생들은 다음 이름을 받는다.<br/>한 계절을 무사히 건너온 시간만큼, 후보생은 정규생으로, 정규생은 정예생으로 올라선다.</p>
+</div>
+</section>
+<section class="world-chapter">
+<div class="world-kicker">FRONT LINE</div>
+<h2>문명의 끝, 전선의 시작</h2>
+<p>중심 생존권의 바깥에는 옛 문명의 흔적과 게이트가 뒤섞인 전선이 펼쳐져 있다. 헌터들이 일상적으로 마주하는 최전선은 <strong>균열지대</strong>와 <strong>오염심역</strong>으로 나뉜다.</p>
+<div class="frontline-grid">
+<div class="frontline-card">
+<b>균열지대 · 외곽</b>
+<span>파괴된 문명의 잔해가 남아 있는 전선. F급부터 B+급 게이트가 출현한다.</span>
+</div>
+<div class="frontline-card">
+<b>오염심역 · 최외곽</b>
+<span>풍화된 구세계가 남아 있는 최외곽 전선. A급 이상의 게이트가 출현한다.</span>
+</div>
+</div>
+</section>
+<section class="world-chapter">
+<div class="world-kicker">THREE GUILDS</div>
+<h2>전선을 누비는 3대 길드</h2>
+<div class="guild-world-grid">
+<div><b>팬텀 스트라이크</b><span>실력주의를 내세우며 최전선 공략을 주도한다. 입단 최소 등급은 A급 이상.</span></div>
+<div><b>노블레스</b><span>명예를 중시하며 구호 활동에 힘을 쏟는 길드.</span></div>
+<div><b>월하</b><span>암행과 정보 활동에 특화된 길드.</span></div>
+</div>
+</section>
+<section class="world-chapter">
+<div class="world-kicker">FOUR CALAMITIES</div>
+<h2>오염심역 최심부, 4재앙</h2>
+<p>각 오염심역의 최심부에는 인류의 적 또는 배반자로 규정된 <strong>4재앙</strong>이 자리한다. 그들이 머무는 영역은 최고위 게이트와 맞물려 있으며, 각 방향의 전선을 대표하는 가장 거대한 위협이다.</p>
+<div class="calamity-world-list">
+<div><b>서부 · 옵시디언 레어</b><span>SS+ · 에이브릴</span></div>
+<div><b>동부 · 천귀궁</b><span>SSS · 노타마야</span></div>
+<div><b>남부 · 만상의 성소</b><span>SSS · 닉스</span></div>
+<div><b>북부 · 선큰스론</b><span>SSS · 칼립사</span></div>
+</div>
+</section>
+<section class="world-chapter">
+<div class="world-kicker">CALENDAR</div>
+<h2>판테온과 오르비스를 흐르는 한 해</h2>
+<p>
         판테온의 시간은 수업만으로 채워지지 않는다.
         계절이 바뀔 때마다 학생들은 서로 다른 방식으로 자신의 힘과 판단을 시험하고,
         오르비스의 도시들 역시 저마다의 축제로 한 해를 밝힌다.
       </p>
-
-      <div class="calendar-section">
-        <h3>판테온 아카데미</h3>
-        <div class="event-list">
-
-          <div>
-            <time>03.02</time>
-            <b>신입생 입학식</b>
-            <span>새로운 후보생들이 처음으로 판테온의 문을 통과하는 날. 낯선 얼굴과 기대가 교정 전체를 채운다.</span>
-          </div>
-
-          <div>
-            <time>03.28</time>
-            <b>1Q 가상균열 레이드</b>
-            <span>첫 팀 평가가 시작된다. 서로 다른 문화와 전투방식을 지닌 학생들이 한 팀을 이루며, 낯선 차이를 얼마나 잘 엮어내는지가 중요한 평가가 된다.</span>
-          </div>
-
-          <div>
-            <time>04.26</time>
-            <b>게이트 탐사 실습</b>
-            <span>교실 밖에서 처음 마주하는 실제 게이트. 비교적 위험도가 낮은 현장에서 탐색과 관찰, 판단의 기본을 익힌다.</span>
-          </div>
-
-          <div>
-            <time>05.24</time>
-            <b>2Q 실전균열 레이드</b>
-            <span>가상의 훈련을 넘어 실제 전장과 가까운 환경에서 진행되는 실전 평가. 화려한 승리보다 끝까지 살아남는 판단이 우선된다.</span>
-          </div>
-
-          <div>
-            <time>06.20</time>
-            <b>1학기 등급 심사</b>
-            <span>한 학기 동안 쌓아온 개인 역량을 점검하는 날. 각자의 현재 헌터 등급이 다시 평가된다.</span>
-          </div>
-
-          <div>
-            <time>06.21 — 08.31</time>
-            <b>여름방학</b>
-            <span>길었던 1학기가 끝나고 판테온이 잠시 느슨해지는 시기. 학생들은 휴식과 개인 훈련, 각자의 일상으로 흩어진다.</span>
-          </div>
-
-          <div>
-            <time>09.01</time>
-            <b>2학기 개강</b>
-            <span>다시 교정에 사람들이 모이고, 여름을 지나 달라진 학생들의 두 번째 학기가 시작된다.</span>
-          </div>
-
-          <div>
-            <time>09.27</time>
-            <b>3Q 가상균열 레이드</b>
-            <span>한층 복잡해진 조건 속에서 치러지는 팀 평가. 다른 배경과 방식의 동료를 이해하고 활용하는 능력이 다시 시험대에 오른다.</span>
-          </div>
-
-          <div>
-            <time>11.01</time>
-            <b>아카데미 페스타</b>
-            <span>훈련장의 긴장이 잠시 사라지는 판테온 최대의 축제. 미니게임과 경품, 푸드트럭이 교정을 채우고 밤에는 그웬의 공연이 이어진다.</span>
-          </div>
-
-          <div>
-            <time>11.29</time>
-            <b>길드 진로 설명회</b>
-            <span>3대 길드의 부길드장들이 직접 판테온을 찾는다. 학생들에게는 졸업 이후 자신이 설 전선을 미리 바라보는 날이 된다.</span>
-          </div>
-
-          <div>
-            <time>12.04</time>
-            <b>4Q 실전균열 레이드</b>
-            <span>한 해의 마지막 실전 레이드. 강함만으로는 통과할 수 없으며, 생존과 판단이 마지막까지 요구된다.</span>
-          </div>
-
-          <div>
-            <time>12.20</time>
-            <b>2학기 등급 심사</b>
-            <span>한 해 동안 성장한 개인 역량을 다시 확인하는 마지막 헌터 등급 심사.</span>
-          </div>
-
-          <div>
-            <time>12.21 — 02.14</time>
-            <b>겨울방학</b>
-            <span>차가운 계절과 함께 찾아오는 긴 휴식. 다음 해를 앞둔 학생들은 각자의 방식으로 남은 시간을 보낸다.</span>
-          </div>
-
-          <div>
-            <time>02.15</time>
-            <b>졸업 · 종강</b>
-            <span>판테온의 한 해가 끝나는 날. 떠나는 이와 남는 이가 교정에서 마지막 인사를 나눈다.</span>
-          </div>
-
-        </div>
-      </div>
-
-      <div class="calendar-section regional-calendar">
-        <h3>지역 축제</h3>
-        <div class="event-list">
-
-          <div>
-            <time>04.12</time>
-            <b>루미나 성광제</b>
-            <span>솔루나 대성당이 빛으로 물드는 루미나리스의 축일. 축복 예배가 이어지고 성기사들의 행렬이 성도를 가로지른다. 테오도시아와 플뢰르가 중심에 선다.</span>
-          </div>
-
-          <div>
-            <time>07.22</time>
-            <b>노바 엑스포</b>
-            <span>노바테크노폴리스의 최신 기술이 한자리에 모이는 대규모 박람회. 아크와 크리스텔을 중심으로 새로운 장비와 연구 성과가 공개된다.</span>
-          </div>
-
-          <div>
-            <time>08.09</time>
-            <b>연합 창설기념일</b>
-            <span>오르비스 중앙연합의 탄생을 기념하는 날. 가디언허브 중앙광장에서 기념식과 의장대 행진이 열리고, 미스텔라와 모리건이 행사를 이끈다.</span>
-          </div>
-
-          <div>
-            <time>10.18</time>
-            <b>실바니아 정령제</b>
-            <span>에버그린이 정령의 빛으로 가득 차는 날. 플로리아와 네레이아가 사람들과 함께 세계수의 정령과 교감한다.</span>
-          </div>
-
-          <div>
-            <time>01.15</time>
-            <b>청운 천등제</b>
-            <span>청운가의 겨울밤을 수많은 천등이 밝힌다. 사람들은 저마다의 소원을 적어 하늘로 띄우고, 토와와 아야나미가 축제를 함께한다.</span>
-          </div>
-
-        </div>
-      </div>
-    </section>
-
-<section class="world-chapter">
-      <div class="world-kicker">ORBIS LIFE</div>
-      <h2>균열 속에서도 이어지는 일상</h2>
-
-      <p>오르비스의 공용 화폐는 <strong>오르(Orr)</strong>다. 학생은 아르바이트와 봉사, 장학금으로 오르를 마련하고, 헌터는 의뢰 수행과 마석 정산을 통해 대가를 받는다. 오르는 치료와 각종 시설 이용, 중앙연합의 등급 재심을 비롯한 생활 전반에 사용된다.</p>
-
-      <div class="infra-grid">
-        <div><b>가디언 카드</b><span>결제 수단이자 개인의 신분을 증명하는 카드.</span></div>
-        <div><b>에테르폰</b><span>통신과 소셜미디어에 사용되는 개인 통신기기.</span></div>
-        <div><b>게이트 스캐너</b><span>게이트 내부의 환경과 괴수, 위협을 탐지한다. 내부에서 상시 작동하며 가상균열에서도 사용할 수 있다.</span></div>
-      </div>
-    </section>
-
-  </div>
+<div class="calendar-section">
+<h3>판테온 아카데미</h3>
+<div class="event-list">
+<div>
+<time>03.02</time>
+<b>신입생 입학식</b>
+<span>새로운 후보생들이 처음으로 판테온의 문을 통과하는 날. 낯선 얼굴과 기대가 교정 전체를 채운다.</span>
 </div>
-
+<div>
+<time>03.28</time>
+<b>1Q 가상균열 레이드</b>
+<span>첫 팀 평가가 시작된다. 서로 다른 문화와 전투방식을 지닌 학생들이 한 팀을 이루며, 낯선 차이를 얼마나 잘 엮어내는지가 중요한 평가가 된다.</span>
+</div>
+<div>
+<time>04.26</time>
+<b>게이트 탐사 실습</b>
+<span>교실 밖에서 처음 마주하는 실제 게이트. 비교적 위험도가 낮은 현장에서 탐색과 관찰, 판단의 기본을 익힌다.</span>
+</div>
+<div>
+<time>05.24</time>
+<b>2Q 실전균열 레이드</b>
+<span>가상의 훈련을 넘어 실제 전장과 가까운 환경에서 진행되는 실전 평가. 화려한 승리보다 끝까지 살아남는 판단이 우선된다.</span>
+</div>
+<div>
+<time>06.20</time>
+<b>1학기 등급 심사</b>
+<span>한 학기 동안 쌓아온 개인 역량을 점검하는 날. 각자의 현재 헌터 등급이 다시 평가된다.</span>
+</div>
+<div>
+<time>06.21 — 08.31</time>
+<b>여름방학</b>
+<span>길었던 1학기가 끝나고 판테온이 잠시 느슨해지는 시기. 학생들은 휴식과 개인 훈련, 각자의 일상으로 흩어진다.</span>
+</div>
+<div>
+<time>09.01</time>
+<b>2학기 개강</b>
+<span>다시 교정에 사람들이 모이고, 여름을 지나 달라진 학생들의 두 번째 학기가 시작된다.</span>
+</div>
+<div>
+<time>09.27</time>
+<b>3Q 가상균열 레이드</b>
+<span>한층 복잡해진 조건 속에서 치러지는 팀 평가. 다른 배경과 방식의 동료를 이해하고 활용하는 능력이 다시 시험대에 오른다.</span>
+</div>
+<div>
+<time>11.01</time>
+<b>아카데미 페스타</b>
+<span>훈련장의 긴장이 잠시 사라지는 판테온 최대의 축제. 미니게임과 경품, 푸드트럭이 교정을 채우고 밤에는 그웬의 공연이 이어진다.</span>
+</div>
+<div>
+<time>11.29</time>
+<b>길드 진로 설명회</b>
+<span>3대 길드의 부길드장들이 직접 판테온을 찾는다. 학생들에게는 졸업 이후 자신이 설 전선을 미리 바라보는 날이 된다.</span>
+</div>
+<div>
+<time>12.04</time>
+<b>4Q 실전균열 레이드</b>
+<span>한 해의 마지막 실전 레이드. 강함만으로는 통과할 수 없으며, 생존과 판단이 마지막까지 요구된다.</span>
+</div>
+<div>
+<time>12.20</time>
+<b>2학기 등급 심사</b>
+<span>한 해 동안 성장한 개인 역량을 다시 확인하는 마지막 헌터 등급 심사.</span>
+</div>
+<div>
+<time>12.21 — 02.14</time>
+<b>겨울방학</b>
+<span>차가운 계절과 함께 찾아오는 긴 휴식. 다음 해를 앞둔 학생들은 각자의 방식으로 남은 시간을 보낸다.</span>
+</div>
+<div>
+<time>02.15</time>
+<b>졸업 · 종강</b>
+<span>판테온의 한 해가 끝나는 날. 떠나는 이와 남는 이가 교정에서 마지막 인사를 나눈다.</span>
+</div>
+</div>
+</div>
+<div class="calendar-section regional-calendar">
+<h3>지역 축제</h3>
+<div class="event-list">
+<div>
+<time>04.12</time>
+<b>루미나 성광제</b>
+<span>솔루나 대성당이 빛으로 물드는 루미나리스의 축일. 축복 예배가 이어지고 성기사들의 행렬이 성도를 가로지른다. 테오도시아와 플뢰르가 중심에 선다.</span>
+</div>
+<div>
+<time>07.22</time>
+<b>노바 엑스포</b>
+<span>노바테크노폴리스의 최신 기술이 한자리에 모이는 대규모 박람회. 아크와 크리스텔을 중심으로 새로운 장비와 연구 성과가 공개된다.</span>
+</div>
+<div>
+<time>08.09</time>
+<b>연합 창설기념일</b>
+<span>오르비스 중앙연합의 탄생을 기념하는 날. 가디언허브 중앙광장에서 기념식과 의장대 행진이 열리고, 미스텔라와 모리건이 행사를 이끈다.</span>
+</div>
+<div>
+<time>10.18</time>
+<b>실바니아 정령제</b>
+<span>에버그린이 정령의 빛으로 가득 차는 날. 플로리아와 네레이아가 사람들과 함께 세계수의 정령과 교감한다.</span>
+</div>
+<div>
+<time>01.15</time>
+<b>청운 천등제</b>
+<span>청운가의 겨울밤을 수많은 천등이 밝힌다. 사람들은 저마다의 소원을 적어 하늘로 띄우고, 토와와 아야나미가 축제를 함께한다.</span>
+</div>
+</div>
+</div>
+</section>
+<section class="world-chapter">
+<div class="world-kicker">ORBIS LIFE</div>
+<h2>균열 속에서도 이어지는 일상</h2>
+<p>오르비스의 공용 화폐는 <strong>오르(Orr)</strong>다. 학생은 아르바이트와 봉사, 장학금으로 오르를 마련하고, 헌터는 의뢰 수행과 마석 정산을 통해 대가를 받는다. 오르는 치료와 각종 시설 이용, 중앙연합의 등급 재심을 비롯한 생활 전반에 사용된다.</p>
+<div class="infra-grid">
+<div><b>가디언 카드</b><span>결제 수단이자 개인의 신분을 증명하는 카드.</span></div>
+<div><b>에테르폰</b><span>통신과 소셜미디어에 사용되는 개인 통신기기.</span></div>
+<div><b>게이트 스캐너</b><span>게이트 내부의 환경과 괴수, 위협을 탐지한다. 내부에서 상시 작동하며 가상균열에서도 사용할 수 있다.</span></div>
+</div>
+</section>
+</div>
+</div>
 <div class="tab-panel" id="tab-char">
 <div class="faction-switcher"><button class="faction-switch-btn faction-player active" data-faction="player" type="button">플레이어블 캐릭터</button><button class="faction-switch-btn faction-central" data-faction="central" type="button">오르비스 중앙연합</button><button class="faction-switch-btn faction-luminaris" data-faction="luminaris" type="button">루미나리스 신성제국</button><button class="faction-switch-btn faction-astra" data-faction="astra" type="button">아스트라 연방</button><button class="faction-switch-btn faction-sylvania" data-faction="sylvania" type="button">실바니아 자연동맹</button><button class="faction-switch-btn faction-cheonmyeong" data-faction="cheonmyeong" type="button">천명천관</button><button class="faction-switch-btn faction-pantheon" data-faction="pantheon" type="button">판테온 아카데미</button><button class="faction-switch-btn faction-phantom" data-faction="phantom" type="button">팬텀 스트라이크</button><button class="faction-switch-btn faction-noblesse" data-faction="noblesse" type="button">노블레스</button><button class="faction-switch-btn faction-wolha" data-faction="wolha" type="button">월하</button><button class="faction-switch-btn faction-freelance" data-faction="freelance" type="button">프리랜서</button><button class="faction-switch-btn faction-calamity" data-faction="calamity" type="button">재앙</button></div><div class="acc-group">
-<div class="acc-item faction-player faction-content-panel active" data-faction-panel="player">
+<div class="acc-item faction-player faction-content-panel" data-faction-panel="player">
 <button class="acc-head">
 <span class="acc-num">PC</span>
 <span class="acc-title">플레이어블 캐릭터</span>
@@ -4818,17 +5776,31 @@ body::after {
 </button>
 <div class="acc-body">
 <div class="acc-body-inner">
-<div class="faction-desc">
-              오르비스에서 이야기를 시작할 당신의 캐릭터.
-            </div>
-<div class="char-grid">
-<div class="char-card">
-<div class="char-portrait"><img alt="남성 플레이어" src="img/ch/99.png"/></div>
-<div class="char-name">남성</div>
+<div class="player-intro-box">
+<span class="player-intro-mark">◇</span>
+<div>
+<strong>오르비스에서 이야기를 시작할 당신의 캐릭터.</strong>
+<p>이름 없는 한 사람의 발걸음에서, 오르비스의 또 다른 이야기가 시작된다.</p>
 </div>
-<div class="char-card">
-<div class="char-portrait"><img alt="여성 플레이어" src="img/ch/98.png"/></div>
-<div class="char-name">여성</div>
+</div>
+<div class="player-select-grid">
+<div class="player-select-card player-male">
+<div class="player-image">
+<img alt="남성 플레이어" src="img/ch/99.png"/>
+</div>
+<div class="player-card-footer">
+<div class="player-card-name">남성</div>
+<div class="player-card-en">MALE PLAYER</div>
+</div>
+</div>
+<div class="player-select-card player-female">
+<div class="player-image">
+<img alt="여성 플레이어" src="img/ch/98.png"/>
+</div>
+<div class="player-card-footer">
+<div class="player-card-name">여성</div>
+<div class="player-card-en">FEMALE PLAYER</div>
+</div>
 </div>
 </div>
 </div>
@@ -4842,7 +5814,7 @@ body::after {
 </button>
 <div class="acc-body">
 <div class="acc-body-inner">
-<div class="faction-desc">
+<div class="faction-desc faction-lead-desc"><span class="faction-lead-mark">◇</span>
               중부의 초국가 중립지대이자 오르비스 전역의 행정·헌터 운영 중심지.
               출신·국적·종족보다 실력과 효율을 중시하며, 각국과 길드의 이해관계가 교차하는 활기찬 중립 도시권이다.
             </div>
@@ -4881,7 +5853,7 @@ body::after {
 </button>
 <div class="acc-body">
 <div class="acc-body-inner">
-<div class="faction-desc">
+<div class="faction-desc faction-lead-desc"><span class="faction-lead-mark">◇</span>
               서부의 신앙과 질서를 중심으로 세워진 성역국가. 백룡 교황 에일로릭스를 정점으로 성기사단과 사제단의 위계가 촘촘하며,
               백색 대리석과 스테인드글라스의 성스러운 도시경관이 특징이다.
             </div>
@@ -4918,7 +5890,7 @@ body::after {
 </button>
 <div class="acc-body">
 <div class="acc-body-inner">
-<div class="faction-desc">
+<div class="faction-desc faction-lead-desc"><span class="faction-lead-mark">◇</span>
               남부의 첨단과학 도시국가. 침식정화기술 개발을 계기로 약소국에서 기술 강국으로 도약했으며,
               실패와 실험을 두려워하지 않는 연구문화와 강한 기술 실용주의가 특징이다.
             </div>
@@ -4960,7 +5932,7 @@ body::after {
 </button>
 <div class="acc-body">
 <div class="acc-body-inner">
-<div class="faction-desc">
+<div class="faction-desc faction-lead-desc"><span class="faction-lead-mark">◇</span>
               북부의 세계수 아래 엘프와 수인이 공존하는 자연 기반 동맹. 종족·부족 대표의 합의로 운영되며,
               인위적 개발보다 세계수와의 공생을 우선한다.
             </div>
@@ -4997,7 +5969,7 @@ body::after {
 </button>
 <div class="acc-body">
 <div class="acc-body-inner">
-<div class="faction-desc">
+<div class="faction-desc faction-lead-desc"><span class="faction-lead-mark">◇</span>
               동부의 무예·수양 국가. 청룡 류카·주작 히바나·백호 토와의 3인 집정관 체제로 운영되며,
               위계보다 실력과 수양의 깊이를 중시한다.
             </div>
@@ -5039,7 +6011,7 @@ body::after {
 </button>
 <div class="acc-body">
 <div class="acc-body-inner">
-<div class="faction-desc">
+<div class="faction-desc faction-lead-desc"><span class="faction-lead-mark">◇</span>
               아스트라 연방에 위치한 오르비스 최고의 헌터 양성학원. 전투·마도·정령·과학기술 등 다양한 분야의 인재를 선발하여
               실전형 헌터로 육성한다.
             </div>
@@ -5134,7 +6106,7 @@ body::after {
 </button>
 <div class="acc-body">
 <div class="acc-body-inner">
-<div class="faction-desc">소수 정예와 철저한 실력주의를 표방하는 최상위권 헌터 길드. 고난도 게이트와 위험지역 공략에서 특히 강한 전투력을 보인다.</div>
+<div class="faction-desc faction-lead-desc"><span class="faction-lead-mark">◇</span>소수 정예와 철저한 실력주의를 표방하는 최상위권 헌터 길드. 고난도 게이트와 위험지역 공략에서 특히 강한 전투력을 보인다.</div>
 <div class="place-card">
 <div class="place-image"><img alt="팬텀 스트라이크" src="img/bg/20.png"/></div>
 <div class="place-info">
@@ -5156,7 +6128,7 @@ body::after {
 </button>
 <div class="acc-body">
 <div class="acc-body-inner">
-<div class="faction-desc">품격과 책임을 중시하는 명문 헌터 길드. 화려한 이미지와 달리 구조·호위·민간인 보호 임무에 적극적으로 참여한다.</div>
+<div class="faction-desc faction-lead-desc"><span class="faction-lead-mark">◇</span>품격과 책임을 중시하는 명문 헌터 길드. 화려한 이미지와 달리 구조·호위·민간인 보호 임무에 적극적으로 참여한다.</div>
 <div class="place-card">
 <div class="place-image"><img alt="노블레스" src="img/bg/21.png"/></div>
 <div class="place-info">
@@ -5178,7 +6150,7 @@ body::after {
 </button>
 <div class="acc-body">
 <div class="acc-body-inner">
-<div class="faction-desc">동양계 검술과 비술을 중심으로 활동하는 헌터 길드. 조용하고 절제된 분위기 속에서 정밀한 전투와 소수 단위 임무를 선호한다.</div>
+<div class="faction-desc faction-lead-desc"><span class="faction-lead-mark">◇</span>동양계 검술과 비술을 중심으로 활동하는 헌터 길드. 조용하고 절제된 분위기 속에서 정밀한 전투와 소수 단위 임무를 선호한다.</div>
 <div class="place-card">
 <div class="place-image"><img alt="월하" src="img/bg/22.png"/></div>
 <div class="place-info">
@@ -5200,7 +6172,7 @@ body::after {
 </button>
 <div class="acc-body">
 <div class="acc-body-inner">
-<div class="faction-desc">
+<div class="faction-desc faction-lead-desc"><span class="faction-lead-mark">◇</span>
               특정 길드에 소속되지 않고 개인 계약과 의뢰를 통해 활동하는 헌터들. 활동 방식과 전문 분야가 자유로운 만큼 개성이 강한 이들이 많다.
             </div>
 <div class="facility-block">
@@ -5223,7 +6195,7 @@ body::after {
 </button>
 <div class="acc-body">
 <div class="acc-body-inner">
-<div class="faction-desc">
+<div class="faction-desc faction-lead-desc"><span class="faction-lead-mark">◇</span>
               인류의 생존권을 위협하는 초월적 존재들.
               서로를 하나의 조직으로 묶을 수 없는 독립된 재앙이며,
               각자의 영역과 방식으로 오르비스 전역에 공포를 남긴다.
@@ -5346,18 +6318,13 @@ body::after {
 </div>
 </div>
 </div>
-
-
-
-
 </section>
 <footer>LAST RING · WORLD ARCHIVE · CONFIDENTIAL DRAFT</footer>
 <div class="footer-back-top">
-  <button type="button" id="backToTop" class="footer-back-top-btn" aria-label="맨 위로 이동">
-    <span class="footer-back-top-arrow">↑</span><span>맨 위로</span>
-  </button>
+<button aria-label="맨 위로 이동" class="footer-back-top-btn" id="backToTop" type="button">
+<span class="footer-back-top-arrow">↑</span><span>맨 위로</span>
+</button>
 </div>
-
 <script>
   document.querySelectorAll('.tab-btn').forEach(btn => {
     btn.addEventListener('click', () => {
@@ -5462,16 +6429,13 @@ body::after {
     });
   });
 </script>
-
 <!-- 맨 위로 -->
 <div class="back-to-top-wrap">
-  <button type="button" id="backToTop" class="back-to-top" aria-label="맨 위로 이동">
-    <span class="back-to-top-arrow">↑</span>
-    <span>맨 위로</span>
-  </button>
+<button aria-label="맨 위로 이동" class="back-to-top" id="backToTop" type="button">
+<span class="back-to-top-arrow">↑</span>
+<span>맨 위로</span>
+</button>
 </div>
-
-
 <script>
   (() => {
     const backToTop = document.getElementById('backToTop');
@@ -5486,8 +6450,6 @@ body::after {
     }
   })();
 </script>
-
-
 <script>
   (() => {
     const targets = [
@@ -5543,7 +6505,53 @@ body::after {
     });
   })();
 </script>
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+  const playerPanel = document.querySelector(".faction-player");
+  if (!playerPanel) return;
 
+  /* 아코디언 기본 활성화 */
+  playerPanel.classList.add("open", "active");
+
+  const head = playerPanel.querySelector(".acc-head");
+  const body = playerPanel.querySelector(".acc-body");
+
+  if (head) {
+    head.setAttribute("aria-expanded", "true");
+  }
+
+  if (body) {
+    body.style.maxHeight = body.scrollHeight + "px";
+    body.style.opacity = "1";
+    body.style.visibility = "visible";
+  }
+
+  /* 상단 세력 탭 중 플레이어블 버튼이 있다면 기본 선택 */
+  const possibleButtons = document.querySelectorAll(
+    '[data-faction="player"], [data-target="player"], [data-tab="player"], .faction-tab-player'
+  );
+
+  possibleButtons.forEach(function (btn) {
+    btn.classList.add("active");
+    btn.setAttribute("aria-selected", "true");
+  });
+});
+</script>
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+  document.querySelectorAll("#tab-char .faction-content-panel:not(.faction-player)").forEach(function(panel){
+    const inner = panel.querySelector(".acc-body-inner");
+    if (!inner) return;
+
+    const candidates = Array.from(inner.querySelectorAll("p, .faction-desc, .faction-description, .group-desc, .section-desc"));
+    const target = candidates.find(function(el){
+      return el.textContent.trim().length >= 25;
+    });
+
+    if (target) target.classList.add("faction-lead-desc");
+  });
+});
+</script>
 </body>
 </html>
 <!-- redeploy -->
