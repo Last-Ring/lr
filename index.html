@@ -2420,6 +2420,10 @@
 
                 <div class="calamity-scene">
                   <img src="img/bg/28.png" alt="옵시디언 레어">
+                  <div class="calamity-place-overlay">
+                    <div class="calamity-place-title">SS+ 게이트 · 옵시디언 레어</div>
+                    <div class="calamity-place-desc">검게 결정화된 암석과 심연의 마력이 뒤엉킨 흑룡의 영역. 깊숙이 들어갈수록 빛과 열이 희미해지며, 거대한 흑색 결정과 용의 흔적만이 적막 속에 남아 있다.</div>
+                  </div>
                 </div>
               </div>
 
@@ -2437,6 +2441,10 @@
 
                 <div class="calamity-scene">
                   <img src="img/bg/29.png" alt="천귀궁">
+                  <div class="calamity-place-overlay">
+                    <div class="calamity-place-title">SSS 게이트 · 천귀궁</div>
+                    <div class="calamity-place-desc">끝을 가늠할 수 없는 어둠 속에 세워진 천귀들의 궁전. 그림자와 환각이 현실의 경계를 흐리며, 발을 들인 순간부터 무엇이 실재하는지조차 확신하기 어렵다.</div>
+                  </div>
                 </div>
               </div>
 
@@ -2454,6 +2462,10 @@
 
                 <div class="calamity-scene">
                   <img src="img/bg/31.png" alt="선큰 스론">
+                  <div class="calamity-place-overlay">
+                    <div class="calamity-place-title">SSS 게이트 · 선큰스론</div>
+                    <div class="calamity-place-desc">빛조차 닿지 않는 심해에 가라앉은 거대한 왕좌의 영역. 압도적인 수압과 기괴한 심해 생태계가 지배하며, 그 가장 깊은 곳에서 칼립사가 침입자를 기다린다.</div>
+                  </div>
                 </div>
               </div>
 
@@ -2471,6 +2483,10 @@
 
                 <div class="calamity-scene">
                   <img src="img/bg/30.png" alt="만상의 성소">
+                  <div class="calamity-place-overlay">
+                    <div class="calamity-place-title">SSS 인공 게이트 · 만상의 성소</div>
+                    <div class="calamity-place-desc">닉스가 인위적으로 구축한 비정상적인 게이트 공간. 별빛과 공허가 뒤섞인 내부에서는 공간의 거리와 방향마저 일정하지 않으며, 성소 전체가 그녀의 의지에 따라 재편된다.</div>
+                  </div>
                 </div>
 
                 <div class="apostle-area">
@@ -3677,6 +3693,294 @@
       height: 100% !important;
       min-height: 0 !important;
       max-height: none !important;
+    }
+  }
+</style>
+
+<style>
+  /* =========================================================
+     ALL CHARACTER PORTRAITS — GLOBAL FIXED SIZE
+     모든 캐릭터 초상화 동일 규격
+     ========================================================= */
+
+  :root {
+    --portrait-w: 200px;
+    --portrait-h: 267px;
+    --portrait-gap: 18px;
+  }
+
+  /* 모든 일반 캐릭터 그리드 */
+  .char-grid,
+  .place-characters.char-grid {
+    display: grid !important;
+    grid-template-columns: repeat(auto-fill, var(--portrait-w)) !important;
+    gap: var(--portrait-gap) !important;
+    justify-content: start !important;
+    align-items: start !important;
+  }
+
+  /* 모든 일반 캐릭터 카드 */
+  .char-card,
+  .place-characters .char-card {
+    width: var(--portrait-w) !important;
+    min-width: var(--portrait-w) !important;
+    max-width: var(--portrait-w) !important;
+    box-sizing: border-box !important;
+  }
+
+  /* 모든 일반 초상화 박스 */
+  .char-portrait,
+  .place-characters .char-portrait {
+    width: var(--portrait-w) !important;
+    min-width: var(--portrait-w) !important;
+    max-width: var(--portrait-w) !important;
+
+    height: var(--portrait-h) !important;
+    min-height: var(--portrait-h) !important;
+    max-height: var(--portrait-h) !important;
+
+    aspect-ratio: auto !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    overflow: hidden !important;
+    box-sizing: border-box !important;
+  }
+
+  /* 모든 일반 초상화 이미지 */
+  .char-portrait img,
+  .place-characters .char-portrait img {
+    display: block !important;
+
+    width: var(--portrait-w) !important;
+    min-width: var(--portrait-w) !important;
+    max-width: var(--portrait-w) !important;
+
+    height: var(--portrait-h) !important;
+    min-height: var(--portrait-h) !important;
+    max-height: var(--portrait-h) !important;
+
+    object-fit: cover !important;
+    object-position: center top !important;
+
+    margin: 0 !important;
+    padding: 0 !important;
+    transform: none !important;
+    box-sizing: border-box !important;
+  }
+
+  /* =========================================================
+     4대 재앙도 일반 캐릭터와 완전히 같은 초상화 규격
+     ========================================================= */
+
+  .calamity-row {
+    grid-template-columns: var(--portrait-w) minmax(0, 1fr) !important;
+    gap: 18px !important;
+  }
+
+  .calamity-row .calamity-person {
+    width: var(--portrait-w) !important;
+    min-width: var(--portrait-w) !important;
+    max-width: var(--portrait-w) !important;
+  }
+
+  .calamity-row .calamity-portrait {
+    width: var(--portrait-w) !important;
+    min-width: var(--portrait-w) !important;
+    max-width: var(--portrait-w) !important;
+
+    height: var(--portrait-h) !important;
+    min-height: var(--portrait-h) !important;
+    max-height: var(--portrait-h) !important;
+
+    aspect-ratio: auto !important;
+    overflow: hidden !important;
+    box-sizing: border-box !important;
+  }
+
+  .calamity-row .calamity-portrait img {
+    display: block !important;
+
+    width: var(--portrait-w) !important;
+    min-width: var(--portrait-w) !important;
+    max-width: var(--portrait-w) !important;
+
+    height: var(--portrait-h) !important;
+    min-height: var(--portrait-h) !important;
+    max-height: var(--portrait-h) !important;
+
+    object-fit: cover !important;
+    object-position: center top !important;
+
+    margin: 0 !important;
+    padding: 0 !important;
+    transform: none !important;
+    box-sizing: border-box !important;
+  }
+
+  .calamity-row .calamity-person-info {
+    width: var(--portrait-w) !important;
+    min-width: var(--portrait-w) !important;
+    max-width: var(--portrait-w) !important;
+    box-sizing: border-box !important;
+  }
+
+  /* 재앙 오른쪽 배경은 초상화와 정확히 같은 세로 높이 */
+  .calamity-row .calamity-scene {
+    width: 100% !important;
+
+    height: var(--portrait-h) !important;
+    min-height: var(--portrait-h) !important;
+    max-height: var(--portrait-h) !important;
+
+    aspect-ratio: auto !important;
+    overflow: hidden !important;
+    box-sizing: border-box !important;
+  }
+
+  .calamity-row .calamity-scene img {
+    display: block !important;
+    width: 100% !important;
+
+    height: var(--portrait-h) !important;
+    min-height: var(--portrait-h) !important;
+    max-height: var(--portrait-h) !important;
+
+    object-fit: cover !important;
+    object-position: center !important;
+    box-sizing: border-box !important;
+  }
+
+  /* =========================================================
+     닉스의 사도도 동일 규격
+     ========================================================= */
+
+  .apostle-grid {
+    display: grid !important;
+    grid-template-columns: repeat(auto-fill, var(--portrait-w)) !important;
+    gap: var(--portrait-gap) !important;
+    justify-content: start !important;
+    align-items: start !important;
+  }
+
+  .apostle-card {
+    width: var(--portrait-w) !important;
+    min-width: var(--portrait-w) !important;
+    max-width: var(--portrait-w) !important;
+    box-sizing: border-box !important;
+  }
+
+  .apostle-card img {
+    display: block !important;
+
+    width: var(--portrait-w) !important;
+    min-width: var(--portrait-w) !important;
+    max-width: var(--portrait-w) !important;
+
+    height: var(--portrait-h) !important;
+    min-height: var(--portrait-h) !important;
+    max-height: var(--portrait-h) !important;
+
+    aspect-ratio: auto !important;
+    object-fit: cover !important;
+    object-position: center top !important;
+
+    margin: 0 !important;
+    padding: 0 !important;
+    box-sizing: border-box !important;
+  }
+
+  /* 모바일도 모든 캐릭터가 동일 규격을 공유 */
+  @media (max-width: 560px) {
+    :root {
+      --portrait-w: 160px;
+      --portrait-h: 213px;
+      --portrait-gap: 12px;
+    }
+
+    .char-grid,
+    .place-characters.char-grid,
+    .apostle-grid {
+      grid-template-columns: repeat(auto-fill, var(--portrait-w)) !important;
+      justify-content: center !important;
+    }
+
+    .calamity-row {
+      grid-template-columns: 1fr !important;
+    }
+
+    .calamity-row .calamity-person {
+      margin: 0 auto !important;
+    }
+
+    .calamity-row .calamity-scene {
+      width: 100% !important;
+      height: var(--portrait-h) !important;
+      min-height: var(--portrait-h) !important;
+      max-height: var(--portrait-h) !important;
+    }
+  }
+</style>
+
+<style>
+  /* ===== 재앙 게이트 장소 정보 ===== */
+
+  .calamity-row .calamity-scene {
+    position: relative !important;
+  }
+
+  .calamity-place-overlay {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    padding: 42px 18px 16px;
+    background:
+      linear-gradient(
+        to bottom,
+        rgba(5,6,9,0) 0%,
+        rgba(5,6,9,.72) 38%,
+        rgba(5,6,9,.94) 100%
+      );
+    box-sizing: border-box;
+    pointer-events: none;
+  }
+
+  .calamity-place-title {
+    margin-bottom: 6px;
+    color: #f0ede6;
+    font-size: 15px;
+    font-weight: 700;
+    line-height: 1.4;
+    letter-spacing: -0.01em;
+    text-shadow: 0 1px 8px rgba(0,0,0,.85);
+  }
+
+  .calamity-place-desc {
+    max-width: 720px;
+    color: rgba(232,230,223,.82);
+    font-size: 12.5px;
+    line-height: 1.65;
+    letter-spacing: -0.015em;
+    text-shadow: 0 1px 7px rgba(0,0,0,.95);
+  }
+
+  .calamity-avril .calamity-place-title { color:#e3a18e; }
+  .calamity-notamaya .calamity-place-title { color:#e47b7b; }
+  .calamity-kalipsa .calamity-place-title { color:#8bc7ed; }
+  .calamity-nyx .calamity-place-title { color:#c5a5ef; }
+
+  @media (max-width: 760px) {
+    .calamity-place-overlay {
+      padding: 34px 13px 12px;
+    }
+
+    .calamity-place-title {
+      font-size: 13px;
+    }
+
+    .calamity-place-desc {
+      font-size: 11px;
+      line-height: 1.55;
     }
   }
 </style>
