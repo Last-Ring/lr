@@ -5381,6 +5381,763 @@ body::after {
 }
 </style>
 
+
+<style>
+/* =========================================================
+   학생 서열 — 세 단계의 박스 실루엣 차별화
+   ========================================================= */
+
+/* 공통 */
+#tab-world .student-rank-card{
+  position:relative !important;
+  overflow:hidden !important;
+  min-height:128px !important;
+  transition:
+    transform .2s ease,
+    border-color .2s ease,
+    box-shadow .2s ease !important;
+}
+
+#tab-world .student-rank-card:hover{
+  transform:translateY(-3px) !important;
+}
+
+/* ---------------------------------------------------------
+   1. 후보생 — 단순한 사각 프레임
+   아직 형태가 정해지지 않은 가장 기본적인 단계
+   --------------------------------------------------------- */
+#tab-world .student-rank-card:nth-child(1){
+  border:1px solid rgba(111,139,171,.28) !important;
+  border-radius:2px !important;
+  background:
+    linear-gradient(135deg,rgba(91,121,151,.055),transparent 48%),
+    rgba(11,15,21,.72) !important;
+  clip-path:none !important;
+}
+
+#tab-world .student-rank-card:nth-child(1)::before{
+  content:"";
+  position:absolute;
+  left:0;
+  top:0;
+  width:3px;
+  height:100%;
+  background:linear-gradient(to bottom,#6f8eac,rgba(111,142,172,.12));
+  opacity:.72;
+}
+
+#tab-world .student-rank-card:nth-child(1)::after{
+  content:"01";
+  position:absolute;
+  right:10px;
+  top:8px;
+  color:rgba(120,149,177,.28);
+  font-family:'JetBrains Mono',monospace;
+  font-size:9px;
+  letter-spacing:.12em;
+}
+
+/* ---------------------------------------------------------
+   2. 정규생 — 양쪽 모서리가 잘린 육각형 계열
+   한 단계 정제된 형태
+   --------------------------------------------------------- */
+#tab-world .student-rank-card:nth-child(2){
+  border:0 !important;
+  border-radius:0 !important;
+  clip-path:polygon(
+    10px 0,
+    calc(100% - 10px) 0,
+    100% 10px,
+    100% calc(100% - 10px),
+    calc(100% - 10px) 100%,
+    10px 100%,
+    0 calc(100% - 10px),
+    0 10px
+  ) !important;
+  background:
+    linear-gradient(135deg,rgba(116,99,175,.13),transparent 46%),
+    linear-gradient(315deg,rgba(91,126,177,.06),transparent 40%),
+    #0d0d17 !important;
+  box-shadow:inset 0 0 0 1px rgba(137,117,196,.34) !important;
+}
+
+#tab-world .student-rank-card:nth-child(2)::before{
+  content:"";
+  position:absolute;
+  inset:5px;
+  pointer-events:none;
+  clip-path:inherit;
+  box-shadow:inset 0 0 0 1px rgba(150,128,207,.075);
+}
+
+#tab-world .student-rank-card:nth-child(2)::after{
+  content:"02";
+  position:absolute;
+  right:13px;
+  top:9px;
+  color:rgba(153,129,213,.34);
+  font-family:'JetBrains Mono',monospace;
+  font-size:9px;
+  letter-spacing:.12em;
+}
+
+/* ---------------------------------------------------------
+   3. 정예생 — 상단 중앙이 솟은 휘장/문장형 프레임
+   가장 완성된 단계
+   --------------------------------------------------------- */
+#tab-world .student-rank-card:nth-child(3){
+  border:0 !important;
+  border-radius:0 !important;
+  clip-path:polygon(
+    0 12px,
+    38% 12px,
+    42% 0,
+    58% 0,
+    62% 12px,
+    100% 12px,
+    100% 100%,
+    0 100%
+  ) !important;
+  background:
+    radial-gradient(circle at 50% 0,rgba(201,163,94,.16),transparent 28%),
+    linear-gradient(135deg,rgba(190,145,78,.095),transparent 48%),
+    #12100d !important;
+  box-shadow:
+    inset 0 0 0 1px rgba(201,163,94,.38),
+    inset 0 0 24px rgba(201,163,94,.035) !important;
+  padding-top:22px !important;
+}
+
+#tab-world .student-rank-card:nth-child(3)::before{
+  content:"◇";
+  position:absolute;
+  left:50%;
+  top:1px;
+  transform:translateX(-50%);
+  color:#d0aa64;
+  font-size:10px;
+  line-height:1;
+  text-shadow:0 0 8px rgba(208,170,100,.25);
+}
+
+#tab-world .student-rank-card:nth-child(3)::after{
+  content:"03";
+  position:absolute;
+  right:12px;
+  top:18px;
+  color:rgba(210,170,100,.34);
+  font-family:'JetBrains Mono',monospace;
+  font-size:9px;
+  letter-spacing:.12em;
+}
+
+/* 자동 승급 문장은 한 문단으로 */
+#tab-world .student-order-note{
+  white-space:normal !important;
+  line-height:1.8 !important;
+}
+
+/* 단계별 제목도 미묘하게 차별화 */
+#tab-world .student-rank-card:nth-child(1) > span:first-child{
+  color:#87a6c2 !important;
+}
+#tab-world .student-rank-card:nth-child(2) > span:first-child{
+  color:#ad92e2 !important;
+}
+#tab-world .student-rank-card:nth-child(3) > span:first-child{
+  color:#d7b36d !important;
+}
+
+@media(max-width:700px){
+  #tab-world .student-rank-card{
+    min-height:118px !important;
+  }
+}
+</style>
+
+
+<style>
+/* =========================================================
+   학생 서열 카드 최종 보정
+   - 서순: 후보생 → 정규생 → 정예생
+   - 세 카드 제목 위치 완전 통일
+   - 정예생 장식 때문에 제목이 내려가지 않도록 수정
+   ========================================================= */
+
+/* 카드 내부 시작 위치 통일 */
+#tab-world .student-rank-card{
+  padding-top:16px !important;
+  padding-bottom:16px !important;
+}
+
+/* 정예생에만 들어갔던 추가 상단 여백 제거 */
+#tab-world .student-rank-card:nth-child(3){
+  padding-top:16px !important;
+}
+
+/* 세 카드 제목 위치/높이 완전 동일 */
+#tab-world .student-rank-card > span:first-child{
+  display:inline-flex !important;
+  align-items:center !important;
+  justify-content:center !important;
+  min-height:31px !important;
+  margin:0 0 9px 0 !important;
+  padding:5px 10px !important;
+  line-height:1.15 !important;
+  vertical-align:top !important;
+}
+
+/* 01 / 02 / 03도 동일 높이 */
+#tab-world .student-rank-card:nth-child(1)::after,
+#tab-world .student-rank-card:nth-child(2)::after,
+#tab-world .student-rank-card:nth-child(3)::after{
+  top:10px !important;
+}
+
+/* 정예생 상단 휘장 ◇는 제목과 겹치지 않게 카드 꼭대기에만 */
+#tab-world .student-rank-card:nth-child(3)::before{
+  top:2px !important;
+  font-size:8px !important;
+}
+
+/* 정규생 카드의 상단 돌출 장식도 높이를 줄여
+   제목 시작선은 후보생/정예생과 동일하게 */
+#tab-world .student-rank-card:nth-child(2){
+  clip-path:polygon(
+    10px 0,
+    calc(50% - 13px) 0,
+    calc(50% - 8px) 7px,
+    calc(50% + 8px) 7px,
+    calc(50% + 13px) 0,
+    calc(100% - 10px) 0,
+    100% 10px,
+    100% calc(100% - 10px),
+    calc(100% - 10px) 100%,
+    10px 100%,
+    0 calc(100% - 10px),
+    0 10px
+  ) !important;
+}
+
+/* 정예생 실루엣은 유지하되 내용 영역을 침범하지 않게 */
+#tab-world .student-rank-card:nth-child(3){
+  clip-path:polygon(
+    0 8px,
+    40% 8px,
+    44% 0,
+    56% 0,
+    60% 8px,
+    100% 8px,
+    100% 100%,
+    0 100%
+  ) !important;
+}
+
+/* 본문 시작 위치도 모두 동일 */
+#tab-world .student-rank-card p{
+  margin-top:0 !important;
+}
+
+/* 화살표는 카드의 실제 세로 중앙에 */
+#tab-world .student-rank-arrow{
+  align-self:center !important;
+}
+
+/* 모바일에서도 제목 위치 동일 */
+@media(max-width:700px){
+  #tab-world .student-rank-card,
+  #tab-world .student-rank-card:nth-child(3){
+    padding-top:15px !important;
+  }
+}
+</style>
+
+
+<style>
+/* =========================================================
+   학생 서열 — 성장 단계에 맞춘 디자인 재배치
+   후보생 < 정규생 < 정예생
+   ========================================================= */
+
+/* 공통 */
+#tab-world .student-rank-card{
+  position:relative !important;
+  overflow:hidden !important;
+  min-height:132px !important;
+  padding:16px !important;
+  border-radius:0 !important;
+  clip-path:none !important;
+  transition:
+    transform .2s ease,
+    border-color .2s ease,
+    box-shadow .2s ease,
+    filter .2s ease !important;
+}
+
+#tab-world .student-rank-card:hover{
+  transform:translateY(-3px) !important;
+}
+
+/* 제목 위치 완전 통일 */
+#tab-world .student-rank-card > span:first-child{
+  display:inline-flex !important;
+  align-items:center !important;
+  justify-content:center !important;
+  min-height:31px !important;
+  margin:0 0 10px 0 !important;
+  padding:5px 10px !important;
+  line-height:1.15 !important;
+}
+
+/* 번호 위치 통일 */
+#tab-world .student-rank-card::after{
+  position:absolute !important;
+  right:11px !important;
+  top:10px !important;
+  font-family:'JetBrains Mono',monospace !important;
+  font-size:9px !important;
+  letter-spacing:.12em !important;
+}
+
+/* ---------------------------------------------------------
+   후보생 — 가장 기본적이고 단순한 형태
+   --------------------------------------------------------- */
+#tab-world .student-rank-card:nth-child(1){
+  border:1px solid rgba(112,137,162,.28) !important;
+  background:
+    linear-gradient(135deg,rgba(91,117,145,.045),transparent 52%),
+    #0c1016 !important;
+  box-shadow:none !important;
+}
+
+#tab-world .student-rank-card:nth-child(1)::before{
+  content:"";
+  position:absolute;
+  left:0;
+  top:0;
+  width:3px;
+  height:100%;
+  background:linear-gradient(to bottom,#7894ae,rgba(120,148,174,.12));
+  opacity:.75;
+}
+
+#tab-world .student-rank-card:nth-child(1)::after{
+  content:"01";
+  color:rgba(125,151,177,.30);
+}
+
+#tab-world .student-rank-card:nth-child(1) > span:first-child{
+  color:#8eabc5 !important;
+  border-color:rgba(121,149,177,.28) !important;
+}
+
+/* ---------------------------------------------------------
+   정규생 — 한 단계 정제된 휘장형
+   --------------------------------------------------------- */
+#tab-world .student-rank-card:nth-child(2){
+  border:0 !important;
+  clip-path:polygon(
+    0 8px,
+    39% 8px,
+    43% 0,
+    57% 0,
+    61% 8px,
+    100% 8px,
+    100% 100%,
+    0 100%
+  ) !important;
+  background:
+    radial-gradient(circle at 50% 0,rgba(157,126,220,.13),transparent 30%),
+    linear-gradient(135deg,rgba(120,91,185,.09),transparent 52%),
+    #100d18 !important;
+  box-shadow:
+    inset 0 0 0 1px rgba(159,132,217,.34),
+    inset 0 0 20px rgba(143,104,202,.03) !important;
+}
+
+#tab-world .student-rank-card:nth-child(2)::before{
+  content:"◇";
+  position:absolute;
+  left:50%;
+  top:1px;
+  transform:translateX(-50%);
+  color:#aa8be1;
+  font-size:9px;
+  line-height:1;
+  text-shadow:0 0 8px rgba(170,139,225,.24);
+}
+
+#tab-world .student-rank-card:nth-child(2)::after{
+  content:"02";
+  color:rgba(163,135,218,.34);
+}
+
+#tab-world .student-rank-card:nth-child(2) > span:first-child{
+  color:#b49ae4 !important;
+  border-color:rgba(162,132,219,.31) !important;
+}
+
+/* ---------------------------------------------------------
+   정예생 — 가장 완성되고 화려한 형태
+   --------------------------------------------------------- */
+#tab-world .student-rank-card:nth-child(3){
+  border:0 !important;
+  clip-path:polygon(
+    10px 0,
+    calc(50% - 17px) 0,
+    calc(50% - 9px) 10px,
+    calc(50% + 9px) 10px,
+    calc(50% + 17px) 0,
+    calc(100% - 10px) 0,
+    100% 10px,
+    100% calc(100% - 10px),
+    calc(100% - 10px) 100%,
+    10px 100%,
+    0 calc(100% - 10px),
+    0 10px
+  ) !important;
+  background:
+    radial-gradient(circle at 50% 0,rgba(224,181,92,.18),transparent 28%),
+    linear-gradient(135deg,rgba(190,145,75,.11),transparent 46%),
+    linear-gradient(315deg,rgba(132,92,182,.07),transparent 45%),
+    #15110d !important;
+  box-shadow:
+    inset 0 0 0 1px rgba(210,171,91,.44),
+    inset 0 0 28px rgba(201,163,94,.045),
+    0 0 14px rgba(201,163,94,.05) !important;
+}
+
+#tab-world .student-rank-card:nth-child(3)::before{
+  content:"✦";
+  position:absolute;
+  left:50%;
+  top:0;
+  transform:translateX(-50%);
+  color:#e0ba72;
+  font-size:10px;
+  line-height:1;
+  text-shadow:
+    0 0 6px rgba(224,186,114,.45),
+    0 0 12px rgba(159,117,209,.12);
+}
+
+#tab-world .student-rank-card:nth-child(3)::after{
+  content:"03";
+  color:rgba(220,181,104,.38);
+}
+
+#tab-world .student-rank-card:nth-child(3) > span:first-child{
+  color:#dfbd79 !important;
+  border-color:rgba(210,171,91,.38) !important;
+  background:rgba(201,163,94,.045) !important;
+  text-shadow:0 0 8px rgba(222,188,121,.10);
+}
+
+/* 정예생만 hover 시 조금 더 고급스럽게 */
+#tab-world .student-rank-card:nth-child(3):hover{
+  box-shadow:
+    inset 0 0 0 1px rgba(226,187,105,.58),
+    inset 0 0 30px rgba(201,163,94,.065),
+    0 0 18px rgba(201,163,94,.08) !important;
+  filter:brightness(1.04);
+}
+
+/* 카드 본문 위치 통일 */
+#tab-world .student-rank-card p{
+  margin:0 !important;
+}
+
+/* 화살표 세로 중앙 */
+#tab-world .student-order-cards > i{
+  align-self:center !important;
+}
+
+/* 모바일 */
+@media(max-width:700px){
+  #tab-world .student-rank-card{
+    min-height:120px !important;
+    padding:15px !important;
+  }
+}
+</style>
+
+
+<style>
+/* =========================================================
+   학생 서열 디자인 순서 오류 수정
+   화살표 <i> 때문에 nth-child가 꼬였던 문제 해결
+   카드(div)만 기준으로 후보생 < 정규생 < 정예생 적용
+   ========================================================= */
+
+/* 기존 nth-child 기반 장식 무력화 */
+#tab-world .student-order-cards > .student-rank-card{
+  position:relative !important;
+  overflow:hidden !important;
+  min-height:132px !important;
+  padding:16px !important;
+  border-radius:0 !important;
+  clip-path:none !important;
+  border:1px solid rgba(255,255,255,.08) !important;
+  background:#0d1015 !important;
+  box-shadow:none !important;
+  filter:none !important;
+}
+
+/* 기존 ::before / ::after 전부 초기화 */
+#tab-world .student-order-cards > .student-rank-card::before,
+#tab-world .student-order-cards > .student-rank-card::after{
+  content:none !important;
+}
+
+/* 제목 위치 공통 */
+#tab-world .student-order-cards > .student-rank-card > span:first-child{
+  display:inline-flex !important;
+  align-items:center !important;
+  justify-content:center !important;
+  min-height:31px !important;
+  margin:0 0 10px 0 !important;
+  padding:5px 10px !important;
+  line-height:1.15 !important;
+}
+
+/* ---------------------------------------------------------
+   후보생 — 가장 단순
+   --------------------------------------------------------- */
+#tab-world .student-order-cards > div.student-rank-card:nth-of-type(1){
+  border:1px solid rgba(112,137,162,.30) !important;
+  background:
+    linear-gradient(135deg,rgba(91,117,145,.045),transparent 52%),
+    #0c1016 !important;
+  box-shadow:none !important;
+}
+
+#tab-world .student-order-cards > div.student-rank-card:nth-of-type(1)::before{
+  content:"" !important;
+  position:absolute !important;
+  left:0 !important;
+  top:0 !important;
+  width:3px !important;
+  height:100% !important;
+  background:linear-gradient(to bottom,#7894ae,rgba(120,148,174,.10)) !important;
+  opacity:.75 !important;
+}
+
+#tab-world .student-order-cards > div.student-rank-card:nth-of-type(1)::after{
+  content:"01" !important;
+  position:absolute !important;
+  right:11px !important;
+  top:10px !important;
+  color:rgba(125,151,177,.30) !important;
+  font-family:'JetBrains Mono',monospace !important;
+  font-size:9px !important;
+  letter-spacing:.12em !important;
+}
+
+#tab-world .student-order-cards > div.student-rank-card:nth-of-type(1) > span:first-child{
+  color:#8eabc5 !important;
+  border-color:rgba(121,149,177,.28) !important;
+  background:rgba(121,149,177,.025) !important;
+}
+
+/* ---------------------------------------------------------
+   정규생 — 중간 단계, 보라 계열 휘장형
+   --------------------------------------------------------- */
+#tab-world .student-order-cards > div.student-rank-card:nth-of-type(2){
+  border:0 !important;
+  clip-path:polygon(
+    0 8px,
+    39% 8px,
+    43% 0,
+    57% 0,
+    61% 8px,
+    100% 8px,
+    100% 100%,
+    0 100%
+  ) !important;
+  background:
+    radial-gradient(circle at 50% 0,rgba(157,126,220,.10),transparent 30%),
+    linear-gradient(135deg,rgba(120,91,185,.07),transparent 52%),
+    #100d18 !important;
+  box-shadow:
+    inset 0 0 0 1px rgba(159,132,217,.28),
+    inset 0 0 18px rgba(143,104,202,.025) !important;
+}
+
+#tab-world .student-order-cards > div.student-rank-card:nth-of-type(2)::before{
+  content:"◇" !important;
+  position:absolute !important;
+  left:50% !important;
+  top:1px !important;
+  transform:translateX(-50%) !important;
+  color:#aa8be1 !important;
+  font-size:9px !important;
+  line-height:1 !important;
+  text-shadow:0 0 7px rgba(170,139,225,.20) !important;
+}
+
+#tab-world .student-order-cards > div.student-rank-card:nth-of-type(2)::after{
+  content:"02" !important;
+  position:absolute !important;
+  right:11px !important;
+  top:10px !important;
+  color:rgba(163,135,218,.31) !important;
+  font-family:'JetBrains Mono',monospace !important;
+  font-size:9px !important;
+  letter-spacing:.12em !important;
+}
+
+#tab-world .student-order-cards > div.student-rank-card:nth-of-type(2) > span:first-child{
+  color:#b49ae4 !important;
+  border-color:rgba(162,132,219,.29) !important;
+  background:rgba(155,124,218,.025) !important;
+}
+
+/* ---------------------------------------------------------
+   정예생 — 가장 화려한 최종 단계
+   금빛 + 다각형 + 별 장식
+   --------------------------------------------------------- */
+#tab-world .student-order-cards > div.student-rank-card:nth-of-type(3){
+  border:0 !important;
+  clip-path:polygon(
+    10px 0,
+    calc(50% - 17px) 0,
+    calc(50% - 9px) 10px,
+    calc(50% + 9px) 10px,
+    calc(50% + 17px) 0,
+    calc(100% - 10px) 0,
+    100% 10px,
+    100% calc(100% - 10px),
+    calc(100% - 10px) 100%,
+    10px 100%,
+    0 calc(100% - 10px),
+    0 10px
+  ) !important;
+  background:
+    radial-gradient(circle at 50% 0,rgba(224,181,92,.18),transparent 28%),
+    linear-gradient(135deg,rgba(190,145,75,.12),transparent 46%),
+    linear-gradient(315deg,rgba(132,92,182,.07),transparent 45%),
+    #15110d !important;
+  box-shadow:
+    inset 0 0 0 1px rgba(218,177,92,.48),
+    inset 0 0 30px rgba(201,163,94,.055),
+    0 0 16px rgba(201,163,94,.06) !important;
+}
+
+#tab-world .student-order-cards > div.student-rank-card:nth-of-type(3)::before{
+  content:"✦" !important;
+  position:absolute !important;
+  left:50% !important;
+  top:0 !important;
+  transform:translateX(-50%) !important;
+  color:#e6c077 !important;
+  font-size:10px !important;
+  line-height:1 !important;
+  text-shadow:
+    0 0 6px rgba(230,192,119,.55),
+    0 0 13px rgba(159,117,209,.15) !important;
+}
+
+#tab-world .student-order-cards > div.student-rank-card:nth-of-type(3)::after{
+  content:"03" !important;
+  position:absolute !important;
+  right:11px !important;
+  top:10px !important;
+  color:rgba(224,185,106,.42) !important;
+  font-family:'JetBrains Mono',monospace !important;
+  font-size:9px !important;
+  letter-spacing:.12em !important;
+}
+
+#tab-world .student-order-cards > div.student-rank-card:nth-of-type(3) > span:first-child{
+  color:#e3c17c !important;
+  border-color:rgba(218,177,92,.42) !important;
+  background:rgba(201,163,94,.06) !important;
+  text-shadow:0 0 9px rgba(222,188,121,.15) !important;
+}
+
+/* 정예생만 hover 광택 강화 */
+#tab-world .student-order-cards > div.student-rank-card:nth-of-type(3):hover{
+  transform:translateY(-3px) !important;
+  filter:brightness(1.055) !important;
+  box-shadow:
+    inset 0 0 0 1px rgba(233,194,108,.62),
+    inset 0 0 34px rgba(201,163,94,.08),
+    0 0 20px rgba(201,163,94,.10) !important;
+}
+
+/* 일반 hover */
+#tab-world .student-order-cards > div.student-rank-card:nth-of-type(1):hover,
+#tab-world .student-order-cards > div.student-rank-card:nth-of-type(2):hover{
+  transform:translateY(-2px) !important;
+}
+
+/* 본문 시작선 통일 */
+#tab-world .student-order-cards > .student-rank-card p{
+  margin:0 !important;
+}
+
+/* 화살표는 그대로 가운데 */
+#tab-world .student-order-cards > i{
+  align-self:center !important;
+}
+
+@media(max-width:700px){
+  #tab-world .student-order-cards > .student-rank-card{
+    min-height:120px !important;
+    padding:15px !important;
+  }
+}
+</style>
+
+
+<style>
+/* =========================================================
+   헌터와 게이트 — BG/23
+   제목 바로 아래 와이드 비주얼
+   ========================================================= */
+.hunter-gate-hero-image{
+  position:relative;
+  width:100%;
+  aspect-ratio:8 / 3;
+  margin:18px 0 26px;
+  overflow:hidden;
+  border:1px solid rgba(121,92,170,.22);
+  background:#080a10;
+  box-shadow:
+    inset 0 0 0 1px rgba(255,255,255,.018),
+    0 12px 34px rgba(0,0,0,.16);
+}
+
+.hunter-gate-hero-image img{
+  display:block;
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  object-position:center;
+}
+
+/* 이미지가 본문과 자연스럽게 이어지도록 가장자리만 아주 약하게 음영 */
+.hunter-gate-image-shade{
+  position:absolute;
+  inset:0;
+  pointer-events:none;
+  background:
+    linear-gradient(to bottom,
+      rgba(5,7,13,.02) 0%,
+      transparent 58%,
+      rgba(5,7,13,.18) 100%
+    );
+  box-shadow:
+    inset 0 0 30px rgba(3,5,10,.10);
+}
+
+@media(max-width:700px){
+  .hunter-gate-hero-image{
+    margin:14px 0 21px;
+  }
+}
+</style>
+
 </head>
 <body><div aria-hidden="true" class="shooting-stars"><span class="shooting-star star-a"></span><span class="shooting-star star-b"></span><span class="shooting-star star-c"></span></div>
 <section class="hero">
@@ -5521,6 +6278,12 @@ body::after {
 <section class="world-chapter">
 <div class="world-kicker">HUNTER &amp; GATE</div>
 <h2>헌터와 게이트, 끝나지 않은 균열전쟁</h2>
+
+<div class="hunter-gate-hero-image">
+  <img src="bg/23.png" alt="">
+  <div class="hunter-gate-image-shade"></div>
+</div>
+
 <p>괴수를 몰아냈다고 해서 세계가 돌아온 것은 아니다. 옛 세계의 탈환은 실패했고, 인류가 지켜낸 것은 현재의 <strong>중심 생존권</strong>뿐이다. 지금도 곳곳에서 새로운 게이트가 열리고 있으며, 끝없는 균열전쟁 속에서 생존권을 유지하기 위해 헌터는 반드시 필요하다.</p>
 <p>게이트는 이계와 연결된 공간이다. 내부에는 저마다 다른 환경과 괴수가 존재하고, 등급이 높을수록 환경 역시 극단적으로 변한다. 괴수는 마력원을 포식하려는 본능을 지니며, 재앙을 제외하면 지성을 갖지 않는다.</p>
 <div class="gate-laws">
@@ -5602,7 +6365,7 @@ body::after {
 <p>졸업과 전선을 눈앞에 둔 마지막 단계. 평균적으로 B급에 이르며, 각자의 전투방식과 판단을 완성해간다.</p>
 </div>
 </div>
-<p class="student-order-note">한 해가 저물면 학생들은 다음 이름을 받는다.<br/>한 계절을 무사히 건너온 시간만큼, 후보생은 정규생으로, 정규생은 정예생으로 올라선다.</p>
+<p class="student-order-note">한 해가 저물면 학생들은 다음 이름을 받는다. 한 계절을 무사히 건너온 시간만큼, 후보생은 정규생으로, 정규생은 정예생으로 올라선다.</p>
 </div>
 </section>
 <section class="world-chapter">
