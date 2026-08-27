@@ -1234,6 +1234,11 @@
   .faction-calamity .facility-title,
   .faction-calamity .faction-desc { color:#e3454e; }
 
+
+  .faction-player .faction-desc {
+    color: var(--gold);
+  }
+
   /* ---------- PLACE BACKGROUNDS ---------- */
   .place-card {
     margin-top: 24px;
@@ -1325,7 +1330,7 @@
   /* ---------- CALAMITY GROUPS ---------- */
   .calamity-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(124px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
     gap: 10px;
     margin-top: 20px;
   }
@@ -1454,7 +1459,7 @@
   /* ---------- CHARACTER CARDS ---------- */
   .char-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(124px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
     gap: 10px;
     margin-top: 4px;
   }
@@ -1469,7 +1474,9 @@
     width: 100%;
     height: 100%;
     object-fit: cover;
+    object-position: center top;
     display: block;
+    image-rendering: auto;
   }
 
   .char-portrait {
@@ -1478,7 +1485,7 @@
     background: linear-gradient(160deg, var(--rift-dim), var(--void-2) 65%);
     font-family: 'JetBrains Mono', monospace;
     font-size: 11px; color: rgba(255,255,255,0.5);
-    padding: 4px;
+    padding: 0;
     word-break: break-all;
   }
   .char-name {
@@ -1786,7 +1793,9 @@
         </button>
         <div class="acc-body">
           <div class="acc-body-inner">
-            <p style="margin:0 0 14px;">오르비스에서 이야기를 시작할 당신의 캐릭터.</p>
+            <div class="faction-desc">
+              오르비스에서 이야기를 시작할 당신의 캐릭터.
+            </div>
             <div class="char-grid">
               <div class="char-card">
                 <div class="char-portrait"><img src="img/ch/99.png" alt="남성 플레이어"></div>
@@ -2218,14 +2227,6 @@
                 <div class="char-card"><div class="char-portrait"><img src="img/ch/64.png" alt="그웬"></div><div class="char-name">그웬</div><div class="char-role">아이돌·인간·B</div></div>
               </div>
             </div>
-
-            <div class="place-card">
-              <div class="place-image"><img src="img/bg/32.png" alt="개인 거처"></div>
-              <div class="place-info">
-                <div class="place-title">◇ 개인 거처</div>
-                <div class="place-desc">특정 조직에 소속되지 않은 인물들이 생활하는 개인 공간을 표현하는 배경.</div>
-              </div>
-            </div>
           </div>
         </div>
       </div>
@@ -2410,3 +2411,29 @@
 </html>
 
 <!-- redeploy -->
+<style>
+  .place-characters.char-grid {
+    grid-template-columns: repeat(auto-fill, minmax(150px, 150px));
+    justify-content: start;
+    gap: 12px;
+  }
+
+  .place-characters .char-card {
+    width: 150px;
+  }
+
+  .place-characters .char-portrait {
+    width: 100%;
+    aspect-ratio: 3 / 4;
+  }
+
+  @media (max-width: 600px) {
+    .place-characters.char-grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .place-characters .char-card {
+      width: auto;
+    }
+  }
+</style>
