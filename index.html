@@ -2048,6 +2048,296 @@
   }
 </style>
 
+
+<style>
+#tab-world .world-prose{display:grid;gap:24px}
+#tab-world .world-chapter{position:relative;padding:30px 32px;border:1px solid rgba(255,255,255,.09);background:linear-gradient(145deg,rgba(255,255,255,.025),transparent 45%),#0d1015;overflow:hidden}
+#tab-world .world-chapter:before{content:"";position:absolute;left:0;top:0;width:3px;height:100%;background:linear-gradient(#9275df,rgba(201,163,94,.45),transparent)}
+#tab-world .world-kicker{margin-bottom:7px;color:#777f8b;font-family:'JetBrains Mono',monospace;font-size:10px;font-weight:800;letter-spacing:.18em}
+#tab-world h2{margin:0 0 21px;color:#e7e4dd;font-size:24px;line-height:1.45;letter-spacing:-.025em}
+#tab-world .world-chapter>p{margin:0 0 15px;color:#aab1bc;font-size:15px;line-height:2;word-break:keep-all}
+#tab-world .world-chapter strong{color:#dedad1}
+#tab-world .world-timeline{margin-top:24px;border-top:1px solid rgba(255,255,255,.07);border-bottom:1px solid rgba(255,255,255,.07)}
+#tab-world .world-timeline>div{display:grid;grid-template-columns:65px 1fr;gap:16px;align-items:center;min-height:47px;border-bottom:1px solid rgba(255,255,255,.05)}
+#tab-world .world-timeline>div:last-child{border-bottom:0}
+#tab-world .world-timeline b{color:#c8a967;font-family:'JetBrains Mono',monospace;text-align:center}
+#tab-world .world-timeline span{color:#929aa6;font-size:13px}
+#tab-world .gate-laws{display:grid;grid-template-columns:repeat(3,1fr);gap:11px;margin-top:23px}
+#tab-world .gate-laws>div{padding:17px;border:1px solid rgba(118,139,169,.14);background:rgba(255,255,255,.015)}
+#tab-world .gate-laws em{display:block;margin-bottom:8px;color:#88a2c7;font-size:10px;font-style:normal;font-weight:900;letter-spacing:.12em}
+#tab-world .gate-laws strong{display:block;margin-bottom:7px;font-size:13px;line-height:1.55}
+#tab-world .gate-laws span{display:block;color:#89919d;font-size:12px;line-height:1.7}
+#tab-world .hunter-rank-block{margin-top:18px;padding:17px;border:1px solid rgba(255,255,255,.07);background:#090c10}
+#tab-world .hunter-rank-title{margin-bottom:12px;color:#9ca3ae;font-size:12px;font-weight:800}
+#tab-world .hunter-ranks{display:flex;flex-wrap:wrap;align-items:center;gap:6px}
+#tab-world .hunter-ranks span{min-width:31px;padding:5px 7px;border:1px solid currentColor;font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:900;text-align:center}
+#tab-world .hunter-ranks i{color:#444b56;font-style:normal;font-size:10px}
+#tab-world .rf{color:#7d858f}#tab-world .re{color:#748f88}#tab-world .rd{color:#699b86}#tab-world .rc{color:#649bb1}#tab-world .rb{color:#7089c5}#tab-world .ra{color:#987acb}#tab-world .rs{color:#bd6d99}#tab-world .rss{color:#d17466}#tab-world .rsss{color:#d8ad59}
+#tab-world .pantheon-world-bg{width:100%;aspect-ratio:8/3;margin:0 0 21px;overflow:hidden;border:1px solid rgba(185,158,240,.15)}
+#tab-world .pantheon-world-bg img{display:block;width:100%;height:100%;object-fit:cover}
+#tab-world .student-order{margin-top:22px;padding:18px 20px;border:1px solid rgba(168,137,222,.16);background:linear-gradient(135deg,rgba(119,84,178,.07),transparent 65%)}
+#tab-world .student-order>b,#tab-world .pantheon-scope>b{display:block;margin-bottom:11px;color:#bca5df;font-size:12px}
+#tab-world .student-order>div{display:flex;align-items:center;gap:9px;flex-wrap:wrap;margin-bottom:11px}
+#tab-world .student-order span{padding:7px 13px;border:1px solid rgba(176,147,224,.27);color:#c2afe1;font-size:12px;font-weight:800}
+#tab-world .student-order i{color:#686f79;font-style:normal}
+#tab-world .student-order p,#tab-world .pantheon-scope p{margin:0;color:#8e96a2;font-size:12.5px;line-height:1.75}
+#tab-world .pantheon-scope{margin-top:12px;padding:17px 20px;border-left:2px solid rgba(201,163,94,.45);background:rgba(201,163,94,.025)}
+#tab-world .pantheon-scope>b{margin-bottom:6px;color:#c9aa70}
+#tab-world .infra-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:11px;margin-top:22px}
+#tab-world .infra-grid>div{padding:17px;border:1px solid rgba(255,255,255,.07);background:rgba(255,255,255,.015)}
+#tab-world .infra-grid b{display:block;margin-bottom:7px;color:#c3a469;font-size:13px}
+#tab-world .infra-grid span{display:block;color:#89919c;font-size:12px;line-height:1.7}
+@media(max-width:760px){
+ #tab-world .world-chapter{padding:23px 20px}
+ #tab-world h2{font-size:20px}
+ #tab-world .world-chapter>p{font-size:14px;line-height:1.9}
+ #tab-world .gate-laws,#tab-world .infra-grid{grid-template-columns:1fr}
+ #tab-world .world-timeline>div{grid-template-columns:52px 1fr;gap:9px}
+}
+</style>
+
+
+<style>
+/* =========================================================
+   가독성 확대
+   ========================================================= */
+body { font-size: 17px !important; }
+
+.section-title { font-size: 31px !important; }
+.section-sub { font-size: 15px !important; }
+
+.place-title { font-size: 20px !important; }
+.place-desc { font-size: 15px !important; line-height: 1.8 !important; }
+
+.char-name { font-size: 17px !important; }
+.char-role { font-size: 14px !important; line-height: 1.6 !important; }
+
+.faction-desc { font-size: 15px !important; line-height: 1.85 !important; }
+
+#tab-world .world-chapter > p {
+  font-size: 17px !important;
+  line-height: 2 !important;
+}
+#tab-world h2 { font-size: 27px !important; }
+#tab-world .world-kicker { font-size: 12px !important; }
+
+#tab-world .world-timeline span { font-size: 15px !important; }
+#tab-world .world-timeline b { font-size: 15px !important; }
+
+#tab-world .gate-laws strong { font-size: 15px !important; }
+#tab-world .gate-laws span { font-size: 14px !important; }
+#tab-world .gate-laws em { font-size: 12px !important; }
+
+#tab-world .hunter-rank-title { font-size: 14px !important; }
+#tab-world .hunter-ranks span { font-size: 13px !important; }
+
+#tab-world .student-order > b { font-size: 15px !important; }
+#tab-world .student-order span { font-size: 14px !important; }
+#tab-world .student-order p { font-size: 14px !important; line-height:1.8 !important; }
+
+#tab-world .infra-grid b { font-size: 15px !important; }
+#tab-world .infra-grid span { font-size: 14px !important; line-height:1.8 !important; }
+
+.calamity-name { font-size: 20px !important; }
+.calamity-sub { font-size: 14px !important; }
+.calamity-gate-title { font-size: 17px !important; }
+.calamity-gate-desc { font-size: 15px !important; line-height:1.8 !important; }
+
+/* =========================================================
+   캐릭터 세력 선택 버튼만 가운데 정렬
+   내부 콘텐츠는 절대 가운데 정렬하지 않음
+   ========================================================= */
+#tab-char .faction-switcher {
+  justify-content: center !important;
+  text-align: center !important;
+}
+
+#tab-char .faction-switch-btn {
+  text-align: center !important;
+}
+
+/* 내부는 기존 정렬 유지/강제 좌측 */
+#tab-char .faction-content-panel,
+#tab-char .faction-content-panel .acc-body-inner,
+#tab-char .faction-desc,
+#tab-char .place-info,
+#tab-char .place-title,
+#tab-char .place-desc,
+#tab-char .calamity-gate-info,
+#tab-char .calamity-gate-title,
+#tab-char .calamity-gate-desc {
+  text-align: left !important;
+}
+</style>
+
+
+<style>
+#tab-world .frontline-grid,
+#tab-world .guild-world-grid{
+  display:grid;
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:12px;
+  margin-top:22px;
+}
+#tab-world .guild-world-grid{grid-template-columns:repeat(3,minmax(0,1fr))}
+#tab-world .frontline-card,
+#tab-world .guild-world-grid>div{
+  padding:18px;
+  border:1px solid rgba(255,255,255,.08);
+  background:rgba(255,255,255,.018);
+}
+#tab-world .frontline-card b,
+#tab-world .guild-world-grid b{
+  display:block;
+  margin-bottom:8px;
+  color:#d1b779;
+  font-size:16px;
+}
+#tab-world .frontline-card span,
+#tab-world .guild-world-grid span{
+  display:block;
+  color:#a0a8b4;
+  font-size:14px;
+  line-height:1.8;
+}
+#tab-world .calamity-world-list{
+  display:grid;
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:10px;
+  margin-top:22px;
+}
+#tab-world .calamity-world-list>div{
+  display:flex;
+  justify-content:space-between;
+  gap:16px;
+  padding:15px 17px;
+  border:1px solid rgba(196,76,88,.18);
+  background:rgba(135,35,45,.035);
+}
+#tab-world .calamity-world-list b{color:#d49a91;font-size:15px}
+#tab-world .calamity-world-list span{color:#aeb4be;font-size:14px}
+#tab-world .calendar-section{margin-top:22px}
+#tab-world .calendar-section h3{
+  margin:0 0 10px;
+  color:#c9ad75;
+  font-size:18px;
+}
+#tab-world .regional-calendar{margin-top:28px}
+#tab-world .event-list{
+  border-top:1px solid rgba(255,255,255,.08);
+}
+#tab-world .event-list>div{
+  display:grid;
+  grid-template-columns:125px 190px minmax(0,1fr);
+  gap:15px;
+  align-items:center;
+  min-height:49px;
+  padding:8px 10px;
+  border-bottom:1px solid rgba(255,255,255,.055);
+}
+#tab-world .event-list time{
+  color:#9d88d3;
+  font-family:'JetBrains Mono',monospace;
+  font-size:13px;
+  font-weight:800;
+}
+#tab-world .event-list b{
+  color:#d2cfc7;
+  font-size:15px;
+}
+#tab-world .event-list span{
+  color:#949ca8;
+  font-size:14px;
+  line-height:1.7;
+}
+@media(max-width:760px){
+  #tab-world .frontline-grid,
+  #tab-world .guild-world-grid,
+  #tab-world .calamity-world-list{grid-template-columns:1fr}
+  #tab-world .event-list>div{
+    grid-template-columns:1fr;
+    gap:3px;
+    padding:12px 8px;
+  }
+}
+</style>
+
+
+<style>
+  /* =========================================================
+     4대 재앙 — 인적사항 / 게이트 설명 가독성 확대
+     ========================================================= */
+
+  /* 일반 캐릭터 정보와 비교해 작아 보이지 않도록 */
+  .calamity-row .calamity-name {
+    font-size: 19px !important;
+    line-height: 1.45 !important;
+    margin-bottom: 6px !important;
+  }
+
+  .calamity-row .calamity-sub {
+    font-family: 'JetBrains Mono', monospace !important;
+    font-size: 15px !important;
+    font-weight: 700 !important;
+    line-height: 1.65 !important;
+    letter-spacing: 0 !important;
+  }
+
+  /* 게이트 이름 */
+  .calamity-row .calamity-gate-title {
+    font-size: 19px !important;
+    font-weight: 800 !important;
+    line-height: 1.5 !important;
+    margin-bottom: 8px !important;
+  }
+
+  /* 게이트 설명 */
+  .calamity-row .calamity-gate-desc {
+    max-width: none !important;
+    font-size: 16px !important;
+    line-height: 1.85 !important;
+    letter-spacing: -0.01em !important;
+    word-break: keep-all !important;
+  }
+
+  .calamity-row .calamity-person-info {
+    padding-top: 13px !important;
+  }
+
+  .calamity-row .calamity-gate-info {
+    padding-top: 13px !important;
+  }
+
+  /* 사도 정보도 너무 작아지지 않게 */
+  .apostle-card .char-name {
+    font-size: 17px !important;
+  }
+
+  .apostle-card .char-role {
+    font-size: 14px !important;
+    line-height: 1.6 !important;
+  }
+
+  @media (max-width: 760px) {
+    .calamity-row .calamity-name {
+      font-size: 18px !important;
+    }
+
+    .calamity-row .calamity-sub {
+      font-size: 14px !important;
+    }
+
+    .calamity-row .calamity-gate-title {
+      font-size: 18px !important;
+    }
+
+    .calamity-row .calamity-gate-desc {
+      font-size: 15px !important;
+      line-height: 1.8 !important;
+    }
+  }
+</style>
+
 </head>
 <body>
 <section class="hero">
@@ -2091,210 +2381,274 @@
        세계관 소개
        ========================= -->
 <div class="tab-panel active" id="tab-world">
-<div class="world-setting">
-<div class="setting-intro">
-<div class="setting-kicker">ORBIS // WORLD DATA</div>
-<h2>오르비스, 마지막 생존권</h2>
-<p>
-          한때 세계는 끝없이 이어져 있었다. 그러나 게이트가 열린 뒤, 인류의 지도에는 돌아갈 수 없는 땅이 하나씩 늘어났다.
-          지금 남은 것은 서로의 숨결이 닿을 만큼 가까워진 중심 생존권뿐이다. 그 좁은 고리를 지탱하는 것은 군대도 성벽도 아닌,
-          매일 균열 속으로 들어가는 헌터들의 발걸음이다.
-        </p>
+  <div class="world-prose">
+
+    <section class="world-chapter">
+      <div class="world-kicker">ORBIS</div>
+      <h2>오르비스, 균열 이후의 세계</h2>
+
+      <p>한때 세계에는 수많은 도시와 국가가 존재했다. 그러나 547년, <strong>SSS급 게이트</strong>가 열리며 모든 것이 달라졌다. 균열 너머에서 쏟아져 나온 괴수들은 세계를 무너뜨렸고, 인류의 생존권은 빠르게 후퇴했다. 살아남은 사람들은 흩어진 채 각자의 힘으로 하루를 이어가야 했다.</p>
+
+      <p>558년, SSS급 헌터 <strong>로웰</strong>이 흩어진 세력을 규합하며 <strong>오르비스 중앙연합</strong>을 창설했다. 각자도생하던 생존권은 비로소 하나의 체계 아래 연결되기 시작했다.</p>
+
+      <p>562년, 재앙이라 불린 SSS급 흑룡 <strong>모르드라스</strong>가 루미나리스를 침공했다. 로웰은 미스텔라, 에일로릭스, 카메코, 플로리아와 함께 모르드라스를 토벌했으나 전투에서 목숨을 잃었다. 이후 미스텔라가 제2대 중앙연합 의장에 올랐다.</p>
+
+      <p>그리고 567년. 뛰어난 재능을 가졌다는 이유만으로 준비되지 않은 채 전선에 나가 요절하는 이들을 줄이기 위해 <strong>카메코, 에이미, 미스텔라</strong>가 <strong>판테온 아카데미</strong>를 설립했다.</p>
+
+      <div class="world-timeline">
+        <div><b>547</b><span>SSS급 게이트 발생 · 괴수 침공 · 세계 붕괴</span></div>
+        <div><b>558</b><span>로웰, 오르비스 중앙연합 창설 · 초대 의장 취임</span></div>
+        <div><b>562</b><span>모르드라스 토벌 · 로웰 전사 · 미스텔라 제2대 의장 취임</span></div>
+        <div><b>567</b><span>카메코 · 에이미 · 미스텔라, 판테온 아카데미 설립</span></div>
+      </div>
+    </section>
+
+    <section class="world-chapter">
+      <div class="world-kicker">HUNTER &amp; GATE</div>
+      <h2>헌터와 게이트, 끝나지 않은 균열전쟁</h2>
+
+      <p>괴수를 몰아냈다고 해서 세계가 돌아온 것은 아니다. 옛 세계의 탈환은 실패했고, 인류가 지켜낸 것은 현재의 <strong>중심 생존권</strong>뿐이다. 지금도 곳곳에서 새로운 게이트가 열리고 있으며, 끝없는 균열전쟁 속에서 생존권을 유지하기 위해 헌터는 반드시 필요하다.</p>
+
+      <p>게이트는 이계와 연결된 공간이다. 내부에는 저마다 다른 환경과 괴수가 존재하고, 등급이 높을수록 환경 역시 극단적으로 변한다. 괴수는 마력원을 포식하려는 본능을 지니며, 재앙을 제외하면 지성을 갖지 않는다.</p>
+
+      <div class="gate-laws">
+        <div><em>코어</em><strong>보스가 살아 있는 동안 게이트는 유지된다.</strong><span>보스는 코어룸에 존재하며, 보스가 생존하는 한 게이트 역시 사라지지 않는다.</span></div>
+        <div><em>붕괴</em><strong>보스를 쓰러뜨리면 게이트가 붕괴한다.</strong><span>붕괴가 시작되면 내부에 있던 인원은 처음 진입했던 위치로 자동 귀환한다.</span></div>
+        <div><em>침식</em><strong>방치된 게이트는 주변 생존권을 잠식한다.</strong><span>주변 일대를 게이트의 환경으로 바꾸며, 등급이 높을수록 확산이 빨라지고 괴수가 외부로 유출된다.</span></div>
+      </div>
+
+      <div class="hunter-rank-block">
+        <div class="hunter-rank-title">헌터 등급</div>
+        <div class="hunter-ranks">
+          <span class="rf">F</span><i>＜</i><span class="rf">F+</span><i>＜</i>
+          <span class="re">E</span><i>＜</i><span class="re">E+</span><i>＜</i>
+          <span class="rd">D</span><i>＜</i><span class="rd">D+</span><i>＜</i>
+          <span class="rc">C</span><i>＜</i><span class="rc">C+</span><i>＜</i>
+          <span class="rb">B</span><i>＜</i><span class="rb">B+</span><i>＜</i>
+          <span class="ra">A</span><i>＜</i><span class="ra">A+</span><i>＜</i>
+          <span class="rs">S</span><i>＜</i><span class="rs">S+</span><i>＜</i>
+          <span class="rss">SS</span><i>＜</i><span class="rss">SS+</span><i>＜</i>
+          <span class="rsss">SSS</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="world-chapter">
+      <div class="world-kicker">PANTHEON ACADEMY</div>
+      <h2>판테온 아카데미, 살아 돌아오기 위해 세워진 곳</h2>
+
+      <div class="pantheon-world-bg"><img src="img/bg/97.png" alt="판테온 아카데미"></div>
+
+      <p>판테온은 영웅을 만들기 위해 세워진 곳이 아니다. 균열전쟁의 전선에서는 뛰어난 재능을 가진 이들이 충분히 배우기도 전에 싸움에 내몰렸고, 강하다는 이유만으로 수많은 이들이 너무 일찍 목숨을 잃었다.</p>
+
+      <p>판테온이 가르치는 것은 <strong>강해지는 방법만이 아니라 살아 돌아오는 방법</strong>이다. 전투와 마도, 신성, 정령, 과학기술은 물론 전술과 생존까지. 자신의 힘을 이해하고 동료와 함께 싸우며, 전장에서 살아남기 위해 필요한 것을 배운다. 판테온에서 강함은 특혜가 되지 않는다.</p>
+
+      <div class="student-order">
+        <b>학생 서열</b>
+        <div><span>후보생</span><i>→</i><span>정규생</span><i>→</i><span>정예생</span></div>
+        <p>학생은 후보생, 정규생, 정예생으로 구분되며 해가 바뀌면 다음 단계로 자동 승급한다.</p>
+      </div>
+    </section>
+
+    
+    <section class="world-chapter">
+      <div class="world-kicker">FRONT LINE</div>
+      <h2>문명의 끝, 전선의 시작</h2>
+
+      <p>중심 생존권의 바깥에는 옛 문명의 흔적과 게이트가 뒤섞인 전선이 펼쳐져 있다. 헌터들이 일상적으로 마주하는 최전선은 <strong>균열지대</strong>와 <strong>오염심역</strong>으로 나뉜다.</p>
+
+      <div class="frontline-grid">
+        <div class="frontline-card">
+          <b>균열지대 · 외곽</b>
+          <span>파괴된 문명의 잔해가 남아 있는 전선. F급부터 B+급 게이트가 출현한다.</span>
+        </div>
+        <div class="frontline-card">
+          <b>오염심역 · 최외곽</b>
+          <span>풍화된 구세계가 남아 있는 최외곽 전선. A급 이상의 게이트가 출현한다.</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="world-chapter">
+      <div class="world-kicker">THREE GUILDS</div>
+      <h2>전선을 누비는 3대 길드</h2>
+
+      <div class="guild-world-grid">
+        <div><b>팬텀 스트라이크</b><span>실력주의를 내세우며 최전선 공략을 주도한다. 입단 최소 등급은 A급 이상.</span></div>
+        <div><b>노블레스</b><span>명예를 중시하며 구호 활동에 힘을 쏟는 길드.</span></div>
+        <div><b>월하</b><span>암행과 정보 활동에 특화된 길드.</span></div>
+      </div>
+    </section>
+
+    <section class="world-chapter">
+      <div class="world-kicker">FOUR CALAMITIES</div>
+      <h2>오염심역 최심부, 4재앙</h2>
+
+      <p>각 오염심역의 최심부에는 인류의 적 또는 배반자로 규정된 <strong>4재앙</strong>이 자리한다. 그들이 머무는 영역은 최고위 게이트와 맞물려 있으며, 각 방향의 전선을 대표하는 가장 거대한 위협이다.</p>
+
+      <div class="calamity-world-list">
+        <div><b>서부 · 옵시디언 레어</b><span>SS+ · 에이브릴</span></div>
+        <div><b>동부 · 천귀궁</b><span>SSS · 노타마야</span></div>
+        <div><b>남부 · 만상의 성소</b><span>SSS · 닉스</span></div>
+        <div><b>북부 · 선큰스론</b><span>SSS · 칼립사</span></div>
+      </div>
+    </section>
+
+    <section class="world-chapter">
+      <div class="world-kicker">CALENDAR</div>
+      <h2>판테온과 오르비스를 흐르는 한 해</h2>
+
+      <p>
+        판테온의 시간은 수업만으로 채워지지 않는다.
+        계절이 바뀔 때마다 학생들은 서로 다른 방식으로 자신의 힘과 판단을 시험하고,
+        오르비스의 도시들 역시 저마다의 축제로 한 해를 밝힌다.
+      </p>
+
+      <div class="calendar-section">
+        <h3>판테온 아카데미</h3>
+        <div class="event-list">
+
+          <div>
+            <time>03.02</time>
+            <b>신입생 입학식</b>
+            <span>새로운 후보생들이 처음으로 판테온의 문을 통과하는 날. 낯선 얼굴과 기대가 교정 전체를 채운다.</span>
+          </div>
+
+          <div>
+            <time>03.28</time>
+            <b>1Q 가상균열 레이드</b>
+            <span>첫 팀 평가가 시작된다. 서로 다른 문화와 전투방식을 지닌 학생들이 한 팀을 이루며, 낯선 차이를 얼마나 잘 엮어내는지가 중요한 평가가 된다.</span>
+          </div>
+
+          <div>
+            <time>04.26</time>
+            <b>게이트 탐사 실습</b>
+            <span>교실 밖에서 처음 마주하는 실제 게이트. 비교적 위험도가 낮은 현장에서 탐색과 관찰, 판단의 기본을 익힌다.</span>
+          </div>
+
+          <div>
+            <time>05.24</time>
+            <b>2Q 실전균열 레이드</b>
+            <span>가상의 훈련을 넘어 실제 전장과 가까운 환경에서 진행되는 실전 평가. 화려한 승리보다 끝까지 살아남는 판단이 우선된다.</span>
+          </div>
+
+          <div>
+            <time>06.20</time>
+            <b>1학기 등급 심사</b>
+            <span>한 학기 동안 쌓아온 개인 역량을 점검하는 날. 각자의 현재 헌터 등급이 다시 평가된다.</span>
+          </div>
+
+          <div>
+            <time>06.21 — 08.31</time>
+            <b>여름방학</b>
+            <span>길었던 1학기가 끝나고 판테온이 잠시 느슨해지는 시기. 학생들은 휴식과 개인 훈련, 각자의 일상으로 흩어진다.</span>
+          </div>
+
+          <div>
+            <time>09.01</time>
+            <b>2학기 개강</b>
+            <span>다시 교정에 사람들이 모이고, 여름을 지나 달라진 학생들의 두 번째 학기가 시작된다.</span>
+          </div>
+
+          <div>
+            <time>09.27</time>
+            <b>3Q 가상균열 레이드</b>
+            <span>한층 복잡해진 조건 속에서 치러지는 팀 평가. 다른 배경과 방식의 동료를 이해하고 활용하는 능력이 다시 시험대에 오른다.</span>
+          </div>
+
+          <div>
+            <time>11.01</time>
+            <b>아카데미 페스타</b>
+            <span>훈련장의 긴장이 잠시 사라지는 판테온 최대의 축제. 미니게임과 경품, 푸드트럭이 교정을 채우고 밤에는 그웬의 공연이 이어진다.</span>
+          </div>
+
+          <div>
+            <time>11.29</time>
+            <b>길드 진로 설명회</b>
+            <span>3대 길드의 부길드장들이 직접 판테온을 찾는다. 학생들에게는 졸업 이후 자신이 설 전선을 미리 바라보는 날이 된다.</span>
+          </div>
+
+          <div>
+            <time>12.04</time>
+            <b>4Q 실전균열 레이드</b>
+            <span>한 해의 마지막 실전 레이드. 강함만으로는 통과할 수 없으며, 생존과 판단이 마지막까지 요구된다.</span>
+          </div>
+
+          <div>
+            <time>12.20</time>
+            <b>2학기 등급 심사</b>
+            <span>한 해 동안 성장한 개인 역량을 다시 확인하는 마지막 헌터 등급 심사.</span>
+          </div>
+
+          <div>
+            <time>12.21 — 02.14</time>
+            <b>겨울방학</b>
+            <span>차가운 계절과 함께 찾아오는 긴 휴식. 다음 해를 앞둔 학생들은 각자의 방식으로 남은 시간을 보낸다.</span>
+          </div>
+
+          <div>
+            <time>02.15</time>
+            <b>졸업 · 종강</b>
+            <span>판테온의 한 해가 끝나는 날. 떠나는 이와 남는 이가 교정에서 마지막 인사를 나눈다.</span>
+          </div>
+
+        </div>
+      </div>
+
+      <div class="calendar-section regional-calendar">
+        <h3>지역 축제</h3>
+        <div class="event-list">
+
+          <div>
+            <time>04.12</time>
+            <b>루미나 성광제</b>
+            <span>솔루나 대성당이 빛으로 물드는 루미나리스의 축일. 축복 예배가 이어지고 성기사들의 행렬이 성도를 가로지른다. 테오도시아와 플뢰르가 중심에 선다.</span>
+          </div>
+
+          <div>
+            <time>07.22</time>
+            <b>노바 엑스포</b>
+            <span>노바테크노폴리스의 최신 기술이 한자리에 모이는 대규모 박람회. 아크와 크리스텔을 중심으로 새로운 장비와 연구 성과가 공개된다.</span>
+          </div>
+
+          <div>
+            <time>08.09</time>
+            <b>연합 창설기념일</b>
+            <span>오르비스 중앙연합의 탄생을 기념하는 날. 가디언허브 중앙광장에서 기념식과 의장대 행진이 열리고, 미스텔라와 모리건이 행사를 이끈다.</span>
+          </div>
+
+          <div>
+            <time>10.18</time>
+            <b>실바니아 정령제</b>
+            <span>에버그린이 정령의 빛으로 가득 차는 날. 플로리아와 네레이아가 사람들과 함께 세계수의 정령과 교감한다.</span>
+          </div>
+
+          <div>
+            <time>01.15</time>
+            <b>청운 천등제</b>
+            <span>청운가의 겨울밤을 수많은 천등이 밝힌다. 사람들은 저마다의 소원을 적어 하늘로 띄우고, 토와와 아야나미가 축제를 함께한다.</span>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+<section class="world-chapter">
+      <div class="world-kicker">ORBIS LIFE</div>
+      <h2>균열 속에서도 이어지는 일상</h2>
+
+      <p>오르비스의 공용 화폐는 <strong>오르(Orr)</strong>다. 학생은 아르바이트와 봉사, 장학금으로 오르를 마련하고, 헌터는 의뢰 수행과 마석 정산을 통해 대가를 받는다. 오르는 치료와 각종 시설 이용, 중앙연합의 등급 재심을 비롯한 생활 전반에 사용된다.</p>
+
+      <div class="infra-grid">
+        <div><b>가디언 카드</b><span>결제 수단이자 개인의 신분을 증명하는 카드.</span></div>
+        <div><b>에테르폰</b><span>통신과 소셜미디어에 사용되는 개인 통신기기.</span></div>
+        <div><b>게이트 스캐너</b><span>게이트 내부의 환경과 괴수, 위협을 탐지한다. 내부에서 상시 작동하며 가상균열에서도 사용할 수 있다.</span></div>
+      </div>
+    </section>
+
+  </div>
 </div>
-<section class="setting-section">
-<div class="setting-section-head">
-<span class="setting-section-no">01</span>
-<span class="setting-section-title">과거 타임라인</span>
-<span class="setting-section-en">HISTORY</span>
-</div>
-<div class="setting-section-body">
-<div class="timeline">
-<div class="timeline-row">
-<div class="timeline-year">초기</div>
-<div class="timeline-text">균열이 처음 모습을 드러냈을 때, 누구도 그것이 세계의 끝을 예고하는 문이라는 사실을 알지 못했다.
-                국가는 국경을 닫고, 도시는 문을 걸어 잠갔다. 모두가 서로를 기다리지 않은 채 <strong>각자의 방식으로 살아남으려 했다.</strong></div>
-</div>
-<div class="timeline-row catastrophe">
-<div class="timeline-year">547년</div>
-<div class="timeline-text">마침내 <strong>SSS급 게이트</strong>가 열렸다. 그 너머에서 쏟아진 괴수는 군대와 도시를 차례로 집어삼켰고,
-                인간이 살 수 있는 땅은 지도 바깥으로 밀려나듯 줄어들었다. 이 해를 기점으로 사람들은 처음으로
-                ‘세계가 무너질 수 있다’는 사실을 현실로 받아들였다.</div>
-</div>
-<div class="timeline-row">
-<div class="timeline-year">558년</div>
-<div class="timeline-text">붕괴 뒤에 남은 것은 공포와 불신뿐이었다. 그때 SSS급 헌터 <strong>로웰</strong>이 각지의 생존 세력을 하나씩 찾아 나섰다.
-                서로를 믿지 못하던 이들을 한 자리에 세운 끝에 <strong>오르비스 중앙연합</strong>이 탄생했고,
-                로웰은 그 첫 번째 의장이 되었다.</div>
-</div>
-<div class="timeline-row catastrophe">
-<div class="timeline-year">562년</div>
-<div class="timeline-text">SSS급 재앙 흑룡 <strong>모르드라스</strong>가 루미나리스를 덮쳤다. 로웰·미스텔라·에일로릭스·카메코·플로리아는
-                무너지는 성역에서 끝까지 싸워 모르드라스를 쓰러뜨렸지만, 그 대가로 로웰을 잃었다.
-                승전보다 장례가 먼저 기록된 전투였다. 이후 <strong>미스텔라가 제2대 의장</strong>에 올라 그의 자리를 이어받았다.</div>
-</div>
-<div class="timeline-row">
-<div class="timeline-year">567년</div>
-<div class="timeline-text">강한 아이들이 가장 먼저 전선으로 보내지고, 가장 먼저 죽어가던 시대를 끝내기 위해
-                <strong>카메코·에이미·미스텔라</strong>가 뜻을 모았다. 그렇게 <strong>판테온 아카데미</strong>가 세워졌다.
-                이곳이 가르치려 한 것은 영웅이 되는 법이 아니라, 싸우고도 살아 돌아오는 법이었다.</div>
-</div>
-</div>
-</div>
-</section>
-<section class="setting-section">
-<div class="setting-section-head">
-<span class="setting-section-no">02</span>
-<span class="setting-section-title">생활 인프라</span>
-<span class="setting-section-en">INFRASTRUCTURE</span>
-</div>
-<div class="setting-section-body">
-<div class="info-grid">
-<div class="info-card">
-<div class="info-label">오르 · Orr</div>
-<p>무너진 세계에서도 사람은 먹고, 사고, 빚지고, 웃으며 살아간다. <strong>오르(Orr)</strong>는 그 일상을 이어주는 공용 화폐다.
-              학생은 아르바이트·봉사·장학금으로, 헌터는 의뢰와 마석 정산으로 자신의 몫을 번다.</p>
-</div>
-<div class="info-card">
-<div class="info-label">가디언카드</div>
-<p>한 장의 카드 안에 이름과 자격, 그리고 일상이 함께 들어 있다. <strong>가디언카드</strong>는 결제수단이자 신분증이며,
-              시설 이용부터 헌터 행정까지 대부분의 생활 절차를 연결한다.</p>
-</div>
-<div class="info-card">
-<div class="info-label">에테르폰</div>
-<p>생존권이 좁아졌다고 해서 사람들의 대화까지 줄어든 것은 아니다. <strong>에테르폰</strong>은 통신과 소셜미디어를 잇는 가장 보편적인 개인 단말기다.</p>
-</div>
-<div class="info-card">
-<div class="info-label">게이트 스캐너</div>
-<p>균열 안에서는 몇 걸음 앞조차 안전을 약속하지 않는다. <strong>게이트 스캐너</strong>는 환경·괴수·위협 요소를 읽어내며,
-              실제 게이트뿐 아니라 가상균열에서도 끊임없이 작동한다.</p>
-</div>
-</div>
-</div>
-</section>
-<section class="setting-section">
-<div class="setting-section-head">
-<span class="setting-section-no">03</span>
-<span class="setting-section-title">헌터와 게이트, 생존권의 최전선</span>
-<span class="setting-section-en">SYSTEM</span>
-</div>
-<div class="setting-section-body">
-<div class="info-card wide">
-<div class="info-label">현재 세계의 상태</div>
-<p>인류는 오래전에 ‘되찾는 전쟁’에서 패배했다. 지금 지켜야 하는 것은 <strong>중심 생존권</strong>, 단 하나뿐이다.
-            구세계 탈환은 번번이 실패했고 균열은 여전히 멈추지 않는다.
-            그래서 헌터는 선택받은 영웅이기 전에, 생존권의 가장 바깥을 떠받치는 마지막 전선이 되었다.</p>
-</div>
-<div class="info-card wide" style="margin-top:10px;">
-<div class="info-label">헌터 등급</div>
-<div class="hunter-ranks">
-<span class="hunter-rank r-f">F</span>
-<span class="rank-separator">&lt;</span>
-<span class="hunter-rank r-fp">F+</span>
-<span class="rank-separator">&lt;</span>
-<span class="hunter-rank r-e">E</span>
-<span class="rank-separator">&lt;</span>
-<span class="hunter-rank r-ep">E+</span>
-<span class="rank-separator">&lt;</span>
-<span class="hunter-rank r-d">D</span>
-<span class="rank-separator">&lt;</span>
-<span class="hunter-rank r-dp">D+</span>
-<span class="rank-separator">&lt;</span>
-<span class="hunter-rank r-c">C</span>
-<span class="rank-separator">&lt;</span>
-<span class="hunter-rank r-cp">C+</span>
-<span class="rank-separator">&lt;</span>
-<span class="hunter-rank r-b">B</span>
-<span class="rank-separator">&lt;</span>
-<span class="hunter-rank r-bp">B+</span>
-<span class="rank-separator">&lt;</span>
-<span class="hunter-rank r-a">A</span>
-<span class="rank-separator">&lt;</span>
-<span class="hunter-rank r-ap">A+</span>
-<span class="rank-separator">&lt;</span>
-<span class="hunter-rank r-s">S</span>
-<span class="rank-separator">&lt;</span>
-<span class="hunter-rank r-sp">S+</span>
-<span class="rank-separator">&lt;</span>
-<span class="hunter-rank r-ss">SS</span>
-<span class="rank-separator">&lt;</span>
-<span class="hunter-rank r-ssp">SS+</span>
-<span class="rank-separator">&lt;</span>
-<span class="hunter-rank r-sss">SSS</span>
-</div>
-</div>
-<div class="info-card wide" style="margin-top:10px;">
-<div class="info-label">게이트</div>
-<p>게이트는 문처럼 보이지만, 그 너머는 하나의 낯선 세계에 가깝다. 위험도는 <strong>F급부터 SSS급</strong>까지 나뉘며,
-            등급이 높을수록 빛과 온도, 지형과 공기마저 인간에게 적대적으로 변한다. 재앙을 제외한 대부분의 괴수에게 지성은 없고,
-            오직 마력원을 찾아 포식하려는 본능만이 남아 있다.</p>
-<div class="gate-box">
-<div class="gate-line"><span class="gate-mark">핵심</span><span>보스는 코어룸에 존재한다. 보스가 살아 있는 동안 게이트가 유지된다.</span></div>
-<div class="gate-line"><span class="gate-mark">붕괴</span><span>보스가 사망하면 게이트가 붕괴하고, 내부 인원은 처음 진입했던 위치로 자동 귀환한다.</span></div>
-<div class="gate-line"><span class="gate-mark">침식</span><span>게이트를 방치하면 주변 일대가 테라포밍되며 괴수가 외부로 유출된다. 확산 속도는 게이트 등급에 비례한다.</span></div>
-<div class="gate-visual-grid">
-<div class="gate-visual-card">
-<img alt="균열지대" src="img/bg/23.png"/>
-<div class="gate-visual-label">균열지대</div>
-</div>
-<div class="gate-visual-card">
-<img alt="오염심역" src="img/bg/24.png"/>
-<div class="gate-visual-label">오염심역</div>
-</div>
-<div class="gate-visual-card">
-<img alt="F~D+급 게이트" src="img/bg/25.png"/>
-<div class="gate-visual-label">F~D+급 게이트</div>
-</div>
-<div class="gate-visual-card">
-<img alt="C~A+급 게이트" src="img/bg/26.png"/>
-<div class="gate-visual-label">C~A+급 게이트</div>
-</div>
-<div class="gate-visual-card wide">
-<img alt="S급 이상 게이트" src="img/bg/27.png"/>
-<div class="gate-visual-label">S급 이상 게이트</div>
-</div>
-</div>
-</div>
-</div>
-</div>
-</section>
-<section class="setting-section">
-<div class="setting-section-head">
-<span class="setting-section-no">04</span>
-<span class="setting-section-title">판테온 아카데미, 살아 돌아오기 위해 세워진 곳</span>
-<span class="setting-section-en">PANTHEON ACADEMY</span>
-</div>
-<div class="pantheon-setting-bg">
-<img alt="판테온 아카데미" src="img/bg/97.png"/>
-</div>
-<div class="setting-section-body">
-<div class="academy-rule">
-<div class="academy-rule-key">영웅보다 생존자를</div>
-<div class="academy-rule-value">
-              재능이 축복으로만 불리던 시대는 오래전에 끝났다.
-              강한 아이들은 누구보다 먼저 균열 앞에 세워졌고,
-              수많은 이름이 영웅이라는 찬사보다 먼저 묘비에 새겨졌다.
-              판테온은 그 비극을 되풀이하지 않기 위해 세워졌다.
-              이곳에서 가르치는 것은 화려하게 죽는 법이 아니라,
-              <strong>끝까지 싸우고도 살아 돌아오는 법</strong>이다.
-            </div>
-</div>
-<div class="academy-rule">
-<div class="academy-rule-key">학생 서열</div>
-<div class="academy-rule-value">
-              판테온 아카데미의 학생은 <strong>후보생·정규생·정예생</strong>으로 나뉜다.
-              입학한 학생은 후보생으로 시작하며,
-              해가 바뀔 때마다 정규생과 정예생으로 차례로 승급한다.
-              이름이 올라갈수록 수업은 실전에 가까워지고,
-              그들이 마주해야 할 전장 역시 한층 더 깊어진다.
-            </div>
-</div>
-</div>
-</section>
-</div>
-</div>
-<!-- =========================
-       세력 및 캐릭터 소개
-       ========================= -->
+
 <div class="tab-panel" id="tab-char">
 <div class="faction-switcher"><button class="faction-switch-btn faction-player active" data-faction="player" type="button">플레이어블 캐릭터</button><button class="faction-switch-btn faction-central" data-faction="central" type="button">오르비스 중앙연합</button><button class="faction-switch-btn faction-luminaris" data-faction="luminaris" type="button">루미나리스 신성제국</button><button class="faction-switch-btn faction-astra" data-faction="astra" type="button">아스트라 연방</button><button class="faction-switch-btn faction-sylvania" data-faction="sylvania" type="button">실바니아 자연동맹</button><button class="faction-switch-btn faction-cheonmyeong" data-faction="cheonmyeong" type="button">천명천관</button><button class="faction-switch-btn faction-pantheon" data-faction="pantheon" type="button">판테온 아카데미</button><button class="faction-switch-btn faction-phantom" data-faction="phantom" type="button">팬텀 스트라이크</button><button class="faction-switch-btn faction-noblesse" data-faction="noblesse" type="button">노블레스</button><button class="faction-switch-btn faction-wolha" data-faction="wolha" type="button">월하</button><button class="faction-switch-btn faction-freelance" data-faction="freelance" type="button">프리랜서</button><button class="faction-switch-btn faction-calamity" data-faction="calamity" type="button">재앙</button></div><div class="acc-group">
 <div class="acc-item faction-player faction-content-panel active" data-faction-panel="player">
