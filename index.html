@@ -6138,6 +6138,112 @@ body::after {
 }
 </style>
 
+
+<style>
+/* =========================================================
+   세력 캐릭터 / 장소 배경 이미지 HOVER
+   플레이어블 카드처럼 살짝 확대
+   ========================================================= */
+
+/* 이미지가 카드 밖으로 튀어나오지 않도록 */
+#tab-char .char-card,
+#tab-char .character-card,
+#tab-char .member-card,
+#tab-char .apostle-card,
+#tab-char .calamity-card,
+#tab-char .place-card,
+#tab-char .gate-card,
+#tab-char .faction-bg,
+#tab-char .faction-image,
+#tab-char .char-img,
+#tab-char .portrait,
+#tab-char .location-image,
+#tab-char .gate-image{
+  overflow:hidden !important;
+}
+
+/* 세력 탭 안의 모든 실제 이미지에 공통 확대 효과 */
+#tab-char .faction-content-panel img{
+  transition:
+    transform .36s cubic-bezier(.22,.72,.26,1),
+    filter .30s ease !important;
+  transform-origin:center center !important;
+  will-change:transform;
+}
+
+/* 캐릭터 초상화 hover */
+#tab-char .char-card:hover img,
+#tab-char .character-card:hover img,
+#tab-char .member-card:hover img,
+#tab-char .apostle-card:hover img,
+#tab-char .calamity-card:hover img{
+  transform:scale(1.035) !important;
+  filter:brightness(1.045) !important;
+}
+
+/* 이미지 자체에 마우스를 올려도 동작 */
+#tab-char .faction-content-panel img:hover{
+  transform:scale(1.035) !important;
+  filter:brightness(1.045) !important;
+}
+
+/* 세력/게이트/장소 배경도 동일하게 살짝 확대 */
+#tab-char .place-card:hover img,
+#tab-char .gate-card:hover img,
+#tab-char .faction-bg:hover img,
+#tab-char .faction-image:hover img,
+#tab-char .location-image:hover img,
+#tab-char .gate-image:hover img{
+  transform:scale(1.025) !important;
+  filter:brightness(1.035) !important;
+}
+
+/* 4재앙처럼 초상화 + 배경이 한 행에 있는 경우도 둘 다 적용 */
+#tab-char .calamity-row img,
+#tab-char .disaster-row img,
+#tab-char .calamity-layout img{
+  transition:
+    transform .36s cubic-bezier(.22,.72,.26,1),
+    filter .30s ease !important;
+}
+
+#tab-char .calamity-row img:hover,
+#tab-char .disaster-row img:hover,
+#tab-char .calamity-layout img:hover{
+  transform:scale(1.03) !important;
+  filter:brightness(1.04) !important;
+}
+
+/* 이미지 확대 시 주변 레이아웃은 움직이지 않음 */
+#tab-char .faction-content-panel img{
+  backface-visibility:hidden;
+  -webkit-backface-visibility:hidden;
+}
+
+/* 플레이어블 기존 효과와 강도 통일 */
+#tab-char .player-select-card:hover .player-image img{
+  transform:scale(1.035) !important;
+  filter:brightness(1.045) !important;
+}
+
+@media(prefers-reduced-motion:reduce){
+  #tab-char .faction-content-panel img{
+    transition:none !important;
+  }
+
+  #tab-char .faction-content-panel img:hover,
+  #tab-char .char-card:hover img,
+  #tab-char .character-card:hover img,
+  #tab-char .member-card:hover img,
+  #tab-char .apostle-card:hover img,
+  #tab-char .calamity-card:hover img,
+  #tab-char .place-card:hover img,
+  #tab-char .gate-card:hover img{
+    transform:none !important;
+  }
+}
+</style>
+
 </head>
 <body><div aria-hidden="true" class="shooting-stars"><span class="shooting-star star-a"></span><span class="shooting-star star-b"></span><span class="shooting-star star-c"></span></div>
 <section class="hero">
@@ -6280,7 +6386,7 @@ body::after {
 <h2>헌터와 게이트, 끝나지 않은 균열전쟁</h2>
 
 <div class="hunter-gate-hero-image">
-  <img src="bg/23.png" alt="">
+  <img src="img/bg/23.png" alt="">
   <div class="hunter-gate-image-shade"></div>
 </div>
 
