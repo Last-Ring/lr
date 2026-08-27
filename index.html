@@ -8144,6 +8144,45 @@ body::after {
     display:none!important;
   }
 }
+</style><style>
+/* =========================================================
+   FREELANCE / HOSTILE — 완전 분리
+   ========================================================= */
+
+/* 프리랜서 */
+#tab-char .faction-switch-btn[data-faction="freelance"]{
+  border-color:rgba(145,145,164,.22)!important;
+}
+#tab-char .faction-switch-btn[data-faction="freelance"].active{
+  color:#bbb8c5!important;
+  border-color:rgba(166,163,181,.42)!important;
+  background:rgba(118,113,132,.075)!important;
+  box-shadow:0 0 18px rgba(103,98,122,.06)!important;
+}
+
+/* 적대세력 */
+#tab-char .faction-switch-btn[data-faction="hostile"]{
+  color:#c56a7c!important;
+  border-color:rgba(174,73,93,.28)!important;
+}
+#tab-char .faction-switch-btn[data-faction="hostile"].active{
+  color:#e17b8e!important;
+  border-color:rgba(194,79,102,.52)!important;
+  background:rgba(128,35,57,.09)!important;
+  box-shadow:0 0 20px rgba(147,35,62,.08)!important;
+}
+
+/* 서로의 컨텐츠가 동시에 보이지 않도록 강제 */
+#tab-char .faction-content-panel[data-faction-panel="freelance"]:not(.active),
+#tab-char .faction-content-panel[data-faction-panel="hostile"]:not(.active){
+  display:none!important;
+}
+
+/* 활성화된 해당 패널만 표시 */
+#tab-char .faction-content-panel[data-faction-panel="freelance"].active,
+#tab-char .faction-content-panel[data-faction-panel="hostile"].active{
+  display:block!important;
+}
 </style></head>
 <body><div aria-hidden="true" class="shooting-stars"><span class="shooting-star star-a"></span><span class="shooting-star star-b"></span><span class="shooting-star star-c"></span></div>
 <section class="hero">
@@ -8528,7 +8567,7 @@ body::after {
 </div>
 </div>
 <div class="tab-panel" id="tab-char">
-<div class="faction-switcher"><button class="faction-switch-btn faction-player active" data-faction="player" type="button">플레이어블 캐릭터</button><button class="faction-switch-btn faction-central" data-faction="central" type="button">오르비스 중앙연합</button><button class="faction-switch-btn faction-luminaris" data-faction="luminaris" type="button">루미나리스 신성제국</button><button class="faction-switch-btn faction-astra" data-faction="astra" type="button">아스트라 연방</button><button class="faction-switch-btn faction-sylvania" data-faction="sylvania" type="button">실바니아 자연동맹</button><button class="faction-switch-btn faction-cheonmyeong" data-faction="cheonmyeong" type="button">천명천관</button><button class="faction-switch-btn faction-pantheon" data-faction="pantheon" type="button">판테온 아카데미</button><button class="faction-switch-btn faction-phantom" data-faction="phantom" type="button">팬텀 스트라이크</button><button class="faction-switch-btn faction-noblesse" data-faction="noblesse" type="button">노블레스</button><button class="faction-switch-btn faction-wolha" data-faction="wolha" type="button">월하</button><button class="faction-switch-btn faction-freelance" data-faction="freelance" type="button">프리랜서</button><button class="faction-switch-btn faction-calamity" data-faction="calamity" type="button">재앙</button></div><div class="acc-group">
+<div class="faction-switcher"><button class="faction-switch-btn faction-player active" data-faction="player" type="button">플레이어블 캐릭터</button><button class="faction-switch-btn faction-central" data-faction="central" type="button">오르비스 중앙연합</button><button class="faction-switch-btn faction-luminaris" data-faction="luminaris" type="button">루미나리스 신성제국</button><button class="faction-switch-btn faction-astra" data-faction="astra" type="button">아스트라 연방</button><button class="faction-switch-btn faction-sylvania" data-faction="sylvania" type="button">실바니아 자연동맹</button><button class="faction-switch-btn faction-cheonmyeong" data-faction="cheonmyeong" type="button">천명천관</button><button class="faction-switch-btn faction-pantheon" data-faction="pantheon" type="button">판테온 아카데미</button><button class="faction-switch-btn faction-phantom" data-faction="phantom" type="button">팬텀 스트라이크</button><button class="faction-switch-btn faction-noblesse" data-faction="noblesse" type="button">노블레스</button><button class="faction-switch-btn faction-wolha" data-faction="wolha" type="button">월하</button><button class="faction-switch-btn faction-freelance" data-faction="freelance" type="button">프리랜서</button><button class="faction-switch-btn faction-calamity faction-hostile" data-faction="hostile" type="button">적대세력</button></div><div class="acc-group">
 <div class="acc-item faction-player faction-content-panel" data-faction-panel="player">
 <button class="acc-head">
 <span class="acc-num">PC</span>
@@ -8925,7 +8964,7 @@ body::after {
 </div>
 </div>
 </div>
-<div class="acc-item faction-freelance faction-content-panel" data-faction-panel="freelance">
+<div class="acc-item faction-freelance faction-content-panel" data-faction-panel="freelance" data-section-type="freelance-only">
 <button class="acc-head">
 <span class="acc-num">10</span>
 <span class="acc-title">프리랜서</span>
@@ -8948,10 +8987,10 @@ body::after {
 </div>
 </div>
 </div>
-<div class="acc-item faction-calamity faction-content-panel" data-faction-panel="calamity">
+<div class="acc-item faction-calamity faction-content-panel faction-hostile" data-faction-panel="hostile" data-section-type="hostile-only">
 <button class="acc-head">
 <span class="acc-num">11</span>
-<span class="acc-title">재앙</span>
+<span class="acc-title">적대세력</span>
 <span class="acc-chevron"></span>
 </button>
 <div class="acc-body">
