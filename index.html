@@ -2406,7 +2406,7 @@
 
             <div class="calamity-stack">
 
-              <!-- 에이브릴 : 초상화 | 배경 -->
+              <!-- 에이브릴 -->
               <div class="calamity-row calamity-avril">
                 <div class="calamity-person">
                   <div class="calamity-portrait">
@@ -2423,8 +2423,8 @@
                 </div>
               </div>
 
-              <!-- 노타마야 : 배경 | 초상화 -->
-              <div class="calamity-row calamity-notamaya reverse">
+              <!-- 노타마야 -->
+              <div class="calamity-row calamity-notamaya">
                 <div class="calamity-person">
                   <div class="calamity-portrait">
                     <img src="img/ch/66.png" alt="노타마야">
@@ -2440,7 +2440,7 @@
                 </div>
               </div>
 
-              <!-- 칼립사 : 초상화 | 배경 -->
+              <!-- 칼립사 -->
               <div class="calamity-row calamity-kalipsa">
                 <div class="calamity-person">
                   <div class="calamity-portrait">
@@ -2457,8 +2457,8 @@
                 </div>
               </div>
 
-              <!-- 닉스 : 배경 | 초상화 -->
-              <div class="calamity-row calamity-nyx reverse">
+              <!-- 닉스 -->
+              <div class="calamity-row calamity-nyx">
                 <div class="calamity-person">
                   <div class="calamity-portrait">
                     <img src="img/ch/68.png" alt="닉스">
@@ -3366,6 +3366,317 @@
       width: 100%;
       height: auto;
       aspect-ratio: 3 / 4;
+    }
+  }
+</style>
+
+<style>
+  /* ===== 4대 재앙: 왼쪽 초상화 / 오른쪽 배경 ===== */
+
+  .calamity-stack {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 20px;
+    margin-top: 24px;
+  }
+
+  .calamity-row {
+    display: grid;
+    grid-template-columns: 300px minmax(0, 1fr);
+    gap: 18px;
+    align-items: start;
+    padding: 18px;
+    border: 1px solid rgba(255,255,255,.10);
+    border-radius: 6px;
+    overflow: hidden;
+  }
+
+  .calamity-person {
+    width: 300px;
+  }
+
+  .calamity-portrait {
+    width: 300px;
+    height: 400px;
+    overflow: hidden;
+    border: 1px solid rgba(255,255,255,.10);
+    border-radius: 4px;
+    background: #0b0d11;
+  }
+
+  .calamity-portrait img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center top;
+    display: block;
+  }
+
+  .calamity-person-info {
+    padding: 11px 4px 0;
+    text-align: center;
+  }
+
+  .calamity-name {
+    margin-bottom: 4px;
+    font-size: 18px;
+    font-weight: 700;
+  }
+
+  .calamity-sub {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+    line-height: 1.6;
+  }
+
+  .calamity-scene {
+    width: 100%;
+    height: 400px;
+    overflow: hidden;
+    border: 1px solid rgba(255,255,255,.08);
+    border-radius: 4px;
+    background: #0b0d11;
+  }
+
+  .calamity-scene img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    display: block;
+  }
+
+  .calamity-avril {
+    border-color: rgba(158,88,69,.40);
+    background: linear-gradient(145deg,#1b100d,#0a0808);
+  }
+  .calamity-avril .calamity-name,
+  .calamity-avril .calamity-sub { color:#ce806a; }
+
+  .calamity-notamaya {
+    border-color: rgba(176,58,58,.40);
+    background: linear-gradient(145deg,#1a0b0b,#090707);
+  }
+  .calamity-notamaya .calamity-name,
+  .calamity-notamaya .calamity-sub { color:#d55c5c; }
+
+  .calamity-kalipsa {
+    border-color: rgba(62,117,153,.44);
+    background: linear-gradient(145deg,#09131b,#06090d);
+  }
+  .calamity-kalipsa .calamity-name,
+  .calamity-kalipsa .calamity-sub { color:#6eb3df; }
+
+  .calamity-nyx {
+    border-color: rgba(123,82,178,.48);
+    background:
+      radial-gradient(circle at 85% 15%,rgba(130,91,195,.12),transparent 35%),
+      linear-gradient(145deg,#120d1c,#08070b);
+  }
+  .calamity-nyx .calamity-name,
+  .calamity-nyx .calamity-sub { color:#ae87e2; }
+
+  /* 닉스 사도는 닉스 카드 아래 전체 폭 */
+  .apostle-area {
+    grid-column: 1 / -1;
+    margin-top: 2px;
+    padding-top: 16px;
+    border-top: 1px solid rgba(174,135,226,.22);
+  }
+
+  .apostle-label {
+    margin-bottom: 12px;
+    font-family:'JetBrains Mono',monospace;
+    font-size: 12px;
+    letter-spacing:.08em;
+    color:#a680db;
+  }
+
+  .apostle-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(180px, 180px));
+    gap: 14px;
+    justify-content: start;
+  }
+
+  .apostle-card {
+    width: 180px;
+  }
+
+  .apostle-card img {
+    width: 180px;
+    height: 240px;
+    object-fit: cover;
+    object-position: center top;
+    display: block;
+  }
+
+  @media (max-width: 760px) {
+    .calamity-row {
+      grid-template-columns: 1fr;
+    }
+
+    .calamity-person {
+      width: 100%;
+    }
+
+    .calamity-portrait {
+      width: 100%;
+      height: auto;
+      aspect-ratio: 3 / 4;
+    }
+
+    .calamity-scene {
+      width: 100%;
+      height: auto;
+      aspect-ratio: 16 / 9;
+    }
+
+    .apostle-grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .apostle-card {
+      width: auto;
+    }
+
+    .apostle-card img {
+      width: 100%;
+      height: auto;
+      aspect-ratio: 3 / 4;
+    }
+  }
+</style>
+
+<style>
+  /* ===== 4대 재앙 초상화 크기 완전 통일 ===== */
+
+  .calamity-row .calamity-person {
+    width: 300px !important;
+    min-width: 300px !important;
+    max-width: 300px !important;
+  }
+
+  .calamity-row .calamity-portrait {
+    width: 300px !important;
+    min-width: 300px !important;
+    max-width: 300px !important;
+
+    height: 400px !important;
+    min-height: 400px !important;
+    max-height: 400px !important;
+
+    aspect-ratio: auto !important;
+    overflow: hidden !important;
+    box-sizing: border-box !important;
+    flex: none !important;
+
+    border: 1px solid rgba(255,255,255,.10) !important;
+    border-radius: 4px !important;
+    background: #0b0d11 !important;
+  }
+
+  .calamity-row .calamity-portrait img {
+    display: block !important;
+
+    width: 300px !important;
+    min-width: 300px !important;
+    max-width: 300px !important;
+
+    height: 400px !important;
+    min-height: 400px !important;
+    max-height: 400px !important;
+
+    object-fit: cover !important;
+    object-position: center top !important;
+
+    margin: 0 !important;
+    padding: 0 !important;
+    border: 0 !important;
+    transform: none !important;
+    box-sizing: border-box !important;
+  }
+
+  /* 재앙 4명 모두 동일한 행 구조 */
+  .calamity-row {
+    grid-template-columns: 300px minmax(0, 1fr) !important;
+  }
+
+  /* 오른쪽 배경도 네 카드 모두 동일 높이 */
+  .calamity-row .calamity-scene {
+    width: 100% !important;
+    height: 400px !important;
+    min-height: 400px !important;
+    max-height: 400px !important;
+    box-sizing: border-box !important;
+  }
+
+  .calamity-row .calamity-scene img {
+    width: 100% !important;
+    height: 400px !important;
+    min-height: 400px !important;
+    max-height: 400px !important;
+    object-fit: cover !important;
+    object-position: center !important;
+    display: block !important;
+  }
+
+  /* 인적사항은 초상화 바로 아래, 네 카드 동일 폭 */
+  .calamity-row .calamity-person-info {
+    width: 300px !important;
+    box-sizing: border-box !important;
+    padding: 11px 4px 0 !important;
+    text-align: center !important;
+  }
+
+  @media (max-width: 760px) {
+    .calamity-row {
+      grid-template-columns: 1fr !important;
+    }
+
+    .calamity-row .calamity-person {
+      width: 100% !important;
+      min-width: 0 !important;
+      max-width: none !important;
+    }
+
+    .calamity-row .calamity-portrait {
+      width: 100% !important;
+      min-width: 0 !important;
+      max-width: none !important;
+
+      height: auto !important;
+      min-height: 0 !important;
+      max-height: none !important;
+
+      aspect-ratio: 3 / 4 !important;
+    }
+
+    .calamity-row .calamity-portrait img {
+      width: 100% !important;
+      min-width: 0 !important;
+      max-width: none !important;
+
+      height: 100% !important;
+      min-height: 0 !important;
+      max-height: none !important;
+    }
+
+    .calamity-row .calamity-person-info {
+      width: 100% !important;
+    }
+
+    .calamity-row .calamity-scene {
+      height: auto !important;
+      min-height: 0 !important;
+      max-height: none !important;
+      aspect-ratio: 3 / 4 !important;
+    }
+
+    .calamity-row .calamity-scene img {
+      height: 100% !important;
+      min-height: 0 !important;
+      max-height: none !important;
     }
   }
 </style>
