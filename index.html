@@ -22878,6 +22878,488 @@ document.addEventListener('DOMContentLoaded',function(){
 }
 </style>
 
+
+<style id="tengugong-image-hover-only-v21">
+/* =========================================================
+   천귀궁 V21
+   배경 이미지는 'place-image 자체'에 마우스를 올렸을 때만 반응.
+   천귀궁 박스 / 설명 / 노타마야 카드 hover로는 이미지가 변하지 않음.
+   ========================================================= */
+
+/* 이전 박스 전체 hover 규칙 무효화 */
+#tab-char .faction-hostile .tengugong-card:hover > .place-image img{
+  transform:none !important;
+  filter:saturate(.82) brightness(.86) contrast(1.04) hue-rotate(-4deg) !important;
+}
+
+/* 이미지 영역에 직접 hover 했을 때만 반응 */
+#tab-char .faction-hostile .tengugong-card > .place-image:hover img{
+  transform:scale(1.016) !important;
+  filter:saturate(.90) brightness(.91) contrast(1.04) hue-rotate(-4deg) !important;
+}
+
+/* 움직이는 전경 안개가 이미지 위에 있어도 hover 판정을 막지 않음 */
+#tab-char .faction-hostile .tengugong-card > .tengugong-mist-v12,
+#tab-char .faction-hostile .tengugong-card > .tengugong-fixed-mist-v17{
+  pointer-events:none !important;
+}
+</style>
+
+
+<style id="sunken-throne-animation-v22">
+/* =========================================================
+   선큰 스론 — 애니메이션만
+   디자인/테두리/카드 색상은 건드리지 않음.
+   심해 + 강한 수압 느낌의 오버레이만 추가.
+   ========================================================= */
+
+#tab-char .faction-hostile .sunken-throne-card{
+  position:relative !important;
+  overflow:hidden !important;
+  isolation:isolate !important;
+}
+
+/* 전체 애니메이션 레이어 */
+#tab-char .faction-hostile .sunken-throne-card > .sunken-pressure-layer{
+  position:absolute !important;
+  inset:0 !important;
+  z-index:90 !important;
+  overflow:hidden !important;
+  pointer-events:none !important;
+}
+
+/* 심해의 푸른 암부 */
+#tab-char .faction-hostile .sunken-throne-card > .sunken-pressure-layer::before{
+  content:"" !important;
+  position:absolute !important;
+  inset:-8% !important;
+  pointer-events:none !important;
+  background:
+    radial-gradient(
+      ellipse at 50% 44%,
+      rgba(10,61,83,.08) 0%,
+      rgba(3,27,39,.11) 42%,
+      rgba(1,10,17,.24) 72%,
+      rgba(0,4,8,.34) 100%
+    ) !important;
+  animation:sunkenDepthBreath 8s ease-in-out infinite !important;
+}
+
+/* 좌우에서 중앙으로 압력이 조여드는 암부 */
+#tab-char .faction-hostile .sunken-throne-card > .sunken-pressure-layer::after{
+  content:"" !important;
+  position:absolute !important;
+  inset:0 !important;
+  pointer-events:none !important;
+  background:
+    linear-gradient(
+      90deg,
+      rgba(0,6,12,.38) 0%,
+      rgba(0,12,20,.14) 18%,
+      transparent 37%,
+      transparent 63%,
+      rgba(0,12,20,.14) 82%,
+      rgba(0,6,12,.38) 100%
+    ) !important;
+  opacity:.55 !important;
+  animation:sunkenPressureSqueeze 5.8s ease-in-out infinite !important;
+}
+
+@keyframes sunkenDepthBreath{
+  0%,100%{
+    transform:scale(1);
+    opacity:.72;
+  }
+  50%{
+    transform:scale(1.045);
+    opacity:1;
+  }
+}
+
+@keyframes sunkenPressureSqueeze{
+  0%,100%{
+    transform:scaleX(1);
+    opacity:.40;
+  }
+  50%{
+    transform:scaleX(.78);
+    opacity:.78;
+  }
+}
+
+/* 수압 파동 */
+#tab-char .faction-hostile .sunken-throne-card .pressure-wave{
+  position:absolute !important;
+  left:50% !important;
+  top:50% !important;
+  width:42% !important;
+  height:42% !important;
+  border-radius:50% !important;
+  border:1px solid rgba(79,166,193,.12) !important;
+  box-shadow:
+    0 0 20px rgba(47,121,150,.06),
+    inset 0 0 20px rgba(47,121,150,.04) !important;
+  opacity:0;
+  pointer-events:none !important;
+  will-change:transform,opacity !important;
+}
+
+/* 심해 부유 입자 */
+#tab-char .faction-hostile .sunken-throne-card .deep-particle{
+  position:absolute !important;
+  left:0 !important;
+  top:0 !important;
+  display:block !important;
+  border-radius:50% !important;
+  background:rgba(120,188,209,.32) !important;
+  box-shadow:0 0 5px rgba(91,160,185,.18) !important;
+  opacity:0;
+  pointer-events:none !important;
+  will-change:transform,opacity !important;
+}
+
+/* 텍스트/캐릭터보다 시각효과가 너무 앞에 튀지 않게 */
+#tab-char .faction-hostile .sunken-throne-card > .place-info{
+  position:relative !important;
+  z-index:100 !important;
+}
+</style>
+
+
+<style id="sunken-throne-v23-bubbles">
+/* =========================================================
+   선큰스론 V23 — 애니메이션만 수정
+   - 좌우에서 조여드는 암부 제거
+   - 중앙 압력파 유지
+   - 아래에서 빠르게 올라오는 지그재그 기포 추가
+   ========================================================= */
+
+/* 좌우 압박 애니메이션 완전 제거 */
+#tab-char .faction-hostile .sunken-throne-card > .sunken-pressure-layer::after{
+  content:none !important;
+  display:none !important;
+  animation:none !important;
+}
+
+/* 심해 암부는 유지하되 조이는 움직임 없이 느린 깊이감만 */
+#tab-char .faction-hostile .sunken-throne-card > .sunken-pressure-layer::before{
+  background:
+    radial-gradient(
+      ellipse at 50% 28%,
+      rgba(16,80,105,.10) 0%,
+      rgba(5,42,61,.14) 32%,
+      rgba(2,23,36,.24) 62%,
+      rgba(0,7,13,.42) 100%
+    ) !important;
+  animation:sunkenDepthV23 9s ease-in-out infinite !important;
+}
+
+@keyframes sunkenDepthV23{
+  0%,100%{opacity:.74;}
+  50%{opacity:1;}
+}
+
+/* 기포 */
+#tab-char .faction-hostile .sunken-throne-card .deep-bubble-v23{
+  position:absolute !important;
+  left:0 !important;
+  top:0 !important;
+  display:block !important;
+  border-radius:50% !important;
+  pointer-events:none !important;
+  opacity:0;
+
+  background:
+    radial-gradient(circle at 32% 27%,
+      rgba(214,246,255,.58) 0 8%,
+      rgba(112,204,232,.20) 18%,
+      rgba(22,109,143,.08) 42%,
+      rgba(2,35,51,.05) 67%,
+      transparent 72%) !important;
+
+  border:1px solid rgba(132,218,242,.38) !important;
+
+  box-shadow:
+    inset 1px 1px 3px rgba(224,249,255,.26),
+    inset -2px -3px 5px rgba(4,50,70,.18),
+    0 0 5px rgba(76,178,211,.14) !important;
+
+  will-change:transform,opacity !important;
+}
+
+/* 작은 기포는 더 선명 */
+#tab-char .faction-hostile .sunken-throne-card .deep-bubble-v23.small{
+  border-color:rgba(151,226,246,.46) !important;
+}
+
+/* 기존 부유 입자는 아주 약하게만 남김 */
+#tab-char .faction-hostile .sunken-throne-card .deep-particle{
+  opacity:0 !important;
+}
+</style>
+
+
+<style id="sunken-throne-complete-v24">
+/* =========================================================
+   선큰스론 V24
+   - 압력파 조금 더 선명하게
+   - 선큰스론 박스 디자인
+   - 칼립사 카드/상세 Hover를 동일한 심해 청록 계열로 통일
+   ========================================================= */
+
+/* ---------- 압력파 선명도 ---------- */
+#tab-char .faction-hostile .sunken-throne-card .pressure-wave{
+  border:1px solid rgba(104,211,239,.29) !important;
+  box-shadow:
+    0 0 13px rgba(66,171,205,.18),
+    0 0 28px rgba(35,121,157,.10),
+    inset 0 0 17px rgba(88,191,221,.09) !important;
+}
+
+/* ---------- 선큰스론 큰 박스 ---------- */
+#tab-char .faction-hostile .sunken-throne-card{
+  position:relative !important;
+  overflow:hidden !important;
+  isolation:isolate !important;
+  border:1px solid rgba(53,126,151,.42) !important;
+  border-radius:5px !important;
+  background:
+    radial-gradient(ellipse at 50% 112%,rgba(10,78,101,.14),transparent 42%),
+    linear-gradient(145deg,#07141b 0%,#061018 56%,#03090e 100%) !important;
+  box-shadow:
+    inset 0 0 0 1px rgba(119,207,232,.018),
+    inset 0 0 38px rgba(5,56,76,.07) !important;
+}
+
+/* 얇은 수면/심해선 */
+#tab-char .faction-hostile .sunken-throne-card::before{
+  content:"" !important;
+  display:block !important;
+  position:absolute !important;
+  z-index:105 !important;
+  left:15px !important;
+  right:15px !important;
+  top:9px !important;
+  height:1px !important;
+  pointer-events:none !important;
+  background:
+    linear-gradient(
+      90deg,
+      transparent,
+      rgba(75,169,198,.17) 16%,
+      rgba(121,218,241,.32) 50%,
+      rgba(65,151,181,.15) 84%,
+      transparent
+    ) !important;
+  box-shadow:0 0 8px rgba(68,161,192,.09) !important;
+}
+
+/* 불필요한 추가 장식은 없음 */
+#tab-char .faction-hostile .sunken-throne-card::after{
+  content:none !important;
+  display:none !important;
+}
+
+/* 배경 이미지 */
+#tab-char .faction-hostile .sunken-throne-card > .place-image{
+  position:relative !important;
+  z-index:1 !important;
+  overflow:hidden !important;
+  background:#031019 !important;
+  border-bottom:1px solid rgba(49,118,142,.25) !important;
+}
+
+#tab-char .faction-hostile .sunken-throne-card > .place-image img{
+  filter:saturate(.78) brightness(.76) contrast(1.09) hue-rotate(5deg) !important;
+  transition:transform .38s ease,filter .38s ease !important;
+}
+
+/* 박스 전체가 아니라 배경 이미지 자체에 hover 했을 때만 반응 */
+#tab-char .faction-hostile .sunken-throne-card:hover > .place-image img{
+  transform:none !important;
+  filter:saturate(.78) brightness(.76) contrast(1.09) hue-rotate(5deg) !important;
+}
+#tab-char .faction-hostile .sunken-throne-card > .place-image:hover img{
+  transform:scale(1.018) !important;
+  filter:saturate(.86) brightness(.82) contrast(1.10) hue-rotate(5deg) !important;
+}
+
+/* 이미지 아래쪽 심해 암부 */
+#tab-char .faction-hostile .sunken-throne-card > .place-image::after{
+  content:"" !important;
+  position:absolute !important;
+  inset:auto 0 0 0 !important;
+  height:42% !important;
+  pointer-events:none !important;
+  background:
+    linear-gradient(180deg,transparent,rgba(1,17,26,.31)) !important;
+}
+
+/* 정보 영역 */
+#tab-char .faction-hostile .sunken-throne-card > .place-info{
+  position:relative !important;
+  z-index:100 !important;
+  background:
+    linear-gradient(180deg,rgba(8,28,37,.76),rgba(3,12,18,.91)) !important;
+}
+
+#tab-char .faction-hostile .sunken-throne-card .place-title{
+  color:#bfd4da !important;
+  text-shadow:0 0 8px rgba(71,164,193,.08) !important;
+}
+
+#tab-char .faction-hostile .sunken-throne-card .place-desc{
+  color:#8099a1 !important;
+}
+
+/* ---------- 칼립사 카드 ---------- */
+#tab-char .faction-hostile .sunken-throne-card .char-card{
+  position:relative !important;
+  overflow:hidden !important;
+  border:1px solid rgba(50,125,149,.34) !important;
+  border-radius:4px !important;
+  background:
+    radial-gradient(circle at 88% 8%,rgba(61,154,183,.08),transparent 25%),
+    linear-gradient(150deg,#091a22,#041017 72%) !important;
+  box-shadow:inset 0 0 0 1px rgba(122,210,233,.014) !important;
+  transition:transform .22s ease,border-color .22s ease,filter .22s ease,box-shadow .22s ease !important;
+}
+
+#tab-char .faction-hostile .sunken-throne-card .char-card::before{
+  content:"" !important;
+  position:absolute !important;
+  z-index:6 !important;
+  left:10px !important;
+  right:10px !important;
+  top:7px !important;
+  height:1px !important;
+  pointer-events:none !important;
+  background:
+    linear-gradient(90deg,transparent,rgba(90,183,210,.29),transparent) !important;
+}
+
+#tab-char .faction-hostile .sunken-throne-card .char-card::after{
+  content:"" !important;
+  position:absolute !important;
+  z-index:6 !important;
+  right:9px !important;
+  bottom:9px !important;
+  width:7px !important;
+  height:7px !important;
+  border-radius:50% !important;
+  pointer-events:none !important;
+  background:rgba(16,75,95,.40) !important;
+  border:1px solid rgba(93,184,210,.28) !important;
+  box-shadow:0 0 7px rgba(61,150,180,.11) !important;
+}
+
+#tab-char .faction-hostile .sunken-throne-card .char-card:hover{
+  transform:translateY(-2px) !important;
+  filter:brightness(1.035) !important;
+  border-color:rgba(73,158,183,.50) !important;
+  box-shadow:0 8px 18px rgba(0,0,0,.24) !important;
+}
+
+#tab-char .faction-hostile .sunken-throne-card .char-portrait{
+  background:#041017 !important;
+  border-color:rgba(49,119,142,.30) !important;
+}
+
+#tab-char .faction-hostile .sunken-throne-card .char-name{
+  color:#c0d3d8 !important;
+}
+
+#tab-char .faction-hostile .sunken-throne-card .char-role{
+  color:#78929a !important;
+}
+
+/* =========================================================
+   칼립사 상세 Hover
+   ========================================================= */
+.character-hover-detail.calamity-calypso{
+  overflow:hidden !important;
+  background:
+    radial-gradient(ellipse at 50% 108%,rgba(10,75,97,.11),transparent 36%),
+    linear-gradient(145deg,#081922,#030b10 74%) !important;
+  border:1px solid rgba(53,127,151,.42) !important;
+  border-radius:5px !important;
+  box-shadow:
+    inset 0 0 0 1px rgba(122,211,235,.015),
+    inset 0 0 38px rgba(5,57,77,.05),
+    0 18px 44px rgba(0,0,0,.48) !important;
+}
+
+/* 상세 상단 얇은 심해선 */
+.character-hover-detail.calamity-calypso::before{
+  content:"" !important;
+  display:block !important;
+  position:absolute !important;
+  z-index:22 !important;
+  left:10px !important;
+  right:10px !important;
+  top:8px !important;
+  height:1px !important;
+  pointer-events:none !important;
+  background:
+    linear-gradient(90deg,transparent,rgba(95,190,216,.31),transparent) !important;
+  box-shadow:0 0 7px rgba(55,144,174,.08) !important;
+}
+
+/* 공통 스타일의 문자/추가 장식 제거 */
+.character-hover-detail.calamity-calypso::after{
+  content:none !important;
+  display:none !important;
+}
+
+/* 상세 일러스트 */
+.character-hover-detail.calamity-calypso .character-detail-art{
+  position:relative !important;
+  background:#031019 !important;
+  border-bottom:1px solid rgba(48,117,140,.25) !important;
+}
+
+.character-hover-detail.calamity-calypso .character-detail-art img{
+  filter:saturate(.88) brightness(.92) contrast(1.03) hue-rotate(3deg) !important;
+}
+
+/* 일러스트를 덮는 반투명 사각형/그라데이션은 넣지 않음 */
+.character-hover-detail.calamity-calypso .character-detail-art::before,
+.character-hover-detail.calamity-calypso .character-detail-art::after{
+  content:none !important;
+  display:none !important;
+  background:none !important;
+}
+
+/* 상세 텍스트 */
+.character-hover-detail.calamity-calypso .character-detail-name{
+  color:#c8d9dd !important;
+}
+.character-hover-detail.calamity-calypso .character-detail-role{
+  color:#829ba3 !important;
+}
+.character-hover-detail.calamity-calypso .character-detail-profile{
+  color:#8ba1a8 !important;
+}
+.character-hover-detail.calamity-calypso .character-detail-code{
+  color:#6e919d !important;
+}
+
+.character-hover-detail.calamity-calypso .character-detail-ability{
+  background:
+    linear-gradient(145deg,rgba(18,65,80,.14),rgba(5,22,29,.18)) !important;
+  border:1px solid rgba(50,120,143,.25) !important;
+}
+
+.character-hover-detail.calamity-calypso .character-detail-ability strong{
+  color:#9fc1ca !important;
+}
+
+.character-hover-detail.calamity-calypso .character-detail-quote{
+  color:#91a9b0 !important;
+  border-color:rgba(48,113,135,.22) !important;
+}
+</style>
+
 </head>
 <body><div aria-hidden="true" class="shooting-stars"><span class="shooting-star star-a"></span><span class="shooting-star star-b"></span><span class="shooting-star star-c"></span></div>
 <section class="hero">
@@ -26074,6 +26556,271 @@ document.addEventListener('DOMContentLoaded', () => {
     fixedMist.className = 'tengugong-fixed-mist-v17';
     fixedMist.setAttribute('aria-hidden','true');
     card.appendChild(fixedMist);
+  }
+})();
+</script>
+
+
+<script id="sunken-throne-animation-v22-runtime">
+(function(){
+  var card = null;
+
+  document.querySelectorAll(
+    '#tab-char .faction-hostile .calamity-place-card-unified'
+  ).forEach(function(el){
+    var title = el.querySelector('.place-title');
+    if(title && title.textContent.indexOf('선큰스론') !== -1){
+      card = el;
+    }
+  });
+
+  if(!card) return;
+  card.classList.add('sunken-throne-card');
+
+  if(card.querySelector('.sunken-pressure-layer')) return;
+
+  var layer = document.createElement('div');
+  layer.className = 'sunken-pressure-layer';
+  layer.setAttribute('aria-hidden','true');
+
+  /* 서로 다른 주기의 수압 파동 */
+  var waves = [];
+  for(var i=0;i<5;i++){
+    var w = document.createElement('i');
+    w.className = 'pressure-wave';
+    layer.appendChild(w);
+    waves.push({
+      el:w,
+      phase:i/5,
+      speed:0.030 + i*0.003
+    });
+  }
+
+  /* 심해 부유 입자 */
+  var particles = [];
+  for(var j=0;j<24;j++){
+    var p = document.createElement('i');
+    p.className = 'deep-particle';
+    layer.appendChild(p);
+
+    var size = 1 + Math.random()*3.2;
+    p.style.width = size+'px';
+    p.style.height = size+'px';
+
+    particles.push({
+      el:p,
+      x:Math.random(),
+      y:Math.random(),
+      size:size,
+      speed:4 + Math.random()*9,
+      drift:5 + Math.random()*16,
+      alpha:.12 + Math.random()*.32,
+      phase:Math.random()*Math.PI*2
+    });
+  }
+
+  card.insertBefore(layer,card.firstChild);
+
+  var start = performance.now();
+  var last = start;
+
+  function animate(now){
+    var dt = Math.min((now-last)/1000,.05);
+    last = now;
+
+    var W = layer.clientWidth;
+    var H = layer.clientHeight;
+    var sec = (now-start)/1000;
+
+    if(W>0 && H>0){
+      waves.forEach(function(o,i){
+        o.phase = (o.phase + o.speed*dt) % 1;
+
+        /* 중앙에서 압축되었다가 바깥으로 밀려나는 압력파 */
+        var p = o.phase;
+        var scale = .28 + p*2.25;
+
+        var fadeIn = Math.min(1,p/.16);
+        var fadeOut = Math.min(1,(1-p)/.28);
+        var opacity = .34*Math.min(fadeIn,fadeOut);
+
+        o.el.style.transform =
+          'translate(-50%,-50%) scale('+scale.toFixed(3)+')';
+        o.el.style.opacity = opacity.toFixed(3);
+      });
+
+      particles.forEach(function(o,i){
+        /* 아주 느리게 위로 뜨되 좌우 압력 흐름에 흔들림 */
+        o.y -= (o.speed*dt)/H;
+        if(o.y < -.04){
+          o.y = 1.04;
+          o.x = Math.random();
+        }
+
+        var sway =
+          Math.sin(sec*.45 + o.phase + i*.27) * o.drift;
+
+        var x = W*o.x + sway;
+        var y = H*o.y;
+
+        /* 수압 박동에 따라 입자도 순간적으로 약간 어두워짐 */
+        var pulse = .68 + .32*(.5 + .5*Math.sin(sec*1.08 + i*.6));
+        var opacity = o.alpha*pulse;
+
+        o.el.style.transform =
+          'translate3d('+x.toFixed(1)+'px,'+y.toFixed(1)+'px,0)';
+        o.el.style.opacity = opacity.toFixed(3);
+      });
+    }
+
+    requestAnimationFrame(animate);
+  }
+
+  requestAnimationFrame(animate);
+})();
+</script>
+
+
+<script id="sunken-throne-v23-bubbles-runtime">
+(function(){
+  var card = null;
+
+  document.querySelectorAll(
+    '#tab-char .faction-hostile .calamity-place-card-unified'
+  ).forEach(function(el){
+    var title = el.querySelector('.place-title');
+    if(title && title.textContent.indexOf('선큰스론') !== -1){
+      card = el;
+    }
+  });
+
+  if(!card) return;
+
+  var layer = card.querySelector('.sunken-pressure-layer');
+  if(!layer) return;
+
+  if(layer.dataset.bubblesV23 === '1') return;
+  layer.dataset.bubblesV23 = '1';
+
+  /* 아래에서 계속 뽀글뽀글 올라오는 기포 */
+  var COUNT = 34;
+  var bubbles = [];
+
+  for(var i=0;i<COUNT;i++){
+    var el = document.createElement('i');
+    el.className = 'deep-bubble-v23';
+
+    var size;
+    var r = Math.random();
+
+    if(r < .55){
+      size = 3 + Math.random()*5;
+      el.classList.add('small');
+    }else if(r < .88){
+      size = 8 + Math.random()*8;
+    }else{
+      size = 17 + Math.random()*12;
+    }
+
+    el.style.width = size+'px';
+    el.style.height = size+'px';
+    layer.appendChild(el);
+
+    bubbles.push({
+      el:el,
+      size:size,
+      x:.03 + Math.random()*.94,
+      y:Math.random(),
+      speed:62 + Math.random()*105,
+      zig:7 + Math.random()*24,
+      zigSpeed:1.7 + Math.random()*3.4,
+      phase:Math.random()*Math.PI*2,
+      alpha:.32 + Math.random()*.48
+    });
+  }
+
+  var last = performance.now();
+
+  function animateBubbles(now){
+    var dt = Math.min((now-last)/1000,.05);
+    last = now;
+
+    var W = layer.clientWidth;
+    var H = layer.clientHeight;
+
+    if(W>0 && H>0){
+      bubbles.forEach(function(b,i){
+        /* 빠르게 위로 상승 */
+        b.y -= (b.speed*dt)/H;
+
+        /* 천장 위로 빠져나가면 다시 바닥 아래에서 생성 */
+        if(b.y < -(b.size+12)/H){
+          b.y = 1 + Math.random()*.10;
+          b.x = .03 + Math.random()*.94;
+          b.speed = 62 + Math.random()*105;
+          b.zig = 7 + Math.random()*24;
+          b.zigSpeed = 1.7 + Math.random()*3.4;
+        }
+
+        var verticalProgress = 1 - b.y;
+
+        /* 지그재그 + 작은 2차 흔들림 */
+        var zig1 =
+          Math.sin(verticalProgress*Math.PI*7*b.zigSpeed + b.phase)
+          * b.zig;
+
+        var zig2 =
+          Math.sin(verticalProgress*Math.PI*17 + i*.73)
+          * (b.zig*.22);
+
+        var x = W*b.x + zig1 + zig2 - b.size/2;
+        var y = H*b.y;
+
+        /* 아래에서 나타나고 위에서 살짝 사라짐 */
+        var bottomFade = Math.min(1,(1.08-b.y)/.12);
+        var topFade = Math.min(1,(b.y+.08)/.12);
+        var opacity = b.alpha*Math.max(0,Math.min(bottomFade,topFade));
+
+        /* 위로 갈수록 아주 조금 커짐 */
+        var scale = .78 + Math.max(0,verticalProgress)*.30;
+
+        b.el.style.transform =
+          'translate3d('+x.toFixed(1)+'px,'+y.toFixed(1)+'px,0) '+
+          'scale('+scale.toFixed(3)+')';
+
+        b.el.style.opacity = opacity.toFixed(3);
+      });
+    }
+
+    requestAnimationFrame(animateBubbles);
+  }
+
+  requestAnimationFrame(animateBubbles);
+})();
+</script>
+
+
+<script id="sunken-throne-calypso-v24-runtime">
+(function(){
+  /* 칼립사 상세 Hover만 정확히 식별해 class 부착 */
+  var found = false;
+
+  document.querySelectorAll('.character-hover-detail').forEach(function(el){
+    var name = el.querySelector('.character-detail-name');
+
+    if(name && name.textContent.indexOf('칼립사') !== -1){
+      el.classList.add('calamity-calypso');
+      found = true;
+    }
+  });
+
+  /* data 속성이 있는 구조도 대응 */
+  if(!found){
+    var el = document.querySelector(
+      '.character-hover-detail[data-character-detail="calypso"],' +
+      '.character-hover-detail[data-character="calypso"]'
+    );
+    if(el) el.classList.add('calamity-calypso');
   }
 })();
 </script>
