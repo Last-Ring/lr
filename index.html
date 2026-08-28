@@ -11299,6 +11299,66 @@ body::after {
 }
 </style>
 
+
+<style id="mobile-character-grid-two-columns">
+/* =========================================================
+   MOBILE CHARACTER LIST — minimum 2 columns
+   ========================================================= */
+@media (max-width:560px){
+  #tab-char .char-grid,
+  #tab-char .place-characters.char-grid,
+  #tab-char .faction-hostile .calamity-row .place-characters.char-grid{
+    grid-template-columns:repeat(2,minmax(0,1fr)) !important;
+    gap:10px !important;
+    justify-content:stretch !important;
+  }
+
+  #tab-char .char-card,
+  #tab-char .place-characters .char-card,
+  #tab-char .faction-hostile .calamity-row .char-card{
+    width:100% !important;
+    min-width:0 !important;
+    max-width:none !important;
+  }
+
+  #tab-char .char-portrait,
+  #tab-char .place-characters .char-portrait,
+  #tab-char .faction-hostile .calamity-row .char-portrait{
+    width:100% !important;
+    min-width:0 !important;
+    max-width:none !important;
+    height:auto !important;
+    min-height:0 !important;
+    max-height:none !important;
+    aspect-ratio:3/4 !important;
+  }
+
+  #tab-char .char-portrait img,
+  #tab-char .place-characters .char-portrait img,
+  #tab-char .faction-hostile .calamity-row .char-portrait img{
+    width:100% !important;
+    min-width:0 !important;
+    max-width:none !important;
+    height:100% !important;
+    min-height:0 !important;
+    max-height:none !important;
+    aspect-ratio:auto !important;
+    object-fit:cover !important;
+    object-position:center top !important;
+  }
+
+  #tab-char .char-name{
+    font-size:15px !important;
+  }
+
+  #tab-char .char-role{
+    font-size:12px !important;
+    line-height:1.45 !important;
+    white-space:normal !important;
+  }
+}
+</style>
+
 </head>
 <body><div aria-hidden="true" class="shooting-stars"><span class="shooting-star star-a"></span><span class="shooting-star star-b"></span><span class="shooting-star star-c"></span></div>
 <section class="hero">
