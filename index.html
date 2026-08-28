@@ -13175,6 +13175,771 @@ body::after {
 }
 </style>
 
+
+<style id="luminaris-sun-v1">
+/* =========================================================
+   LUMINARIS HOLY EMPIRE — SUN THEME V1
+   버튼 중심 디자인
+   태양 원반 + 얇은 광선 + 황금빛 열감
+   ========================================================= */
+
+#tab-char .faction-switch-btn[data-faction="luminaris"]{
+  position:relative;
+  isolation:isolate;
+  overflow:hidden;
+
+  color:#f6d98f !important;
+
+  background:
+    radial-gradient(circle at 84% 50%,
+      rgba(255,206,92,.12) 0 12%,
+      rgba(255,183,55,.045) 23%,
+      transparent 42%),
+    linear-gradient(135deg,#1a1208 0%,#241707 48%,#100b06 100%) !important;
+
+  border:1px solid rgba(224,167,67,.52) !important;
+  border-radius:12px !important;
+
+  box-shadow:
+    inset 0 1px 0 rgba(255,229,163,.055),
+    inset 0 0 30px rgba(201,126,28,.04),
+    0 7px 22px rgba(0,0,0,.22) !important;
+
+  text-shadow:
+    0 1px 3px #000,
+    0 0 10px rgba(229,170,65,.18);
+
+  transition:
+    transform .22s ease,
+    border-color .22s ease,
+    box-shadow .22s ease,
+    filter .22s ease !important;
+}
+
+/* 태양 원반 */
+#tab-char .faction-switch-btn[data-faction="luminaris"]::before{
+  content:"";
+  position:absolute;
+  z-index:1;
+  right:14px;
+  top:50%;
+  width:52px;
+  height:52px;
+  transform:translateY(-50%);
+  border-radius:50%;
+  pointer-events:none;
+
+  background:
+    radial-gradient(circle,
+      rgba(255,231,153,.92) 0 15%,
+      rgba(255,200,84,.74) 16% 32%,
+      rgba(226,145,34,.38) 33% 47%,
+      rgba(151,86,17,.12) 48% 58%,
+      transparent 59%);
+
+  box-shadow:
+    0 0 8px rgba(244,187,78,.18),
+    0 0 18px rgba(213,133,31,.10);
+
+  opacity:.9;
+}
+
+/* 얇은 회전 광선 */
+#tab-char .faction-switch-btn[data-faction="luminaris"]::after{
+  content:"";
+  position:absolute;
+  z-index:2;
+  right:4px;
+  top:50%;
+  width:72px;
+  height:72px;
+  transform:translateY(-50%);
+  border-radius:50%;
+  pointer-events:none;
+
+  background:
+    repeating-conic-gradient(
+      from 0deg,
+      rgba(255,214,120,0) 0deg 13deg,
+      rgba(255,203,92,.13) 14deg 15deg,
+      rgba(255,214,120,0) 16deg 29deg
+    );
+
+  -webkit-mask:radial-gradient(circle,transparent 0 32%,#000 34% 100%);
+  mask:radial-gradient(circle,transparent 0 32%,#000 34% 100%);
+
+  opacity:.55;
+  filter:drop-shadow(0 0 3px rgba(232,167,62,.16));
+  animation:lrLuminarisSunRays 16s linear infinite;
+}
+
+#tab-char .faction-switch-btn[data-faction="luminaris"] > *{
+  position:relative;
+  z-index:5;
+}
+
+#tab-char .faction-switch-btn[data-faction="luminaris"]:hover{
+  transform:translateY(-2px) !important;
+  filter:brightness(1.06);
+
+  border-color:rgba(244,190,85,.76) !important;
+
+  box-shadow:
+    inset 0 1px 0 rgba(255,233,178,.08),
+    inset 0 0 31px rgba(205,130,30,.065),
+    0 0 15px rgba(216,147,45,.08),
+    0 8px 25px rgba(0,0,0,.30) !important;
+}
+
+#tab-char .faction-switch-btn[data-faction="luminaris"].active{
+  color:#ffe3a1 !important;
+  border-color:rgba(247,194,91,.82) !important;
+
+  box-shadow:
+    inset 0 1px 0 rgba(255,236,188,.09),
+    inset 0 0 33px rgba(208,133,31,.08),
+    0 0 17px rgba(216,146,43,.10) !important;
+}
+
+/* 아주 약한 열감 호흡 */
+#tab-char .faction-switch-btn[data-faction="luminaris"]::before{
+  animation:lrLuminarisSunCore 4.8s ease-in-out infinite;
+}
+
+@keyframes lrLuminarisSunRays{
+  from{transform:translateY(-50%) rotate(0deg)}
+  to{transform:translateY(-50%) rotate(360deg)}
+}
+
+@keyframes lrLuminarisSunCore{
+  0%,100%{
+    opacity:.78;
+    filter:brightness(.96);
+  }
+  50%{
+    opacity:1;
+    filter:brightness(1.08);
+  }
+}
+
+@media(prefers-reduced-motion:reduce){
+  #tab-char .faction-switch-btn[data-faction="luminaris"]::before,
+  #tab-char .faction-switch-btn[data-faction="luminaris"]::after{
+    animation:none !important;
+  }
+}
+</style>
+
+
+<style id="luminaris-sun-v2-readable">
+/* 루미나리스 V2 — 태양 장식이 글자를 침범하지 않도록 오른쪽으로 축소/이동 */
+
+#tab-char .faction-switch-btn[data-faction="luminaris"]{
+  color:#f8dea0 !important;
+  padding-right:62px !important;
+  text-shadow:
+    0 1px 2px rgba(0,0,0,.95),
+    0 0 7px rgba(223,163,56,.16) !important;
+}
+
+/* 태양 중심을 더 작게 하고 오른쪽 끝에 고정 */
+#tab-char .faction-switch-btn[data-faction="luminaris"]::before{
+  right:10px !important;
+  width:36px !important;
+  height:36px !important;
+  background:
+    radial-gradient(circle,
+      rgba(255,224,135,.82) 0 13%,
+      rgba(244,181,67,.62) 14% 29%,
+      rgba(207,125,25,.30) 30% 44%,
+      rgba(139,75,13,.08) 45% 56%,
+      transparent 57%) !important;
+  box-shadow:
+    0 0 6px rgba(235,168,57,.13),
+    0 0 12px rgba(202,122,25,.07) !important;
+}
+
+/* 광선도 오른쪽 장식 영역 안에서만 회전 */
+#tab-char .faction-switch-btn[data-faction="luminaris"]::after{
+  right:2px !important;
+  width:52px !important;
+  height:52px !important;
+  opacity:.42 !important;
+  background:
+    repeating-conic-gradient(
+      from 0deg,
+      rgba(238,174,62,0) 0deg 17deg,
+      rgba(238,174,62,.11) 18deg 19deg,
+      rgba(238,174,62,0) 20deg 35deg
+    ) !important;
+  -webkit-mask:radial-gradient(circle,transparent 0 31%,#000 34% 100%) !important;
+  mask:radial-gradient(circle,transparent 0 31%,#000 34% 100%) !important;
+}
+
+/* 실제 텍스트 레이어를 태양보다 위로 */
+#tab-char .faction-switch-btn[data-faction="luminaris"] > *{
+  position:relative !important;
+  z-index:8 !important;
+}
+
+/* 버튼이 단순 텍스트 노드인 경우에도 왼쪽 영역을 어둡게 확보 */
+#tab-char .faction-switch-btn[data-faction="luminaris"]{
+  background:
+    linear-gradient(90deg,
+      rgba(16,10,5,.96) 0%,
+      rgba(27,17,7,.94) 64%,
+      rgba(48,29,7,.80) 82%,
+      rgba(30,18,5,.92) 100%) !important;
+}
+</style>
+
+
+<style id="luminaris-sun-v3-arch">
+/* =========================================================
+   LUMINARIS V3 — ARCH SUN
+   태양을 별도 아이콘처럼 떼어놓지 않고
+   버튼 자체의 아치형 성광 구조에 통합
+   ========================================================= */
+
+#tab-char .faction-switch-btn[data-faction="luminaris"]{
+  position:relative;
+  overflow:hidden;
+  padding-right:14px !important;
+
+  color:#f4d891 !important;
+
+  /* 태양광이 버튼 내부 배경에서 자연스럽게 퍼짐 */
+  background:
+    radial-gradient(ellipse at 50% 118%,
+      rgba(238,174,61,.18) 0%,
+      rgba(206,132,31,.085) 28%,
+      transparent 57%),
+    linear-gradient(180deg,#211607 0%,#171006 58%,#100b06 100%) !important;
+
+  border:1px solid rgba(218,158,57,.52) !important;
+
+  /* 상단이 둥근 성당/성소 아치 실루엣 */
+  border-radius:42px 42px 10px 10px !important;
+
+  box-shadow:
+    inset 0 1px 0 rgba(255,226,154,.07),
+    inset 0 -1px 0 rgba(91,49,7,.50),
+    inset 0 0 22px rgba(194,117,22,.035),
+    0 7px 22px rgba(0,0,0,.22) !important;
+
+  text-shadow:
+    0 1px 2px rgba(0,0,0,.95),
+    0 0 8px rgba(220,158,49,.18) !important;
+}
+
+/* 기존 오른쪽 원형 태양 삭제.
+   버튼 아래 중앙에서 올라오는 '반원형 태양'으로 버튼에 붙임 */
+#tab-char .faction-switch-btn[data-faction="luminaris"]::before{
+  content:"";
+  position:absolute;
+  z-index:1;
+
+  left:50% !important;
+  right:auto !important;
+  top:auto !important;
+  bottom:-27px !important;
+
+  width:72px !important;
+  height:72px !important;
+
+  transform:translateX(-50%) !important;
+  border-radius:50% !important;
+
+  background:
+    radial-gradient(circle,
+      rgba(255,221,126,.54) 0 16%,
+      rgba(235,169,56,.30) 17% 34%,
+      rgba(196,115,20,.13) 35% 50%,
+      rgba(157,83,10,.04) 51% 61%,
+      transparent 62%) !important;
+
+  box-shadow:
+    0 0 8px rgba(232,163,48,.08),
+    0 0 18px rgba(192,111,18,.045) !important;
+
+  opacity:.78 !important;
+  filter:none !important;
+  animation:lrLuminarisArchCore 5.4s ease-in-out infinite !important;
+}
+
+/* 광선도 별도 원형 장식이 아니라 하단 태양에서 위로 뻗는 아치형 성광 */
+#tab-char .faction-switch-btn[data-faction="luminaris"]::after{
+  content:"";
+  position:absolute;
+  z-index:1;
+
+  left:50% !important;
+  right:auto !important;
+  top:auto !important;
+  bottom:-34px !important;
+
+  width:108px !important;
+  height:108px !important;
+
+  transform:translateX(-50%) !important;
+  border-radius:50% !important;
+
+  background:
+    repeating-conic-gradient(
+      from 252deg,
+      transparent 0deg 10deg,
+      rgba(231,164,50,.07) 11deg 12deg,
+      transparent 13deg 21deg
+    ) !important;
+
+  -webkit-mask:
+    radial-gradient(circle,transparent 0 38%,#000 40% 64%,transparent 66%) !important;
+  mask:
+    radial-gradient(circle,transparent 0 38%,#000 40% 64%,transparent 66%) !important;
+
+  opacity:.52 !important;
+  filter:none !important;
+  animation:lrLuminarisArchRays 18s linear infinite !important;
+}
+
+/* 글자가 항상 성광 위에 위치 */
+#tab-char .faction-switch-btn[data-faction="luminaris"] > *{
+  position:relative !important;
+  z-index:5 !important;
+}
+
+/* Hover도 버튼과 태양이 한 덩어리로 반응 */
+#tab-char .faction-switch-btn[data-faction="luminaris"]:hover{
+  transform:translateY(-2px) !important;
+  filter:brightness(1.055) !important;
+  border-color:rgba(237,181,74,.72) !important;
+
+  box-shadow:
+    inset 0 1px 0 rgba(255,230,165,.09),
+    inset 0 -1px 0 rgba(91,49,7,.48),
+    inset 0 0 26px rgba(204,128,27,.055),
+    0 8px 24px rgba(0,0,0,.28) !important;
+}
+
+#tab-char .faction-switch-btn[data-faction="luminaris"].active{
+  color:#f8dfa0 !important;
+  border-color:rgba(240,185,78,.76) !important;
+}
+
+@keyframes lrLuminarisArchCore{
+  0%,100%{opacity:.68}
+  50%{opacity:.86}
+}
+
+@keyframes lrLuminarisArchRays{
+  from{transform:translateX(-50%) rotate(-4deg)}
+  to{transform:translateX(-50%) rotate(356deg)}
+}
+
+@media(prefers-reduced-motion:reduce){
+  #tab-char .faction-switch-btn[data-faction="luminaris"]::before,
+  #tab-char .faction-switch-btn[data-faction="luminaris"]::after{
+    animation:none !important;
+  }
+}
+</style>
+
+
+<style id="luminaris-sun-complete-v4">
+/* =========================================================
+   LUMINARIS HOLY EMPIRE — COMPLETE SUN / CATHEDRAL INTERIOR
+   버튼의 아치형 태양 컨셉을 내부 패널, 장소, 캐릭터, Hover 상세창까지 확장
+   ========================================================= */
+
+#tab-char .faction-luminaris{
+  --lum-gold:#d8a33f;
+  --lum-gold-hi:#efc96d;
+  --lum-gold-soft:rgba(219,163,63,.22);
+  --lum-line:rgba(210,154,54,.22);
+  --lum-bg:#120c05;
+  --lum-bg2:#1a1107;
+}
+
+/* ---------- 패널 전체 ---------- */
+#tab-char .faction-content-panel[data-faction-panel="luminaris"]{
+  position:relative;
+  overflow:hidden;
+  border:1px solid rgba(205,147,47,.34) !important;
+  border-radius:16px 16px 9px 9px !important;
+  background:
+    radial-gradient(ellipse at 50% -8%,rgba(236,178,69,.11),transparent 33%),
+    linear-gradient(145deg,#181005,#0f0a05 70%) !important;
+  box-shadow:
+    inset 0 1px 0 rgba(255,224,151,.045),
+    inset 0 0 34px rgba(183,106,19,.025) !important;
+}
+
+/* 아치형 헤더 */
+#tab-char .faction-content-panel[data-faction-panel="luminaris"] > .acc-head{
+  position:relative;
+  overflow:hidden;
+  min-height:76px;
+  border-radius:15px 15px 0 0 !important;
+  border-bottom:1px solid rgba(217,157,55,.14) !important;
+  background:
+    radial-gradient(ellipse at 50% 118%,rgba(238,177,62,.15),transparent 50%),
+    linear-gradient(180deg,rgba(85,50,10,.22),rgba(32,20,7,.04)) !important;
+}
+
+/* 아래에서 떠오르는 반원 태양 */
+#tab-char .faction-content-panel[data-faction-panel="luminaris"] > .acc-head::before{
+  content:"";
+  position:absolute;
+  left:50%;
+  top:auto;
+  bottom:-48px;
+  width:118px;
+  height:118px;
+  transform:translateX(-50%);
+  border-radius:50%;
+  background:
+    radial-gradient(circle,
+      rgba(255,222,129,.38) 0 14%,
+      rgba(238,173,58,.22) 15% 31%,
+      rgba(198,118,21,.10) 32% 48%,
+      rgba(136,71,8,.03) 49% 61%,
+      transparent 62%);
+  opacity:.78;
+  pointer-events:none;
+  animation:lrLumHeadSunBreath 5.8s ease-in-out infinite;
+}
+
+/* 아치 광선 — 별도 아이콘처럼 튀어나오지 않게 */
+#tab-char .faction-content-panel[data-faction-panel="luminaris"] > .acc-head::after{
+  content:"";
+  position:absolute;
+  left:50%;
+  top:auto;
+  bottom:-61px;
+  width:156px;
+  height:156px;
+  transform:translateX(-50%);
+  border-radius:50%;
+  background:
+    repeating-conic-gradient(
+      from 250deg,
+      transparent 0deg 12deg,
+      rgba(222,157,46,.055) 13deg 14deg,
+      transparent 15deg 25deg
+    );
+  -webkit-mask:radial-gradient(circle,transparent 0 42%,#000 44% 64%,transparent 66%);
+  mask:radial-gradient(circle,transparent 0 42%,#000 44% 64%,transparent 66%);
+  opacity:.48;
+  pointer-events:none;
+  animation:lrLumHeadRays 24s linear infinite;
+}
+
+#tab-char .faction-content-panel[data-faction-panel="luminaris"] > .acc-head > *{
+  position:relative;
+  z-index:4;
+}
+
+#tab-char .faction-content-panel[data-faction-panel="luminaris"] .acc-num{
+  color:#d9ad54 !important;
+  text-shadow:0 0 8px rgba(205,139,36,.22);
+}
+#tab-char .faction-content-panel[data-faction-panel="luminaris"] .acc-title{
+  color:#ead49d !important;
+  text-shadow:0 1px 2px rgba(0,0,0,.85);
+}
+#tab-char .faction-content-panel[data-faction-panel="luminaris"].open .acc-chevron::before{
+  background:#d7a64d !important;
+}
+
+/* ---------- 설명 박스 ---------- */
+#tab-char .faction-luminaris .faction-lead-desc{
+  position:relative;
+  overflow:hidden;
+  padding:16px 18px 16px 21px !important;
+  color:#b7a98b !important;
+  border:1px solid rgba(203,146,47,.17) !important;
+  border-left:2px solid rgba(221,164,59,.54) !important;
+  border-radius:9px 9px 6px 6px !important;
+  background:
+    linear-gradient(90deg,rgba(189,118,24,.075),transparent 55%),
+    rgba(27,17,6,.56) !important;
+  box-shadow:inset 0 1px 0 rgba(255,224,151,.02);
+}
+
+/* 성당 창문 같은 얇은 아치 장식 */
+#tab-char .faction-luminaris .faction-lead-desc::after{
+  content:"";
+  position:absolute;
+  right:13px;
+  top:50%;
+  width:43px;
+  height:54px;
+  transform:translateY(-50%);
+  border:1px solid rgba(219,162,60,.11);
+  border-radius:24px 24px 6px 6px;
+  background:
+    linear-gradient(rgba(218,159,57,.06),rgba(218,159,57,.06)) center/1px 100% no-repeat,
+    linear-gradient(90deg,rgba(218,159,57,.05),rgba(218,159,57,.05)) center/100% 1px no-repeat;
+  opacity:.72;
+  pointer-events:none;
+}
+#tab-char .faction-luminaris .faction-lead-mark{
+  color:#e0ad4e !important;
+  text-shadow:0 0 7px rgba(207,139,34,.27);
+}
+
+/* ---------- 장소 카드 ---------- */
+#tab-char .faction-luminaris .place-card{
+  position:relative;
+  overflow:hidden;
+  border:1px solid rgba(202,143,45,.23) !important;
+  border-radius:13px 13px 8px 8px !important;
+  background:
+    radial-gradient(ellipse at 50% 0%,rgba(230,169,59,.055),transparent 31%),
+    #120c06 !important;
+  box-shadow:
+    inset 0 1px 0 rgba(255,221,141,.025),
+    0 8px 22px rgba(0,0,0,.16) !important;
+}
+
+/* 윗부분 얇은 성당 아치선 */
+#tab-char .faction-luminaris .place-card::before{
+  content:"";
+  position:absolute;
+  z-index:4;
+  left:10px;
+  right:10px;
+  top:8px;
+  height:20px;
+  border-top:1px solid rgba(221,159,49,.13);
+  border-radius:50% 50% 0 0;
+  pointer-events:none;
+}
+
+#tab-char .faction-luminaris .place-image{
+  position:relative;
+  overflow:hidden;
+  border-bottom:1px solid rgba(202,143,45,.16) !important;
+  background:#0d0904 !important;
+}
+#tab-char .faction-luminaris .place-image::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  pointer-events:none;
+  background:
+    linear-gradient(to top,rgba(19,11,3,.45),transparent 45%),
+    radial-gradient(ellipse at 50% 100%,rgba(229,164,51,.08),transparent 47%);
+}
+#tab-char .faction-luminaris .place-image img{
+  transition:transform .34s ease,filter .34s ease !important;
+}
+#tab-char .faction-luminaris .place-image:hover img{
+  transform:scale(1.022) !important;
+  filter:brightness(1.045) saturate(.94) !important;
+}
+
+#tab-char .faction-luminaris .place-info{
+  background:
+    linear-gradient(180deg,rgba(184,112,19,.025),transparent 45%) !important;
+}
+#tab-char .faction-luminaris .place-title{
+  color:#dfb35c !important;
+  text-shadow:0 0 8px rgba(201,132,31,.16);
+}
+#tab-char .faction-luminaris .place-desc{
+  color:#9e927c !important;
+}
+
+/* ---------- 캐릭터 카드 ---------- */
+#tab-char .faction-luminaris .char-card{
+  position:relative;
+  overflow:hidden;
+  border:1px solid rgba(199,140,42,.25) !important;
+  border-radius:11px 11px 7px 7px !important;
+  background:
+    radial-gradient(ellipse at 50% 0%,rgba(225,161,52,.055),transparent 31%),
+    linear-gradient(180deg,#181006,#100a05) !important;
+  box-shadow:
+    inset 0 1px 0 rgba(255,220,139,.025),
+    0 5px 16px rgba(0,0,0,.14) !important;
+  transition:
+    transform .22s ease,
+    border-color .22s ease,
+    box-shadow .22s ease,
+    background .22s ease !important;
+}
+
+/* 카드 상단 중앙의 작은 성광 — 아이콘처럼 튀지 않게 선으로만 */
+#tab-char .faction-luminaris .char-card::after{
+  content:"";
+  position:absolute;
+  z-index:5;
+  left:50%;
+  top:5px;
+  width:28px;
+  height:12px;
+  transform:translateX(-50%);
+  border-top:1px solid rgba(225,164,59,.17);
+  border-radius:50% 50% 0 0;
+  opacity:.62;
+  pointer-events:none;
+  transition:width .22s ease,opacity .22s ease,border-color .22s ease;
+}
+
+#tab-char .faction-luminaris .char-card:hover{
+  transform:translateY(-2px) !important;
+  border-color:rgba(229,171,68,.52) !important;
+  background:
+    radial-gradient(ellipse at 50% 0%,rgba(235,176,65,.085),transparent 34%),
+    linear-gradient(180deg,#1b1207,#110b05) !important;
+  box-shadow:
+    inset 0 1px 0 rgba(255,223,149,.04),
+    inset 0 0 20px rgba(196,119,19,.035),
+    0 8px 20px rgba(0,0,0,.20),
+    0 0 12px rgba(188,116,22,.045) !important;
+}
+#tab-char .faction-luminaris .char-card:hover::after{
+  width:52px;
+  opacity:1;
+  border-color:rgba(237,184,83,.42);
+}
+#tab-char .faction-luminaris .char-card:hover .char-portrait img{
+  transform:scale(1.026) !important;
+  filter:brightness(1.04) saturate(.95) !important;
+}
+
+#tab-char .faction-luminaris .char-portrait{
+  position:relative;
+  background:
+    radial-gradient(ellipse at 50% 0%,rgba(228,173,75,.10),transparent 35%),
+    linear-gradient(155deg,#493418,#171007 72%) !important;
+}
+#tab-char .faction-luminaris .char-name{
+  color:#d7c39a !important;
+}
+#tab-char .faction-luminaris .char-role{
+  color:#c4933c !important;
+}
+
+/* ---------- 루미나리스 상세 Hover 창 ---------- */
+.character-hover-detail[data-detail-popup="ailorix"],
+.character-hover-detail[data-detail-popup="heliadne"],
+.character-hover-detail[data-detail-popup="fleur"],
+.character-hover-detail[data-detail-popup="theodosia"]{
+  border:1px solid rgba(205,146,46,.38) !important;
+  border-radius:15px 15px 9px 9px !important;
+  background:
+    radial-gradient(ellipse at 50% -7%,rgba(230,166,54,.09),transparent 30%),
+    linear-gradient(145deg,rgba(178,105,16,.03),transparent 42%),
+    rgba(15,9,4,.988) !important;
+  box-shadow:
+    0 22px 58px rgba(0,0,0,.52),
+    0 0 20px rgba(178,104,16,.055),
+    inset 0 1px 0 rgba(255,220,139,.03) !important;
+}
+
+/* 상세 일러스트: 위에서 내려오는 스테인드글라스/성광 느낌 */
+.character-hover-detail[data-detail-popup="ailorix"] .character-detail-art::after,
+.character-hover-detail[data-detail-popup="heliadne"] .character-detail-art::after,
+.character-hover-detail[data-detail-popup="fleur"] .character-detail-art::after,
+.character-hover-detail[data-detail-popup="theodosia"] .character-detail-art::after{
+  background:
+    linear-gradient(115deg,
+      transparent 0 18%,
+      rgba(230,177,79,.035) 19% 27%,
+      transparent 28% 48%,
+      rgba(230,177,79,.025) 49% 56%,
+      transparent 57%),
+    linear-gradient(to top,rgba(16,9,3,.48),transparent 46%),
+    radial-gradient(ellipse at 50% 0%,rgba(231,173,64,.09),transparent 38%) !important;
+}
+
+/* 상세창 이미지 hover */
+.character-hover-detail[data-detail-popup="ailorix"] .character-detail-art img:hover,
+.character-hover-detail[data-detail-popup="heliadne"] .character-detail-art img:hover,
+.character-hover-detail[data-detail-popup="fleur"] .character-detail-art img:hover,
+.character-hover-detail[data-detail-popup="theodosia"] .character-detail-art img:hover{
+  transform:scale(1.017) !important;
+  filter:brightness(1.035) saturate(.95) !important;
+}
+
+/* 상세 텍스트 색 */
+.character-hover-detail[data-detail-popup="ailorix"] .character-detail-name,
+.character-hover-detail[data-detail-popup="heliadne"] .character-detail-name,
+.character-hover-detail[data-detail-popup="fleur"] .character-detail-name,
+.character-hover-detail[data-detail-popup="theodosia"] .character-detail-name{
+  color:#e2d2ad !important;
+}
+
+.character-hover-detail[data-detail-popup="ailorix"] .character-detail-role,
+.character-hover-detail[data-detail-popup="heliadne"] .character-detail-role,
+.character-hover-detail[data-detail-popup="fleur"] .character-detail-role,
+.character-hover-detail[data-detail-popup="theodosia"] .character-detail-role,
+.character-hover-detail[data-detail-popup="ailorix"] .character-detail-code,
+.character-hover-detail[data-detail-popup="heliadne"] .character-detail-code,
+.character-hover-detail[data-detail-popup="fleur"] .character-detail-code,
+.character-hover-detail[data-detail-popup="theodosia"] .character-detail-code{
+  color:#c69743 !important;
+}
+
+.character-hover-detail[data-detail-popup="ailorix"] .character-detail-profile,
+.character-hover-detail[data-detail-popup="heliadne"] .character-detail-profile,
+.character-hover-detail[data-detail-popup="fleur"] .character-detail-profile,
+.character-hover-detail[data-detail-popup="theodosia"] .character-detail-profile{
+  color:#887d69 !important;
+  border-color:rgba(197,137,40,.13) !important;
+}
+
+.character-hover-detail[data-detail-popup="ailorix"] .character-detail-ability,
+.character-hover-detail[data-detail-popup="heliadne"] .character-detail-ability,
+.character-hover-detail[data-detail-popup="fleur"] .character-detail-ability,
+.character-hover-detail[data-detail-popup="theodosia"] .character-detail-ability{
+  border-left-color:rgba(213,154,51,.46) !important;
+  background:linear-gradient(90deg,rgba(179,106,17,.07),transparent) !important;
+}
+
+.character-hover-detail[data-detail-popup="ailorix"] .character-detail-ability strong,
+.character-hover-detail[data-detail-popup="heliadne"] .character-detail-ability strong,
+.character-hover-detail[data-detail-popup="fleur"] .character-detail-ability strong,
+.character-hover-detail[data-detail-popup="theodosia"] .character-detail-ability strong{
+  color:#d8a84f !important;
+}
+
+.character-hover-detail[data-detail-popup="ailorix"] .character-detail-quote,
+.character-hover-detail[data-detail-popup="heliadne"] .character-detail-quote,
+.character-hover-detail[data-detail-popup="fleur"] .character-detail-quote,
+.character-hover-detail[data-detail-popup="theodosia"] .character-detail-quote{
+  color:#a69980 !important;
+  border-color:rgba(202,141,42,.15) !important;
+  background:rgba(164,94,11,.028) !important;
+}
+
+/* 모바일에서 장식 과밀 방지 */
+@media(max-width:560px){
+  #tab-char .faction-luminaris .faction-lead-desc::after{
+    opacity:.38;
+    right:7px;
+  }
+}
+
+@keyframes lrLumHeadSunBreath{
+  0%,100%{opacity:.67}
+  50%{opacity:.82}
+}
+@keyframes lrLumHeadRays{
+  from{transform:translateX(-50%) rotate(-4deg)}
+  to{transform:translateX(-50%) rotate(356deg)}
+}
+
+@media(prefers-reduced-motion:reduce){
+  #tab-char .faction-content-panel[data-faction-panel="luminaris"] > .acc-head::before,
+  #tab-char .faction-content-panel[data-faction-panel="luminaris"] > .acc-head::after{
+    animation:none !important;
+  }
+}
+</style>
+
 </head>
 <body><div aria-hidden="true" class="shooting-stars"><span class="shooting-star star-a"></span><span class="shooting-star star-b"></span><span class="shooting-star star-c"></span></div>
 <section class="hero">
