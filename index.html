@@ -24297,6 +24297,280 @@ document.addEventListener('DOMContentLoaded',function(){
 }
 </style>
 
+
+<style id="calamity-role-wrap-final">
+#tab-char .faction-content-panel[data-faction-panel="hostile"] .calamity-row .char-role{
+  white-space:normal !important;
+  word-break:keep-all !important;
+  overflow-wrap:normal !important;
+  line-height:1.45 !important;
+  min-width:0 !important;
+  max-width:100% !important;
+}
+</style>
+
+
+<style id="meteor-direction-fix-safe">
+/*
+  별똥별만 수정.
+  .shooting-stars(전체 화면 컨테이너)는 절대 건드리지 않는다.
+*/
+
+/* 전역 별똥별 3개 */
+.shooting-stars > .shooting-star{
+  background:linear-gradient(
+    90deg,
+    rgba(255,255,255,.96) 0%,
+    rgba(235,241,255,.72) 28%,
+    rgba(179,194,255,.20) 65%,
+    transparent 100%
+  ) !important;
+  transform-origin:left center !important;
+}
+
+.shooting-stars > .shooting-star::after{
+  left:-1px !important;
+  right:auto !important;
+}
+
+/* HERO 안의 희귀 별똥별 */
+.hero-celestial::after{
+  background:linear-gradient(
+    90deg,
+    rgba(246,248,255,.92) 0%,
+    rgba(192,202,255,.34) 42%,
+    transparent 100%
+  ) !important;
+  transform-origin:left center !important;
+}
+
+/*
+  HERO 하단 scroll-cue에서 지나가는 두 빛줄기.
+  각각 실제 이동 방향에 맞춰 밝은 머리와 꼬리 방향을 따로 지정.
+*/
+.hero .scroll-cue::before{
+  background:linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(176,158,255,.16) 35%,
+    rgba(205,194,255,.48) 72%,
+    rgba(244,240,255,.88) 100%
+  ) !important;
+}
+
+.hero .scroll-cue::after{
+  background:linear-gradient(
+    90deg,
+    rgba(238,246,255,.82) 0%,
+    rgba(120,173,235,.38) 38%,
+    rgba(120,173,235,.10) 72%,
+    transparent 100%
+  ) !important;
+}
+</style>
+
+
+<style id="remove-left-582-shooting-star">
+.shooting-stars > .shooting-star.star-b{
+  display:none !important;
+  animation:none !important;
+}
+</style>
+
+
+<style id="remove-actual-582-meteor">
+.hero .scroll-cue::before{
+  content:none !important;
+  display:none !important;
+  animation:none !important;
+  background:none !important;
+}
+</style>
+
+
+<style id="meteor-natural-head-tail-fix">
+/*
+  남아 있는 유성은 실제 이동 벡터가 좌하향(-x,+y)이므로
+  선 자체의 회전도 그 벡터와 평행하게 맞춘다.
+  기존 -28~-31deg는 화면상 우상향 선이라 궤적과 어긋나 보였다.
+*/
+
+/* 전역 유성 */
+.shooting-stars > .shooting-star{
+  height:2px !important;
+  border-radius:999px !important;
+  background:linear-gradient(
+    90deg,
+    rgba(255,255,255,.98) 0%,
+    rgba(232,240,255,.76) 8%,
+    rgba(192,207,255,.38) 25%,
+    rgba(153,174,235,.13) 52%,
+    rgba(135,156,220,.035) 72%,
+    transparent 88%
+  ) !important;
+  filter:
+    drop-shadow(0 0 2px rgba(224,234,255,.42))
+    drop-shadow(0 0 5px rgba(164,184,245,.12)) !important;
+  transform-origin:left center !important;
+}
+
+.shooting-stars > .shooting-star::after{
+  left:-2px !important;
+  right:auto !important;
+  top:-2px !important;
+  width:5px !important;
+  height:5px !important;
+  background:rgba(255,255,255,.98) !important;
+  box-shadow:
+    0 0 5px rgba(255,255,255,.78),
+    0 0 11px rgba(190,208,255,.38) !important;
+}
+
+/* 실제 이동 벡터와 선의 각도를 동일하게 */
+@keyframes shootA{
+  0%,72%{opacity:0;transform:translate(0,0) rotate(-30.5deg)}
+  74%{opacity:.62}
+  79%{opacity:0;transform:translate(-280px,165px) rotate(-30.5deg)}
+  100%{opacity:0}
+}
+@keyframes shootC{
+  0%,84%{opacity:0;transform:translate(0,0) rotate(-31deg)}
+  86%{opacity:.38}
+  89%{opacity:0;transform:translate(-175px,105px) rotate(-31deg)}
+  100%{opacity:0}
+}
+
+/* HERO 희귀 유성: 너무 긴 직선처럼 보이지 않게 짧고 부드러운 꼬리 */
+.hero-celestial::after{
+  width:105px !important;
+  height:2px !important;
+  border-radius:999px !important;
+  background:linear-gradient(
+    90deg,
+    rgba(255,255,255,.96) 0%,
+    rgba(230,238,255,.72) 9%,
+    rgba(185,201,250,.34) 27%,
+    rgba(148,168,226,.11) 53%,
+    rgba(135,154,210,.025) 72%,
+    transparent 88%
+  ) !important;
+  filter:
+    drop-shadow(0 0 2px rgba(226,235,255,.40))
+    drop-shadow(0 0 5px rgba(170,188,238,.11)) !important;
+  transform-origin:left center !important;
+}
+
+@keyframes heroMeteorRare{
+  0%,73%{
+    opacity:0;
+    transform:translate(0,0) rotate(-30.8deg);
+  }
+  75%{opacity:.54}
+  80%{
+    opacity:0;
+    transform:translate(-260px,155px) rotate(-30.8deg);
+  }
+  100%{opacity:0}
+}
+</style>
+
+
+<style id="remove-scrollcue-line-meteors-final">
+/*
+  HERO 좌우에서 선처럼 가로지르던 scroll-cue 가상요소 유성 제거.
+  실제 shooting-star / hero-celestial 유성만 남긴다.
+*/
+.hero .scroll-cue::before,
+.hero .scroll-cue::after{
+  content:none !important;
+  display:none !important;
+  animation:none !important;
+  background:none !important;
+}
+</style>
+
+
+<style id="random-background-meteors-v1">
+/* 기존 고정 위치 유성은 끄고, 아래 랜덤 전역 유성 시스템만 사용 */
+.shooting-stars > .shooting-star,
+.hero-celestial::after{
+  display:none !important;
+  animation:none !important;
+}
+
+/* 화면 전체 랜덤 별똥별 레이어 */
+.random-meteor-layer{
+  position:fixed;
+  inset:0;
+  z-index:2;
+  overflow:hidden;
+  pointer-events:none;
+}
+
+.random-meteor{
+  position:absolute;
+  left:0;
+  top:0;
+  width:var(--meteor-length,110px);
+  height:2px;
+  border-radius:999px;
+  opacity:0;
+  pointer-events:none;
+  transform-origin:left center;
+  will-change:transform,opacity;
+
+  /* 머리가 밝고 뒤로 갈수록 자연스럽게 소멸 */
+  background:linear-gradient(
+    90deg,
+    rgba(255,255,255,.98) 0%,
+    rgba(239,245,255,.86) 8%,
+    rgba(207,220,255,.52) 24%,
+    rgba(171,190,245,.22) 48%,
+    rgba(145,165,225,.06) 72%,
+    transparent 100%
+  );
+
+  filter:
+    drop-shadow(0 0 2px rgba(235,242,255,.42))
+    drop-shadow(0 0 6px rgba(170,190,245,.16));
+}
+
+.random-meteor::before{
+  content:"";
+  position:absolute;
+  left:-2px;
+  top:50%;
+  width:5px;
+  height:5px;
+  border-radius:50%;
+  transform:translateY(-50%);
+  background:rgba(255,255,255,.98);
+  box-shadow:
+    0 0 5px rgba(255,255,255,.85),
+    0 0 11px rgba(190,210,255,.42);
+}
+</style>
+
+
+<style id="random-meteor-tail-direction-fix">
+.random-meteor{
+  background:linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(145,165,225,.06) 28%,
+    rgba(171,190,245,.22) 52%,
+    rgba(207,220,255,.52) 76%,
+    rgba(239,245,255,.86) 92%,
+    rgba(255,255,255,.98) 100%
+  ) !important;
+}
+
+.random-meteor::before{
+  left:auto !important;
+  right:-2px !important;
+}
+</style>
+
 </head>
 <body><div aria-hidden="true" class="shooting-stars"><span class="shooting-star star-a"></span><span class="shooting-star star-b"></span><span class="shooting-star star-c"></span></div>
 <section class="hero">
@@ -24334,7 +24608,7 @@ document.addEventListener('DOMContentLoaded',function(){
 <div class="hero-coordinate coord-right">E · 04</div>
 </div>
 <div class="hero-logo"><img alt="LAST RING" src="img/lg.png"/></div>
-<p class="subtitle" style="color:#fff!important;font-family:Arial,sans-serif!important;font-weight:300!important;"><span class="bar" style="color:#fff!important;">::</span>인류 최후의 생존권<span class="bar" style="color:#fff!important;">::</span></p>
+<p class="subtitle" id="heroSubtitleExactFont" style="color:#fff!important;"><span class="bar" style="color:#fff!important;">::</span>인류 최후의 생존권<span class="bar" style="color:#fff!important;">::</span></p>
 <p class="desc">
     게이트 너머에서 밀려오는 <strong>괴수</strong>들에게 세계는 이미 절반 넘게 잠식당했다.
     사람들이 발 딛고 설 수 있는 땅은 오직 마지막 방어선, <strong>단 하나의 고리</strong>뿐.
@@ -25108,13 +25382,13 @@ document.addEventListener('DOMContentLoaded',function(){
             </div>
 <div class="calamity-stack">
 <!-- 에이브릴 -->
-<div class="calamity-row calamity-avril"><div class="place-card calamity-place-card-unified" id="obsidianBoxMain"><div class="orb-layer-main" id="orbLayerMain" aria-hidden="true"></div><div class="place-image"><img alt="옵시디언 레어" src="img/bg/28.png"/></div><div class="place-info"><div class="place-title">◇ 옵시디언 레어 · SS+ 게이트</div><div class="place-desc">검게 결정화된 암석과 심연의 마력이 뒤엉킨 흑룡의 영역. 깊숙이 들어갈수록 빛과 열이 희미해지며, 거대한 흑색 결정과 용의 흔적만이 적막 속에 남아 있다.</div><div class="place-characters char-grid"><div class="char-card avril-detail-trigger" data-character-detail="avril"><div class="char-portrait"><img alt="에이브릴" src="img/ch/65.png"/></div><div class="char-name">에이브릴</div><div class="char-role" style="white-space:normal;overflow-wrap:anywhere;">흑룡의딸·흑룡·SS+</div></div></div></div></div></div>
+<div class="calamity-row calamity-avril"><div class="place-card calamity-place-card-unified" id="obsidianBoxMain"><div class="orb-layer-main" id="orbLayerMain" aria-hidden="true"></div><div class="place-image"><img alt="옵시디언 레어" src="img/bg/28.png"/></div><div class="place-info"><div class="place-title">◇ 옵시디언 레어 · SS+ 게이트</div><div class="place-desc">검게 결정화된 암석과 심연의 마력이 뒤엉킨 흑룡의 영역. 깊숙이 들어갈수록 빛과 열이 희미해지며, 거대한 흑색 결정과 용의 흔적만이 적막 속에 남아 있다.</div><div class="place-characters char-grid"><div class="char-card avril-detail-trigger" data-character-detail="avril"><div class="char-portrait"><img alt="에이브릴" src="img/ch/65.png"/></div><div class="char-name">에이브릴</div><div class="char-role" style="white-space:normal;overflow-wrap:anywhere;">흑룡의딸·<wbr>흑룡·<wbr>SS+</div></div></div></div></div></div>
   <!-- 노타마야 -->
-<div class="calamity-row calamity-notamaya"><div class="place-card calamity-place-card-unified"><div class="place-image"><img alt="천귀궁" src="img/bg/29.png"/></div><div class="place-info"><div class="place-title">◇ 천귀궁 · SSS 게이트</div><div class="place-desc">끝을 가늠할 수 없는 어둠 속에 세워진 천귀들의 궁전. 그림자와 환각이 현실의 경계를 흐리며, 발을 들인 순간부터 무엇이 실재하는지조차 확신하기 어렵다.</div><div class="place-characters char-grid"><div class="char-card notamaya-detail-trigger" data-character-detail="notamaya"><div class="char-portrait"><img alt="노타마야" src="img/ch/66.png"/></div><div class="char-name">노타마야</div><div class="char-role" style="white-space:normal;overflow-wrap:anywhere;">천귀의주인·뱀요괴·SSS</div></div></div></div></div></div>
+<div class="calamity-row calamity-notamaya"><div class="place-card calamity-place-card-unified"><div class="place-image"><img alt="천귀궁" src="img/bg/29.png"/></div><div class="place-info"><div class="place-title">◇ 천귀궁 · SSS 게이트</div><div class="place-desc">끝을 가늠할 수 없는 어둠 속에 세워진 천귀들의 궁전. 그림자와 환각이 현실의 경계를 흐리며, 발을 들인 순간부터 무엇이 실재하는지조차 확신하기 어렵다.</div><div class="place-characters char-grid"><div class="char-card notamaya-detail-trigger" data-character-detail="notamaya"><div class="char-portrait"><img alt="노타마야" src="img/ch/66.png"/></div><div class="char-name">노타마야</div><div class="char-role" style="white-space:normal;overflow-wrap:anywhere;">천귀의주인·<wbr>뱀요괴·<wbr>SSS</div></div></div></div></div></div>
   <!-- 칼립사 -->
-<div class="calamity-row calamity-kalipsa"><div class="place-card calamity-place-card-unified"><div class="place-image"><img alt="선큰스론" src="img/bg/31.png"/></div><div class="place-info"><div class="place-title">◇ 선큰스론 · SSS 게이트</div><div class="place-desc">빛조차 닿지 않는 심해에 가라앉은 거대한 왕좌의 영역. 압도적인 수압과 기괴한 심해 생태계가 지배하며, 그 가장 깊은 곳에서 칼립사가 침입자를 기다린다.</div><div class="place-characters char-grid"><div class="char-card calypso-detail-trigger" data-character-detail="calypso"><div class="char-portrait"><img alt="칼립사" src="img/ch/67.png"/></div><div class="char-name">칼립사</div><div class="char-role" style="white-space:normal;overflow-wrap:anywhere;">심해의여왕·문어괴인·SSS</div></div></div></div></div></div>
+<div class="calamity-row calamity-kalipsa"><div class="place-card calamity-place-card-unified"><div class="place-image"><img alt="선큰스론" src="img/bg/31.png"/></div><div class="place-info"><div class="place-title">◇ 선큰스론 · SSS 게이트</div><div class="place-desc">빛조차 닿지 않는 심해에 가라앉은 거대한 왕좌의 영역. 압도적인 수압과 기괴한 심해 생태계가 지배하며, 그 가장 깊은 곳에서 칼립사가 침입자를 기다린다.</div><div class="place-characters char-grid"><div class="char-card calypso-detail-trigger" data-character-detail="calypso"><div class="char-portrait"><img alt="칼립사" src="img/ch/67.png"/></div><div class="char-name">칼립사</div><div class="char-role" style="white-space:normal;overflow-wrap:anywhere;">심해의여왕·<wbr>문어괴인·<wbr>SSS</div></div></div></div></div></div>
   <!-- 닉스 -->
-<div class="calamity-row calamity-nyx"><div class="place-card calamity-place-card-unified"><div class="place-image"><img alt="만상의 성소" src="img/bg/30.png"/></div><div class="place-info"><div class="place-title">◇ 만상의 성소 · SSS 인공 게이트</div><div class="place-desc">닉스가 인위적으로 구축한 비정상적인 게이트 공간. 별빛과 공허가 뒤섞인 내부에서는 공간의 거리와 방향마저 일정하지 않으며, 성소 전체가 그녀의 의지에 따라 재편된다.</div><div class="place-characters char-grid"><div class="char-card nyx-detail-trigger" data-character-detail="nyx"><div class="char-portrait"><img alt="닉스" src="img/ch/68.png"/></div><div class="char-name">닉스</div><div class="char-role" style="white-space:normal;overflow-wrap:anywhere;">별의마녀·인간·SSS</div></div><div class="char-card nemesis-detail-trigger" data-character-detail="nemesis"><div class="char-portrait"><img alt="네메시스" src="img/ch/69.png"/></div><div class="char-name">네메시스</div><div class="char-role" style="white-space:normal;overflow-wrap:anywhere;">사도·인간·S</div></div><div class="char-card revern-detail-trigger" data-character-detail="revern"><div class="char-portrait"><img alt="레베른" src="img/ch/70.png"/></div><div class="char-name">레베른</div><div class="char-role" style="white-space:normal;overflow-wrap:anywhere;">사도·인간·A+</div></div></div></div></div></div>
+<div class="calamity-row calamity-nyx"><div class="place-card calamity-place-card-unified"><div class="place-image"><img alt="만상의 성소" src="img/bg/30.png"/></div><div class="place-info"><div class="place-title">◇ 만상의 성소 · SSS 인공 게이트</div><div class="place-desc">닉스가 인위적으로 구축한 비정상적인 게이트 공간. 별빛과 공허가 뒤섞인 내부에서는 공간의 거리와 방향마저 일정하지 않으며, 성소 전체가 그녀의 의지에 따라 재편된다.</div><div class="place-characters char-grid"><div class="char-card nyx-detail-trigger" data-character-detail="nyx"><div class="char-portrait"><img alt="닉스" src="img/ch/68.png"/></div><div class="char-name">닉스</div><div class="char-role" style="white-space:normal;overflow-wrap:anywhere;">별의마녀·<wbr>인간·<wbr>SSS</div></div><div class="char-card nemesis-detail-trigger" data-character-detail="nemesis"><div class="char-portrait"><img alt="네메시스" src="img/ch/69.png"/></div><div class="char-name">네메시스</div><div class="char-role" style="white-space:normal;overflow-wrap:anywhere;">사도·<wbr>인간·<wbr>S</div></div><div class="char-card revern-detail-trigger" data-character-detail="revern"><div class="char-portrait"><img alt="레베른" src="img/ch/70.png"/></div><div class="char-name">레베른</div><div class="char-role" style="white-space:normal;overflow-wrap:anywhere;">사도·<wbr>인간·<wbr>A+</div></div></div></div></div></div>
 </div>
 </div>
 </div>
@@ -28265,6 +28539,150 @@ document.addEventListener('DOMContentLoaded', () => {
       var ro = new ResizeObserver(refresh);
       ro.observe(card);
     }
+  }
+})();
+</script>
+
+
+<script id="hero-subtitle-copy-prologue-font">
+(function(){
+  function syncHeroSubtitleFont(){
+    var desc = document.querySelector('.hero .desc');
+    var subtitle = document.getElementById('heroSubtitleExactFont');
+    if(!desc || !subtitle) return;
+
+    var cs = getComputedStyle(desc);
+
+    var targets = [subtitle].concat(Array.from(subtitle.querySelectorAll('.bar')));
+    targets.forEach(function(el){
+      el.style.setProperty('font-family', cs.fontFamily, 'important');
+      el.style.setProperty('font-weight', cs.fontWeight, 'important');
+      el.style.setProperty('font-style', cs.fontStyle, 'important');
+      el.style.setProperty('font-stretch', cs.fontStretch, 'important');
+      el.style.setProperty('font-variant', cs.fontVariant, 'important');
+      el.style.setProperty('font-feature-settings', cs.fontFeatureSettings, 'important');
+      el.style.setProperty('font-kerning', cs.fontKerning, 'important');
+      el.style.setProperty('font-optical-sizing', cs.fontOpticalSizing, 'important');
+      el.style.setProperty('font-variation-settings', cs.fontVariationSettings, 'important');
+    });
+
+    subtitle.style.setProperty('color', '#fff', 'important');
+    subtitle.querySelectorAll('.bar').forEach(function(bar){
+      bar.style.setProperty('color', '#fff', 'important');
+      bar.style.setProperty('-webkit-text-fill-color', '#fff', 'important');
+    });
+  }
+
+  if(document.readyState === 'loading'){
+    document.addEventListener('DOMContentLoaded', syncHeroSubtitleFont, {once:true});
+  }else{
+    syncHeroSubtitleFont();
+  }
+
+  if(document.fonts && document.fonts.ready){
+    document.fonts.ready.then(syncHeroSubtitleFont);
+  }
+})();
+</script>
+
+
+<script id="random-background-meteors-v1">
+(function(){
+  function initRandomMeteors(){
+    if(document.querySelector('.random-meteor-layer')) return;
+
+    var layer = document.createElement('div');
+    layer.className = 'random-meteor-layer';
+    layer.setAttribute('aria-hidden','true');
+    document.body.appendChild(layer);
+
+    var count = 5;
+    var meteors = [];
+
+    for(var i=0;i<count;i++){
+      var m = document.createElement('i');
+      m.className = 'random-meteor';
+      layer.appendChild(m);
+      meteors.push(m);
+    }
+
+    function rand(min,max){
+      return min + Math.random() * (max-min);
+    }
+
+    function launch(meteor, first){
+      var vw = window.innerWidth;
+      var vh = window.innerHeight;
+
+      /*
+        화면 전체에서 시작 위치를 랜덤화.
+        너무 가장자리에만 몰리지 않게 폭넓게 분포시킨다.
+      */
+      var startX = rand(vw * 0.18, vw * 0.96);
+      var startY = rand(vh * 0.04, vh * 0.78);
+
+      /* 전체적으로 자연스러운 좌하향 낙하, 각도는 약간씩 변동 */
+      var dx = -rand(190, 340);
+      var dy =  rand(105, 205);
+      var angle = Math.atan2(dy, dx) * 180 / Math.PI;
+
+      /* 꼬리 길이와 밝기도 매번 조금씩 변화 */
+      var length = rand(78, 132);
+      var peakOpacity = rand(.42, .68);
+      var duration = rand(1050, 1550);
+
+      meteor.style.left = startX + 'px';
+      meteor.style.top = startY + 'px';
+      meteor.style.setProperty('--meteor-length', length + 'px');
+
+      var anim = meteor.animate([
+        {
+          opacity:0,
+          transform:'translate3d(0,0,0) rotate(' + angle + 'deg)',
+          offset:0
+        },
+        {
+          opacity:peakOpacity,
+          transform:'translate3d(0,0,0) rotate(' + angle + 'deg)',
+          offset:.16
+        },
+        {
+          opacity:peakOpacity * .72,
+          transform:'translate3d(' + (dx*.68) + 'px,' + (dy*.68) + 'px,0) rotate(' + angle + 'deg)',
+          offset:.70
+        },
+        {
+          opacity:0,
+          transform:'translate3d(' + dx + 'px,' + dy + 'px,0) rotate(' + angle + 'deg)',
+          offset:1
+        }
+      ],{
+        duration:duration,
+        easing:'cubic-bezier(.18,.65,.32,1)',
+        fill:'none'
+      });
+
+      anim.onfinish = function(){
+        /*
+          한 번 떨어진 뒤 다음 출현까지 랜덤 대기.
+          세 유성이 같은 타이밍으로 반복되지 않는다.
+        */
+        var delay = first ? rand(2500,8500) : rand(8000,22000);
+        setTimeout(function(){ launch(meteor,false); }, delay);
+      };
+    }
+
+    meteors.forEach(function(m,index){
+      setTimeout(function(){
+        launch(m,true);
+      }, 1400 + index * 3200 + Math.random()*2600);
+    });
+  }
+
+  if(document.readyState === 'loading'){
+    document.addEventListener('DOMContentLoaded', initRandomMeteors, {once:true});
+  }else{
+    initRandomMeteors();
   }
 })();
 </script>
