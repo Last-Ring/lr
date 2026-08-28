@@ -21717,6 +21717,388 @@ document.addEventListener('DOMContentLoaded',function(){
 }
 </style>
 
+
+<style id="obsidian-orb-test-applied-v8">
+/* =========================================================
+   옵시디언 레어 — 단독 테스트에서 실제로 동작한 구조 그대로 이식
+   ========================================================= */
+
+/* 이전 실패 레이어는 모두 숨김 */
+#tab-char .faction-hostile .calamity-avril .obsidian-orb-field,
+#tab-char .faction-hostile .calamity-avril .obsidian-orbs-direct,
+#tab-char .faction-hostile .calamity-avril .obsidian-rise-layer-v7{
+  display:none !important;
+}
+
+/* 정확히 옵시디언 레어 박스 한 개 */
+#obsidianBoxMain{
+  position:relative !important;
+  overflow:hidden !important;
+  isolation:isolate !important;
+}
+
+/* 배경 이미지는 구체 아래 */
+#obsidianBoxMain > .place-image{
+  position:relative !important;
+  z-index:1 !important;
+}
+
+/* 구체 레이어 */
+#obsidianBoxMain > #orbLayerMain{
+  position:absolute !important;
+  inset:0 !important;
+  z-index:5 !important;
+  overflow:hidden !important;
+  pointer-events:none !important;
+}
+
+/* 제목/설명/에이브릴 카드는 구체 위 */
+#obsidianBoxMain > .place-info{
+  position:relative !important;
+  z-index:10 !important;
+}
+
+/* 하단 심연 안개 */
+#orbLayerMain::after{
+  content:"";
+  position:absolute;
+  left:8%;
+  right:8%;
+  bottom:-28px;
+  height:110px;
+  border-radius:50%;
+  background:
+    radial-gradient(
+      ellipse at center,
+      rgba(51,28,67,.52) 0%,
+      rgba(18,9,25,.28) 45%,
+      transparent 76%
+    );
+  filter:blur(14px);
+  opacity:.72;
+}
+
+/* 검은 심연 구체 — 테스트 V2의 '아주 조금 밝게' 색감 */
+#orbLayerMain .orb-main{
+  position:absolute !important;
+  left:0 !important;
+  top:0 !important;
+  border-radius:50% !important;
+  opacity:0;
+  background:
+    radial-gradient(circle at 30% 26%,
+      rgba(190,148,224,.52) 0 5%,
+      rgba(101,69,121,.52) 13%,
+      rgba(29,19,37,.97) 45%,
+      rgba(5,3,7,.995) 74%,
+      #000 100%);
+  border:1px solid rgba(139,99,164,.37);
+  box-shadow:
+    inset -8px -10px 15px rgba(0,0,0,.94),
+    inset 4px 4px 10px rgba(161,117,189,.21),
+    0 0 14px rgba(94,56,119,.24);
+  will-change:transform,opacity;
+}
+</style>
+
+
+<style id="obsidian-lair-complete-v9">
+/* =========================================================
+   OBSIDIAN LAIR — ONLY
+   기존 심연 구체 애니메이션 유지
+   옵시디언 레어 박스 + 에이브릴 카드 + 에이브릴 상세 Hover만 디자인
+   천귀궁 / 선큰스론 / 만상의 성소는 건드리지 않음
+   ========================================================= */
+
+/* ---------- 옵시디언 레어 큰 박스 ---------- */
+#obsidianBoxMain{
+  position:relative !important;
+  overflow:hidden !important;
+  isolation:isolate !important;
+  border:1px solid rgba(115,94,126,.38) !important;
+  border-radius:5px !important;
+  background:
+    radial-gradient(ellipse at 50% 112%,rgba(74,47,91,.16),transparent 38%),
+    linear-gradient(145deg,#111016 0%,#0b0a0f 58%,#060609 100%) !important;
+  box-shadow:
+    inset 0 0 0 1px rgba(168,135,188,.018),
+    inset 0 0 36px rgba(38,22,48,.06) !important;
+}
+
+/* 위쪽 얇은 심연 균열선 */
+#obsidianBoxMain::before{
+  content:"" !important;
+  display:block !important;
+  position:absolute !important;
+  z-index:13 !important;
+  left:14px !important;
+  right:14px !important;
+  top:9px !important;
+  height:1px !important;
+  pointer-events:none !important;
+  background:
+    linear-gradient(
+      90deg,
+      transparent 0%,
+      rgba(112,82,132,.20) 12%,
+      rgba(167,126,192,.38) 48%,
+      rgba(103,75,121,.18) 78%,
+      transparent 100%
+    ) !important;
+  box-shadow:0 0 7px rgba(111,77,136,.08) !important;
+}
+
+/* 오른쪽 위 작은 균열 가지 — 문자 아님 */
+#obsidianBoxMain::after{
+  content:"" !important;
+  display:block !important;
+  position:absolute !important;
+  z-index:13 !important;
+  right:14px !important;
+  top:10px !important;
+  width:38px !important;
+  height:19px !important;
+  pointer-events:none !important;
+  background:
+    linear-gradient(142deg,transparent 43%,rgba(139,102,161,.30) 45% 48%,transparent 50%) 0 0/18px 12px no-repeat,
+    linear-gradient(38deg,transparent 43%,rgba(103,76,121,.24) 45% 48%,transparent 50%) 13px 7px/19px 11px no-repeat !important;
+  opacity:.72 !important;
+}
+
+/* 장소 이미지: 심연 암석 분위기 */
+#obsidianBoxMain > .place-image{
+  position:relative !important;
+  z-index:1 !important;
+  overflow:hidden !important;
+  background:#07070a !important;
+  border-bottom:1px solid rgba(103,82,113,.24) !important;
+}
+#obsidianBoxMain > .place-image img{
+  filter:saturate(.68) brightness(.76) contrast(1.10) !important;
+  transition:transform .38s ease,filter .38s ease !important;
+}
+#obsidianBoxMain:hover > .place-image img{
+  transform:scale(1.018) !important;
+  filter:saturate(.74) brightness(.82) contrast(1.12) !important;
+}
+
+/* 이미지 위 하단에 아주 약한 심연 그라데이션 */
+#obsidianBoxMain > .place-image::after{
+  content:"" !important;
+  position:absolute !important;
+  inset:auto 0 0 0 !important;
+  height:44% !important;
+  pointer-events:none !important;
+  background:linear-gradient(180deg,transparent,rgba(7,5,10,.34)) !important;
+}
+
+/* 정보 영역 */
+#obsidianBoxMain > .place-info{
+  position:relative !important;
+  z-index:10 !important;
+  background:
+    linear-gradient(180deg,rgba(25,20,29,.74),rgba(10,9,13,.88)) !important;
+}
+
+/* 제목 */
+#obsidianBoxMain .place-title{
+  color:#c9c1ce !important;
+  text-shadow:0 0 8px rgba(110,78,130,.08) !important;
+}
+#obsidianBoxMain .place-desc{
+  color:#8d8792 !important;
+}
+
+/* 카드 내부의 기존 구체 레이어는 시인성 유지 */
+#obsidianBoxMain > #orbLayerMain{
+  z-index:5 !important;
+  mix-blend-mode:normal !important;
+}
+
+/* ---------- 에이브릴 캐릭터 카드 ---------- */
+#obsidianBoxMain .char-card{
+  position:relative !important;
+  overflow:hidden !important;
+  border:1px solid rgba(112,91,122,.34) !important;
+  border-radius:4px !important;
+  background:
+    radial-gradient(circle at 88% 6%,rgba(92,63,111,.08),transparent 27%),
+    linear-gradient(150deg,#18141d,#0b0a0f 72%) !important;
+  box-shadow:
+    inset 0 0 0 1px rgba(164,132,183,.015) !important;
+  transition:transform .22s ease,border-color .22s ease,filter .22s ease,box-shadow .22s ease !important;
+}
+
+/* 상단 얇은 심연 선 */
+#obsidianBoxMain .char-card::before{
+  content:"" !important;
+  position:absolute !important;
+  z-index:6 !important;
+  left:10px !important;
+  right:10px !important;
+  top:7px !important;
+  height:1px !important;
+  pointer-events:none !important;
+  background:
+    linear-gradient(90deg,transparent,rgba(139,103,159,.30),transparent) !important;
+}
+
+/* 우하단 작은 심연 점 */
+#obsidianBoxMain .char-card::after{
+  content:"" !important;
+  position:absolute !important;
+  z-index:6 !important;
+  right:8px !important;
+  bottom:8px !important;
+  width:5px !important;
+  height:5px !important;
+  border-radius:50% !important;
+  background:#09070c !important;
+  border:1px solid rgba(145,108,166,.34) !important;
+  box-shadow:0 0 7px rgba(98,62,121,.12) !important;
+  pointer-events:none !important;
+}
+
+#obsidianBoxMain .char-card:hover{
+  transform:translateY(-2px) !important;
+  filter:brightness(1.035) !important;
+  border-color:rgba(141,110,156,.50) !important;
+  box-shadow:
+    inset 0 0 0 1px rgba(164,132,183,.02),
+    0 8px 18px rgba(0,0,0,.24) !important;
+}
+#obsidianBoxMain .char-card:hover::after{
+  background:#17101d !important;
+  border-color:rgba(174,133,198,.48) !important;
+  box-shadow:0 0 9px rgba(111,72,135,.20) !important;
+}
+
+#obsidianBoxMain .char-portrait{
+  border-color:rgba(109,90,119,.30) !important;
+  background:#0a090d !important;
+}
+#obsidianBoxMain .char-name{
+  color:#cbc4d0 !important;
+}
+#obsidianBoxMain .char-role{
+  color:#817b87 !important;
+}
+
+/* =========================================================
+   에이브릴 상세 Hover
+   ========================================================= */
+.character-hover-detail.calamity-avril{
+  overflow:hidden !important;
+  background:
+    radial-gradient(ellipse at 50% 108%,rgba(78,48,95,.11),transparent 34%),
+    linear-gradient(145deg,#151119,#08070b 72%) !important;
+  border:1px solid rgba(116,91,128,.42) !important;
+  border-radius:5px !important;
+  box-shadow:
+    inset 0 0 0 1px rgba(170,135,190,.018),
+    inset 0 0 36px rgba(41,24,51,.05),
+    0 18px 44px rgba(0,0,0,.48) !important;
+}
+
+/* 상세창 상단 장식 — 문자 없이 균열선만 */
+.character-hover-detail.calamity-avril::before{
+  content:"" !important;
+  display:block !important;
+  position:absolute !important;
+  z-index:22 !important;
+  left:10px !important;
+  right:10px !important;
+  top:8px !important;
+  height:1px !important;
+  pointer-events:none !important;
+  background:
+    linear-gradient(90deg,transparent,rgba(145,108,166,.36),transparent) !important;
+  box-shadow:0 0 7px rgba(91,59,112,.08) !important;
+}
+
+/* 기존 ::after 텍스트/장식이 있다면 제거 */
+.character-hover-detail.calamity-avril::after{
+  content:none !important;
+  display:none !important;
+}
+
+/* 상세 일러스트는 그림 자체를 가리는 장식 없이 톤만 정리 */
+.character-hover-detail.calamity-avril .character-detail-art{
+  position:relative !important;
+  background:#08070a !important;
+  border-bottom:1px solid rgba(107,84,118,.24) !important;
+}
+.character-hover-detail.calamity-avril .character-detail-art img{
+  filter:saturate(.86) brightness(.92) contrast(1.03) !important;
+}
+
+/* 일러스트 아래쪽에만 아주 옅은 심연 그림자 */
+.character-hover-detail.calamity-avril .character-detail-art::after{
+  content:"" !important;
+  position:absolute !important;
+  left:0 !important;
+  right:0 !important;
+  bottom:0 !important;
+  height:26% !important;
+  pointer-events:none !important;
+  background:linear-gradient(180deg,transparent,rgba(9,6,12,.22)) !important;
+}
+
+/* 상세 텍스트 */
+.character-hover-detail.calamity-avril .character-detail-name{
+  color:#d0c8d4 !important;
+}
+.character-hover-detail.calamity-avril .character-detail-role{
+  color:#938a99 !important;
+}
+.character-hover-detail.calamity-avril .character-detail-profile{
+  color:#9a929f !important;
+}
+.character-hover-detail.calamity-avril .character-detail-code{
+  color:#85788e !important;
+}
+
+/* 능력 박스 */
+.character-hover-detail.calamity-avril .character-detail-ability{
+  background:
+    linear-gradient(145deg,rgba(45,31,53,.16),rgba(18,14,21,.18)) !important;
+  border:1px solid rgba(110,84,121,.25) !important;
+}
+.character-hover-detail.calamity-avril .character-detail-ability strong{
+  color:#b6a5bf !important;
+}
+
+/* 대사 */
+.character-hover-detail.calamity-avril .character-detail-quote{
+  color:#aaa0ae !important;
+  border-color:rgba(102,80,112,.22) !important;
+}
+.character-hover-detail.calamity-avril .character-detail-quote::before{
+  color:#796784 !important;
+}
+
+/* 상세 Hover가 뜰 때 너무 강하지 않은 심연 숨결 */
+.character-hover-detail.calamity-avril .character-detail-body{
+  position:relative !important;
+}
+.character-hover-detail.calamity-avril .character-detail-body::after{
+  content:"" !important;
+  position:absolute !important;
+  z-index:-1 !important;
+  left:8% !important;
+  right:8% !important;
+  bottom:-10px !important;
+  height:56px !important;
+  border-radius:50% !important;
+  background:
+    radial-gradient(ellipse at center,
+      rgba(55,34,67,.18),
+      transparent 70%) !important;
+  filter:blur(10px) !important;
+  pointer-events:none !important;
+}
+</style>
+
 </head>
 <body><div aria-hidden="true" class="shooting-stars"><span class="shooting-star star-a"></span><span class="shooting-star star-b"></span><span class="shooting-star star-c"></span></div>
 <section class="hero">
@@ -22525,7 +22907,7 @@ document.addEventListener('DOMContentLoaded',function(){
             </div>
 <div class="calamity-stack">
 <!-- 에이브릴 -->
-<div class="calamity-row calamity-avril"><div class="place-card calamity-place-card-unified"><div class="obsidian-rise-layer-v7" aria-hidden="true"><i class="abyss-bubble-v7 b1"></i><i class="abyss-bubble-v7 b2"></i><i class="abyss-bubble-v7 b3"></i><i class="abyss-bubble-v7 b4"></i><i class="abyss-bubble-v7 b5"></i><i class="abyss-bubble-v7 b6"></i><i class="abyss-bubble-v7 b7"></i><i class="abyss-bubble-v7 b8"></i><i class="abyss-bubble-v7 b9"></i><i class="abyss-bubble-v7 b10"></i><i class="abyss-bubble-v7 b11"></i><i class="abyss-bubble-v7 b12"></i><i class="abyss-bubble-v7 b13"></i><i class="abyss-bubble-v7 b14"></i></div><span class="obsidian-orbs-direct" aria-hidden="true"><i class="orb o1"></i><i class="orb o2"></i><i class="orb o3"></i><i class="orb o4"></i><i class="orb o5"></i><i class="orb o6"></i><i class="orb o7"></i><i class="orb o8"></i><i class="orb o9"></i><i class="orb o10"></i><i class="orb o11"></i><i class="orb o12"></i></span><div class="place-image"><img alt="옵시디언 레어" src="img/bg/28.png"/></div><div class="place-info"><div class="place-title">◇ 옵시디언 레어 · SS+ 게이트</div><div class="place-desc">검게 결정화된 암석과 심연의 마력이 뒤엉킨 흑룡의 영역. 깊숙이 들어갈수록 빛과 열이 희미해지며, 거대한 흑색 결정과 용의 흔적만이 적막 속에 남아 있다.</div><div class="place-characters char-grid"><div class="char-card avril-detail-trigger" data-character-detail="avril"><div class="char-portrait"><img alt="에이브릴" src="img/ch/65.png"/></div><div class="char-name">에이브릴</div><div class="char-role">흑룡의딸·흑룡·SS+</div></div></div></div></div></div>
+<div class="calamity-row calamity-avril"><div class="place-card calamity-place-card-unified" id="obsidianBoxMain"><div class="orb-layer-main" id="orbLayerMain" aria-hidden="true"></div><div class="place-image"><img alt="옵시디언 레어" src="img/bg/28.png"/></div><div class="place-info"><div class="place-title">◇ 옵시디언 레어 · SS+ 게이트</div><div class="place-desc">검게 결정화된 암석과 심연의 마력이 뒤엉킨 흑룡의 영역. 깊숙이 들어갈수록 빛과 열이 희미해지며, 거대한 흑색 결정과 용의 흔적만이 적막 속에 남아 있다.</div><div class="place-characters char-grid"><div class="char-card avril-detail-trigger" data-character-detail="avril"><div class="char-portrait"><img alt="에이브릴" src="img/ch/65.png"/></div><div class="char-name">에이브릴</div><div class="char-role">흑룡의딸·흑룡·SS+</div></div></div></div></div></div>
 <!-- 노타마야 -->
 <div class="calamity-row calamity-notamaya"><div class="place-card calamity-place-card-unified"><div class="place-image"><img alt="천귀궁" src="img/bg/29.png"/></div><div class="place-info"><div class="place-title">◇ 천귀궁 · SSS 게이트</div><div class="place-desc">끝을 가늠할 수 없는 어둠 속에 세워진 천귀들의 궁전. 그림자와 환각이 현실의 경계를 흐리며, 발을 들인 순간부터 무엇이 실재하는지조차 확신하기 어렵다.</div><div class="place-characters char-grid"><div class="char-card notamaya-detail-trigger" data-character-detail="notamaya"><div class="char-portrait"><img alt="노타마야" src="img/ch/66.png"/></div><div class="char-name">노타마야</div><div class="char-role">천귀의주인·뱀요괴·SSS</div></div></div></div></div></div>
 <!-- 칼립사 -->
@@ -24524,6 +24906,111 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   requestAnimationFrame(tick);
+})();
+</script>
+
+
+<script id="obsidian-orb-test-applied-v8-script">
+(function(){
+  const layer = document.getElementById("orbLayerMain");
+  const box = document.getElementById("obsidianBoxMain");
+  if(!layer || !box) return;
+
+  /* 중복 실행 방지 */
+  if(layer.dataset.running === "1") return;
+  layer.dataset.running = "1";
+
+  const COUNT = 18;
+  const bubbles = [];
+
+  function makeBubble(){
+    const el = document.createElement("i");
+    el.className = "orb-main";
+    layer.appendChild(el);
+
+    const size = 12 + Math.random() * 32;
+    const x = 0.04 + Math.random() * 0.92;
+    const speed = 18 + Math.random() * 24;
+    const sway = 8 + Math.random() * 20;
+    const phase = Math.random();
+    const alpha = 0.34 + Math.random() * 0.28;
+    const wobbleSpeed = 1.2 + Math.random() * 1.8;
+
+    el.style.width = size + "px";
+    el.style.height = size + "px";
+
+    return {
+      el,
+      size,
+      x,
+      speed,
+      sway,
+      phase,
+      alpha,
+      wobbleSpeed,
+      p: Math.random()
+    };
+  }
+
+  for(let i=0;i<COUNT;i++){
+    bubbles.push(makeBubble());
+  }
+
+  let last = performance.now();
+
+  function animate(now){
+    const dt = Math.min((now - last) / 1000, 0.05);
+    last = now;
+
+    const W = layer.clientWidth;
+    const H = layer.clientHeight;
+
+    /* 탭/아코디언이 닫혀 H=0이어도 다음 프레임에서 자동 재계산 */
+    if(W > 0 && H > 0){
+      for(let i=0;i<bubbles.length;i++){
+        const b = bubbles[i];
+        const travel = H + b.size + 60;
+
+        b.p += (b.speed * dt) / travel;
+
+        if(b.p >= 1){
+          b.p -= 1;
+          b.x = 0.04 + Math.random() * 0.92;
+          b.speed = 18 + Math.random() * 24;
+          b.sway = 8 + Math.random() * 20;
+        }
+
+        const p = b.p;
+
+        /* 박스 맨 아래 → 박스 맨 위 */
+        const y = H + 25 - p * travel;
+
+        /* 몽글몽글 좌우 흔들림 */
+        const xBase = W * b.x - b.size / 2;
+        const xWave =
+          Math.sin((p * Math.PI * 4 * b.wobbleSpeed) + b.phase * Math.PI * 2)
+          * b.sway;
+
+        const x = xBase + xWave;
+
+        /* 아래에서 등장 / 위에서 소멸 */
+        const fadeIn = Math.min(1, p / 0.10);
+        const fadeOut = Math.min(1, (1 - p) / 0.12);
+        const opacity = b.alpha * Math.min(fadeIn, fadeOut);
+
+        const scale = 0.70 + Math.sin(p * Math.PI) * 0.30;
+
+        b.el.style.transform =
+          `translate3d(${x.toFixed(1)}px,${y.toFixed(1)}px,0) scale(${scale.toFixed(3)})`;
+
+        b.el.style.opacity = opacity.toFixed(3);
+      }
+    }
+
+    requestAnimationFrame(animate);
+  }
+
+  requestAnimationFrame(animate);
 })();
 </script>
 
