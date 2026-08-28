@@ -11386,6 +11386,1795 @@ body::after {
 }
 </style>
 
+
+<style id="player-faction-bw-redesign">
+/* 플레이어블 캐릭터 버튼: 흑백 디자인. 기존 버튼 배치/크기는 유지 */
+#tab-char .faction-switch-btn[data-faction="player"]{
+  position:relative; isolation:isolate; overflow:hidden;
+  color:#f4f4f4 !important;
+  background:
+    radial-gradient(ellipse at 50% 120%,rgba(255,255,255,.09),transparent 52%),
+    linear-gradient(115deg,#08090b 0%,#111216 48%,#07080a 100%) !important;
+  border:1px solid rgba(255,255,255,.38) !important;
+  border-radius:13px !important;
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,.08),
+    inset 0 -1px 0 rgba(0,0,0,.8),
+    0 8px 25px rgba(0,0,0,.22) !important;
+  text-shadow:0 1px 3px #000,0 0 13px rgba(255,255,255,.06);
+  transition:transform .22s ease,border-color .22s ease,box-shadow .22s ease,filter .22s ease !important;
+}
+#tab-char .faction-switch-btn[data-faction="player"]::before{
+  content:""; position:absolute; inset:4px; z-index:1; pointer-events:none;
+  border:1px solid rgba(255,255,255,.075); border-radius:9px;
+  background:
+    radial-gradient(circle at 88% 50%,
+      transparent 0 28px,
+      rgba(255,255,255,.19) 29px 30px,
+      transparent 31px 41px,
+      rgba(255,255,255,.09) 42px 43px,
+      transparent 44px);
+  animation:lrPlayerBwPulse 3.1s ease-in-out infinite;
+}
+#tab-char .faction-switch-btn[data-faction="player"]::after{
+  content:""; position:absolute; z-index:2; top:-70%; left:-35%;
+  width:25%; height:240%; pointer-events:none;
+  background:linear-gradient(90deg,transparent,rgba(255,255,255,.025),rgba(255,255,255,.16),rgba(255,255,255,.025),transparent);
+  transform:rotate(17deg); filter:blur(2px);
+  animation:lrPlayerBwLight 5.5s ease-in-out infinite;
+}
+#tab-char .faction-switch-btn[data-faction="player"] > *{position:relative;z-index:5}
+#tab-char .faction-switch-btn[data-faction="player"]:hover{
+  transform:translateY(-2px) !important; filter:brightness(1.08);
+  border-color:rgba(255,255,255,.72) !important;
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,.13),
+    inset 0 0 25px rgba(255,255,255,.025),
+    0 0 0 1px rgba(255,255,255,.035),
+    0 8px 26px rgba(0,0,0,.30) !important;
+}
+#tab-char .faction-switch-btn[data-faction="player"].active{
+  color:#fff !important; border-color:rgba(255,255,255,.78) !important;
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,.14),
+    inset 0 0 28px rgba(255,255,255,.045),
+    0 0 0 1px rgba(255,255,255,.045),
+    0 0 18px rgba(255,255,255,.055) !important;
+}
+@keyframes lrPlayerBwPulse{
+  0%,100%{opacity:.45}
+  50%{opacity:.92}
+}
+@keyframes lrPlayerBwLight{
+  0%,18%{left:-35%;opacity:0}
+  35%{opacity:.7}
+  65%{opacity:.7}
+  82%,100%{left:120%;opacity:0}
+}
+@media(prefers-reduced-motion:reduce){
+  #tab-char .faction-switch-btn[data-faction="player"]::before,
+  #tab-char .faction-switch-btn[data-faction="player"]::after{animation:none !important}
+}
+</style>
+
+
+<style id="player-faction-bw-inner-redesign">
+/* =========================================================
+   PLAYABLE CHARACTER — BLACK & WHITE INTERNAL THEME
+   플레이어블 버튼의 흑백 언어를 내부 패널/인트로/카드까지 확장
+   기존 구조, 이미지, 모바일 2열, 팝업 JS는 유지
+   ========================================================= */
+
+#tab-char .faction-content-panel[data-faction-panel="player"]{
+  position:relative;
+  overflow:hidden;
+  border:1px solid rgba(255,255,255,.20) !important;
+  border-radius:13px !important;
+  background:
+    radial-gradient(ellipse at 82% -10%,rgba(255,255,255,.055),transparent 35%),
+    linear-gradient(145deg,#0e0f12,#08090b 68%) !important;
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,.045),
+    inset 0 0 35px rgba(255,255,255,.012) !important;
+  clip-path:none !important;
+}
+
+#tab-char .faction-content-panel[data-faction-panel="player"] > .acc-head{
+  position:relative;
+  min-height:72px;
+  color:#f3f3f3;
+  background:
+    radial-gradient(circle at 88% 50%,rgba(255,255,255,.055),transparent 27%),
+    linear-gradient(90deg,rgba(255,255,255,.035),transparent 55%) !important;
+  border-bottom:1px solid rgba(255,255,255,.09);
+}
+
+/* 기존 PLAYER/골드 장식 제거 후 흑백 신호 프레임 */
+#tab-char .faction-content-panel[data-faction-panel="player"] > .acc-head::before{
+  content:"PLAYER";
+  position:absolute;
+  right:72px;
+  top:50%;
+  width:auto;
+  height:auto;
+  transform:translateY(-50%);
+  background:none;
+  font-family:'JetBrains Mono',monospace;
+  font-size:10px;
+  letter-spacing:.30em;
+  color:rgba(255,255,255,.18);
+  animation:lrPlayerInnerCode 3.2s ease-in-out infinite;
+}
+
+#tab-char .faction-content-panel[data-faction-panel="player"] > .acc-head::after{
+  content:"";
+  position:absolute;
+  left:0;
+  right:0;
+  bottom:0;
+  width:auto;
+  height:1px;
+  background:linear-gradient(90deg,rgba(255,255,255,.65),rgba(255,255,255,.08) 42%,transparent 78%);
+  animation:lrPlayerInnerLine 4.6s ease-in-out infinite;
+}
+
+#tab-char .faction-content-panel[data-faction-panel="player"] .acc-num{
+  color:#f0f0f0 !important;
+  text-shadow:0 0 10px rgba(255,255,255,.16);
+}
+
+#tab-char .faction-content-panel[data-faction-panel="player"] .acc-title{
+  color:#f1f1f1 !important;
+}
+
+#tab-char .faction-content-panel[data-faction-panel="player"].open .acc-chevron::before{
+  background:#ededed !important;
+}
+
+#tab-char .faction-content-panel[data-faction-panel="player"] .acc-body-inner{
+  position:relative;
+  padding-top:24px !important;
+  border-top:0 !important;
+  background:
+    linear-gradient(rgba(255,255,255,.018) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(255,255,255,.012) 1px,transparent 1px);
+  background-size:28px 28px;
+}
+
+/* 인트로 박스 */
+#tab-char .faction-content-panel[data-faction-panel="player"] .player-intro-box{
+  position:relative;
+  overflow:hidden;
+  border:1px solid rgba(255,255,255,.13) !important;
+  border-left:2px solid rgba(255,255,255,.62) !important;
+  border-radius:8px;
+  background:
+    linear-gradient(90deg,rgba(255,255,255,.055),transparent 72%),
+    rgba(255,255,255,.012) !important;
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.025);
+}
+
+#tab-char .faction-content-panel[data-faction-panel="player"] .player-intro-box::after{
+  content:"";
+  position:absolute;
+  top:-80%;
+  left:-25%;
+  width:16%;
+  height:260%;
+  background:linear-gradient(90deg,transparent,rgba(255,255,255,.11),transparent);
+  transform:rotate(18deg);
+  animation:lrPlayerInnerSweep 6.2s ease-in-out infinite;
+  pointer-events:none;
+}
+
+#tab-char .faction-content-panel[data-faction-panel="player"] .player-intro-mark{
+  position:relative;
+  z-index:1;
+  color:#e9e9e9 !important;
+  text-shadow:0 0 8px rgba(255,255,255,.28);
+}
+
+#tab-char .faction-content-panel[data-faction-panel="player"] .player-intro-box strong{
+  position:relative;
+  z-index:1;
+  color:#eeeeee !important;
+}
+
+#tab-char .faction-content-panel[data-faction-panel="player"] .player-intro-box p{
+  position:relative;
+  z-index:1;
+  color:#8f949c !important;
+}
+
+/* 남/여 모두 같은 무채색 계열, 명암 패턴만 다르게 */
+#tab-char .faction-content-panel[data-faction-panel="player"] .player-select-card{
+  border:1px solid rgba(255,255,255,.14) !important;
+  border-radius:10px;
+  background:
+    radial-gradient(circle at 82% 10%,rgba(255,255,255,.045),transparent 31%),
+    linear-gradient(145deg,#111216,#090a0d) !important;
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,.035),
+    0 8px 22px rgba(0,0,0,.18);
+}
+
+#tab-char .faction-content-panel[data-faction-panel="player"] .player-male::before{
+  box-shadow:
+    inset 3px 0 0 rgba(255,255,255,.18),
+    inset -1px 0 0 rgba(255,255,255,.025) !important;
+  background:
+    linear-gradient(135deg,transparent 0 74%,rgba(255,255,255,.025) 75% 76%,transparent 77%);
+}
+
+#tab-char .faction-content-panel[data-faction-panel="player"] .player-female::before{
+  box-shadow:
+    inset -3px 0 0 rgba(255,255,255,.18),
+    inset 1px 0 0 rgba(255,255,255,.025) !important;
+  background:
+    linear-gradient(45deg,transparent 0 74%,rgba(255,255,255,.025) 75% 76%,transparent 77%);
+}
+
+#tab-char .faction-content-panel[data-faction-panel="player"] .player-image{
+  background:#08090b !important;
+}
+
+#tab-char .faction-content-panel[data-faction-panel="player"] .player-image::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  pointer-events:none;
+  border:1px solid rgba(255,255,255,.035);
+  box-shadow:inset 0 -35px 50px rgba(0,0,0,.18);
+}
+
+#tab-char .faction-content-panel[data-faction-panel="player"] .player-card-footer{
+  border-top:1px solid rgba(255,255,255,.08) !important;
+  background:
+    linear-gradient(180deg,rgba(255,255,255,.025),transparent),
+    #0c0d10;
+}
+
+#tab-char .faction-content-panel[data-faction-panel="player"] .player-card-name{
+  color:#ededed !important;
+  text-shadow:0 0 12px rgba(255,255,255,.06);
+}
+
+#tab-char .faction-content-panel[data-faction-panel="player"] .player-card-en{
+  color:#737880 !important;
+}
+
+/* 중앙 분할선도 완전 흑백 */
+#tab-char .faction-content-panel[data-faction-panel="player"] .player-select-grid::after{
+  background:
+    linear-gradient(to bottom,transparent,rgba(255,255,255,.15) 25%,rgba(255,255,255,.15) 75%,transparent) !important;
+}
+
+/* 카드 hover */
+#tab-char .faction-content-panel[data-faction-panel="player"] .player-select-card:hover{
+  transform:translateY(-3px) !important;
+  border-color:rgba(255,255,255,.42) !important;
+  background:
+    radial-gradient(circle at 82% 10%,rgba(255,255,255,.075),transparent 32%),
+    linear-gradient(145deg,#15161a,#0a0b0e) !important;
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,.06),
+    0 10px 28px rgba(0,0,0,.26),
+    0 0 18px rgba(255,255,255,.035) !important;
+}
+
+/* 플레이어 상세 팝업 프레임도 흑백 */
+.player-art-hover[data-player-art-popup="99"],
+.player-art-hover[data-player-art-popup="98"]{
+  border-color:rgba(255,255,255,.22) !important;
+  background:#08090b !important;
+  box-shadow:
+    0 18px 55px rgba(0,0,0,.55),
+    0 0 0 1px rgba(255,255,255,.035) !important;
+}
+
+@keyframes lrPlayerInnerCode{
+  0%,100%{opacity:.35}
+  50%{opacity:1}
+}
+@keyframes lrPlayerInnerLine{
+  0%,100%{opacity:.35}
+  50%{opacity:.9}
+}
+@keyframes lrPlayerInnerSweep{
+  0%,20%{left:-25%;opacity:0}
+  38%{opacity:.65}
+  72%{opacity:.45}
+  88%,100%{left:118%;opacity:0}
+}
+
+@media(prefers-reduced-motion:reduce){
+  #tab-char .faction-content-panel[data-faction-panel="player"] > .acc-head::before,
+  #tab-char .faction-content-panel[data-faction-panel="player"] > .acc-head::after,
+  #tab-char .faction-content-panel[data-faction-panel="player"] .player-intro-box::after{
+    animation:none !important;
+  }
+}
+</style>
+
+
+<style id="orbis-central-starlight-theme">
+/* =========================================================
+   ORBIS CENTRAL UNION — STARLIGHT THEME
+   오르비스 중앙연합 버튼 + 내부 패널에만 적용
+   ========================================================= */
+
+/* ---------- SWITCH BUTTON ---------- */
+#tab-char .faction-switch-btn[data-faction="central"]{
+  position:relative;
+  isolation:isolate;
+  overflow:hidden;
+
+  color:#e8e5ff !important;
+
+  background:
+    radial-gradient(circle at 78% 28%,rgba(205,196,255,.12),transparent 22%),
+    radial-gradient(circle at 18% 78%,rgba(118,100,205,.10),transparent 28%),
+    linear-gradient(135deg,#11111d 0%,#17152a 48%,#0b0c14 100%) !important;
+
+  border:1px solid rgba(169,151,255,.48) !important;
+  border-radius:12px !important;
+
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,.06),
+    inset 0 0 28px rgba(122,93,224,.045),
+    0 7px 22px rgba(0,0,0,.22) !important;
+
+  text-shadow:
+    0 1px 3px #000,
+    0 0 11px rgba(185,170,255,.14);
+
+  transition:
+    transform .22s ease,
+    border-color .22s ease,
+    box-shadow .22s ease,
+    filter .22s ease !important;
+}
+
+/* 작은 별들이 불규칙하게 번쩍임 */
+#tab-char .faction-switch-btn[data-faction="central"]::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  z-index:1;
+  pointer-events:none;
+
+  background:
+    radial-gradient(circle at 12% 24%,rgba(255,255,255,.95) 0 1px,transparent 1.7px),
+    radial-gradient(circle at 31% 69%,rgba(219,213,255,.86) 0 1px,transparent 1.8px),
+    radial-gradient(circle at 47% 31%,rgba(255,255,255,.72) 0 1px,transparent 1.6px),
+    radial-gradient(circle at 61% 76%,rgba(198,188,255,.90) 0 1px,transparent 1.8px),
+    radial-gradient(circle at 73% 18%,rgba(255,255,255,.90) 0 1px,transparent 1.7px),
+    radial-gradient(circle at 87% 57%,rgba(210,201,255,.80) 0 1px,transparent 1.8px),
+    radial-gradient(circle at 93% 25%,rgba(255,255,255,.65) 0 .8px,transparent 1.5px);
+
+  filter:
+    drop-shadow(0 0 3px rgba(211,202,255,.72))
+    drop-shadow(0 0 8px rgba(126,103,238,.22));
+
+  animation:lrOrbisStarsA 2.5s steps(1,end) infinite;
+}
+
+/* 큰 별빛 플레어가 순간적으로 번쩍 */
+#tab-char .faction-switch-btn[data-faction="central"]::after{
+  content:"";
+  position:absolute;
+  z-index:2;
+  right:13%;
+  top:50%;
+  width:2px;
+  height:2px;
+  border-radius:50%;
+  background:#fff;
+  pointer-events:none;
+
+  box-shadow:
+    0 0 4px 1px rgba(255,255,255,.92),
+    0 0 11px 3px rgba(193,181,255,.54),
+    0 0 24px 6px rgba(123,98,225,.20);
+
+  opacity:0;
+  animation:lrOrbisMainFlash 3.8s ease-in-out infinite;
+}
+
+#tab-char .faction-switch-btn[data-faction="central"] > *{
+  position:relative;
+  z-index:5;
+}
+
+#tab-char .faction-switch-btn[data-faction="central"]:hover{
+  transform:translateY(-2px) !important;
+  filter:brightness(1.09);
+  border-color:rgba(206,196,255,.78) !important;
+
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,.10),
+    inset 0 0 30px rgba(137,111,237,.075),
+    0 0 18px rgba(129,105,230,.09),
+    0 8px 25px rgba(0,0,0,.30) !important;
+}
+
+#tab-char .faction-switch-btn[data-faction="central"].active{
+  color:#fff !important;
+  border-color:rgba(216,208,255,.84) !important;
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,.12),
+    inset 0 0 34px rgba(143,119,237,.085),
+    0 0 20px rgba(137,112,240,.12) !important;
+}
+
+
+/* ---------- CENTRAL INTERNAL PANEL ---------- */
+#tab-char .faction-content-panel[data-faction-panel="central"]{
+  position:relative;
+  overflow:hidden;
+
+  border-color:rgba(158,139,244,.36) !important;
+  border-radius:10px !important;
+
+  background:
+    radial-gradient(circle at 84% 4%,rgba(175,157,255,.085),transparent 25%),
+    radial-gradient(circle at 8% 84%,rgba(91,71,176,.07),transparent 32%),
+    linear-gradient(145deg,#12121e,#0b0c14 68%) !important;
+
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,.035),
+    inset 0 0 36px rgba(120,92,222,.025) !important;
+}
+
+/* 상단 패널 */
+#tab-char .faction-content-panel[data-faction-panel="central"] > .acc-head{
+  position:relative;
+  overflow:hidden;
+
+  background:
+    radial-gradient(circle at 83% 50%,rgba(192,180,255,.10),transparent 27%),
+    linear-gradient(90deg,rgba(122,98,222,.12),transparent 58%) !important;
+
+  border-bottom:1px solid rgba(171,153,250,.12);
+}
+
+/* 별무리 */
+#tab-char .faction-content-panel[data-faction-panel="central"] > .acc-head::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  left:0;
+  top:0;
+  width:100%;
+  height:100%;
+  z-index:1;
+  pointer-events:none;
+
+  background:
+    radial-gradient(circle at 8% 26%,rgba(255,255,255,.75) 0 1px,transparent 1.7px),
+    radial-gradient(circle at 23% 72%,rgba(215,206,255,.80) 0 1px,transparent 1.8px),
+    radial-gradient(circle at 39% 34%,rgba(255,255,255,.62) 0 .8px,transparent 1.5px),
+    radial-gradient(circle at 57% 77%,rgba(198,186,255,.82) 0 1px,transparent 1.8px),
+    radial-gradient(circle at 74% 21%,rgba(255,255,255,.92) 0 1px,transparent 1.8px),
+    radial-gradient(circle at 88% 64%,rgba(218,210,255,.74) 0 1px,transparent 1.7px),
+    radial-gradient(circle at 95% 30%,rgba(255,255,255,.55) 0 .8px,transparent 1.5px);
+
+  opacity:.55;
+  filter:drop-shadow(0 0 4px rgba(201,190,255,.55));
+  animation:lrOrbisStarsB 3.1s steps(1,end) infinite;
+}
+
+/* 오른쪽 큰 십자 별빛 */
+#tab-char .faction-content-panel[data-faction-panel="central"] > .acc-head::after{
+  content:"";
+  position:absolute;
+  z-index:2;
+  right:82px;
+  top:50%;
+  width:3px;
+  height:3px;
+  border-radius:50%;
+  background:#fff;
+
+  box-shadow:
+    0 0 5px 1px rgba(255,255,255,.95),
+    0 0 13px 3px rgba(204,194,255,.55),
+    0 0 26px 7px rgba(121,98,221,.16);
+
+  opacity:0;
+  animation:lrOrbisPanelFlash 4.2s ease-in-out infinite;
+}
+
+#tab-char .faction-content-panel[data-faction-panel="central"] > .acc-head .acc-num,
+#tab-char .faction-content-panel[data-faction-panel="central"] > .acc-head .acc-title,
+#tab-char .faction-content-panel[data-faction-panel="central"] > .acc-head .acc-chevron{
+  position:relative;
+  z-index:4;
+}
+
+#tab-char .faction-content-panel[data-faction-panel="central"] .acc-num{
+  color:#c9bcff !important;
+  text-shadow:0 0 9px rgba(178,159,255,.30);
+}
+
+#tab-char .faction-content-panel[data-faction-panel="central"] .acc-title{
+  color:#eeeaff !important;
+}
+
+#tab-char .faction-content-panel[data-faction-panel="central"].open .acc-chevron::before{
+  background:#bba8ff !important;
+}
+
+/* 내부 내용에도 아주 작은 별빛만 유지 */
+#tab-char .faction-content-panel[data-faction-panel="central"] .acc-body-inner{
+  position:relative;
+  overflow:hidden;
+
+  border-top:0 !important;
+
+  background:
+    radial-gradient(circle at 12% 16%,rgba(255,255,255,.045) 0 1px,transparent 1.6px),
+    radial-gradient(circle at 66% 28%,rgba(197,186,255,.055) 0 1px,transparent 1.7px),
+    radial-gradient(circle at 88% 72%,rgba(255,255,255,.035) 0 1px,transparent 1.6px),
+    linear-gradient(180deg,rgba(125,103,220,.018),transparent 42%);
+}
+
+/* 오르비스 캐릭터 카드도 밤하늘 계열로 자연스럽게 연결 */
+#tab-char .faction-content-panel[data-faction-panel="central"] .char-card{
+  border-color:rgba(160,145,226,.24) !important;
+  background:
+    radial-gradient(circle at 82% 5%,rgba(196,186,255,.045),transparent 28%),
+    linear-gradient(145deg,#13131d,#0c0d13) !important;
+}
+
+#tab-char .faction-content-panel[data-faction-panel="central"] .char-card:hover{
+  border-color:rgba(199,187,255,.43) !important;
+  box-shadow:
+    0 8px 23px rgba(0,0,0,.24),
+    0 0 15px rgba(134,110,226,.045) !important;
+}
+
+#tab-char .faction-content-panel[data-faction-panel="central"] .char-portrait{
+  background:
+    radial-gradient(circle at 70% 8%,rgba(197,187,255,.075),transparent 25%),
+    linear-gradient(155deg,#302c49,#11121a 70%) !important;
+}
+
+#tab-char .faction-content-panel[data-faction-panel="central"] .char-role{
+  color:#bcaaff !important;
+}
+
+
+/* ---------- ANIMATIONS ---------- */
+@keyframes lrOrbisStarsA{
+  0%,100%{opacity:.28}
+  18%{opacity:.72}
+  19%{opacity:.26}
+  42%{opacity:.50}
+  43%{opacity:.22}
+  66%{opacity:.90}
+  68%{opacity:.32}
+  84%{opacity:.62}
+}
+
+@keyframes lrOrbisStarsB{
+  0%,100%{opacity:.28}
+  15%{opacity:.72}
+  17%{opacity:.35}
+  37%{opacity:.88}
+  39%{opacity:.31}
+  61%{opacity:.50}
+  63%{opacity:.92}
+  65%{opacity:.34}
+  82%{opacity:.67}
+}
+
+@keyframes lrOrbisMainFlash{
+  0%,61%,100%{opacity:0;transform:scale(.25)}
+  65%{opacity:.45;transform:scale(.8)}
+  68%{opacity:1;transform:scale(1.7)}
+  71%{opacity:.22;transform:scale(.7)}
+  74%{opacity:.85;transform:scale(1.25)}
+  78%{opacity:0;transform:scale(.3)}
+}
+
+@keyframes lrOrbisPanelFlash{
+  0%,56%,100%{opacity:0;transform:scale(.3)}
+  60%{opacity:.35;transform:scale(.8)}
+  63%{opacity:1;transform:scale(2)}
+  66%{opacity:.18;transform:scale(.75)}
+  69%{opacity:.82;transform:scale(1.35)}
+  74%{opacity:0;transform:scale(.4)}
+}
+
+@media(prefers-reduced-motion:reduce){
+  #tab-char .faction-switch-btn[data-faction="central"]::before,
+  #tab-char .faction-switch-btn[data-faction="central"]::after,
+  #tab-char .faction-content-panel[data-faction-panel="central"] > .acc-head::before,
+  #tab-char .faction-content-panel[data-faction-panel="central"] > .acc-head::after{
+    animation:none !important;
+  }
+}
+</style>
+
+
+<style id="orbis-central-starflare-v2">
+/* =========================================================
+   ORBIS CENTRAL UNION — TRUE STAR FLARE V2
+   점 깜빡임이 아니라 십자형 광선 + 번짐 + 순간 폭발광
+   ========================================================= */
+
+/* 기존 central ::after 점 플레어를 완전한 별빛 플레어로 교체 */
+#tab-char .faction-switch-btn[data-faction="central"]::after{
+  content:"";
+  position:absolute;
+  z-index:3;
+  right:14%;
+  top:50%;
+  width:88px;
+  height:88px;
+  transform:translate(50%,-50%) scale(.35);
+  pointer-events:none;
+  opacity:0;
+
+  background:
+    /* 수평 광선 */
+    linear-gradient(90deg,
+      transparent 0%,
+      rgba(255,255,255,0) 10%,
+      rgba(214,207,255,.08) 28%,
+      rgba(244,241,255,.72) 47%,
+      #fff 49.3% 50.7%,
+      rgba(244,241,255,.72) 53%,
+      rgba(214,207,255,.08) 72%,
+      rgba(255,255,255,0) 90%,
+      transparent 100%),
+
+    /* 수직 광선 */
+    linear-gradient(180deg,
+      transparent 0%,
+      rgba(255,255,255,0) 10%,
+      rgba(214,207,255,.08) 28%,
+      rgba(244,241,255,.72) 47%,
+      #fff 49.3% 50.7%,
+      rgba(244,241,255,.72) 53%,
+      rgba(214,207,255,.08) 72%,
+      rgba(255,255,255,0) 90%,
+      transparent 100%),
+
+    /* 대각 광선 */
+    linear-gradient(45deg,
+      transparent 0 46%,
+      rgba(218,210,255,.18) 48%,
+      rgba(255,255,255,.9) 49.5% 50.5%,
+      rgba(218,210,255,.18) 52%,
+      transparent 54% 100%),
+
+    linear-gradient(-45deg,
+      transparent 0 46%,
+      rgba(218,210,255,.14) 48%,
+      rgba(255,255,255,.78) 49.5% 50.5%,
+      rgba(218,210,255,.14) 52%,
+      transparent 54% 100%),
+
+    /* 중앙 발광 */
+    radial-gradient(circle,
+      rgba(255,255,255,1) 0 3%,
+      rgba(246,243,255,.95) 4% 7%,
+      rgba(203,192,255,.55) 8% 15%,
+      rgba(143,119,237,.22) 16% 28%,
+      transparent 52%);
+
+  filter:
+    drop-shadow(0 0 3px rgba(255,255,255,.95))
+    drop-shadow(0 0 8px rgba(208,197,255,.75))
+    drop-shadow(0 0 18px rgba(142,116,238,.45))
+    drop-shadow(0 0 32px rgba(105,82,205,.22));
+
+  animation:lrOrbisTrueFlareButton 4.6s cubic-bezier(.2,.7,.2,1) infinite;
+}
+
+/* 내부 패널의 플레어도 같은 방식으로 크게 */
+#tab-char .faction-content-panel[data-faction-panel="central"] > .acc-head::after{
+  content:"";
+  position:absolute;
+  z-index:3;
+  right:76px;
+  top:50%;
+  width:118px;
+  height:118px;
+  transform:translateY(-50%) scale(.3);
+  pointer-events:none;
+  opacity:0;
+
+  background:
+    linear-gradient(90deg,
+      transparent 0%,
+      rgba(255,255,255,0) 8%,
+      rgba(209,199,255,.06) 24%,
+      rgba(238,232,255,.48) 43%,
+      #fff 49.2% 50.8%,
+      rgba(238,232,255,.48) 57%,
+      rgba(209,199,255,.06) 76%,
+      rgba(255,255,255,0) 92%,
+      transparent 100%),
+
+    linear-gradient(180deg,
+      transparent 0%,
+      rgba(255,255,255,0) 8%,
+      rgba(209,199,255,.06) 24%,
+      rgba(238,232,255,.48) 43%,
+      #fff 49.2% 50.8%,
+      rgba(238,232,255,.48) 57%,
+      rgba(209,199,255,.06) 76%,
+      rgba(255,255,255,0) 92%,
+      transparent 100%),
+
+    linear-gradient(45deg,
+      transparent 0 47%,
+      rgba(222,215,255,.12) 48.5%,
+      rgba(255,255,255,.76) 49.5% 50.5%,
+      rgba(222,215,255,.12) 51.5%,
+      transparent 53% 100%),
+
+    linear-gradient(-45deg,
+      transparent 0 47%,
+      rgba(222,215,255,.10) 48.5%,
+      rgba(255,255,255,.65) 49.5% 50.5%,
+      rgba(222,215,255,.10) 51.5%,
+      transparent 53% 100%),
+
+    radial-gradient(circle,
+      #fff 0 2.5%,
+      rgba(250,248,255,.98) 3% 6%,
+      rgba(217,207,255,.62) 7% 13%,
+      rgba(151,127,241,.24) 14% 28%,
+      rgba(117,92,220,.09) 29% 42%,
+      transparent 60%);
+
+  filter:
+    drop-shadow(0 0 4px rgba(255,255,255,1))
+    drop-shadow(0 0 10px rgba(213,201,255,.8))
+    drop-shadow(0 0 24px rgba(147,122,241,.5))
+    drop-shadow(0 0 45px rgba(103,80,207,.24));
+
+  animation:lrOrbisTrueFlarePanel 5.2s cubic-bezier(.2,.7,.2,1) infinite;
+}
+
+/* 플레어 순간 주변 패널도 같이 밝아지는 느낌 */
+#tab-char .faction-switch-btn[data-faction="central"]{
+  animation:lrOrbisButtonGlowPulse 4.6s ease-in-out infinite;
+}
+
+#tab-char .faction-content-panel[data-faction-panel="central"] > .acc-head{
+  animation:lrOrbisHeadGlowPulse 5.2s ease-in-out infinite;
+}
+
+@keyframes lrOrbisTrueFlareButton{
+  0%,58%,100%{
+    opacity:0;
+    transform:translate(50%,-50%) scale(.28);
+  }
+  62%{
+    opacity:.18;
+    transform:translate(50%,-50%) scale(.55);
+  }
+  65%{
+    opacity:.62;
+    transform:translate(50%,-50%) scale(.95);
+  }
+  67%{
+    opacity:1;
+    transform:translate(50%,-50%) scale(1.42);
+  }
+  69%{
+    opacity:.72;
+    transform:translate(50%,-50%) scale(1.05);
+  }
+  71%{
+    opacity:1;
+    transform:translate(50%,-50%) scale(1.58);
+  }
+  74%{
+    opacity:.26;
+    transform:translate(50%,-50%) scale(.82);
+  }
+  78%{
+    opacity:0;
+    transform:translate(50%,-50%) scale(.42);
+  }
+}
+
+@keyframes lrOrbisTrueFlarePanel{
+  0%,54%,100%{
+    opacity:0;
+    transform:translateY(-50%) scale(.24);
+  }
+  58%{
+    opacity:.16;
+    transform:translateY(-50%) scale(.5);
+  }
+  61%{
+    opacity:.58;
+    transform:translateY(-50%) scale(.95);
+  }
+  63%{
+    opacity:1;
+    transform:translateY(-50%) scale(1.5);
+  }
+  65%{
+    opacity:.68;
+    transform:translateY(-50%) scale(1.08);
+  }
+  67%{
+    opacity:1;
+    transform:translateY(-50%) scale(1.72);
+  }
+  70%{
+    opacity:.34;
+    transform:translateY(-50%) scale(.9);
+  }
+  75%{
+    opacity:0;
+    transform:translateY(-50%) scale(.4);
+  }
+}
+
+@keyframes lrOrbisButtonGlowPulse{
+  0%,58%,78%,100%{
+    box-shadow:
+      inset 0 1px 0 rgba(255,255,255,.06),
+      inset 0 0 28px rgba(122,93,224,.045),
+      0 7px 22px rgba(0,0,0,.22);
+  }
+  67%,71%{
+    box-shadow:
+      inset 0 1px 0 rgba(255,255,255,.12),
+      inset 0 0 34px rgba(167,145,255,.12),
+      0 0 24px rgba(147,124,239,.18),
+      0 7px 22px rgba(0,0,0,.22);
+  }
+}
+
+@keyframes lrOrbisHeadGlowPulse{
+  0%,54%,75%,100%{
+    filter:brightness(1);
+  }
+  63%,67%{
+    filter:brightness(1.16);
+  }
+}
+
+@media(prefers-reduced-motion:reduce){
+  #tab-char .faction-switch-btn[data-faction="central"],
+  #tab-char .faction-switch-btn[data-faction="central"]::after,
+  #tab-char .faction-content-panel[data-faction-panel="central"] > .acc-head,
+  #tab-char .faction-content-panel[data-faction-panel="central"] > .acc-head::after{
+    animation:none !important;
+  }
+}
+</style>
+
+
+<style id="orbis-central-softflare-v3">
+/* =========================================================
+   ORBIS CENTRAL UNION — SOFT FLARE V3
+   점 깜빡임 제거 / 과한 폭발광 제거
+   은은한 별빛 플레어만 천천히 발생
+   ========================================================= */
+
+/* 기존 점 별무리 완전 제거 */
+#tab-char .faction-switch-btn[data-faction="central"]::before{
+  content:"";
+  position:absolute;
+  inset:4px;
+  z-index:1;
+  pointer-events:none;
+  border:1px solid rgba(191,180,255,.055);
+  border-radius:8px;
+  background:
+    linear-gradient(90deg,transparent,rgba(255,255,255,.025),transparent 45%),
+    radial-gradient(ellipse at 84% 50%,rgba(167,148,255,.075),transparent 34%);
+  filter:none !important;
+  animation:none !important;
+}
+
+/* 버튼: 작은 십자 플레어 하나만 */
+#tab-char .faction-switch-btn[data-faction="central"]::after{
+  content:"";
+  position:absolute;
+  z-index:3;
+  right:13%;
+  top:50%;
+  width:52px;
+  height:52px;
+  transform:translate(50%,-50%) scale(.65);
+  pointer-events:none;
+  opacity:0;
+
+  background:
+    linear-gradient(90deg,
+      transparent 0 18%,
+      rgba(221,214,255,.05) 28%,
+      rgba(248,246,255,.55) 48.5%,
+      #fff 49.6% 50.4%,
+      rgba(248,246,255,.55) 51.5%,
+      rgba(221,214,255,.05) 72%,
+      transparent 82% 100%),
+    linear-gradient(180deg,
+      transparent 0 18%,
+      rgba(221,214,255,.05) 28%,
+      rgba(248,246,255,.48) 48.5%,
+      #fff 49.6% 50.4%,
+      rgba(248,246,255,.48) 51.5%,
+      rgba(221,214,255,.05) 72%,
+      transparent 82% 100%),
+    radial-gradient(circle,
+      rgba(255,255,255,.95) 0 3%,
+      rgba(231,224,255,.34) 8%,
+      rgba(151,129,230,.09) 28%,
+      transparent 55%);
+
+  filter:
+    drop-shadow(0 0 3px rgba(255,255,255,.58))
+    drop-shadow(0 0 8px rgba(179,163,248,.22));
+
+  animation:lrOrbisSoftFlareBtn 5.8s ease-in-out infinite;
+}
+
+/* 내부 헤더 점 별무리 제거 */
+#tab-char .faction-content-panel[data-faction-panel="central"] > .acc-head::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  z-index:1;
+  pointer-events:none;
+  width:auto;
+  height:auto;
+  left:0;
+  top:0;
+  background:
+    linear-gradient(90deg,rgba(145,121,235,.06),transparent 52%),
+    radial-gradient(ellipse at 84% 50%,rgba(192,180,255,.075),transparent 28%);
+  opacity:1;
+  filter:none !important;
+  animation:none !important;
+}
+
+/* 내부 헤더도 작은 플레어 하나 */
+#tab-char .faction-content-panel[data-faction-panel="central"] > .acc-head::after{
+  content:"";
+  position:absolute;
+  z-index:3;
+  right:84px;
+  top:50%;
+  width:62px;
+  height:62px;
+  transform:translateY(-50%) scale(.7);
+  pointer-events:none;
+  opacity:0;
+
+  background:
+    linear-gradient(90deg,
+      transparent 0 17%,
+      rgba(225,218,255,.045) 31%,
+      rgba(249,247,255,.48) 48.7%,
+      #fff 49.6% 50.4%,
+      rgba(249,247,255,.48) 51.3%,
+      rgba(225,218,255,.045) 69%,
+      transparent 83% 100%),
+    linear-gradient(180deg,
+      transparent 0 17%,
+      rgba(225,218,255,.045) 31%,
+      rgba(249,247,255,.42) 48.7%,
+      #fff 49.6% 50.4%,
+      rgba(249,247,255,.42) 51.3%,
+      rgba(225,218,255,.045) 69%,
+      transparent 83% 100%),
+    radial-gradient(circle,
+      rgba(255,255,255,.92) 0 3%,
+      rgba(229,221,255,.28) 9%,
+      rgba(147,125,228,.075) 29%,
+      transparent 57%);
+
+  filter:
+    drop-shadow(0 0 3px rgba(255,255,255,.48))
+    drop-shadow(0 0 9px rgba(180,163,246,.18));
+
+  animation:lrOrbisSoftFlareHead 6.4s ease-in-out infinite;
+}
+
+/* 과한 주변 밝기 애니메이션 제거 */
+#tab-char .faction-switch-btn[data-faction="central"],
+#tab-char .faction-content-panel[data-faction-panel="central"] > .acc-head{
+  animation:none !important;
+}
+
+/* 기존 내부 body의 점 배경도 제거 */
+#tab-char .faction-content-panel[data-faction-panel="central"] .acc-body-inner{
+  background:
+    linear-gradient(180deg,rgba(125,103,220,.018),transparent 42%) !important;
+}
+
+@keyframes lrOrbisSoftFlareBtn{
+  0%,66%,100%{
+    opacity:0;
+    transform:translate(50%,-50%) scale(.65);
+  }
+  70%{
+    opacity:.18;
+    transform:translate(50%,-50%) scale(.82);
+  }
+  73%{
+    opacity:.62;
+    transform:translate(50%,-50%) scale(1);
+  }
+  76%{
+    opacity:.28;
+    transform:translate(50%,-50%) scale(.9);
+  }
+  80%{
+    opacity:0;
+    transform:translate(50%,-50%) scale(.72);
+  }
+}
+
+@keyframes lrOrbisSoftFlareHead{
+  0%,61%,100%{
+    opacity:0;
+    transform:translateY(-50%) scale(.68);
+  }
+  65%{
+    opacity:.16;
+    transform:translateY(-50%) scale(.82);
+  }
+  68%{
+    opacity:.55;
+    transform:translateY(-50%) scale(1);
+  }
+  71%{
+    opacity:.24;
+    transform:translateY(-50%) scale(.9);
+  }
+  75%{
+    opacity:0;
+    transform:translateY(-50%) scale(.72);
+  }
+}
+
+@media(prefers-reduced-motion:reduce){
+  #tab-char .faction-switch-btn[data-faction="central"]::after,
+  #tab-char .faction-content-panel[data-faction-panel="central"] > .acc-head::after{
+    animation:none !important;
+  }
+}
+</style>
+
+
+<style id="orbis-crossflare-v4">
+/* 오르비스 플레어 V4: 원형 발광 완전 제거, 선형 십자 플레어만 유지 */
+
+/* 버튼 플레어 */
+#tab-char .faction-switch-btn[data-faction="central"]::after{
+  background:
+    linear-gradient(90deg,
+      transparent 0 16%,
+      rgba(225,220,255,0) 24%,
+      rgba(225,220,255,.08) 34%,
+      rgba(248,247,255,.52) 47.8%,
+      #fff 49.5% 50.5%,
+      rgba(248,247,255,.52) 52.2%,
+      rgba(225,220,255,.08) 66%,
+      rgba(225,220,255,0) 76%,
+      transparent 84% 100%),
+    linear-gradient(180deg,
+      transparent 0 16%,
+      rgba(225,220,255,0) 24%,
+      rgba(225,220,255,.07) 34%,
+      rgba(248,247,255,.46) 47.8%,
+      #fff 49.5% 50.5%,
+      rgba(248,247,255,.46) 52.2%,
+      rgba(225,220,255,.07) 66%,
+      rgba(225,220,255,0) 76%,
+      transparent 84% 100%) !important;
+
+  filter:
+    drop-shadow(0 0 2px rgba(255,255,255,.42))
+    drop-shadow(0 0 5px rgba(190,178,248,.13)) !important;
+}
+
+/* 내부 헤더 플레어 */
+#tab-char .faction-content-panel[data-faction-panel="central"] > .acc-head::after{
+  background:
+    linear-gradient(90deg,
+      transparent 0 14%,
+      rgba(226,220,255,0) 23%,
+      rgba(226,220,255,.065) 34%,
+      rgba(250,248,255,.48) 47.8%,
+      #fff 49.5% 50.5%,
+      rgba(250,248,255,.48) 52.2%,
+      rgba(226,220,255,.065) 66%,
+      rgba(226,220,255,0) 77%,
+      transparent 86% 100%),
+    linear-gradient(180deg,
+      transparent 0 14%,
+      rgba(226,220,255,0) 23%,
+      rgba(226,220,255,.055) 34%,
+      rgba(250,248,255,.42) 47.8%,
+      #fff 49.5% 50.5%,
+      rgba(250,248,255,.42) 52.2%,
+      rgba(226,220,255,.055) 66%,
+      rgba(226,220,255,0) 77%,
+      transparent 86% 100%) !important;
+
+  filter:
+    drop-shadow(0 0 2px rgba(255,255,255,.38))
+    drop-shadow(0 0 6px rgba(190,176,248,.12)) !important;
+}
+</style>
+
+
+<style id="orbis-central-radar-v5">
+/* =========================================================
+   ORBIS CENTRAL UNION — RADAR THEME V5
+   기존 번쩍임/플레어 제거
+   회전형 레이더 스윕 + 링 + 미세 신호점
+   ========================================================= */
+
+/* 버튼: 레이더 스윕 */
+#tab-char .faction-switch-btn[data-faction="central"]::before{
+  content:"";
+  position:absolute;
+  z-index:1;
+  right:4px;
+  top:50%;
+  width:74px;
+  height:74px;
+  transform:translateY(-50%);
+  border-radius:50%;
+  pointer-events:none;
+
+  background:
+    radial-gradient(circle,
+      transparent 0 24%,
+      rgba(185,174,255,.09) 25% 26%,
+      transparent 27% 44%,
+      rgba(185,174,255,.07) 45% 46%,
+      transparent 47% 63%,
+      rgba(185,174,255,.055) 64% 65%,
+      transparent 66%),
+    linear-gradient(rgba(190,179,255,.045),rgba(190,179,255,.045)) center/1px 100% no-repeat,
+    linear-gradient(90deg,rgba(190,179,255,.045),rgba(190,179,255,.045)) center/100% 1px no-repeat;
+
+  border:1px solid rgba(190,179,255,.08);
+  opacity:.78;
+  filter:none !important;
+  animation:none !important;
+}
+
+/* 회전 스윕 */
+#tab-char .faction-switch-btn[data-faction="central"]::after{
+  content:"";
+  position:absolute;
+  z-index:2;
+  right:4px;
+  top:50%;
+  width:74px;
+  height:74px;
+  transform:translateY(-50%);
+  border-radius:50%;
+  pointer-events:none;
+
+  background:
+    conic-gradient(
+      from 0deg,
+      transparent 0deg 304deg,
+      rgba(196,185,255,.02) 305deg,
+      rgba(196,185,255,.08) 322deg,
+      rgba(222,214,255,.22) 340deg,
+      rgba(246,243,255,.48) 354deg,
+      transparent 360deg
+    );
+
+  -webkit-mask:radial-gradient(circle,transparent 0 10%,#000 12% 100%);
+  mask:radial-gradient(circle,transparent 0 10%,#000 12% 100%);
+  transform-origin:50% 50%;
+  opacity:.7;
+  filter:drop-shadow(0 0 5px rgba(161,142,242,.08)) !important;
+  animation:lrOrbisRadarSweepBtn 4.2s linear infinite !important;
+}
+
+/* 버튼 주변 밝기 애니메이션 제거 */
+#tab-char .faction-switch-btn[data-faction="central"]{
+  animation:none !important;
+}
+
+/* 내부 헤더: 큰 레이더 */
+#tab-char .faction-content-panel[data-faction-panel="central"] > .acc-head::before{
+  content:"";
+  position:absolute;
+  z-index:1;
+  right:40px;
+  top:50%;
+  width:112px;
+  height:112px;
+  transform:translateY(-50%);
+  border-radius:50%;
+  pointer-events:none;
+
+  background:
+    radial-gradient(circle,
+      transparent 0 21%,
+      rgba(190,178,255,.085) 22% 23%,
+      transparent 24% 40%,
+      rgba(190,178,255,.065) 41% 42%,
+      transparent 43% 59%,
+      rgba(190,178,255,.05) 60% 61%,
+      transparent 62%),
+    linear-gradient(rgba(196,184,255,.04),rgba(196,184,255,.04)) center/1px 100% no-repeat,
+    linear-gradient(90deg,rgba(196,184,255,.04),rgba(196,184,255,.04)) center/100% 1px no-repeat;
+
+  border:1px solid rgba(190,178,255,.07);
+  opacity:.72;
+  filter:none !important;
+  animation:none !important;
+}
+
+/* 내부 헤더 스윕 */
+#tab-char .faction-content-panel[data-faction-panel="central"] > .acc-head::after{
+  content:"";
+  position:absolute;
+  z-index:2;
+  right:40px;
+  top:50%;
+  width:112px;
+  height:112px;
+  transform:translateY(-50%);
+  border-radius:50%;
+  pointer-events:none;
+
+  background:
+    conic-gradient(
+      from 0deg,
+      transparent 0deg 300deg,
+      rgba(190,177,255,.02) 301deg,
+      rgba(190,177,255,.075) 320deg,
+      rgba(217,207,255,.18) 338deg,
+      rgba(244,240,255,.38) 353deg,
+      transparent 360deg
+    );
+
+  -webkit-mask:radial-gradient(circle,transparent 0 8%,#000 10% 100%);
+  mask:radial-gradient(circle,transparent 0 8%,#000 10% 100%);
+  transform-origin:50% 50%;
+  opacity:.7;
+  filter:drop-shadow(0 0 6px rgba(153,132,235,.075)) !important;
+  animation:lrOrbisRadarSweepHead 5.2s linear infinite !important;
+}
+
+/* 내부 본문은 점광원 없이 아주 미세한 레이더 격자 느낌 */
+#tab-char .faction-content-panel[data-faction-panel="central"] .acc-body-inner{
+  background:
+    linear-gradient(rgba(173,157,244,.014) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(173,157,244,.010) 1px,transparent 1px),
+    linear-gradient(180deg,rgba(125,103,220,.018),transparent 42%) !important;
+  background-size:34px 34px,34px 34px,auto !important;
+}
+
+/* 캐릭터 카드: 기존 별빛 계열 유지하되 레이더 톤에 맞춤 */
+#tab-char .faction-content-panel[data-faction-panel="central"] .char-card{
+  border-color:rgba(155,141,221,.22) !important;
+  background:
+    linear-gradient(145deg,#13131d,#0c0d13) !important;
+}
+
+#tab-char .faction-content-panel[data-faction-panel="central"] .char-card:hover{
+  border-color:rgba(188,174,244,.39) !important;
+  box-shadow:
+    0 8px 22px rgba(0,0,0,.24),
+    0 0 13px rgba(125,103,220,.035) !important;
+}
+
+/* 기존 플레어/깜빡임 keyframe 효과를 실질적으로 덮음 */
+@keyframes lrOrbisRadarSweepBtn{
+  from{transform:translateY(-50%) rotate(0deg)}
+  to{transform:translateY(-50%) rotate(360deg)}
+}
+@keyframes lrOrbisRadarSweepHead{
+  from{transform:translateY(-50%) rotate(0deg)}
+  to{transform:translateY(-50%) rotate(360deg)}
+}
+
+@media(prefers-reduced-motion:reduce){
+  #tab-char .faction-switch-btn[data-faction="central"]::after,
+  #tab-char .faction-content-panel[data-faction-panel="central"] > .acc-head::after{
+    animation:none !important;
+  }
+}
+</style>
+
+
+<style id="orbis-central-radar-v6">
+/* ORBIS CENTRAL UNION — RADAR V6
+   흰색 제거 / 풍차형 부채꼴 제거 / 실제 레이더처럼 가는 스캔선 + 잔광 */
+
+#tab-char .faction-switch-btn[data-faction="central"]{
+  color:#b9a7ff !important;
+  background:
+    radial-gradient(ellipse at 84% 50%,rgba(104,72,204,.12),transparent 32%),
+    linear-gradient(135deg,#100d1b 0%,#171126 52%,#0b0912 100%) !important;
+  border-color:rgba(126,91,226,.52) !important;
+  text-shadow:0 0 10px rgba(118,82,224,.28) !important;
+}
+
+/* 고정 레이더 링 */
+#tab-char .faction-switch-btn[data-faction="central"]::before{
+  right:8px !important;
+  width:66px !important;
+  height:66px !important;
+  border:1px solid rgba(123,84,224,.18) !important;
+  background:
+    radial-gradient(circle,
+      transparent 0 25%,
+      rgba(124,86,225,.16) 26% 27%,
+      transparent 28% 48%,
+      rgba(124,86,225,.12) 49% 50%,
+      transparent 51% 72%,
+      rgba(124,86,225,.09) 73% 74%,
+      transparent 75%),
+    linear-gradient(rgba(117,79,213,.10),rgba(117,79,213,.10)) center/1px 100% no-repeat,
+    linear-gradient(90deg,rgba(117,79,213,.10),rgba(117,79,213,.10)) center/100% 1px no-repeat !important;
+  opacity:.85 !important;
+}
+
+/* 얇은 스캔선 + 뒤쪽에 짧은 잔광 */
+#tab-char .faction-switch-btn[data-faction="central"]::after{
+  right:8px !important;
+  width:66px !important;
+  height:66px !important;
+  opacity:.92 !important;
+  background:
+    conic-gradient(
+      from 0deg,
+      transparent 0deg 326deg,
+      rgba(86,51,184,.00) 327deg,
+      rgba(96,57,197,.035) 338deg,
+      rgba(110,67,219,.08) 347deg,
+      rgba(132,86,239,.18) 353deg,
+      rgba(154,109,255,.52) 357deg,
+      rgba(173,132,255,.92) 359deg,
+      transparent 360deg
+    ) !important;
+  -webkit-mask:radial-gradient(circle,transparent 0 7%,#000 9% 100%) !important;
+  mask:radial-gradient(circle,transparent 0 7%,#000 9% 100%) !important;
+  filter:drop-shadow(0 0 3px rgba(118,75,226,.32)) !important;
+  animation:lrOrbisRadarSweepBtnV6 5.8s linear infinite !important;
+}
+
+/* 내부 헤더 */
+#tab-char .faction-content-panel[data-faction-panel="central"]{
+  border-color:rgba(116,79,211,.34) !important;
+  background:
+    radial-gradient(ellipse at 86% 8%,rgba(102,68,194,.08),transparent 26%),
+    linear-gradient(145deg,#110e1b,#0b0912 70%) !important;
+}
+
+#tab-char .faction-content-panel[data-faction-panel="central"] > .acc-head{
+  background:
+    radial-gradient(ellipse at 84% 50%,rgba(103,67,201,.11),transparent 29%),
+    linear-gradient(90deg,rgba(93,59,181,.11),transparent 58%) !important;
+  border-bottom-color:rgba(121,83,217,.15) !important;
+}
+
+#tab-char .faction-content-panel[data-faction-panel="central"] > .acc-head::before{
+  right:46px !important;
+  left:auto !important;
+  top:50% !important;
+  width:104px !important;
+  height:104px !important;
+  transform:translateY(-50%) !important;
+  border-radius:50% !important;
+  border:1px solid rgba(122,83,220,.15) !important;
+  background:
+    radial-gradient(circle,
+      transparent 0 23%,
+      rgba(123,84,222,.14) 24% 25%,
+      transparent 26% 45%,
+      rgba(123,84,222,.105) 46% 47%,
+      transparent 48% 67%,
+      rgba(123,84,222,.075) 68% 69%,
+      transparent 70%),
+    linear-gradient(rgba(112,73,207,.08),rgba(112,73,207,.08)) center/1px 100% no-repeat,
+    linear-gradient(90deg,rgba(112,73,207,.08),rgba(112,73,207,.08)) center/100% 1px no-repeat !important;
+  opacity:.82 !important;
+}
+
+/* 내부도 넓은 부채꼴 대신 가느다란 레이더 빔 */
+#tab-char .faction-content-panel[data-faction-panel="central"] > .acc-head::after{
+  right:46px !important;
+  width:104px !important;
+  height:104px !important;
+  opacity:.9 !important;
+  background:
+    conic-gradient(
+      from 0deg,
+      transparent 0deg 329deg,
+      rgba(80,45,174,0) 330deg,
+      rgba(91,51,191,.025) 340deg,
+      rgba(103,60,210,.06) 349deg,
+      rgba(124,76,231,.14) 354deg,
+      rgba(145,96,247,.42) 357.5deg,
+      rgba(166,120,255,.86) 359.2deg,
+      transparent 360deg
+    ) !important;
+  -webkit-mask:radial-gradient(circle,transparent 0 6%,#000 8% 100%) !important;
+  mask:radial-gradient(circle,transparent 0 6%,#000 8% 100%) !important;
+  filter:drop-shadow(0 0 4px rgba(111,69,218,.25)) !important;
+  animation:lrOrbisRadarSweepHeadV6 7s linear infinite !important;
+}
+
+#tab-char .faction-content-panel[data-faction-panel="central"] .acc-num{
+  color:#9d7ff0 !important;
+  text-shadow:0 0 8px rgba(107,67,211,.3) !important;
+}
+#tab-char .faction-content-panel[data-faction-panel="central"] .acc-title{
+  color:#c7b8ee !important;
+}
+#tab-char .faction-content-panel[data-faction-panel="central"].open .acc-chevron::before{
+  background:#8d6ddd !important;
+}
+#tab-char .faction-content-panel[data-faction-panel="central"] .char-role{
+  color:#9676e6 !important;
+}
+
+/* 흰색 계열 hover도 제거 */
+#tab-char .faction-switch-btn[data-faction="central"]:hover{
+  border-color:rgba(151,111,244,.72) !important;
+  box-shadow:
+    inset 0 0 26px rgba(104,65,207,.08),
+    0 0 15px rgba(94,57,190,.10),
+    0 8px 25px rgba(0,0,0,.30) !important;
+}
+#tab-char .faction-switch-btn[data-faction="central"].active{
+  color:#c9baff !important;
+  border-color:rgba(155,116,244,.78) !important;
+  box-shadow:
+    inset 0 0 30px rgba(105,66,209,.10),
+    0 0 17px rgba(99,61,197,.12) !important;
+}
+
+@keyframes lrOrbisRadarSweepBtnV6{
+  from{transform:translateY(-50%) rotate(0deg)}
+  to{transform:translateY(-50%) rotate(360deg)}
+}
+@keyframes lrOrbisRadarSweepHeadV6{
+  from{transform:translateY(-50%) rotate(0deg)}
+  to{transform:translateY(-50%) rotate(360deg)}
+}
+</style>
+
+
+<style id="orbis-central-radar-complete-v7">
+/* =========================================================
+   ORBIS CENTRAL UNION — COMPLETE RADAR INTERIOR
+   버튼에서 정한 보라색 레이더 언어를
+   설명 / 시설 / 캐릭터 카드 / 상세 Hover까지 연결
+   ========================================================= */
+
+#tab-char .faction-central{
+  --orbis:#9468ee;
+  --orbis-hi:#b18aff;
+  --orbis-dim:rgba(132,88,226,.18);
+  --orbis-line:rgba(145,101,235,.25);
+  --orbis-bg:#0d0915;
+}
+
+/* ---------- 세력 설명 ---------- */
+#tab-char .faction-central .faction-lead-desc{
+  position:relative;
+  overflow:hidden;
+  padding:15px 17px 15px 20px !important;
+  color:#aaa0bd !important;
+  border:1px solid rgba(139,95,225,.18) !important;
+  border-left:2px solid rgba(151,103,239,.58) !important;
+  border-radius:7px;
+  background:
+    linear-gradient(90deg,rgba(115,72,207,.085),transparent 52%),
+    #0e0b16 !important;
+  box-shadow:inset 0 1px 0 rgba(178,143,255,.025);
+}
+#tab-char .faction-central .faction-lead-desc::after{
+  content:"";
+  position:absolute;
+  right:13px; top:50%;
+  width:46px; height:46px;
+  transform:translateY(-50%);
+  border:1px solid rgba(145,101,235,.10);
+  border-radius:50%;
+  background:
+    radial-gradient(circle,transparent 0 28%,rgba(145,101,235,.10) 29% 30%,transparent 31% 55%,rgba(145,101,235,.07) 56% 57%,transparent 58%),
+    linear-gradient(rgba(145,101,235,.06),rgba(145,101,235,.06)) center/1px 100% no-repeat,
+    linear-gradient(90deg,rgba(145,101,235,.06),rgba(145,101,235,.06)) center/100% 1px no-repeat;
+  opacity:.75;
+  pointer-events:none;
+}
+#tab-char .faction-central .faction-lead-mark{
+  color:var(--orbis-hi) !important;
+  text-shadow:0 0 8px rgba(132,83,230,.32);
+}
+
+/* ---------- 시설 카드 ---------- */
+#tab-char .faction-central .place-card{
+  position:relative;
+  overflow:hidden;
+  border:1px solid rgba(132,91,214,.22) !important;
+  border-radius:9px !important;
+  background:
+    linear-gradient(145deg,rgba(112,71,198,.035),transparent 38%),
+    #0d0b13 !important;
+  box-shadow:
+    inset 0 1px 0 rgba(175,140,247,.025),
+    0 8px 24px rgba(0,0,0,.14) !important;
+}
+#tab-char .faction-central .place-card::before{
+  content:"";
+  position:absolute;
+  z-index:3;
+  right:10px; top:10px;
+  width:36px; height:36px;
+  border-radius:50%;
+  border:1px solid rgba(145,101,235,.11);
+  background:
+    radial-gradient(circle,transparent 0 35%,rgba(145,101,235,.08) 36% 38%,transparent 39%),
+    linear-gradient(rgba(145,101,235,.055),rgba(145,101,235,.055)) center/1px 100% no-repeat,
+    linear-gradient(90deg,rgba(145,101,235,.055),rgba(145,101,235,.055)) center/100% 1px no-repeat;
+  pointer-events:none;
+}
+#tab-char .faction-central .place-image{
+  position:relative;
+  overflow:hidden;
+  border-bottom:1px solid rgba(137,94,221,.17) !important;
+  background:#09070e !important;
+}
+#tab-char .faction-central .place-image::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  pointer-events:none;
+  background:
+    linear-gradient(to top,rgba(12,8,20,.42),transparent 43%),
+    linear-gradient(90deg,rgba(99,59,180,.10),transparent 25%,transparent 75%,rgba(99,59,180,.07));
+}
+#tab-char .faction-central .place-info{
+  background:
+    linear-gradient(90deg,rgba(105,65,191,.035),transparent 48%) !important;
+}
+#tab-char .faction-central .place-title{
+  color:#a980f4 !important;
+  text-shadow:0 0 9px rgba(124,77,220,.20);
+}
+#tab-char .faction-central .place-desc{
+  color:#9891a4 !important;
+}
+
+/* 시설 이미지만 은은한 오르비스 hover */
+#tab-char .faction-central .place-image img{
+  transition:transform .34s ease,filter .34s ease !important;
+}
+#tab-char .faction-central .place-image:hover img{
+  transform:scale(1.025) !important;
+  filter:brightness(1.055) saturate(.92) !important;
+}
+
+/* ---------- 캐릭터 카드 ---------- */
+#tab-char .faction-central .char-card{
+  position:relative;
+  overflow:hidden;
+  border:1px solid rgba(130,89,211,.25) !important;
+  border-radius:8px !important;
+  background:
+    linear-gradient(145deg,rgba(119,76,204,.05),transparent 38%),
+    #0e0b15 !important;
+  box-shadow:
+    inset 0 1px 0 rgba(184,151,249,.025),
+    0 5px 16px rgba(0,0,0,.12) !important;
+  transition:
+    transform .22s ease,
+    border-color .22s ease,
+    box-shadow .22s ease,
+    background .22s ease !important;
+}
+
+/* 우상단 탐지 신호 */
+#tab-char .faction-central .char-card::after{
+  content:"";
+  position:absolute;
+  z-index:5;
+  right:8px;
+  top:8px;
+  width:5px;
+  height:5px;
+  border-radius:50%;
+  background:#8153d9;
+  box-shadow:0 0 6px rgba(126,78,220,.42);
+  opacity:.32;
+  pointer-events:none;
+  transition:opacity .2s ease,box-shadow .2s ease,transform .2s ease;
+}
+
+/* hover: 카드 전체가 번쩍이지 않고 '탐지됨' 상태 */
+#tab-char .faction-central .char-card:hover{
+  transform:translateY(-2px) !important;
+  border-color:rgba(161,113,244,.52) !important;
+  background:
+    linear-gradient(145deg,rgba(123,77,215,.085),transparent 42%),
+    #100c18 !important;
+  box-shadow:
+    inset 2px 0 0 rgba(139,91,229,.28),
+    inset 0 1px 0 rgba(190,157,255,.04),
+    0 8px 20px rgba(0,0,0,.20),
+    0 0 13px rgba(102,60,190,.055) !important;
+}
+#tab-char .faction-central .char-card:hover::after{
+  opacity:.9;
+  transform:scale(1.18);
+  box-shadow:
+    0 0 4px rgba(153,105,242,.72),
+    0 0 10px rgba(119,72,211,.32);
+}
+#tab-char .faction-central .char-card:hover .char-portrait img{
+  transform:scale(1.028) !important;
+  filter:brightness(1.045) saturate(.94) !important;
+}
+#tab-char .faction-central .char-portrait{
+  position:relative;
+  background:linear-gradient(155deg,#29213c,#0e0b15 70%) !important;
+}
+#tab-char .faction-central .char-name{
+  color:#d1c8df !important;
+}
+#tab-char .faction-central .char-role{
+  color:#9470dd !important;
+}
+
+/* 기존 뮬라 전용 보라 점 중복 제거 */
+#tab-char .faction-central .mula-detail-trigger::after{
+  content:"" !important;
+  right:8px !important;
+  top:8px !important;
+  width:5px !important;
+  height:5px !important;
+  background:#8153d9 !important;
+  box-shadow:0 0 6px rgba(126,78,220,.42) !important;
+  opacity:.32 !important;
+}
+#tab-char .faction-central .mula-detail-trigger:hover::after{
+  opacity:.9 !important;
+  box-shadow:0 0 4px rgba(153,105,242,.72),0 0 10px rgba(119,72,211,.32) !important;
+}
+
+/* ---------- 오르비스 캐릭터 Hover 상세창 ---------- */
+.character-hover-detail[data-detail-popup="mula"],
+.character-hover-detail[data-detail-popup="mistella"],
+.character-hover-detail[data-detail-popup="morrigan"],
+.character-hover-detail[data-detail-popup="adel"],
+.character-hover-detail[data-detail-popup="iris"],
+.character-hover-detail[data-detail-popup="lumiere"]{
+  border:1px solid rgba(139,96,225,.38) !important;
+  border-radius:9px !important;
+  background:
+    radial-gradient(ellipse at 87% 9%,rgba(110,68,201,.11),transparent 29%),
+    linear-gradient(145deg,rgba(118,76,205,.035),transparent 42%),
+    rgba(10,7,16,.985) !important;
+  box-shadow:
+    0 22px 58px rgba(0,0,0,.50),
+    0 0 24px rgba(91,52,175,.075),
+    inset 0 1px 0 rgba(175,139,248,.035) !important;
+}
+
+/* 상세 일러스트 위 레이더 HUD */
+.character-hover-detail[data-detail-popup="mula"] .character-detail-art::after,
+.character-hover-detail[data-detail-popup="mistella"] .character-detail-art::after,
+.character-hover-detail[data-detail-popup="morrigan"] .character-detail-art::after,
+.character-hover-detail[data-detail-popup="adel"] .character-detail-art::after,
+.character-hover-detail[data-detail-popup="iris"] .character-detail-art::after,
+.character-hover-detail[data-detail-popup="lumiere"] .character-detail-art::after{
+  background:
+    radial-gradient(circle at 88% 18%,
+      transparent 0 18px,
+      rgba(143,97,231,.13) 19px 20px,
+      transparent 21px 31px,
+      rgba(143,97,231,.08) 32px 33px,
+      transparent 34px),
+    linear-gradient(to top,rgba(10,7,16,.48),transparent 45%),
+    linear-gradient(90deg,rgba(92,52,173,.12),transparent 27%,transparent 76%,rgba(92,52,173,.08)) !important;
+}
+
+/* 상세 텍스트 */
+.character-hover-detail[data-detail-popup="mula"] .character-detail-name,
+.character-hover-detail[data-detail-popup="mistella"] .character-detail-name,
+.character-hover-detail[data-detail-popup="morrigan"] .character-detail-name,
+.character-hover-detail[data-detail-popup="adel"] .character-detail-name,
+.character-hover-detail[data-detail-popup="iris"] .character-detail-name,
+.character-hover-detail[data-detail-popup="lumiere"] .character-detail-name{
+  color:#ddd4ec !important;
+}
+
+.character-hover-detail[data-detail-popup="mula"] .character-detail-role,
+.character-hover-detail[data-detail-popup="mistella"] .character-detail-role,
+.character-hover-detail[data-detail-popup="morrigan"] .character-detail-role,
+.character-hover-detail[data-detail-popup="adel"] .character-detail-role,
+.character-hover-detail[data-detail-popup="iris"] .character-detail-role,
+.character-hover-detail[data-detail-popup="lumiere"] .character-detail-role,
+.character-hover-detail[data-detail-popup="mula"] .character-detail-code,
+.character-hover-detail[data-detail-popup="mistella"] .character-detail-code,
+.character-hover-detail[data-detail-popup="morrigan"] .character-detail-code,
+.character-hover-detail[data-detail-popup="adel"] .character-detail-code,
+.character-hover-detail[data-detail-popup="iris"] .character-detail-code,
+.character-hover-detail[data-detail-popup="lumiere"] .character-detail-code{
+  color:#9b75e4 !important;
+}
+
+.character-hover-detail[data-detail-popup="mula"] .character-detail-profile,
+.character-hover-detail[data-detail-popup="mistella"] .character-detail-profile,
+.character-hover-detail[data-detail-popup="morrigan"] .character-detail-profile,
+.character-hover-detail[data-detail-popup="adel"] .character-detail-profile,
+.character-hover-detail[data-detail-popup="iris"] .character-detail-profile,
+.character-hover-detail[data-detail-popup="lumiere"] .character-detail-profile{
+  color:#777080 !important;
+  border-color:rgba(137,92,220,.13) !important;
+}
+
+.character-hover-detail[data-detail-popup="mula"] .character-detail-ability,
+.character-hover-detail[data-detail-popup="mistella"] .character-detail-ability,
+.character-hover-detail[data-detail-popup="morrigan"] .character-detail-ability,
+.character-hover-detail[data-detail-popup="adel"] .character-detail-ability,
+.character-hover-detail[data-detail-popup="iris"] .character-detail-ability,
+.character-hover-detail[data-detail-popup="lumiere"] .character-detail-ability{
+  border-left-color:rgba(143,96,231,.48) !important;
+  background:linear-gradient(90deg,rgba(112,68,202,.075),transparent) !important;
+}
+
+.character-hover-detail[data-detail-popup="mula"] .character-detail-ability strong,
+.character-hover-detail[data-detail-popup="mistella"] .character-detail-ability strong,
+.character-hover-detail[data-detail-popup="morrigan"] .character-detail-ability strong,
+.character-hover-detail[data-detail-popup="adel"] .character-detail-ability strong,
+.character-hover-detail[data-detail-popup="iris"] .character-detail-ability strong,
+.character-hover-detail[data-detail-popup="lumiere"] .character-detail-ability strong{
+  color:#aa83f0 !important;
+}
+
+.character-hover-detail[data-detail-popup="mula"] .character-detail-quote,
+.character-hover-detail[data-detail-popup="mistella"] .character-detail-quote,
+.character-hover-detail[data-detail-popup="morrigan"] .character-detail-quote,
+.character-hover-detail[data-detail-popup="adel"] .character-detail-quote,
+.character-hover-detail[data-detail-popup="iris"] .character-detail-quote,
+.character-hover-detail[data-detail-popup="lumiere"] .character-detail-quote{
+  color:#aaa0b7 !important;
+  border-color:rgba(139,94,224,.16) !important;
+  background:rgba(108,65,194,.035) !important;
+}
+
+/* 상세창 이미지 hover도 과하지 않게 */
+.character-hover-detail[data-detail-popup="mula"] .character-detail-art img:hover,
+.character-hover-detail[data-detail-popup="mistella"] .character-detail-art img:hover,
+.character-hover-detail[data-detail-popup="morrigan"] .character-detail-art img:hover,
+.character-hover-detail[data-detail-popup="adel"] .character-detail-art img:hover,
+.character-hover-detail[data-detail-popup="iris"] .character-detail-art img:hover,
+.character-hover-detail[data-detail-popup="lumiere"] .character-detail-art img:hover{
+  transform:scale(1.018) !important;
+  filter:brightness(1.035) saturate(.94) !important;
+}
+
+/* 모바일 기존 2열 및 팝업 동작 유지 */
+@media(max-width:560px){
+  #tab-char .faction-central .faction-lead-desc::after{
+    opacity:.42;
+    right:7px;
+  }
+}
+</style>
+
 </head>
 <body><div aria-hidden="true" class="shooting-stars"><span class="shooting-star star-a"></span><span class="shooting-star star-b"></span><span class="shooting-star star-c"></span></div>
 <section class="hero">
