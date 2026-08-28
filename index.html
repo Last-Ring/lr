@@ -11359,6 +11359,33 @@ body::after {
 }
 </style>
 
+
+<style id="mobile-playable-grid-two-columns">
+/* 모바일 플레이어블 캐릭터도 일반 캐릭터처럼 2열 */
+@media (max-width:560px){
+  #tab-char [data-faction-panel="player"] .player-select-grid{
+    display:grid !important;
+    grid-template-columns:repeat(2,minmax(0,1fr)) !important;
+    gap:10px !important;
+    align-items:start !important;
+  }
+
+  #tab-char [data-faction-panel="player"] .player-select-card{
+    width:100% !important;
+    min-width:0 !important;
+    max-width:none !important;
+    margin:0 !important;
+    box-sizing:border-box !important;
+  }
+
+  #tab-char [data-faction-panel="player"] .player-select-card img{
+    width:100% !important;
+    height:auto !important;
+    display:block !important;
+  }
+}
+</style>
+
 </head>
 <body><div aria-hidden="true" class="shooting-stars"><span class="shooting-star star-a"></span><span class="shooting-star star-b"></span><span class="shooting-star star-c"></span></div>
 <section class="hero">
