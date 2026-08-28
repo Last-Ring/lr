@@ -15334,6 +15334,1188 @@ document.addEventListener('DOMContentLoaded',function(){
 }
 </style>
 
+
+<style id="cheonmyeong-inkseal-v1">
+/* =========================================================
+   CHEONMYEONG CELESTIAL OFFICE — INK BRUSH + RED SEAL
+   고요함 → 붓 한 획 → 먹 번짐 → 붉은 낙관 → 고요함
+   ========================================================= */
+
+#tab-char .faction-switch-btn[data-faction="cheonmyeong"]{
+  position:relative;
+  isolation:isolate;
+  overflow:hidden;
+
+  color:#c5c0ab !important;
+  background:
+    radial-gradient(ellipse at 16% 52%,rgba(117,136,139,.065),transparent 32%),
+    linear-gradient(135deg,#0b1012 0%,#101619 54%,#080c0e 100%) !important;
+
+  border:1px solid rgba(112,128,130,.32) !important;
+  border-left-color:rgba(130,144,143,.42) !important;
+  border-right-color:rgba(91,105,108,.25) !important;
+  border-radius:4px 14px 4px 14px !important;
+
+  box-shadow:
+    inset 0 1px 0 rgba(218,213,190,.025),
+    inset 0 0 26px rgba(82,97,99,.035),
+    0 7px 22px rgba(0,0,0,.22) !important;
+
+  text-shadow:
+    0 1px 2px rgba(0,0,0,.95),
+    0 0 8px rgba(145,158,157,.10) !important;
+
+  transition:
+    transform .22s ease,
+    border-color .22s ease,
+    box-shadow .22s ease,
+    filter .22s ease !important;
+}
+
+/* 한지/먹 번짐 텍스처 */
+#tab-char .faction-switch-btn[data-faction="cheonmyeong"]::before{
+  content:"";
+  position:absolute;
+  z-index:1;
+  inset:0;
+  pointer-events:none;
+
+  background:
+    radial-gradient(circle at 13% 30%,rgba(184,181,160,.025) 0 1px,transparent 1.6px),
+    radial-gradient(circle at 72% 68%,rgba(184,181,160,.02) 0 1px,transparent 1.5px),
+    linear-gradient(90deg,transparent 0 8%,rgba(147,155,148,.025) 8% 8.5%,transparent 8.5% 92%,rgba(147,155,148,.018) 92% 92.5%,transparent 92%);
+  opacity:.9;
+}
+
+/* 붓 한 획 */
+#tab-char .faction-switch-btn[data-faction="cheonmyeong"]::after{
+  content:"";
+  position:absolute;
+  z-index:2;
+  left:-32%;
+  top:50%;
+  width:38%;
+  height:17px;
+  transform:translateY(-50%) rotate(-3deg);
+  pointer-events:none;
+
+  background:
+    linear-gradient(90deg,
+      transparent 0%,
+      rgba(126,139,140,.08) 8%,
+      rgba(151,160,158,.18) 30%,
+      rgba(116,130,131,.13) 62%,
+      rgba(73,88,90,.04) 88%,
+      transparent 100%);
+  filter:blur(.25px);
+  clip-path:polygon(
+    0 40%, 9% 28%, 21% 35%, 35% 18%,
+    54% 29%, 73% 22%, 100% 37%,
+    96% 62%, 79% 68%, 58% 59%,
+    34% 72%, 16% 61%, 0 65%
+  );
+  opacity:0;
+  animation:lrCheonBrushStroke 6.6s ease-in-out infinite;
+}
+
+/* 원래 버튼 글자 */
+#tab-char .faction-switch-btn[data-faction="cheonmyeong"] .cheonmyeong-label{
+  position:relative;
+  z-index:6;
+}
+
+/* 먹 번짐 */
+#tab-char .faction-switch-btn[data-faction="cheonmyeong"] .cheonmyeong-ink-bloom{
+  position:absolute;
+  z-index:2;
+  left:54%;
+  top:50%;
+  width:88px;
+  height:36px;
+  transform:translate(-50%,-50%) rotate(-2deg);
+  pointer-events:none;
+  border-radius:48% 52% 44% 56% / 60% 48% 52% 40%;
+  background:
+    radial-gradient(ellipse,
+      rgba(119,134,135,.07) 0 32%,
+      rgba(83,97,99,.045) 33% 54%,
+      transparent 72%);
+  filter:blur(2px);
+  opacity:0;
+  animation:lrCheonInkBloom 6.6s ease-in-out infinite;
+}
+
+/* 붉은 낙관 */
+#tab-char .faction-switch-btn[data-faction="cheonmyeong"] .cheonmyeong-seal{
+  position:absolute;
+  z-index:5;
+  right:10px;
+  bottom:7px;
+  width:18px;
+  height:18px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  pointer-events:none;
+
+  color:rgba(191,87,72,.76);
+  border:1px solid rgba(157,55,46,.58);
+  border-radius:2px;
+  background:rgba(90,17,14,.07);
+
+  font-family:'Noto Serif KR','Batang','Times New Roman',serif;
+  font-size:8px;
+  font-weight:900;
+  line-height:1;
+
+  opacity:0;
+  transform:scale(1.34) rotate(-4deg);
+  box-shadow:0 0 0 rgba(137,40,34,0);
+
+  animation:lrCheonSealStamp 6.6s ease-in-out infinite;
+}
+
+/* 미세한 테두리 끊김 */
+#tab-char .faction-switch-btn[data-faction="cheonmyeong"] .cheonmyeong-edge-break{
+  position:absolute;
+  z-index:4;
+  left:-1px;
+  right:-1px;
+  top:50%;
+  height:16px;
+  transform:translateY(-50%);
+  pointer-events:none;
+  border-left:2px solid #0c1113;
+  border-right:2px solid #0c1113;
+  opacity:.9;
+}
+
+#tab-char .faction-switch-btn[data-faction="cheonmyeong"]:hover{
+  transform:translateY(-2px) !important;
+  filter:brightness(1.055) !important;
+  color:#d0c9b2 !important;
+  border-color:rgba(137,150,149,.47) !important;
+  box-shadow:
+    inset 0 1px 0 rgba(218,213,190,.035),
+    inset 0 0 28px rgba(91,107,107,.045),
+    0 8px 24px rgba(0,0,0,.28) !important;
+}
+
+#tab-char .faction-switch-btn[data-faction="cheonmyeong"].active{
+  color:#d3cdb8 !important;
+  border-color:rgba(146,158,157,.52) !important;
+}
+
+/* 0~14% 고요
+   15~34% 붓
+   30~50% 번짐
+   47~55% 낙관
+   이후 서서히 소멸 */
+@keyframes lrCheonBrushStroke{
+  0%,14%{
+    left:-34%;
+    opacity:0;
+    transform:translateY(-50%) rotate(-3deg) scaleX(.72);
+  }
+  18%{
+    opacity:.35;
+  }
+  31%{
+    left:70%;
+    opacity:.48;
+    transform:translateY(-50%) rotate(-1deg) scaleX(1);
+  }
+  38%{
+    left:104%;
+    opacity:.08;
+  }
+  39%,100%{
+    left:104%;
+    opacity:0;
+  }
+}
+
+@keyframes lrCheonInkBloom{
+  0%,24%{
+    opacity:0;
+    transform:translate(-50%,-50%) rotate(-2deg) scale(.75);
+  }
+  34%{
+    opacity:.58;
+  }
+  48%{
+    opacity:.34;
+    transform:translate(-50%,-50%) rotate(1deg) scale(1.12);
+  }
+  67%{
+    opacity:.12;
+  }
+  82%,100%{
+    opacity:0;
+    transform:translate(-50%,-50%) rotate(2deg) scale(1.24);
+  }
+}
+
+@keyframes lrCheonSealStamp{
+  0%,44%{
+    opacity:0;
+    transform:scale(1.34) rotate(-4deg);
+    box-shadow:0 0 0 rgba(137,40,34,0);
+  }
+  47%{
+    opacity:.92;
+    transform:scale(.92) rotate(-4deg);
+  }
+  50%{
+    opacity:.78;
+    transform:scale(1) rotate(-4deg);
+    box-shadow:0 0 8px rgba(137,40,34,.08);
+  }
+  68%{
+    opacity:.58;
+  }
+  86%,100%{
+    opacity:0;
+    transform:scale(1) rotate(-4deg);
+  }
+}
+
+@media(prefers-reduced-motion:reduce){
+  #tab-char .faction-switch-btn[data-faction="cheonmyeong"]::after,
+  #tab-char .faction-switch-btn[data-faction="cheonmyeong"] .cheonmyeong-ink-bloom,
+  #tab-char .faction-switch-btn[data-faction="cheonmyeong"] .cheonmyeong-seal{
+    animation:none !important;
+  }
+}
+</style>
+
+<script id="cheonmyeong-inkseal-v1-script">
+document.addEventListener('DOMContentLoaded',function(){
+  var btn=document.querySelector('#tab-char .faction-switch-btn[data-faction="cheonmyeong"]');
+  if(!btn || btn.querySelector('.cheonmyeong-seal')) return;
+
+  /* 텍스트를 장식보다 위 레이어로 */
+  Array.from(btn.childNodes).forEach(function(node){
+    if(node.nodeType===3 && node.textContent.trim()){
+      var label=document.createElement('span');
+      label.className='cheonmyeong-label';
+      label.textContent=node.textContent;
+      btn.replaceChild(label,node);
+    }
+  });
+
+  var bloom=document.createElement('span');
+  bloom.className='cheonmyeong-ink-bloom';
+  bloom.setAttribute('aria-hidden','true');
+
+  var seal=document.createElement('span');
+  seal.className='cheonmyeong-seal';
+  seal.setAttribute('aria-hidden','true');
+  seal.textContent='命';
+
+  var edge=document.createElement('span');
+  edge.className='cheonmyeong-edge-break';
+  edge.setAttribute('aria-hidden','true');
+
+  btn.appendChild(bloom);
+  btn.appendChild(edge);
+  btn.appendChild(seal);
+});
+</script>
+
+
+<style id="cheonmyeong-changhoji-v2">
+/* =========================================================
+   CHEONMYEONG V2 — ORANGE CHANGHOJI
+   기존 먹/낙관 연출을 덮고, 주황빛 창호지 + 창살 그림자로 변경
+   ========================================================= */
+
+#tab-char .faction-switch-btn[data-faction="cheonmyeong"]{
+  color:#efc486 !important;
+  background:
+    radial-gradient(ellipse at 24% 45%,rgba(224,151,64,.13),transparent 34%),
+    linear-gradient(135deg,#281709 0%,#1d1108 54%,#130c07 100%) !important;
+
+  border:1px solid rgba(199,124,45,.50) !important;
+  border-radius:5px !important;
+
+  box-shadow:
+    inset 0 1px 0 rgba(255,214,147,.055),
+    inset 0 0 24px rgba(193,108,28,.045),
+    0 7px 22px rgba(0,0,0,.22) !important;
+
+  text-shadow:
+    0 1px 2px rgba(0,0,0,.95),
+    0 0 8px rgba(223,143,51,.18) !important;
+}
+
+/* 창호지 종이결 + 창살 */
+#tab-char .faction-switch-btn[data-faction="cheonmyeong"]::before{
+  content:"" !important;
+  position:absolute !important;
+  z-index:1 !important;
+  inset:4px !important;
+  pointer-events:none !important;
+
+  background:
+    linear-gradient(90deg,
+      transparent 0 18%,
+      rgba(224,153,68,.09) 18% 18.6%,
+      transparent 18.6% 40%,
+      rgba(224,153,68,.07) 40% 40.6%,
+      transparent 40.6% 62%,
+      rgba(224,153,68,.07) 62% 62.6%,
+      transparent 62.6% 84%,
+      rgba(224,153,68,.09) 84% 84.6%,
+      transparent 84.6%),
+    linear-gradient(180deg,
+      transparent 0 30%,
+      rgba(224,153,68,.075) 30% 31%,
+      transparent 31% 69%,
+      rgba(224,153,68,.075) 69% 70%,
+      transparent 70%),
+    radial-gradient(circle at 12% 28%,rgba(246,193,116,.045) 0 1px,transparent 1.4px),
+    radial-gradient(circle at 72% 62%,rgba(246,193,116,.035) 0 1px,transparent 1.5px) !important;
+
+  border:1px solid rgba(220,145,59,.09) !important;
+  border-radius:2px !important;
+  opacity:.88 !important;
+  filter:none !important;
+  clip-path:none !important;
+  animation:none !important;
+}
+
+/* 창호지 뒤로 등불빛이 천천히 지나가는 느낌 */
+#tab-char .faction-switch-btn[data-faction="cheonmyeong"]::after{
+  content:"" !important;
+  position:absolute !important;
+  z-index:2 !important;
+
+  left:-38% !important;
+  top:-28% !important;
+  width:44% !important;
+  height:156% !important;
+
+  border-radius:50% !important;
+  background:
+    radial-gradient(ellipse,
+      rgba(246,176,78,.19) 0%,
+      rgba(220,129,37,.10) 35%,
+      rgba(183,91,18,.035) 58%,
+      transparent 72%) !important;
+
+  transform:none !important;
+  clip-path:none !important;
+  filter:blur(5px) !important;
+  opacity:.75 !important;
+  pointer-events:none !important;
+
+  animation:lrCheonPaperLantern 7.6s ease-in-out infinite !important;
+}
+
+/* 이전 먹 번짐 / 낙관 / 테두리 끊김 제거 */
+#tab-char .faction-switch-btn[data-faction="cheonmyeong"] .cheonmyeong-ink-bloom,
+#tab-char .faction-switch-btn[data-faction="cheonmyeong"] .cheonmyeong-seal,
+#tab-char .faction-switch-btn[data-faction="cheonmyeong"] .cheonmyeong-edge-break{
+  display:none !important;
+}
+
+/* 글자는 창호지/빛 위 */
+#tab-char .faction-switch-btn[data-faction="cheonmyeong"] .cheonmyeong-label{
+  position:relative !important;
+  z-index:6 !important;
+}
+
+#tab-char .faction-switch-btn[data-faction="cheonmyeong"]:hover{
+  transform:translateY(-2px) !important;
+  filter:brightness(1.055) !important;
+  color:#f4cd92 !important;
+  border-color:rgba(220,148,64,.69) !important;
+
+  box-shadow:
+    inset 0 1px 0 rgba(255,220,157,.07),
+    inset 0 0 28px rgba(207,119,31,.065),
+    0 0 13px rgba(183,95,21,.06),
+    0 8px 24px rgba(0,0,0,.28) !important;
+}
+
+#tab-char .faction-switch-btn[data-faction="cheonmyeong"].active{
+  color:#f5d19b !important;
+  border-color:rgba(224,154,69,.75) !important;
+}
+
+@keyframes lrCheonPaperLantern{
+  0%{
+    left:-40%;
+    opacity:.25;
+  }
+  18%{
+    opacity:.68;
+  }
+  50%{
+    left:46%;
+    opacity:.88;
+  }
+  82%{
+    opacity:.58;
+  }
+  100%{
+    left:112%;
+    opacity:.18;
+  }
+}
+
+@media(prefers-reduced-motion:reduce){
+  #tab-char .faction-switch-btn[data-faction="cheonmyeong"]::after{
+    animation:none !important;
+    left:34% !important;
+  }
+}
+</style>
+
+
+<style id="cheonmyeong-changhoji-v3">
+/* =========================================================
+   CHEONMYEONG V3 — STRONGER CHANGHOJI WINDOW PATTERN
+   더 분명한 전통 창살 + 눈에 보이는 뒤쪽 등불 이동
+   ========================================================= */
+
+#tab-char .faction-switch-btn[data-faction="cheonmyeong"]{
+  color:#f0c888 !important;
+
+  background:
+    linear-gradient(180deg,rgba(255,205,128,.025),transparent 22%),
+    linear-gradient(135deg,#2a1809 0%,#1c1007 55%,#120a05 100%) !important;
+
+  border:1px solid rgba(213,137,51,.58) !important;
+  border-radius:4px !important;
+
+  box-shadow:
+    inset 0 1px 0 rgba(255,222,158,.07),
+    inset 0 0 25px rgba(211,119,31,.055),
+    0 7px 22px rgba(0,0,0,.24) !important;
+}
+
+/* ---------------------------------------------------------
+   실제 창호지처럼 보이도록:
+   - 굵은 외곽 창틀
+   - 세로 4분할
+   - 가로 2분할
+   - 중앙 칸 안쪽에 작은 격자
+   --------------------------------------------------------- */
+#tab-char .faction-switch-btn[data-faction="cheonmyeong"]::before{
+  content:"" !important;
+  position:absolute !important;
+  z-index:3 !important;
+  inset:5px !important;
+  pointer-events:none !important;
+
+  background:
+    /* 작은 내부 격자 */
+    linear-gradient(90deg,
+      transparent 0 11%,
+      rgba(170,94,28,.24) 11% 12%,
+      transparent 12% 23%,
+      rgba(170,94,28,.24) 23% 24%,
+      transparent 24% 36%,
+      rgba(170,94,28,.24) 36% 37%,
+      transparent 37% 49%,
+      rgba(170,94,28,.24) 49% 50%,
+      transparent 50% 62%,
+      rgba(170,94,28,.24) 62% 63%,
+      transparent 63% 75%,
+      rgba(170,94,28,.24) 75% 76%,
+      transparent 76% 88%,
+      rgba(170,94,28,.24) 88% 89%,
+      transparent 89%),
+    linear-gradient(180deg,
+      transparent 0 32%,
+      rgba(170,94,28,.22) 32% 34%,
+      transparent 34% 66%,
+      rgba(170,94,28,.22) 66% 68%,
+      transparent 68%),
+    /* 큰 창살 */
+    linear-gradient(90deg,
+      transparent 0 24%,
+      rgba(118,61,21,.60) 24% 26%,
+      transparent 26% 49%,
+      rgba(118,61,21,.64) 49% 51%,
+      transparent 51% 74%,
+      rgba(118,61,21,.60) 74% 76%,
+      transparent 76%),
+    linear-gradient(180deg,
+      transparent 0 48%,
+      rgba(118,61,21,.60) 48% 52%,
+      transparent 52%),
+    /* 한지 자체 */
+    linear-gradient(180deg,
+      rgba(232,173,91,.09),
+      rgba(193,119,43,.055)) !important;
+
+  border:2px solid rgba(112,57,20,.58) !important;
+  border-radius:1px !important;
+
+  box-shadow:
+    inset 0 0 0 1px rgba(236,173,87,.08),
+    inset 0 0 10px rgba(107,55,20,.08) !important;
+
+  opacity:.96 !important;
+  filter:none !important;
+  clip-path:none !important;
+  animation:none !important;
+}
+
+/* ---------------------------------------------------------
+   창호지 뒤에서 실제 등불이 이동하는 것처럼:
+   - 작은 밝은 핵
+   - 넓은 주황색 후광
+   - 주변 어두워져서 움직임이 더 분명
+   --------------------------------------------------------- */
+#tab-char .faction-switch-btn[data-faction="cheonmyeong"]::after{
+  content:"" !important;
+  position:absolute !important;
+  z-index:2 !important;
+
+  left:-38% !important;
+  top:50% !important;
+  width:72px !important;
+  height:72px !important;
+
+  transform:translateY(-50%) !important;
+  border-radius:50% !important;
+
+  background:
+    radial-gradient(circle,
+      rgba(255,228,163,.52) 0 8%,
+      rgba(255,191,85,.38) 9% 24%,
+      rgba(232,133,38,.22) 25% 44%,
+      rgba(196,95,20,.10) 45% 62%,
+      transparent 72%) !important;
+
+  box-shadow:
+    0 0 18px rgba(234,136,39,.15),
+    0 0 34px rgba(206,102,22,.10) !important;
+
+  filter:blur(.8px) !important;
+  opacity:1 !important;
+  pointer-events:none !important;
+
+  animation:lrCheonLanternBehindPaper 6.2s ease-in-out infinite !important;
+}
+
+/* 창호지 위에 아주 옅은 종이결 */
+#tab-char .faction-switch-btn[data-faction="cheonmyeong"] .cheonmyeong-label{
+  position:relative !important;
+  z-index:6 !important;
+  color:#f1ca8a !important;
+  text-shadow:
+    0 1px 2px rgba(0,0,0,.94),
+    0 0 8px rgba(223,143,52,.20) !important;
+}
+
+/* 이전 장식은 계속 제거 */
+#tab-char .faction-switch-btn[data-faction="cheonmyeong"] .cheonmyeong-ink-bloom,
+#tab-char .faction-switch-btn[data-faction="cheonmyeong"] .cheonmyeong-seal,
+#tab-char .faction-switch-btn[data-faction="cheonmyeong"] .cheonmyeong-edge-break{
+  display:none !important;
+}
+
+#tab-char .faction-switch-btn[data-faction="cheonmyeong"]:hover{
+  transform:translateY(-2px) !important;
+  filter:brightness(1.07) !important;
+  border-color:rgba(230,157,67,.78) !important;
+
+  box-shadow:
+    inset 0 1px 0 rgba(255,227,166,.08),
+    inset 0 0 30px rgba(221,127,35,.07),
+    0 0 15px rgba(187,91,18,.08),
+    0 8px 24px rgba(0,0,0,.29) !important;
+}
+
+#tab-char .faction-switch-btn[data-faction="cheonmyeong"].active{
+  border-color:rgba(235,164,74,.82) !important;
+}
+
+/* 등불이 확실히 보이도록 중앙에서 잠시 느려짐 */
+@keyframes lrCheonLanternBehindPaper{
+  0%{
+    left:-42%;
+    opacity:.18;
+    transform:translateY(-50%) scale(.84);
+  }
+  12%{
+    opacity:.75;
+  }
+  38%{
+    left:28%;
+    opacity:1;
+    transform:translateY(-50%) scale(1);
+  }
+  58%{
+    left:52%;
+    opacity:1;
+    transform:translateY(-50%) scale(1.05);
+  }
+  84%{
+    opacity:.78;
+  }
+  100%{
+    left:112%;
+    opacity:.20;
+    transform:translateY(-50%) scale(.88);
+  }
+}
+
+@media(prefers-reduced-motion:reduce){
+  #tab-char .faction-switch-btn[data-faction="cheonmyeong"]::after{
+    animation:none !important;
+    left:48% !important;
+  }
+}
+</style>
+
+
+<style id="cheonmyeong-changhoji-v4-traditional">
+/* =========================================================
+   CHEONMYEONG V4 — REAL CHANGHOJI FEEL
+   단순 격자 제거
+   한지 섬유결 + 전통 완자/빗살 계열 창살 + 뒤쪽 등불 그림자
+   ========================================================= */
+
+#tab-char .faction-switch-btn[data-faction="cheonmyeong"]{
+  color:#f1c98b !important;
+
+  background:
+    /* 한지 섬유결 */
+    radial-gradient(ellipse at 17% 21%,rgba(255,226,171,.055) 0 1.2px,transparent 1.8px),
+    radial-gradient(ellipse at 63% 74%,rgba(255,222,162,.040) 0 1px,transparent 1.6px),
+    radial-gradient(ellipse at 82% 34%,rgba(222,157,81,.035) 0 1.1px,transparent 1.8px),
+    repeating-linear-gradient(7deg,
+      rgba(240,190,123,.018) 0 1px,
+      transparent 1px 7px),
+    repeating-linear-gradient(96deg,
+      rgba(210,140,70,.012) 0 1px,
+      transparent 1px 9px),
+    linear-gradient(135deg,#2a1809 0%,#1d1108 56%,#120a05 100%) !important;
+
+  border:1px solid rgba(214,138,52,.60) !important;
+  border-radius:4px !important;
+
+  box-shadow:
+    inset 0 1px 0 rgba(255,224,161,.07),
+    inset 0 0 25px rgba(205,116,28,.055),
+    0 7px 22px rgba(0,0,0,.24) !important;
+}
+
+/* ---------------------------------------------------------
+   전통 창살:
+   단순 사각 격자 금지.
+   빗살/완자살처럼 사선과 꺾인 선이 반복되도록 구성.
+   --------------------------------------------------------- */
+#tab-char .faction-switch-btn[data-faction="cheonmyeong"]::before{
+  content:"" !important;
+  position:absolute !important;
+  z-index:3 !important;
+  inset:5px !important;
+  pointer-events:none !important;
+
+  background:
+    /* 좌→우 사선 빗살 */
+    repeating-linear-gradient(
+      45deg,
+      transparent 0 22px,
+      rgba(115,58,20,.46) 22px 24px,
+      transparent 24px 46px
+    ),
+    /* 우→좌 사선 빗살 */
+    repeating-linear-gradient(
+      -45deg,
+      transparent 0 22px,
+      rgba(115,58,20,.30) 22px 24px,
+      transparent 24px 46px
+    ),
+    /* 완자살 느낌의 짧은 직선 연결 */
+    linear-gradient(90deg,
+      transparent 0 15%,
+      rgba(125,64,22,.42) 15% 17%,
+      transparent 17% 48%,
+      rgba(125,64,22,.42) 48% 50%,
+      transparent 50% 81%,
+      rgba(125,64,22,.42) 81% 83%,
+      transparent 83%),
+    linear-gradient(180deg,
+      transparent 0 29%,
+      rgba(125,64,22,.36) 29% 32%,
+      transparent 32% 68%,
+      rgba(125,64,22,.36) 68% 71%,
+      transparent 71%),
+
+    /* 실제 한지처럼 살짝 밝은 반투명 면 */
+    linear-gradient(180deg,
+      rgba(238,179,99,.070),
+      rgba(196,119,43,.040)) !important;
+
+  border:2px solid rgba(102,50,17,.62) !important;
+  border-radius:1px !important;
+
+  box-shadow:
+    inset 0 0 0 1px rgba(236,172,85,.07),
+    inset 0 0 12px rgba(92,44,15,.10) !important;
+
+  opacity:.95 !important;
+  clip-path:none !important;
+  filter:none !important;
+  animation:none !important;
+}
+
+/* ---------------------------------------------------------
+   등불은 '원 하나 이동'이 아니라
+   창호지 뒤쪽에서 빛이 번지고 창살 그림자가 보이는 느낌
+   --------------------------------------------------------- */
+#tab-char .faction-switch-btn[data-faction="cheonmyeong"]::after{
+  content:"" !important;
+  position:absolute !important;
+  z-index:2 !important;
+
+  left:-44% !important;
+  top:50% !important;
+  width:96px !important;
+  height:58px !important;
+
+  transform:translateY(-50%) !important;
+  border-radius:50% !important;
+
+  background:
+    radial-gradient(ellipse,
+      rgba(255,231,172,.62) 0 10%,
+      rgba(255,191,95,.46) 11% 28%,
+      rgba(236,142,48,.26) 29% 49%,
+      rgba(188,87,18,.10) 50% 67%,
+      transparent 75%) !important;
+
+  box-shadow:
+    0 0 16px rgba(245,157,56,.19),
+    0 0 34px rgba(219,118,27,.15),
+    0 0 50px rgba(176,77,13,.08) !important;
+
+  filter:blur(1.6px) !important;
+  opacity:.95 !important;
+  pointer-events:none !important;
+
+  animation:lrCheonTraditionalLantern 7.4s ease-in-out infinite !important;
+}
+
+/* 이전 장식 제거 */
+#tab-char .faction-switch-btn[data-faction="cheonmyeong"] .cheonmyeong-ink-bloom,
+#tab-char .faction-switch-btn[data-faction="cheonmyeong"] .cheonmyeong-seal,
+#tab-char .faction-switch-btn[data-faction="cheonmyeong"] .cheonmyeong-edge-break{
+  display:none !important;
+}
+
+#tab-char .faction-switch-btn[data-faction="cheonmyeong"] .cheonmyeong-label{
+  position:relative !important;
+  z-index:6 !important;
+  color:#f0c789 !important;
+  text-shadow:
+    0 1px 2px rgba(0,0,0,.96),
+    0 0 9px rgba(222,139,47,.20) !important;
+}
+
+#tab-char .faction-switch-btn[data-faction="cheonmyeong"]:hover{
+  transform:translateY(-2px) !important;
+  filter:brightness(1.065) !important;
+  border-color:rgba(232,158,67,.80) !important;
+
+  box-shadow:
+    inset 0 1px 0 rgba(255,228,168,.08),
+    inset 0 0 31px rgba(220,126,32,.075),
+    0 0 15px rgba(184,88,17,.085),
+    0 8px 24px rgba(0,0,0,.29) !important;
+}
+
+#tab-char .faction-switch-btn[data-faction="cheonmyeong"].active{
+  border-color:rgba(236,165,75,.84) !important;
+}
+
+/* 움직임이 확실히 보이도록 중앙에서 천천히 지나감 */
+@keyframes lrCheonTraditionalLantern{
+  0%{
+    left:-48%;
+    opacity:.14;
+    transform:translateY(-50%) scale(.82);
+  }
+  15%{
+    opacity:.72;
+  }
+  35%{
+    left:18%;
+    opacity:1;
+    transform:translateY(-50%) scale(1);
+  }
+  58%{
+    left:48%;
+    opacity:1;
+    transform:translateY(-50%) scale(1.06);
+  }
+  82%{
+    opacity:.72;
+  }
+  100%{
+    left:112%;
+    opacity:.16;
+    transform:translateY(-50%) scale(.86);
+  }
+}
+
+@media(prefers-reduced-motion:reduce){
+  #tab-char .faction-switch-btn[data-faction="cheonmyeong"]::after{
+    animation:none !important;
+    left:44% !important;
+  }
+}
+</style>
+
+
+<style id="cheonmyeong-changhoji-v5-deeporange">
+/* 천명천관 V5 — 기존 주황 계열은 유지하되 전체 밝기를 낮춘 짙은 호박/갈색 */
+#tab-char .faction-switch-btn[data-faction="cheonmyeong"]{
+  color:#c8945b !important;
+  background:
+    radial-gradient(ellipse at 17% 21%,rgba(184,126,67,.035) 0 1.2px,transparent 1.8px),
+    radial-gradient(ellipse at 63% 74%,rgba(165,105,54,.028) 0 1px,transparent 1.6px),
+    repeating-linear-gradient(7deg,rgba(159,101,51,.012) 0 1px,transparent 1px 7px),
+    repeating-linear-gradient(96deg,rgba(135,80,38,.010) 0 1px,transparent 1px 9px),
+    linear-gradient(135deg,#1d1108 0%,#160d07 56%,#0d0906 100%) !important;
+
+  border-color:rgba(159,91,35,.48) !important;
+  box-shadow:
+    inset 0 1px 0 rgba(218,158,91,.035),
+    inset 0 0 24px rgba(145,73,22,.035),
+    0 7px 22px rgba(0,0,0,.27) !important;
+}
+
+#tab-char .faction-switch-btn[data-faction="cheonmyeong"]::before{
+  opacity:.76 !important;
+  background:
+    repeating-linear-gradient(45deg,
+      transparent 0 22px,
+      rgba(82,42,18,.42) 22px 24px,
+      transparent 24px 46px),
+    repeating-linear-gradient(-45deg,
+      transparent 0 22px,
+      rgba(82,42,18,.25) 22px 24px,
+      transparent 24px 46px),
+    linear-gradient(90deg,
+      transparent 0 15%,rgba(91,46,18,.36) 15% 17%,
+      transparent 17% 48%,rgba(91,46,18,.36) 48% 50%,
+      transparent 50% 81%,rgba(91,46,18,.36) 81% 83%,transparent 83%),
+    linear-gradient(180deg,
+      transparent 0 29%,rgba(91,46,18,.30) 29% 32%,
+      transparent 32% 68%,rgba(91,46,18,.30) 68% 71%,transparent 71%),
+    linear-gradient(180deg,rgba(164,104,51,.045),rgba(114,66,31,.028)) !important;
+  border-color:rgba(72,36,15,.58) !important;
+  box-shadow:
+    inset 0 0 0 1px rgba(177,113,56,.045),
+    inset 0 0 12px rgba(55,27,12,.12) !important;
+}
+
+/* 등불도 밝은 노랑을 줄이고 어두운 호박빛으로 */
+#tab-char .faction-switch-btn[data-faction="cheonmyeong"]::after{
+  background:
+    radial-gradient(ellipse,
+      rgba(220,158,88,.34) 0 10%,
+      rgba(190,111,45,.28) 11% 28%,
+      rgba(151,76,25,.18) 29% 49%,
+      rgba(105,48,15,.08) 50% 67%,
+      transparent 75%) !important;
+  box-shadow:
+    0 0 14px rgba(177,91,29,.10),
+    0 0 30px rgba(139,62,18,.08) !important;
+  opacity:.72 !important;
+}
+
+#tab-char .faction-switch-btn[data-faction="cheonmyeong"] .cheonmyeong-label{
+  color:#c8945b !important;
+  text-shadow:
+    0 1px 2px rgba(0,0,0,.98),
+    0 0 7px rgba(150,78,25,.12) !important;
+}
+
+#tab-char .faction-switch-btn[data-faction="cheonmyeong"]:hover{
+  filter:brightness(1.035) !important;
+  color:#d0a06b !important;
+  border-color:rgba(177,104,42,.60) !important;
+  box-shadow:
+    inset 0 1px 0 rgba(220,164,101,.04),
+    inset 0 0 26px rgba(151,78,25,.04),
+    0 8px 24px rgba(0,0,0,.30) !important;
+}
+
+#tab-char .faction-switch-btn[data-faction="cheonmyeong"].active{
+  color:#d1a16c !important;
+  border-color:rgba(184,109,44,.64) !important;
+}
+</style>
+
+
+<style id="cheonmyeong-changhoji-v6-active-lantern">
+/* 천명천관 V6 — 선택(active) 상태에서 창호지 뒤 등불을 더 밝게 */
+#tab-char .faction-switch-btn[data-faction="cheonmyeong"].active::after{
+  opacity:1 !important;
+  background:
+    radial-gradient(ellipse,
+      rgba(255,221,153,.64) 0 10%,
+      rgba(238,165,79,.52) 11% 28%,
+      rgba(205,113,39,.34) 29% 49%,
+      rgba(145,65,18,.15) 50% 67%,
+      transparent 76%) !important;
+  box-shadow:
+    0 0 18px rgba(225,133,47,.22),
+    0 0 38px rgba(188,88,22,.16),
+    0 0 54px rgba(139,56,13,.09) !important;
+}
+
+/* 선택된 버튼의 창호지도 빛이 투과된 만큼만 살짝 살아남 */
+#tab-char .faction-switch-btn[data-faction="cheonmyeong"].active::before{
+  opacity:.88 !important;
+}
+
+#tab-char .faction-switch-btn[data-faction="cheonmyeong"].active .cheonmyeong-label{
+  color:#d9aa72 !important;
+  text-shadow:
+    0 1px 2px rgba(0,0,0,.98),
+    0 0 9px rgba(191,103,34,.18) !important;
+}
+</style>
+
+
+<style id="cheonmyeong-complete-v7">
+/* =========================================================
+   천명천관 내부 — 어두운 창호지 / 목재 / 호박빛 등불
+   버튼 V6의 언어를 패널·장소·캐릭터·상세팝업으로 확장
+   ========================================================= */
+#tab-char .faction-content-panel[data-faction-panel="cheonmyeong"]{
+  position:relative;
+  overflow:hidden;
+  background:
+    radial-gradient(ellipse at 78% 10%,rgba(155,82,27,.07),transparent 30%),
+    repeating-linear-gradient(7deg,rgba(151,96,48,.012) 0 1px,transparent 1px 9px),
+    linear-gradient(145deg,#17100b 0%,#100b08 58%,#0b0806 100%) !important;
+  border-color:rgba(133,75,31,.35) !important;
+  border-radius:5px !important;
+  box-shadow:inset 0 0 42px rgba(96,49,18,.045) !important;
+}
+
+/* 헤더: 창호문 자체처럼 */
+#tab-char .faction-content-panel[data-faction-panel="cheonmyeong"] .acc-head{
+  position:relative;
+  overflow:hidden;
+  color:#d0a06a !important;
+  background:
+    linear-gradient(90deg,rgba(105,55,22,.12),transparent 30% 70%,rgba(105,55,22,.10)),
+    #120c08 !important;
+  border-bottom-color:rgba(137,77,31,.30) !important;
+}
+#tab-char .faction-content-panel[data-faction-panel="cheonmyeong"] .acc-head::before{
+  content:"" !important;
+  position:absolute !important;
+  inset:5px !important;
+  width:auto !important;height:auto !important;
+  border:1px solid rgba(111,59,24,.32) !important;
+  border-radius:1px !important;
+  background:
+    repeating-linear-gradient(45deg,transparent 0 27px,rgba(92,47,19,.24) 27px 29px,transparent 29px 56px),
+    repeating-linear-gradient(-45deg,transparent 0 27px,rgba(92,47,19,.16) 27px 29px,transparent 29px 56px) !important;
+  opacity:.65 !important;
+  transform:none !important;
+  animation:none !important;
+  pointer-events:none;
+}
+#tab-char .faction-content-panel[data-faction-panel="cheonmyeong"] .acc-head::after{
+  content:"" !important;
+  position:absolute !important;
+  left:-120px !important; top:50% !important;
+  width:120px !important;height:74px !important;
+  border:0 !important;border-radius:50% !important;
+  transform:translateY(-50%) !important;
+  background:radial-gradient(ellipse,rgba(218,149,74,.20),rgba(166,83,25,.09) 45%,transparent 72%) !important;
+  filter:blur(2px);
+  opacity:.8 !important;
+  animation:cheonPanelLantern 8s ease-in-out infinite !important;
+}
+#tab-char .faction-content-panel[data-faction-panel="cheonmyeong"] .acc-num,
+#tab-char .faction-content-panel[data-faction-panel="cheonmyeong"] .acc-title,
+#tab-char .faction-content-panel[data-faction-panel="cheonmyeong"] .acc-chevron{
+  position:relative;z-index:3;
+}
+#tab-char .faction-content-panel[data-faction-panel="cheonmyeong"] .acc-num{color:#b87942 !important;}
+
+/* 소개문: 얇은 목재 창틀 */
+#tab-char .faction-content-panel[data-faction-panel="cheonmyeong"] .faction-lead-desc{
+  position:relative;
+  overflow:hidden;
+  color:#bfa17d !important;
+  background:
+    repeating-linear-gradient(8deg,rgba(186,130,72,.014) 0 1px,transparent 1px 8px),
+    rgba(40,26,16,.42) !important;
+  border:1px solid rgba(128,72,30,.30) !important;
+  border-left:3px solid rgba(156,91,38,.55) !important;
+  box-shadow:inset 0 0 20px rgba(109,56,20,.045) !important;
+}
+#tab-char .faction-content-panel[data-faction-panel="cheonmyeong"] .faction-lead-mark{
+  color:#b5743d !important;
+}
+
+/* 장소 카드 */
+#tab-char .faction-content-panel[data-faction-panel="cheonmyeong"] .place-card{
+  position:relative;
+  overflow:hidden;
+  background:
+    linear-gradient(135deg,rgba(65,38,20,.26),rgba(18,13,9,.88)) !important;
+  border:1px solid rgba(120,68,29,.31) !important;
+  border-radius:3px !important;
+  box-shadow:inset 0 0 0 1px rgba(207,142,74,.018) !important;
+}
+#tab-char .faction-content-panel[data-faction-panel="cheonmyeong"] .place-card::before{
+  content:"";
+  position:absolute;z-index:3;pointer-events:none;
+  inset:7px;
+  border:1px solid rgba(102,54,22,.20);
+  background:
+    linear-gradient(45deg,transparent 47%,rgba(111,59,24,.23) 48% 52%,transparent 53%) left top/28px 28px no-repeat,
+    linear-gradient(-45deg,transparent 47%,rgba(111,59,24,.23) 48% 52%,transparent 53%) right top/28px 28px no-repeat;
+}
+#tab-char .faction-content-panel[data-faction-panel="cheonmyeong"] .place-image{
+  overflow:hidden;
+  background:#0e0a07 !important;
+}
+#tab-char .faction-content-panel[data-faction-panel="cheonmyeong"] .place-image img{
+  transition:transform .42s ease,filter .42s ease !important;
+  filter:saturate(.82) brightness(.84) sepia(.08);
+}
+#tab-char .faction-content-panel[data-faction-panel="cheonmyeong"] .place-card:hover .place-image img{
+  transform:scale(1.025) !important;
+  filter:saturate(.9) brightness(.92) sepia(.07) !important;
+}
+#tab-char .faction-content-panel[data-faction-panel="cheonmyeong"] .place-title{
+  color:#c08a54 !important;
+  text-shadow:0 0 8px rgba(154,78,25,.10);
+}
+#tab-char .faction-content-panel[data-faction-panel="cheonmyeong"] .place-desc{
+  color:#a9957e !important;
+}
+
+/* 캐릭터 카드: 작은 창호문 */
+#tab-char .faction-content-panel[data-faction-panel="cheonmyeong"] .char-card{
+  position:relative;
+  overflow:hidden;
+  background:
+    repeating-linear-gradient(8deg,rgba(181,120,61,.012) 0 1px,transparent 1px 8px),
+    linear-gradient(155deg,#1b120c,#100b08 72%) !important;
+  border:1px solid rgba(126,70,29,.34) !important;
+  border-radius:3px !important;
+  box-shadow:inset 0 0 16px rgba(94,45,15,.035) !important;
+  transition:transform .22s ease,border-color .22s ease,box-shadow .22s ease,filter .22s ease !important;
+}
+#tab-char .faction-content-panel[data-faction-panel="cheonmyeong"] .char-card::before{
+  content:"";
+  position:absolute;z-index:4;pointer-events:none;
+  left:7px;right:7px;top:7px;height:23px;
+  border-top:1px solid rgba(134,76,32,.38);
+  background:
+    linear-gradient(45deg,transparent 47%,rgba(124,67,27,.36) 48% 52%,transparent 53%) left top/24px 20px no-repeat,
+    linear-gradient(-45deg,transparent 47%,rgba(124,67,27,.36) 48% 52%,transparent 53%) right top/24px 20px no-repeat;
+  opacity:.7;
+}
+#tab-char .faction-content-panel[data-faction-panel="cheonmyeong"] .char-card::after{
+  content:"";
+  position:absolute;z-index:3;pointer-events:none;
+  right:9px;bottom:9px;width:7px;height:7px;border-radius:50%;
+  background:#7c461f;
+  box-shadow:0 0 0 rgba(193,109,40,0);
+  opacity:.45;
+  transition:opacity .22s ease,box-shadow .22s ease,background .22s ease;
+}
+#tab-char .faction-content-panel[data-faction-panel="cheonmyeong"] .char-card:hover{
+  transform:translateY(-2px) !important;
+  filter:brightness(1.035);
+  border-color:rgba(164,96,41,.55) !important;
+  box-shadow:inset 0 0 20px rgba(111,55,18,.05),0 8px 18px rgba(0,0,0,.22) !important;
+}
+#tab-char .faction-content-panel[data-faction-panel="cheonmyeong"] .char-card:hover::after{
+  opacity:.95;background:#bd7135;
+  box-shadow:0 0 9px rgba(183,92,28,.26);
+}
+#tab-char .faction-content-panel[data-faction-panel="cheonmyeong"] .char-portrait{
+  background:linear-gradient(155deg,#3b2516,#100b08 72%) !important;
+}
+#tab-char .faction-content-panel[data-faction-panel="cheonmyeong"] .char-name{color:#d1b28e !important;}
+#tab-char .faction-content-panel[data-faction-panel="cheonmyeong"] .char-role{color:#ad7548 !important;}
+
+/* 상세 Hover Popup */
+.character-hover-detail.cheon-character-detail{
+  overflow:hidden !important;
+  background:
+    repeating-linear-gradient(8deg,rgba(184,125,65,.012) 0 1px,transparent 1px 9px),
+    linear-gradient(145deg,#18100b,#0d0907 68%) !important;
+  border:1px solid rgba(143,81,34,.48) !important;
+  border-radius:4px !important;
+  box-shadow:
+    inset 0 0 0 1px rgba(210,145,76,.025),
+    inset 0 0 34px rgba(108,53,18,.045),
+    0 18px 44px rgba(0,0,0,.46) !important;
+}
+.character-hover-detail.cheon-character-detail::before{
+  content:"";
+  position:absolute;z-index:4;pointer-events:none;
+  inset:7px;
+  border:1px solid rgba(112,60,24,.22);
+  background:
+    linear-gradient(45deg,transparent 47%,rgba(126,68,27,.31) 48% 52%,transparent 53%) left top/34px 34px no-repeat,
+    linear-gradient(-45deg,transparent 47%,rgba(126,68,27,.31) 48% 52%,transparent 53%) right top/34px 34px no-repeat,
+    linear-gradient(-45deg,transparent 47%,rgba(126,68,27,.22) 48% 52%,transparent 53%) left bottom/34px 34px no-repeat,
+    linear-gradient(45deg,transparent 47%,rgba(126,68,27,.22) 48% 52%,transparent 53%) right bottom/34px 34px no-repeat;
+}
+.character-hover-detail.cheon-character-detail .character-detail-art{
+  position:relative;
+  background:#0d0907 !important;
+}
+.character-hover-detail.cheon-character-detail .character-detail-art::after{
+  content:"";
+  position:absolute;pointer-events:none;
+  left:-36%;top:22%;width:72%;height:48%;
+  border-radius:50%;
+  background:radial-gradient(ellipse,rgba(214,143,69,.15),rgba(142,69,21,.055) 48%,transparent 72%);
+  filter:blur(3px);
+  animation:cheonPopupLantern 7.8s ease-in-out infinite;
+}
+.character-hover-detail.cheon-character-detail .character-detail-name{color:#d2af85 !important;}
+.character-hover-detail.cheon-character-detail .character-detail-role,
+.character-hover-detail.cheon-character-detail .character-detail-code{color:#b97845 !important;}
+.character-hover-detail.cheon-character-detail .character-detail-ability{border-color:rgba(136,76,31,.30) !important;background:rgba(77,42,19,.16) !important;}
+.character-hover-detail.cheon-character-detail .character-detail-quote{color:#bba083 !important;border-color:rgba(133,73,29,.26) !important;}
+
+@keyframes cheonPanelLantern{
+  0%{left:-120px;opacity:.15}
+  18%{opacity:.65}
+  50%{left:48%;opacity:.9}
+  82%{opacity:.55}
+  100%{left:104%;opacity:.12}
+}
+@keyframes cheonPopupLantern{
+  0%{left:-38%;opacity:.15}
+  45%{left:38%;opacity:.75}
+  65%{left:52%;opacity:.72}
+  100%{left:108%;opacity:.12}
+}
+@media(prefers-reduced-motion:reduce){
+  #tab-char .faction-content-panel[data-faction-panel="cheonmyeong"] .acc-head::after,
+  .character-hover-detail.cheon-character-detail .character-detail-art::after{
+    animation:none !important;
+  }
+}
+</style>
+
 </head>
 <body><div aria-hidden="true" class="shooting-stars"><span class="shooting-star star-a"></span><span class="shooting-star star-b"></span><span class="shooting-star star-c"></span></div>
 <section class="hero">
