@@ -10953,6 +10953,93 @@ body::after {
 }
 </style>
 
+
+<style id="responsive-character-detail-final">
+/* =========================================================
+   CHARACTER DETAIL — narrow desktop + mobile/touch support
+   ========================================================= */
+
+/* 기존 max-width / hover:none 에서 display:none 처리된 것을 해제 */
+@media (max-width:700px), (hover:none), (pointer:coarse){
+  .character-hover-detail{
+    display:block !important;
+  }
+}
+
+/* 좁은 화면에서는 카드 옆이 아니라 화면 중앙 오버레이처럼 배치 */
+@media (max-width:700px), (pointer:coarse){
+  .character-hover-detail{
+    position:fixed !important;
+    left:12px !important;
+    right:12px !important;
+    top:12px !important;
+    width:auto !important;
+    max-width:none !important;
+    max-height:calc(100dvh - 24px) !important;
+    overflow-y:auto !important;
+    transform:translateY(8px) scale(.985) !important;
+    transform-origin:center top !important;
+    pointer-events:auto !important;
+  }
+
+  .character-hover-detail.visible{
+    transform:translateY(0) scale(1) !important;
+  }
+
+  .character-hover-detail .character-detail-body{
+    padding:16px 17px 18px !important;
+  }
+
+  .character-hover-detail .character-detail-name{
+    font-size:23px !important;
+  }
+
+  .character-hover-detail .character-detail-role{
+    font-size:14px !important;
+  }
+
+  .character-hover-detail .character-detail-ability p{
+    font-size:14.5px !important;
+  }
+
+  .character-hover-detail .character-detail-quote{
+    font-size:14px !important;
+  }
+}
+
+/* 100dvh 미지원 브라우저 fallback */
+@supports not (height:100dvh){
+  @media (max-width:700px), (pointer:coarse){
+    .character-hover-detail{
+      max-height:calc(100vh - 24px) !important;
+    }
+  }
+}
+</style>
+
+
+<style id="responsive-character-detail-jitter-fix">
+/* =========================================================
+   좁은 데스크톱 hover 떨림 수정
+   팝업이 마우스 포인터를 가로채면서 mouseout → hide → mouseover
+   루프가 생기던 문제를 차단
+   ========================================================= */
+
+/* 마우스를 쓰는 기기에서는 상세창이 포인터 이벤트를 가로채지 않음 */
+@media (max-width:700px) and (hover:hover) and (pointer:fine){
+  .character-hover-detail{
+    pointer-events:none !important;
+  }
+}
+
+/* 터치 기기에서는 탭 후 내부 스크롤이 가능해야 하므로 유지 */
+@media (hover:none), (pointer:coarse){
+  .character-hover-detail{
+    pointer-events:auto !important;
+  }
+}
+</style>
+
 </head>
 <body><div aria-hidden="true" class="shooting-stars"><span class="shooting-star star-a"></span><span class="shooting-star star-b"></span><span class="shooting-star star-c"></span></div>
 <section class="hero">
@@ -13494,7 +13581,107 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 });
-</script></body>
+</script>
+<script id="responsive-character-detail-tap-final">
+/* =========================================================
+   TOUCH / MOBILE CHARACTER DETAIL
+   모바일에서는 hover 대신 탭으로 열기
+   ========================================================= */
+(() => {
+  let touchPopup = null;
+  let touchTrigger = null;
+
+  const isTouchLike = () =>
+    window.matchMedia('(hover:none), (pointer:coarse)').matches;
+
+  function popupFor(trigger){
+    const key = trigger && trigger.getAttribute('data-character-detail');
+    if(!key) return null;
+    return document.querySelector('[data-detail-popup="' + CSS.escape(key) + '"]');
+  }
+
+  function closeTouchPopup(){
+    if(touchPopup){
+      touchPopup.classList.remove('visible');
+      touchPopup.setAttribute('aria-hidden','true');
+      touchPopup.style.left = '';
+      touchPopup.style.right = '';
+      touchPopup.style.top = '';
+    }
+    touchPopup = null;
+    touchTrigger = null;
+  }
+
+  function openTouchPopup(trigger){
+    const popup = popupFor(trigger);
+    if(!popup) return;
+
+    if(touchPopup === popup){
+      closeTouchPopup();
+      return;
+    }
+
+    closeTouchPopup();
+
+    touchPopup = popup;
+    touchTrigger = trigger;
+
+    popup.style.left = '12px';
+    popup.style.right = '12px';
+    popup.style.top = '12px';
+
+    popup.classList.add('visible');
+    popup.setAttribute('aria-hidden','false');
+    popup.scrollTop = 0;
+  }
+
+  /* 모바일/터치: 캐릭터 카드 한 번 탭하면 열림 */
+  document.addEventListener('click', (event) => {
+    if(!isTouchLike()) return;
+
+    const trigger = event.target.closest('[data-character-detail]');
+    if(trigger){
+      event.preventDefault();
+      event.stopPropagation();
+      openTouchPopup(trigger);
+      return;
+    }
+
+    /* 상세창 자체를 누른 경우에는 닫지 않음 */
+    if(event.target.closest('.character-hover-detail')) return;
+
+    closeTouchPopup();
+  }, true);
+
+  /* Esc로도 닫기 */
+  document.addEventListener('keydown', (event) => {
+    if(event.key === 'Escape'){
+      closeTouchPopup();
+    }
+  });
+
+  /* 탭/세력 변경 시 닫기 */
+  document.addEventListener('click', (event) => {
+    if(
+      event.target.closest('.faction-switch-btn') ||
+      event.target.closest('.tab-btn')
+    ){
+      closeTouchPopup();
+    }
+  });
+
+  /* 화면 방향/크기 변경 시 열려 있으면 화면 안에 유지 */
+  window.addEventListener('resize', () => {
+    if(touchPopup && isTouchLike()){
+      touchPopup.style.left = '12px';
+      touchPopup.style.right = '12px';
+      touchPopup.style.top = '12px';
+    }
+  });
+})();
+</script>
+
+</body>
 </html>
 <!-- redeploy -->
 <style>
