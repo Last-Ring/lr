@@ -24178,6 +24178,142 @@ document.addEventListener('DOMContentLoaded',function(){
 }
 </style>
 
+
+<style id="place-image-hover-only-v34">
+/* =========================================================
+   지정 장소 배경 Hover 수정
+   박스 전체 Hover -> 배경 이미지 반응 금지
+   실제 .place-image 영역 Hover -> 이미지만 반응
+   ========================================================= */
+
+#tab-char .place-card.image-hover-only-v34:hover > .place-image img{
+  transform:none !important;
+}
+
+#tab-char .place-card.image-hover-only-v34 > .place-image img{
+  transition:transform .34s ease, filter .30s ease !important;
+  will-change:transform,filter;
+}
+
+@media (hover:hover) and (pointer:fine){
+  #tab-char .place-card.image-hover-only-v34 > .place-image:hover img{
+    transform:scale(1.018) !important;
+  }
+}
+
+/* 상위 카드 hover 때문에 필터까지 바뀌는 기존 규칙도 차단.
+   직접 이미지 hover일 때만 아주 약한 밝기 변화 허용. */
+#tab-char .place-card.image-hover-only-v34:hover > .place-image img{
+  filter:var(--place-v34-filter, none) !important;
+}
+
+@media (hover:hover) and (pointer:fine){
+  #tab-char .place-card.image-hover-only-v34 > .place-image:hover img{
+    filter:var(--place-v34-hover-filter, brightness(1.045) saturate(1.03)) !important;
+  }
+}
+</style>
+
+
+<style id="place-image-hover-hardfix-v35">
+/* =========================================================
+   V35 HARD FIX
+   지정 장소의 배경 이미지는 카드 전체 hover에 절대 반응하지 않음.
+   .place-image 자체에 들어갔을 때만 JS가 inline !important transform 적용.
+   ========================================================= */
+
+#tab-char .faction-content-panel[data-faction-panel] .place-card.image-hover-hardfix-v35:hover > .place-image img{
+  transform:scale(1) !important;
+}
+
+/* 기존 세력별 .place-card:hover .place-image img 보다 높은 우선순위 */
+#tab-char .faction-content-panel[data-faction-panel="cheonmyeong"] .place-card.image-hover-hardfix-v35:hover > .place-image img,
+#tab-char .faction-content-panel[data-faction-panel="pantheon"] .place-card.image-hover-hardfix-v35:hover > .place-image img,
+#tab-char .faction-content-panel[data-faction-panel="phantom"] .place-card.image-hover-hardfix-v35:hover > .place-image img,
+#tab-char .faction-content-panel[data-faction-panel="noblesse"] .place-card.image-hover-hardfix-v35:hover > .place-image img,
+#tab-char .faction-content-panel[data-faction-panel="wolha"] .place-card.image-hover-hardfix-v35:hover > .place-image img{
+  transform:scale(1) !important;
+}
+
+/* 실제 이미지 영역만 hover 가능 */
+#tab-char .place-card.image-hover-hardfix-v35 > .place-image{
+  overflow:hidden !important;
+}
+</style>
+
+
+<style id="pantheon-title-notamaya-mist-v36">
+/* =========================================================
+   V36
+   1) 판테온: 교직원 / 후보생 / 정규생 / 정예생 부제목 +4px
+   2) 천귀궁: 노타마야 '초상화 영역만' 분홍 안개가 위를 지나가지 않게
+   ========================================================= */
+
+/* 기존 15px -> 19px */
+#tab-char .faction-content-panel[data-faction-panel="pantheon"] .facility-title{
+  font-size:19px !important;
+}
+
+/* ---------------------------------------------------------
+   노타마야 초상화만 전경 안개보다 위로 올린다.
+   place-info의 기존 z-index:10이 stacking context를 만들어
+   자식 초상화가 z-index:100 안개를 넘지 못하므로 해제.
+   --------------------------------------------------------- */
+#tab-char .faction-hostile .tengugong-card > .place-info{
+  z-index:auto !important;
+}
+
+/* 제목/설명/이름/역할은 기존처럼 안개가 지나갈 수 있게 낮게 유지 */
+#tab-char .faction-hostile .tengugong-card .place-title,
+#tab-char .faction-hostile .tengugong-card .place-desc,
+#tab-char .faction-hostile .tengugong-card .char-name,
+#tab-char .faction-hostile .tengugong-card .char-role{
+  position:relative !important;
+  z-index:20 !important;
+}
+
+/* 카드 자체는 stacking context를 만들지 않게 */
+#tab-char .faction-hostile .tengugong-card .char-card{
+  z-index:auto !important;
+  isolation:auto !important;
+}
+
+/* 오직 초상화 부분만 안개(z100)보다 위 */
+#tab-char .faction-hostile .tengugong-card .char-portrait{
+  position:relative !important;
+  z-index:120 !important;
+  overflow:hidden !important;
+  isolation:isolate !important;
+}
+
+/* 이미지도 확실히 초상화 레이어 안에서 최상단 */
+#tab-char .faction-hostile .tengugong-card .char-portrait > img{
+  position:relative !important;
+  z-index:2 !important;
+}
+
+/* 기존 장식 pseudo가 초상화 위를 덮더라도 안개와 혼동되지 않도록
+   초상화 자체의 원래 장식은 보존 */
+</style>
+
+
+
+<style id="notamaya-mist-mask-fix-v38">
+/* =========================================================
+   V38 — 노타마야 초상화 안개 제외
+   이미지 복제 없음.
+   천귀궁 전경 안개 레이어 자체에 '초상화 크기의 구멍'을 만든다.
+   ========================================================= */
+#tab-char .faction-hostile .tengugong-card > .notamaya-portrait-shield-v37{
+  display:none !important;
+}
+
+#tab-char .faction-hostile .tengugong-card > .tengugong-mist-v12{
+  -webkit-mask-repeat:no-repeat !important;
+  mask-repeat:no-repeat !important;
+}
+</style>
+
 </head>
 <body><div aria-hidden="true" class="shooting-stars"><span class="shooting-star star-a"></span><span class="shooting-star star-b"></span><span class="shooting-star star-c"></span></div>
 <section class="hero">
@@ -24895,6 +25031,7 @@ document.addEventListener('DOMContentLoaded',function(){
 <div class="place-image"><img alt="팬텀 스트라이크" src="img/bg/20.png"/></div>
 <div class="place-info">
 <div class="place-title">◇ 팬텀 스트라이크</div>
+<div class="place-desc">도시의 빛이 닿는 마지막 경계에 선 전투 길드의 본부. 붉은 경계등이 밤새 꺼지지 않는 이곳에서는, 다음 출격을 기다리는 긴장과 철 냄새가 복도마다 낮게 배어 있다.</div>
 <div class="place-characters char-grid">
 <div class="char-card corvina-detail-trigger" data-character-detail="corvina"><div class="char-portrait"><img alt="코르비나" src="img/ch/55.png"/></div><div class="char-name">코르비나</div><div class="char-role">길드장·까마귀수인·SS+</div></div>
 <div class="char-card pantera-detail-trigger" data-character-detail="pantera"><div class="char-portrait"><img alt="판테라" src="img/ch/56.png"/></div><div class="char-name">판테라</div><div class="char-role">부길드장·구름표범수인·S+</div></div>
@@ -24917,6 +25054,7 @@ document.addEventListener('DOMContentLoaded',function(){
 <div class="place-image"><img alt="노블레스" src="img/bg/21.png"/></div>
 <div class="place-info">
 <div class="place-title">◇ 노블레스</div>
+<div class="place-desc">오래된 저택의 품격을 간직한 노블레스의 본부 거점. 고요한 회랑과 따뜻한 등불 아래에는 화려한 명예보다, 돌아오지 못한 이들의 이름을 기억하는 무거운 책임이 머문다.</div>
 <div class="place-characters char-grid">
 <div class="char-card cassia-detail-trigger" data-character-detail="cassia"><div class="char-portrait"><img alt="카시아" src="img/ch/57.png"/></div><div class="char-name">카시아</div><div class="char-role">길드장·인간·S</div></div>
 <div class="char-card formono-detail-trigger" data-character-detail="formono"><div class="char-portrait"><img alt="포르모노" src="img/ch/58.png"/></div><div class="char-name">포르모노</div><div class="char-role">부길드장·인간·A</div></div>
@@ -24939,6 +25077,7 @@ document.addEventListener('DOMContentLoaded',function(){
 <div class="place-image"><img alt="월하" src="img/bg/22.png"/></div>
 <div class="place-info">
 <div class="place-title">◇ 월하</div>
+<div class="place-desc">달빛이 기와 끝과 뜰의 그림자를 얇게 훑고 지나가는 월하의 본부 거점. 낮에는 적막한 고택처럼 보이지만, 밤이 깊어질수록 말 없는 발걸음과 비밀스러운 임무가 조용히 시작된다.</div>
 <div class="place-characters char-grid">
 <div class="char-card kagura-detail-trigger" data-character-detail="kagura"><div class="char-portrait"><img alt="카구라" src="img/ch/59.png"/></div><div class="char-name">카구라</div><div class="char-role">길드장·인간·S+</div></div>
 <div class="char-card eunryeong-detail-trigger" data-character-detail="eunryeong"><div class="char-portrait"><img alt="은령" src="img/ch/60.png"/></div><div class="char-name">은령</div><div class="char-role">부길드장·요호·A+</div></div>
@@ -27948,6 +28087,200 @@ document.addEventListener('DOMContentLoaded', () => {
     if(box){
       var ro = new ResizeObserver(clampOrbLayer);
       ro.observe(box);
+    }
+  }
+})();
+</script>
+
+
+<script id="place-image-hover-only-v34-runtime">
+(function(){
+  var targets = new Set([
+    '천궁',
+    '청운가',
+    '설원온천향',
+    '센트럴 넥서스',
+    '센트럴넥서스',
+    '천명관',
+    '루미나관',
+    '엘더우드관',
+    '테크노관',
+    '가상균열훈련장',
+    '보건실',
+    '팬텀 스트라이크',
+    '팬텀스트라이크',
+    '노블레스',
+    '월하'
+  ]);
+
+  document.querySelectorAll('#tab-char .place-card').forEach(function(card){
+    var title = card.querySelector('.place-title');
+    if(!title) return;
+
+    var text = title.textContent.replace(/\s+/g,' ').trim();
+    var compact = text.replace(/\s+/g,'');
+
+    var matched = false;
+    targets.forEach(function(name){
+      if(text.indexOf(name) !== -1 || compact.indexOf(name.replace(/\s+/g,'')) !== -1){
+        matched = true;
+      }
+    });
+
+    if(!matched) return;
+
+    card.classList.add('image-hover-only-v34');
+
+    var img = card.querySelector('.place-image img');
+    if(!img) return;
+
+    /* 현재 기본 상태의 실제 필터를 저장해서 박스 hover 때도 유지 */
+    var style = getComputedStyle(img);
+    card.style.setProperty('--place-v34-filter', style.filter === 'none' ? 'none' : style.filter);
+  });
+})();
+</script>
+
+
+<script id="place-image-hover-hardfix-v35-runtime">
+(function(){
+  var targetNames = [
+    '천궁',
+    '청운가',
+    '설원온천향',
+    '센트럴 넥서스',
+    '센트럴넥서스',
+    '천명관',
+    '루미나관',
+    '엘더우드관',
+    '테크노관',
+    '가상균열훈련장',
+    '보건실',
+    '팬텀 스트라이크',
+    '팬텀스트라이크',
+    '노블레스',
+    '월하'
+  ];
+
+  function isTarget(card){
+    var title = card.querySelector('.place-title');
+    if(!title) return false;
+
+    var text = title.textContent.replace(/\s+/g,' ').trim();
+    var compact = text.replace(/\s+/g,'');
+
+    return targetNames.some(function(name){
+      var n = name.replace(/\s+/g,'');
+      return text.indexOf(name) !== -1 || compact.indexOf(n) !== -1;
+    });
+  }
+
+  document.querySelectorAll('#tab-char .place-card').forEach(function(card){
+    if(!isTarget(card)) return;
+
+    var area = card.querySelector(':scope > .place-image') || card.querySelector('.place-image');
+    if(!area) return;
+
+    var img = area.querySelector('img');
+    if(!img) return;
+
+    card.classList.add('image-hover-hardfix-v35');
+
+    /* 원래 디자인의 기본 filter는 보존 */
+    var baseFilter = getComputedStyle(img).filter;
+
+    function reset(){
+      img.style.setProperty('transform','scale(1)','important');
+      img.style.setProperty('filter',baseFilter,'important');
+    }
+
+    function activate(){
+      /* 이미지 영역에 직접 들어왔을 때만 */
+      img.style.setProperty('transform','scale(1.025)','important');
+      img.style.setProperty('filter',baseFilter,'important');
+    }
+
+    reset();
+
+    area.addEventListener('pointerenter', activate);
+    area.addEventListener('pointerleave', reset);
+
+    /* 카드 다른 영역으로 이동하면 무조건 원상복귀 */
+    card.addEventListener('pointerleave', reset);
+  });
+})();
+</script>
+
+
+
+<script id="notamaya-mist-mask-fix-v38-runtime">
+(function(){
+  function applyNotamayaMistHole(){
+    var card = document.querySelector(
+      '#tab-char .faction-hostile .tengugong-card'
+    );
+    if(!card) return;
+
+    /* 이전 버전에서 남아 있을 수 있는 복제 이미지 즉시 제거 */
+    card.querySelectorAll('.notamaya-portrait-shield-v37').forEach(function(el){
+      el.remove();
+    });
+
+    var layer = card.querySelector(':scope > .tengugong-mist-v12');
+    var portrait = card.querySelector(
+      '.notamaya-detail-trigger .char-portrait'
+    );
+
+    if(!layer || !portrait) return;
+
+    var lr = layer.getBoundingClientRect();
+    var pr = portrait.getBoundingClientRect();
+
+    if(lr.width <= 0 || lr.height <= 0 || pr.width <= 0 || pr.height <= 0){
+      return;
+    }
+
+    /* 초상화 기준 좌표를 안개 레이어 좌표계로 변환 */
+    var x = Math.max(0, pr.left - lr.left);
+    var y = Math.max(0, pr.top - lr.top);
+    var w = Math.min(pr.width, lr.width - x);
+    var h = Math.min(pr.height, lr.height - y);
+
+    var right = Math.max(0, lr.width - (x + w));
+    var bottom = Math.max(0, lr.height - (y + h));
+
+    /*
+      초상화 영역만 비우고,
+      위/왼쪽/오른쪽/아래 네 구역에만 안개를 표시.
+      mask-composite에 의존하지 않아 Chromium에서 안정적으로 동작.
+    */
+    var mask =
+      'linear-gradient(#000 0 0) 0 0 / 100% ' + y + 'px no-repeat,' +
+      'linear-gradient(#000 0 0) 0 ' + y + 'px / ' + x + 'px ' + h + 'px no-repeat,' +
+      'linear-gradient(#000 0 0) ' + (x + w) + 'px ' + y + 'px / ' + right + 'px ' + h + 'px no-repeat,' +
+      'linear-gradient(#000 0 0) 0 ' + (y + h) + 'px / 100% ' + bottom + 'px no-repeat';
+
+    layer.style.setProperty('-webkit-mask', mask, 'important');
+    layer.style.setProperty('mask', mask, 'important');
+  }
+
+  function refresh(){
+    requestAnimationFrame(function(){
+      requestAnimationFrame(applyNotamayaMistHole);
+    });
+  }
+
+  refresh();
+  window.addEventListener('resize', refresh, {passive:true});
+  document.addEventListener('click', refresh, {passive:true});
+
+  if('ResizeObserver' in window){
+    var card = document.querySelector(
+      '#tab-char .faction-hostile .tengugong-card'
+    );
+    if(card){
+      var ro = new ResizeObserver(refresh);
+      ro.observe(card);
     }
   }
 })();
