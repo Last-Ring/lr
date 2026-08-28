@@ -21474,6 +21474,249 @@ document.addEventListener('DOMContentLoaded',function(){
 }
 </style>
 
+
+<style id="calamity-obsidian-orbs-v4-js">
+/* =========================================================
+   V4 — CSS animation을 버리고 JS requestAnimationFrame으로 직접 이동.
+   ========================================================= */
+
+#tab-char .faction-hostile .calamity-avril .obsidian-orbs-direct{
+  display:block !important;
+  position:absolute !important;
+  z-index:9 !important;
+  inset:0 !important;
+  overflow:hidden !important;
+  pointer-events:none !important;
+}
+
+#tab-char .faction-hostile .calamity-avril .obsidian-orbs-direct .orb{
+  position:absolute !important;
+  display:block !important;
+  border-radius:50% !important;
+  animation:none !important;
+  opacity:0;
+  transform:translate3d(0,0,0);
+
+  background:
+    radial-gradient(circle at 30% 25%,
+      rgba(156,117,190,.46) 0 5%,
+      rgba(76,49,94,.48) 13%,
+      rgba(21,13,29,.97) 44%,
+      rgba(3,2,5,.995) 74%,
+      #000 100%
+    ) !important;
+
+  border:1px solid rgba(116,80,140,.30) !important;
+  box-shadow:
+    inset -7px -9px 14px rgba(0,0,0,.94),
+    inset 4px 4px 9px rgba(135,95,161,.15),
+    0 0 13px rgba(68,39,88,.18) !important;
+
+  will-change:transform,opacity !important;
+}
+
+/* 기존 CSS keyframe 기반 위치값 무효화 */
+#tab-char .faction-hostile .calamity-avril .obsidian-orbs-direct .o1,
+#tab-char .faction-hostile .calamity-avril .obsidian-orbs-direct .o2,
+#tab-char .faction-hostile .calamity-avril .obsidian-orbs-direct .o3,
+#tab-char .faction-hostile .calamity-avril .obsidian-orbs-direct .o4,
+#tab-char .faction-hostile .calamity-avril .obsidian-orbs-direct .o5,
+#tab-char .faction-hostile .calamity-avril .obsidian-orbs-direct .o6,
+#tab-char .faction-hostile .calamity-avril .obsidian-orbs-direct .o7,
+#tab-char .faction-hostile .calamity-avril .obsidian-orbs-direct .o8,
+#tab-char .faction-hostile .calamity-avril .obsidian-orbs-direct .o9,
+#tab-char .faction-hostile .calamity-avril .obsidian-orbs-direct .o10,
+#tab-char .faction-hostile .calamity-avril .obsidian-orbs-direct .o11,
+#tab-char .faction-hostile .calamity-avril .obsidian-orbs-direct .o12{
+  bottom:auto !important;
+  top:auto !important;
+  left:auto !important;
+  width:auto !important;
+  height:auto !important;
+  animation:none !important;
+}
+</style>
+
+<script id="calamity-obsidian-orbs-v4-js-script">
+(function(){
+  function startObsidianOrbs(){
+    var card=document.querySelector(
+      '#tab-char .faction-hostile .calamity-avril .calamity-place-card-unified'
+    );
+    if(!card) return;
+
+    var field=card.querySelector('.obsidian-orbs-direct');
+    if(!field) return;
+
+    /* 중복 실행 방지 */
+    if(field.dataset.running==='1') return;
+    field.dataset.running='1';
+
+    var els=Array.prototype.slice.call(field.querySelectorAll('.orb'));
+
+    var cfg=[
+      {x:.06,size:18,speed:26,phase:.02,amp:13,alpha:.52},
+      {x:.15,size:34,speed:18,phase:.54,amp:19,alpha:.39},
+      {x:.25,size:14,speed:31,phase:.31,amp:10,alpha:.56},
+      {x:.35,size:27,speed:21,phase:.73,amp:16,alpha:.45},
+      {x:.45,size:42,speed:15,phase:.41,amp:23,alpha:.35},
+      {x:.56,size:19,speed:27,phase:.18,amp:12,alpha:.51},
+      {x:.65,size:31,speed:19,phase:.82,amp:20,alpha:.41},
+      {x:.74,size:16,speed:30,phase:.47,amp:11,alpha:.54},
+      {x:.83,size:37,speed:17,phase:.64,amp:21,alpha:.37},
+      {x:.92,size:20,speed:25,phase:.25,amp:14,alpha:.49},
+      {x:.49,size:12,speed:34,phase:.91,amp:9,alpha:.60},
+      {x:.69,size:24,speed:23,phase:.59,amp:15,alpha:.46}
+    ];
+
+    els.forEach(function(el,i){
+      var c=cfg[i % cfg.length];
+      el.style.setProperty('width',c.size+'px','important');
+      el.style.setProperty('height',c.size+'px','important');
+    });
+
+    var last=performance.now();
+    var progress=cfg.map(function(c){ return c.phase; });
+    var running=true;
+
+    function frame(now){
+      if(!running) return;
+
+      var dt=Math.min((now-last)/1000,.05);
+      last=now;
+
+      var w=field.clientWidth || card.clientWidth;
+      var h=field.clientHeight || card.clientHeight;
+
+      els.forEach(function(el,i){
+        var c=cfg[i % cfg.length];
+
+        /* speed = px/sec. 카드 높이 + 여유만큼 순환 */
+        var travel=h + c.size + 50;
+        progress[i]=(progress[i] + (c.speed*dt/travel)) % 1;
+
+        var p=progress[i];
+        var y=h + 18 - p*travel;
+        var sway=Math.sin((p*6.283*2)+(i*1.37))*c.amp;
+        var x=(w*c.x) + sway - c.size/2;
+
+        /* 하단에서 서서히 나타나고 상단에서 서서히 사라짐 */
+        var fadeIn=Math.min(1,p/0.12);
+        var fadeOut=Math.min(1,(1-p)/0.13);
+        var opacity=c.alpha*Math.min(fadeIn,fadeOut);
+
+        var scale=.72 + Math.sin(Math.min(1,p)*3.14159)*.28;
+
+        el.style.setProperty(
+          'transform',
+          'translate3d('+x.toFixed(1)+'px,'+y.toFixed(1)+'px,0) scale('+scale.toFixed(3)+')',
+          'important'
+        );
+        el.style.setProperty('opacity',opacity.toFixed(3),'important');
+      });
+
+      requestAnimationFrame(frame);
+    }
+
+    requestAnimationFrame(frame);
+  }
+
+  if(document.readyState==='loading'){
+    document.addEventListener('DOMContentLoaded',startObsidianOrbs,{once:true});
+  }else{
+    startObsidianOrbs();
+  }
+})();
+</script>
+
+
+<style id="calamity-v7-outer-panel-only-fix">
+/* 재앙 바깥 패널만 반듯하게 복구.
+   옵시디언/천귀궁/선큰스론/만상의 성소 place-card 스타일은 건드리지 않음. */
+#tab-char .acc-item.faction-calamity.faction-content-panel[data-faction-panel="hostile"]{
+  clip-path:none !important;
+  -webkit-clip-path:none !important;
+  border-radius:4px !important;
+}
+</style>
+
+
+<style id="obsidian-orbs-v7-targeted">
+/* 이전 시도 전부 비활성화 */
+#tab-char .faction-hostile .calamity-avril .obsidian-orb-field,
+#tab-char .faction-hostile .calamity-avril .obsidian-orbs-direct{
+  display:none !important;
+}
+
+/* 정확히 옵시디언 레어 place-card 전체에만 들어가는 새 레이어 */
+#tab-char .faction-hostile .calamity-avril .calamity-place-card-unified{
+  position:relative !important;
+  overflow:hidden !important;
+  isolation:isolate !important;
+}
+
+/* 다른 세 장소에는 이 레이어 자체가 존재하지 않음 */
+#tab-char .faction-hostile .calamity-avril .obsidian-rise-layer-v7{
+  position:absolute !important;
+  inset:0 !important;
+  z-index:30 !important;
+  overflow:hidden !important;
+  pointer-events:none !important;
+}
+
+/* 텍스트/캐릭터는 읽기 쉽게 구체보다 위 */
+#tab-char .faction-hostile .calamity-avril .place-title,
+#tab-char .faction-hostile .calamity-avril .place-desc,
+#tab-char .faction-hostile .calamity-avril .place-characters{
+  position:relative !important;
+  z-index:40 !important;
+}
+
+/* 개별 심연 구체 */
+#tab-char .faction-hostile .calamity-avril .abyss-bubble-v7{
+  position:absolute !important;
+  left:0 !important;
+  top:0 !important;
+  display:block !important;
+  border-radius:50% !important;
+  opacity:0;
+
+  background:
+    radial-gradient(circle at 31% 27%,
+      rgba(184,139,220,.48) 0 5%,
+      rgba(88,58,108,.46) 13%,
+      rgba(24,15,31,.96) 44%,
+      rgba(4,2,6,.995) 72%,
+      #000 100%) !important;
+
+  border:1px solid rgba(126,88,151,.32) !important;
+  box-shadow:
+    inset -7px -9px 14px rgba(0,0,0,.94),
+    inset 4px 4px 9px rgba(149,106,177,.17),
+    0 0 12px rgba(83,48,108,.20) !important;
+
+  will-change:transform,opacity !important;
+}
+
+/* 박스 하단의 아주 옅은 심연 안개 */
+#tab-char .faction-hostile .calamity-avril .obsidian-rise-layer-v7::after{
+  content:"" !important;
+  position:absolute !important;
+  left:4% !important;
+  right:4% !important;
+  bottom:-18px !important;
+  height:78px !important;
+  border-radius:50% !important;
+  background:radial-gradient(
+    ellipse at center,
+    rgba(25,14,34,.48) 0%,
+    rgba(9,5,13,.22) 48%,
+    transparent 76%) !important;
+  filter:blur(12px) !important;
+  opacity:.48 !important;
+}
+</style>
+
 </head>
 <body><div aria-hidden="true" class="shooting-stars"><span class="shooting-star star-a"></span><span class="shooting-star star-b"></span><span class="shooting-star star-c"></span></div>
 <section class="hero">
@@ -22282,7 +22525,7 @@ document.addEventListener('DOMContentLoaded',function(){
             </div>
 <div class="calamity-stack">
 <!-- 에이브릴 -->
-<div class="calamity-row calamity-avril"><div class="place-card calamity-place-card-unified"><span class="obsidian-orbs-direct" aria-hidden="true"><i class="orb o1"></i><i class="orb o2"></i><i class="orb o3"></i><i class="orb o4"></i><i class="orb o5"></i><i class="orb o6"></i><i class="orb o7"></i><i class="orb o8"></i><i class="orb o9"></i><i class="orb o10"></i><i class="orb o11"></i><i class="orb o12"></i></span><div class="place-image"><img alt="옵시디언 레어" src="img/bg/28.png"/></div><div class="place-info"><div class="place-title">◇ 옵시디언 레어 · SS+ 게이트</div><div class="place-desc">검게 결정화된 암석과 심연의 마력이 뒤엉킨 흑룡의 영역. 깊숙이 들어갈수록 빛과 열이 희미해지며, 거대한 흑색 결정과 용의 흔적만이 적막 속에 남아 있다.</div><div class="place-characters char-grid"><div class="char-card avril-detail-trigger" data-character-detail="avril"><div class="char-portrait"><img alt="에이브릴" src="img/ch/65.png"/></div><div class="char-name">에이브릴</div><div class="char-role">흑룡의딸·흑룡·SS+</div></div></div></div></div></div>
+<div class="calamity-row calamity-avril"><div class="place-card calamity-place-card-unified"><div class="obsidian-rise-layer-v7" aria-hidden="true"><i class="abyss-bubble-v7 b1"></i><i class="abyss-bubble-v7 b2"></i><i class="abyss-bubble-v7 b3"></i><i class="abyss-bubble-v7 b4"></i><i class="abyss-bubble-v7 b5"></i><i class="abyss-bubble-v7 b6"></i><i class="abyss-bubble-v7 b7"></i><i class="abyss-bubble-v7 b8"></i><i class="abyss-bubble-v7 b9"></i><i class="abyss-bubble-v7 b10"></i><i class="abyss-bubble-v7 b11"></i><i class="abyss-bubble-v7 b12"></i><i class="abyss-bubble-v7 b13"></i><i class="abyss-bubble-v7 b14"></i></div><span class="obsidian-orbs-direct" aria-hidden="true"><i class="orb o1"></i><i class="orb o2"></i><i class="orb o3"></i><i class="orb o4"></i><i class="orb o5"></i><i class="orb o6"></i><i class="orb o7"></i><i class="orb o8"></i><i class="orb o9"></i><i class="orb o10"></i><i class="orb o11"></i><i class="orb o12"></i></span><div class="place-image"><img alt="옵시디언 레어" src="img/bg/28.png"/></div><div class="place-info"><div class="place-title">◇ 옵시디언 레어 · SS+ 게이트</div><div class="place-desc">검게 결정화된 암석과 심연의 마력이 뒤엉킨 흑룡의 영역. 깊숙이 들어갈수록 빛과 열이 희미해지며, 거대한 흑색 결정과 용의 흔적만이 적막 속에 남아 있다.</div><div class="place-characters char-grid"><div class="char-card avril-detail-trigger" data-character-detail="avril"><div class="char-portrait"><img alt="에이브릴" src="img/ch/65.png"/></div><div class="char-name">에이브릴</div><div class="char-role">흑룡의딸·흑룡·SS+</div></div></div></div></div></div>
 <!-- 노타마야 -->
 <div class="calamity-row calamity-notamaya"><div class="place-card calamity-place-card-unified"><div class="place-image"><img alt="천귀궁" src="img/bg/29.png"/></div><div class="place-info"><div class="place-title">◇ 천귀궁 · SSS 게이트</div><div class="place-desc">끝을 가늠할 수 없는 어둠 속에 세워진 천귀들의 궁전. 그림자와 환각이 현실의 경계를 흐리며, 발을 들인 순간부터 무엇이 실재하는지조차 확신하기 어렵다.</div><div class="place-characters char-grid"><div class="char-card notamaya-detail-trigger" data-character-detail="notamaya"><div class="char-portrait"><img alt="노타마야" src="img/ch/66.png"/></div><div class="char-name">노타마야</div><div class="char-role">천귀의주인·뱀요괴·SSS</div></div></div></div></div></div>
 <!-- 칼립사 -->
@@ -24198,6 +24441,89 @@ document.addEventListener('DOMContentLoaded', () => {
       activePlayerPopup.style.top = '12px';
     }
   });
+})();
+</script>
+
+
+<script id="obsidian-orbs-v7-runtime">
+(function(){
+  var card = document.querySelector(
+    '#tab-char .faction-hostile .calamity-avril .calamity-place-card-unified'
+  );
+  if(!card) return;
+
+  var layer = card.querySelector('.obsidian-rise-layer-v7');
+  if(!layer) return;
+
+  var bubbles = Array.prototype.slice.call(
+    layer.querySelectorAll('.abyss-bubble-v7')
+  );
+  if(!bubbles.length) return;
+
+  /* 위치/크기/속도 모두 제각각 */
+  var C = [
+    {x:.06,s:18,v:27,p:.06,a:.55,w:13},
+    {x:.14,s:31,v:20,p:.54,a:.42,w:20},
+    {x:.22,s:13,v:34,p:.31,a:.60,w:10},
+    {x:.30,s:24,v:23,p:.77,a:.48,w:17},
+    {x:.39,s:39,v:16,p:.43,a:.38,w:24},
+    {x:.48,s:17,v:29,p:.18,a:.56,w:12},
+    {x:.56,s:28,v:21,p:.86,a:.44,w:19},
+    {x:.64,s:14,v:32,p:.48,a:.59,w:10},
+    {x:.72,s:35,v:18,p:.68,a:.40,w:23},
+    {x:.80,s:20,v:26,p:.24,a:.53,w:14},
+    {x:.88,s:26,v:22,p:.93,a:.46,w:18},
+    {x:.94,s:15,v:31,p:.39,a:.58,w:11},
+    {x:.44,s:11,v:36,p:.72,a:.62,w:8},
+    {x:.68,s:22,v:24,p:.12,a:.50,w:16}
+  ];
+
+  bubbles.forEach(function(el,i){
+    var c=C[i];
+    el.style.setProperty('width',c.s+'px','important');
+    el.style.setProperty('height',c.s+'px','important');
+  });
+
+  var progress=C.map(function(c){return c.p;});
+  var last=performance.now();
+
+  function tick(now){
+    var dt=Math.min((now-last)/1000,.05);
+    last=now;
+
+    var W=layer.clientWidth;
+    var H=layer.clientHeight;
+
+    /* 패널이 접혀 있을 때는 크기가 0일 수 있으므로 다음 프레임에서 다시 계산 */
+    if(W>0 && H>0){
+      bubbles.forEach(function(el,i){
+        var c=C[i];
+        var travel=H + c.s + 34;
+        progress[i]=(progress[i] + (c.v*dt/travel)) % 1;
+
+        var p=progress[i];
+        var y=H + 10 - p*travel;
+        var sway=Math.sin(p*Math.PI*4 + i*1.21)*c.w;
+        var x=W*c.x + sway - c.s/2;
+
+        var fadeIn=Math.min(1,p/.10);
+        var fadeOut=Math.min(1,(1-p)/.12);
+        var opacity=c.a*Math.min(fadeIn,fadeOut);
+        var scale=.68 + Math.sin(p*Math.PI)*.32;
+
+        el.style.setProperty(
+          'transform',
+          'translate3d('+x.toFixed(1)+'px,'+y.toFixed(1)+'px,0) scale('+scale.toFixed(3)+')',
+          'important'
+        );
+        el.style.setProperty('opacity',opacity.toFixed(3),'important');
+      });
+    }
+
+    requestAnimationFrame(tick);
+  }
+
+  requestAnimationFrame(tick);
 })();
 </script>
 
