@@ -14707,6 +14707,633 @@ document.addEventListener('DOMContentLoaded',function(){
 }
 </style>
 
+
+<style id="sylvania-leafwind-v1">
+/* =========================================================
+   SYLVANIA NATURAL ALLIANCE — LEAVES IN THE WIND
+   버튼 내부를 나뭇잎이 바람을 타고 휘날리는 연출
+   ========================================================= */
+
+#tab-char .faction-switch-btn[data-faction="sylvania"]{
+  position:relative;
+  isolation:isolate;
+  overflow:hidden;
+
+  color:#b9dfb0 !important;
+  background:
+    radial-gradient(ellipse at 12% 100%,rgba(73,124,65,.16),transparent 42%),
+    linear-gradient(135deg,#0d190e 0%,#132016 52%,#09110b 100%) !important;
+
+  border:1px solid rgba(102,157,91,.48) !important;
+  border-radius:18px 7px 18px 7px !important;
+
+  box-shadow:
+    inset 0 1px 0 rgba(192,225,181,.045),
+    inset 0 0 24px rgba(67,119,58,.035),
+    0 7px 22px rgba(0,0,0,.22) !important;
+
+  text-shadow:
+    0 1px 2px rgba(0,0,0,.95),
+    0 0 8px rgba(119,175,105,.14) !important;
+
+  transition:
+    transform .22s ease,
+    border-color .22s ease,
+    box-shadow .22s ease,
+    filter .22s ease !important;
+}
+
+/* 잎이 지나가는 희미한 바람길 */
+#tab-char .faction-switch-btn[data-faction="sylvania"]::before{
+  content:"";
+  position:absolute;
+  z-index:1;
+  inset:0;
+  pointer-events:none;
+
+  background:
+    radial-gradient(ellipse at 18% 72%,rgba(116,168,99,.055),transparent 20%),
+    radial-gradient(ellipse at 62% 30%,rgba(116,168,99,.045),transparent 18%),
+    linear-gradient(164deg,
+      transparent 0 35%,
+      rgba(139,181,125,.035) 36% 37%,
+      transparent 38% 54%,
+      rgba(139,181,125,.025) 55% 56%,
+      transparent 57%);
+  opacity:.8;
+}
+
+/* 첫 번째 잎 레이어 */
+#tab-char .faction-switch-btn[data-faction="sylvania"]::after{
+  content:"";
+  position:absolute;
+  z-index:2;
+  left:-28px;
+  top:9px;
+  width:13px;
+  height:7px;
+  border-radius:100% 0 100% 0;
+  background:rgba(116,168,91,.62);
+  box-shadow:
+    39px 19px 0 -1px rgba(85,142,75,.52),
+    81px -3px 0 -2px rgba(137,179,103,.48),
+    126px 17px 0 -1px rgba(77,132,69,.44),
+    174px 3px 0 -2px rgba(146,187,111,.40),
+    221px 22px 0 -1px rgba(91,146,78,.46);
+  transform:rotate(-28deg);
+  opacity:.75;
+  pointer-events:none;
+  animation:lrSylvaniaLeavesA 7.4s linear infinite;
+}
+
+/* 두 번째 잎 무리는 실제 장식 span */
+#tab-char .faction-switch-btn[data-faction="sylvania"] .sylvania-leaf-stream{
+  position:absolute;
+  z-index:2;
+  left:-42px;
+  top:0;
+  width:11px;
+  height:6px;
+  border-radius:100% 0 100% 0;
+  background:rgba(142,183,105,.44);
+  box-shadow:
+    34px 30px 0 -1px rgba(93,151,77,.46),
+    73px 11px 0 -2px rgba(126,174,98,.42),
+    112px 34px 0 -1px rgba(72,128,65,.42),
+    156px 15px 0 -2px rgba(153,190,116,.38),
+    204px 29px 0 -1px rgba(89,145,74,.40);
+  pointer-events:none;
+  opacity:.7;
+  animation:lrSylvaniaLeavesB 9.2s linear infinite;
+}
+
+/* 원래 버튼 글자는 잎보다 위 */
+#tab-char .faction-switch-btn[data-faction="sylvania"] .sylvania-label{
+  position:relative;
+  z-index:6;
+}
+
+#tab-char .faction-switch-btn[data-faction="sylvania"]:hover{
+  transform:translateY(-2px) !important;
+  filter:brightness(1.055) !important;
+  border-color:rgba(132,185,117,.68) !important;
+
+  box-shadow:
+    inset 0 1px 0 rgba(205,232,193,.055),
+    inset 0 0 27px rgba(78,133,66,.05),
+    0 0 14px rgba(72,128,61,.055),
+    0 8px 24px rgba(0,0,0,.28) !important;
+}
+
+#tab-char .faction-switch-btn[data-faction="sylvania"].active{
+  color:#c7e8be !important;
+  border-color:rgba(141,194,124,.73) !important;
+}
+
+/* 잎은 직선 이동이 아니라 위아래로 흔들리고 회전하면서 이동 */
+@keyframes lrSylvaniaLeavesA{
+  0%{
+    left:-34px;
+    top:8px;
+    transform:rotate(-32deg);
+  }
+  20%{
+    top:19px;
+    transform:rotate(18deg);
+  }
+  42%{
+    top:6px;
+    transform:rotate(76deg);
+  }
+  64%{
+    top:17px;
+    transform:rotate(128deg);
+  }
+  82%{
+    top:5px;
+    transform:rotate(186deg);
+  }
+  100%{
+    left:108%;
+    top:15px;
+    transform:rotate(242deg);
+  }
+}
+
+@keyframes lrSylvaniaLeavesB{
+  0%{
+    left:-45px;
+    top:24px;
+    transform:rotate(34deg) scale(.82);
+  }
+  23%{
+    top:7px;
+    transform:rotate(-16deg) scale(.9);
+  }
+  48%{
+    top:25px;
+    transform:rotate(-82deg) scale(.82);
+  }
+  71%{
+    top:10px;
+    transform:rotate(-142deg) scale(.92);
+  }
+  100%{
+    left:110%;
+    top:21px;
+    transform:rotate(-224deg) scale(.84);
+  }
+}
+
+@media(prefers-reduced-motion:reduce){
+  #tab-char .faction-switch-btn[data-faction="sylvania"]::after,
+  #tab-char .faction-switch-btn[data-faction="sylvania"] .sylvania-leaf-stream{
+    animation:none !important;
+  }
+}
+</style>
+
+<script id="sylvania-leafwind-v1-script">
+document.addEventListener('DOMContentLoaded',function(){
+  var btn=document.querySelector('#tab-char .faction-switch-btn[data-faction="sylvania"]');
+  if(!btn || btn.querySelector('.sylvania-leaf-stream')) return;
+
+  /* 기존 텍스트 노드를 span으로 감싸 레이어 우선순위 확보 */
+  Array.from(btn.childNodes).forEach(function(node){
+    if(node.nodeType===3 && node.textContent.trim()){
+      var label=document.createElement('span');
+      label.className='sylvania-label';
+      label.textContent=node.textContent;
+      btn.replaceChild(label,node);
+    }
+  });
+
+  var leaves=document.createElement('span');
+  leaves.className='sylvania-leaf-stream';
+  leaves.setAttribute('aria-hidden','true');
+  btn.appendChild(leaves);
+});
+</script>
+
+
+<style id="sylvania-complete-v2">
+/* =========================================================
+   SYLVANIA NATURAL ALLIANCE — COMPLETE INTERIOR
+   숲의 바람 / 잎 그림자 / 이슬 / 유기적 프레임
+   ========================================================= */
+
+#tab-char .faction-sylvania{
+  --syl-green:#86c77a;
+  --syl-green-hi:#b9dfad;
+  --syl-green-deep:#315b38;
+  --syl-line:rgba(126,188,112,.22);
+  --syl-bg:#0b140d;
+}
+
+/* ---------- 패널 전체 ---------- */
+#tab-char .faction-content-panel[data-faction-panel="sylvania"]{
+  position:relative;
+  overflow:hidden;
+  border:1px solid rgba(105,164,94,.30) !important;
+  border-radius:18px 8px 18px 8px !important;
+  background:
+    radial-gradient(ellipse at 9% 0%,rgba(87,146,76,.10),transparent 31%),
+    radial-gradient(ellipse at 88% 100%,rgba(59,106,66,.08),transparent 34%),
+    linear-gradient(145deg,#101b12 0%,#09110b 72%) !important;
+  box-shadow:
+    inset 0 1px 0 rgba(195,225,185,.035),
+    inset 0 0 34px rgba(70,122,61,.025) !important;
+}
+
+/* ---------- 헤더 ---------- */
+#tab-char .faction-content-panel[data-faction-panel="sylvania"] > .acc-head{
+  position:relative;
+  overflow:hidden;
+  min-height:72px;
+  border-radius:17px 7px 0 0 !important;
+  border-bottom:1px solid rgba(121,179,106,.14) !important;
+  background:
+    linear-gradient(160deg,rgba(65,113,58,.17),transparent 48%),
+    linear-gradient(180deg,rgba(19,38,22,.84),rgba(11,22,13,.76)) !important;
+}
+
+/* 잎사귀 그림자가 살짝 지나가는 헤더 */
+#tab-char .faction-content-panel[data-faction-panel="sylvania"] > .acc-head::before{
+  content:"";
+  position:absolute;
+  z-index:1;
+  left:-18%;
+  top:-18px;
+  width:140px;
+  height:108px;
+  pointer-events:none;
+  background:
+    radial-gradient(ellipse at 28% 38%,rgba(139,191,118,.13) 0 15%,transparent 16%),
+    radial-gradient(ellipse at 61% 22%,rgba(139,191,118,.10) 0 14%,transparent 15%),
+    radial-gradient(ellipse at 72% 62%,rgba(139,191,118,.09) 0 13%,transparent 14%),
+    linear-gradient(122deg,transparent 0 49%,rgba(126,177,105,.08) 50% 51%,transparent 52%);
+  filter:blur(.2px);
+  opacity:.72;
+  transform:rotate(-13deg);
+  animation:lrSylHeaderLeafShadow 10s ease-in-out infinite;
+}
+
+/* 얇은 바람 결 */
+#tab-char .faction-content-panel[data-faction-panel="sylvania"] > .acc-head::after{
+  content:"";
+  position:absolute;
+  z-index:1;
+  left:-32%;
+  top:50%;
+  width:48%;
+  height:30px;
+  pointer-events:none;
+  border-top:1px solid rgba(156,199,139,.08);
+  border-radius:50%;
+  transform:translateY(-50%) rotate(-4deg);
+  opacity:.65;
+  animation:lrSylHeaderWind 8.6s linear infinite;
+}
+
+#tab-char .faction-content-panel[data-faction-panel="sylvania"] > .acc-head > *{
+  position:relative;
+  z-index:4;
+}
+#tab-char .faction-content-panel[data-faction-panel="sylvania"] .acc-num{
+  color:#7fc272 !important;
+  text-shadow:0 0 8px rgba(110,173,97,.18);
+}
+#tab-char .faction-content-panel[data-faction-panel="sylvania"] .acc-title{
+  color:#c0d9ba !important;
+  text-shadow:0 1px 2px rgba(0,0,0,.86);
+}
+#tab-char .faction-content-panel[data-faction-panel="sylvania"].open .acc-chevron::before{
+  background:#89c77c !important;
+}
+
+/* ---------- 세력 설명 ---------- */
+#tab-char .faction-sylvania .faction-lead-desc{
+  position:relative;
+  overflow:hidden;
+  padding:16px 18px 16px 21px !important;
+  color:#9eb29a !important;
+  border:1px solid rgba(113,171,100,.16) !important;
+  border-left:2px solid rgba(125,190,109,.50) !important;
+  border-radius:13px 6px 13px 6px !important;
+  background:
+    radial-gradient(ellipse at 0% 100%,rgba(87,141,77,.08),transparent 36%),
+    rgba(12,25,15,.62) !important;
+}
+#tab-char .faction-sylvania .faction-lead-desc::after{
+  content:"";
+  position:absolute;
+  right:12px;
+  top:50%;
+  width:54px;
+  height:34px;
+  transform:translateY(-50%) rotate(-10deg);
+  pointer-events:none;
+  background:
+    radial-gradient(ellipse at 30% 45%,rgba(133,186,113,.085) 0 18%,transparent 19%),
+    radial-gradient(ellipse at 66% 52%,rgba(133,186,113,.065) 0 16%,transparent 17%),
+    linear-gradient(100deg,transparent 49%,rgba(133,186,113,.07) 50% 51%,transparent 52%);
+  opacity:.75;
+}
+#tab-char .faction-sylvania .faction-lead-mark{
+  color:#8ac77e !important;
+  text-shadow:0 0 7px rgba(104,171,91,.22);
+}
+
+/* ---------- 장소 카드 ---------- */
+#tab-char .faction-sylvania .place-card{
+  position:relative;
+  overflow:hidden;
+  border:1px solid rgba(105,164,94,.21) !important;
+  border-radius:15px 7px 15px 7px !important;
+  background:
+    radial-gradient(ellipse at 18% 0%,rgba(86,142,75,.05),transparent 30%),
+    linear-gradient(145deg,#0f1a11,#09110b 72%) !important;
+  box-shadow:
+    inset 0 1px 0 rgba(190,222,181,.025),
+    0 8px 21px rgba(0,0,0,.15) !important;
+}
+
+/* 유기적인 가지 프레임 */
+#tab-char .faction-sylvania .place-card::before{
+  content:"";
+  position:absolute;
+  z-index:5;
+  left:9px;
+  top:8px;
+  width:38px;
+  height:17px;
+  border-left:1px solid rgba(126,185,111,.22);
+  border-top:1px solid rgba(126,185,111,.18);
+  border-radius:13px 0 0 0;
+  transform:skewX(-10deg);
+  pointer-events:none;
+}
+#tab-char .faction-sylvania .place-card::after{
+  content:"";
+  position:absolute;
+  z-index:5;
+  right:9px;
+  bottom:8px;
+  width:35px;
+  height:15px;
+  border-right:1px solid rgba(126,185,111,.15);
+  border-bottom:1px solid rgba(126,185,111,.14);
+  border-radius:0 0 13px 0;
+  transform:skewX(-10deg);
+  pointer-events:none;
+}
+
+#tab-char .faction-sylvania .place-image{
+  position:relative;
+  overflow:hidden;
+  border-bottom:1px solid rgba(110,169,97,.14) !important;
+  background:#08100a !important;
+}
+#tab-char .faction-sylvania .place-image::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  pointer-events:none;
+  background:
+    linear-gradient(to top,rgba(8,17,10,.48),transparent 42%),
+    radial-gradient(ellipse at 12% 0%,rgba(122,179,105,.07),transparent 30%);
+}
+#tab-char .faction-sylvania .place-image img{
+  transition:transform .35s ease,filter .35s ease !important;
+}
+#tab-char .faction-sylvania .place-image:hover img{
+  transform:scale(1.024) !important;
+  filter:brightness(1.045) saturate(.96) !important;
+}
+#tab-char .faction-sylvania .place-info{
+  background:linear-gradient(180deg,rgba(75,128,67,.025),transparent 45%) !important;
+}
+#tab-char .faction-sylvania .place-title{
+  color:#93cc87 !important;
+  text-shadow:0 0 8px rgba(100,164,88,.13);
+}
+#tab-char .faction-sylvania .place-desc{
+  color:#8d9f8b !important;
+}
+
+/* 코랄리움만 아주 약한 청록 기운으로 차별화 */
+#tab-char .faction-sylvania .place-card:nth-of-type(3){
+  border-color:rgba(95,164,143,.22) !important;
+  background:
+    radial-gradient(ellipse at 82% 0%,rgba(65,134,120,.055),transparent 31%),
+    linear-gradient(145deg,#0d1b18,#09110f 72%) !important;
+}
+#tab-char .faction-sylvania .place-card:nth-of-type(3) .place-title{
+  color:#87c9b4 !important;
+}
+
+/* ---------- 캐릭터 카드 ---------- */
+#tab-char .faction-sylvania .char-card{
+  position:relative;
+  overflow:hidden;
+  border:1px solid rgba(109,168,97,.23) !important;
+  border-radius:13px 6px 13px 6px !important;
+  background:
+    radial-gradient(ellipse at 20% 0%,rgba(100,157,86,.045),transparent 31%),
+    linear-gradient(180deg,#111d13,#0a120c) !important;
+  box-shadow:
+    inset 0 1px 0 rgba(197,226,187,.024),
+    0 5px 15px rgba(0,0,0,.14) !important;
+  transition:transform .22s ease,border-color .22s ease,box-shadow .22s ease !important;
+}
+
+/* 작은 잎맥선 */
+#tab-char .faction-sylvania .char-card::before{
+  content:"";
+  position:absolute;
+  z-index:6;
+  left:7px;
+  top:7px;
+  width:28px;
+  height:12px;
+  border-left:1px solid rgba(137,191,120,.22);
+  border-top:1px solid rgba(137,191,120,.16);
+  border-radius:11px 0 0 0;
+  transform:skewX(-12deg);
+  pointer-events:none;
+  opacity:.72;
+  transition:width .22s ease,opacity .22s ease;
+}
+
+/* 이슬점 */
+#tab-char .faction-sylvania .char-card::after{
+  content:"";
+  position:absolute;
+  z-index:6;
+  right:9px;
+  top:9px;
+  width:4px;
+  height:4px;
+  border-radius:50%;
+  background:rgba(169,215,157,.34);
+  box-shadow:0 0 5px rgba(134,193,119,.12);
+  pointer-events:none;
+  transition:transform .22s ease,opacity .22s ease,box-shadow .22s ease;
+}
+
+#tab-char .faction-sylvania .char-card:hover{
+  transform:translateY(-2px) !important;
+  border-color:rgba(137,195,122,.49) !important;
+  box-shadow:
+    inset 0 1px 0 rgba(205,231,197,.035),
+    inset 0 0 18px rgba(78,135,67,.03),
+    0 8px 20px rgba(0,0,0,.19),
+    0 0 12px rgba(84,139,73,.045) !important;
+}
+#tab-char .faction-sylvania .char-card:hover::before{
+  width:50px;
+  opacity:1;
+}
+#tab-char .faction-sylvania .char-card:hover::after{
+  transform:scale(1.45);
+  opacity:.9;
+  box-shadow:0 0 8px rgba(148,207,133,.22);
+}
+#tab-char .faction-sylvania .char-card:hover .char-portrait img{
+  transform:scale(1.025) !important;
+  filter:brightness(1.04) saturate(.96) !important;
+}
+#tab-char .faction-sylvania .char-portrait{
+  position:relative;
+  background:
+    radial-gradient(ellipse at 30% 0%,rgba(110,170,94,.10),transparent 35%),
+    linear-gradient(155deg,#2d5034,#0d1710 72%) !important;
+}
+#tab-char .faction-sylvania .char-name{
+  color:#bfd3b9 !important;
+}
+#tab-char .faction-sylvania .char-role{
+  color:#89c57d !important;
+}
+
+/* ---------- 실바니아 상세 Hover 팝업 ---------- */
+.character-hover-detail.sylvania-character-detail{
+  overflow:hidden;
+  border:1px solid rgba(110,171,97,.38) !important;
+  border-radius:16px 7px 16px 7px !important;
+  background:
+    radial-gradient(ellipse at 10% 0%,rgba(91,151,79,.085),transparent 31%),
+    radial-gradient(ellipse at 92% 100%,rgba(54,104,67,.055),transparent 31%),
+    linear-gradient(145deg,#0d1710,#081009 72%) !important;
+  box-shadow:
+    0 22px 58px rgba(0,0,0,.52),
+    0 0 20px rgba(75,130,65,.055),
+    inset 0 1px 0 rgba(198,228,190,.03) !important;
+}
+
+/* 상세 일러스트 위 잎 그림자 */
+.character-hover-detail.sylvania-character-detail .character-detail-art::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  pointer-events:none;
+  background:
+    radial-gradient(ellipse at 8% 6%,rgba(130,187,111,.07) 0 10%,transparent 11%),
+    radial-gradient(ellipse at 19% 1%,rgba(130,187,111,.045) 0 8%,transparent 9%),
+    linear-gradient(to top,rgba(8,16,9,.48),transparent 45%),
+    radial-gradient(ellipse at 50% 0%,rgba(115,173,100,.055),transparent 34%) !important;
+}
+.character-hover-detail.sylvania-character-detail .character-detail-art::before{
+  content:"";
+  position:absolute;
+  z-index:4;
+  left:10px;
+  top:10px;
+  width:42px;
+  height:18px;
+  border-left:1px solid rgba(136,192,119,.24);
+  border-top:1px solid rgba(136,192,119,.18);
+  border-radius:14px 0 0 0;
+  transform:skewX(-12deg);
+  background:none !important;
+  pointer-events:none;
+}
+.character-hover-detail.sylvania-character-detail .character-detail-art img{
+  transition:transform .32s ease,filter .32s ease !important;
+}
+.character-hover-detail.sylvania-character-detail .character-detail-art img:hover{
+  transform:scale(1.017) !important;
+  filter:brightness(1.035) saturate(.96) !important;
+}
+
+.character-hover-detail.sylvania-character-detail .character-detail-name{
+  color:#c6dcc0 !important;
+  text-shadow:0 0 8px rgba(105,169,92,.10);
+}
+.character-hover-detail.sylvania-character-detail .character-detail-role,
+.character-hover-detail.sylvania-character-detail .character-detail-code{
+  color:#86c279 !important;
+}
+.character-hover-detail.sylvania-character-detail .character-detail-profile{
+  color:#849283 !important;
+  border-color:rgba(108,166,96,.14) !important;
+  background:rgba(61,112,54,.025) !important;
+}
+.character-hover-detail.sylvania-character-detail .character-detail-ability{
+  border-left-color:rgba(127,188,111,.48) !important;
+  background:linear-gradient(90deg,rgba(67,119,58,.07),transparent 78%) !important;
+}
+.character-hover-detail.sylvania-character-detail .character-detail-ability strong{
+  color:#96cd89 !important;
+}
+.character-hover-detail.sylvania-character-detail .character-detail-quote{
+  color:#94a492 !important;
+  border-color:rgba(109,165,97,.13) !important;
+  background:rgba(58,104,52,.022) !important;
+}
+
+/* ---------- 바람 애니메이션 ---------- */
+@keyframes lrSylHeaderLeafShadow{
+  0%,100%{
+    left:-18%;
+    transform:rotate(-13deg) translateY(0);
+    opacity:.48;
+  }
+  45%{
+    opacity:.78;
+  }
+  55%{
+    left:72%;
+    transform:rotate(8deg) translateY(5px);
+    opacity:.72;
+  }
+  100%{
+    left:112%;
+    transform:rotate(16deg) translateY(-2px);
+    opacity:0;
+  }
+}
+@keyframes lrSylHeaderWind{
+  from{left:-38%;opacity:0}
+  18%{opacity:.55}
+  75%{opacity:.45}
+  to{left:112%;opacity:0}
+}
+
+@media(max-width:560px){
+  #tab-char .faction-sylvania .faction-lead-desc::after{
+    opacity:.38;
+    right:7px;
+  }
+}
+@media(prefers-reduced-motion:reduce){
+  #tab-char .faction-content-panel[data-faction-panel="sylvania"] > .acc-head::before,
+  #tab-char .faction-content-panel[data-faction-panel="sylvania"] > .acc-head::after{
+    animation:none !important;
+  }
+}
+</style>
+
 </head>
 <body><div aria-hidden="true" class="shooting-stars"><span class="shooting-star star-a"></span><span class="shooting-star star-b"></span><span class="shooting-star star-c"></span></div>
 <section class="hero">
