@@ -19359,6 +19359,441 @@ document.addEventListener('DOMContentLoaded',function(){
 }
 </style>
 
+
+<style id="noblesse-classic-v1">
+/* =========================================================
+   NOBLESSE — CLASSIC ARISTOCRATIC
+   고풍스러운 명문 귀족 길드
+   짙은 와인/월넛 + 앤티크 골드 + 아이보리
+   ========================================================= */
+
+/* ---------- 세력 버튼 ---------- */
+#tab-char .faction-switch-btn[data-faction="noblesse"]{
+  position:relative !important;
+  isolation:isolate !important;
+  overflow:hidden !important;
+  border-radius:3px !important;
+  color:#d9bd83 !important;
+  background:
+    radial-gradient(ellipse at 50% 100%,rgba(155,112,62,.07),transparent 42%),
+    linear-gradient(180deg,rgba(255,244,214,.025),transparent 34%),
+    linear-gradient(135deg,#211315 0%,#170d11 58%,#10090b 100%) !important;
+  border:1px solid rgba(191,145,80,.46) !important;
+  box-shadow:
+    inset 0 0 0 1px rgba(231,204,150,.035),
+    inset 0 0 18px rgba(123,78,45,.05),
+    0 7px 20px rgba(0,0,0,.24) !important;
+}
+
+/* 안쪽 이중 금장 */
+#tab-char .faction-switch-btn[data-faction="noblesse"]::before{
+  content:"" !important;
+  display:block !important;
+  position:absolute !important;
+  z-index:2 !important;
+  inset:4px !important;
+  border:1px solid rgba(194,151,86,.24) !important;
+  border-radius:1px !important;
+  background:
+    linear-gradient(90deg,rgba(205,166,101,.30),rgba(205,166,101,0)) left top/20px 1px no-repeat,
+    linear-gradient(180deg,rgba(205,166,101,.30),rgba(205,166,101,0)) left top/1px 12px no-repeat,
+    linear-gradient(270deg,rgba(205,166,101,.30),rgba(205,166,101,0)) right bottom/20px 1px no-repeat,
+    linear-gradient(0deg,rgba(205,166,101,.30),rgba(205,166,101,0)) right bottom/1px 12px no-repeat !important;
+  pointer-events:none !important;
+}
+
+/* 얇은 금박 빛이 천천히 지나감 */
+#tab-char .faction-switch-btn[data-faction="noblesse"]::after{
+  content:"" !important;
+  display:block !important;
+  position:absolute !important;
+  z-index:3 !important;
+  top:-25% !important;
+  left:-45% !important;
+  width:22% !important;
+  height:150% !important;
+  background:linear-gradient(
+    90deg,
+    transparent,
+    rgba(235,205,143,.04),
+    rgba(248,222,164,.18),
+    rgba(235,205,143,.04),
+    transparent
+  ) !important;
+  transform:skewX(-18deg) !important;
+  pointer-events:none !important;
+  animation:noblesseFoilSweep 5.8s ease-in-out infinite !important;
+}
+
+#tab-char .faction-switch-btn[data-faction="noblesse"] .noblesse-btn-label{
+  position:relative !important;
+  z-index:5 !important;
+  text-shadow:
+    0 1px 1px rgba(0,0,0,.95),
+    0 0 5px rgba(96,53,25,.15) !important;
+}
+
+#tab-char .faction-switch-btn[data-faction="noblesse"]:hover{
+  transform:translateY(-2px) !important;
+  filter:brightness(1.045) !important;
+  border-color:rgba(210,166,96,.61) !important;
+}
+#tab-char .faction-switch-btn[data-faction="noblesse"].active{
+  color:#e5c98f !important;
+  border-color:rgba(219,177,104,.72) !important;
+}
+
+@keyframes noblesseFoilSweep{
+  0%,58%{left:-45%;opacity:0}
+  64%{opacity:.65}
+  78%{left:125%;opacity:.55}
+  84%,100%{left:125%;opacity:0}
+}
+
+/* ---------- 내부 패널 ---------- */
+#tab-char .faction-content-panel[data-faction-panel="noblesse"]{
+  position:relative !important;
+  overflow:hidden !important;
+  background:
+    radial-gradient(circle at 85% 10%,rgba(154,111,61,.055),transparent 28%),
+    linear-gradient(145deg,#1e1315 0%,#140c10 60%,#0d090b 100%) !important;
+  border:1px solid rgba(179,137,79,.34) !important;
+  border-radius:4px !important;
+  box-shadow:
+    inset 0 0 0 1px rgba(228,203,154,.018),
+    inset 0 0 42px rgba(89,51,27,.035) !important;
+}
+
+/* 헤더: 고풍스러운 명패 */
+#tab-char .faction-content-panel[data-faction-panel="noblesse"] .acc-head{
+  position:relative !important;
+  overflow:hidden !important;
+  color:#dfc58f !important;
+  background:
+    linear-gradient(90deg,rgba(138,92,48,.10),transparent 44%,rgba(138,92,48,.06)),
+    #1b1114 !important;
+  border-bottom:1px solid rgba(184,142,82,.26) !important;
+}
+#tab-char .faction-content-panel[data-faction-panel="noblesse"] .acc-head::before{
+  content:"NOBLESSE // HOUSE OF HONOR" !important;
+  position:absolute !important;
+  right:42px !important;
+  top:50% !important;
+  transform:translateY(-50%) !important;
+  color:rgba(203,164,102,.24) !important;
+  background:none !important;
+  border:0 !important;
+  width:auto !important;
+  height:auto !important;
+  font-family:Georgia,"Times New Roman",serif !important;
+  font-size:8px !important;
+  font-style:italic !important;
+  letter-spacing:.08em !important;
+  opacity:1 !important;
+  animation:none !important;
+}
+#tab-char .faction-content-panel[data-faction-panel="noblesse"] .acc-head::after{
+  content:"" !important;
+  position:absolute !important;
+  left:14px !important;
+  right:14px !important;
+  bottom:4px !important;
+  height:1px !important;
+  background:
+    linear-gradient(90deg,transparent,rgba(204,161,94,.48),transparent) !important;
+}
+#tab-char .faction-content-panel[data-faction-panel="noblesse"] .acc-num{
+  color:#c69a59 !important;
+}
+
+/* 소개: 오래된 서신/헌장 */
+#tab-char .faction-content-panel[data-faction-panel="noblesse"] .faction-lead-desc{
+  position:relative !important;
+  color:#c6b99d !important;
+  background:
+    linear-gradient(180deg,rgba(226,210,174,.025),transparent 70%),
+    rgba(39,26,25,.58) !important;
+  border:1px solid rgba(175,134,79,.26) !important;
+  border-left:3px solid rgba(196,151,85,.58) !important;
+  border-radius:2px !important;
+}
+#tab-char .faction-content-panel[data-faction-panel="noblesse"] .faction-lead-desc::before{
+  content:"❦" !important;
+  position:absolute !important;
+  right:12px !important;
+  top:7px !important;
+  color:rgba(200,160,95,.25) !important;
+  font-size:15px !important;
+}
+#tab-char .faction-content-panel[data-faction-panel="noblesse"] .faction-lead-desc::after{
+  content:none !important;
+  display:none !important;
+}
+#tab-char .faction-content-panel[data-faction-panel="noblesse"] .faction-lead-mark{
+  color:#c29756 !important;
+}
+
+/* 장소 카드: 액자/살롱 프레임 */
+#tab-char .faction-content-panel[data-faction-panel="noblesse"] .place-card{
+  position:relative !important;
+  overflow:hidden !important;
+  background:
+    linear-gradient(145deg,rgba(42,27,28,.96),rgba(19,12,15,.98)) !important;
+  border:1px solid rgba(176,134,77,.30) !important;
+  border-radius:3px !important;
+  box-shadow:
+    inset 0 0 0 1px rgba(225,202,154,.018) !important;
+}
+#tab-char .faction-content-panel[data-faction-panel="noblesse"] .place-card::before{
+  content:"" !important;
+  position:absolute !important;
+  z-index:4 !important;
+  inset:7px !important;
+  pointer-events:none !important;
+  background:
+    linear-gradient(90deg,rgba(204,163,98,.40),transparent) left top/24px 1px no-repeat,
+    linear-gradient(180deg,rgba(204,163,98,.40),transparent) left top/1px 16px no-repeat,
+    linear-gradient(270deg,rgba(204,163,98,.40),transparent) right bottom/24px 1px no-repeat,
+    linear-gradient(0deg,rgba(204,163,98,.40),transparent) right bottom/1px 16px no-repeat !important;
+}
+#tab-char .faction-content-panel[data-faction-panel="noblesse"] .place-card::after{
+  content:"EST. NOBLESSE" !important;
+  position:absolute !important;
+  z-index:4 !important;
+  right:10px !important;
+  top:8px !important;
+  color:rgba(198,158,95,.23) !important;
+  font-family:Georgia,"Times New Roman",serif !important;
+  font-size:7px !important;
+  font-style:italic !important;
+  letter-spacing:.06em !important;
+  pointer-events:none !important;
+}
+#tab-char .faction-content-panel[data-faction-panel="noblesse"] .place-image{
+  overflow:hidden !important;
+  background:#120c0e !important;
+}
+#tab-char .faction-content-panel[data-faction-panel="noblesse"] .place-image img{
+  filter:saturate(.82) sepia(.05) brightness(.88) contrast(.99) !important;
+  transition:transform .36s ease,filter .36s ease !important;
+}
+#tab-char .faction-content-panel[data-faction-panel="noblesse"] .place-card:hover .place-image img{
+  transform:scale(1.022) !important;
+  filter:saturate(.90) sepia(.03) brightness(.95) contrast(1.01) !important;
+}
+#tab-char .faction-content-panel[data-faction-panel="noblesse"] .place-title{
+  color:#d4b576 !important;
+}
+#tab-char .faction-content-panel[data-faction-panel="noblesse"] .place-desc{
+  color:#aaa092 !important;
+}
+
+/* 캐릭터 카드: 초상 액자 */
+#tab-char .faction-content-panel[data-faction-panel="noblesse"] .char-card{
+  position:relative !important;
+  overflow:hidden !important;
+  background:
+    linear-gradient(180deg,rgba(234,216,177,.025),transparent 27%),
+    linear-gradient(150deg,#2a1b1d,#140d11 72%) !important;
+  border:1px solid rgba(178,135,78,.31) !important;
+  border-radius:3px !important;
+  box-shadow:
+    inset 0 0 0 1px rgba(231,209,165,.018) !important;
+  transition:transform .22s ease,border-color .22s ease,box-shadow .22s ease,filter .22s ease !important;
+}
+#tab-char .faction-content-panel[data-faction-panel="noblesse"] .char-card::before{
+  content:"";
+  position:absolute !important;
+  z-index:5 !important;
+  inset:5px !important;
+  pointer-events:none !important;
+  background:
+    linear-gradient(90deg,rgba(204,163,98,.35),transparent) left top/18px 1px no-repeat,
+    linear-gradient(180deg,rgba(204,163,98,.35),transparent) left top/1px 12px no-repeat,
+    linear-gradient(270deg,rgba(204,163,98,.35),transparent) right bottom/18px 1px no-repeat,
+    linear-gradient(0deg,rgba(204,163,98,.35),transparent) right bottom/1px 12px no-repeat !important;
+}
+#tab-char .faction-content-panel[data-faction-panel="noblesse"] .char-card::after{
+  content:"✦" !important;
+  position:absolute !important;
+  z-index:5 !important;
+  right:8px !important;
+  bottom:7px !important;
+  color:rgba(196,153,88,.32) !important;
+  font-size:8px !important;
+  pointer-events:none !important;
+  transition:color .22s ease,text-shadow .22s ease !important;
+}
+#tab-char .faction-content-panel[data-faction-panel="noblesse"] .char-card:hover{
+  transform:translateY(-2px) !important;
+  filter:brightness(1.035) !important;
+  border-color:rgba(199,155,90,.52) !important;
+  box-shadow:
+    inset 0 0 0 1px rgba(231,209,165,.025),
+    0 8px 18px rgba(0,0,0,.22) !important;
+}
+#tab-char .faction-content-panel[data-faction-panel="noblesse"] .char-card:hover::after{
+  color:rgba(218,177,105,.62) !important;
+  text-shadow:0 0 6px rgba(184,133,62,.12) !important;
+}
+#tab-char .faction-content-panel[data-faction-panel="noblesse"] .char-portrait{
+  background:linear-gradient(155deg,#5a343a,#191014 72%) !important;
+}
+#tab-char .faction-content-panel[data-faction-panel="noblesse"] .char-name{
+  color:#ddd1b5 !important;
+}
+#tab-char .faction-content-panel[data-faction-panel="noblesse"] .char-role{
+  color:#c19f68 !important;
+}
+
+/* ---------- 상세 Hover Popup ---------- */
+.character-hover-detail.noblesse-character-detail{
+  position:fixed !important;
+  overflow:hidden !important;
+  background:
+    radial-gradient(circle at 84% 9%,rgba(154,111,61,.045),transparent 26%),
+    linear-gradient(145deg,#211518,#100b0e 72%) !important;
+  border:1px solid rgba(181,138,80,.42) !important;
+  border-radius:4px !important;
+  box-shadow:
+    inset 0 0 0 1px rgba(228,203,154,.025),
+    inset 0 0 34px rgba(91,54,30,.035),
+    0 18px 44px rgba(0,0,0,.46) !important;
+}
+
+/* 팝업 테두리 장식 */
+.character-hover-detail.noblesse-character-detail::before{
+  content:"" !important;
+  display:block !important;
+  position:absolute !important;
+  z-index:20 !important;
+  inset:6px !important;
+  pointer-events:none !important;
+  background:
+    linear-gradient(90deg,rgba(207,166,101,.38),transparent) left top/26px 1px no-repeat,
+    linear-gradient(180deg,rgba(207,166,101,.38),transparent) left top/1px 18px no-repeat,
+    linear-gradient(270deg,rgba(207,166,101,.38),transparent) right bottom/26px 1px no-repeat,
+    linear-gradient(0deg,rgba(207,166,101,.38),transparent) right bottom/1px 18px no-repeat !important;
+}
+.character-hover-detail.noblesse-character-detail::after{
+  content:"NOBLESSE · PRIVATE DOSSIER" !important;
+  position:absolute !important;
+  z-index:21 !important;
+  right:10px !important;
+  top:9px !important;
+  color:rgba(200,162,101,.34) !important;
+  background:rgba(18,11,14,.55) !important;
+  padding:2px 5px !important;
+  border:1px solid rgba(178,136,80,.18) !important;
+  font-family:Georgia,"Times New Roman",serif !important;
+  font-size:7px !important;
+  font-style:italic !important;
+  letter-spacing:.06em !important;
+  pointer-events:none !important;
+}
+.character-hover-detail.noblesse-character-detail .character-detail-art{
+  border-bottom-color:rgba(184,141,83,.22) !important;
+  background:#120c0f !important;
+}
+.character-hover-detail.noblesse-character-detail .character-detail-name{
+  color:#e2d6bb !important;
+}
+.character-hover-detail.noblesse-character-detail .character-detail-role{
+  color:#c6a56d !important;
+}
+.character-hover-detail.noblesse-character-detail .character-detail-profile{
+  color:#9d9587 !important;
+}
+.character-hover-detail.noblesse-character-detail .character-detail-ability{
+  border-color:rgba(175,133,77,.25) !important;
+  background:rgba(85,55,31,.09) !important;
+}
+.character-hover-detail.noblesse-character-detail .character-detail-ability strong{
+  color:#d2b277 !important;
+}
+.character-hover-detail.noblesse-character-detail .character-detail-code{
+  color:#a98d62 !important;
+}
+.character-hover-detail.noblesse-character-detail .character-detail-quote{
+  color:#b8ae9d !important;
+  border-color:rgba(172,131,77,.22) !important;
+}
+.character-hover-detail.noblesse-character-detail .character-detail-quote::before{
+  color:#9e7b49 !important;
+}
+
+@media(prefers-reduced-motion:reduce){
+  #tab-char .faction-switch-btn[data-faction="noblesse"]::after{
+    animation:none !important;
+    display:none !important;
+  }
+}
+</style>
+
+<script id="noblesse-classic-v1-script">
+document.addEventListener('DOMContentLoaded',function(){
+  var btn=document.querySelector('#tab-char .faction-switch-btn[data-faction="noblesse"]');
+  if(btn && !btn.querySelector('.noblesse-btn-label')){
+    Array.from(btn.childNodes).forEach(function(node){
+      if(node.nodeType===3 && node.textContent.trim()){
+        var label=document.createElement('span');
+        label.className='noblesse-btn-label';
+        label.textContent=node.textContent;
+        btn.replaceChild(label,node);
+      }
+    });
+  }
+});
+</script>
+
+
+<style id="noblesse-v2-remove-stray-mark">
+/* 노블레스 장소 제목의 마름모 왼쪽에 생기는 장식 제거 */
+#tab-char .faction-content-panel[data-faction-panel="noblesse"] .place-title::before{
+  content:none !important;
+  display:none !important;
+  background:none !important;
+  border:0 !important;
+  box-shadow:none !important;
+}
+</style>
+
+
+<style id="noblesse-v3-remove-stray-ornament">
+/* 정확한 원인: 소개문 왼쪽의 ❦ 장식 제거.
+   기존 ◇ span은 그대로 유지. */
+#tab-char .faction-content-panel[data-faction-panel="noblesse"] .faction-lead-desc::before{
+  content:none !important;
+  display:none !important;
+  width:0 !important;
+  height:0 !important;
+  background:none !important;
+  border:0 !important;
+  box-shadow:none !important;
+}
+</style>
+
+
+<style id="pantheon-remove-card-bottom-labels">
+/* 판테온 아카데미 인물 카드 오른쪽 아래 학적/직원 문구 전부 제거 */
+#tab-char .faction-content-panel[data-faction-panel="pantheon"] .char-card.pantheon-staff::after,
+#tab-char .faction-content-panel[data-faction-panel="pantheon"] .char-card.pantheon-candidate::after,
+#tab-char .faction-content-panel[data-faction-panel="pantheon"] .char-card.pantheon-regular::after,
+#tab-char .faction-content-panel[data-faction-panel="pantheon"] .char-card.pantheon-elite::after{
+  content:none !important;
+  display:none !important;
+}
+
+/* Hover 시에도 다시 나타나지 않게 */
+#tab-char .faction-content-panel[data-faction-panel="pantheon"] .char-card.pantheon-staff:hover::after,
+#tab-char .faction-content-panel[data-faction-panel="pantheon"] .char-card.pantheon-candidate:hover::after,
+#tab-char .faction-content-panel[data-faction-panel="pantheon"] .char-card.pantheon-regular:hover::after,
+#tab-char .faction-content-panel[data-faction-panel="pantheon"] .char-card.pantheon-elite:hover::after{
+  content:none !important;
+  display:none !important;
+}
+</style>
+
 </head>
 <body><div aria-hidden="true" class="shooting-stars"><span class="shooting-star star-a"></span><span class="shooting-star star-b"></span><span class="shooting-star star-c"></span></div>
 <section class="hero">
