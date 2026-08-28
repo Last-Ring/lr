@@ -11040,6 +11040,265 @@ body::after {
 }
 </style>
 
+
+<style id="player-mobile-detail-fix">
+/* =========================================================
+   PLAYABLE CHARACTER — mobile/touch tap support
+   기존 @media(max-width:700px),(hover:none){display:none} 무효화
+   ========================================================= */
+@media (max-width:700px), (hover:none), (pointer:coarse){
+  .player-art-hover{
+    display:block !important;
+    position:fixed !important;
+    left:12px !important;
+    right:12px !important;
+    top:12px !important;
+    width:auto !important;
+    max-width:none !important;
+    opacity:0 !important;
+    visibility:hidden !important;
+    transform:translateY(8px) scale(.985) !important;
+    transform-origin:center top !important;
+    pointer-events:none !important;
+  }
+
+  .player-art-hover.visible{
+    opacity:1 !important;
+    visibility:visible !important;
+    transform:translateY(0) scale(1) !important;
+  }
+
+  .player-art-hover img{
+    width:100% !important;
+    height:auto !important;
+    aspect-ratio:1216/832 !important;
+    object-fit:contain !important;
+  }
+}
+</style>
+
+
+<style id="orbis-map-responsive-final">
+/* =========================================================
+   ORBIS MAP — narrow desktop / mobile responsive layout
+   좁은 화면에서는 좌우 노드가 중앙연합과 겹치지 않도록
+   세로 공간을 늘리고 위치를 재배치한다.
+   ========================================================= */
+
+@media (max-width:760px){
+
+  #tab-world .orbis-map{
+    height:650px !important;
+    overflow:visible !important;
+  }
+
+  /* 지도 중심 링도 세로형 배치에 맞게 축소 */
+  #tab-world .orbis-map::before{
+    width:58% !important;
+    height:58% !important;
+  }
+
+  #tab-world .ring-inner{
+    width:42% !important;
+    height:34% !important;
+  }
+
+  #tab-world .ring-outer{
+    width:82% !important;
+    height:72% !important;
+  }
+
+  /* 모바일 공통 노드 크기 */
+  #tab-world .orbis-map .map-node{
+    width:138px !important;
+    min-width:138px !important;
+    max-width:138px !important;
+    padding:10px 9px !important;
+    box-sizing:border-box !important;
+  }
+
+  #tab-world .orbis-map .map-node small{
+    font-size:8px !important;
+  }
+
+  #tab-world .orbis-map .map-node b{
+    font-size:11.5px !important;
+    line-height:1.4 !important;
+    white-space:nowrap !important;
+  }
+
+  /* NORTH */
+  #tab-world .orbis-map .node-north{
+    left:50% !important;
+    right:auto !important;
+    top:6% !important;
+    bottom:auto !important;
+    width:150px !important;
+    min-width:150px !important;
+    max-width:150px !important;
+    transform:translateX(-50%) !important;
+    padding:10px 8px !important;
+  }
+
+  /* WEST / EAST — 중앙연합과 같은 줄에 두지 않음 */
+  #tab-world .orbis-map .node-west{
+    left:3.5% !important;
+    right:auto !important;
+    top:30% !important;
+    bottom:auto !important;
+    transform:none !important;
+  }
+
+  #tab-world .orbis-map .node-east{
+    left:auto !important;
+    right:3.5% !important;
+    top:30% !important;
+    bottom:auto !important;
+    transform:none !important;
+  }
+
+  /* CENTRAL — 한 줄 아래로 내려 독립 */
+  #tab-world .orbis-map .node-central-alliance{
+    left:50% !important;
+    right:auto !important;
+    top:47% !important;
+    bottom:auto !important;
+    width:156px !important;
+    min-width:156px !important;
+    max-width:156px !important;
+    transform:translate(-50%,-50%) !important;
+  }
+
+  /* SOUTH */
+  #tab-world .orbis-map .node-south{
+    left:50% !important;
+    right:auto !important;
+    top:67% !important;
+    bottom:auto !important;
+    width:138px !important;
+    min-width:138px !important;
+    max-width:138px !important;
+    transform:translateX(-50%) !important;
+  }
+
+  /*
+    좁은 화면에서는 판테온을 아스트라 오른쪽에 억지로 끼우지 않고
+    바로 아래에 배치. 관계는 짧은 세로 점선으로 유지.
+  */
+  #tab-world .orbis-map .pantheon-map-branch{
+    left:50% !important;
+    right:auto !important;
+    top:calc(67% + 62px) !important;
+    bottom:auto !important;
+    width:158px !important;
+    height:82px !important;
+    transform:translateX(-50%) !important;
+    pointer-events:none !important;
+  }
+
+  #tab-world .orbis-map .pantheon-branch-line{
+    left:50% !important;
+    top:0 !important;
+    width:0 !important;
+    height:18px !important;
+    border:0 !important;
+    border-left:1px dashed rgba(173,143,224,.58) !important;
+    transform:translateX(-50%) !important;
+  }
+
+  #tab-world .orbis-map .pantheon-map-label{
+    left:50% !important;
+    top:18px !important;
+    width:158px !important;
+    min-width:158px !important;
+    max-width:158px !important;
+    padding:8px 10px !important;
+    transform:translateX(-50%) !important;
+    box-sizing:border-box !important;
+    pointer-events:auto !important;
+  }
+
+  #tab-world .orbis-map .pantheon-map-label small{
+    font-size:8px !important;
+  }
+
+  #tab-world .orbis-map .pantheon-map-label b{
+    font-size:11.5px !important;
+    white-space:nowrap !important;
+  }
+
+  /* 방위 문자는 노드와 겹치지 않는 외곽으로 */
+  #tab-world .map-direction.map-north,
+  #tab-world .map-direction.north{
+    top:1.5% !important;
+  }
+
+  #tab-world .map-direction.map-south,
+  #tab-world .map-direction.south{
+    bottom:1.5% !important;
+  }
+
+  /* 균열지대 / 오염심역도 카드와 겹치지 않게 외곽으로 이동 */
+  #tab-world .map-frontier-west{
+    left:1.5% !important;
+    top:18% !important;
+  }
+
+  #tab-world .map-frontier-east{
+    right:1.5% !important;
+    top:55% !important;
+  }
+
+  #tab-world .map-frontier-south{
+    left:8% !important;
+    bottom:1.5% !important;
+  }
+
+  /* 툴팁은 좁은 화면 너비 안에서 줄바꿈 */
+  #tab-world .orbis-map .map-tooltip,
+  #tab-world .orbis-map .pantheon-tooltip,
+  #tab-world .orbis-map .node-north > .map-tooltip{
+    width:min(220px,calc(100vw - 56px)) !important;
+    max-width:calc(100vw - 56px) !important;
+    white-space:normal !important;
+    word-break:keep-all !important;
+  }
+}
+
+/* 아주 좁은 360px 이하 */
+@media (max-width:360px){
+  #tab-world .orbis-map{
+    height:680px !important;
+  }
+
+  #tab-world .orbis-map .map-node{
+    width:126px !important;
+    min-width:126px !important;
+    max-width:126px !important;
+  }
+
+  #tab-world .orbis-map .node-north{
+    width:146px !important;
+    min-width:146px !important;
+    max-width:146px !important;
+  }
+
+  #tab-world .orbis-map .node-central-alliance{
+    width:150px !important;
+    min-width:150px !important;
+    max-width:150px !important;
+  }
+
+  #tab-world .orbis-map .node-west{
+    left:2% !important;
+  }
+
+  #tab-world .orbis-map .node-east{
+    right:2% !important;
+  }
+}
+</style>
+
 </head>
 <body><div aria-hidden="true" class="shooting-stars"><span class="shooting-star star-a"></span><span class="shooting-star star-b"></span><span class="shooting-star star-c"></span></div>
 <section class="hero">
@@ -13676,6 +13935,92 @@ document.addEventListener('DOMContentLoaded', () => {
       touchPopup.style.left = '12px';
       touchPopup.style.right = '12px';
       touchPopup.style.top = '12px';
+    }
+  });
+})();
+</script>
+
+
+<script id="player-mobile-tap-support">
+(() => {
+  let activePlayerPopup = null;
+  let activePlayerCard = null;
+
+  const isTouchMode = () =>
+    window.matchMedia('(hover:none), (pointer:coarse)').matches;
+
+  function getPopup(card){
+    if(!card) return null;
+    const n = card.getAttribute('data-player-art');
+    if(!n) return null;
+    return document.querySelector('[data-player-art-popup="' + CSS.escape(n) + '"]');
+  }
+
+  function closePlayerPopup(){
+    if(activePlayerPopup){
+      activePlayerPopup.classList.remove('visible');
+      activePlayerPopup.setAttribute('aria-hidden','true');
+    }
+    activePlayerPopup = null;
+    activePlayerCard = null;
+  }
+
+  function openPlayerPopup(card){
+    const popup = getPopup(card);
+    if(!popup) return;
+
+    if(activePlayerPopup === popup){
+      closePlayerPopup();
+      return;
+    }
+
+    closePlayerPopup();
+
+    activePlayerCard = card;
+    activePlayerPopup = popup;
+
+    popup.style.left = '12px';
+    popup.style.right = '12px';
+    popup.style.top = '12px';
+
+    popup.classList.add('visible');
+    popup.setAttribute('aria-hidden','false');
+  }
+
+  document.addEventListener('click', (event) => {
+    if(!isTouchMode()) return;
+
+    const card = event.target.closest('[data-player-art]');
+    if(card){
+      event.preventDefault();
+      event.stopPropagation();
+      openPlayerPopup(card);
+      return;
+    }
+
+    if(event.target.closest('.player-art-hover')) return;
+
+    closePlayerPopup();
+  }, true);
+
+  document.addEventListener('keydown', (event) => {
+    if(event.key === 'Escape') closePlayerPopup();
+  });
+
+  document.addEventListener('click', (event) => {
+    if(
+      event.target.closest('.faction-switch-btn') ||
+      event.target.closest('.tab-btn')
+    ){
+      closePlayerPopup();
+    }
+  });
+
+  window.addEventListener('resize', () => {
+    if(activePlayerPopup && isTouchMode()){
+      activePlayerPopup.style.left = '12px';
+      activePlayerPopup.style.right = '12px';
+      activePlayerPopup.style.top = '12px';
     }
   });
 })();
