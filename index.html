@@ -17911,6 +17911,1454 @@ document.addEventListener('DOMContentLoaded',function(){
 });
 </script>
 
+
+<style id="phantom-strike-police-line-v1">
+/* =========================================================
+   PHANTOM STRIKE
+   기존 색감 유지 + 빠르게 통과하는 POLICE/CAUTION LINE 모티프
+   버튼의 기존 레이아웃/기능은 건드리지 않음
+   ========================================================= */
+
+#tab-char .faction-switch-btn[data-faction="phantom"]{
+  position:relative;
+  isolation:isolate;
+  overflow:hidden;
+}
+
+/* 기존 ::before/::after와 충돌하지 않도록 실제 레이어 삽입 */
+#tab-char .faction-switch-btn[data-faction="phantom"] .phantom-line-layer{
+  position:absolute;
+  z-index:2;
+  inset:0;
+  overflow:hidden;
+  pointer-events:none;
+  opacity:.78;
+}
+
+/* 빠르게 지나가는 사선 경계 테이프 */
+#tab-char .faction-switch-btn[data-faction="phantom"] .phantom-line{
+  position:absolute;
+  left:-65%;
+  width:175%;
+  height:9px;
+  transform:rotate(-7deg);
+  background:
+    repeating-linear-gradient(
+      135deg,
+      rgba(206,43,52,.76) 0 13px,
+      rgba(206,43,52,.76) 13px 16px,
+      rgba(20,18,20,.90) 16px 29px,
+      rgba(20,18,20,.90) 29px 32px
+    );
+  border-top:1px solid rgba(231,75,82,.26);
+  border-bottom:1px solid rgba(0,0,0,.55);
+  box-shadow:0 2px 7px rgba(0,0,0,.25);
+  opacity:0;
+  will-change:transform,left,opacity;
+}
+
+#tab-char .faction-switch-btn[data-faction="phantom"] .phantom-line.line-a{
+  top:8px;
+  animation:phantomPoliceRushA 3.1s linear infinite;
+}
+#tab-char .faction-switch-btn[data-faction="phantom"] .phantom-line.line-b{
+  bottom:6px;
+  transform:rotate(6deg);
+  height:7px;
+  opacity:0;
+  animation:phantomPoliceRushB 3.1s linear 1.55s infinite;
+}
+
+/* 텍스트는 라인보다 위 */
+#tab-char .faction-switch-btn[data-faction="phantom"] .phantom-btn-label{
+  position:relative;
+  z-index:5;
+}
+
+/* 활성화 시 라인이 조금 선명해짐 */
+#tab-char .faction-switch-btn[data-faction="phantom"].active .phantom-line-layer{
+  opacity:.96;
+}
+
+/* ---------------------------------------------------------
+   내부 패널
+   기존 팬텀 색감을 유지하면서 경계선/작전구역 느낌만 추가
+   --------------------------------------------------------- */
+#tab-char .faction-content-panel[data-faction-panel="phantom"]{
+  position:relative;
+  overflow:hidden;
+}
+
+/* 패널 상단을 가로지르는 얇은 작전 통제선 */
+#tab-char .faction-content-panel[data-faction-panel="phantom"] .phantom-panel-line{
+  position:absolute;
+  z-index:3;
+  left:-40%;
+  top:47px;
+  width:155%;
+  height:7px;
+  pointer-events:none;
+  opacity:.20;
+  transform:rotate(-2deg);
+  background:
+    repeating-linear-gradient(
+      135deg,
+      rgba(205,43,51,.88) 0 14px,
+      rgba(205,43,51,.88) 14px 17px,
+      rgba(17,15,17,.94) 17px 31px,
+      rgba(17,15,17,.94) 31px 34px
+    );
+  animation:phantomPanelRush 5.2s linear infinite;
+}
+
+/* 장소 카드: 통제구역 모서리 표시 */
+#tab-char .faction-content-panel[data-faction-panel="phantom"] .place-card{
+  position:relative;
+  overflow:hidden;
+}
+#tab-char .faction-content-panel[data-faction-panel="phantom"] .place-card::before{
+  content:"";
+  position:absolute;
+  z-index:3;
+  left:-26px;
+  top:10px;
+  width:92px;
+  height:5px;
+  transform:rotate(-38deg);
+  pointer-events:none;
+  opacity:.38;
+  background:
+    repeating-linear-gradient(
+      90deg,
+      rgba(205,43,51,.92) 0 10px,
+      rgba(205,43,51,.92) 10px 13px,
+      rgba(19,17,19,.95) 13px 23px,
+      rgba(19,17,19,.95) 23px 26px
+    );
+}
+#tab-char .faction-content-panel[data-faction-panel="phantom"] .place-card::after{
+  content:"RESTRICTED";
+  position:absolute;
+  z-index:3;
+  right:9px;
+  top:8px;
+  color:rgba(205,65,71,.30);
+  font-family:"Courier New",monospace;
+  font-size:6px;
+  font-weight:700;
+  letter-spacing:.12em;
+  pointer-events:none;
+}
+
+/* 이미지 Hover는 과하지 않게 */
+#tab-char .faction-content-panel[data-faction-panel="phantom"] .place-image{
+  overflow:hidden;
+}
+#tab-char .faction-content-panel[data-faction-panel="phantom"] .place-image img{
+  transition:transform .32s ease,filter .32s ease !important;
+}
+#tab-char .faction-content-panel[data-faction-panel="phantom"] .place-card:hover .place-image img{
+  transform:scale(1.025) !important;
+  filter:brightness(1.04) !important;
+}
+
+/* 캐릭터 카드: 작은 통제 테이프가 Hover 때 빠르게 스침 */
+#tab-char .faction-content-panel[data-faction-panel="phantom"] .char-card{
+  position:relative;
+  overflow:hidden;
+}
+#tab-char .faction-content-panel[data-faction-panel="phantom"] .char-card .phantom-card-line{
+  position:absolute;
+  z-index:5;
+  left:-110%;
+  top:12px;
+  width:125%;
+  height:5px;
+  pointer-events:none;
+  opacity:0;
+  transform:rotate(-7deg);
+  background:
+    repeating-linear-gradient(
+      135deg,
+      rgba(207,46,54,.84) 0 9px,
+      rgba(207,46,54,.84) 9px 11px,
+      rgba(18,16,18,.94) 11px 20px,
+      rgba(18,16,18,.94) 20px 22px
+    );
+}
+#tab-char .faction-content-panel[data-faction-panel="phantom"] .char-card:hover{
+  transform:translateY(-2px) !important;
+}
+#tab-char .faction-content-panel[data-faction-panel="phantom"] .char-card:hover .phantom-card-line{
+  animation:phantomCardSlash .72s cubic-bezier(.18,.72,.26,1) 1;
+}
+
+/* ---------------------------------------------------------
+   팬텀 캐릭터 상세 Hover
+   팝업 자체는 기존 색감 유지, 가장자리로 통제선이 순간 통과
+   --------------------------------------------------------- */
+.character-hover-detail.phantom-character-detail{
+  position:fixed;
+  overflow:hidden !important;
+}
+.character-hover-detail.phantom-character-detail .phantom-detail-line{
+  position:absolute;
+  z-index:30;
+  left:-95%;
+  top:15px;
+  width:120%;
+  height:7px;
+  pointer-events:none;
+  opacity:.58;
+  transform:rotate(-5deg);
+  background:
+    repeating-linear-gradient(
+      135deg,
+      rgba(210,45,54,.88) 0 12px,
+      rgba(210,45,54,.88) 12px 15px,
+      rgba(17,15,17,.95) 15px 27px,
+      rgba(17,15,17,.95) 27px 30px
+    );
+  animation:phantomDetailRush 2.7s linear infinite;
+}
+
+/* 작은 작전상태 라벨 */
+.character-hover-detail.phantom-character-detail .phantom-detail-status{
+  position:absolute;
+  z-index:31;
+  right:9px;
+  top:9px;
+  padding:3px 6px;
+  color:rgba(221,82,88,.64);
+  background:rgba(16,13,15,.72);
+  border:1px solid rgba(202,57,64,.26);
+  border-radius:2px;
+  font-family:"Courier New",monospace;
+  font-size:7px;
+  font-weight:700;
+  line-height:1;
+  letter-spacing:.08em;
+  pointer-events:none;
+}
+
+/* ---------- 애니메이션 ---------- */
+@keyframes phantomPoliceRushA{
+  0%,14%{
+    left:-115%;
+    opacity:0;
+    transform:rotate(-7deg) translateX(-10px);
+  }
+  18%{opacity:.72}
+  43%{
+    left:55%;
+    opacity:.72;
+    transform:rotate(-7deg) translateX(18px);
+  }
+  49%,100%{
+    left:115%;
+    opacity:0;
+    transform:rotate(-7deg) translateX(34px);
+  }
+}
+@keyframes phantomPoliceRushB{
+  0%,14%{
+    left:110%;
+    opacity:0;
+    transform:rotate(6deg) translateX(10px);
+  }
+  18%{opacity:.54}
+  43%{
+    left:-55%;
+    opacity:.54;
+    transform:rotate(6deg) translateX(-18px);
+  }
+  49%,100%{
+    left:-115%;
+    opacity:0;
+    transform:rotate(6deg) translateX(-34px);
+  }
+}
+@keyframes phantomPanelRush{
+  from{background-position:0 0}
+  to{background-position:120px 0}
+}
+@keyframes phantomCardSlash{
+  0%{left:-125%;opacity:0}
+  16%{opacity:.72}
+  72%{left:70%;opacity:.62}
+  100%{left:125%;opacity:0}
+}
+@keyframes phantomDetailRush{
+  0%,20%{left:-125%;opacity:0}
+  26%{opacity:.55}
+  58%{left:65%;opacity:.55}
+  68%,100%{left:125%;opacity:0}
+}
+
+@media(prefers-reduced-motion:reduce){
+  #tab-char .faction-switch-btn[data-faction="phantom"] .phantom-line,
+  #tab-char .faction-content-panel[data-faction-panel="phantom"] .phantom-panel-line,
+  .character-hover-detail.phantom-character-detail .phantom-detail-line{
+    animation:none !important;
+    opacity:.20 !important;
+  }
+  #tab-char .faction-content-panel[data-faction-panel="phantom"] .char-card:hover .phantom-card-line{
+    animation:none !important;
+  }
+}
+</style>
+
+<script id="phantom-strike-police-line-v1-script">
+document.addEventListener('DOMContentLoaded',function(){
+  /* 버튼 */
+  var btn=document.querySelector('#tab-char .faction-switch-btn[data-faction="phantom"]');
+  if(btn && !btn.querySelector('.phantom-line-layer')){
+    /* 텍스트 노드를 span으로 감싸서 효과보다 위에 유지 */
+    Array.from(btn.childNodes).forEach(function(node){
+      if(node.nodeType===3 && node.textContent.trim()){
+        var label=document.createElement('span');
+        label.className='phantom-btn-label';
+        label.textContent=node.textContent;
+        btn.replaceChild(label,node);
+      }
+    });
+
+    var layer=document.createElement('span');
+    layer.className='phantom-line-layer';
+    layer.setAttribute('aria-hidden','true');
+
+    var a=document.createElement('i');
+    a.className='phantom-line line-a';
+    var b=document.createElement('i');
+    b.className='phantom-line line-b';
+
+    layer.appendChild(a);
+    layer.appendChild(b);
+    btn.appendChild(layer);
+  }
+
+  /* 내부 패널 */
+  var panel=document.querySelector('#tab-char .faction-content-panel[data-faction-panel="phantom"]');
+  if(!panel) return;
+
+  if(!panel.querySelector('.phantom-panel-line')){
+    var pl=document.createElement('span');
+    pl.className='phantom-panel-line';
+    pl.setAttribute('aria-hidden','true');
+    panel.insertBefore(pl,panel.firstChild);
+  }
+
+  /* 캐릭터 카드 */
+  panel.querySelectorAll('.char-card').forEach(function(card){
+    if(!card.querySelector('.phantom-card-line')){
+      var line=document.createElement('span');
+      line.className='phantom-card-line';
+      line.setAttribute('aria-hidden','true');
+      card.appendChild(line);
+    }
+
+    /* 연결된 상세창 */
+    var key=card.getAttribute('data-character-detail');
+    if(!key) return;
+
+    var popup=document.querySelector('.character-hover-detail[data-detail-popup="'+key+'"]');
+    if(!popup) return;
+
+    popup.classList.add('phantom-character-detail');
+
+    if(!popup.querySelector('.phantom-detail-line')){
+      var dl=document.createElement('span');
+      dl.className='phantom-detail-line';
+      dl.setAttribute('aria-hidden','true');
+      popup.appendChild(dl);
+    }
+
+    if(!popup.querySelector('.phantom-detail-status')){
+      var status=document.createElement('span');
+      status.className='phantom-detail-status';
+      status.textContent='RESTRICTED';
+      status.setAttribute('aria-hidden','true');
+      popup.appendChild(status);
+    }
+  });
+});
+</script>
+
+
+<style id="phantom-strike-vertical-v2">
+/* PHANTOM V2
+   - 초상화/상세 일러스트 통제선 제거
+   - 버튼만 세로 방향으로 빠르게 통과
+*/
+
+/* 버튼 내부 라인을 세로 띠로 변경 */
+#tab-char .faction-switch-btn[data-faction="phantom"] .phantom-line{
+  top:-65% !important;
+  bottom:auto !important;
+  left:auto !important;
+  width:8px !important;
+  height:175% !important;
+  transform:rotate(7deg) !important;
+  background:
+    repeating-linear-gradient(
+      135deg,
+      rgba(206,43,52,.78) 0 12px,
+      rgba(206,43,52,.78) 12px 15px,
+      rgba(20,18,20,.92) 15px 27px,
+      rgba(20,18,20,.92) 27px 30px
+    ) !important;
+  border-top:0 !important;
+  border-bottom:0 !important;
+  border-left:1px solid rgba(231,75,82,.24) !important;
+  border-right:1px solid rgba(0,0,0,.55) !important;
+}
+
+/* 왼쪽 → 오른쪽으로 빠르게 가는 '세로' 통제선 */
+#tab-char .faction-switch-btn[data-faction="phantom"] .phantom-line.line-a{
+  top:-38% !important;
+  right:auto !important;
+  animation:phantomVerticalRushA 2.35s linear infinite !important;
+}
+
+/* 두 번째도 세로선, 시간차를 두고 반대쪽에서 다시 통과 */
+#tab-char .faction-switch-btn[data-faction="phantom"] .phantom-line.line-b{
+  top:-34% !important;
+  bottom:auto !important;
+  right:auto !important;
+  width:6px !important;
+  height:168% !important;
+  transform:rotate(-6deg) !important;
+  animation:phantomVerticalRushB 2.35s linear 1.18s infinite !important;
+}
+
+/* 캐릭터 초상화 위를 지나가던 라인 제거 */
+#tab-char .faction-content-panel[data-faction-panel="phantom"] .char-card .phantom-card-line{
+  display:none !important;
+  animation:none !important;
+}
+
+/* 상세 일러스트/팝업 위 통제선 제거 */
+.character-hover-detail.phantom-character-detail .phantom-detail-line{
+  display:none !important;
+  animation:none !important;
+}
+
+/* 상세창의 작은 RESTRICTED 상태표시는 유지하되 일러스트에는 겹치지 않음 */
+.character-hover-detail.phantom-character-detail .phantom-detail-status{
+  z-index:31 !important;
+}
+
+/* 기존 내부 패널 상단 이동 통제선도 정지:
+   '빠르게 지나가는 효과'는 버튼에만 남김 */
+#tab-char .faction-content-panel[data-faction-panel="phantom"] .phantom-panel-line{
+  animation:none !important;
+  opacity:.16 !important;
+}
+
+/* 세로선이 버튼의 좌→우로 질주 */
+@keyframes phantomVerticalRushA{
+  0%,13%{
+    left:-14%;
+    opacity:0;
+    transform:rotate(7deg) translateY(-5px);
+  }
+  17%{opacity:.76}
+  43%{
+    left:108%;
+    opacity:.72;
+    transform:rotate(7deg) translateY(5px);
+  }
+  48%,100%{
+    left:118%;
+    opacity:0;
+    transform:rotate(7deg) translateY(8px);
+  }
+}
+@keyframes phantomVerticalRushB{
+  0%,13%{
+    left:114%;
+    opacity:0;
+    transform:rotate(-6deg) translateY(5px);
+  }
+  17%{opacity:.52}
+  43%{
+    left:-8%;
+    opacity:.50;
+    transform:rotate(-6deg) translateY(-5px);
+  }
+  48%,100%{
+    left:-18%;
+    opacity:0;
+    transform:rotate(-6deg) translateY(-8px);
+  }
+}
+
+@media(prefers-reduced-motion:reduce){
+  #tab-char .faction-switch-btn[data-faction="phantom"] .phantom-line{
+    animation:none !important;
+    display:none !important;
+  }
+}
+</style>
+
+
+<style id="phantom-strike-vertical-v3">
+/* V3: 세로 통제선이 실제로 버튼을 가로질러 이동하도록 수정 */
+
+#tab-char .faction-switch-btn[data-faction="phantom"] .phantom-line{
+  position:absolute !important;
+  top:-34% !important;
+  bottom:auto !important;
+  left:-14px !important;
+  width:9px !important;
+  height:170% !important;
+  opacity:0 !important;
+  will-change:left,opacity,transform !important;
+}
+
+/* 첫 번째 세로 라인: 왼쪽 -> 오른쪽 */
+#tab-char .faction-switch-btn[data-faction="phantom"] .phantom-line.line-a{
+  right:auto !important;
+  transform:rotate(7deg) !important;
+  animation:phantomCrossButtonA 1.65s linear infinite !important;
+}
+
+/* 두 번째 세로 라인: 오른쪽 -> 왼쪽 */
+#tab-char .faction-switch-btn[data-faction="phantom"] .phantom-line.line-b{
+  right:auto !important;
+  width:7px !important;
+  height:166% !important;
+  transform:rotate(-6deg) !important;
+  animation:phantomCrossButtonB 1.65s linear .82s infinite !important;
+}
+
+/* 버튼 폭 전체를 실제 left 값으로 횡단 */
+@keyframes phantomCrossButtonA{
+  0%{
+    left:-16px;
+    opacity:0;
+  }
+  8%{
+    left:-8px;
+    opacity:.78;
+  }
+  88%{
+    left:calc(100% + 2px);
+    opacity:.78;
+  }
+  100%{
+    left:calc(100% + 16px);
+    opacity:0;
+  }
+}
+
+@keyframes phantomCrossButtonB{
+  0%{
+    left:calc(100% + 16px);
+    opacity:0;
+  }
+  8%{
+    left:calc(100% + 6px);
+    opacity:.56;
+  }
+  88%{
+    left:-8px;
+    opacity:.56;
+  }
+  100%{
+    left:-18px;
+    opacity:0;
+  }
+}
+
+/* 이동감이 더 잘 보이게 아주 약한 잔상 */
+#tab-char .faction-switch-btn[data-faction="phantom"] .phantom-line{
+  box-shadow:
+    -7px 0 10px rgba(196,35,45,.08),
+     7px 0 10px rgba(196,35,45,.06) !important;
+}
+
+@media(prefers-reduced-motion:reduce){
+  #tab-char .faction-switch-btn[data-faction="phantom"] .phantom-line{
+    animation:none !important;
+    display:none !important;
+  }
+}
+</style>
+
+
+<style id="phantom-v4-pantheon-record-fix">
+/* =========================================================
+   1. PHANTOM STRIKE
+   세로 폴리스라인을 transform 기반으로 실제 횡단.
+   기존 left 애니메이션/opacity 충돌을 전부 덮어씀.
+   ========================================================= */
+#tab-char .faction-switch-btn[data-faction="phantom"] .phantom-line-layer{
+  display:block !important;
+  position:absolute !important;
+  z-index:3 !important;
+  inset:0 !important;
+  overflow:hidden !important;
+  opacity:1 !important;
+  pointer-events:none !important;
+}
+
+#tab-char .faction-switch-btn[data-faction="phantom"] .phantom-line{
+  display:block !important;
+  position:absolute !important;
+  top:-35% !important;
+  bottom:auto !important;
+  left:0 !important;
+  right:auto !important;
+  width:9px !important;
+  height:170% !important;
+  opacity:.82 !important;
+  margin:0 !important;
+  background:
+    repeating-linear-gradient(
+      135deg,
+      rgba(216,48,57,.90) 0 11px,
+      rgba(216,48,57,.90) 11px 14px,
+      rgba(19,17,19,.96) 14px 25px,
+      rgba(19,17,19,.96) 25px 28px
+    ) !important;
+  border-left:1px solid rgba(235,83,89,.30) !important;
+  border-right:1px solid rgba(0,0,0,.62) !important;
+  box-shadow:
+    -5px 0 8px rgba(205,37,47,.09),
+     5px 0 8px rgba(205,37,47,.07) !important;
+  will-change:transform !important;
+}
+
+/* 첫 띠: 왼쪽에서 오른쪽으로 끊김 없이 실제 이동 */
+#tab-char .faction-switch-btn[data-faction="phantom"] .phantom-line.line-a{
+  animation:phantomTransformAcrossA 1.35s linear infinite !important;
+}
+
+/* 두 번째 띠: 시간차를 두고 같은 방향으로 추격 */
+#tab-char .faction-switch-btn[data-faction="phantom"] .phantom-line.line-b{
+  width:7px !important;
+  opacity:.58 !important;
+  animation:phantomTransformAcrossB 1.35s linear .58s infinite !important;
+}
+
+/* 버튼 자체 너비 + 띠 여유분만큼 translateX */
+@keyframes phantomTransformAcrossA{
+  0%{
+    transform:translateX(-18px) rotate(7deg) !important;
+  }
+  100%{
+    transform:translateX(calc(100% + 220px)) rotate(7deg) !important;
+  }
+}
+@keyframes phantomTransformAcrossB{
+  0%{
+    transform:translateX(-26px) rotate(-6deg) !important;
+  }
+  100%{
+    transform:translateX(calc(100% + 228px)) rotate(-6deg) !important;
+  }
+}
+
+/* =========================================================
+   2. PANTHEON DETAIL POPUP
+   위쪽 RECORD 라벨과 기존 상단 텍스트가 겹치므로
+   RECORD 라벨을 일러스트 오른쪽 아래로 이동.
+   STAFF / 후보생 / 정규생 / 정예생 모두 동일 위치.
+   ========================================================= */
+.character-hover-detail.pantheon-staff-detail::before,
+.character-hover-detail.pantheon-candidate-detail::before,
+.character-hover-detail.pantheon-regular-detail::before,
+.character-hover-detail.pantheon-elite-detail::before{
+  content:none !important;
+  display:none !important;
+}
+
+/* 오른쪽 아래용 새 라벨 */
+.character-hover-detail .pantheon-record-badge{
+  position:absolute !important;
+  z-index:40 !important;
+  top:auto !important;
+  left:auto !important;
+  right:9px !important;
+  bottom:9px !important;
+  display:block !important;
+  width:auto !important;
+  max-width:calc(100% - 18px) !important;
+  padding:4px 7px !important;
+  border-radius:2px !important;
+  background:rgba(9,16,21,.86) !important;
+  font-family:"Courier New",monospace !important;
+  font-size:8px !important;
+  font-weight:700 !important;
+  line-height:1 !important;
+  letter-spacing:.07em !important;
+  white-space:nowrap !important;
+  pointer-events:none !important;
+}
+
+/* 교직원 */
+.character-hover-detail.pantheon-staff-detail .pantheon-record-badge{
+  color:#d2cab0 !important;
+  border:1px solid rgba(180,171,143,.42) !important;
+}
+
+/* 후보생 */
+.character-hover-detail.pantheon-candidate-detail .pantheon-record-badge{
+  color:#a8c0ca !important;
+  border:1px solid rgba(137,169,182,.38) !important;
+}
+
+/* 정규생 */
+.character-hover-detail.pantheon-regular-detail .pantheon-record-badge{
+  color:#9db7c2 !important;
+  border:1px solid rgba(121,157,171,.42) !important;
+}
+
+/* 정예생 */
+.character-hover-detail.pantheon-elite-detail .pantheon-record-badge{
+  color:#d1c7a8 !important;
+  border:1px solid rgba(183,173,142,.44) !important;
+}
+
+/* 모바일에서도 오른쪽 아래 유지 */
+@media(max-width:700px){
+  .character-hover-detail .pantheon-record-badge{
+    right:8px !important;
+    bottom:8px !important;
+    font-size:7px !important;
+  }
+}
+
+@media(prefers-reduced-motion:reduce){
+  #tab-char .faction-switch-btn[data-faction="phantom"] .phantom-line{
+    animation:none !important;
+    display:none !important;
+  }
+}
+</style>
+
+<script id="phantom-v4-pantheon-record-fix-script">
+document.addEventListener('DOMContentLoaded',function(){
+  /* 판테온 상세창의 RECORD 라벨을 실제 DOM 요소로 만들어 오른쪽 아래 배치 */
+  [
+    ['pantheon-staff-detail','FACULTY RECORD'],
+    ['pantheon-candidate-detail','CANDIDATE RECORD'],
+    ['pantheon-regular-detail','STUDENT RECORD'],
+    ['pantheon-elite-detail','HONORS RECORD']
+  ].forEach(function(item){
+    document.querySelectorAll('.character-hover-detail.'+item[0]).forEach(function(popup){
+      var old=popup.querySelector('.pantheon-record-badge');
+      if(old) old.remove();
+
+      var badge=document.createElement('span');
+      badge.className='pantheon-record-badge';
+      badge.textContent=item[1];
+      badge.setAttribute('aria-hidden','true');
+      popup.appendChild(badge);
+    });
+  });
+});
+</script>
+
+
+<style id="phantom-strike-crossline-v5">
+/* =========================================================
+   PHANTOM STRIKE V5
+   폴리스라인처럼 가로로 길고 약간 대각선인 두 띠가
+   서로 반대 방향으로 크로스 이동.
+   이전 세로 애니메이션은 전부 무효화.
+   ========================================================= */
+
+#tab-char .faction-switch-btn[data-faction="phantom"]{
+  position:relative !important;
+  isolation:isolate !important;
+  overflow:hidden !important;
+}
+
+/* 효과 레이어 */
+#tab-char .faction-switch-btn[data-faction="phantom"] .phantom-line-layer{
+  display:block !important;
+  position:absolute !important;
+  z-index:3 !important;
+  inset:0 !important;
+  overflow:hidden !important;
+  opacity:1 !important;
+  pointer-events:none !important;
+}
+
+/* 공통 폴리스라인 */
+#tab-char .faction-switch-btn[data-faction="phantom"] .phantom-line{
+  display:block !important;
+  position:absolute !important;
+  left:0 !important;
+  right:auto !important;
+  top:50% !important;
+  bottom:auto !important;
+
+  width:125% !important;
+  height:8px !important;
+
+  margin:0 !important;
+  opacity:0 !important;
+
+  background:
+    repeating-linear-gradient(
+      135deg,
+      rgba(222,52,61,.92) 0 12px,
+      rgba(222,52,61,.92) 12px 15px,
+      rgba(22,18,20,.96) 15px 27px,
+      rgba(22,18,20,.96) 27px 30px
+    ) !important;
+
+  border-top:1px solid rgba(238,91,97,.24) !important;
+  border-bottom:1px solid rgba(0,0,0,.55) !important;
+  border-left:0 !important;
+  border-right:0 !important;
+
+  box-shadow:
+    0 2px 5px rgba(0,0,0,.24),
+    0 0 7px rgba(202,40,49,.06) !important;
+
+  will-change:transform,opacity !important;
+}
+
+/* 위쪽 띠: 왼쪽 -> 오른쪽 */
+#tab-char .faction-switch-btn[data-faction="phantom"] .phantom-line.line-a{
+  top:27% !important;
+  transform-origin:center !important;
+  animation:phantomCrossRushA 1.75s linear infinite !important;
+}
+
+/* 아래쪽 띠: 오른쪽 -> 왼쪽 */
+#tab-char .faction-switch-btn[data-faction="phantom"] .phantom-line.line-b{
+  top:63% !important;
+  width:118% !important;
+  height:7px !important;
+  animation:phantomCrossRushB 1.75s linear .42s infinite !important;
+}
+
+/*
+  translateX를 px나 calc 대신 "자기 폭 비율"로 움직여 브라우저별 충돌 제거.
+  -130% = 버튼 왼쪽 바깥
+   +95% = 버튼 오른쪽 바깥
+*/
+@keyframes phantomCrossRushA{
+  0%{
+    opacity:0;
+    transform:translate3d(-135%,0,0) rotate(-7deg);
+  }
+  7%{
+    opacity:.78;
+  }
+  90%{
+    opacity:.78;
+  }
+  100%{
+    opacity:0;
+    transform:translate3d(92%,0,0) rotate(-7deg);
+  }
+}
+
+@keyframes phantomCrossRushB{
+  0%{
+    opacity:0;
+    transform:translate3d(92%,0,0) rotate(7deg);
+  }
+  7%{
+    opacity:.58;
+  }
+  90%{
+    opacity:.58;
+  }
+  100%{
+    opacity:0;
+    transform:translate3d(-135%,0,0) rotate(7deg);
+  }
+}
+
+/* 버튼 글자는 항상 위 */
+#tab-char .faction-switch-btn[data-faction="phantom"] .phantom-btn-label{
+  position:relative !important;
+  z-index:6 !important;
+}
+
+/* 선택 상태는 라인만 아주 조금 선명 */
+#tab-char .faction-switch-btn[data-faction="phantom"].active .phantom-line.line-a{
+  filter:brightness(1.08);
+}
+#tab-char .faction-switch-btn[data-faction="phantom"].active .phantom-line.line-b{
+  filter:brightness(1.05);
+}
+
+/* 초상화/상세 일러스트에는 이동 라인 없음 */
+#tab-char .faction-content-panel[data-faction-panel="phantom"] .phantom-card-line,
+.character-hover-detail.phantom-character-detail .phantom-detail-line{
+  display:none !important;
+  animation:none !important;
+}
+
+/* 내부 패널의 정적인 분위기만 유지 */
+#tab-char .faction-content-panel[data-faction-panel="phantom"] .phantom-panel-line{
+  animation:none !important;
+  opacity:.14 !important;
+}
+
+@media(prefers-reduced-motion:reduce){
+  #tab-char .faction-switch-btn[data-faction="phantom"] .phantom-line{
+    animation:none !important;
+    display:none !important;
+  }
+}
+</style>
+
+
+<style id="phantom-strike-crossline-v6">
+/* =========================================================
+   PHANTOM STRIKE V6
+   JS 없이 버튼의 ::before / ::after만 사용.
+   두 개의 폴리스라인이 실제로 좌우 반대 방향으로 횡단.
+   ========================================================= */
+
+/* 이전에 JS로 만든 라인 레이어는 완전히 숨김 */
+#tab-char .faction-switch-btn[data-faction="phantom"] .phantom-line-layer{
+  display:none !important;
+}
+
+/* 버튼 */
+#tab-char .faction-switch-btn[data-faction="phantom"]{
+  position:relative !important;
+  isolation:isolate !important;
+  overflow:hidden !important;
+}
+
+/* 두 폴리스라인 공통 */
+#tab-char .faction-switch-btn[data-faction="phantom"]::before,
+#tab-char .faction-switch-btn[data-faction="phantom"]::after{
+  content:"" !important;
+  display:block !important;
+  position:absolute !important;
+  z-index:2 !important;
+  left:0 !important;
+  right:auto !important;
+  width:86% !important;
+  height:8px !important;
+  pointer-events:none !important;
+  opacity:.72 !important;
+  background:
+    repeating-linear-gradient(
+      135deg,
+      rgba(224,52,61,.92) 0 11px,
+      rgba(224,52,61,.92) 11px 14px,
+      rgba(20,17,19,.96) 14px 25px,
+      rgba(20,17,19,.96) 25px 28px
+    ) !important;
+  border-top:1px solid rgba(239,91,98,.22) !important;
+  border-bottom:1px solid rgba(0,0,0,.60) !important;
+  box-shadow:0 2px 6px rgba(0,0,0,.25) !important;
+  will-change:transform !important;
+}
+
+/* 위 라인: 왼쪽 -> 오른쪽 */
+#tab-char .faction-switch-btn[data-faction="phantom"]::before{
+  top:23% !important;
+  bottom:auto !important;
+  animation:phantomTapeLeftToRight 1.55s linear infinite !important;
+}
+
+/* 아래 라인: 오른쪽 -> 왼쪽 */
+#tab-char .faction-switch-btn[data-faction="phantom"]::after{
+  top:auto !important;
+  bottom:19% !important;
+  width:78% !important;
+  height:7px !important;
+  opacity:.56 !important;
+  animation:phantomTapeRightToLeft 1.55s linear .24s infinite !important;
+}
+
+/* 버튼 폭을 기준으로 충분히 바깥에서 바깥까지 이동 */
+@keyframes phantomTapeLeftToRight{
+  0%{
+    transform:translateX(-125%) rotate(-7deg);
+  }
+  100%{
+    transform:translateX(145%) rotate(-7deg);
+  }
+}
+
+@keyframes phantomTapeRightToLeft{
+  0%{
+    transform:translateX(150%) rotate(7deg);
+  }
+  100%{
+    transform:translateX(-135%) rotate(7deg);
+  }
+}
+
+/* 글자를 라인 위로 */
+#tab-char .faction-switch-btn[data-faction="phantom"]{
+  color:#dc686e !important;
+  text-shadow:
+    0 1px 2px rgba(0,0,0,.95),
+    0 0 5px rgba(21,8,10,.9) !important;
+}
+
+/* 초상화 / 상세 일러스트에는 라인 없음 */
+#tab-char .faction-content-panel[data-faction-panel="phantom"] .phantom-card-line,
+.character-hover-detail.phantom-character-detail .phantom-detail-line{
+  display:none !important;
+}
+
+/* 내부 패널 라인은 이동시키지 않음 */
+#tab-char .faction-content-panel[data-faction-panel="phantom"] .phantom-panel-line{
+  animation:none !important;
+  opacity:.14 !important;
+}
+</style>
+
+
+<style id="phantom-strike-crossline-v7-continuous">
+/* =========================================================
+   PHANTOM STRIKE V7
+   막대 전체가 나타났다 사라지는 방식 폐기.
+   두 개의 긴 폴리스라인은 버튼을 계속 가로지른 상태로 유지하고,
+   내부의 사선 경고 패턴 자체가 좌/우로 끊김 없이 흐른다.
+   ========================================================= */
+
+/* 이전 동적 레이어 제거 */
+#tab-char .faction-switch-btn[data-faction="phantom"] .phantom-line-layer{
+  display:none !important;
+}
+
+/* 버튼 */
+#tab-char .faction-switch-btn[data-faction="phantom"]{
+  position:relative !important;
+  isolation:isolate !important;
+  overflow:hidden !important;
+}
+
+/* 두 개의 폴리스라인을 항상 화면 안에 유지 */
+#tab-char .faction-switch-btn[data-faction="phantom"]::before,
+#tab-char .faction-switch-btn[data-faction="phantom"]::after{
+  content:"" !important;
+  display:block !important;
+  position:absolute !important;
+  z-index:2 !important;
+
+  left:-14% !important;
+  width:128% !important;
+  height:8px !important;
+
+  opacity:.68 !important;
+  pointer-events:none !important;
+
+  /* 타일이 정확히 반복되므로 background-position 이동이 무한 루프처럼 연결됨 */
+  background-image:
+    repeating-linear-gradient(
+      135deg,
+      rgba(225,53,62,.94) 0 12px,
+      rgba(225,53,62,.94) 12px 15px,
+      rgba(20,17,19,.97) 15px 27px,
+      rgba(20,17,19,.97) 27px 30px
+    ) !important;
+  background-size:42px 42px !important;
+  background-repeat:repeat !important;
+
+  border-top:1px solid rgba(239,91,98,.24) !important;
+  border-bottom:1px solid rgba(0,0,0,.58) !important;
+
+  box-shadow:
+    0 2px 5px rgba(0,0,0,.25),
+    0 0 6px rgba(202,40,49,.05) !important;
+
+  will-change:background-position !important;
+}
+
+/* 위쪽: 살짝 내려가는 대각선 / 패턴은 오른쪽으로 흐름 */
+#tab-char .faction-switch-btn[data-faction="phantom"]::before{
+  top:24% !important;
+  bottom:auto !important;
+  transform:rotate(-6deg) !important;
+  animation:phantomTapePatternRight .52s linear infinite !important;
+}
+
+/* 아래쪽: 반대 대각선 / 패턴은 왼쪽으로 흐름 */
+#tab-char .faction-switch-btn[data-faction="phantom"]::after{
+  top:auto !important;
+  bottom:22% !important;
+  height:7px !important;
+  opacity:.54 !important;
+  transform:rotate(6deg) !important;
+  animation:phantomTapePatternLeft .52s linear infinite !important;
+}
+
+/* 반복 타일 42px만 정확히 이동 → 프레임 끝과 시작이 동일 */
+@keyframes phantomTapePatternRight{
+  from{ background-position:0 0; }
+  to{ background-position:42px 0; }
+}
+
+@keyframes phantomTapePatternLeft{
+  from{ background-position:42px 0; }
+  to{ background-position:0 0; }
+}
+
+/* 선택 시에도 구조는 그대로, 아주 조금만 선명 */
+#tab-char .faction-switch-btn[data-faction="phantom"].active::before{
+  opacity:.78 !important;
+}
+#tab-char .faction-switch-btn[data-faction="phantom"].active::after{
+  opacity:.62 !important;
+}
+
+/* 글자는 통제선 위에서 읽히도록 */
+#tab-char .faction-switch-btn[data-faction="phantom"] .phantom-btn-label{
+  position:relative !important;
+  z-index:6 !important;
+  text-shadow:
+    0 1px 2px rgba(0,0,0,.98),
+    0 0 5px rgba(11,7,9,.95) !important;
+}
+
+/* 초상화/상세 일러스트에는 움직이는 통제선 없음 */
+#tab-char .faction-content-panel[data-faction-panel="phantom"] .phantom-card-line,
+.character-hover-detail.phantom-character-detail .phantom-detail-line{
+  display:none !important;
+  animation:none !important;
+}
+
+/* 내부 패널의 기존 선은 정적으로만 유지 */
+#tab-char .faction-content-panel[data-faction-panel="phantom"] .phantom-panel-line{
+  animation:none !important;
+  opacity:.14 !important;
+}
+
+@media(prefers-reduced-motion:reduce){
+  #tab-char .faction-switch-btn[data-faction="phantom"]::before,
+  #tab-char .faction-switch-btn[data-faction="phantom"]::after{
+    animation:none !important;
+  }
+}
+</style>
+
+
+<style id="phantom-strike-crossline-v8-jsmotion">
+/* =========================================================
+   PHANTOM STRIKE V8
+   CSS animation 대신 실제 DOM 요소 + requestAnimationFrame 사용.
+   폴리스라인은 고정된 긴 띠이고, 내부 사선 무늬만 계속 흐른다.
+   ========================================================= */
+
+/* 기존 pseudo 폴리스라인 비활성화 */
+#tab-char .faction-switch-btn[data-faction="phantom"]::before,
+#tab-char .faction-switch-btn[data-faction="phantom"]::after{
+  content:none !important;
+  display:none !important;
+  animation:none !important;
+}
+
+/* 실제 DOM 레이어 재활성화 */
+#tab-char .faction-switch-btn[data-faction="phantom"] .phantom-line-layer{
+  display:block !important;
+  position:absolute !important;
+  z-index:3 !important;
+  inset:0 !important;
+  overflow:hidden !important;
+  opacity:1 !important;
+  pointer-events:none !important;
+}
+
+#tab-char .faction-switch-btn[data-faction="phantom"] .phantom-line{
+  display:block !important;
+  position:absolute !important;
+  left:-14% !important;
+  right:auto !important;
+  width:128% !important;
+  height:8px !important;
+  margin:0 !important;
+  opacity:.72 !important;
+
+  background-image:
+    repeating-linear-gradient(
+      135deg,
+      rgba(224,52,61,.94) 0 12px,
+      rgba(224,52,61,.94) 12px 15px,
+      rgba(20,17,19,.97) 15px 27px,
+      rgba(20,17,19,.97) 27px 30px
+    ) !important;
+  background-size:42px 42px !important;
+  background-repeat:repeat !important;
+
+  border-top:1px solid rgba(239,91,98,.24) !important;
+  border-bottom:1px solid rgba(0,0,0,.58) !important;
+  border-left:0 !important;
+  border-right:0 !important;
+
+  box-shadow:
+    0 2px 5px rgba(0,0,0,.25),
+    0 0 6px rgba(202,40,49,.05) !important;
+
+  animation:none !important;
+  will-change:background-position !important;
+}
+
+#tab-char .faction-switch-btn[data-faction="phantom"] .phantom-line.line-a{
+  top:24% !important;
+  bottom:auto !important;
+  transform:rotate(-6deg) !important;
+}
+
+#tab-char .faction-switch-btn[data-faction="phantom"] .phantom-line.line-b{
+  top:auto !important;
+  bottom:22% !important;
+  width:128% !important;
+  height:7px !important;
+  opacity:.55 !important;
+  transform:rotate(6deg) !important;
+}
+
+/* 글자는 위 */
+#tab-char .faction-switch-btn[data-faction="phantom"] .phantom-btn-label{
+  position:relative !important;
+  z-index:6 !important;
+}
+
+/* 초상화/상세 일러스트에는 없음 */
+#tab-char .faction-content-panel[data-faction-panel="phantom"] .phantom-card-line,
+.character-hover-detail.phantom-character-detail .phantom-detail-line{
+  display:none !important;
+}
+</style>
+
+<script id="phantom-strike-crossline-v8-jsmotion-script">
+(function(){
+  function initPhantomMotion(){
+    var btn=document.querySelector('#tab-char .faction-switch-btn[data-faction="phantom"]');
+    if(!btn) return;
+
+    var layer=btn.querySelector('.phantom-line-layer');
+
+    /* 이전 파일에서 레이어가 없을 경우 직접 생성 */
+    if(!layer){
+      layer=document.createElement('span');
+      layer.className='phantom-line-layer';
+      layer.setAttribute('aria-hidden','true');
+
+      var a=document.createElement('i');
+      a.className='phantom-line line-a';
+
+      var b=document.createElement('i');
+      b.className='phantom-line line-b';
+
+      layer.appendChild(a);
+      layer.appendChild(b);
+      btn.appendChild(layer);
+    }
+
+    var lineA=layer.querySelector('.line-a');
+    var lineB=layer.querySelector('.line-b');
+    if(!lineA || !lineB) return;
+
+    /* 중복 RAF 방지 */
+    if(btn.dataset.phantomMotionRunning==='1') return;
+    btn.dataset.phantomMotionRunning='1';
+
+    var start=performance.now();
+
+    function frame(now){
+      var elapsed=now-start;
+
+      /* 초당 약 135px. 서로 반대 방향으로 흐름 */
+      var xA=(elapsed*0.135)%42;
+      var xB=42-((elapsed*0.135)%42);
+
+      lineA.style.setProperty('background-position', xA+'px 0px', 'important');
+      lineB.style.setProperty('background-position', xB+'px 0px', 'important');
+
+      requestAnimationFrame(frame);
+    }
+
+    requestAnimationFrame(frame);
+  }
+
+  if(document.readyState==='loading'){
+    document.addEventListener('DOMContentLoaded',initPhantomMotion,{once:true});
+  }else{
+    initPhantomMotion();
+  }
+})();
+</script>
+
+
+<style id="phantom-strike-crossline-v9-centerx">
+/* =========================================================
+   PHANTOM STRIKE V9
+   교차점을 버튼 중앙으로 이동해서 V가 아니라 확실한 X 형태.
+   내부 사선 패턴 이동은 V8 JS 방식 그대로 유지.
+   ========================================================= */
+
+#tab-char .faction-switch-btn[data-faction="phantom"] .phantom-line.line-a,
+#tab-char .faction-switch-btn[data-faction="phantom"] .phantom-line.line-b{
+  left:50% !important;
+  width:138% !important;
+  transform-origin:center center !important;
+}
+
+/* 두 띠 모두 중앙을 기준으로 회전하므로 교차점이 버튼 정중앙에 생김 */
+#tab-char .faction-switch-btn[data-faction="phantom"] .phantom-line.line-a{
+  top:50% !important;
+  bottom:auto !important;
+  transform:translate(-50%,-50%) rotate(-7deg) !important;
+}
+
+#tab-char .faction-switch-btn[data-faction="phantom"] .phantom-line.line-b{
+  top:50% !important;
+  bottom:auto !important;
+  height:7px !important;
+  transform:translate(-50%,-50%) rotate(7deg) !important;
+}
+
+/* 글자는 교차선 위에서 유지 */
+#tab-char .faction-switch-btn[data-faction="phantom"] .phantom-btn-label{
+  position:relative !important;
+  z-index:6 !important;
+}
+</style>
+
+
+<style id="phantom-strike-v10-panel-borders">
+/* =========================================================
+   PHANTOM STRIKE V10
+   내부 패널의 기존 사선 폴리스라인 제거.
+   대신 패널 최상단/최하단 테두리 자체를 진한 폴리스라인으로 변경.
+   ========================================================= */
+
+/* 기존 내부 사선 라인 완전 제거 */
+#tab-char .faction-content-panel[data-faction-panel="phantom"] .phantom-panel-line{
+  display:none !important;
+  opacity:0 !important;
+  animation:none !important;
+}
+
+/* 패널 자체는 기준점만 유지 */
+#tab-char .faction-content-panel[data-faction-panel="phantom"]{
+  position:relative !important;
+  overflow:hidden !important;
+}
+
+/* 위쪽 폴리스라인 테두리 */
+#tab-char .faction-content-panel[data-faction-panel="phantom"]::before{
+  content:"" !important;
+  display:block !important;
+  position:absolute !important;
+  z-index:20 !important;
+  left:0 !important;
+  right:0 !important;
+  top:0 !important;
+  height:7px !important;
+  pointer-events:none !important;
+  background:
+    repeating-linear-gradient(
+      135deg,
+      rgba(218,46,55,.96) 0 14px,
+      rgba(218,46,55,.96) 14px 17px,
+      rgba(17,14,16,.98) 17px 31px,
+      rgba(17,14,16,.98) 31px 34px
+    ) !important;
+  border:0 !important;
+  box-shadow:
+    0 1px 0 rgba(238,76,84,.18),
+    0 3px 8px rgba(0,0,0,.26) !important;
+  opacity:.96 !important;
+}
+
+/* 아래쪽 폴리스라인 테두리 */
+#tab-char .faction-content-panel[data-faction-panel="phantom"]::after{
+  content:"" !important;
+  display:block !important;
+  position:absolute !important;
+  z-index:20 !important;
+  left:0 !important;
+  right:0 !important;
+  bottom:0 !important;
+  height:7px !important;
+  pointer-events:none !important;
+  background:
+    repeating-linear-gradient(
+      135deg,
+      rgba(218,46,55,.96) 0 14px,
+      rgba(218,46,55,.96) 14px 17px,
+      rgba(17,14,16,.98) 17px 31px,
+      rgba(17,14,16,.98) 31px 34px
+    ) !important;
+  border:0 !important;
+  box-shadow:
+    0 -1px 0 rgba(238,76,84,.16),
+    0 -3px 8px rgba(0,0,0,.24) !important;
+  opacity:.96 !important;
+}
+
+/* 기존 일반 테두리보다 폴리스라인이 명확하게 보이도록 */
+#tab-char .faction-content-panel[data-faction-panel="phantom"]{
+  border-top-color:transparent !important;
+  border-bottom-color:transparent !important;
+}
+
+/* 내부 콘텐츠가 위/아래 폴리스라인과 닿지 않게 아주 소량 여백 */
+#tab-char .faction-content-panel[data-faction-panel="phantom"] .acc-head{
+  margin-top:7px !important;
+}
+#tab-char .faction-content-panel[data-faction-panel="phantom"] .acc-body{
+  margin-bottom:7px !important;
+}
+</style>
+
+
+<style id="phantom-strike-v11-text-visibility">
+/* 팬텀 버튼: X자 폴리스라인은 유지하고 글자 가독성만 강화 */
+#tab-char .faction-switch-btn[data-faction="phantom"] .phantom-btn-label{
+  position:relative !important;
+  z-index:10 !important;
+  display:inline-block !important;
+  padding:3px 8px !important;
+  color:#f08a8f !important;
+  font-weight:800 !important;
+  letter-spacing:.01em !important;
+  text-shadow:
+    0 1px 1px #050304,
+    1px 0 1px #050304,
+    -1px 0 1px #050304,
+    0 -1px 1px #050304,
+    0 0 5px rgba(0,0,0,.98) !important;
+}
+
+/* 글자 바로 뒤만 얇게 어둡게 해서 움직이는 띠가 글자를 먹지 않도록 */
+#tab-char .faction-switch-btn[data-faction="phantom"] .phantom-btn-label::before{
+  content:"" !important;
+  position:absolute !important;
+  z-index:-1 !important;
+  inset:-2px -5px !important;
+  border-radius:2px !important;
+  background:rgba(12,7,9,.72) !important;
+  box-shadow:0 0 8px rgba(12,7,9,.72) !important;
+  pointer-events:none !important;
+}
+
+/* 선택 상태에서는 아주 조금만 밝게 */
+#tab-char .faction-switch-btn[data-faction="phantom"].active .phantom-btn-label{
+  color:#f39a9e !important;
+}
+</style>
+
+
+<style id="phantom-strike-v12-text-visibility">
+/* 글자 뒤 암부를 V11보다 조금 더 투명하게 */
+#tab-char .faction-switch-btn[data-faction="phantom"] .phantom-btn-label::before{
+  background:rgba(12,7,9,.52) !important;
+  box-shadow:0 0 7px rgba(12,7,9,.50) !important;
+}
+</style>
+
 </head>
 <body><div aria-hidden="true" class="shooting-stars"><span class="shooting-star star-a"></span><span class="shooting-star star-b"></span><span class="shooting-star star-c"></span></div>
 <section class="hero">
