@@ -23360,6 +23360,494 @@ document.addEventListener('DOMContentLoaded',function(){
 }
 </style>
 
+
+<style id="sanctuary-animation-v25">
+/* =========================================================
+   만상의 성소 V25 — 애니메이션만
+   디자인/카드/상세창 색상은 아직 건드리지 않음.
+   - 중력에 의해 천천히 위아래 부유하는 암석
+   - 중심을 공전하는 작은 별들
+   - 군데군데 불규칙하게 번쩍이는 별빛
+   ========================================================= */
+
+#tab-char .faction-hostile .sanctuary-all-card{
+  position:relative !important;
+  overflow:hidden !important;
+  isolation:isolate !important;
+}
+
+#tab-char .faction-hostile .sanctuary-all-card > .sanctuary-space-layer{
+  position:absolute !important;
+  inset:0 !important;
+  z-index:90 !important;
+  overflow:hidden !important;
+  pointer-events:none !important;
+}
+
+/* 암석 */
+#tab-char .faction-hostile .sanctuary-all-card .gravity-rock-v25{
+  position:absolute !important;
+  left:0 !important;
+  top:0 !important;
+  display:block !important;
+  pointer-events:none !important;
+  opacity:0;
+  border-radius:43% 57% 54% 46% / 56% 41% 59% 44% !important;
+  background:
+    radial-gradient(circle at 31% 27%,
+      rgba(119,126,143,.54) 0 8%,
+      rgba(55,60,72,.84) 23%,
+      rgba(24,27,35,.96) 56%,
+      rgba(8,10,15,.99) 100%) !important;
+  box-shadow:
+    inset -5px -7px 9px rgba(0,0,0,.72),
+    inset 3px 3px 5px rgba(157,165,183,.12),
+    0 5px 10px rgba(0,0,0,.22) !important;
+  will-change:transform,opacity !important;
+}
+
+/* 공전하는 작은 별 */
+#tab-char .faction-hostile .sanctuary-all-card .orbit-star-v25{
+  position:absolute !important;
+  left:0 !important;
+  top:0 !important;
+  display:block !important;
+  border-radius:50% !important;
+  pointer-events:none !important;
+  background:rgba(224,233,255,.88) !important;
+  box-shadow:
+    0 0 5px rgba(191,210,255,.66),
+    0 0 11px rgba(128,157,230,.30) !important;
+  will-change:transform,opacity !important;
+}
+
+/* 번쩍이는 별 */
+#tab-char .faction-hostile .sanctuary-all-card .twinkle-star-v25{
+  position:absolute !important;
+  left:0 !important;
+  top:0 !important;
+  display:block !important;
+  width:2px !important;
+  height:2px !important;
+  border-radius:50% !important;
+  pointer-events:none !important;
+  background:rgba(238,244,255,.96) !important;
+  opacity:.12;
+  box-shadow:
+    0 0 4px rgba(221,232,255,.78),
+    0 0 9px rgba(157,181,240,.38) !important;
+  will-change:opacity,transform !important;
+}
+
+/* 십자형으로 순간적으로 반짝이는 빛 */
+#tab-char .faction-hostile .sanctuary-all-card .twinkle-star-v25::before,
+#tab-char .faction-hostile .sanctuary-all-card .twinkle-star-v25::after{
+  content:"" !important;
+  position:absolute !important;
+  left:50% !important;
+  top:50% !important;
+  transform:translate(-50%,-50%) !important;
+  pointer-events:none !important;
+  background:linear-gradient(90deg,transparent,rgba(233,240,255,.72),transparent) !important;
+}
+
+#tab-char .faction-hostile .sanctuary-all-card .twinkle-star-v25::before{
+  width:12px !important;
+  height:1px !important;
+}
+
+#tab-char .faction-hostile .sanctuary-all-card .twinkle-star-v25::after{
+  width:1px !important;
+  height:12px !important;
+  background:linear-gradient(180deg,transparent,rgba(233,240,255,.72),transparent) !important;
+}
+
+/* 기존 콘텐츠는 애니메이션 위에서 읽히도록 */
+#tab-char .faction-hostile .sanctuary-all-card > .place-info{
+  position:relative !important;
+  z-index:100 !important;
+}
+</style>
+
+
+<style id="sanctuary-v26-no-rocks-more-stars">
+/* 만상의 성소 V26
+   - 부유 암석 완전 제거
+   - 번쩍이는 별 수/크기 증가
+*/
+
+/* V25에서 생성된 암석은 보이지 않게 완전 제거 */
+#tab-char .faction-hostile .sanctuary-all-card .gravity-rock-v25{
+  display:none !important;
+  opacity:0 !important;
+}
+
+/* 기본 별빛도 조금 더 크게 */
+#tab-char .faction-hostile .sanctuary-all-card .twinkle-star-v25{
+  width:3px !important;
+  height:3px !important;
+  background:rgba(244,248,255,.98) !important;
+  box-shadow:
+    0 0 5px rgba(225,235,255,.86),
+    0 0 11px rgba(164,188,244,.46) !important;
+}
+
+/* 십자 반짝임 길이도 소폭 증가 */
+#tab-char .faction-hostile .sanctuary-all-card .twinkle-star-v25::before{
+  width:16px !important;
+  height:1px !important;
+}
+#tab-char .faction-hostile .sanctuary-all-card .twinkle-star-v25::after{
+  width:1px !important;
+  height:16px !important;
+}
+
+/* V26에서 추가하는 별 */
+#tab-char .faction-hostile .sanctuary-all-card .twinkle-star-v26{
+  position:absolute !important;
+  left:0 !important;
+  top:0 !important;
+  display:block !important;
+  border-radius:50% !important;
+  pointer-events:none !important;
+  background:rgba(245,249,255,.98) !important;
+  box-shadow:
+    0 0 5px rgba(224,235,255,.82),
+    0 0 12px rgba(157,182,241,.42) !important;
+  opacity:.08;
+  will-change:opacity,transform !important;
+}
+
+#tab-char .faction-hostile .sanctuary-all-card .twinkle-star-v26::before,
+#tab-char .faction-hostile .sanctuary-all-card .twinkle-star-v26::after{
+  content:"" !important;
+  position:absolute !important;
+  left:50% !important;
+  top:50% !important;
+  transform:translate(-50%,-50%) !important;
+  pointer-events:none !important;
+}
+
+#tab-char .faction-hostile .sanctuary-all-card .twinkle-star-v26::before{
+  width:18px !important;
+  height:1px !important;
+  background:linear-gradient(90deg,transparent,rgba(239,245,255,.78),transparent) !important;
+}
+
+#tab-char .faction-hostile .sanctuary-all-card .twinkle-star-v26::after{
+  width:1px !important;
+  height:18px !important;
+  background:linear-gradient(180deg,transparent,rgba(239,245,255,.78),transparent) !important;
+}
+</style>
+
+
+<style id="sanctuary-complete-v27">
+/* =========================================================
+   만상의 성소 V27
+   내부 박스 + 닉스/네메시스/레베른 상세 일러스트 영역 통일
+   기존 공전/별빛 애니메이션 유지
+   ========================================================= */
+
+#tab-char .faction-hostile .sanctuary-all-card{
+  border:1px solid rgba(123,104,182,.42) !important;
+  border-radius:6px !important;
+  background:
+    radial-gradient(circle at 76% 18%,rgba(86,71,151,.10),transparent 28%),
+    radial-gradient(circle at 24% 86%,rgba(50,63,123,.08),transparent 30%),
+    linear-gradient(145deg,#0c0c16 0%,#080812 54%,#04050a 100%) !important;
+  box-shadow:
+    inset 0 0 0 1px rgba(203,194,255,.018),
+    inset 0 0 42px rgba(70,57,126,.07) !important;
+}
+
+/* 박스 위/아래 얇은 별빛선 */
+#tab-char .faction-hostile .sanctuary-all-card::before,
+#tab-char .faction-hostile .sanctuary-all-card::after{
+  content:"" !important;
+  position:absolute !important;
+  left:16px !important;
+  right:16px !important;
+  height:1px !important;
+  z-index:106 !important;
+  pointer-events:none !important;
+  background:
+    linear-gradient(
+      90deg,
+      transparent,
+      rgba(129,112,196,.18) 18%,
+      rgba(210,203,255,.42) 50%,
+      rgba(112,99,180,.17) 82%,
+      transparent
+    ) !important;
+}
+#tab-char .faction-hostile .sanctuary-all-card::before{
+  top:9px !important;
+}
+#tab-char .faction-hostile .sanctuary-all-card::after{
+  bottom:9px !important;
+  opacity:.58 !important;
+}
+
+/* 배경 */
+#tab-char .faction-hostile .sanctuary-all-card > .place-image{
+  position:relative !important;
+  z-index:1 !important;
+  overflow:hidden !important;
+  background:#070810 !important;
+  border-bottom:1px solid rgba(103,89,158,.24) !important;
+}
+
+#tab-char .faction-hostile .sanctuary-all-card > .place-image img{
+  filter:saturate(.76) brightness(.78) contrast(1.08) hue-rotate(4deg) !important;
+  transition:transform .38s ease,filter .38s ease !important;
+}
+
+/* 박스 전체 hover가 아닌 이미지 직접 hover만 */
+#tab-char .faction-hostile .sanctuary-all-card:hover > .place-image img{
+  transform:none !important;
+  filter:saturate(.76) brightness(.78) contrast(1.08) hue-rotate(4deg) !important;
+}
+#tab-char .faction-hostile .sanctuary-all-card > .place-image:hover img{
+  transform:scale(1.018) !important;
+  filter:saturate(.84) brightness(.84) contrast(1.09) hue-rotate(4deg) !important;
+}
+
+/* 이미지 하단만 자연스럽게 암부 */
+#tab-char .faction-hostile .sanctuary-all-card > .place-image::after{
+  content:"" !important;
+  position:absolute !important;
+  inset:auto 0 0 0 !important;
+  height:38% !important;
+  pointer-events:none !important;
+  background:linear-gradient(180deg,transparent,rgba(7,7,17,.30)) !important;
+}
+
+/* 설명 영역 */
+#tab-char .faction-hostile .sanctuary-all-card > .place-info{
+  position:relative !important;
+  z-index:100 !important;
+  background:
+    linear-gradient(180deg,rgba(17,16,31,.78),rgba(7,7,15,.93)) !important;
+}
+
+#tab-char .faction-hostile .sanctuary-all-card .place-title{
+  color:#d4cee9 !important;
+  text-shadow:0 0 9px rgba(135,115,202,.10) !important;
+}
+
+#tab-char .faction-hostile .sanctuary-all-card .place-desc{
+  color:#9992ae !important;
+}
+
+/* =========================================================
+   닉스 / 네메시스 / 레베른 카드
+   ========================================================= */
+#tab-char .faction-hostile .sanctuary-all-card .char-card{
+  position:relative !important;
+  overflow:hidden !important;
+  border:1px solid rgba(113,96,171,.34) !important;
+  border-radius:5px !important;
+  background:
+    radial-gradient(circle at 88% 9%,rgba(114,95,188,.08),transparent 28%),
+    linear-gradient(150deg,#12101e,#090914 74%) !important;
+  box-shadow:inset 0 0 0 1px rgba(213,205,255,.014) !important;
+  transition:transform .22s ease,border-color .22s ease,filter .22s ease,box-shadow .22s ease !important;
+}
+
+#tab-char .faction-hostile .sanctuary-all-card .char-card::before{
+  content:"" !important;
+  position:absolute !important;
+  z-index:6 !important;
+  left:10px !important;
+  right:10px !important;
+  top:7px !important;
+  height:1px !important;
+  pointer-events:none !important;
+  background:
+    linear-gradient(90deg,transparent,rgba(156,138,219,.30),transparent) !important;
+}
+
+#tab-char .faction-hostile .sanctuary-all-card .char-card::after{
+  content:"" !important;
+  position:absolute !important;
+  z-index:6 !important;
+  right:9px !important;
+  bottom:9px !important;
+  width:5px !important;
+  height:5px !important;
+  border-radius:50% !important;
+  pointer-events:none !important;
+  background:#c9c0ef !important;
+  box-shadow:
+    0 0 4px rgba(205,195,246,.72),
+    0 0 9px rgba(120,101,190,.26) !important;
+}
+
+#tab-char .faction-hostile .sanctuary-all-card .char-card:hover{
+  transform:translateY(-2px) !important;
+  filter:brightness(1.035) !important;
+  border-color:rgba(139,119,201,.50) !important;
+  box-shadow:0 8px 18px rgba(0,0,0,.24) !important;
+}
+
+#tab-char .faction-hostile .sanctuary-all-card .char-portrait{
+  background:#090912 !important;
+  border-color:rgba(104,89,160,.29) !important;
+}
+
+#tab-char .faction-hostile .sanctuary-all-card .char-name{
+  color:#d7d1e9 !important;
+}
+
+#tab-char .faction-hostile .sanctuary-all-card .char-role{
+  color:#9189aa !important;
+}
+
+/* =========================================================
+   상세 Hover 공통 — 닉스 / 네메시스 / 레베른
+   ========================================================= */
+.character-hover-detail.calamity-nyx,
+#characterDetail_nemesis,
+#characterDetail_revern{
+  overflow:hidden !important;
+  background:
+    radial-gradient(circle at 80% 12%,rgba(96,77,168,.09),transparent 28%),
+    radial-gradient(circle at 22% 92%,rgba(53,67,130,.06),transparent 30%),
+    linear-gradient(145deg,#100f1c 0%,#080812 70%,#04050a 100%) !important;
+  border:1px solid rgba(119,101,178,.42) !important;
+  border-radius:6px !important;
+  box-shadow:
+    inset 0 0 0 1px rgba(210,202,255,.015),
+    inset 0 0 38px rgba(72,58,133,.05),
+    0 18px 44px rgba(0,0,0,.48) !important;
+}
+
+/* 상단 별빛 라인 */
+.character-hover-detail.calamity-nyx::before,
+#characterDetail_nemesis::before,
+#characterDetail_revern::before{
+  content:"" !important;
+  display:block !important;
+  position:absolute !important;
+  z-index:22 !important;
+  left:10px !important;
+  right:10px !important;
+  top:8px !important;
+  height:1px !important;
+  pointer-events:none !important;
+  background:
+    linear-gradient(90deg,transparent,rgba(157,139,218,.32),rgba(220,214,255,.42),rgba(143,124,204,.26),transparent) !important;
+}
+
+/* 기존 문자성 장식 제거 */
+.character-hover-detail.calamity-nyx::after,
+#characterDetail_nemesis::after,
+#characterDetail_revern::after{
+  content:none !important;
+  display:none !important;
+}
+
+/* 상세 일러스트 */
+.character-hover-detail.calamity-nyx .character-detail-art,
+#characterDetail_nemesis .character-detail-art,
+#characterDetail_revern .character-detail-art{
+  position:relative !important;
+  background:#080811 !important;
+  border-bottom:1px solid rgba(100,85,155,.24) !important;
+}
+
+.character-hover-detail.calamity-nyx .character-detail-art img,
+#characterDetail_nemesis .character-detail-art img,
+#characterDetail_revern .character-detail-art img{
+  filter:saturate(.90) brightness(.93) contrast(1.03) hue-rotate(2deg) !important;
+}
+
+/* 일러스트 위 반투명 사각형/그라데이션 없음 */
+.character-hover-detail.calamity-nyx .character-detail-art::before,
+.character-hover-detail.calamity-nyx .character-detail-art::after,
+#characterDetail_nemesis .character-detail-art::before,
+#characterDetail_nemesis .character-detail-art::after,
+#characterDetail_revern .character-detail-art::before,
+#characterDetail_revern .character-detail-art::after{
+  content:none !important;
+  display:none !important;
+  background:none !important;
+  opacity:0 !important;
+}
+
+/* 본문 색 통일 */
+.character-hover-detail.calamity-nyx .character-detail-name,
+#characterDetail_nemesis .character-detail-name,
+#characterDetail_revern .character-detail-name{
+  color:#ddd7ee !important;
+}
+
+.character-hover-detail.calamity-nyx .character-detail-role,
+#characterDetail_nemesis .character-detail-role,
+#characterDetail_revern .character-detail-role{
+  color:#9d94b7 !important;
+}
+
+.character-hover-detail.calamity-nyx .character-detail-profile,
+#characterDetail_nemesis .character-detail-profile,
+#characterDetail_revern .character-detail-profile{
+  color:#9891a8 !important;
+}
+
+.character-hover-detail.calamity-nyx .character-detail-code,
+#characterDetail_nemesis .character-detail-code,
+#characterDetail_revern .character-detail-code{
+  color:#8579a9 !important;
+}
+
+.character-hover-detail.calamity-nyx .character-detail-ability,
+#characterDetail_nemesis .character-detail-ability,
+#characterDetail_revern .character-detail-ability{
+  background:
+    linear-gradient(145deg,rgba(54,45,92,.16),rgba(14,13,27,.20)) !important;
+  border:1px solid rgba(104,88,159,.24) !important;
+}
+
+.character-hover-detail.calamity-nyx .character-detail-ability strong,
+#characterDetail_nemesis .character-detail-ability strong,
+#characterDetail_revern .character-detail-ability strong{
+  color:#b9acd9 !important;
+}
+
+.character-hover-detail.calamity-nyx .character-detail-quote,
+#characterDetail_nemesis .character-detail-quote,
+#characterDetail_revern .character-detail-quote{
+  color:#a39bb3 !important;
+  border-color:rgba(95,80,145,.22) !important;
+}
+</style>
+
+
+<style id="calypso-quote-color-v28">
+/* 칼립사 상세 대사의 따옴표/인용 장식도 선큰스론 청록 계열로 통일 */
+.character-hover-detail.calamity-calypso .character-detail-quote::before,
+.character-hover-detail.calamity-calypso .character-detail-quote::after{
+  color:#6f9faa !important;
+  text-shadow:0 0 7px rgba(71,164,193,.12) !important;
+  border-color:#6f9faa !important;
+}
+</style>
+
+
+<style id="calypso-card-circle-remove-v29">
+/* 칼립사 초상화 카드 오른쪽 아래 작은 원형 장식만 제거 */
+#tab-char .faction-hostile .sunken-throne-card .char-card::after{
+  content:none !important;
+  display:none !important;
+  width:0 !important;
+  height:0 !important;
+  border:0 !important;
+  box-shadow:none !important;
+  background:none !important;
+}
+</style>
+
 </head>
 <body><div aria-hidden="true" class="shooting-stars"><span class="shooting-star star-a"></span><span class="shooting-star star-b"></span><span class="shooting-star star-c"></span></div>
 <section class="hero">
@@ -23385,7 +23873,7 @@ document.addEventListener('DOMContentLoaded',function(){
 <span class="celestial-node node-d"></span>
 <div class="hero-data hero-data-left">
 <small>ORBIS ERA</small>
-<b>581</b>
+<b>582</b>
 <span>LAST SURVIVAL ZONE</span>
 </div>
 <div class="hero-data hero-data-right">
@@ -26822,6 +27310,259 @@ document.addEventListener('DOMContentLoaded', () => {
     );
     if(el) el.classList.add('calamity-calypso');
   }
+})();
+</script>
+
+
+<script id="sanctuary-animation-v25-runtime">
+(function(){
+  var card = null;
+
+  document.querySelectorAll(
+    '#tab-char .faction-hostile .calamity-place-card-unified'
+  ).forEach(function(el){
+    var title = el.querySelector('.place-title');
+    if(title && title.textContent.indexOf('만상의 성소') !== -1){
+      card = el;
+    }
+  });
+
+  if(!card) return;
+  card.classList.add('sanctuary-all-card');
+
+  if(card.querySelector('.sanctuary-space-layer')) return;
+
+  var layer = document.createElement('div');
+  layer.className = 'sanctuary-space-layer';
+  layer.setAttribute('aria-hidden','true');
+
+  /* 과하지 않게: 암석 8개 */
+  var rocks = [];
+  for(var i=0;i<8;i++){
+    var el = document.createElement('i');
+    el.className = 'gravity-rock-v25';
+
+    var size = 9 + Math.random()*19;
+    el.style.width = size+'px';
+    el.style.height = (size*(.68+Math.random()*.34))+'px';
+
+    layer.appendChild(el);
+
+    rocks.push({
+      el:el,
+      x:.06 + Math.random()*.88,
+      y:.08 + Math.random()*.84,
+      size:size,
+      floatAmp:7 + Math.random()*17,
+      swayAmp:2 + Math.random()*7,
+      period:5.8 + Math.random()*6.8,
+      phase:Math.random()*Math.PI*2,
+      rotation:-24 + Math.random()*48,
+      spin:(Math.random()-.5)*4.2,
+      alpha:.30 + Math.random()*.30
+    });
+  }
+
+  /* 중심부 주변을 서로 다른 궤도로 도는 별 */
+  var orbiters = [];
+  for(var j=0;j<7;j++){
+    var star = document.createElement('i');
+    star.className = 'orbit-star-v25';
+
+    var s = 1.4 + Math.random()*2.6;
+    star.style.width = s+'px';
+    star.style.height = s+'px';
+    layer.appendChild(star);
+
+    orbiters.push({
+      el:star,
+      radiusX:.14 + Math.random()*.31,
+      radiusY:.06 + Math.random()*.15,
+      speed:(Math.random()>.5?1:-1) * (.13 + Math.random()*.16),
+      phase:Math.random()*Math.PI*2,
+      alpha:.45 + Math.random()*.42
+    });
+  }
+
+  /* 불규칙하게 번쩍이는 별 */
+  var twinkles = [];
+  for(var k=0;k<18;k++){
+    var tw = document.createElement('i');
+    tw.className = 'twinkle-star-v25';
+    layer.appendChild(tw);
+
+    twinkles.push({
+      el:tw,
+      x:.04 + Math.random()*.92,
+      y:.04 + Math.random()*.92,
+      phase:Math.random()*Math.PI*2,
+      speed:.65 + Math.random()*1.75,
+      threshold:.76 + Math.random()*.16,
+      maxA:.46 + Math.random()*.46,
+      scale:.65 + Math.random()*.85
+    });
+  }
+
+  card.insertBefore(layer,card.firstChild);
+
+  var start = performance.now();
+
+  function animate(now){
+    var W = layer.clientWidth;
+    var H = layer.clientHeight;
+    var sec = (now-start)/1000;
+
+    if(W>0 && H>0){
+      /* 위아래 부유 + 아주 약한 좌우 흔들림 */
+      rocks.forEach(function(r,index){
+        var a = sec*(Math.PI*2/r.period)+r.phase;
+
+        var x = W*r.x + Math.sin(a*.63)*r.swayAmp;
+        var y = H*r.y + Math.sin(a)*r.floatAmp;
+        var rot = r.rotation + sec*r.spin;
+
+        var edgeFade = Math.min(
+          1,
+          Math.max(0,(r.y-.02)/.10),
+          Math.max(0,(.98-r.y)/.10)
+        );
+
+        r.el.style.transform =
+          'translate3d('+(x-r.size/2).toFixed(1)+'px,'+
+          (y-r.size/2).toFixed(1)+'px,0) rotate('+rot.toFixed(1)+'deg)';
+        r.el.style.opacity = (r.alpha*edgeFade).toFixed(3);
+      });
+
+      /* 타원 궤도 공전 */
+      orbiters.forEach(function(o,index){
+        var angle = sec*o.speed + o.phase;
+
+        var cx = W*.52;
+        var cy = H*.43;
+
+        var x = cx + Math.cos(angle)*W*o.radiusX;
+        var y = cy + Math.sin(angle)*H*o.radiusY;
+
+        /* 앞쪽 궤도에서 살짝 더 밝아짐 */
+        var depth = .62 + .38*((Math.sin(angle)+1)/2);
+
+        o.el.style.transform =
+          'translate3d('+x.toFixed(1)+'px,'+y.toFixed(1)+'px,0)';
+        o.el.style.opacity = (o.alpha*depth).toFixed(3);
+      });
+
+      /* 번쩍임은 각 별마다 시점이 다름 */
+      twinkles.forEach(function(t,index){
+        var raw =
+          .5 + .5*Math.sin(sec*t.speed + t.phase);
+
+        var flash = 0;
+        if(raw > t.threshold){
+          flash = (raw-t.threshold)/(1-t.threshold);
+          flash = flash*flash;
+        }
+
+        var opacity = .08 + flash*t.maxA;
+        var scale = t.scale*(.72 + flash*.65);
+
+        t.el.style.transform =
+          'translate3d('+(W*t.x).toFixed(1)+'px,'+
+          (H*t.y).toFixed(1)+'px,0) scale('+scale.toFixed(2)+')';
+        t.el.style.opacity = opacity.toFixed(3);
+      });
+    }
+
+    requestAnimationFrame(animate);
+  }
+
+  requestAnimationFrame(animate);
+})();
+</script>
+
+
+<script id="sanctuary-v26-extra-stars-runtime">
+(function(){
+  var card = document.querySelector(
+    '#tab-char .faction-hostile .sanctuary-all-card'
+  );
+  if(!card) return;
+
+  var layer = card.querySelector('.sanctuary-space-layer');
+  if(!layer || layer.dataset.starsV26 === '1') return;
+  layer.dataset.starsV26 = '1';
+
+  /* 실제 DOM에서도 암석 제거 */
+  layer.querySelectorAll('.gravity-rock-v25').forEach(function(el){
+    el.remove();
+  });
+
+  /* 기존 18개 + 추가 42개 = 총 60개 */
+  var stars = [];
+
+  for(var i=0;i<42;i++){
+    var el = document.createElement('i');
+    el.className = 'twinkle-star-v26';
+
+    /* 크기도 제각각, V25보다 전반적으로 조금 크게 */
+    var size;
+    var r = Math.random();
+
+    if(r < .55){
+      size = 2.2 + Math.random()*1.8;
+    }else if(r < .88){
+      size = 4 + Math.random()*2.8;
+    }else{
+      size = 6.8 + Math.random()*3.8;
+    }
+
+    el.style.width = size+'px';
+    el.style.height = size+'px';
+    layer.appendChild(el);
+
+    stars.push({
+      el:el,
+      x:.025 + Math.random()*.95,
+      y:.025 + Math.random()*.95,
+      phase:Math.random()*Math.PI*2,
+      speed:.52 + Math.random()*2.25,
+      threshold:.70 + Math.random()*.20,
+      maxA:.50 + Math.random()*.46,
+      baseScale:.72 + Math.random()*.55
+    });
+  }
+
+  var start = performance.now();
+
+  function animate(now){
+    var W = layer.clientWidth;
+    var H = layer.clientHeight;
+    var sec = (now-start)/1000;
+
+    if(W>0 && H>0){
+      stars.forEach(function(s,i){
+        var raw = .5 + .5*Math.sin(sec*s.speed + s.phase);
+
+        var flash = 0;
+        if(raw > s.threshold){
+          flash = (raw-s.threshold)/(1-s.threshold);
+          flash *= flash;
+        }
+
+        var opacity = .07 + flash*s.maxA;
+        var scale = s.baseScale*(.76 + flash*.72);
+
+        s.el.style.transform =
+          'translate3d('+(W*s.x).toFixed(1)+'px,'+
+          (H*s.y).toFixed(1)+'px,0) scale('+scale.toFixed(2)+')';
+
+        s.el.style.opacity = opacity.toFixed(3);
+      });
+    }
+
+    requestAnimationFrame(animate);
+  }
+
+  requestAnimationFrame(animate);
 })();
 </script>
 
