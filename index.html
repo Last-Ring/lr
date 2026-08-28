@@ -20348,6 +20348,1132 @@ document.addEventListener('DOMContentLoaded',function(){
 }
 </style>
 
+
+<style id="freelance-dashed-v1">
+/* =========================================================
+   FREELANCE — 점선 스타일 유지
+   독립 의뢰 / 계약서 / 임시 네트워크 / 비정규 조직 느낌
+   기존 점선 언어를 더 정돈된 '계약 경로'로 확장
+   ========================================================= */
+
+/* ---------- 세력 버튼 ---------- */
+#tab-char .faction-switch-btn[data-faction="freelance"]{
+  position:relative !important;
+  isolation:isolate !important;
+  overflow:hidden !important;
+  color:#c7ccd0 !important;
+  background:
+    linear-gradient(180deg,rgba(255,255,255,.018),transparent 34%),
+    linear-gradient(145deg,#181b1f 0%,#111418 58%,#0b0e11 100%) !important;
+  border:1px dashed rgba(137,145,151,.48) !important;
+  border-radius:5px !important;
+  box-shadow:
+    inset 0 0 0 1px rgba(255,255,255,.012),
+    inset 0 0 20px rgba(90,98,104,.025),
+    0 7px 18px rgba(0,0,0,.22) !important;
+}
+
+/* 내부 점선 프레임 */
+#tab-char .faction-switch-btn[data-faction="freelance"]::before{
+  content:"" !important;
+  display:block !important;
+  position:absolute !important;
+  z-index:2 !important;
+  inset:5px !important;
+  border:1px dashed rgba(149,157,162,.23) !important;
+  border-radius:2px !important;
+  pointer-events:none !important;
+}
+
+/* 점선 경로가 은은하게 흘러가는 느낌 */
+#tab-char .faction-switch-btn[data-faction="freelance"]::after{
+  content:"" !important;
+  display:block !important;
+  position:absolute !important;
+  z-index:3 !important;
+  left:-16% !important;
+  right:-16% !important;
+  top:50% !important;
+  height:1px !important;
+  transform:translateY(-50%) rotate(-3deg) !important;
+  background:
+    repeating-linear-gradient(
+      90deg,
+      rgba(181,187,191,.34) 0 5px,
+      transparent 5px 11px
+    ) !important;
+  background-size:22px 1px !important;
+  opacity:.55 !important;
+  pointer-events:none !important;
+  animation:freelanceDashFlow .95s linear infinite !important;
+}
+
+#tab-char .faction-switch-btn[data-faction="freelance"] .freelance-btn-label{
+  position:relative !important;
+  z-index:5 !important;
+  text-shadow:
+    0 1px 2px rgba(0,0,0,.98),
+    0 0 5px rgba(8,10,12,.9) !important;
+}
+
+#tab-char .faction-switch-btn[data-faction="freelance"]:hover{
+  transform:translateY(-2px) !important;
+  filter:brightness(1.04) !important;
+  border-color:rgba(156,164,169,.60) !important;
+}
+#tab-char .faction-switch-btn[data-faction="freelance"].active{
+  color:#d4d8db !important;
+  border-color:rgba(169,177,182,.70) !important;
+}
+
+@keyframes freelanceDashFlow{
+  from{background-position:0 0}
+  to{background-position:22px 0}
+}
+
+/* ---------- 내부 패널 ---------- */
+#tab-char .faction-content-panel[data-faction-panel="freelance"]{
+  position:relative !important;
+  overflow:hidden !important;
+  background:
+    linear-gradient(90deg,rgba(132,142,149,.018) 1px,transparent 1px),
+    linear-gradient(180deg,rgba(132,142,149,.015) 1px,transparent 1px),
+    linear-gradient(145deg,#171b1f 0%,#101418 60%,#0b0e11 100%) !important;
+  background-size:36px 36px,36px 36px,auto !important;
+  border:1px dashed rgba(125,136,143,.34) !important;
+  border-radius:5px !important;
+  box-shadow:
+    inset 0 0 0 1px rgba(255,255,255,.01),
+    inset 0 0 36px rgba(82,90,96,.025) !important;
+}
+
+/* 헤더 = 계약/의뢰 게시판 */
+#tab-char .faction-content-panel[data-faction-panel="freelance"] .acc-head{
+  position:relative !important;
+  overflow:hidden !important;
+  color:#cdd2d5 !important;
+  background:
+    linear-gradient(90deg,rgba(126,137,143,.06),transparent 42%),
+    #15191d !important;
+  border-bottom:1px dashed rgba(129,140,147,.28) !important;
+}
+#tab-char .faction-content-panel[data-faction-panel="freelance"] .acc-head::before{
+  content:"CONTRACT BOARD // OPEN NETWORK" !important;
+  position:absolute !important;
+  right:42px !important;
+  top:50% !important;
+  transform:translateY(-50%) !important;
+  width:auto !important;
+  height:auto !important;
+  color:rgba(161,170,175,.22) !important;
+  background:none !important;
+  border:0 !important;
+  font-family:"Courier New",monospace !important;
+  font-size:7px !important;
+  letter-spacing:.08em !important;
+  opacity:1 !important;
+  animation:none !important;
+}
+#tab-char .faction-content-panel[data-faction-panel="freelance"] .acc-head::after{
+  content:"" !important;
+  position:absolute !important;
+  left:14px !important;
+  right:14px !important;
+  bottom:4px !important;
+  height:1px !important;
+  background:
+    repeating-linear-gradient(90deg,rgba(151,160,166,.34) 0 6px,transparent 6px 13px) !important;
+}
+#tab-char .faction-content-panel[data-faction-panel="freelance"] .acc-num{
+  color:#909ba1 !important;
+}
+
+/* 소개 = 의뢰서 */
+#tab-char .faction-content-panel[data-faction-panel="freelance"] .faction-lead-desc{
+  position:relative !important;
+  color:#b7bec2 !important;
+  background:rgba(29,34,39,.58) !important;
+  border:1px dashed rgba(126,137,144,.27) !important;
+  border-left:3px solid rgba(139,149,155,.45) !important;
+  border-radius:2px !important;
+}
+#tab-char .faction-content-panel[data-faction-panel="freelance"] .faction-lead-desc::before,
+#tab-char .faction-content-panel[data-faction-panel="freelance"] .faction-lead-desc::after{
+  content:none !important;
+  display:none !important;
+}
+#tab-char .faction-content-panel[data-faction-panel="freelance"] .faction-lead-mark{
+  color:#929ca2 !important;
+}
+
+/* 장소 카드 = 임시 거점 / 계약 포인트 */
+#tab-char .faction-content-panel[data-faction-panel="freelance"] .place-card{
+  position:relative !important;
+  overflow:hidden !important;
+  background:linear-gradient(145deg,rgba(29,34,39,.95),rgba(14,17,20,.98)) !important;
+  border:1px dashed rgba(126,137,143,.27) !important;
+  border-radius:4px !important;
+  box-shadow:inset 0 0 0 1px rgba(255,255,255,.01) !important;
+}
+#tab-char .faction-content-panel[data-faction-panel="freelance"] .place-card::before{
+  content:"" !important;
+  position:absolute !important;
+  z-index:4 !important;
+  left:8px !important;
+  top:8px !important;
+  width:36px !important;
+  height:14px !important;
+  border-left:1px dashed rgba(155,164,169,.32) !important;
+  border-top:1px dashed rgba(155,164,169,.32) !important;
+  pointer-events:none !important;
+}
+#tab-char .faction-content-panel[data-faction-panel="freelance"] .place-card::after{
+  content:"OPEN CONTRACT" !important;
+  position:absolute !important;
+  z-index:4 !important;
+  right:10px !important;
+  top:8px !important;
+  color:rgba(152,161,166,.23) !important;
+  font-family:"Courier New",monospace !important;
+  font-size:6px !important;
+  letter-spacing:.09em !important;
+  pointer-events:none !important;
+}
+#tab-char .faction-content-panel[data-faction-panel="freelance"] .place-image{
+  overflow:hidden !important;
+  background:#0b0e11 !important;
+}
+#tab-char .faction-content-panel[data-faction-panel="freelance"] .place-image img{
+  filter:saturate(.76) brightness(.88) contrast(1.01) !important;
+  transition:transform .32s ease,filter .32s ease !important;
+}
+#tab-char .faction-content-panel[data-faction-panel="freelance"] .place-card:hover .place-image img{
+  transform:scale(1.022) !important;
+  filter:saturate(.84) brightness(.95) contrast(1.02) !important;
+}
+#tab-char .faction-content-panel[data-faction-panel="freelance"] .place-title{
+  color:#c7cccf !important;
+}
+#tab-char .faction-content-panel[data-faction-panel="freelance"] .place-desc{
+  color:#969fa4 !important;
+}
+
+/* 캐릭터 카드 = 프리랜서 계약서 카드 */
+#tab-char .faction-content-panel[data-faction-panel="freelance"] .char-card{
+  position:relative !important;
+  overflow:hidden !important;
+  background:
+    linear-gradient(180deg,rgba(237,240,241,.018),transparent 28%),
+    linear-gradient(150deg,#1b2025,#0e1115 72%) !important;
+  border:1px dashed rgba(127,138,145,.30) !important;
+  border-radius:4px !important;
+  box-shadow:inset 0 0 0 1px rgba(255,255,255,.008) !important;
+  transition:transform .22s ease,border-color .22s ease,filter .22s ease,box-shadow .22s ease !important;
+}
+
+/* 상단 계약선 */
+#tab-char .faction-content-panel[data-faction-panel="freelance"] .char-card::before{
+  content:"" !important;
+  position:absolute !important;
+  z-index:5 !important;
+  left:9px !important;
+  right:9px !important;
+  top:7px !important;
+  height:1px !important;
+  background:
+    repeating-linear-gradient(90deg,rgba(153,162,167,.28) 0 5px,transparent 5px 11px) !important;
+  pointer-events:none !important;
+}
+
+/* 오른쪽 아래 작은 계약 마커 */
+#tab-char .faction-content-panel[data-faction-panel="freelance"] .char-card::after{
+  content:"" !important;
+  position:absolute !important;
+  z-index:5 !important;
+  right:8px !important;
+  bottom:8px !important;
+  width:8px !important;
+  height:8px !important;
+  border-right:1px dashed rgba(153,162,167,.32) !important;
+  border-bottom:1px dashed rgba(153,162,167,.32) !important;
+  pointer-events:none !important;
+}
+
+#tab-char .faction-content-panel[data-faction-panel="freelance"] .char-card:hover{
+  transform:translateY(-2px) !important;
+  filter:brightness(1.035) !important;
+  border-color:rgba(151,161,167,.48) !important;
+  box-shadow:
+    inset 0 0 0 1px rgba(255,255,255,.012),
+    0 8px 18px rgba(0,0,0,.22) !important;
+}
+#tab-char .faction-content-panel[data-faction-panel="freelance"] .char-name{
+  color:#d0d4d6 !important;
+}
+#tab-char .faction-content-panel[data-faction-panel="freelance"] .char-role{
+  color:#929da3 !important;
+}
+
+/* ---------- 상세 Hover Popup ---------- */
+.character-hover-detail.freelance-character-detail{
+  position:fixed !important;
+  overflow:hidden !important;
+  background:
+    linear-gradient(90deg,rgba(127,137,143,.015) 1px,transparent 1px),
+    linear-gradient(180deg,rgba(127,137,143,.013) 1px,transparent 1px),
+    linear-gradient(145deg,#181d22,#0b0f12 72%) !important;
+  background-size:28px 28px,28px 28px,auto !important;
+  border:1px dashed rgba(128,139,146,.40) !important;
+  border-radius:4px !important;
+  box-shadow:
+    inset 0 0 0 1px rgba(255,255,255,.01),
+    inset 0 0 32px rgba(82,90,96,.025),
+    0 18px 44px rgba(0,0,0,.46) !important;
+}
+
+.character-hover-detail.freelance-character-detail::before{
+  content:"" !important;
+  display:block !important;
+  position:absolute !important;
+  z-index:20 !important;
+  left:8px !important;
+  right:8px !important;
+  top:8px !important;
+  height:1px !important;
+  background:
+    repeating-linear-gradient(90deg,rgba(157,166,171,.30) 0 6px,transparent 6px 13px) !important;
+  pointer-events:none !important;
+}
+.character-hover-detail.freelance-character-detail::after{
+  content:"FREELANCE // OPEN CONTRACT" !important;
+  position:absolute !important;
+  z-index:21 !important;
+  right:10px !important;
+  top:12px !important;
+  padding:2px 5px !important;
+  color:rgba(160,169,174,.33) !important;
+  background:rgba(11,14,17,.62) !important;
+  border:1px dashed rgba(129,140,146,.18) !important;
+  font-family:"Courier New",monospace !important;
+  font-size:7px !important;
+  letter-spacing:.07em !important;
+  pointer-events:none !important;
+}
+
+.character-hover-detail.freelance-character-detail .character-detail-art{
+  background:#0a0d10 !important;
+  border-bottom:1px dashed rgba(127,138,145,.22) !important;
+}
+.character-hover-detail.freelance-character-detail .character-detail-name{
+  color:#d1d5d7 !important;
+}
+.character-hover-detail.freelance-character-detail .character-detail-role,
+.character-hover-detail.freelance-character-detail .character-detail-code{
+  color:#929da3 !important;
+}
+.character-hover-detail.freelance-character-detail .character-detail-profile{
+  color:#969fa4 !important;
+}
+.character-hover-detail.freelance-character-detail .character-detail-ability{
+  background:rgba(89,97,102,.06) !important;
+  border:1px dashed rgba(127,138,145,.22) !important;
+}
+.character-hover-detail.freelance-character-detail .character-detail-ability strong{
+  color:#c1c7ca !important;
+}
+.character-hover-detail.freelance-character-detail .character-detail-quote{
+  color:#a8afb3 !important;
+  border-color:rgba(125,136,143,.20) !important;
+}
+
+@media(prefers-reduced-motion:reduce){
+  #tab-char .faction-switch-btn[data-faction="freelance"]::after{
+    animation:none !important;
+  }
+}
+</style>
+
+<script id="freelance-dashed-v1-script">
+document.addEventListener('DOMContentLoaded',function(){
+  var btn=document.querySelector('#tab-char .faction-switch-btn[data-faction="freelance"]');
+  if(btn && !btn.querySelector('.freelance-btn-label')){
+    Array.from(btn.childNodes).forEach(function(node){
+      if(node.nodeType===3 && node.textContent.trim()){
+        var label=document.createElement('span');
+        label.className='freelance-btn-label';
+        label.textContent=node.textContent;
+        btn.replaceChild(label,node);
+      }
+    });
+  }
+
+  var panel=document.querySelector('#tab-char .faction-content-panel[data-faction-panel="freelance"]');
+  if(!panel) return;
+
+  panel.querySelectorAll('.char-card[data-character-detail]').forEach(function(card){
+    var key=card.getAttribute('data-character-detail');
+    if(!key) return;
+    var popup=document.querySelector('.character-hover-detail[data-detail-popup="'+key+'"]');
+    if(popup) popup.classList.add('freelance-character-detail');
+  });
+});
+</script>
+
+
+<style id="wolha-button-text-visibility-v4">
+/* 월하 버튼: 달 위에서도 글자가 확실히 보이도록 전면 수정 */
+#tab-char .faction-switch-btn[data-faction="wolha"] .wolha-btn-label{
+  position:relative !important;
+  z-index:20 !important;
+  display:inline-block !important;
+  padding:3px 8px !important;
+
+  /* 요청한 남색 유지 + 훨씬 진하게 */
+  color:#071d35 !important;
+  font-weight:950 !important;
+  letter-spacing:.025em !important;
+
+  /* 흰 외곽광 대신 남색 획을 또렷하게 */
+  -webkit-text-stroke:.25px rgba(4,19,34,.72) !important;
+  text-shadow:
+    0 1px 0 rgba(255,255,255,.58),
+    0 0 1px rgba(4,18,32,.90) !important;
+}
+
+/* 기존 넓은 반투명 받침 제거 */
+#tab-char .faction-switch-btn[data-faction="wolha"] .wolha-btn-label::before{
+  content:none !important;
+  display:none !important;
+}
+
+/* 글자 바로 뒤의 달 부분만 살짝 어둡게 눌러 대비 확보 */
+#tab-char .faction-switch-btn[data-faction="wolha"] .wolha-btn-label::after{
+  content:"" !important;
+  position:absolute !important;
+  z-index:-1 !important;
+  left:-3px !important;
+  right:-3px !important;
+  top:1px !important;
+  bottom:1px !important;
+  border-radius:4px !important;
+  background:rgba(183,201,207,.38) !important;
+  box-shadow:0 0 4px rgba(183,201,207,.20) !important;
+  pointer-events:none !important;
+}
+
+/* 달 자체가 너무 하얘서 글자를 먹던 부분을 약간만 낮춤 */
+#tab-char .faction-switch-btn[data-faction="wolha"]::before{
+  filter:brightness(.88) contrast(.94) !important;
+}
+
+/* 선택 상태에서도 남색 글자 유지 */
+#tab-char .faction-switch-btn[data-faction="wolha"].active .wolha-btn-label{
+  color:#061a31 !important;
+}
+</style>
+
+
+<style id="wolha-remove-white-text-box-v5">
+/* 월하 글자 뒤 네모난 반투명 흰색 받침 완전 제거 */
+#tab-char .faction-switch-btn[data-faction="wolha"] .wolha-btn-label::before,
+#tab-char .faction-switch-btn[data-faction="wolha"] .wolha-btn-label::after{
+  content:none !important;
+  display:none !important;
+  background:none !important;
+  box-shadow:none !important;
+  filter:none !important;
+}
+
+/* 받침 없이 남색 글자 자체로 가독성 유지 */
+#tab-char .faction-switch-btn[data-faction="wolha"] .wolha-btn-label{
+  color:#071d35 !important;
+  background:transparent !important;
+  box-shadow:none !important;
+  font-weight:950 !important;
+  -webkit-text-stroke:.3px rgba(3,17,31,.82) !important;
+  text-shadow:0 1px 0 rgba(255,255,255,.42) !important;
+}
+</style>
+
+
+<style id="wolha-text-v6-no-overlay">
+/* 월하: 반투명 받침/배경 없이 글자 자체만 선명하게 */
+#tab-char .faction-switch-btn[data-faction="wolha"] .wolha-btn-label,
+#tab-char .faction-switch-btn[data-faction="wolha"].active .wolha-btn-label{
+  position:relative !important;
+  z-index:20 !important;
+  padding:0 !important;
+  color:#07182c !important;
+  background:none !important;
+  background-color:transparent !important;
+  box-shadow:none !important;
+  filter:none !important;
+  opacity:1 !important;
+  font-weight:1000 !important;
+  letter-spacing:.01em !important;
+  -webkit-text-stroke:.65px #07182c !important;
+  paint-order:stroke fill !important;
+  text-shadow:
+    0 1px 0 #dfe8ea,
+    1px 0 0 #dfe8ea,
+    -1px 0 0 #dfe8ea,
+    0 -1px 0 #dfe8ea !important;
+}
+
+/* 어떤 이전 버전의 받침도 절대 표시하지 않음 */
+#tab-char .faction-switch-btn[data-faction="wolha"] .wolha-btn-label::before,
+#tab-char .faction-switch-btn[data-faction="wolha"] .wolha-btn-label::after{
+  content:none !important;
+  display:none !important;
+  opacity:0 !important;
+  background:none !important;
+  box-shadow:none !important;
+}
+</style>
+
+
+<style id="wolha-detail-remove-top-moon">
+/* 월하 캐릭터 상세 Hover: 상단 보름달 장식만 제거 */
+.character-hover-detail.wolha-character-detail::before{
+  content:none !important;
+  display:none !important;
+  background:none !important;
+  box-shadow:none !important;
+  opacity:0 !important;
+}
+</style>
+
+
+<style id="hostile-button-broken-v2">
+/* =========================================================
+   HOSTILE BUTTON ONLY
+   내부 디자인은 건드리지 않음.
+   '깨끗한 네모 + 사이렌'이 아니라 실제로 프레임 일부가
+   뜯기고 끊어진 경고 표지판처럼 보이게 만든다.
+   ========================================================= */
+
+#tab-char .faction-switch-btn[data-faction="hostile"]{
+  position:relative !important;
+  isolation:isolate !important;
+  overflow:hidden !important;
+
+  color:#f06c72 !important;
+  background:
+    radial-gradient(circle at 50% 50%,rgba(187,27,35,.10),transparent 45%),
+    linear-gradient(145deg,#1c0b0f 0%,#11080b 62%,#080405 100%) !important;
+
+  /* 기존 반듯한 border 제거 */
+  border:0 !important;
+  border-radius:0 !important;
+
+  /* 외곽 자체를 불규칙하게 절단 */
+  clip-path:polygon(
+    0 8px,
+    8px 8px,
+    8px 0,
+    31% 0,
+    34% 4px,
+    48% 0,
+    76% 0,
+    79% 3px,
+    100% 3px,
+    100% 31%,
+    96% 35%,
+    100% 43%,
+    100% 74%,
+    96% 78%,
+    100% 86%,
+    100% 100%,
+    70% 100%,
+    67% 96%,
+    53% 100%,
+    24% 100%,
+    21% 96%,
+    0 96%,
+    0 67%,
+    4% 63%,
+    0 54%
+  ) !important;
+
+  box-shadow:
+    inset 0 0 18px rgba(166,21,29,.08),
+    0 7px 18px rgba(0,0,0,.26) !important;
+}
+
+/* 깨진 외곽선 조각.
+   한 장의 네모 테두리가 아니라 끊어진 선분으로 구성 */
+#tab-char .faction-switch-btn[data-faction="hostile"]::before{
+  content:"" !important;
+  display:block !important;
+  position:absolute !important;
+  z-index:2 !important;
+  inset:0 !important;
+  pointer-events:none !important;
+
+  background:
+    /* top broken segments */
+    linear-gradient(90deg,#cf323a,#cf323a) 9px 1px/27% 1px no-repeat,
+    linear-gradient(90deg,#cf323a,#cf323a) 42% 1px/21% 1px no-repeat,
+    linear-gradient(90deg,#cf323a,#cf323a) 72% 4px/23% 1px no-repeat,
+
+    /* bottom broken segments */
+    linear-gradient(90deg,#cf323a,#cf323a) 5px calc(100% - 3px)/18% 1px no-repeat,
+    linear-gradient(90deg,#cf323a,#cf323a) 31% calc(100% - 1px)/31% 1px no-repeat,
+    linear-gradient(90deg,#cf323a,#cf323a) 73% calc(100% - 1px)/22% 1px no-repeat,
+
+    /* left broken segments */
+    linear-gradient(#cf323a,#cf323a) 1px 10px/1px 24% no-repeat,
+    linear-gradient(#cf323a,#cf323a) 1px 57%/1px 31% no-repeat,
+
+    /* right broken segments */
+    linear-gradient(#cf323a,#cf323a) calc(100% - 1px) 4px/1px 27% no-repeat,
+    linear-gradient(#cf323a,#cf323a) calc(100% - 1px) 47%/1px 39% no-repeat,
+
+    /* crack marks */
+    linear-gradient(135deg,transparent 43%,rgba(224,53,61,.80) 45% 50%,transparent 52%) 26% 0/15px 11px no-repeat,
+    linear-gradient(45deg,transparent 43%,rgba(224,53,61,.68) 45% 50%,transparent 52%) 82% 100%/16px 12px no-repeat !important;
+
+  opacity:.92 !important;
+}
+
+/* 회전 사이렌 빛은 프레임 뒤에서만 */
+#tab-char .faction-switch-btn[data-faction="hostile"]::after{
+  content:"" !important;
+  display:block !important;
+  position:absolute !important;
+  z-index:1 !important;
+  left:50% !important;
+  top:50% !important;
+  width:96px !important;
+  height:96px !important;
+  margin:-48px 0 0 -48px !important;
+  border-radius:50% !important;
+
+  background:
+    conic-gradient(
+      from 0deg,
+      transparent 0deg 64deg,
+      rgba(218,39,47,0) 64deg,
+      rgba(218,39,47,.34) 84deg,
+      rgba(218,39,47,.08) 108deg,
+      transparent 130deg 360deg
+    ) !important;
+
+  animation:hostileButtonSirenV2 1.05s linear infinite !important;
+  pointer-events:none !important;
+}
+
+/* 글자 */
+#tab-char .faction-switch-btn[data-faction="hostile"]{
+  text-shadow:
+    0 1px 2px #050203,
+    0 0 5px rgba(31,4,7,.96) !important;
+}
+
+/* 선택/호버도 프레임 형태는 그대로 */
+#tab-char .faction-switch-btn[data-faction="hostile"]:hover{
+  transform:translateY(-2px) !important;
+  filter:brightness(1.06) !important;
+}
+#tab-char .faction-switch-btn[data-faction="hostile"].active{
+  color:#f47a80 !important;
+  filter:brightness(1.05) !important;
+}
+
+@keyframes hostileButtonSirenV2{
+  to{transform:rotate(360deg)}
+}
+
+@media(prefers-reduced-motion:reduce){
+  #tab-char .faction-switch-btn[data-faction="hostile"]::after{
+    animation:none !important;
+  }
+}
+</style>
+
+
+<style id="calamity-obsidian-orbs-v1">
+/* =========================================================
+   재앙 / 옵시디언 레어
+   - "적대세력" 표기 → "재앙"
+   - 옵시디언 레어 place-card 안에서만 검은 심연 구체가
+     하단에서 몽글몽글 생성되어 천천히 천장까지 상승
+   - 콘텐츠/초상화/다른 재앙 박스에는 적용하지 않음
+   ========================================================= */
+
+#tab-char .faction-hostile .calamity-avril .calamity-place-card-unified{
+  position:relative !important;
+  overflow:hidden !important;
+  isolation:isolate !important;
+}
+
+/* 구체 레이어: 카드 전체 안에서만 잘림 */
+#tab-char .faction-hostile .calamity-avril .obsidian-orb-field{
+  position:absolute !important;
+  z-index:1 !important;
+  inset:0 !important;
+  overflow:hidden !important;
+  pointer-events:none !important;
+}
+
+/* 기존 실제 콘텐츠는 구체보다 위 */
+#tab-char .faction-hostile .calamity-avril .calamity-place-card-unified > 
+  *:not(.obsidian-orb-field){
+  position:relative !important;
+  z-index:3 !important;
+}
+
+/* 검은 심연 구체 */
+#tab-char .faction-hostile .calamity-avril .obsidian-orb{
+  position:absolute !important;
+  left:var(--x) !important;
+  bottom:-44px !important;
+  width:var(--size) !important;
+  height:var(--size) !important;
+  border-radius:50% !important;
+
+  background:
+    radial-gradient(circle at 32% 26%,
+      rgba(109,87,135,.26) 0 5%,
+      rgba(43,32,58,.46) 12%,
+      rgba(10,8,15,.94) 49%,
+      rgba(1,1,3,.99) 72%,
+      rgba(0,0,0,.98) 100%
+    ) !important;
+
+  border:1px solid rgba(83,61,103,.18) !important;
+
+  box-shadow:
+    inset -5px -7px 10px rgba(0,0,0,.88),
+    inset 3px 3px 7px rgba(92,65,114,.10),
+    0 0 10px rgba(41,24,58,.10) !important;
+
+  opacity:0 !important;
+  filter:blur(var(--blur)) !important;
+  transform:translate3d(0,0,0) scale(.72) !important;
+  will-change:transform,opacity !important;
+
+  animation:
+    obsidianOrbRise var(--duration) linear var(--delay) infinite,
+    obsidianOrbWobble var(--wobble) ease-in-out var(--delay) infinite alternate
+    !important;
+}
+
+/* 일부 구체는 더 흐릿하고 뒤쪽 */
+#tab-char .faction-hostile .calamity-avril .obsidian-orb.is-back{
+  opacity:0 !important;
+  filter:blur(calc(var(--blur) + .5px)) !important;
+}
+
+/* 구체가 밑에서 생겨 카드 천장까지 올라간 뒤 사라짐 */
+@keyframes obsidianOrbRise{
+  0%{
+    bottom:-44px;
+    opacity:0;
+    transform:translate3d(0,0,0) scale(.55);
+  }
+  8%{
+    opacity:var(--alpha);
+    transform:translate3d(0,-8px,0) scale(.82);
+  }
+  20%{
+    opacity:var(--alpha);
+    transform:translate3d(var(--drift1),-42px,0) scale(1);
+  }
+  55%{
+    opacity:calc(var(--alpha) * .90);
+    transform:translate3d(var(--drift2),-150px,0) scale(.94);
+  }
+  82%{
+    opacity:calc(var(--alpha) * .72);
+    transform:translate3d(var(--drift3),-260px,0) scale(.87);
+  }
+  96%{
+    opacity:.06;
+    transform:translate3d(var(--drift4),-330px,0) scale(.80);
+  }
+  100%{
+    bottom:-44px;
+    opacity:0;
+    transform:translate3d(var(--drift4),-355px,0) scale(.76);
+  }
+}
+
+/* 몽글몽글 좌우 흔들림 */
+@keyframes obsidianOrbWobble{
+  from{ margin-left:-4px; }
+  to{ margin-left:6px; }
+}
+
+/* 하단에서 심연 기운이 아주 옅게 맺히는 정도 */
+#tab-char .faction-hostile .calamity-avril .obsidian-orb-field::after{
+  content:"" !important;
+  position:absolute !important;
+  left:7% !important;
+  right:7% !important;
+  bottom:-18px !important;
+  height:58px !important;
+  border-radius:50% !important;
+  background:
+    radial-gradient(ellipse at center,
+      rgba(10,7,15,.34),
+      rgba(5,4,8,.12) 48%,
+      transparent 72%
+    ) !important;
+  filter:blur(10px) !important;
+  opacity:.42 !important;
+}
+
+/* 움직임 감소 환경 */
+@media(prefers-reduced-motion:reduce){
+  #tab-char .faction-hostile .calamity-avril .obsidian-orb{
+    animation:none !important;
+    display:none !important;
+  }
+}
+</style>
+
+<script id="calamity-obsidian-orbs-v1-script">
+document.addEventListener('DOMContentLoaded',function(){
+  var card=document.querySelector(
+    '#tab-char .faction-hostile .calamity-avril .calamity-place-card-unified'
+  );
+  if(!card || card.querySelector('.obsidian-orb-field')) return;
+
+  var field=document.createElement('span');
+  field.className='obsidian-orb-field';
+  field.setAttribute('aria-hidden','true');
+
+  var configs=[
+    ['11%','16px','12.8s','-1.3s','.34','0px','7px','-5px','4px','3.8s','.2px',false],
+    ['23%','25px','16.4s','-7.1s','.29','5px','-8px','8px','-3px','4.7s','.35px',true],
+    ['36%','13px','10.9s','-4.2s','.38','-3px','6px','-7px','5px','3.3s','0px',false],
+    ['49%','31px','18.7s','-10.5s','.25','8px','-5px','10px','-6px','5.1s','.45px',true],
+    ['61%','19px','13.9s','-8.6s','.32','-5px','8px','-4px','7px','4.1s','.15px',false],
+    ['73%','27px','17.2s','-2.8s','.26','7px','-7px','9px','-5px','4.9s','.4px',true],
+    ['84%','14px','11.8s','-6.7s','.36','-4px','5px','-8px','4px','3.5s','.1px',false],
+    ['91%','21px','15.3s','-11.6s','.27','4px','-8px','6px','-4px','4.4s','.3px',true]
+  ];
+
+  configs.forEach(function(c){
+    var orb=document.createElement('i');
+    orb.className='obsidian-orb'+(c[12]?' is-back':'');
+    orb.style.setProperty('--x',c[0]);
+    orb.style.setProperty('--size',c[1]);
+    orb.style.setProperty('--duration',c[2]);
+    orb.style.setProperty('--delay',c[3]);
+    orb.style.setProperty('--alpha',c[4]);
+    orb.style.setProperty('--drift1',c[5]);
+    orb.style.setProperty('--drift2',c[6]);
+    orb.style.setProperty('--drift3',c[7]);
+    orb.style.setProperty('--drift4',c[8]);
+    orb.style.setProperty('--wobble',c[9]);
+    orb.style.setProperty('--blur',c[10]);
+    field.appendChild(orb);
+  });
+
+  card.insertBefore(field,card.firstChild);
+});
+</script>
+
+
+<style id="calamity-obsidian-orbs-v2-visible">
+/* =========================================================
+   V2 FIX
+   이전 구체 레이어가 place-image / place-info 뒤에 깔려
+   전부 가려지던 문제 수정.
+   이제 옵시디언 레어 카드 안에서 실제로 보이도록
+   카드 위 오버레이 레이어로 올리되 텍스트/초상화는 가리지 않음.
+   ========================================================= */
+
+#tab-char .faction-hostile .calamity-avril .calamity-place-card-unified{
+  position:relative !important;
+  overflow:hidden !important;
+  isolation:isolate !important;
+}
+
+/* 구체 레이어를 실제 카드 위로 */
+#tab-char .faction-hostile .calamity-avril .obsidian-orb-field{
+  position:absolute !important;
+  z-index:8 !important;
+  inset:0 !important;
+  overflow:hidden !important;
+  pointer-events:none !important;
+}
+
+/* 텍스트와 캐릭터 카드는 구체보다 위 */
+#tab-char .faction-hostile .calamity-avril .place-title,
+#tab-char .faction-hostile .calamity-avril .place-desc,
+#tab-char .faction-hostile .calamity-avril .place-characters{
+  position:relative !important;
+  z-index:12 !important;
+}
+
+/* 구체가 잘 보이도록 재정의 */
+#tab-char .faction-hostile .calamity-avril .obsidian-orb{
+  position:absolute !important;
+  left:var(--x) !important;
+  top:102% !important;
+
+  width:var(--size) !important;
+  height:var(--size) !important;
+  border-radius:50% !important;
+
+  background:
+    radial-gradient(circle at 32% 28%,
+      rgba(111,84,139,.34) 0 6%,
+      rgba(48,34,65,.52) 15%,
+      rgba(11,8,16,.97) 48%,
+      rgba(1,1,3,.99) 74%,
+      #000 100%
+    ) !important;
+
+  border:1px solid rgba(92,66,115,.24) !important;
+  box-shadow:
+    inset -5px -7px 10px rgba(0,0,0,.92),
+    inset 3px 3px 8px rgba(104,74,127,.13),
+    0 0 12px rgba(45,27,62,.15) !important;
+
+  opacity:0 !important;
+  filter:blur(var(--blur)) !important;
+  animation:obsidianOrbRiseV2 var(--duration) linear var(--delay) infinite !important;
+  will-change:top,transform,opacity !important;
+}
+
+/* 아래에서 몽글몽글 나타나서 카드 천장까지 */
+@keyframes obsidianOrbRiseV2{
+  0%{
+    top:103%;
+    opacity:0;
+    transform:translateX(0) scale(.58);
+  }
+  8%{
+    opacity:var(--alpha);
+    transform:translateX(2px) scale(.82);
+  }
+  20%{
+    top:82%;
+    opacity:var(--alpha);
+    transform:translateX(var(--d1)) scale(1);
+  }
+  48%{
+    top:52%;
+    opacity:var(--alpha);
+    transform:translateX(var(--d2)) scale(.96);
+  }
+  76%{
+    top:22%;
+    opacity:calc(var(--alpha) - .06);
+    transform:translateX(var(--d3)) scale(.90);
+  }
+  94%{
+    top:1%;
+    opacity:.12;
+    transform:translateX(var(--d4)) scale(.84);
+  }
+  100%{
+    top:-12%;
+    opacity:0;
+    transform:translateX(var(--d4)) scale(.80);
+  }
+}
+
+/* 카드 하단에 심연이 살짝 웅크린 느낌 */
+#tab-char .faction-hostile .calamity-avril .obsidian-orb-field::after{
+  content:"" !important;
+  position:absolute !important;
+  left:5% !important;
+  right:5% !important;
+  bottom:-14px !important;
+  height:72px !important;
+  border-radius:50% !important;
+  background:
+    radial-gradient(ellipse at center,
+      rgba(18,10,25,.48) 0%,
+      rgba(8,5,12,.24) 45%,
+      transparent 74%
+    ) !important;
+  filter:blur(11px) !important;
+  opacity:.56 !important;
+}
+</style>
+
+<script id="calamity-obsidian-orbs-v2-visible-script">
+document.addEventListener('DOMContentLoaded',function(){
+  var card=document.querySelector(
+    '#tab-char .faction-hostile .calamity-avril .calamity-place-card-unified'
+  );
+  if(!card) return;
+
+  /* 이전 구체 레이어를 제거하고 새로 생성 */
+  var old=card.querySelector('.obsidian-orb-field');
+  if(old) old.remove();
+
+  var field=document.createElement('span');
+  field.className='obsidian-orb-field';
+  field.setAttribute('aria-hidden','true');
+
+  var configs=[
+    ['8%','18px','13.0s','-1.2s','.42','7px','-4px','8px','-3px','.15px'],
+    ['18%','28px','17.5s','-9.4s','.34','-5px','8px','-7px','5px','.35px'],
+    ['30%','14px','11.2s','-5.2s','.46','5px','-6px','7px','-5px','0px'],
+    ['41%','23px','15.8s','-11.1s','.38','-6px','9px','-4px','7px','.2px'],
+    ['53%','32px','19.0s','-7.6s','.31','8px','-5px','10px','-7px','.45px'],
+    ['65%','17px','12.5s','-3.8s','.43','-4px','7px','-6px','5px','.1px'],
+    ['77%','25px','16.7s','-12.9s','.35','7px','-8px','6px','-4px','.3px'],
+    ['88%','15px','11.8s','-8.1s','.44','-5px','5px','-7px','4px','0px'],
+    ['94%','21px','14.6s','-6.0s','.36','4px','-7px','8px','-5px','.2px']
+  ];
+
+  configs.forEach(function(c){
+    var orb=document.createElement('i');
+    orb.className='obsidian-orb';
+    orb.style.setProperty('--x',c[0]);
+    orb.style.setProperty('--size',c[1]);
+    orb.style.setProperty('--duration',c[2]);
+    orb.style.setProperty('--delay',c[3]);
+    orb.style.setProperty('--alpha',c[4]);
+    orb.style.setProperty('--d1',c[5]);
+    orb.style.setProperty('--d2',c[6]);
+    orb.style.setProperty('--d3',c[7]);
+    orb.style.setProperty('--d4',c[8]);
+    orb.style.setProperty('--blur',c[9]);
+    field.appendChild(orb);
+  });
+
+  card.insertBefore(field,card.firstChild);
+});
+</script>
+
+
+<style id="calamity-obsidian-orbs-v3-direct">
+/* =========================================================
+   V3 — JS 없이 실제 옵시디언 레어 HTML 안에 구체를 직접 삽입.
+   기존 v1/v2 orb 레이어는 비활성화.
+   ========================================================= */
+
+#tab-char .faction-hostile .calamity-avril .obsidian-orb-field{
+  display:none !important;
+}
+
+/* 옵시디언 레어 카드에서만 */
+#tab-char .faction-hostile .calamity-avril .calamity-place-card-unified{
+  position:relative !important;
+  overflow:hidden !important;
+  isolation:isolate !important;
+}
+
+/* 실제 삽입된 구체 필드 */
+#tab-char .faction-hostile .calamity-avril .obsidian-orbs-direct{
+  display:block !important;
+  position:absolute !important;
+  z-index:9 !important;
+  inset:0 !important;
+  overflow:hidden !important;
+  pointer-events:none !important;
+}
+
+/* 텍스트/캐릭터는 위로 */
+#tab-char .faction-hostile .calamity-avril .place-info{
+  position:relative !important;
+  z-index:12 !important;
+}
+
+/* 구체 공통 */
+#tab-char .faction-hostile .calamity-avril .obsidian-orbs-direct .orb{
+  position:absolute !important;
+  bottom:-70px !important;
+  display:block !important;
+  border-radius:50% !important;
+  opacity:0;
+
+  background:
+    radial-gradient(circle at 30% 25%,
+      rgba(144,109,176,.42) 0 5%,
+      rgba(74,50,91,.42) 12%,
+      rgba(21,14,29,.95) 42%,
+      rgba(3,2,5,.99) 72%,
+      #000 100%
+    ) !important;
+
+  border:1px solid rgba(109,77,133,.27) !important;
+  box-shadow:
+    inset -8px -10px 15px rgba(0,0,0,.92),
+    inset 4px 4px 9px rgba(126,90,151,.13),
+    0 0 14px rgba(63,37,82,.14) !important;
+
+  will-change:transform,opacity !important;
+  animation-name:obsidianBubbleRiseDirect !important;
+  animation-timing-function:linear !important;
+  animation-iteration-count:infinite !important;
+}
+
+/* 각각 다른 위치/크기/속도/시작 시점 */
+#tab-char .faction-hostile .calamity-avril .o1 {left:5%;  width:18px;height:18px;animation-duration:12s!important;animation-delay:-1s!important;--dx:22px;--a:.50;}
+#tab-char .faction-hostile .calamity-avril .o2 {left:14%; width:34px;height:34px;animation-duration:17s!important;animation-delay:-9s!important;--dx:-28px;--a:.38;}
+#tab-char .faction-hostile .calamity-avril .o3 {left:24%; width:14px;height:14px;animation-duration:10s!important;animation-delay:-5s!important;--dx:18px;--a:.54;}
+#tab-char .faction-hostile .calamity-avril .o4 {left:34%; width:27px;height:27px;animation-duration:15s!important;animation-delay:-12s!important;--dx:-20px;--a:.43;}
+#tab-char .faction-hostile .calamity-avril .o5 {left:44%; width:42px;height:42px;animation-duration:20s!important;animation-delay:-7s!important;--dx:31px;--a:.34;}
+#tab-char .faction-hostile .calamity-avril .o6 {left:55%; width:19px;height:19px;animation-duration:12.5s!important;animation-delay:-4s!important;--dx:-19px;--a:.49;}
+#tab-char .faction-hostile .calamity-avril .o7 {left:64%; width:31px;height:31px;animation-duration:16s!important;animation-delay:-13s!important;--dx:24px;--a:.40;}
+#tab-char .faction-hostile .calamity-avril .o8 {left:73%; width:16px;height:16px;animation-duration:11s!important;animation-delay:-7s!important;--dx:-17px;--a:.52;}
+#tab-char .faction-hostile .calamity-avril .o9 {left:82%; width:37px;height:37px;animation-duration:18s!important;animation-delay:-10s!important;--dx:27px;--a:.36;}
+#tab-char .faction-hostile .calamity-avril .o10{left:91%; width:20px;height:20px;animation-duration:13s!important;animation-delay:-3s!important;--dx:-23px;--a:.47;}
+#tab-char .faction-hostile .calamity-avril .o11{left:47%; width:12px;height:12px;animation-duration:9s!important; animation-delay:-8s!important;--dx:14px;--a:.58;}
+#tab-char .faction-hostile .calamity-avril .o12{left:69%; width:24px;height:24px;animation-duration:14s!important;animation-delay:-6s!important;--dx:-16px;--a:.44;}
+
+/* 카드 높이 전체를 bottom 기반으로 확실하게 통과.
+   translateY(-1100px)는 현재 카드 높이보다 충분히 커서 천장까지 지나간다. */
+@keyframes obsidianBubbleRiseDirect{
+  0%{
+    transform:translate3d(0,0,0) scale(.55);
+    opacity:0;
+  }
+  7%{
+    opacity:var(--a);
+  }
+  18%{
+    transform:translate3d(calc(var(--dx) * .25),-170px,0) scale(.95);
+    opacity:var(--a);
+  }
+  42%{
+    transform:translate3d(calc(var(--dx) * -.35),-420px,0) scale(1);
+    opacity:var(--a);
+  }
+  67%{
+    transform:translate3d(calc(var(--dx) * .65),-690px,0) scale(.92);
+    opacity:calc(var(--a) * .82);
+  }
+  88%{
+    transform:translate3d(calc(var(--dx) * -.40),-930px,0) scale(.84);
+    opacity:.18;
+  }
+  100%{
+    transform:translate3d(var(--dx),-1120px,0) scale(.76);
+    opacity:0;
+  }
+}
+
+/* 하단 심연 안개 */
+#tab-char .faction-hostile .calamity-avril .obsidian-orbs-direct::after{
+  content:"" !important;
+  position:absolute !important;
+  left:3% !important;
+  right:3% !important;
+  bottom:-22px !important;
+  height:90px !important;
+  border-radius:50% !important;
+  background:radial-gradient(
+    ellipse at center,
+    rgba(24,14,33,.58) 0%,
+    rgba(8,5,12,.27) 44%,
+    transparent 75%
+  ) !important;
+  filter:blur(13px) !important;
+  opacity:.60 !important;
+}
+</style>
+
 </head>
 <body><div aria-hidden="true" class="shooting-stars"><span class="shooting-star star-a"></span><span class="shooting-star star-b"></span><span class="shooting-star star-c"></span></div>
 <section class="hero">
@@ -20721,7 +21847,7 @@ document.addEventListener('DOMContentLoaded',function(){
 </div>
 </div>
 <div class="tab-panel" id="tab-char">
-<div class="faction-switcher"><button class="faction-switch-btn faction-player active" data-faction="player" type="button">플레이어블 캐릭터</button><button class="faction-switch-btn faction-central" data-faction="central" type="button">오르비스 중앙연합</button><button class="faction-switch-btn faction-luminaris" data-faction="luminaris" type="button">루미나리스 신성제국</button><button class="faction-switch-btn faction-astra" data-faction="astra" type="button">아스트라 연방</button><button class="faction-switch-btn faction-sylvania" data-faction="sylvania" type="button">실바니아 자연동맹</button><button class="faction-switch-btn faction-cheonmyeong" data-faction="cheonmyeong" type="button">천명천관</button><button class="faction-switch-btn faction-pantheon" data-faction="pantheon" type="button">판테온 아카데미</button><button class="faction-switch-btn faction-phantom" data-faction="phantom" type="button">팬텀 스트라이크</button><button class="faction-switch-btn faction-noblesse" data-faction="noblesse" type="button">노블레스</button><button class="faction-switch-btn faction-wolha" data-faction="wolha" type="button">월하</button><button class="faction-switch-btn faction-freelance" data-faction="freelance" type="button">프리랜서</button><button class="faction-switch-btn faction-calamity faction-hostile" data-faction="hostile" type="button">적대세력</button></div><div class="acc-group">
+<div class="faction-switcher"><button class="faction-switch-btn faction-player active" data-faction="player" type="button">플레이어블 캐릭터</button><button class="faction-switch-btn faction-central" data-faction="central" type="button">오르비스 중앙연합</button><button class="faction-switch-btn faction-luminaris" data-faction="luminaris" type="button">루미나리스 신성제국</button><button class="faction-switch-btn faction-astra" data-faction="astra" type="button">아스트라 연방</button><button class="faction-switch-btn faction-sylvania" data-faction="sylvania" type="button">실바니아 자연동맹</button><button class="faction-switch-btn faction-cheonmyeong" data-faction="cheonmyeong" type="button">천명천관</button><button class="faction-switch-btn faction-pantheon" data-faction="pantheon" type="button">판테온 아카데미</button><button class="faction-switch-btn faction-phantom" data-faction="phantom" type="button">팬텀 스트라이크</button><button class="faction-switch-btn faction-noblesse" data-faction="noblesse" type="button">노블레스</button><button class="faction-switch-btn faction-wolha" data-faction="wolha" type="button">월하</button><button class="faction-switch-btn faction-freelance" data-faction="freelance" type="button">프리랜서</button><button class="faction-switch-btn faction-calamity faction-hostile" data-faction="hostile" type="button">재앙</button></div><div class="acc-group">
 <div class="acc-item faction-player faction-content-panel" data-faction-panel="player">
 <button class="acc-head">
 <span class="acc-num">PC</span>
@@ -21144,7 +22270,7 @@ document.addEventListener('DOMContentLoaded',function(){
 <div class="acc-item faction-calamity faction-content-panel faction-hostile" data-faction-panel="hostile" data-section-type="hostile-only">
 <button class="acc-head">
 <span class="acc-num">11</span>
-<span class="acc-title">적대세력</span>
+<span class="acc-title">재앙</span>
 <span class="acc-chevron"></span>
 </button>
 <div class="acc-body">
@@ -21156,7 +22282,7 @@ document.addEventListener('DOMContentLoaded',function(){
             </div>
 <div class="calamity-stack">
 <!-- 에이브릴 -->
-<div class="calamity-row calamity-avril"><div class="place-card calamity-place-card-unified"><div class="place-image"><img alt="옵시디언 레어" src="img/bg/28.png"/></div><div class="place-info"><div class="place-title">◇ 옵시디언 레어 · SS+ 게이트</div><div class="place-desc">검게 결정화된 암석과 심연의 마력이 뒤엉킨 흑룡의 영역. 깊숙이 들어갈수록 빛과 열이 희미해지며, 거대한 흑색 결정과 용의 흔적만이 적막 속에 남아 있다.</div><div class="place-characters char-grid"><div class="char-card avril-detail-trigger" data-character-detail="avril"><div class="char-portrait"><img alt="에이브릴" src="img/ch/65.png"/></div><div class="char-name">에이브릴</div><div class="char-role">흑룡의딸·흑룡·SS+</div></div></div></div></div></div>
+<div class="calamity-row calamity-avril"><div class="place-card calamity-place-card-unified"><span class="obsidian-orbs-direct" aria-hidden="true"><i class="orb o1"></i><i class="orb o2"></i><i class="orb o3"></i><i class="orb o4"></i><i class="orb o5"></i><i class="orb o6"></i><i class="orb o7"></i><i class="orb o8"></i><i class="orb o9"></i><i class="orb o10"></i><i class="orb o11"></i><i class="orb o12"></i></span><div class="place-image"><img alt="옵시디언 레어" src="img/bg/28.png"/></div><div class="place-info"><div class="place-title">◇ 옵시디언 레어 · SS+ 게이트</div><div class="place-desc">검게 결정화된 암석과 심연의 마력이 뒤엉킨 흑룡의 영역. 깊숙이 들어갈수록 빛과 열이 희미해지며, 거대한 흑색 결정과 용의 흔적만이 적막 속에 남아 있다.</div><div class="place-characters char-grid"><div class="char-card avril-detail-trigger" data-character-detail="avril"><div class="char-portrait"><img alt="에이브릴" src="img/ch/65.png"/></div><div class="char-name">에이브릴</div><div class="char-role">흑룡의딸·흑룡·SS+</div></div></div></div></div></div>
 <!-- 노타마야 -->
 <div class="calamity-row calamity-notamaya"><div class="place-card calamity-place-card-unified"><div class="place-image"><img alt="천귀궁" src="img/bg/29.png"/></div><div class="place-info"><div class="place-title">◇ 천귀궁 · SSS 게이트</div><div class="place-desc">끝을 가늠할 수 없는 어둠 속에 세워진 천귀들의 궁전. 그림자와 환각이 현실의 경계를 흐리며, 발을 들인 순간부터 무엇이 실재하는지조차 확신하기 어렵다.</div><div class="place-characters char-grid"><div class="char-card notamaya-detail-trigger" data-character-detail="notamaya"><div class="char-portrait"><img alt="노타마야" src="img/ch/66.png"/></div><div class="char-name">노타마야</div><div class="char-role">천귀의주인·뱀요괴·SSS</div></div></div></div></div></div>
 <!-- 칼립사 -->
