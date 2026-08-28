@@ -36,7 +36,7 @@
 
   ::selection { background: var(--rift-dim); color: #fff; }
 
-  /* ---------- HERO --------- */
+  /* ---------- HERO ---------- */
   .hero {
     position: relative;
     min-height: 100vh;
@@ -8183,107 +8183,6 @@ body::after {
 #tab-char .faction-content-panel[data-faction-panel="hostile"].active{
   display:block!important;
 }
-</style><style>
-/* =========================================================
-   WORLD INTRO — HOVER INTERACTION
-   세계관 소개 카드와 이미지에 은은한 반응
-   ========================================================= */
-
-/* 세계관 소개의 주요 박스 */
-#tab-world .world-chapter,
-#tab-world .world-section,
-#tab-world .feature-block,
-#tab-world .map-wrap,
-#tab-world .hunter-gate-hero-image{
-  transition:
-    transform .28s cubic-bezier(.22,.72,.26,1),
-    border-color .28s ease,
-    box-shadow .28s ease,
-    background .28s ease !important;
-}
-
-/* 박스 hover */
-#tab-world .world-chapter:hover,
-#tab-world .world-section:hover,
-#tab-world .feature-block:hover{
-  transform:translateY(-3px) !important;
-  border-color:rgba(151,126,205,.26) !important;
-  box-shadow:
-    0 14px 34px rgba(0,0,0,.18),
-    0 0 24px rgba(113,82,174,.055) !important;
-}
-
-/* 이미지 컨테이너 */
-#tab-world .world-chapter img,
-#tab-world .world-section img,
-#tab-world .feature-block img,
-#tab-world .hunter-gate-hero-image img,
-#tab-world .world-hero-image img,
-#tab-world .world-image img{
-  transition:
-    transform .42s cubic-bezier(.22,.72,.26,1),
-    filter .32s ease !important;
-  transform-origin:center center !important;
-  backface-visibility:hidden;
-}
-
-/* 해당 이미지에 직접 마우스를 올렸을 때만 확대 */
-#tab-world .world-chapter img:hover,
-#tab-world .world-section img:hover,
-#tab-world .feature-block img:hover,
-#tab-world .hunter-gate-hero-image:hover img,
-#tab-world .world-hero-image:hover img,
-#tab-world .world-image:hover img{
-  transform:scale(1.025) !important;
-  filter:brightness(1.045) !important;
-}
-
-/* 이미지가 박스 밖으로 튀어나오지 않게 */
-#tab-world .hunter-gate-hero-image,
-#tab-world .world-hero-image,
-#tab-world .world-image,
-#tab-world .world-chapter figure,
-#tab-world .world-section figure{
-  overflow:hidden !important;
-}
-
-/* 지도 지역 박스도 반응 */
-#tab-world .map-node,
-#tab-world .region-node,
-#tab-world .world-map-node{
-  transition:
-    transform .22s ease,
-    filter .22s ease,
-    box-shadow .22s ease !important;
-}
-
-#tab-world .map-node:hover,
-#tab-world .region-node:hover,
-#tab-world .world-map-node:hover{
-  transform:translateY(-2px) scale(1.015) !important;
-  filter:brightness(1.08) !important;
-}
-
-/* 모바일에서는 과한 이동 제거 */
-@media(max-width:700px){
-  #tab-world .world-chapter:hover,
-  #tab-world .world-section:hover,
-  #tab-world .feature-block:hover{
-    transform:none !important;
-  }
-}
-
-@media(prefers-reduced-motion:reduce){
-  #tab-world .world-chapter,
-  #tab-world .world-section,
-  #tab-world .feature-block,
-  #tab-world img,
-  #tab-world .map-node,
-  #tab-world .region-node,
-  #tab-world .world-map-node{
-    transition:none !important;
-  }
-}
 </style>
 <style>
 .hero .subtitle,
@@ -8518,21 +8417,7 @@ body::after {
   filter:none !important;
 }
 
-#tab-world .world-chapter:hover,
-#tab-world .world-section:hover,
-#tab-world .world-prose:hover,
-#tab-world .orbis-map-wrap:hover,
-#tab-world .hunter-rank-block:hover,
-#tab-world .gate-laws:hover,
-#tab-world .guild-world-grid:hover,
-#tab-world .regional-calendar:hover,
-#tab-world .student-order-cards:hover{
-  transform:none !important;
-  filter:none !important;
-  box-shadow:inherit !important;
-  border-color:inherit !important;
-  background:inherit !important;
-}
+
 
 /* ---------------------------------------------------------
    공통 내부 카드
@@ -9508,7 +9393,1567 @@ body::after {
     transform:none !important;
   }
 }
-</style></head>
+</style><style>
+/* =========================================================
+   HUNTER RANK — 각 영문 등급만 HOVER
+   바깥 박스는 절대 반응하지 않음
+   ========================================================= */
+
+#tab-world .hunter-rank-block,
+#tab-world .hunter-rank-block:hover,
+#tab-world .hunter-ranks,
+#tab-world .hunter-ranks:hover{
+  transform:none !important;
+  filter:none !important;
+  box-shadow:none !important;
+}
+
+/* 각 등급 글자 자체 */
+#tab-world .hunter-ranks > span{
+  display:inline-flex !important;
+  align-items:center !important;
+  justify-content:center !important;
+  position:relative !important;
+  cursor:default;
+  transform:none;
+  transition:
+    transform .18s ease,
+    filter .18s ease,
+    text-shadow .18s ease,
+    box-shadow .18s ease,
+    border-color .18s ease,
+    background .18s ease !important;
+}
+
+#tab-world .hunter-ranks > span:hover{
+  transform:translateY(-2px) scale(1.045) !important;
+  filter:brightness(1.12) !important;
+  z-index:6 !important;
+}
+
+/* F ~ A 계열: 글자 중심 반응 */
+#tab-world .hunter-ranks > span.rf:hover,
+#tab-world .hunter-ranks > span.re:hover,
+#tab-world .hunter-ranks > span.rd:hover,
+#tab-world .hunter-ranks > span.rc:hover,
+#tab-world .hunter-ranks > span.rb:hover,
+#tab-world .hunter-ranks > span.ra:hover{
+  text-shadow:
+    0 0 8px currentColor,
+    0 0 14px rgba(255,255,255,.08) !important;
+}
+
+/* S / S+ : 기존 유리창 효과 유지하면서 반응 */
+#tab-world .hunter-ranks > span.rs:hover{
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,.11),
+    0 0 14px rgba(115,171,255,.18) !important;
+  text-shadow:0 0 9px currentColor !important;
+}
+
+/* SS / SS+ */
+#tab-world .hunter-ranks > span.rss:hover{
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,.13),
+    0 0 16px rgba(184,137,255,.23),
+    0 0 28px rgba(148,92,235,.10) !important;
+  text-shadow:
+    0 0 9px currentColor,
+    0 0 16px rgba(184,137,255,.18) !important;
+}
+
+/* SSS — 가장 강하지만 과하지 않게 */
+#tab-world .hunter-ranks > span.rsss:hover{
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,.15),
+    0 0 18px rgba(225,189,102,.27),
+    0 0 32px rgba(191,137,48,.13) !important;
+  text-shadow:
+    0 0 10px currentColor,
+    0 0 18px rgba(231,195,111,.22) !important;
+}
+
+/* 등급 사이 ＜ 기호는 반응 금지 */
+#tab-world .hunter-ranks > i,
+#tab-world .hunter-ranks > i:hover{
+  transform:none !important;
+  filter:none !important;
+  box-shadow:none !important;
+}
+
+@media(max-width:700px){
+  #tab-world .hunter-ranks > span:hover{
+    transform:none !important;
+  }
+}
+</style><style>
+/* =========================================================
+   WORLD OUTER BOX — FINAL CLEAN STATE
+   큰 박스 hover 시 배경/테두리/투명도/광원 변화 없음
+   ========================================================= */
+
+/* hover는 위치/필터/광원만 금지.
+   background와 border는 건드리지 않아 원래 디자인 그대로 유지 */
+#tab-world .world-chapter:hover,
+#tab-world .world-chapter:focus,
+#tab-world .world-chapter:focus-within{
+  transform:none !important;
+  filter:none !important;
+  box-shadow:none !important;
+}
+
+/* 큰 내부 래퍼도 hover 반응 없음 */
+#tab-world .world-prose:hover,
+#tab-world .orbis-map-wrap:hover,
+#tab-world .hunter-rank-block:hover,
+#tab-world .gate-laws:hover,
+#tab-world .frontline-grid:hover,
+#tab-world .guild-world-grid:hover,
+#tab-world .calamity-world-list:hover,
+#tab-world .pantheon-org:hover,
+#tab-world .student-order-cards:hover,
+#tab-world .regional-calendar:hover{
+  transform:none !important;
+  filter:none !important;
+}
+
+/* =========================================================
+   WORLD SCROLL REVEAL
+   hover와 완전히 독립
+   ========================================================= */
+#tab-world .world-chapter.reveal-on-scroll{
+  opacity:0;
+  transform:translateY(34px);
+  transition:
+    opacity .85s ease,
+    transform .95s cubic-bezier(.22,.72,.26,1);
+}
+
+#tab-world .world-chapter.reveal-on-scroll.revealed{
+  opacity:1 !important;
+  transform:translateY(0) !important;
+}
+
+/* revealed 이후 hover해도 무조건 그대로 */
+#tab-world .world-chapter.reveal-on-scroll.revealed:hover,
+#tab-world .world-chapter.reveal-on-scroll.revealed:focus,
+#tab-world .world-chapter.reveal-on-scroll.revealed:focus-within{
+  opacity:1 !important;
+  transform:translateY(0) !important;
+}
+
+/* 내부 작은 카드들은 opacity를 절대 건드리지 않음 */
+#tab-world .gate-laws > div:hover,
+#tab-world .hunter-ranks > span:hover,
+#tab-world .frontline-card:hover,
+#tab-world .guild-world-grid > div:hover,
+#tab-world .calamity-world-list > div:hover,
+#tab-world .org-professors > span:hover,
+#tab-world .student-rank-card:hover{
+  opacity:1 !important;
+}
+
+@media(prefers-reduced-motion:reduce){
+  #tab-world .world-chapter.reveal-on-scroll{
+    opacity:1 !important;
+    transform:none !important;
+    transition:none !important;
+  }
+}
+</style><style>
+/* =========================================================
+   WORLD CHAPTER — FINAL ZERO HOVER
+   큰 박스 자체는 마우스 오버 시 어떤 변화도 없음
+   ========================================================= */
+
+/* 기본 큰 박스의 시각 상태를 명시 */
+#tab-world .world-chapter{
+  filter:none !important;
+}
+
+/*
+  핵심:
+  hover에서 border/background/box-shadow를 새 값으로 만들지 않는다.
+  특히 이전 CSS의 glow 계열 box-shadow를 완전히 제거.
+*/
+#tab-world .world-chapter:hover,
+#tab-world .world-chapter:focus,
+#tab-world .world-chapter:focus-within{
+  filter:none !important;
+  box-shadow:none !important;
+  outline:none !important;
+}
+
+/* 가상요소로 테두리/광원을 만드는 규칙까지 차단 */
+#tab-world .world-chapter:hover::before,
+#tab-world .world-chapter:hover::after,
+#tab-world .world-chapter:focus::before,
+#tab-world .world-chapter:focus::after,
+#tab-world .world-chapter:focus-within::before,
+#tab-world .world-chapter:focus-within::after{
+  filter:none !important;
+  box-shadow:none !important;
+}
+
+/* reveal 완료 후 hover에서도 시각 상태 변화 금지 */
+#tab-world .world-chapter.reveal-on-scroll.revealed:hover,
+#tab-world .world-chapter.reveal-on-scroll.revealed:focus,
+#tab-world .world-chapter.reveal-on-scroll.revealed:focus-within{
+  opacity:1 !important;
+  transform:translateY(0) !important;
+  filter:none !important;
+  box-shadow:none !important;
+}
+
+/* 바깥 chapter에 transition 대상이 남아 테두리가 천천히 변하는 것도 차단 */
+#tab-world .world-chapter{
+  transition:
+    opacity .85s ease,
+    transform .95s cubic-bezier(.22,.72,.26,1) !important;
+}
+
+/* 내부 작은 카드의 hover는 계속 허용 */
+</style>
+<style>
+/* =========================================================
+   WORLD CHAPTER — TRUE ZERO HOVER FINAL
+   ========================================================= */
+
+/* 큰 박스는 스크롤 등장만 transition */
+#tab-world .world-chapter{
+  transition:
+    opacity .85s ease,
+    transform .95s cubic-bezier(.22,.72,.26,1) !important;
+}
+
+/* hover/focus에서 광원, 그림자, 필터, 이동 없음 */
+#tab-world .world-chapter:hover,
+#tab-world .world-chapter:focus,
+#tab-world .world-chapter:focus-within{
+  filter:none !important;
+  box-shadow:none !important;
+  outline:none !important;
+}
+
+/* 가상 요소 광원도 없음 */
+#tab-world .world-chapter:hover::before,
+#tab-world .world-chapter:hover::after,
+#tab-world .world-chapter:focus::before,
+#tab-world .world-chapter:focus::after,
+#tab-world .world-chapter:focus-within::before,
+#tab-world .world-chapter:focus-within::after{
+  filter:none !important;
+  box-shadow:none !important;
+}
+
+/* reveal 완료 후 hover에도 그대로 */
+#tab-world .world-chapter.reveal-on-scroll.revealed:hover,
+#tab-world .world-chapter.reveal-on-scroll.revealed:focus,
+#tab-world .world-chapter.reveal-on-scroll.revealed:focus-within{
+  opacity:1 !important;
+  transform:translateY(0) !important;
+  filter:none !important;
+  box-shadow:none !important;
+}
+</style>
+<style>
+/* =========================================================
+   ORBIS MAP — north text / unified hover / tighter branch
+   ========================================================= */
+
+/* 1. 실바니아 자연동맹: 글자가 잘리지 않도록 북부 노드 확보 */
+#tab-world .orbis-map .node-north{
+  min-width:152px !important;
+  width:auto !important;
+  padding-left:16px !important;
+  padding-right:16px !important;
+  overflow:visible !important;
+  white-space:nowrap !important;
+}
+#tab-world .orbis-map .node-north strong,
+#tab-world .orbis-map .node-north b,
+#tab-world .orbis-map .node-north span:not(.map-tooltip){
+  white-space:nowrap !important;
+  overflow:visible !important;
+  text-overflow:clip !important;
+}
+
+/* 2. 판테온만 빛나던 효과를 5개 지역에도 동일한 강도로 적용 */
+#tab-world .orbis-map .map-node{
+  transition:
+    filter .18s ease,
+    box-shadow .18s ease,
+    border-color .18s ease,
+    background-color .18s ease !important;
+}
+
+#tab-world .orbis-map .map-node:hover,
+#tab-world .orbis-map .map-node:focus{
+  filter:brightness(1.10) !important;
+  box-shadow:
+    0 0 0 1px rgba(255,255,255,.055),
+    0 0 18px rgba(145,125,195,.13) !important;
+  outline:none !important;
+}
+
+/* 각 지역 고유색 테두리 glow */
+#tab-world .orbis-map .node-north:hover,
+#tab-world .orbis-map .node-north:focus{
+  border-color:rgba(112,205,105,.58) !important;
+  box-shadow:0 0 18px rgba(102,211,99,.16) !important;
+}
+#tab-world .orbis-map .node-west:hover,
+#tab-world .orbis-map .node-west:focus{
+  border-color:rgba(226,194,105,.58) !important;
+  box-shadow:0 0 18px rgba(226,194,105,.15) !important;
+}
+#tab-world .orbis-map .node-central-alliance:hover,
+#tab-world .orbis-map .node-central-alliance:focus{
+  border-color:rgba(185,151,239,.58) !important;
+  box-shadow:0 0 18px rgba(166,124,230,.16) !important;
+}
+#tab-world .orbis-map .node-east:hover,
+#tab-world .orbis-map .node-east:focus{
+  border-color:rgba(224,135,105,.58) !important;
+  box-shadow:0 0 18px rgba(224,125,96,.15) !important;
+}
+#tab-world .orbis-map .node-south:hover,
+#tab-world .orbis-map .node-south:focus{
+  border-color:rgba(93,203,225,.58) !important;
+  box-shadow:0 0 18px rgba(75,202,225,.16) !important;
+}
+
+/* 판테온도 같은 정도의 강도로 통일 */
+#tab-world .orbis-map .pantheon-map-label:hover,
+#tab-world .orbis-map .pantheon-map-label:focus{
+  border-color:rgba(185,151,239,.58) !important;
+  box-shadow:0 0 18px rgba(166,124,230,.16) !important;
+}
+
+/* 3. 아스트라 ↔ 판테온 거리 축소
+      판테온 전체를 왼쪽으로 당기고 점선도 짧게 */
+#tab-world .orbis-map .pantheon-map-branch{
+  left:calc(50% + 72px) !important;
+  width:210px !important;
+}
+#tab-world .orbis-map .pantheon-branch-line{
+  left:0 !important;
+  width:42px !important;
+}
+#tab-world .orbis-map .pantheon-map-label{
+  left:42px !important;
+}
+</style>
+<style>
+/* =========================================================
+   ORBIS MAP — north size + Astra/Pantheon connector fix
+   ========================================================= */
+
+/* 실바니아 박스를 다른 지역 노드와 동일한 크기로 복귀 */
+#tab-world .orbis-map .node-north{
+  min-width:0 !important;
+  width:150px !important;
+  padding-left:12px !important;
+  padding-right:12px !important;
+  overflow:hidden !important;
+}
+
+/* 텍스트는 한 줄 유지하되 박스 자체는 길어지지 않게 */
+#tab-world .orbis-map .node-north strong,
+#tab-world .orbis-map .node-north b,
+#tab-world .orbis-map .node-north span:not(.map-tooltip){
+  white-space:nowrap !important;
+  overflow:visible !important;
+  text-overflow:clip !important;
+}
+
+/* Astra ↔ Pantheon
+   아스트라 박스 오른쪽 바깥에서 점선이 시작되도록 조정 */
+#tab-world .orbis-map .pantheon-map-branch{
+  left:calc(50% + 76px) !important;
+  width:205px !important;
+}
+
+/* 점선은 브랜치 시작점에서 바로 시작 */
+#tab-world .orbis-map .pantheon-branch-line{
+  left:0 !important;
+  width:29px !important;
+}
+
+/* 판테온 박스는 점선 끝 직후 배치 */
+#tab-world .orbis-map .pantheon-map-label{
+  left:29px !important;
+}
+</style>
+<style>
+/* =========================================================
+   ORBIS MAP — FINAL NORTH TEXT + CONNECTOR GAP FIX
+   ========================================================= */
+
+/* 실바니아: 다른 지역과 같은 폭, 문구는 확실히 표시 */
+#tab-world .orbis-map .node-north{
+  width:150px !important;
+  min-width:150px !important;
+  max-width:150px !important;
+  box-sizing:border-box !important;
+  padding:10px 8px !important;
+  overflow:visible !important;
+}
+
+#tab-world .orbis-map .node-north > b{
+  display:block !important;
+  width:100% !important;
+  color:inherit !important;
+  opacity:1 !important;
+  visibility:visible !important;
+  white-space:nowrap !important;
+  overflow:visible !important;
+  text-overflow:clip !important;
+  font-size:12px !important;
+  line-height:1.35 !important;
+  text-align:center !important;
+}
+
+/* 툴팁은 기존 동작 유지 */
+#tab-world .orbis-map .node-north > .map-tooltip{
+  overflow:visible !important;
+}
+
+/*
+  Astra의 폭이 약 150px이므로 중심에서 오른쪽 끝은 약 +75px.
+  점선은 +84px에서 시작 → 박스와 9px 간격.
+  판테온은 기존 위치에 가깝게 유지하기 위해 선 길이만 11px로 축소.
+*/
+#tab-world .orbis-map .pantheon-map-branch{
+  left:calc(50% + 84px) !important;
+  width:190px !important;
+}
+
+#tab-world .orbis-map .pantheon-branch-line{
+  left:0 !important;
+  width:11px !important;
+}
+
+#tab-world .orbis-map .pantheon-map-label{
+  left:11px !important;
+}
+</style>
+<style>
+/* =========================================================
+   ORBIS MAP — HOVER CLIPPING FIX
+   실바니아 포함 모든 지역의 hover 광원/툴팁이 잘리지 않게
+   ========================================================= */
+
+/* 지도 및 상위 래퍼 overflow 해제 */
+#tab-world .orbis-map,
+#tab-world .orbis-map-wrap,
+#tab-world .world-map,
+#tab-world .map-stage,
+#tab-world .map-shell{
+  overflow:visible !important;
+}
+
+/* 지도 안의 지역 노드도 glow가 잘리지 않게 */
+#tab-world .orbis-map .map-node,
+#tab-world .orbis-map .pantheon-map-label{
+  overflow:visible !important;
+}
+
+/* 실바니아는 크기 강제값 제거하고 기존 지도 노드 규격을 따름 */
+#tab-world .orbis-map .node-north{
+  width:auto !important;
+  min-width:168px !important;
+  max-width:190px !important;
+  padding:12px 14px !important;
+  overflow:visible !important;
+  box-sizing:border-box !important;
+}
+
+/* 실바니아 hover 시 위쪽 glow가 잘리지 않도록 z-index 확보 */
+#tab-world .orbis-map .node-north:hover,
+#tab-world .orbis-map .node-north:focus{
+  z-index:30 !important;
+  overflow:visible !important;
+}
+
+/* 툴팁도 절대 클리핑하지 않음 */
+#tab-world .orbis-map .map-tooltip,
+#tab-world .orbis-map .pantheon-tooltip{
+  overflow:visible !important;
+  z-index:40 !important;
+}
+
+/* 모바일에서도 상단 잘림 방지 */
+@media(max-width:700px){
+  #tab-world .orbis-map,
+  #tab-world .orbis-map-wrap{
+    overflow:visible !important;
+  }
+}
+</style>
+<style>
+/* =========================================================
+   SILVANIA TOOLTIP — WRAP FIX
+   ========================================================= */
+
+/* 실바니아 설명 툴팁은 한 줄 강제 금지 */
+#tab-world .orbis-map .node-north > .map-tooltip{
+  width:220px !important;
+  min-width:0 !important;
+  max-width:220px !important;
+
+  white-space:normal !important;
+  word-break:keep-all !important;
+  overflow-wrap:break-word !important;
+
+  line-height:1.55 !important;
+  text-align:left !important;
+
+  box-sizing:border-box !important;
+  padding:8px 10px !important;
+}
+
+/* 툴팁 내부 텍스트가 부모 nowrap 규칙을 상속하지 않도록 차단 */
+#tab-world .orbis-map .node-north > .map-tooltip *{
+  white-space:normal !important;
+  word-break:keep-all !important;
+}
+</style>
+<style>
+/* =========================================================
+   WORLD — requested color/detail refinements
+   ========================================================= */
+
+/* 코어 / 붕괴 / 침식 : 제목 글자색만 서로 다르게 */
+#tab-world .gate-laws > div:nth-child(1) > em{
+  color:#72c9ff !important;
+}
+#tab-world .gate-laws > div:nth-child(2) > em{
+  color:#e5b35f !important;
+}
+#tab-world .gate-laws > div:nth-child(3) > em{
+  color:#cf7284 !important;
+}
+
+/* 노블레스 : 마름모를 카드 오른쪽 위 끝으로 이동 */
+#tab-world .guild-noblesse-card{
+  position:relative !important;
+}
+#tab-world .guild-noblesse-card::before{
+  content:"◇" !important;
+  position:absolute !important;
+  top:7px !important;
+  right:9px !important;
+  left:auto !important;
+  bottom:auto !important;
+  transform:none !important;
+  margin:0 !important;
+  color:rgba(226,187,101,.62) !important;
+  font-size:12px !important;
+  line-height:1 !important;
+  pointer-events:none !important;
+}
+
+/* 기존 다른 위치의 마름모가 ::after에 있으면 제거 */
+#tab-world .guild-noblesse-card::after{
+  content:none !important;
+}
+
+/* 오염심역 최심부 — 4재앙 박스 개별 색상
+   에이브릴=검정 / 노타마야=분홍 / 닉스=보라 / 칼립사=심해 */
+#tab-world .calamity-world-list > div:nth-child(1){
+  border-color:rgba(125,125,135,.34) !important;
+  background:linear-gradient(135deg,rgba(17,17,20,.96),rgba(7,7,9,.98)) !important;
+}
+#tab-world .calamity-world-list > div:nth-child(1) b,
+#tab-world .calamity-world-list > div:nth-child(1) span{
+  color:#b9b9c0 !important;
+}
+
+#tab-world .calamity-world-list > div:nth-child(2){
+  border-color:rgba(232,119,171,.38) !important;
+  background:linear-gradient(135deg,rgba(39,15,28,.96),rgba(20,10,17,.98)) !important;
+}
+#tab-world .calamity-world-list > div:nth-child(2) b,
+#tab-world .calamity-world-list > div:nth-child(2) span{
+  color:#e98ab7 !important;
+}
+
+#tab-world .calamity-world-list > div:nth-child(3){
+  border-color:rgba(158,105,220,.40) !important;
+  background:linear-gradient(135deg,rgba(28,17,43,.96),rgba(15,10,25,.98)) !important;
+}
+#tab-world .calamity-world-list > div:nth-child(3) b,
+#tab-world .calamity-world-list > div:nth-child(3) span{
+  color:#b68ae4 !important;
+}
+
+#tab-world .calamity-world-list > div:nth-child(4){
+  border-color:rgba(54,126,159,.42) !important;
+  background:linear-gradient(135deg,rgba(8,29,40,.97),rgba(5,17,25,.99)) !important;
+}
+#tab-world .calamity-world-list > div:nth-child(4) b,
+#tab-world .calamity-world-list > div:nth-child(4) span{
+  color:#68b2cf !important;
+}
+
+/* 각 재앙 박스 hover도 자기 색 유지 */
+#tab-world .calamity-world-list > div:nth-child(1):hover{
+  box-shadow:0 8px 18px rgba(0,0,0,.22),0 0 14px rgba(125,125,135,.08) !important;
+}
+#tab-world .calamity-world-list > div:nth-child(2):hover{
+  box-shadow:0 8px 18px rgba(0,0,0,.18),0 0 15px rgba(232,119,171,.10) !important;
+}
+#tab-world .calamity-world-list > div:nth-child(3):hover{
+  box-shadow:0 8px 18px rgba(0,0,0,.18),0 0 15px rgba(158,105,220,.11) !important;
+}
+#tab-world .calamity-world-list > div:nth-child(4):hover{
+  box-shadow:0 8px 18px rgba(0,0,0,.18),0 0 15px rgba(54,126,159,.12) !important;
+}
+</style>
+<style>
+/* =========================================================
+   HOSTILE — 장소 배경 위 / 캐릭터 초상화 아래
+   ========================================================= */
+#tab-char .faction-hostile .calamity-row{
+  display:block !important;
+  padding:0 0 18px !important;
+  overflow:hidden !important;
+}
+
+#tab-char .faction-hostile .calamity-place-card{
+  width:100%;
+  margin:0;
+}
+
+#tab-char .faction-hostile .calamity-place-scene{
+  width:100%;
+  aspect-ratio:8/3;
+  overflow:hidden;
+  border-bottom:1px solid rgba(255,255,255,.08);
+}
+
+#tab-char .faction-hostile .calamity-place-scene img{
+  display:block;
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  transition:transform .25s ease,filter .25s ease;
+}
+
+#tab-char .faction-hostile .calamity-place-scene:hover img{
+  transform:scale(1.018) !important;
+  filter:brightness(1.035) !important;
+}
+
+#tab-char .faction-hostile .calamity-place-title{
+  padding:11px 14px 8px;
+  font-size:14px;
+  font-weight:900;
+  letter-spacing:.04em;
+}
+
+#tab-char .faction-hostile .calamity-character-grid{
+  display:grid;
+  gap:10px;
+  padding:4px 14px 0;
+}
+
+#tab-char .faction-hostile .calamity-character-grid.single{
+  grid-template-columns:minmax(0,180px);
+}
+
+#tab-char .faction-hostile .calamity-character-grid.triple{
+  grid-template-columns:repeat(3,minmax(0,150px));
+}
+
+#tab-char .faction-hostile .calamity-character-card{
+  min-width:0;
+  cursor:default;
+  transition:transform .2s ease,filter .2s ease;
+}
+
+#tab-char .faction-hostile .calamity-character-card:hover{
+  transform:translateY(-2px);
+  filter:brightness(1.045);
+}
+
+#tab-char .faction-hostile .calamity-character-portrait{
+  width:100%;
+  aspect-ratio:1/1;
+  overflow:hidden;
+  border:1px solid rgba(255,255,255,.10);
+  background:#0d0d12;
+}
+
+#tab-char .faction-hostile .calamity-character-portrait img{
+  display:block;
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  transition:transform .22s ease,filter .22s ease;
+}
+
+#tab-char .faction-hostile .calamity-character-card:hover .calamity-character-portrait img{
+  transform:scale(1.035);
+  filter:brightness(1.045);
+}
+
+#tab-char .faction-hostile .calamity-character-card .char-name{
+  margin-top:7px;
+  font-size:13px;
+  font-weight:900;
+}
+
+#tab-char .faction-hostile .calamity-character-card .char-role{
+  margin-top:2px;
+  font-size:10px;
+  opacity:.65;
+}
+
+/* 각 재앙 고유색 유지 */
+#tab-char .faction-hostile .calamity-avril .calamity-place-title,
+#tab-char .faction-hostile .calamity-avril .char-name{color:#b9b9c0 !important;}
+
+#tab-char .faction-hostile .calamity-notamaya .calamity-place-title,
+#tab-char .faction-hostile .calamity-notamaya .char-name{color:#e98ab7 !important;}
+
+#tab-char .faction-hostile .calamity-kalipsa .calamity-place-title,
+#tab-char .faction-hostile .calamity-kalipsa .char-name{color:#68b2cf !important;}
+
+#tab-char .faction-hostile .calamity-nyx .calamity-place-title,
+#tab-char .faction-hostile .calamity-nyx .char-name{color:#b68ae4 !important;}
+
+@media(max-width:700px){
+  #tab-char .faction-hostile .calamity-character-grid.triple{
+    grid-template-columns:repeat(3,minmax(0,1fr));
+  }
+  #tab-char .faction-hostile .calamity-character-grid.single{
+    grid-template-columns:minmax(0,42%);
+  }
+}
+</style><style>
+/* =========================================================
+   HOSTILE GATE DESCRIPTION — restored
+   배경 → 게이트명 → 설명 → 캐릭터 초상화
+   ========================================================= */
+#tab-char .faction-hostile .calamity-gate-description{
+  margin:0 14px 10px;
+  padding:10px 11px;
+  border-top:1px solid rgba(255,255,255,.065);
+  background:rgba(255,255,255,.018);
+}
+
+#tab-char .faction-hostile .calamity-gate-grade{
+  margin-bottom:5px;
+  font-size:11px;
+  font-weight:900;
+  letter-spacing:.035em;
+  opacity:.88;
+}
+
+#tab-char .faction-hostile .calamity-gate-desc{
+  font-size:11px;
+  line-height:1.65;
+  color:rgba(218,220,229,.68);
+  word-break:keep-all;
+}
+
+/* 각 재앙의 게이트 등급/명칭도 고유색 */
+#tab-char .faction-hostile .calamity-avril .calamity-gate-grade{
+  color:#b9b9c0;
+}
+#tab-char .faction-hostile .calamity-notamaya .calamity-gate-grade{
+  color:#e98ab7;
+}
+#tab-char .faction-hostile .calamity-kalipsa .calamity-gate-grade{
+  color:#68b2cf;
+}
+#tab-char .faction-hostile .calamity-nyx .calamity-gate-grade{
+  color:#b68ae4;
+}
+</style><style>
+/* =========================================================
+   HOSTILE — SAME FORMAT AS OTHER FACTIONS
+   배경 → 장소명 → 설명 → 캐릭터
+   ========================================================= */
+
+#tab-char .faction-hostile .calamity-row{
+  display:block !important;
+  padding:0 !important;
+  margin:0 0 16px !important;
+  overflow:visible !important;
+  background:none !important;
+  border:0 !important;
+  box-shadow:none !important;
+}
+
+#tab-char .faction-hostile .calamity-row > .place-card{
+  width:100% !important;
+  margin:0 !important;
+}
+
+/* 이전 재앙 전용 레이아웃 흔적 제거 */
+#tab-char .faction-hostile .calamity-place-card,
+#tab-char .faction-hostile .calamity-place-scene,
+#tab-char .faction-hostile .calamity-gate-description,
+#tab-char .faction-hostile .calamity-character-grid,
+#tab-char .faction-hostile .calamity-character-card{
+  all:unset;
+}
+
+/* place-card는 다른 세력 기본 스타일을 그대로 사용 */
+#tab-char .faction-hostile .calamity-place-card-unified{
+  display:block !important;
+}
+
+/* 1명인 곳은 일반 캐릭터 카드 한 칸, 닉스 진영은 3명 */
+#tab-char .faction-hostile .calamity-row:not(.calamity-nyx) .place-characters{
+  grid-template-columns:minmax(0,180px) !important;
+}
+
+#tab-char .faction-hostile .calamity-nyx .place-characters{
+  grid-template-columns:repeat(3,minmax(0,1fr)) !important;
+}
+
+/* 재앙별 포인트 컬러만 유지 */
+#tab-char .faction-hostile .calamity-avril .place-title,
+#tab-char .faction-hostile .calamity-avril .char-name{
+  color:#b9b9c0 !important;
+}
+
+#tab-char .faction-hostile .calamity-notamaya .place-title,
+#tab-char .faction-hostile .calamity-notamaya .char-name{
+  color:#e98ab7 !important;
+}
+
+#tab-char .faction-hostile .calamity-kalipsa .place-title,
+#tab-char .faction-hostile .calamity-kalipsa .char-name{
+  color:#68b2cf !important;
+}
+
+#tab-char .faction-hostile .calamity-nyx .place-title,
+#tab-char .faction-hostile .calamity-nyx .char-name{
+  color:#b68ae4 !important;
+}
+
+@media(max-width:700px){
+  #tab-char .faction-hostile .calamity-nyx .place-characters{
+    grid-template-columns:repeat(3,minmax(0,1fr)) !important;
+  }
+}
+</style>
+<style>
+/* =========================================================
+   HOSTILE TYPOGRAPHY — unified
+   재앙 블록은 폰트 색을 통일하고, 테두리/포인트만 고유색 유지
+   ========================================================= */
+
+/* 장소명: 모두 동일한 밝은 회백색 */
+#tab-char .faction-hostile .calamity-row .place-title{
+  color:#ddd9e5 !important;
+}
+
+/* 장소 설명: 모두 동일 */
+#tab-char .faction-hostile .calamity-row .place-desc{
+  color:#9693a0 !important;
+}
+
+/* 캐릭터 이름: 모두 동일 */
+#tab-char .faction-hostile .calamity-row .char-name{
+  color:#e2dfe8 !important;
+}
+
+/* 역할/종족/등급: 모두 동일 */
+#tab-char .faction-hostile .calamity-row .char-role{
+  color:#85818f !important;
+  opacity:1 !important;
+}
+
+/* 초상화 안쪽 텍스트가 재앙별 색을 상속하지 않도록 차단 */
+#tab-char .faction-hostile .calamity-row .char-card,
+#tab-char .faction-hostile .calamity-row .place-info{
+  color:inherit !important;
+}
+
+/* 재앙별 개성은 글자색이 아니라 테두리/광원으로만 표현 */
+#tab-char .faction-hostile .calamity-avril .place-card{
+  border-color:rgba(125,125,135,.30) !important;
+}
+#tab-char .faction-hostile .calamity-notamaya .place-card{
+  border-color:rgba(232,119,171,.30) !important;
+}
+#tab-char .faction-hostile .calamity-kalipsa .place-card{
+  border-color:rgba(54,126,159,.34) !important;
+}
+#tab-char .faction-hostile .calamity-nyx .place-card{
+  border-color:rgba(158,105,220,.32) !important;
+}
+
+/* 캐릭터 초상화 테두리도 해당 재앙색을 아주 약하게 */
+#tab-char .faction-hostile .calamity-avril .char-portrait{
+  border-color:rgba(125,125,135,.26) !important;
+}
+#tab-char .faction-hostile .calamity-notamaya .char-portrait{
+  border-color:rgba(232,119,171,.25) !important;
+}
+#tab-char .faction-hostile .calamity-kalipsa .char-portrait{
+  border-color:rgba(54,126,159,.29) !important;
+}
+#tab-char .faction-hostile .calamity-nyx .char-portrait{
+  border-color:rgba(158,105,220,.27) !important;
+}
+</style>
+<style>
+/* =========================================================
+   HOSTILE TYPOGRAPHY — calamity-specific palettes
+   각 재앙은 자기 색 계열 안에서 장소명/설명/캐릭터 정보를 통일
+   ========================================================= */
+
+/* 에이브릴 — 흑색 / 무채색 */
+#tab-char .faction-hostile .calamity-avril .place-title,
+#tab-char .faction-hostile .calamity-avril .char-name{
+  color:#b8b6bd !important;
+}
+#tab-char .faction-hostile .calamity-avril .place-desc,
+#tab-char .faction-hostile .calamity-avril .char-role{
+  color:#77757e !important;
+}
+
+/* 노타마야 — 분홍 */
+#tab-char .faction-hostile .calamity-notamaya .place-title,
+#tab-char .faction-hostile .calamity-notamaya .char-name{
+  color:#e78caf !important;
+}
+#tab-char .faction-hostile .calamity-notamaya .place-desc,
+#tab-char .faction-hostile .calamity-notamaya .char-role{
+  color:#ad7189 !important;
+}
+
+/* 칼립사 — 심해 청색 */
+#tab-char .faction-hostile .calamity-kalipsa .place-title,
+#tab-char .faction-hostile .calamity-kalipsa .char-name{
+  color:#72afc9 !important;
+}
+#tab-char .faction-hostile .calamity-kalipsa .place-desc,
+#tab-char .faction-hostile .calamity-kalipsa .char-role{
+  color:#628b9d !important;
+}
+
+/* 닉스 / 네메시스 / 레베른 — 보라 */
+#tab-char .faction-hostile .calamity-nyx .place-title,
+#tab-char .faction-hostile .calamity-nyx .char-name{
+  color:#b58cdd !important;
+}
+#tab-char .faction-hostile .calamity-nyx .place-desc,
+#tab-char .faction-hostile .calamity-nyx .char-role{
+  color:#88709f !important;
+}
+
+#tab-char .faction-hostile .calamity-row .char-role{
+  opacity:1 !important;
+}
+</style>
+<style>
+/* =========================================================
+   HOSTILE PORTRAITS — calamity-specific colors
+   기존 적대세력 공통 빨간색 효과 제거
+   ========================================================= */
+
+/* 에이브릴 — 흑색 / 무채색 */
+#tab-char .faction-hostile .calamity-avril .char-card,
+#tab-char .faction-hostile .calamity-avril .char-portrait{
+  border-color:rgba(150,148,158,.34) !important;
+  box-shadow:none !important;
+}
+#tab-char .faction-hostile .calamity-avril .char-card:hover,
+#tab-char .faction-hostile .calamity-avril .char-card:hover .char-portrait{
+  border-color:rgba(190,188,198,.55) !important;
+  box-shadow:0 0 16px rgba(115,113,124,.14) !important;
+}
+
+/* 노타마야 — 분홍 */
+#tab-char .faction-hostile .calamity-notamaya .char-card,
+#tab-char .faction-hostile .calamity-notamaya .char-portrait{
+  border-color:rgba(231,140,175,.36) !important;
+  box-shadow:none !important;
+}
+#tab-char .faction-hostile .calamity-notamaya .char-card:hover,
+#tab-char .faction-hostile .calamity-notamaya .char-card:hover .char-portrait{
+  border-color:rgba(238,157,190,.62) !important;
+  box-shadow:0 0 17px rgba(220,108,154,.17) !important;
+}
+
+/* 칼립사 — 심해 청색 */
+#tab-char .faction-hostile .calamity-kalipsa .char-card,
+#tab-char .faction-hostile .calamity-kalipsa .char-portrait{
+  border-color:rgba(91,158,187,.38) !important;
+  box-shadow:none !important;
+}
+#tab-char .faction-hostile .calamity-kalipsa .char-card:hover,
+#tab-char .faction-hostile .calamity-kalipsa .char-card:hover .char-portrait{
+  border-color:rgba(113,181,210,.64) !important;
+  box-shadow:0 0 17px rgba(54,126,159,.18) !important;
+}
+
+/* 닉스 / 네메시스 / 레베른 — 보라 */
+#tab-char .faction-hostile .calamity-nyx .char-card,
+#tab-char .faction-hostile .calamity-nyx .char-portrait{
+  border-color:rgba(181,140,221,.37) !important;
+  box-shadow:none !important;
+}
+#tab-char .faction-hostile .calamity-nyx .char-card:hover,
+#tab-char .faction-hostile .calamity-nyx .char-card:hover .char-portrait{
+  border-color:rgba(194,155,232,.64) !important;
+  box-shadow:0 0 17px rgba(143,91,198,.18) !important;
+}
+
+/* 적대세력 공통 빨간 오버레이/필터가 초상화 이미지에 남지 않도록 제거 */
+#tab-char .faction-hostile .calamity-row .char-portrait::before,
+#tab-char .faction-hostile .calamity-row .char-portrait::after,
+#tab-char .faction-hostile .calamity-row .char-card::before,
+#tab-char .faction-hostile .calamity-row .char-card::after{
+  background:none !important;
+  background-image:none !important;
+  border-color:inherit !important;
+}
+
+#tab-char .faction-hostile .calamity-row .char-portrait img{
+  filter:none !important;
+}
+#tab-char .faction-hostile .calamity-row .char-card:hover .char-portrait img{
+  filter:brightness(1.045) !important;
+}
+</style>
+<style>
+/* 재앙 장소명 옆 게이트 등급 */
+#tab-char .faction-hostile .calamity-row .place-title{
+  display:flex !important;
+  align-items:center !important;
+  gap:8px !important;
+  flex-wrap:wrap !important;
+}
+
+#tab-char .faction-hostile .calamity-gate-rank{
+  display:inline-flex;
+  align-items:center;
+  padding:2px 6px;
+  border:1px solid currentColor;
+  border-radius:4px;
+  font-size:9px;
+  font-weight:800;
+  line-height:1.25;
+  letter-spacing:.035em;
+  opacity:.72;
+}
+
+/* 등급도 해당 재앙의 색 계열 */
+#tab-char .faction-hostile .calamity-avril .calamity-gate-rank{color:#8d8b94 !important;}
+#tab-char .faction-hostile .calamity-notamaya .calamity-gate-rank{color:#c87a99 !important;}
+#tab-char .faction-hostile .calamity-kalipsa .calamity-gate-rank{color:#6094aa !important;}
+#tab-char .faction-hostile .calamity-nyx .calamity-gate-rank{color:#9675b5 !important;}
+</style>
+<style>
+/* =========================================================
+   HOSTILE CHARACTER CARD BACKGROUNDS — FIX RED CAST
+   기존 적대세력 공통 적색 배경을 재앙별 팔레트로 완전히 덮어씀
+   ========================================================= */
+
+#tab-char .faction-hostile .calamity-row .place-characters .char-card{
+  background-image:none !important;
+}
+
+/* 에이브릴 — 검정/무채색 */
+#tab-char .faction-hostile .calamity-avril .place-characters .char-card{
+  background:linear-gradient(180deg,rgba(31,31,36,.96),rgba(12,12,15,.98)) !important;
+  border-color:rgba(145,143,153,.30) !important;
+}
+
+/* 노타마야 — 어두운 분홍/자주 */
+#tab-char .faction-hostile .calamity-notamaya .place-characters .char-card{
+  background:linear-gradient(180deg,rgba(55,25,40,.96),rgba(19,12,18,.98)) !important;
+  border-color:rgba(231,140,175,.34) !important;
+}
+
+/* 칼립사 — 심해 청색 */
+#tab-char .faction-hostile .calamity-kalipsa .place-characters .char-card{
+  background:linear-gradient(180deg,rgba(18,43,55,.96),rgba(8,18,25,.98)) !important;
+  border-color:rgba(91,158,187,.36) !important;
+}
+
+/* 닉스 / 네메시스 / 레베른 — 보라 */
+#tab-char .faction-hostile .calamity-nyx .place-characters .char-card{
+  background:linear-gradient(180deg,rgba(39,25,55,.96),rgba(15,11,22,.98)) !important;
+  border-color:rgba(181,140,221,.36) !important;
+}
+
+/* 초상화 이미지 영역 자체에는 색 필터/붉은 오버레이를 절대 씌우지 않음 */
+#tab-char .faction-hostile .calamity-row .char-portrait{
+  background:#0b0b0f !important;
+  background-image:none !important;
+}
+#tab-char .faction-hostile .calamity-row .char-portrait::before,
+#tab-char .faction-hostile .calamity-row .char-portrait::after{
+  content:none !important;
+  display:none !important;
+}
+#tab-char .faction-hostile .calamity-row .char-portrait img{
+  filter:none !important;
+  mix-blend-mode:normal !important;
+  opacity:1 !important;
+}
+</style>
+<style>
+/* 재앙 게이트 등급 — 박스형 배지 제거, 일반 텍스트로 표시 */
+#tab-char .faction-hostile .calamity-gate-rank{
+  display:inline !important;
+  padding:0 !important;
+  margin:0 !important;
+  border:0 !important;
+  border-radius:0 !important;
+  background:none !important;
+  box-shadow:none !important;
+  font-size:10px !important;
+  font-weight:800 !important;
+  line-height:inherit !important;
+  letter-spacing:.035em !important;
+  opacity:.72 !important;
+}
+</style>
+<style>
+/* 재앙 게이트 등급 — 박스 없이도 충분히 읽히도록 크기/간격 조정 */
+#tab-char .faction-hostile .calamity-gate-rank{
+  display:inline !important;
+  padding:0 !important;
+  margin-left:6px !important;
+  border:0 !important;
+  border-radius:0 !important;
+  background:none !important;
+  box-shadow:none !important;
+  font-size:12px !important;
+  font-weight:800 !important;
+  line-height:1.3 !important;
+  letter-spacing:.035em !important;
+  opacity:.9 !important;
+  vertical-align:baseline !important;
+}
+</style>
+<style>
+/* 재앙 게이트 등급 — 장소명에 준하는 크기로 확실하게 표시 */
+#tab-char .faction-hostile .calamity-gate-rank{
+  display:inline !important;
+  padding:0 !important;
+  margin-left:10px !important;
+  border:0 !important;
+  border-radius:0 !important;
+  background:none !important;
+  box-shadow:none !important;
+  font-size:15px !important;
+  font-weight:900 !important;
+  line-height:1.25 !important;
+  letter-spacing:.025em !important;
+  opacity:1 !important;
+  vertical-align:baseline !important;
+}
+</style>
+<style>
+/* =========================================================
+   HOSTILE — title / character metadata spacing unified
+   ========================================================= */
+
+/* 장소명과 게이트 등급을 하나의 동일한 제목으로 */
+#tab-char .faction-hostile .calamity-row .place-title{
+  display:block !important;
+  font-size:15px !important;
+  font-weight:900 !important;
+  line-height:1.4 !important;
+  letter-spacing:.02em !important;
+  margin:0 0 7px !important;
+}
+
+/* 이전 별도 게이트 등급 span은 더 이상 사용하지 않음 */
+#tab-char .faction-hostile .calamity-gate-rank{
+  display:none !important;
+}
+
+/* 모든 재앙 캐릭터 카드 내부 간격 완전 통일 */
+#tab-char .faction-hostile .calamity-row .place-characters{
+  gap:10px !important;
+}
+
+#tab-char .faction-hostile .calamity-row .char-card{
+  padding:0 !important;
+  margin:0 !important;
+}
+
+#tab-char .faction-hostile .calamity-row .char-name{
+  margin:7px 0 0 !important;
+  padding:0 !important;
+  font-size:13px !important;
+  font-weight:900 !important;
+  line-height:1.35 !important;
+  letter-spacing:0 !important;
+}
+
+#tab-char .faction-hostile .calamity-row .char-role{
+  margin:3px 0 0 !important;
+  padding:0 !important;
+  font-size:11px !important;
+  font-weight:700 !important;
+  line-height:1.4 !important;
+  letter-spacing:0 !important;
+  word-spacing:0 !important;
+  white-space:nowrap !important;
+  opacity:1 !important;
+}
+
+/* 각 place-card 사이 간격도 동일 */
+#tab-char .faction-hostile .calamity-row{
+  margin:0 0 16px !important;
+}
+#tab-char .faction-hostile .calamity-row:last-child{
+  margin-bottom:0 !important;
+}
+</style>
+<style>
+/* =========================================================
+   HOSTILE CHAR TYPOGRAPHY — EXACT SAME RHYTHM AS NORMAL CARDS
+   ========================================================= */
+
+#tab-char .faction-hostile .calamity-row .char-card .char-name{
+  margin:0 !important;
+  padding:0 !important;
+  font-size:inherit !important;
+  font-weight:inherit !important;
+  line-height:inherit !important;
+  letter-spacing:inherit !important;
+}
+
+#tab-char .faction-hostile .calamity-row .char-card .char-role{
+  margin:0 !important;
+  padding:0 !important;
+  font-size:inherit !important;
+  font-weight:inherit !important;
+  line-height:inherit !important;
+  letter-spacing:inherit !important;
+  word-spacing:inherit !important;
+  white-space:normal !important;
+  opacity:inherit !important;
+}
+
+/* 일반 char-card가 사용하는 내부 텍스트 배치와 동일하게 강제 */
+#tab-char .faction-hostile .calamity-row .char-card{
+  padding-bottom:0 !important;
+}
+
+#tab-char .faction-hostile .calamity-row .char-card > .char-name{
+  margin-top:0 !important;
+}
+
+/* 재앙별 고유색은 유지하되 밝기/투명도 차이 때문에 작아 보이지 않게 */
+#tab-char .faction-hostile .calamity-avril .char-name{color:#b8b6bd !important;}
+#tab-char .faction-hostile .calamity-avril .char-role{color:#77757e !important;}
+#tab-char .faction-hostile .calamity-notamaya .char-name{color:#e78caf !important;}
+#tab-char .faction-hostile .calamity-notamaya .char-role{color:#ad7189 !important;}
+#tab-char .faction-hostile .calamity-kalipsa .char-name{color:#72afc9 !important;}
+#tab-char .faction-hostile .calamity-kalipsa .char-role{color:#628b9d !important;}
+#tab-char .faction-hostile .calamity-nyx .char-name{color:#b58cdd !important;}
+#tab-char .faction-hostile .calamity-nyx .char-role{color:#88709f !important;}
+</style>
+<style>
+/* =========================================================
+   HOSTILE CHAR TEXT — match normal char-card exactly
+   일반 카드 원본:
+   name 14.5px / padding 9px 6px 3px
+   role 11.5px / padding 0 6px 9px / min-height 31px
+   ========================================================= */
+
+#tab-char .faction-hostile .calamity-row .char-card .char-name{
+  font-size:14.5px !important;
+  font-weight:600 !important;
+  line-height:normal !important;
+  padding:9px 6px 3px !important;
+  margin:0 !important;
+  letter-spacing:normal !important;
+}
+
+#tab-char .faction-hostile .calamity-row .char-card .char-role{
+  font-family:'JetBrains Mono',monospace !important;
+  font-size:11.5px !important;
+  font-weight:400 !important;
+  min-height:31px !important;
+  padding:0 6px 9px !important;
+  margin:0 !important;
+  display:flex !important;
+  align-items:center !important;
+  justify-content:center !important;
+  line-height:1.35 !important;
+  letter-spacing:normal !important;
+  word-spacing:normal !important;
+  word-break:keep-all !important;
+  white-space:normal !important;
+  opacity:1 !important;
+  box-sizing:border-box !important;
+}
+</style>
+<style>
+/* =========================================================
+   HOSTILE PLACE TITLE — match enlarged global place-title
+   ========================================================= */
+#tab-char .faction-hostile .calamity-row .place-title{
+  display:block !important;
+  font-size:20px !important;
+  font-weight:700 !important;
+  line-height:1.4 !important;
+  letter-spacing:normal !important;
+  margin:0 0 7px !important;
+}
+</style>
+<style>
+/* =========================================================
+   HOSTILE CHAR TEXT — exact same typography/spacing as normal cards
+   ========================================================= */
+#tab-char .faction-hostile .calamity-row .char-card .char-name{
+  font-size:17px !important;
+  font-weight:600 !important;
+  line-height:1.4 !important;
+  padding:9px 6px 3px !important;
+  margin:0 !important;
+  letter-spacing:normal !important;
+}
+
+#tab-char .faction-hostile .calamity-row .char-card .char-role{
+  font-family:'JetBrains Mono',monospace !important;
+  font-size:14px !important;
+  font-weight:400 !important;
+  line-height:1.6 !important;
+  min-height:0 !important;
+  padding:0 6px 9px !important;
+  margin:0 !important;
+  display:block !important;
+  text-align:center !important;
+  letter-spacing:normal !important;
+  word-spacing:normal !important;
+  white-space:nowrap !important;
+  opacity:1 !important;
+}
+</style>
+<style>
+/* =========================================================
+   만상의 성소 — 일반 캐릭터 카드와 동일한 카드 폭/간격/초상화 크기
+   ========================================================= */
+
+/* 기존 재앙 전용 3등분 강제 규칙 제거 */
+#tab-char .faction-hostile .calamity-nyx .place-characters{
+  display:grid !important;
+  grid-template-columns:repeat(auto-fill,minmax(200px,1fr)) !important;
+  gap:16px !important;
+  margin-top:14px !important;
+}
+
+/* 카드 자체도 일반 char-card 크기 규칙 그대로 */
+#tab-char .faction-hostile .calamity-nyx .char-card{
+  width:auto !important;
+  min-width:0 !important;
+  max-width:none !important;
+  margin:0 !important;
+  box-sizing:border-box !important;
+}
+
+/* 초상화 크기도 일반 세력과 동일 */
+#tab-char .faction-hostile .calamity-nyx .char-portrait{
+  width:100% !important;
+  height:auto !important;
+  aspect-ratio:1/1 !important;
+  margin:0 !important;
+  box-sizing:border-box !important;
+  overflow:hidden !important;
+}
+
+#tab-char .faction-hostile .calamity-nyx .char-portrait img{
+  width:100% !important;
+  height:100% !important;
+  aspect-ratio:1/1 !important;
+  object-fit:cover !important;
+  display:block !important;
+}
+
+/* 재앙의 1인 카드들도 동일한 일반 카드 그리드 규칙 사용 */
+#tab-char .faction-hostile .calamity-row:not(.calamity-nyx) .place-characters{
+  display:grid !important;
+  grid-template-columns:repeat(auto-fill,minmax(200px,1fr)) !important;
+  gap:16px !important;
+  margin-top:14px !important;
+}
+
+/* 1명짜리는 다른 세력에서 캐릭터 1명이 놓이는 기본 카드 폭으로 제한 */
+#tab-char .faction-hostile .calamity-row:not(.calamity-nyx) .char-card{
+  width:100% !important;
+  max-width:none !important;
+  margin:0 !important;
+  box-sizing:border-box !important;
+}
+
+#tab-char .faction-hostile .calamity-row:not(.calamity-nyx) .char-portrait{
+  width:100% !important;
+  aspect-ratio:1/1 !important;
+  height:auto !important;
+  overflow:hidden !important;
+}
+
+#tab-char .faction-hostile .calamity-row:not(.calamity-nyx) .char-portrait img{
+  width:100% !important;
+  height:100% !important;
+  object-fit:cover !important;
+  display:block !important;
+}
+</style>
+
+
+<style>
+/* =========================================================
+   HOSTILE PORTRAITS — EXACT SAME SIZE AS ORBIS/OTHER FACTIONS
+   오르비스 포함 일반 카드 규격: 220 x 293, gap 18
+   ========================================================= */
+
+#tab-char .faction-hostile .calamity-row .place-characters{
+  display:grid !important;
+  grid-template-columns:repeat(auto-fill,var(--portrait-w)) !important;
+  gap:var(--portrait-gap) !important;
+  justify-content:start !important;
+  margin-top:14px !important;
+}
+
+#tab-char .faction-hostile .calamity-row .char-card{
+  width:var(--portrait-w) !important;
+  min-width:var(--portrait-w) !important;
+  max-width:var(--portrait-w) !important;
+  margin:0 !important;
+  box-sizing:border-box !important;
+}
+
+#tab-char .faction-hostile .calamity-row .char-portrait{
+  width:var(--portrait-w) !important;
+  min-width:var(--portrait-w) !important;
+  max-width:var(--portrait-w) !important;
+
+  height:var(--portrait-h) !important;
+  min-height:var(--portrait-h) !important;
+  max-height:var(--portrait-h) !important;
+
+  aspect-ratio:auto !important;
+  margin:0 !important;
+  padding:0 !important;
+  overflow:hidden !important;
+  box-sizing:border-box !important;
+}
+
+#tab-char .faction-hostile .calamity-row .char-portrait img{
+  width:var(--portrait-w) !important;
+  min-width:var(--portrait-w) !important;
+  max-width:var(--portrait-w) !important;
+
+  height:var(--portrait-h) !important;
+  min-height:var(--portrait-h) !important;
+  max-height:var(--portrait-h) !important;
+
+  aspect-ratio:auto !important;
+  object-fit:cover !important;
+  object-position:center top !important;
+  display:block !important;
+  margin:0 !important;
+  padding:0 !important;
+  box-sizing:border-box !important;
+}
+
+@media(max-width:560px){
+  #tab-char .faction-hostile .calamity-row .place-characters{
+    grid-template-columns:repeat(auto-fill,var(--portrait-w)) !important;
+    gap:var(--portrait-gap) !important;
+    justify-content:center !important;
+  }
+}
+</style>
+
+
+<style id="hostile-exact-normal-card-layout-final">
+/* =========================================================
+   적대세력 캐릭터 카드 — 일반 세력과 완전히 동일한 카드 규격
+   일반 세력 공통값을 그대로 사용:
+   220 × 293 초상화 / 카드 폭 220 / 간격 18
+   ========================================================= */
+
+/* 일반 세력의 .char-grid 최종 규칙과 동일 */
+#tab-char .faction-hostile .calamity-row .place-characters.char-grid{
+  display:grid !important;
+  grid-template-columns:repeat(auto-fill,var(--portrait-w)) !important;
+  gap:var(--portrait-gap) !important;
+  justify-content:start !important;
+  align-items:start !important;
+  margin-top:14px !important;
+}
+
+/* 카드 폭 = 초상화 폭. 오른쪽 빈 공간이 생기지 않도록 고정 */
+#tab-char .faction-hostile .calamity-row .place-characters.char-grid > .char-card{
+  width:var(--portrait-w) !important;
+  min-width:var(--portrait-w) !important;
+  max-width:var(--portrait-w) !important;
+  padding:0 !important;
+  margin:0 !important;
+  box-sizing:border-box !important;
+  justify-self:start !important;
+  overflow:hidden !important;
+}
+
+/* 일반 세력의 초상화 규격을 그대로 사용 */
+#tab-char .faction-hostile .calamity-row .char-card > .char-portrait{
+  width:var(--portrait-w) !important;
+  min-width:var(--portrait-w) !important;
+  max-width:var(--portrait-w) !important;
+  height:var(--portrait-h) !important;
+  min-height:var(--portrait-h) !important;
+  max-height:var(--portrait-h) !important;
+  aspect-ratio:auto !important;
+  padding:0 !important;
+  margin:0 !important;
+  box-sizing:border-box !important;
+  overflow:hidden !important;
+}
+
+/* 이미지 역시 초상화 박스를 정확히 채움 */
+#tab-char .faction-hostile .calamity-row .char-card > .char-portrait > img{
+  display:block !important;
+  width:100% !important;
+  min-width:100% !important;
+  max-width:100% !important;
+  height:100% !important;
+  min-height:100% !important;
+  max-height:100% !important;
+  object-fit:cover !important;
+  object-position:center top !important;
+  margin:0 !important;
+  padding:0 !important;
+  box-sizing:border-box !important;
+}
+
+/* 이름/정보 영역도 카드 전체 폭과 정확히 동일 */
+#tab-char .faction-hostile .calamity-row .char-card > .char-name,
+#tab-char .faction-hostile .calamity-row .char-card > .char-role{
+  width:100% !important;
+  box-sizing:border-box !important;
+}
+
+/* 모바일 역시 일반 세력의 변수값 그대로 따라감 */
+@media(max-width:560px){
+  #tab-char .faction-hostile .calamity-row .place-characters.char-grid{
+    grid-template-columns:repeat(auto-fill,var(--portrait-w)) !important;
+    gap:var(--portrait-gap) !important;
+    justify-content:center !important;
+  }
+}
+</style>
+
+</head>
 <body><div aria-hidden="true" class="shooting-stars"><span class="shooting-star star-a"></span><span class="shooting-star star-b"></span><span class="shooting-star star-c"></span></div>
 <section class="hero">
 <div class="rings-wrap">
@@ -9573,7 +11018,7 @@ body::after {
        ========================= -->
 <div class="tab-panel active" id="tab-world">
 <div class="world-prose">
-<section class="world-chapter">
+<section class="world-chapter reveal-on-scroll">
 <div class="world-kicker">ORBIS</div>
 <h2>오르비스, 균열 이후의 세계</h2>
 <p>한때 세계에는 수많은 도시와 국가가 존재했다. 그러나 547년, <strong>SSS급 게이트</strong>가 열리며 모든 것이 달라졌다. 균열 너머에서 쏟아져 나온 괴수들은 세계를 무너뜨렸고, 인류의 생존권은 빠르게 후퇴했다. 살아남은 사람들은 흩어진 채 각자의 힘으로 하루를 이어가야 했다.</p>
@@ -9639,7 +11084,7 @@ body::after {
 </div>
 </div>
 </section>
-<section class="world-chapter">
+<section class="world-chapter reveal-on-scroll">
 <div class="world-kicker">HUNTER &amp; GATE</div>
 <h2>헌터와 게이트, 끝나지 않은 균열전쟁</h2>
 <div class="hunter-gate-hero-image">
@@ -9668,7 +11113,7 @@ body::after {
 </div>
 </div>
 </section>
-<section class="world-chapter">
+<section class="world-chapter reveal-on-scroll">
 <div class="world-kicker">FRONT LINE</div>
 <h2>문명의 끝, 전선의 시작</h2>
 <p>중심 생존권의 바깥에는 옛 문명의 흔적과 게이트가 뒤섞인 전선이 펼쳐져 있다. 헌터들이 일상적으로 마주하는 최전선은 <strong>균열지대</strong>와 <strong>오염심역</strong>으로 나뉜다.</p>
@@ -9683,16 +11128,16 @@ body::after {
 </div>
 </div>
 </section>
-<section class="world-chapter">
+<section class="world-chapter reveal-on-scroll">
 <div class="world-kicker">THREE GUILDS</div>
 <h2>전선을 누비는 3대 길드</h2>
 <div class="guild-world-grid">
-<div class="guild-phantom-card"><b>팬텀 스트라이크</b><span>실력주의를 내세우며 최전선 공략을 주도한다. 입단 최소 등급은 A급 이상.</span></div>
-<div class="guild-noblesse-card"><b>노블레스</b><span>명예를 중시하며 구호 활동에 힘을 쏟는 길드.</span></div>
-<div class="guild-wolha-card"><b>월하</b><span>암행과 정보 활동에 특화된 길드.</span></div>
+<div class="guild-phantom-card"><b>팬텀 스트라이크</b><span>실력주의를 내세우며 최전선의 고위험 게이트 공략을 주도하는 전투 길드. 입단 최소 등급은 A급 이상으로, 소수 정예의 강력한 헌터들을 중심으로 운용된다. 위험도가 높은 임무일수록 가장 먼저 이름이 거론될 만큼 뛰어난 공략 능력을 자랑하며, 구조나 지원보다 신속한 게이트 제압과 강적 토벌에 특화되어 있다.</span></div>
+<div class="guild-noblesse-card"><b>노블레스</b><span>명예와 책임을 중시하며, 헌터의 힘은 사람들을 지키기 위해 존재한다는 신념을 따르는 길드. 게이트 공략뿐 아니라 민간인 구조, 재난 지역 지원, 구호 활동에도 적극적으로 참여한다. 화려한 전과보다 피해를 최소화하고 생존자를 지켜내는 것을 중요한 성과로 여기며, 일반 시민들에게 높은 신뢰를 받고 있다.</span></div>
+<div class="guild-wolha-card"><b>월하</b><span>암행과 정보 활동에 특화된 길드. 정면 전투보다는 정찰, 잠입, 추적, 정보 수집을 중심으로 움직이며 다른 길드가 접근하기 어려운 임무를 조용히 처리한다. 게이트 내부의 사전 조사부터 위험 인물의 추적까지 활동 범위가 넓고, 구성원과 임무에 관한 정보 대부분이 외부에 공개되지 않는다.</span></div>
 </div>
 </section>
-<section class="world-chapter">
+<section class="world-chapter reveal-on-scroll">
 <div class="world-kicker">FOUR CALAMITIES</div>
 <h2>오염심역 최심부, 4재앙</h2>
 <p>각 오염심역의 최심부에는 인류의 적 또는 배반자로 규정된 <strong>4재앙</strong>이 자리한다. 그들이 머무는 영역은 최고위 게이트와 맞물려 있으며, 각 방향의 전선을 대표하는 가장 거대한 위협이다.</p>
@@ -9703,7 +11148,7 @@ body::after {
 <div><b>북부 · 선큰스론</b><span>SSS · 칼립사</span></div>
 </div>
 </section>
-<section class="world-chapter">
+<section class="world-chapter reveal-on-scroll">
 <div class="world-kicker">PANTHEON ACADEMY</div>
 <h2>판테온 아카데미, 살아 돌아오기 위해 세워진 곳</h2>
 <div class="pantheon-world-bg"><img alt="판테온 아카데미" src="img/bg/97.png"/></div>
@@ -9754,7 +11199,7 @@ body::after {
 <i>→</i>
 <div class="student-rank-card">
 <span>정규생</span>
-<p>한 차례 계절을 건너며 힘의 윤곽이 또렷해진다. 대부분 C급에 닿아, 실전과 게이트 경험을 본격적으로 쌓는다.</p>
+<p>한 차례 계절을 건너며 힘의 윤곽이 또렷해진다. 대부분 C급에 닿아, 보다 높은 수준의 임무와 게이트 공략을 맡기 시작한다.</p>
 </div>
 <i>→</i>
 <div class="student-rank-card">
@@ -9764,7 +11209,7 @@ body::after {
 </div>
 <p class="student-order-note">한 해가 저물면 학생들은 다음 이름을 받는다. 한 계절을 무사히 건너온 시간만큼, 후보생은 정규생으로, 정규생은 정예생으로 올라선다.</p>
 </div>
-</section><section class="world-chapter">
+</section><section class="world-chapter reveal-on-scroll">
 <div class="world-kicker">CALENDAR</div>
 <h2>판테온과 오르비스를 흐르는 한 해</h2>
 <p>
@@ -9873,7 +11318,7 @@ body::after {
 <div>
 <time>01.15</time>
 <b>청운 천등제</b>
-<span>청운가의 겨울밤을 수많은 천등이 밝힌다. 사람들은 저마다의 소원을 적어 하늘로 띄우고, 토와와 아야나미가 축제를 함께한다.</span>
+<span>청운가의 겨울밤을 수많은 천등이 밝힌다. 사람들은 저마다의 소원을 적어 하늘로 띄우고, 토와와 아야나미가 축제를 관리한다.</span>
 </div>
 </div>
 </div>
@@ -10316,116 +11761,13 @@ body::after {
             </div>
 <div class="calamity-stack">
 <!-- 에이브릴 -->
-<div class="calamity-row calamity-avril">
-<div class="calamity-visuals">
-<div class="calamity-portrait character-detail-trigger" data-character-detail="avril">
-<img alt="에이브릴" src="img/ch/65.png"/>
-</div>
-<div class="calamity-scene">
-<img alt="옵시디언 레어" src="img/bg/28.png"/>
-</div>
-</div>
-<div class="calamity-meta">
-<div class="calamity-person-info character-detail-trigger" data-character-detail="avril">
-<div class="calamity-name">에이브릴</div>
-<div class="calamity-sub">흑룡의딸 · 흑룡 · SS+</div>
-</div>
-<div class="calamity-gate-info">
-<div class="calamity-gate-title">SS+ 게이트 · 옵시디언 레어</div>
-<div class="calamity-gate-desc">
-                      검게 결정화된 암석과 심연의 마력이 뒤엉킨 흑룡의 영역.
-                      깊숙이 들어갈수록 빛과 열이 희미해지며, 거대한 흑색 결정과 용의 흔적만이 적막 속에 남아 있다.
-                    </div>
-</div>
-</div>
-</div>
+<div class="calamity-row calamity-avril"><div class="place-card calamity-place-card-unified"><div class="place-image"><img alt="옵시디언 레어" src="img/bg/28.png"/></div><div class="place-info"><div class="place-title">◇ 옵시디언 레어 · SS+ 게이트</div><div class="place-desc">검게 결정화된 암석과 심연의 마력이 뒤엉킨 흑룡의 영역. 깊숙이 들어갈수록 빛과 열이 희미해지며, 거대한 흑색 결정과 용의 흔적만이 적막 속에 남아 있다.</div><div class="place-characters char-grid"><div class="char-card avril-detail-trigger" data-character-detail="avril"><div class="char-portrait"><img alt="에이브릴" src="img/ch/65.png"/></div><div class="char-name">에이브릴</div><div class="char-role">흑룡의딸·흑룡·SS+</div></div></div></div></div></div>
 <!-- 노타마야 -->
-<div class="calamity-row calamity-notamaya">
-<div class="calamity-visuals">
-<div class="calamity-portrait character-detail-trigger" data-character-detail="notamaya">
-<img alt="노타마야" src="img/ch/66.png"/>
-</div>
-<div class="calamity-scene">
-<img alt="천귀궁" src="img/bg/29.png"/>
-</div>
-</div>
-<div class="calamity-meta">
-<div class="calamity-person-info character-detail-trigger" data-character-detail="notamaya">
-<div class="calamity-name">노타마야</div>
-<div class="calamity-sub">천귀의주인 · 뱀요괴 · SSS</div>
-</div>
-<div class="calamity-gate-info">
-<div class="calamity-gate-title">SSS 게이트 · 천귀궁</div>
-<div class="calamity-gate-desc">
-                      끝을 가늠할 수 없는 어둠 속에 세워진 천귀들의 궁전.
-                      그림자와 환각이 현실의 경계를 흐리며, 발을 들인 순간부터 무엇이 실재하는지조차 확신하기 어렵다.
-                    </div>
-</div>
-</div>
-</div>
+<div class="calamity-row calamity-notamaya"><div class="place-card calamity-place-card-unified"><div class="place-image"><img alt="천귀궁" src="img/bg/29.png"/></div><div class="place-info"><div class="place-title">◇ 천귀궁 · SSS 게이트</div><div class="place-desc">끝을 가늠할 수 없는 어둠 속에 세워진 천귀들의 궁전. 그림자와 환각이 현실의 경계를 흐리며, 발을 들인 순간부터 무엇이 실재하는지조차 확신하기 어렵다.</div><div class="place-characters char-grid"><div class="char-card notamaya-detail-trigger" data-character-detail="notamaya"><div class="char-portrait"><img alt="노타마야" src="img/ch/66.png"/></div><div class="char-name">노타마야</div><div class="char-role">천귀의주인·뱀요괴·SSS</div></div></div></div></div></div>
 <!-- 칼립사 -->
-<div class="calamity-row calamity-kalipsa">
-<div class="calamity-visuals">
-<div class="calamity-portrait character-detail-trigger" data-character-detail="calypso">
-<img alt="칼립사" src="img/ch/67.png"/>
-</div>
-<div class="calamity-scene">
-<img alt="선큰스론" src="img/bg/31.png"/>
-</div>
-</div>
-<div class="calamity-meta">
-<div class="calamity-person-info character-detail-trigger" data-character-detail="calypso">
-<div class="calamity-name">칼립사</div>
-<div class="calamity-sub">심해의여왕 · 문어괴인 · SSS</div>
-</div>
-<div class="calamity-gate-info">
-<div class="calamity-gate-title">SSS 게이트 · 선큰스론</div>
-<div class="calamity-gate-desc">
-                      빛조차 닿지 않는 심해에 가라앉은 거대한 왕좌의 영역.
-                      압도적인 수압과 기괴한 심해 생태계가 지배하며, 그 가장 깊은 곳에서 칼립사가 침입자를 기다린다.
-                    </div>
-</div>
-</div>
-</div>
+<div class="calamity-row calamity-kalipsa"><div class="place-card calamity-place-card-unified"><div class="place-image"><img alt="선큰스론" src="img/bg/31.png"/></div><div class="place-info"><div class="place-title">◇ 선큰스론 · SSS 게이트</div><div class="place-desc">빛조차 닿지 않는 심해에 가라앉은 거대한 왕좌의 영역. 압도적인 수압과 기괴한 심해 생태계가 지배하며, 그 가장 깊은 곳에서 칼립사가 침입자를 기다린다.</div><div class="place-characters char-grid"><div class="char-card calypso-detail-trigger" data-character-detail="calypso"><div class="char-portrait"><img alt="칼립사" src="img/ch/67.png"/></div><div class="char-name">칼립사</div><div class="char-role">심해의여왕·문어괴인·SSS</div></div></div></div></div></div>
 <!-- 닉스 -->
-<div class="calamity-row calamity-nyx">
-<div class="calamity-visuals">
-<div class="calamity-portrait character-detail-trigger" data-character-detail="nyx">
-<img alt="닉스" src="img/ch/68.png"/>
-</div>
-<div class="calamity-scene">
-<img alt="만상의 성소" src="img/bg/30.png"/>
-</div>
-</div>
-<div class="calamity-meta">
-<div class="calamity-person-info character-detail-trigger" data-character-detail="nyx">
-<div class="calamity-name">닉스</div>
-<div class="calamity-sub">별의마녀 · 인간 · SSS</div>
-</div>
-<div class="calamity-gate-info">
-<div class="calamity-gate-title">SSS 인공 게이트 · 만상의 성소</div>
-<div class="calamity-gate-desc">
-                      닉스가 인위적으로 구축한 비정상적인 게이트 공간.
-                      별빛과 공허가 뒤섞인 내부에서는 공간의 거리와 방향마저 일정하지 않으며, 성소 전체가 그녀의 의지에 따라 재편된다.
-                    </div>
-</div>
-</div>
-<div class="apostle-area">
-<div class="apostle-label">닉스의 사도</div>
-<div class="apostle-grid">
-<div class="apostle-card character-detail-trigger" data-character-detail="nemesis">
-<img alt="네메시스" src="img/ch/69.png"/>
-<div class="char-name">네메시스</div>
-<div class="char-role">사도 · 인간 · S</div>
-</div>
-<div class="apostle-card character-detail-trigger" data-character-detail="revern">
-<img alt="레베른" src="img/ch/70.png"/>
-<div class="char-name">레베른</div>
-<div class="char-role">사도 · 인간 · A+</div>
-</div>
-</div>
-</div>
-</div>
+<div class="calamity-row calamity-nyx"><div class="place-card calamity-place-card-unified"><div class="place-image"><img alt="만상의 성소" src="img/bg/30.png"/></div><div class="place-info"><div class="place-title">◇ 만상의 성소 · SSS 인공 게이트</div><div class="place-desc">닉스가 인위적으로 구축한 비정상적인 게이트 공간. 별빛과 공허가 뒤섞인 내부에서는 공간의 거리와 방향마저 일정하지 않으며, 성소 전체가 그녀의 의지에 따라 재편된다.</div><div class="place-characters char-grid"><div class="char-card nyx-detail-trigger" data-character-detail="nyx"><div class="char-portrait"><img alt="닉스" src="img/ch/68.png"/></div><div class="char-name">닉스</div><div class="char-role">별의마녀·인간·SSS</div></div><div class="char-card nemesis-detail-trigger" data-character-detail="nemesis"><div class="char-portrait"><img alt="네메시스" src="img/ch/69.png"/></div><div class="char-name">네메시스</div><div class="char-role">사도·인간·S</div></div><div class="char-card revern-detail-trigger" data-character-detail="revern"><div class="char-portrait"><img alt="레베른" src="img/ch/70.png"/></div><div class="char-name">레베른</div><div class="char-role">사도·인간·A+</div></div></div></div></div></div>
 </div>
 </div>
 </div>
@@ -12109,6 +13451,49 @@ document.addEventListener("DOMContentLoaded", function () {
     if(activeCard && activePopup) position(activeCard,activePopup);
   });
 })();
+</script><script>
+document.addEventListener('DOMContentLoaded', () => {
+  const chapters = Array.from(
+    document.querySelectorAll('#tab-world .world-chapter')
+  );
+
+  if (!chapters.length) return;
+
+  chapters.forEach(ch => {
+    ch.classList.add('reveal-on-scroll');
+    ch.classList.remove('revealed');
+  });
+
+  if (!('IntersectionObserver' in window)) {
+    chapters.forEach(ch => ch.classList.add('revealed'));
+    return;
+  }
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('revealed');
+      }
+    });
+  }, {
+    threshold:0.10,
+    rootMargin:'0px 0px -8% 0px'
+  });
+
+  chapters.forEach(ch => observer.observe(ch));
+
+  document.querySelectorAll('.tab-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      requestAnimationFrame(() => {
+        chapters.forEach(ch => {
+          if (!ch.classList.contains('revealed')) {
+            observer.observe(ch);
+          }
+        });
+      });
+    });
+  });
+});
 </script></body>
 </html>
 <!-- redeploy -->
