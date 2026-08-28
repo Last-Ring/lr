@@ -22099,6 +22099,785 @@ document.addEventListener('DOMContentLoaded',function(){
 }
 </style>
 
+
+<style id="tengugong-charm-v10">
+/* =========================================================
+   천귀궁 — 매혹 / 분홍빛 안개
+   천귀궁 박스 + 노타마야 카드 + 노타마야 상세 Hover만 적용
+   옵시디언 / 선큰스론 / 만상의 성소는 건드리지 않음
+   ========================================================= */
+
+/* 천귀궁 큰 박스 */
+#tab-char .faction-hostile .calamity-row:not(.calamity-avril) .place-card:has(.place-title){
+  /* 기본값을 건드리지 않기 위해 실제 천귀궁은 아래 JS가 class를 붙임 */
+}
+
+#tab-char .faction-hostile .tengugong-card{
+  position:relative !important;
+  overflow:hidden !important;
+  isolation:isolate !important;
+  border:1px solid rgba(164,96,139,.34) !important;
+  border-radius:5px !important;
+  background:
+    radial-gradient(circle at 18% 28%,rgba(255,118,186,.08),transparent 27%),
+    radial-gradient(circle at 82% 67%,rgba(239,90,165,.07),transparent 29%),
+    linear-gradient(145deg,#171018 0%,#100b12 58%,#09080b 100%) !important;
+  box-shadow:
+    inset 0 0 0 1px rgba(255,178,215,.018),
+    inset 0 0 34px rgba(102,43,78,.055) !important;
+}
+
+/* 분홍빛 안개 레이어 */
+#tab-char .faction-hostile .tengugong-card .tengugong-mist{
+  position:absolute !important;
+  inset:0 !important;
+  z-index:5 !important;
+  overflow:hidden !important;
+  pointer-events:none !important;
+}
+
+/* 군데군데 떠 있는 안개 덩어리 */
+#tab-char .faction-hostile .tengugong-card .tengugong-mist::before,
+#tab-char .faction-hostile .tengugong-card .tengugong-mist::after{
+  content:"" !important;
+  position:absolute !important;
+  border-radius:50% !important;
+  filter:blur(22px) !important;
+  opacity:.34 !important;
+}
+
+#tab-char .faction-hostile .tengugong-card .tengugong-mist::before{
+  width:190px !important;
+  height:76px !important;
+  left:-26px !important;
+  top:28% !important;
+  background:
+    radial-gradient(ellipse at center,
+      rgba(255,126,191,.34) 0%,
+      rgba(235,95,166,.20) 42%,
+      transparent 74%) !important;
+  animation:tengugongMistA 9s ease-in-out infinite alternate !important;
+}
+
+#tab-char .faction-hostile .tengugong-card .tengugong-mist::after{
+  width:220px !important;
+  height:88px !important;
+  right:-38px !important;
+  bottom:16% !important;
+  background:
+    radial-gradient(ellipse at center,
+      rgba(255,153,205,.28) 0%,
+      rgba(224,85,154,.17) 46%,
+      transparent 76%) !important;
+  animation:tengugongMistB 11s ease-in-out infinite alternate !important;
+}
+
+/* 추가 안개 조각 */
+#tab-char .faction-hostile .tengugong-card .mist-puff{
+  position:absolute !important;
+  display:block !important;
+  border-radius:50% !important;
+  filter:blur(18px) !important;
+  opacity:.22 !important;
+  background:
+    radial-gradient(ellipse at center,
+      rgba(255,135,196,.28),
+      rgba(233,90,162,.14) 48%,
+      transparent 75%) !important;
+  will-change:transform !important;
+}
+
+#tab-char .faction-hostile .tengugong-card .mist-puff.m1{
+  width:124px;height:44px;left:21%;top:13%;
+  animation:tengugongPuff1 12s ease-in-out infinite alternate;
+}
+#tab-char .faction-hostile .tengugong-card .mist-puff.m2{
+  width:146px;height:52px;right:18%;top:45%;
+  animation:tengugongPuff2 14s ease-in-out infinite alternate;
+}
+#tab-char .faction-hostile .tengugong-card .mist-puff.m3{
+  width:106px;height:38px;left:38%;bottom:8%;
+  animation:tengugongPuff3 10s ease-in-out infinite alternate;
+}
+
+@keyframes tengugongMistA{
+  from{transform:translate3d(0,0,0) scale(1);}
+  to{transform:translate3d(42px,-7px,0) scale(1.08);}
+}
+@keyframes tengugongMistB{
+  from{transform:translate3d(0,0,0) scale(1);}
+  to{transform:translate3d(-46px,8px,0) scale(1.05);}
+}
+@keyframes tengugongPuff1{
+  from{transform:translate3d(0,0,0);}
+  to{transform:translate3d(24px,7px,0);}
+}
+@keyframes tengugongPuff2{
+  from{transform:translate3d(0,0,0);}
+  to{transform:translate3d(-28px,-5px,0);}
+}
+@keyframes tengugongPuff3{
+  from{transform:translate3d(0,0,0);}
+  to{transform:translate3d(19px,-6px,0);}
+}
+
+/* 이미지 */
+#tab-char .faction-hostile .tengugong-card > .place-image{
+  position:relative !important;
+  z-index:1 !important;
+  overflow:hidden !important;
+  background:#0d090e !important;
+  border-bottom:1px solid rgba(155,91,128,.22) !important;
+}
+#tab-char .faction-hostile .tengugong-card > .place-image img{
+  filter:saturate(.82) brightness(.86) contrast(1.04) hue-rotate(-4deg) !important;
+  transition:transform .4s ease,filter .4s ease !important;
+}
+#tab-char .faction-hostile .tengugong-card:hover > .place-image img{
+  transform:scale(1.016) !important;
+  filter:saturate(.90) brightness(.91) contrast(1.04) hue-rotate(-4deg) !important;
+}
+#tab-char .faction-hostile .tengugong-card > .place-image::after{
+  content:"" !important;
+  position:absolute !important;
+  inset:0 !important;
+  pointer-events:none !important;
+  background:
+    radial-gradient(circle at 18% 34%,rgba(255,129,192,.10),transparent 27%),
+    radial-gradient(circle at 78% 72%,rgba(240,103,176,.08),transparent 30%),
+    linear-gradient(180deg,transparent 58%,rgba(22,10,18,.24) 100%) !important;
+}
+
+/* 정보 영역 */
+#tab-char .faction-hostile .tengugong-card > .place-info{
+  position:relative !important;
+  z-index:10 !important;
+  background:
+    linear-gradient(180deg,rgba(31,18,29,.76),rgba(13,9,13,.91)) !important;
+}
+
+#tab-char .faction-hostile .tengugong-card .place-title{
+  color:#e0c7d5 !important;
+  text-shadow:0 0 8px rgba(218,111,169,.08) !important;
+}
+#tab-char .faction-hostile .tengugong-card .place-desc{
+  color:#9b8793 !important;
+}
+
+/* 노타마야 카드 */
+#tab-char .faction-hostile .tengugong-card .char-card{
+  position:relative !important;
+  overflow:hidden !important;
+  border:1px solid rgba(165,98,137,.30) !important;
+  border-radius:4px !important;
+  background:
+    radial-gradient(circle at 86% 11%,rgba(239,117,177,.08),transparent 24%),
+    linear-gradient(150deg,#1b1119,#0d0a0e 72%) !important;
+  transition:transform .22s ease,border-color .22s ease,filter .22s ease,box-shadow .22s ease !important;
+}
+#tab-char .faction-hostile .tengugong-card .char-card::before{
+  content:"" !important;
+  position:absolute !important;
+  z-index:6 !important;
+  left:10px !important;
+  right:10px !important;
+  top:7px !important;
+  height:1px !important;
+  pointer-events:none !important;
+  background:linear-gradient(90deg,transparent,rgba(233,126,180,.30),transparent) !important;
+}
+#tab-char .faction-hostile .tengugong-card .char-card::after{
+  content:"" !important;
+  position:absolute !important;
+  z-index:6 !important;
+  right:9px !important;
+  bottom:9px !important;
+  width:18px !important;
+  height:7px !important;
+  border-radius:50% !important;
+  pointer-events:none !important;
+  background:rgba(238,119,177,.13) !important;
+  filter:blur(4px) !important;
+  box-shadow:0 0 8px rgba(237,110,172,.10) !important;
+}
+#tab-char .faction-hostile .tengugong-card .char-card:hover{
+  transform:translateY(-2px) !important;
+  filter:brightness(1.035) !important;
+  border-color:rgba(194,117,157,.46) !important;
+  box-shadow:0 8px 18px rgba(0,0,0,.22) !important;
+}
+
+#tab-char .faction-hostile .tengugong-card .char-name{
+  color:#d8c3cf !important;
+}
+#tab-char .faction-hostile .tengugong-card .char-role{
+  color:#947f8a !important;
+}
+
+/* 노타마야 상세 Hover */
+.character-hover-detail.calamity-notamaya{
+  position:fixed;
+  overflow:hidden !important;
+  background:
+    radial-gradient(circle at 14% 24%,rgba(255,126,192,.07),transparent 28%),
+    radial-gradient(circle at 82% 74%,rgba(238,102,172,.06),transparent 30%),
+    linear-gradient(145deg,#191017,#0b090c 74%) !important;
+  border:1px solid rgba(165,100,138,.38) !important;
+  border-radius:5px !important;
+  box-shadow:
+    inset 0 0 0 1px rgba(255,188,221,.014),
+    0 18px 44px rgba(0,0,0,.46) !important;
+}
+
+.character-hover-detail.calamity-notamaya::before{
+  content:"" !important;
+  display:block !important;
+  position:absolute !important;
+  z-index:22 !important;
+  left:-12% !important;
+  top:18% !important;
+  width:54% !important;
+  height:80px !important;
+  border-radius:50% !important;
+  pointer-events:none !important;
+  background:
+    radial-gradient(ellipse at center,
+      rgba(255,135,196,.18),
+      rgba(231,91,162,.10) 48%,
+      transparent 75%) !important;
+  filter:blur(18px) !important;
+  animation:notamayaHoverMist 10s ease-in-out infinite alternate !important;
+}
+
+.character-hover-detail.calamity-notamaya::after{
+  content:"" !important;
+  display:block !important;
+  position:absolute !important;
+  z-index:22 !important;
+  right:-15% !important;
+  bottom:12% !important;
+  width:62% !important;
+  height:92px !important;
+  border-radius:50% !important;
+  pointer-events:none !important;
+  background:
+    radial-gradient(ellipse at center,
+      rgba(248,121,183,.15),
+      rgba(211,77,145,.08) 50%,
+      transparent 76%) !important;
+  filter:blur(21px) !important;
+  animation:notamayaHoverMist2 12s ease-in-out infinite alternate !important;
+}
+
+@keyframes notamayaHoverMist{
+  from{transform:translate3d(0,0,0);}
+  to{transform:translate3d(34px,7px,0);}
+}
+@keyframes notamayaHoverMist2{
+  from{transform:translate3d(0,0,0);}
+  to{transform:translate3d(-38px,-6px,0);}
+}
+
+.character-hover-detail.calamity-notamaya .character-detail-art{
+  position:relative !important;
+  z-index:1 !important;
+  background:#0b090c !important;
+  border-bottom:1px solid rgba(151,91,126,.22) !important;
+}
+.character-hover-detail.calamity-notamaya .character-detail-art img{
+  filter:saturate(.92) brightness(.95) contrast(1.02) !important;
+}
+.character-hover-detail.calamity-notamaya .character-detail-art::after{
+  content:"" !important;
+  position:absolute !important;
+  inset:0 !important;
+  pointer-events:none !important;
+  background:
+    radial-gradient(circle at 16% 72%,rgba(255,132,194,.08),transparent 26%),
+    radial-gradient(circle at 82% 22%,rgba(236,99,171,.06),transparent 27%) !important;
+}
+
+.character-hover-detail.calamity-notamaya .character-detail-body{
+  position:relative !important;
+  z-index:25 !important;
+}
+.character-hover-detail.calamity-notamaya .character-detail-name{
+  color:#dfc9d5 !important;
+}
+.character-hover-detail.calamity-notamaya .character-detail-role{
+  color:#9a838f !important;
+}
+.character-hover-detail.calamity-notamaya .character-detail-profile{
+  color:#a08d97 !important;
+}
+.character-hover-detail.calamity-notamaya .character-detail-code{
+  color:#94768a !important;
+}
+.character-hover-detail.calamity-notamaya .character-detail-ability{
+  background:linear-gradient(145deg,rgba(70,35,57,.14),rgba(23,14,20,.18)) !important;
+  border:1px solid rgba(155,90,126,.24) !important;
+}
+.character-hover-detail.calamity-notamaya .character-detail-ability strong{
+  color:#c5a4b7 !important;
+}
+.character-hover-detail.calamity-notamaya .character-detail-quote{
+  color:#b29ba8 !important;
+  border-color:rgba(144,84,117,.21) !important;
+}
+</style>
+
+
+<style id="tengugong-mist-v11">
+/* 천귀궁 안개: CSS keyframe에 의존하지 않고 JS로 실제 이동 */
+#tab-char .faction-hostile .tengugong-card .tengugong-mist-v11{
+  position:absolute !important;
+  inset:0 !important;
+  z-index:6 !important;
+  overflow:hidden !important;
+  pointer-events:none !important;
+}
+#tab-char .faction-hostile .tengugong-card .pink-mist-v11{
+  position:absolute !important;
+  left:0 !important;
+  top:0 !important;
+  display:block !important;
+  border-radius:50% !important;
+  pointer-events:none !important;
+  background:
+    radial-gradient(ellipse at center,
+      rgba(255,164,207,.27) 0%,
+      rgba(249,120,185,.20) 32%,
+      rgba(225,83,154,.10) 55%,
+      transparent 76%) !important;
+  filter:blur(20px) !important;
+  will-change:transform,opacity !important;
+}
+</style>
+
+
+<style id="tengugong-mist-v12">
+/* 천귀궁 안개 V12:
+   - 짧은 흔들림이 아니라 화면을 길게 좌우 왕복
+   - 옅어졌다가 짙어졌다가 천천히 반복
+   - 개별 안개는 더 넓고 길게 */
+#tab-char .faction-hostile .tengugong-card .tengugong-mist-v12{
+  position:absolute !important;
+  inset:0 !important;
+  z-index:6 !important;
+  overflow:hidden !important;
+  pointer-events:none !important;
+}
+
+#tab-char .faction-hostile .tengugong-card .pink-mist-v12{
+  position:absolute !important;
+  left:0 !important;
+  top:0 !important;
+  display:block !important;
+  border-radius:50% !important;
+  pointer-events:none !important;
+  background:
+    radial-gradient(ellipse at center,
+      rgba(255,176,216,.34) 0%,
+      rgba(255,139,198,.25) 30%,
+      rgba(233,89,160,.14) 54%,
+      transparent 78%) !important;
+  filter:blur(24px) !important;
+  will-change:transform,opacity !important;
+}
+</style>
+
+
+<style id="tengugong-deep-pink-v13">
+/* 천귀궁 V13 — 안개를 진분홍 계열로 더 짙게.
+   기존 좌우 장거리 왕복 + 농도 변화 애니메이션은 그대로 유지. */
+
+#tab-char .faction-hostile .tengugong-card .pink-mist-v12{
+  background:
+    radial-gradient(ellipse at center,
+      rgba(255,72,154,.55) 0%,
+      rgba(238,38,127,.43) 28%,
+      rgba(194,19,98,.28) 52%,
+      rgba(116,8,59,.12) 68%,
+      transparent 80%) !important;
+  filter:blur(23px) saturate(1.16) !important;
+}
+
+/* 배경 이미지에 걸리는 분홍 기운도 진분홍으로 통일 */
+#tab-char .faction-hostile .tengugong-card > .place-image::after{
+  background:
+    radial-gradient(circle at 18% 34%,rgba(241,42,132,.16),transparent 29%),
+    radial-gradient(circle at 78% 72%,rgba(210,23,111,.14),transparent 31%),
+    linear-gradient(180deg,transparent 55%,rgba(35,7,22,.30) 100%) !important;
+}
+
+/* 천귀궁 박스 자체의 미세한 매혹색 */
+#tab-char .faction-hostile .tengugong-card{
+  border-color:rgba(184,55,119,.40) !important;
+  background:
+    radial-gradient(circle at 18% 28%,rgba(229,37,126,.11),transparent 27%),
+    radial-gradient(circle at 82% 67%,rgba(190,21,101,.09),transparent 29%),
+    linear-gradient(145deg,#190d16 0%,#10090f 58%,#09070a 100%) !important;
+}
+
+/* 노타마야 카드도 같은 진분홍 계열로 아주 약하게 연결 */
+#tab-char .faction-hostile .tengugong-card .char-card{
+  border-color:rgba(177,57,116,.34) !important;
+  background:
+    radial-gradient(circle at 86% 11%,rgba(222,42,127,.11),transparent 25%),
+    linear-gradient(150deg,#1d0e17,#0d090d 72%) !important;
+}
+
+#tab-char .faction-hostile .tengugong-card .char-card::before{
+  background:
+    linear-gradient(90deg,transparent,rgba(234,62,142,.42),transparent) !important;
+}
+
+/* 노타마야 상세 Hover의 안개도 진분홍으로 맞춤 */
+.character-hover-detail.calamity-notamaya{
+  border-color:rgba(181,56,118,.42) !important;
+  background:
+    radial-gradient(circle at 14% 24%,rgba(224,37,126,.10),transparent 28%),
+    radial-gradient(circle at 82% 74%,rgba(190,22,103,.09),transparent 30%),
+    linear-gradient(145deg,#1b0d16,#0b080b 74%) !important;
+}
+
+.character-hover-detail.calamity-notamaya::before{
+  background:
+    radial-gradient(ellipse at center,
+      rgba(247,59,145,.28),
+      rgba(210,25,111,.17) 48%,
+      transparent 76%) !important;
+  opacity:.92 !important;
+}
+
+.character-hover-detail.calamity-notamaya::after{
+  background:
+    radial-gradient(ellipse at center,
+      rgba(235,48,136,.25),
+      rgba(184,18,96,.15) 50%,
+      transparent 77%) !important;
+  opacity:.88 !important;
+}
+
+.character-hover-detail.calamity-notamaya .character-detail-art::after{
+  background:
+    radial-gradient(circle at 16% 72%,rgba(230,42,131,.12),transparent 27%),
+    radial-gradient(circle at 82% 22%,rgba(198,24,107,.10),transparent 28%) !important;
+}
+</style>
+
+
+<style id="tengugong-foreground-mist-v14">
+/* =========================================================
+   천귀궁 V14
+   핵심 수정: 안개를 place-image 뒤가 아니라
+   천귀궁 '전체 박스의 최상단 장식 레이어'로 올림.
+   따라서 배경 + 제목 + 설명 + 노타마야 카드 위를 모두 통과함.
+   ========================================================= */
+
+#tab-char .faction-hostile .tengugong-card{
+  position:relative !important;
+  overflow:hidden !important;
+  isolation:isolate !important;
+}
+
+/* 기존 V12 안개를 콘텐츠 위로 강제로 올림 */
+#tab-char .faction-hostile .tengugong-card > .tengugong-mist-v12{
+  display:block !important;
+  position:absolute !important;
+  inset:0 !important;
+  z-index:100 !important;
+  overflow:hidden !important;
+  pointer-events:none !important;
+  mix-blend-mode:screen !important;
+}
+
+/* 이미지/정보/캐릭터는 정상 레이어. 안개(z100)가 그 위를 지나감 */
+#tab-char .faction-hostile .tengugong-card > .place-image{
+  position:relative !important;
+  z-index:1 !important;
+}
+#tab-char .faction-hostile .tengugong-card > .place-info{
+  position:relative !important;
+  z-index:10 !important;
+}
+#tab-char .faction-hostile .tengugong-card .place-title,
+#tab-char .faction-hostile .tengugong-card .place-desc,
+#tab-char .faction-hostile .tengugong-card .place-characters,
+#tab-char .faction-hostile .tengugong-card .char-card{
+  position:relative !important;
+}
+
+/* 전경을 지나가므로 이전보다 조금 부드럽게,
+   하지만 진분홍 색 자체는 유지 */
+#tab-char .faction-hostile .tengugong-card > .tengugong-mist-v12 .pink-mist-v12{
+  background:
+    radial-gradient(ellipse at center,
+      rgba(255,68,151,.48) 0%,
+      rgba(239,35,127,.36) 29%,
+      rgba(195,18,98,.22) 53%,
+      rgba(117,8,60,.09) 69%,
+      transparent 80%) !important;
+  filter:blur(25px) saturate(1.12) !important;
+}
+
+/* 안개가 노타마야 카드 위를 지나갈 때도 클릭/호버 방해 금지 */
+#tab-char .faction-hostile .tengugong-card > .tengugong-mist-v12,
+#tab-char .faction-hostile .tengugong-card > .tengugong-mist-v12 *{
+  pointer-events:none !important;
+}
+
+/* 기존 V10/V11 안개는 중복 방지 */
+#tab-char .faction-hostile .tengugong-card > .tengugong-mist,
+#tab-char .faction-hostile .tengugong-card > .tengugong-mist-v11{
+  display:none !important;
+}
+</style>
+
+
+<style id="calamity-refine-v15">
+/* =========================================================
+   V15 수정사항
+   1. 천귀궁: 상/하 안개 배치 교환 + 배경 쪽 안개 크기 축소
+   2. 옵시디언 레어: 배경 '사진 자체'에 마우스를 올렸을 때만 반응
+   3. 에이브릴 상세 일러스트 위 반투명 오버레이 제거
+   ========================================================= */
+
+/* ---------- 옵시디언 레어 이미지 hover 범위 수정 ---------- */
+
+/* 기존 '박스 전체 hover' 반응을 무효화 */
+#obsidianBoxMain:hover > .place-image img{
+  transform:none !important;
+  filter:saturate(.68) brightness(.76) contrast(1.10) !important;
+}
+
+/* 오직 실제 배경 이미지 영역에 hover 했을 때만 반응 */
+#obsidianBoxMain > .place-image:hover img{
+  transform:scale(1.018) !important;
+  filter:saturate(.74) brightness(.82) contrast(1.12) !important;
+}
+
+/* ---------- 에이브릴 상세 이미지 오버레이 완전 제거 ---------- */
+
+/* V9에서 상세 일러스트 위에 얹었던 반투명 하단 그라데이션 제거 */
+.character-hover-detail.calamity-avril .character-detail-art::after{
+  content:none !important;
+  display:none !important;
+  background:none !important;
+  opacity:0 !important;
+}
+
+/* 혹시 기존 공통 스타일에서 ::before가 이미지 위를 덮는 경우도 차단 */
+.character-hover-detail.calamity-avril .character-detail-art::before{
+  content:none !important;
+  display:none !important;
+  background:none !important;
+  opacity:0 !important;
+}
+
+/* 상세 일러스트 자체에는 필터만 유지하고 추가 반투명 면은 두지 않음 */
+.character-hover-detail.calamity-avril .character-detail-art{
+  background:#08070a !important;
+}
+</style>
+
+
+<style id="tengugong-fixed-mist-bottom-right-v16">
+/* 천귀궁 고정 배경 안개:
+   사진 전체에 군데군데 두지 않고 오른쪽 아래 한 곳에만 배치.
+   움직이는 전경 안개 시스템은 그대로 유지. */
+
+#tab-char .faction-hostile .tengugong-card > .place-image::after{
+  content:"" !important;
+  position:absolute !important;
+  inset:0 !important;
+  pointer-events:none !important;
+
+  background:
+    radial-gradient(
+      ellipse 48% 34% at 91% 91%,
+      rgba(241,42,132,.22) 0%,
+      rgba(210,23,111,.15) 31%,
+      rgba(151,12,77,.07) 53%,
+      transparent 73%
+    ),
+    linear-gradient(
+      180deg,
+      transparent 64%,
+      rgba(25,6,17,.16) 100%
+    ) !important;
+}
+</style>
+
+
+<style id="tengugong-fixed-mist-v17">
+/* 기존 place-image 안의 고정 안개는 제거 */
+#tab-char .faction-hostile .tengugong-card > .place-image::after{
+  background:linear-gradient(180deg,transparent 64%,rgba(25,6,17,.16) 100%) !important;
+}
+
+/* 천귀궁 '전체 박스' 오른쪽 아래에 실제 고정 안개 레이어 배치 */
+#tab-char .faction-hostile .tengugong-card > .tengugong-fixed-mist-v17{
+  position:absolute !important;
+  right:-28px !important;
+  bottom:-22px !important;
+  width:340px !important;
+  height:150px !important;
+  z-index:80 !important;
+  pointer-events:none !important;
+  border-radius:50% !important;
+  background:
+    radial-gradient(
+      ellipse at 58% 58%,
+      rgba(255,58,145,.34) 0%,
+      rgba(224,29,120,.24) 30%,
+      rgba(173,16,88,.14) 50%,
+      rgba(105,8,55,.06) 66%,
+      transparent 78%
+    ) !important;
+  filter:blur(24px) saturate(1.12) !important;
+  opacity:.88 !important;
+}
+
+/* 클릭/호버 방해 금지 */
+#tab-char .faction-hostile .tengugong-card > .tengugong-fixed-mist-v17,
+#tab-char .faction-hostile .tengugong-card > .tengugong-fixed-mist-v17 *{
+  pointer-events:none !important;
+}
+</style>
+
+
+<style id="tengugong-mist-v18-refine">
+/* =========================================================
+   천귀궁 V18
+   - 오른쪽 아래 고정 안개: 더 넓은 원형 + 더 연하게
+   - 움직이는 안개: 더 크게 + 8개로 증가
+   ========================================================= */
+
+/* 오른쪽 아래 고정 안개 */
+#tab-char .faction-hostile .tengugong-card > .tengugong-fixed-mist-v17{
+  right:-78px !important;
+  bottom:-82px !important;
+  width:500px !important;
+  height:500px !important;
+  border-radius:50% !important;
+
+  background:
+    radial-gradient(
+      circle at 54% 52%,
+      rgba(255,83,158,.16) 0%,
+      rgba(231,48,133,.115) 26%,
+      rgba(190,27,105,.070) 48%,
+      rgba(121,12,67,.032) 64%,
+      transparent 78%
+    ) !important;
+
+  filter:blur(36px) saturate(1.05) !important;
+  opacity:.64 !important;
+}
+
+/* 움직이는 안개도 덩어리가 커진 만큼 가장자리를 더 부드럽게 */
+#tab-char .faction-hostile .tengugong-card > .tengugong-mist-v12 .pink-mist-v12{
+  background:
+    radial-gradient(
+      ellipse at center,
+      rgba(255,68,151,.43) 0%,
+      rgba(239,35,127,.31) 30%,
+      rgba(195,18,98,.18) 54%,
+      rgba(117,8,60,.07) 70%,
+      transparent 82%
+    ) !important;
+
+  filter:blur(28px) saturate(1.10) !important;
+}
+</style>
+
+
+<style id="tengugong-cloudlike-mist-v19">
+/* =========================================================
+   천귀궁 V19 — 구름처럼 덩어리진 진분홍 안개
+   이미지 없이 CSS + JS만 사용.
+   크기 제각각 / 세로 높이 크게 / 겹쳐지는 안개 질감
+   ========================================================= */
+
+/* 각 움직이는 안개를 단순 타원이 아니라 여러 덩어리가 겹친 구름형으로 */
+#tab-char .faction-hostile .tengugong-card > .tengugong-mist-v12 .pink-mist-v12{
+  overflow:visible !important;
+  border-radius:48% 52% 44% 56% / 58% 42% 61% 39% !important;
+
+  background:
+    radial-gradient(ellipse 46% 58% at 22% 56%,
+      rgba(255,72,155,.33) 0%,
+      rgba(235,37,128,.22) 44%,
+      transparent 72%),
+    radial-gradient(ellipse 54% 68% at 51% 46%,
+      rgba(255,91,168,.39) 0%,
+      rgba(228,31,122,.25) 40%,
+      transparent 70%),
+    radial-gradient(ellipse 42% 55% at 79% 61%,
+      rgba(246,58,145,.29) 0%,
+      rgba(197,18,99,.18) 43%,
+      transparent 73%),
+    radial-gradient(ellipse at center,
+      rgba(187,14,93,.12) 0%,
+      transparent 78%) !important;
+
+  filter:blur(30px) saturate(1.10) !important;
+}
+
+/* 각 안개 덩어리에 내부 볼륨을 하나 더 만들어 몽글몽글하게 */
+#tab-char .faction-hostile .tengugong-card > .tengugong-mist-v12 .pink-mist-v12::before,
+#tab-char .faction-hostile .tengugong-card > .tengugong-mist-v12 .pink-mist-v12::after{
+  content:"" !important;
+  position:absolute !important;
+  pointer-events:none !important;
+  border-radius:50% !important;
+  filter:blur(18px) !important;
+}
+
+#tab-char .faction-hostile .tengugong-card > .tengugong-mist-v12 .pink-mist-v12::before{
+  width:54% !important;
+  height:66% !important;
+  left:8% !important;
+  top:4% !important;
+  background:
+    radial-gradient(ellipse at center,
+      rgba(255,105,178,.22),
+      rgba(226,30,120,.10) 52%,
+      transparent 76%) !important;
+}
+
+#tab-char .faction-hostile .tengugong-card > .tengugong-mist-v12 .pink-mist-v12::after{
+  width:48% !important;
+  height:58% !important;
+  right:4% !important;
+  bottom:2% !important;
+  background:
+    radial-gradient(ellipse at center,
+      rgba(242,61,147,.18),
+      rgba(174,13,87,.08) 54%,
+      transparent 78%) !important;
+}
+
+/* 오른쪽 아래 고정 안개는 더 넓고 연한 원형 유지 */
+#tab-char .faction-hostile .tengugong-card > .tengugong-fixed-mist-v17{
+  right:-120px !important;
+  bottom:-120px !important;
+  width:620px !important;
+  height:620px !important;
+  border-radius:50% !important;
+  background:
+    radial-gradient(circle at 52% 52%,
+      rgba(255,80,158,.115) 0%,
+      rgba(229,43,130,.080) 30%,
+      rgba(184,24,102,.045) 51%,
+      rgba(110,10,61,.020) 66%,
+      transparent 80%) !important;
+  filter:blur(42px) saturate(1.02) !important;
+  opacity:.58 !important;
+}
+</style>
+
 </head>
 <body><div aria-hidden="true" class="shooting-stars"><span class="shooting-star star-a"></span><span class="shooting-star star-b"></span><span class="shooting-star star-c"></span></div>
 <section class="hero">
@@ -25011,6 +25790,291 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   requestAnimationFrame(animate);
+})();
+</script>
+
+
+<script id="tengugong-charm-v10-runtime">
+(function(){
+  /* 천귀궁 place-card만 정확히 찾아 class와 안개 레이어 부착 */
+  var cards = document.querySelectorAll(
+    '#tab-char .faction-hostile .calamity-row .calamity-place-card-unified'
+  );
+
+  var tenguCard = null;
+
+  cards.forEach(function(card){
+    var title = card.querySelector('.place-title');
+    if(title && title.textContent.indexOf('천귀궁') !== -1){
+      tenguCard = card;
+    }
+  });
+
+  if(tenguCard){
+    tenguCard.classList.add('tengugong-card');
+
+    if(!tenguCard.querySelector('.tengugong-mist')){
+      var mist = document.createElement('div');
+      mist.className = 'tengugong-mist';
+      mist.setAttribute('aria-hidden','true');
+
+      ['m1','m2','m3'].forEach(function(cls){
+        var puff = document.createElement('i');
+        puff.className = 'mist-puff ' + cls;
+        mist.appendChild(puff);
+      });
+
+      tenguCard.insertBefore(mist,tenguCard.firstChild);
+    }
+  }
+
+  /* 노타마야 상세 Hover에 class 부착 */
+  var detail = document.querySelector(
+    '.character-hover-detail[data-character-detail="notamaya"],' +
+    '.character-hover-detail[data-character="notamaya"],' +
+    '.character-hover-detail.notamaya-detail'
+  );
+
+  if(detail){
+    detail.classList.add('calamity-notamaya');
+  }else{
+    /* 기존 코드의 구조가 다른 경우 텍스트로 정확히 식별 */
+    document.querySelectorAll('.character-hover-detail').forEach(function(el){
+      var name = el.querySelector('.character-detail-name');
+      if(name && name.textContent.indexOf('노타마야') !== -1){
+        el.classList.add('calamity-notamaya');
+      }
+    });
+  }
+})();
+</script>
+
+
+<script id="tengugong-mist-v11-runtime">
+(function(){
+  var card = null;
+  document.querySelectorAll('#tab-char .faction-hostile .calamity-place-card-unified').forEach(function(el){
+    var title = el.querySelector('.place-title');
+    if(title && title.textContent.indexOf('천귀궁') !== -1) card = el;
+  });
+  if(!card) return;
+
+  card.classList.add('tengugong-card');
+
+  /* V10 안개는 중복되지 않게 숨김 */
+  var oldMist = card.querySelector('.tengugong-mist');
+  if(oldMist) oldMist.style.setProperty('display','none','important');
+
+  var layer = card.querySelector('.tengugong-mist-v11');
+  if(!layer){
+    layer = document.createElement('div');
+    layer.className = 'tengugong-mist-v11';
+    layer.setAttribute('aria-hidden','true');
+    card.insertBefore(layer, card.firstChild);
+  }
+  if(layer.dataset.running === '1') return;
+  layer.dataset.running = '1';
+
+  var config = [
+    {x:.03,y:.16,w:210,h:78,dx:70,dy:14,a:.36,s:0.34,p:.10},
+    {x:.57,y:.29,w:250,h:92,dx:-82,dy:-12,a:.31,s:0.27,p:.53},
+    {x:.18,y:.52,w:178,h:66,dx:64,dy:-10,a:.28,s:0.39,p:.78},
+    {x:.67,y:.66,w:225,h:82,dx:-74,dy:15,a:.34,s:0.31,p:.27},
+    {x:.34,y:.79,w:154,h:58,dx:58,dy:-8,a:.25,s:0.43,p:.64},
+    {x:.76,y:.08,w:145,h:54,dx:-48,dy:11,a:.23,s:0.37,p:.42}
+  ];
+
+  var clouds = config.map(function(c){
+    var el = document.createElement('i');
+    el.className = 'pink-mist-v11';
+    el.style.width = c.w + 'px';
+    el.style.height = c.h + 'px';
+    layer.appendChild(el);
+    return {el:el,c:c};
+  });
+
+  var start = performance.now();
+
+  function animate(now){
+    var W = layer.clientWidth;
+    var H = layer.clientHeight;
+    var t = (now-start)/1000;
+
+    if(W>0 && H>0){
+      clouds.forEach(function(o,i){
+        var c=o.c;
+        var phase = t*c.s + c.p*Math.PI*2;
+
+        /* 계속 왕복하며 흐르는 실제 좌표 이동 */
+        var wave = Math.sin(phase);
+        var wave2 = Math.cos(phase*.73 + i*.8);
+
+        var x = W*c.x + c.dx*wave - c.w/2;
+        var y = H*c.y + c.dy*wave2 - c.h/2;
+        var scale = 1 + .08*Math.sin(phase*.61 + i);
+        var opacity = c.a * (.72 + .28*((Math.sin(phase*.47+i)+1)/2));
+
+        o.el.style.transform =
+          'translate3d('+x.toFixed(1)+'px,'+y.toFixed(1)+'px,0) scale('+scale.toFixed(3)+')';
+        o.el.style.opacity = opacity.toFixed(3);
+      });
+    }
+    requestAnimationFrame(animate);
+  }
+  requestAnimationFrame(animate);
+})();
+</script>
+
+
+<script id="tengugong-mist-v12-runtime">
+(function(){
+  var card = null;
+
+  document.querySelectorAll(
+    '#tab-char .faction-hostile .calamity-place-card-unified'
+  ).forEach(function(el){
+    var title = el.querySelector('.place-title');
+    if(title && title.textContent.indexOf('천귀궁') !== -1){
+      card = el;
+    }
+  });
+
+  if(!card) return;
+
+  card.classList.add('tengugong-card');
+
+  /* 이전 안개 레이어는 전부 숨김 */
+  card.querySelectorAll(
+    '.tengugong-mist, .tengugong-mist-v11'
+  ).forEach(function(el){
+    el.style.setProperty('display','none','important');
+  });
+
+  var layer = card.querySelector('.tengugong-mist-v12');
+
+  if(!layer){
+    layer = document.createElement('div');
+    layer.className = 'tengugong-mist-v12';
+    layer.setAttribute('aria-hidden','true');
+    card.insertBefore(layer, card.firstChild);
+  }
+
+  if(layer.dataset.running === '1') return;
+  layer.dataset.running = '1';
+
+  /* 넓고 길게 퍼지는 안개 5개 */
+  var config = [
+    {y:.90,w:520,h:190,period:34,phase:0.00,minA:.10,maxA:.42,range:.92},
+    {y:.76,w:390,h:145,period:18,phase:.15,minA:.09,maxA:.38,range:.96},
+    {y:.65,w:610,h:225,period:42,phase:.31,minA:.08,maxA:.36,range:.98},
+    {y:.54,w:450,h:165,period:23,phase:.46,minA:.10,maxA:.41,range:.94},
+    {y:.43,w:560,h:205,period:31,phase:.59,minA:.08,maxA:.35,range:.98},
+    {y:.32,w:360,h:138,period:15,phase:.72,minA:.10,maxA:.40,range:.92},
+    {y:.22,w:500,h:182,period:38,phase:.84,minA:.09,maxA:.37,range:.97},
+    {y:.11,w:420,h:154,period:26,phase:.41,minA:.08,maxA:.34,range:.94},
+    {y:.82,w:300,h:118,period:20,phase:.66,minA:.09,maxA:.36,range:.90},
+    {y:.38,w:650,h:238,period:48,phase:.24,minA:.07,maxA:.31,range:.99}
+  ];
+
+  var clouds = config.map(function(c){
+    var el = document.createElement('i');
+    el.className = 'pink-mist-v12';
+    el.style.width = c.w + 'px';
+    el.style.height = c.h + 'px';
+    layer.appendChild(el);
+    return {el:el,c:c};
+  });
+
+  var start = performance.now();
+
+  function pingPong01(x){
+    /* 0→1→0 형태의 아주 부드러운 왕복 */
+    return 0.5 - 0.5 * Math.cos(x * Math.PI * 2);
+  }
+
+  function animate(now){
+    var W = layer.clientWidth;
+    var H = layer.clientHeight;
+    var sec = (now - start) / 1000;
+
+    if(W > 0 && H > 0){
+      clouds.forEach(function(o,i){
+        var c = o.c;
+
+        var cycle = ((sec / c.period) + c.phase) % 1;
+        var move = pingPong01(cycle);
+
+        /* 박스 바깥 왼쪽에서 시작해 오른쪽 끝 가까이까지 길게 왕복 */
+        var leftEdge = -c.w * .42;
+        var rightEdge = W - c.w * .58;
+        var travel = (rightEdge - leftEdge) * c.range;
+
+        var centerOffset = ((rightEdge - leftEdge) - travel) * .5;
+        var x = leftEdge + centerOffset + travel * move;
+
+        /* 위아래는 거의 움직이지 않게 */
+        var y = H * c.y - c.h/2
+              + Math.sin(sec * .22 + i * 1.7) * 5;
+
+        /* 이동 주기와 별개로 천천히 짙어졌다가 옅어짐 */
+        var densityPeriod = [19,27,34,16,25,22,31,18,29,37][i % 10];
+
+        var densityCycle =
+          0.5 + 0.5 * Math.sin(
+            sec * (Math.PI * 2 / densityPeriod)
+            + i * 1.31
+          );
+
+        var opacity =
+          c.minA + (c.maxA - c.minA) * densityCycle;
+
+        /* 아주 미세한 호흡 */
+        var scale =
+          0.96 + 0.08 * (
+            0.5 + 0.5 * Math.sin(sec * .31 + i)
+          );
+
+        o.el.style.transform =
+          'translate3d(' +
+          x.toFixed(1) + 'px,' +
+          y.toFixed(1) + 'px,0) ' +
+          'scale(' + scale.toFixed(3) + ')';
+
+        o.el.style.opacity = opacity.toFixed(3);
+      });
+    }
+
+    requestAnimationFrame(animate);
+  }
+
+  requestAnimationFrame(animate);
+})();
+</script>
+
+
+<script id="tengugong-fixed-mist-v17-runtime">
+(function(){
+  var card = null;
+
+  document.querySelectorAll(
+    '#tab-char .faction-hostile .calamity-place-card-unified'
+  ).forEach(function(el){
+    var title = el.querySelector('.place-title');
+    if(title && title.textContent.indexOf('천귀궁') !== -1){
+      card = el;
+    }
+  });
+
+  if(!card) return;
+
+  card.classList.add('tengugong-card');
+
+  if(!card.querySelector('.tengugong-fixed-mist-v17')){
+    var fixedMist = document.createElement('div');
+    fixedMist.className = 'tengugong-fixed-mist-v17';
+    fixedMist.setAttribute('aria-hidden','true');
+    card.appendChild(fixedMist);
+  }
 })();
 </script>
 
