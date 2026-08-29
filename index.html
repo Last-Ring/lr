@@ -24571,6 +24571,84 @@ document.addEventListener('DOMContentLoaded',function(){
 }
 </style>
 
+
+<style id="orbis-ex1-and-notamaya-boundary-fix">
+/* =========================================================
+   WORLD — ORBiS EX1 IMAGE
+   제목 바로 아래 / 반응형 / 실제 이미지에만 hover
+   ========================================================= */
+#tab-world .orbis-world-image{
+  width:100%;
+  margin:18px 0 24px;
+  overflow:hidden;
+  border:1px solid rgba(126,107,184,.22);
+  border-radius:3px;
+  background:#090b12;
+}
+
+#tab-world .orbis-world-image img{
+  display:block;
+  width:100%;
+  height:auto;
+  max-width:100%;
+  object-fit:cover;
+  transform:scale(1);
+  transform-origin:center center;
+  transition:
+    transform .42s cubic-bezier(.22,.72,.26,1),
+    filter .34s ease;
+  will-change:transform;
+}
+
+/* 바깥 world-chapter가 아니라 이미지에 직접 올렸을 때만 반응 */
+#tab-world .orbis-world-image img:hover{
+  transform:scale(1.022);
+  filter:brightness(1.055);
+}
+
+@media (max-width:700px){
+  #tab-world .orbis-world-image{
+    margin:14px 0 20px;
+  }
+  #tab-world .orbis-world-image img:hover{
+    transform:scale(1.015);
+  }
+}
+
+/* =========================================================
+   NOTAMAYA — portrait/name seam fix
+   초상화 하단과 이름 영역 사이에 생기던 이중 경계선 제거
+   ========================================================= */
+#tab-char .faction-content-panel[data-faction-panel="hostile"]
+.calamity-notamaya .notamaya-detail-trigger > .char-portrait{
+  border-bottom:0 !important;
+  box-shadow:none !important;
+}
+
+#tab-char .faction-content-panel[data-faction-panel="hostile"]
+.calamity-notamaya .notamaya-detail-trigger > .char-name{
+  border-top:0 !important;
+  margin-top:0 !important;
+  position:relative !important;
+}
+
+/* 이름 영역 위에 pseudo-element 등으로 선이 생기는 경우도 차단 */
+#tab-char .faction-content-panel[data-faction-panel="hostile"]
+.calamity-notamaya .notamaya-detail-trigger > .char-name::before,
+#tab-char .faction-content-panel[data-faction-panel="hostile"]
+.calamity-notamaya .notamaya-detail-trigger > .char-name::after{
+  border-top:0 !important;
+  border-bottom:0 !important;
+  box-shadow:none !important;
+}
+
+/* 카드 외곽 테두리는 유지하되 내부 접합부는 하나의 면처럼 */
+#tab-char .faction-content-panel[data-faction-panel="hostile"]
+.calamity-notamaya .notamaya-detail-trigger{
+  overflow:hidden !important;
+}
+</style>
+
 </head>
 <body><div aria-hidden="true" class="shooting-stars"><span class="shooting-star star-a"></span><span class="shooting-star star-b"></span><span class="shooting-star star-c"></span></div>
 <section class="hero">
@@ -24639,6 +24717,9 @@ document.addEventListener('DOMContentLoaded',function(){
 <section class="world-chapter reveal-on-scroll">
 <div class="world-kicker">ORBiS</div>
 <h2>오르비스, 균열 이후의 세계</h2>
+<div class="orbis-world-image">
+  <img src="img/ex1.png" alt="오르비스, 균열 이후의 세계"/>
+</div>
 <p>한때 세계에는 수많은 도시와 국가가 존재했다. 그러나 547년, <strong>SSS급 게이트</strong>가 열리며 모든 것이 달라졌다. 균열 너머에서 쏟아져 나온 괴수들은 세계를 무너뜨렸고, 인류의 생존권은 빠르게 후퇴했다. 살아남은 사람들은 흩어진 채 각자의 힘으로 하루를 이어가야 했다.</p>
 <p>558년, SSS급 헌터 <strong>로웰</strong>이 흩어진 세력을 규합하며 <strong>오르비스 중앙연합</strong>을 창설했다. 각자도생하던 생존권은 비로소 하나의 체계 아래 연결되기 시작했다.</p>
 <p>562년, 재앙이라 불린 SSS급 흑룡 <strong>모르드라스</strong>가 루미나리스를 침공했다. 로웰은 미스텔라, 에일로릭스, 카메코, 플로리아와 함께 모르드라스를 토벌했으나 전투에서 목숨을 잃었다. 이후 미스텔라가 제2대 중앙연합 의장에 올랐다.</p>
