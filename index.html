@@ -24649,6 +24649,115 @@ document.addEventListener('DOMContentLoaded',function(){
 }
 </style>
 
+
+<style id="mobile-hero-center-fix-uploaded-final">
+/* =========================================================
+   MOBILE HERO CENTER FIX
+   이 업로드 파일을 기준으로만 적용.
+   PC는 변경하지 않고 모바일에서만 로고/천구 중심이
+   위로 끌려 올라가는 현상을 보정한다.
+   ========================================================= */
+@media (max-width:800px){
+  .hero{
+    min-height:100svh !important;
+    height:auto !important;
+    justify-content:flex-start !important;
+    padding:26px 18px 72px !important;
+  }
+
+  /* 상단 상태 문구는 상단에 유지 */
+  .hero .eyebrow{
+    flex:0 0 auto !important;
+    margin-top:0 !important;
+    margin-bottom:0 !important;
+  }
+
+  /*
+    로고를 화면 높이에 비례한 위치에 고정적으로 내려준다.
+    설명문의 줄 수가 늘어나도 로고가 다시 위로 당겨지지 않는다.
+  */
+  .hero-logo{
+    flex:0 0 auto !important;
+    width:min(90vw,720px) !important;
+    margin:clamp(62px,8.5svh,92px) auto 0 !important;
+  }
+
+  /* 천구 중심도 로고와 같은 영역으로 내려 정렬 */
+  .hero-celestial{
+    width:112vw !important;
+    height:82vw !important;
+    top:clamp(235px,36svh,315px) !important;
+  }
+
+  .hero .subtitle{
+    flex:0 0 auto !important;
+    margin-top:30px !important;
+  }
+
+  .hero .desc{
+    flex:0 0 auto !important;
+    margin-top:27px !important;
+  }
+
+  /* 하단 표시는 문서 흐름에 두어 본문 높이가 로고 위치에 영향 주지 않게 함 */
+  .hero .scroll-cue{
+    position:relative !important;
+    left:auto !important;
+    bottom:auto !important;
+    transform:none !important;
+    margin:40px auto 0 !important;
+  }
+}
+
+/* 폭이 작은 휴대폰 */
+@media (max-width:520px){
+  .hero{
+    padding-left:16px !important;
+    padding-right:16px !important;
+  }
+
+  .hero-logo{
+    width:94vw !important;
+    margin-top:clamp(54px,8svh,76px) !important;
+  }
+
+  .hero-celestial{
+    width:122vw !important;
+    height:94vw !important;
+    top:clamp(220px,35svh,280px) !important;
+  }
+
+  .hero .subtitle{
+    margin-top:27px !important;
+  }
+}
+
+/* 낮은 모바일 화면에서도 지나치게 위로 올라가지 않게 */
+@media (max-width:800px) and (max-height:740px){
+  .hero-logo{
+    margin-top:52px !important;
+  }
+
+  .hero-celestial{
+    top:clamp(210px,35svh,255px) !important;
+  }
+}
+
+@supports not (height:100svh){
+  @media (max-width:800px){
+    .hero{
+      min-height:100vh !important;
+    }
+    .hero-logo{
+      margin-top:clamp(62px,8.5vh,92px) !important;
+    }
+    .hero-celestial{
+      top:clamp(235px,36vh,315px) !important;
+    }
+  }
+}
+</style>
+
 </head>
 <body><div aria-hidden="true" class="shooting-stars"><span class="shooting-star star-a"></span><span class="shooting-star star-b"></span><span class="shooting-star star-c"></span></div>
 <section class="hero">
