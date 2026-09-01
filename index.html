@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 
-<html lang="ko">
+<html class="lr-loader-active" lang="ko">
 <head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
@@ -24921,8 +24921,251 @@ document.addEventListener('DOMContentLoaded',function(){
 }
 </style>
 
+
+<style id="lr-entry-loader-style">
+/* =========================================================
+   LAST RING — ENTRY LOADER DEMO
+   ========================================================= */
+html.lr-loader-active,
+body.lr-loading {
+  overflow: hidden;
+}
+
+#lr-entry-loader {
+  position: fixed;
+  inset: 0;
+  z-index: 2147483647;
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+  background:
+    radial-gradient(circle at 50% 44%, rgba(123, 91, 190, .10) 0%, rgba(123, 91, 190, .035) 28%, transparent 58%),
+    linear-gradient(180deg, #0d0d16 0%, #0a0b11 100%);
+  opacity: 1;
+  visibility: visible;
+  transition: opacity .95s cubic-bezier(.22,.61,.36,1), visibility .95s linear;
+}
+
+#lr-entry-loader::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: .34;
+  background-image:
+    linear-gradient(rgba(255,255,255,.018) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,.014) 1px, transparent 1px);
+  background-size: 42px 42px;
+  mask-image: radial-gradient(circle at center, #000 12%, transparent 74%);
+}
+
+#lr-entry-loader::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: 1px;
+  height: 100%;
+  background: linear-gradient(180deg, transparent, rgba(145,103,224,.13), transparent);
+  opacity: .55;
+}
+
+.lr-entry-shell {
+  position: relative;
+  width: min(420px, calc(100vw - 48px));
+  padding: 32px 32px 27px;
+  box-sizing: border-box;
+  text-align: center;
+  border: 1px solid rgba(255,255,255,.075);
+  border-left: 2px solid rgba(148,105,224,.82);
+  background: rgba(16,17,23,.56);
+  box-shadow: 0 26px 80px rgba(0,0,0,.34);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  transform: translateY(8px);
+  opacity: 0;
+  animation: lrLoaderEnter .72s .08s cubic-bezier(.2,.75,.25,1) forwards;
+}
+
+.lr-entry-kicker {
+  margin: 0 0 14px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: .28em;
+  color: rgba(157,131,211,.82);
+}
+
+.lr-entry-title {
+  margin: 0;
+  font-size: clamp(26px, 5vw, 36px);
+  font-weight: 800;
+  line-height: 1.06;
+  letter-spacing: -.035em;
+  color: #e9e7e2;
+  text-shadow: 0 0 28px rgba(132,92,201,.10);
+}
+
+.lr-entry-subtitle {
+  margin-top: 9px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 9px;
+  font-weight: 600;
+  letter-spacing: .17em;
+  color: rgba(219,217,214,.36);
+}
+
+.lr-entry-track {
+  position: relative;
+  height: 1px;
+  margin: 29px 0 13px;
+  overflow: hidden;
+  background: rgba(255,255,255,.075);
+}
+
+.lr-entry-track::before {
+  content: "";
+  position: absolute;
+  inset: 0 auto 0 -38%;
+  width: 38%;
+  background: linear-gradient(90deg, transparent, rgba(160,116,232,.92), rgba(205,176,112,.58), transparent);
+  animation: lrLoaderScan 1.15s ease-in-out infinite;
+}
+
+.lr-entry-status {
+  min-height: 15px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 9px;
+  font-weight: 700;
+  line-height: 1.5;
+  letter-spacing: .19em;
+  color: rgba(194,190,200,.48);
+  transition: color .25s ease, opacity .25s ease, letter-spacing .25s ease;
+}
+
+#lr-entry-loader.is-granted .lr-entry-status {
+  color: rgba(203,174,111,.88);
+  letter-spacing: .23em;
+}
+
+#lr-entry-loader.is-granted .lr-entry-track::before {
+  left: 0;
+  width: 100%;
+  animation: none;
+  background: linear-gradient(90deg, rgba(145,102,218,.18), rgba(192,159,93,.8), rgba(145,102,218,.18));
+  transition: width .35s ease;
+}
+
+#lr-entry-loader.is-leaving {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+#lr-entry-loader.is-leaving .lr-entry-shell {
+  transform: translateY(-5px) scale(.995);
+  opacity: .75;
+  transition: transform .75s ease, opacity .75s ease;
+}
+
+@keyframes lrLoaderEnter {
+  to { transform: translateY(0); opacity: 1; }
+}
+
+@keyframes lrLoaderScan {
+  from { left: -38%; }
+  to { left: 100%; }
+}
+
+@media (max-width: 520px) {
+  .lr-entry-shell {
+    width: calc(100vw - 32px);
+    padding: 36px 24px 29px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .lr-entry-shell,
+  .lr-entry-track::before {
+    animation: none !important;
+  }
+  .lr-entry-shell {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+.lr-entry-quote {
+  margin: 15px auto 0;
+  max-width: 320px;
+  min-height: 22px;
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 1.7;
+  transition: opacity .42s ease, transform .42s ease;
+  letter-spacing: -.01em;
+  color: rgba(225,222,217,.62);
+}
+
+.lr-entry-progress-row {
+  display: flex;
+  align-items: center;
+  gap: 13px;
+  margin-top: 20px;
+}
+
+.lr-entry-track {
+  position: relative;
+  flex: 1;
+  height: 2px;
+  margin: 0;
+  overflow: hidden;
+  background: rgba(255,255,255,.075);
+}
+
+.lr-entry-track::before { display:none; }
+
+.lr-entry-track-fill {
+  position: absolute;
+  inset: 0 auto 0 0;
+  width: 0%;
+  height: 100%;
+  background: linear-gradient(90deg, rgba(137,95,218,.92), rgba(196,164,99,.92));
+  box-shadow: 0 0 12px rgba(145,103,224,.28);
+  transition: width .18s cubic-bezier(.22,.61,.36,1);
+}
+
+.lr-entry-percent {
+  flex: 0 0 38px;
+  text-align: right;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: .08em;
+  color: rgba(208,203,211,.58);
+}
+
+.lr-entry-status { margin-top: 11px; text-align:left; }
+#lr-entry-loader.is-granted .lr-entry-track-fill { width:100% !important; }
+
+</style>
 </head>
-<body><div aria-hidden="true" class="shooting-stars"><span class="shooting-star star-a"></span><span class="shooting-star star-b"></span><span class="shooting-star star-c"></span></div>
+<body class="lr-loading">
+<div id="lr-entry-loader" role="status" aria-live="polite" aria-label="LAST RING 페이지 로딩 중">
+  <div class="lr-entry-shell">
+    <div class="lr-entry-kicker">LAST RING</div>
+    <h1 class="lr-entry-title">ORBiS ARCHIVE</h1>
+    <div class="lr-entry-subtitle">SURVIVAL ZONE ARCHIVE SYSTEM</div>
+    <p class="lr-entry-quote" id="lr-entry-quote">끝난 세계에도, 기록은 남는다.</p>
+    <div class="lr-entry-progress-row" aria-label="페이지 로딩 진행률">
+      <div class="lr-entry-track" aria-hidden="true"><div class="lr-entry-track-fill" id="lr-entry-track-fill"></div></div>
+      <div class="lr-entry-percent" id="lr-entry-percent">0%</div>
+    </div>
+    <div class="lr-entry-status" id="lr-entry-status">CONNECTING...</div>
+  </div>
+</div>
+<div aria-hidden="true" class="shooting-stars"><span class="shooting-star star-a"></span><span class="shooting-star star-b"></span><span class="shooting-star star-c"></span></div>
 <section class="hero">
 <div class="rings-wrap">
 <svg viewbox="0 0 600 600">
@@ -29086,6 +29329,85 @@ document.addEventListener('DOMContentLoaded', () => {
 })();
 </script>
 
+
+<script id="lr-entry-loader-script">
+(function () {
+  var loader = document.getElementById('lr-entry-loader');
+  var status = document.getElementById('lr-entry-status');
+  var fill = document.getElementById('lr-entry-track-fill');
+  var percent = document.getElementById('lr-entry-percent');
+  var quote = document.getElementById('lr-entry-quote');
+  if (!loader) return;
+
+  var startedAt = Date.now();
+  var minimumDisplay = 5200;
+  var current = 0;
+  var released = false;
+
+  function renderProgress(value) {
+    current = Math.max(current, Math.min(100, Math.round(value)));
+    if (fill) fill.style.width = current + '%';
+    if (percent) percent.textContent = current + '%';
+  }
+
+  renderProgress(2);
+
+  var quotes = [
+    '끝난 세계에도, 기록은 남는다.',
+    '사라진 이름은 기록 속에서 다시 숨을 쉰다.',
+    '그리고 우리는, 그 기록의 다음 장을 연다.'
+  ];
+  var quoteIndex = 0;
+  var quoteTimer = window.setInterval(function () {
+    if (!quote || released || quoteIndex >= quotes.length - 1) return;
+    quote.style.opacity = '0';
+    quote.style.transform = 'translateY(3px)';
+    window.setTimeout(function () {
+      quoteIndex += 1;
+      quote.textContent = quotes[quoteIndex];
+      quote.style.opacity = '1';
+      quote.style.transform = 'translateY(0)';
+    }, 420);
+  }, 1800);
+
+  var progressTimer = window.setInterval(function () {
+    if (released) return;
+    var remaining = 98 - current;
+    if (remaining <= 0) return;
+    var step = Math.max(1, Math.ceil(remaining * (0.04 + Math.random() * 0.05)));
+    renderProgress(Math.min(98, current + step));
+  }, 115);
+
+  function releaseLoader() {
+    if (released) return;
+    released = true;
+    var elapsed = Date.now() - startedAt;
+    var wait = Math.max(0, minimumDisplay - elapsed);
+
+    window.setTimeout(function () {
+      window.clearInterval(progressTimer);
+      window.clearInterval(quoteTimer);
+      renderProgress(100);
+      window.setTimeout(function () {
+        loader.classList.add('is-granted');
+        if (status) status.textContent = 'ACCESS GRANTED';
+        window.setTimeout(function () {
+          loader.classList.add('is-leaving');
+          document.documentElement.classList.remove('lr-loader-active');
+          document.body.classList.remove('lr-loading');
+          window.setTimeout(function () {
+            if (loader && loader.parentNode) loader.parentNode.removeChild(loader);
+          }, 1000);
+        }, 650);
+      }, 300);
+    }, wait);
+  }
+
+  if (document.readyState === 'complete') releaseLoader();
+  else window.addEventListener('load', releaseLoader, { once: true });
+  window.setTimeout(releaseLoader, 8000);
+})();
+</script>
 </body>
 </html>
 <!-- redeploy -->
