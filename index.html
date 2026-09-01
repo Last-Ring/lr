@@ -24758,6 +24758,136 @@ document.addEventListener('DOMContentLoaded',function(){
 }
 </style>
 
+
+<style id="world-infrastructure-v2">
+/* =========================================================
+   WORLD — INFRASTRUCTURE
+   기존 세계관 카드 톤에 맞춘 가벼운 반응형 구성
+   ========================================================= */
+.world-infra{
+  margin-top:0;
+}
+.world-infra > h2{
+  margin-bottom:21px;
+}
+.world-infra-list{
+  display:grid;
+  gap:11px;
+}
+.world-infra-item{
+  position:relative;
+  display:grid;
+  grid-template-columns:176px minmax(0,1fr);
+  min-height:176px;
+  overflow:hidden;
+  border:1px solid rgba(118,128,146,.20);
+  background:
+    radial-gradient(circle at 0 50%,rgba(108,132,178,.045),transparent 34%),
+    linear-gradient(135deg,rgba(20,23,29,.96),rgba(11,13,16,.98));
+  transition:
+    transform .20s ease,
+    filter .20s ease,
+    border-color .20s ease,
+    box-shadow .20s ease,
+    background .20s ease;
+}
+.world-infra-item::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  pointer-events:none;
+  opacity:0;
+  background:linear-gradient(110deg,transparent 26%,rgba(255,255,255,.025) 50%,transparent 74%);
+  transform:translateX(-18%);
+  transition:opacity .20s ease,transform .35s ease;
+}
+.world-infra-item:hover{
+  transform:translateY(-2px);
+  filter:brightness(1.055);
+  z-index:4;
+  border-color:rgba(124,145,185,.34);
+  box-shadow:0 8px 18px rgba(0,0,0,.15),0 0 14px rgba(108,132,178,.055);
+}
+.world-infra-item:hover::after{opacity:1;transform:translateX(12%);}
+.world-infra-image{
+  width:176px;
+  height:176px;
+  overflow:hidden;
+  border-right:1px solid rgba(118,128,146,.18);
+  background:#090b0e;
+}
+.world-infra-image img{
+  display:block;
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  transform:scale(1.001);
+  filter:saturate(.93) brightness(.95);
+  transition:transform .34s ease,filter .28s ease;
+}
+.world-infra-image:hover img{
+  transform:scale(1.055);
+  filter:saturate(1.04) brightness(1.045);
+}
+.world-infra-copy{
+  position:relative;
+  z-index:1;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  padding:20px 24px;
+}
+.world-infra-title{
+  display:flex;
+  align-items:baseline;
+  flex-wrap:wrap;
+  gap:9px;
+  margin:0 0 9px;
+  color:var(--bone);
+  font-size:20px;
+  font-weight:700;
+  letter-spacing:-.025em;
+}
+.world-infra-title small{
+  color:#7d8796;
+  font-family:'JetBrains Mono',monospace;
+  font-size:10px;
+  font-weight:700;
+  letter-spacing:.14em;
+  text-transform:uppercase;
+}
+.world-infra-copy p{
+  margin:0;
+  color:var(--ash);
+  font-size:15px;
+  line-height:1.82;
+  word-break:keep-all;
+}
+.world-infra-item.orr{
+  grid-template-columns:1fr;
+  min-height:auto;
+  border-color:rgba(201,163,94,.20);
+  background:
+    radial-gradient(circle at 91% 18%,rgba(201,163,94,.055),transparent 30%),
+    linear-gradient(135deg,rgba(27,24,18,.76),rgba(11,13,16,.98) 62%);
+}
+.world-infra-item.orr .world-infra-copy{padding:20px 24px;}
+.world-infra-item.orr:hover{border-color:rgba(201,163,94,.34);}
+.world-infra-item.aetherphone:hover{border-color:rgba(85,158,190,.34);}
+.world-infra-item.guardian-card:hover{border-color:rgba(201,163,94,.31);}
+.world-infra-item.gate-scanner:hover{border-color:rgba(139,92,246,.35);}
+@media (max-width:650px){
+  .world-infra-item{grid-template-columns:112px minmax(0,1fr);min-height:112px;}
+  .world-infra-image{width:112px;height:112px;}
+  .world-infra-copy{padding:14px 15px;}
+  .world-infra-item.orr .world-infra-copy{padding:16px 17px;}
+  .world-infra-title{font-size:17px;margin-bottom:6px;gap:7px;}
+  .world-infra-title small{font-size:8.5px;letter-spacing:.11em;}
+  .world-infra-copy p{font-size:13.5px;line-height:1.68;}
+  .world-infra-item:hover{transform:none;}
+}
+</style>
+
 </head>
 <body><div aria-hidden="true" class="shooting-stars"><span class="shooting-star star-a"></span><span class="shooting-star star-b"></span><span class="shooting-star star-c"></span></div>
 <section class="hero">
@@ -24891,6 +25021,8 @@ document.addEventListener('DOMContentLoaded',function(){
 <div class="map-direction south">S</div>
 </div>
 </div>
+
+
 </section>
 <section class="world-chapter reveal-on-scroll">
 <div class="world-kicker">HUNTER &amp; GATE</div>
@@ -25131,6 +25263,50 @@ document.addEventListener('DOMContentLoaded',function(){
 </div>
 </div>
 </section>
+<section class="world-chapter reveal-on-scroll world-infra">
+  <div class="world-kicker">INFRASTRUCTURE</div>
+  <h2>인프라</h2>
+
+  <div class="world-infra-list">
+    <article class="world-infra-item orr">
+      <div class="world-infra-copy">
+        <h4 class="world-infra-title">오르 <small>ORR</small></h4>
+        <p>오르비스에서 통용되는 화폐. 학생에게는 아르바이트와 봉사, 장학금이 일상의 수입이 되고, 헌터에게는 의뢰와 마석 정산이 생계가 된다. 치료와 시설 이용을 비롯한 대부분의 생활 역시 오르를 중심으로 움직인다.</p>
+      </div>
+    </article>
+
+    <article class="world-infra-item aetherphone">
+      <div class="world-infra-image">
+        <img src="img/a.webp" alt="에테르폰"/>
+      </div>
+      <div class="world-infra-copy">
+        <h4 class="world-infra-title">에테르폰 <small>AETHERPHONE</small></h4>
+        <p>통신과 소셜미디어를 담당하는 휴대 단말기. 생존권 안의 사람들은 에테르폰으로 서로의 소식과 일상을 이어 간다.</p>
+      </div>
+    </article>
+
+    <article class="world-infra-item guardian-card">
+      <div class="world-infra-image">
+        <img src="img/b.webp" alt="가디언카드"/>
+      </div>
+      <div class="world-infra-copy">
+        <h4 class="world-infra-title">가디언카드 <small>GUARDIAN CARD</small></h4>
+        <p>결제와 신분 확인을 함께 맡는 카드. 오르비스에서 한 사람의 신분과 일상을 가장 가까이에서 증명하는 물건이다.</p>
+      </div>
+    </article>
+
+    <article class="world-infra-item gate-scanner">
+      <div class="world-infra-image">
+        <img src="img/c.webp" alt="게이트스캐너"/>
+      </div>
+      <div class="world-infra-copy">
+        <h4 class="world-infra-title">게이트스캐너 <small>GATE SCANNER</small></h4>
+        <p>게이트 내부의 환경과 괴수, 위협을 탐지하는 장비. 게이트 안에서는 계속 작동하며, 가상균열에서도 동일하게 사용할 수 있다.</p>
+      </div>
+    </article>
+  </div>
+</section>
+
 </div>
 </div>
 <div class="tab-panel" id="tab-char">
