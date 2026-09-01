@@ -24910,14 +24910,81 @@ document.addEventListener('DOMContentLoaded',function(){
 .world-infra-item.guardian-card:hover{border-color:rgba(201,163,94,.31);}
 .world-infra-item.gate-scanner:hover{border-color:rgba(139,92,246,.35);}
 @media (max-width:650px){
-  .world-infra-item{grid-template-columns:112px minmax(0,1fr);min-height:112px;}
-  .world-infra-image{width:112px;height:112px;}
-  .world-infra-copy{padding:14px 15px;}
-  .world-infra-item.orr .world-infra-copy{padding:16px 17px;}
-  .world-infra-title{font-size:17px;margin-bottom:6px;gap:7px;}
-  .world-infra-title small{font-size:8.5px;letter-spacing:.11em;}
-  .world-infra-copy p{font-size:13.5px;line-height:1.68;}
+  /* 모바일에서는 억지로 2열을 유지하지 않고, 이미지와 글을 분리한다. */
+  .world-infra-list{gap:14px;}
+
+  .world-infra-item{
+    grid-template-columns:1fr;
+    min-height:0;
+    overflow:hidden;
+  }
+
+  .world-infra-image{
+    width:100%;
+    height:148px;
+    border-right:0;
+    border-bottom:1px solid rgba(118,128,146,.18);
+    background:
+      radial-gradient(circle at 50% 45%,rgba(146,117,223,.12),transparent 42%),
+      linear-gradient(145deg,rgba(255,255,255,.028),rgba(255,255,255,.007) 58%,rgba(201,163,94,.016));
+  }
+
+  .world-infra-image::before{
+    inset:10px 14px;
+    background-size:20px 20px;
+    opacity:.46;
+  }
+
+  .world-infra-image img{
+    width:122px;
+    height:122px;
+    max-width:calc(100% - 28px);
+    max-height:calc(100% - 22px);
+    object-fit:contain;
+  }
+
+  .world-infra-copy{
+    padding:17px 18px 19px;
+  }
+
+  .world-infra-item.orr .world-infra-copy{
+    padding:17px 18px 19px;
+  }
+
+  .world-infra-title{
+    flex-wrap:nowrap;
+    gap:8px;
+    margin-bottom:8px;
+    font-size:18px;
+    line-height:1.35;
+  }
+
+  .world-infra-title small{
+    flex:0 0 auto;
+    font-size:8.5px;
+    letter-spacing:.12em;
+    white-space:nowrap;
+  }
+
+  .world-infra-copy p{
+    font-size:13.5px;
+    line-height:1.78;
+    word-break:keep-all;
+    overflow-wrap:break-word;
+  }
+
   .world-infra-item:hover{transform:none;}
+  .world-infra-image:hover img{transform:none;}
+}
+
+@media (max-width:390px){
+  .world-infra-image{height:134px;}
+  .world-infra-image img{width:108px;height:108px;}
+  .world-infra-copy{padding:15px 16px 17px;}
+  .world-infra-item.orr .world-infra-copy{padding:15px 16px 17px;}
+  .world-infra-title{font-size:17px;gap:7px;}
+  .world-infra-title small{font-size:7.8px;letter-spacing:.10em;}
+  .world-infra-copy p{font-size:13px;line-height:1.72;}
 }
 </style>
 
@@ -29341,8 +29408,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
   var startedAt = Date.now();
   var minimumDisplay = 5200;
-  var current = 0;
-  var released = false;
+  var holdAt98 = 900;
+  var current = 2;
+  var pageLoaded = document.readyState === 'complete';
+  var finalized = false;
 
   function renderProgress(value) {
     current = Math.max(current, Math.min(100, Math.round(value)));
@@ -29359,10 +29428,11 @@ document.addEventListener('DOMContentLoaded', () => {
   ];
   var quoteIndex = 0;
   var quoteTimer = window.setInterval(function () {
-    if (!quote || released || quoteIndex >= quotes.length - 1) return;
+    if (!quote || finalized || quoteIndex >= quotes.length - 1) return;
     quote.style.opacity = '0';
     quote.style.transform = 'translateY(3px)';
     window.setTimeout(function () {
+      if (finalized) return;
       quoteIndex += 1;
       quote.textContent = quotes[quoteIndex];
       quote.style.opacity = '1';
@@ -29370,42 +29440,71 @@ document.addEventListener('DOMContentLoaded', () => {
     }, 420);
   }, 1800);
 
+  /*
+     실제 네트워크 바이트를 직접 측정하는 게 아니라,
+     최소 표시 시간 동안 2 → 98%가 자연스럽게 진행되는 연출용 게이지.
+     페이지 로딩이 먼저 끝나도 98%까지 계속 진행한다.
+  */
   var progressTimer = window.setInterval(function () {
-    if (released) return;
-    var remaining = 98 - current;
-    if (remaining <= 0) return;
-    var step = Math.max(1, Math.ceil(remaining * (0.04 + Math.random() * 0.05)));
-    renderProgress(Math.min(98, current + step));
-  }, 115);
+    if (finalized || current >= 98) return;
 
-  function releaseLoader() {
-    if (released) return;
-    released = true;
     var elapsed = Date.now() - startedAt;
-    var wait = Math.max(0, minimumDisplay - elapsed);
+    var target = Math.min(98, 2 + (elapsed / minimumDisplay) * 96);
 
+    /* 아주 기계적으로 보이지 않도록 약간의 속도 차이만 부여 */
+    var gap = target - current;
+    if (gap > 0.2) {
+      var step = Math.max(1, Math.min(3, Math.ceil(gap * 0.34)));
+      renderProgress(Math.min(98, current + step));
+    }
+
+    tryFinalize();
+  }, 100);
+
+  function tryFinalize() {
+    if (finalized || !pageLoaded) return;
+
+    var elapsed = Date.now() - startedAt;
+    if (elapsed < minimumDisplay || current < 98) return;
+
+    finalized = true;
+    window.clearInterval(progressTimer);
+    window.clearInterval(quoteTimer);
+
+    /* 98%를 잠깐 보여준 뒤 100% */
     window.setTimeout(function () {
-      window.clearInterval(progressTimer);
-      window.clearInterval(quoteTimer);
       renderProgress(100);
+
       window.setTimeout(function () {
         loader.classList.add('is-granted');
         if (status) status.textContent = 'ACCESS GRANTED';
+
         window.setTimeout(function () {
           loader.classList.add('is-leaving');
           document.documentElement.classList.remove('lr-loader-active');
           document.body.classList.remove('lr-loading');
+
           window.setTimeout(function () {
             if (loader && loader.parentNode) loader.parentNode.removeChild(loader);
           }, 1000);
         }, 650);
       }, 300);
-    }, wait);
+    }, holdAt98);
   }
 
-  if (document.readyState === 'complete') releaseLoader();
-  else window.addEventListener('load', releaseLoader, { once: true });
-  window.setTimeout(releaseLoader, 8000);
+  if (!pageLoaded) {
+    window.addEventListener('load', function () {
+      pageLoaded = true;
+      tryFinalize();
+    }, { once: true });
+  }
+
+  /* 리소스 오류 등으로 load가 지나치게 지연되는 경우의 안전장치 */
+  window.setTimeout(function () {
+    pageLoaded = true;
+    if (current < 98) renderProgress(98);
+    tryFinalize();
+  }, 9000);
 })();
 </script>
 </body>
