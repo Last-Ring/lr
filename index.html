@@ -25227,6 +25227,1943 @@ body.lr-loading {
 }
 </style>
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<style id="lumiel-readability-fix-v1">
+/* 루미엘 패널: 타일은 유지하되 글자 영역은 확실하게 분리 */
+
+/* 설명문 뒤에 어두운 반투명 판을 깔아 격자와 분리 */
+#tab-char .faction-content-panel[data-faction-panel="lumiel"] .faction-desc{
+  position:relative!important;
+  z-index:6!important;
+  color:#d9e0df!important;
+  background:rgba(7,10,11,.88)!important;
+  border:1px solid rgba(222,232,230,.16)!important;
+  border-left:3px solid rgba(238,244,243,.40)!important;
+  border-radius:4px!important;
+  padding:14px 16px!important;
+  text-shadow:0 1px 2px rgba(0,0,0,.95)!important;
+  box-shadow:
+    inset 0 0 16px rgba(255,255,255,.018),
+    0 4px 14px rgba(0,0,0,.20)!important;
+  backdrop-filter:blur(5px)!important;
+  -webkit-backdrop-filter:blur(5px)!important;
+}
+
+/* 설명문 왼쪽 ◇ */
+#tab-char .faction-content-panel[data-faction-panel="lumiel"] .faction-lead-mark{
+  color:#edf3f2!important;
+  opacity:.78!important;
+  text-shadow:0 0 7px rgba(255,255,255,.15)!important;
+}
+
+/* 루미엘 엔터테인먼트 소제목도 검은 바탕 위에 */
+#tab-char .faction-content-panel[data-faction-panel="lumiel"] .facility-title{
+  position:relative!important;
+  z-index:6!important;
+  color:#e9efee!important;
+  background:rgba(7,10,11,.90)!important;
+  border:1px solid rgba(220,230,228,.14)!important;
+  border-left:3px solid rgba(255,255,255,.32)!important;
+  padding:8px 11px!important;
+  text-shadow:0 1px 2px #000!important;
+  box-shadow:0 3px 10px rgba(0,0,0,.16)!important;
+}
+
+/* 카드 영역도 격자가 글자를 침범하지 않게 */
+#tab-char .faction-content-panel[data-faction-panel="lumiel"] .facility-block{
+  position:relative!important;
+  z-index:5!important;
+}
+
+/* 배경 타일은 본문에서 살짝 약화 */
+#tab-char .faction-content-panel[data-faction-panel="lumiel"] > .lumiel-color-grid-panel{
+  opacity:.36!important;
+}
+
+/* 패널 안쪽 글자는 전체적으로 한 단계 밝게 */
+#tab-char .faction-content-panel[data-faction-panel="lumiel"] .char-name{
+  color:#f7f9f8!important;
+}
+#tab-char .faction-content-panel[data-faction-panel="lumiel"] .char-role{
+  color:#d5dddc!important;
+}
+
+/* 모바일에서도 설명 배경 유지 */
+@media(max-width:600px){
+  #tab-char .faction-content-panel[data-faction-panel="lumiel"] .faction-desc{
+    padding:12px 13px!important;
+    background:rgba(7,10,11,.92)!important;
+  }
+}
+</style>
+
+
+<style id="lumiel-silver-button-only-v1">
+/* =========================================================
+   LUMIEL BUTTON ONLY
+   실제 은빛 정사각 미러 타일이 서로 다른 타이밍으로 발광
+   패널/카드/팝업에는 영향 없음
+   ========================================================= */
+
+#tab-char .faction-switch-btn[data-faction="lumiel"]{
+  position:relative !important;
+  isolation:isolate !important;
+  overflow:hidden !important;
+  min-width:168px !important;
+  color:#f5f7f7 !important;
+  border:1px solid rgba(222,229,228,.62) !important;
+  border-radius:7px !important;
+  background:#0c1011 !important;
+  box-shadow:
+    inset 0 0 0 1px rgba(255,255,255,.025),
+    inset 0 0 13px rgba(255,255,255,.025),
+    0 0 8px rgba(230,238,237,.035) !important;
+}
+
+#tab-char .faction-switch-btn[data-faction="lumiel"]::before,
+#tab-char .faction-switch-btn[data-faction="lumiel"]::after{
+  content:none !important;
+  display:none !important;
+}
+
+#tab-char .faction-switch-btn[data-faction="lumiel"] .lumiel-btn-label{
+  position:relative !important;
+  z-index:10 !important;
+  display:inline-block !important;
+  color:#ffffff !important;
+  text-shadow:
+    0 1px 3px rgba(0,0,0,.98),
+    0 0 5px rgba(0,0,0,.90) !important;
+}
+
+#tab-char .faction-switch-btn[data-faction="lumiel"] .lumiel-silver-grid{
+  position:absolute !important;
+  inset:3px !important;
+  z-index:1 !important;
+  display:grid !important;
+  grid-template-columns:repeat(10,1fr) !important;
+  grid-template-rows:repeat(3,1fr) !important;
+  gap:2px !important;
+  pointer-events:none !important;
+}
+
+#tab-char .faction-switch-btn[data-faction="lumiel"] .lumiel-silver-tile{
+  display:block !important;
+  min-width:0 !important;
+  min-height:0 !important;
+  border-radius:1px !important;
+  background:
+    linear-gradient(
+      135deg,
+      rgba(255,255,255,.52),
+      rgba(166,177,178,.28) 44%,
+      rgba(245,249,249,.18) 62%,
+      rgba(255,255,255,.44)
+    ) !important;
+  border:1px solid rgba(238,244,243,.28) !important;
+  opacity:var(--base) !important;
+  box-shadow:
+    inset 0 0 2px rgba(255,255,255,.14) !important;
+  animation:
+    lumielSilverCell var(--dur) ease-in-out var(--delay) infinite !important;
+}
+
+@keyframes lumielSilverCell{
+  0%,100%{
+    opacity:var(--base);
+    filter:brightness(.62);
+    box-shadow:
+      inset 0 0 2px rgba(255,255,255,.10);
+  }
+  36%{
+    opacity:.34;
+    filter:brightness(.86);
+  }
+  49%{
+    opacity:var(--peak);
+    filter:brightness(2.15);
+    background:
+      linear-gradient(
+        135deg,
+        #ffffff,
+        #d8dddd 38%,
+        #ffffff 59%,
+        #aeb8b8
+      );
+    border-color:rgba(255,255,255,.92);
+    box-shadow:
+      inset 0 0 5px rgba(255,255,255,.88),
+      0 0 5px rgba(255,255,255,.68),
+      0 0 11px rgba(225,234,233,.36);
+  }
+  60%{
+    opacity:.30;
+    filter:brightness(.80);
+  }
+}
+
+#tab-char .faction-switch-btn[data-faction="lumiel"]:hover,
+#tab-char .faction-switch-btn[data-faction="lumiel"].active{
+  border-color:rgba(245,249,248,.90) !important;
+  background:#111617 !important;
+  box-shadow:
+    inset 0 0 0 1px rgba(255,255,255,.04),
+    0 0 13px rgba(230,239,238,.08) !important;
+}
+
+#tab-char .faction-switch-btn[data-faction="lumiel"]:hover .lumiel-silver-tile{
+  animation-duration:calc(var(--dur) * .72) !important;
+}
+
+@media(prefers-reduced-motion:reduce){
+  #tab-char .faction-switch-btn[data-faction="lumiel"] .lumiel-silver-tile{
+    animation:none !important;
+    opacity:.42 !important;
+    filter:brightness(1.18) !important;
+  }
+}
+</style>
+
+
+<style id="lumiel-agency-interior-v1">
+/* =========================================================
+   LUMIEL INTERIOR — ENTERTAINMENT AGENCY
+   사진 영역 제외 / 내부 정보부만 연예기획사 느낌
+   ========================================================= */
+
+/* 소개문: 회사 소개 브리핑 카드 */
+#tab-char .faction-content-panel[data-faction-panel="lumiel"] .faction-lead-desc{
+  position:relative!important;
+  overflow:hidden!important;
+  padding:16px 18px 16px 20px!important;
+  color:#dfe5e4!important;
+  background:
+    linear-gradient(90deg,rgba(255,255,255,.035),transparent 34%),
+    linear-gradient(145deg,#15191a,#0d1011)!important;
+  border:1px solid rgba(216,224,223,.18)!important;
+  border-left:3px solid rgba(240,244,244,.44)!important;
+  border-radius:5px!important;
+  box-shadow:
+    inset 0 0 0 1px rgba(255,255,255,.012),
+    0 6px 18px rgba(0,0,0,.16)!important;
+}
+
+/* 소개문 우측 상단 작은 레이블 */
+#tab-char .faction-content-panel[data-faction-panel="lumiel"] .faction-lead-desc::after{
+  content:"LUMIEL / COMPANY PROFILE"!important;
+  position:absolute!important;
+  right:12px!important;
+  top:8px!important;
+  color:rgba(225,232,231,.14)!important;
+  font-family:'JetBrains Mono',monospace!important;
+  font-size:7px!important;
+  letter-spacing:.12em!important;
+  pointer-events:none!important;
+}
+
+/* 장소 카드 전체 */
+#tab-char .faction-content-panel[data-faction-panel="lumiel"] .lumiel-place-card{
+  border:1px solid rgba(215,224,222,.22)!important;
+  border-radius:7px!important;
+  background:
+    linear-gradient(180deg,rgba(255,255,255,.018),transparent 30%),
+    #101415!important;
+  box-shadow:
+    inset 0 0 0 1px rgba(255,255,255,.012),
+    0 8px 22px rgba(0,0,0,.18)!important;
+}
+
+/* BG 사진은 건드리지 않음 */
+#tab-char .faction-content-panel[data-faction-panel="lumiel"] .lumiel-place-card .place-image{
+  background:#0a0d0e!important;
+}
+
+/* 사진 아래 정보부를 회사 로비/프로필 패널 느낌으로 */
+#tab-char .faction-content-panel[data-faction-panel="lumiel"] .lumiel-place-card .place-info{
+  position:relative!important;
+  overflow:hidden!important;
+  padding:18px 16px 18px!important;
+  background:
+    linear-gradient(90deg,rgba(255,255,255,.022) 1px,transparent 1px),
+    linear-gradient(rgba(255,255,255,.018) 1px,transparent 1px),
+    linear-gradient(145deg,#171b1c,#101415)!important;
+  background-size:26px 26px,26px 26px,auto!important;
+  border-top:1px solid rgba(221,229,228,.12)!important;
+}
+
+#tab-char .faction-content-panel[data-faction-panel="lumiel"] .lumiel-place-card .place-info::before{
+  content:""!important;
+  position:absolute!important;
+  left:16px!important;
+  right:16px!important;
+  top:0!important;
+  height:3px!important;
+  background:
+    linear-gradient(90deg,
+      rgba(255,255,255,.75),
+      rgba(190,199,199,.34) 24%,
+      transparent 24% 28%,
+      rgba(255,255,255,.46) 28% 50%,
+      transparent 50% 55%,
+      rgba(210,219,218,.32) 55% 78%,
+      transparent 78% 83%,
+      rgba(255,255,255,.52) 83% 100%)!important;
+  opacity:.40!important;
+}
+
+#tab-char .faction-content-panel[data-faction-panel="lumiel"] .lumiel-place-card .place-title{
+  position:relative!important;
+  margin-bottom:10px!important;
+  padding-bottom:9px!important;
+  color:#eef2f1!important;
+  font-size:20px!important;
+  letter-spacing:-.02em!important;
+  border-bottom:1px solid rgba(218,226,225,.10)!important;
+}
+
+#tab-char .faction-content-panel[data-faction-panel="lumiel"] .lumiel-place-card .place-title::after{
+  content:"ENTERTAINMENT AGENCY"!important;
+  position:absolute!important;
+  right:0!important;
+  bottom:8px!important;
+  color:rgba(215,224,222,.18)!important;
+  font-family:'JetBrains Mono',monospace!important;
+  font-size:7px!important;
+  letter-spacing:.13em!important;
+}
+
+#tab-char .faction-content-panel[data-faction-panel="lumiel"] .lumiel-place-card .place-desc{
+  margin-bottom:16px!important;
+  color:#aeb8b6!important;
+  line-height:1.85!important;
+}
+
+/* 소속 캐릭터 영역 자체를 캐스팅 보드처럼 */
+#tab-char .faction-content-panel[data-faction-panel="lumiel"] .place-characters{
+  position:relative!important;
+  padding-top:14px!important;
+  border-top:1px solid rgba(217,226,224,.10)!important;
+}
+
+#tab-char .faction-content-panel[data-faction-panel="lumiel"] .place-characters::before{
+  content:"ARTIST LINE-UP"!important;
+  position:absolute!important;
+  left:0!important;
+  top:-8px!important;
+  padding:0 7px!important;
+  color:rgba(226,234,232,.36)!important;
+  background:#141819!important;
+  font-family:'JetBrains Mono',monospace!important;
+  font-size:8px!important;
+  letter-spacing:.14em!important;
+}
+
+/* 캐릭터 카드 — 사진은 그대로, 아래 정보만 연예인 프로필 카드화 */
+#tab-char .faction-content-panel[data-faction-panel="lumiel"] .place-characters .char-card{
+  position:relative!important;
+  overflow:hidden!important;
+  border:1px solid rgba(214,224,222,.26)!important;
+  border-radius:6px!important;
+  background:#111516!important;
+  box-shadow:
+    inset 0 0 0 1px rgba(255,255,255,.012),
+    0 5px 14px rgba(0,0,0,.16)!important;
+}
+
+/* 사진 영역 제외 */
+#tab-char .faction-content-panel[data-faction-panel="lumiel"] .place-characters .char-portrait{
+  background:inherit!important;
+}
+
+#tab-char .faction-content-panel[data-faction-panel="lumiel"] .place-characters .char-name{
+  position:relative!important;
+  margin:0!important;
+  padding:10px 10px 3px!important;
+  color:#f0f4f3!important;
+  background:
+    linear-gradient(90deg,rgba(255,255,255,.035),transparent 65%),
+    #111516!important;
+  font-size:15px!important;
+  letter-spacing:.01em!important;
+}
+
+#tab-char .faction-content-panel[data-faction-panel="lumiel"] .place-characters .char-name::before{
+  content:"●"!important;
+  margin-right:6px!important;
+  color:rgba(233,239,238,.38)!important;
+  font-size:7px!important;
+  vertical-align:2px!important;
+}
+
+#tab-char .faction-content-panel[data-faction-panel="lumiel"] .place-characters .char-role{
+  margin:0!important;
+  padding:2px 10px 11px!important;
+  color:#9faaa8!important;
+  background:#111516!important;
+  font-size:10.5px!important;
+  letter-spacing:.01em!important;
+}
+
+#tab-char .faction-content-panel[data-faction-panel="lumiel"] .place-characters .char-card::after{
+  content:""!important;
+  position:absolute!important;
+  left:9px!important;
+  right:9px!important;
+  bottom:5px!important;
+  height:1px!important;
+  background:linear-gradient(90deg,rgba(255,255,255,.40),transparent)!important;
+  opacity:.28!important;
+}
+
+#tab-char .faction-content-panel[data-faction-panel="lumiel"] .place-characters .char-card:hover{
+  transform:translateY(-2px)!important;
+  border-color:rgba(235,241,240,.44)!important;
+  box-shadow:
+    0 8px 18px rgba(0,0,0,.20),
+    0 0 12px rgba(235,241,240,.035)!important;
+}
+
+</style>
+
+
+
+
+
+<style id="lumiel-mirrorball-boost-v1">
+/* =========================================================
+   LUMIEL BUTTON — 멀리서도 보이는 강한 은빛 미러볼
+   내부/팝업 디자인에는 영향 없음
+   ========================================================= */
+
+#tab-char .faction-switch-btn[data-faction="lumiel"]{
+  border:1px solid #ffffff !important;
+  background:
+    linear-gradient(145deg,#353c3e 0%,#202628 48%,#111617 100%) !important;
+  box-shadow:
+    inset 0 0 0 1px rgba(255,255,255,.15),
+    inset 0 0 22px rgba(255,255,255,.14),
+    0 0 10px rgba(255,255,255,.18) !important;
+}
+
+/* 타일 기본 상태부터 더 밝게 */
+#tab-char .faction-switch-btn[data-faction="lumiel"] .lumiel-silver-tile{
+  background:
+    linear-gradient(
+      135deg,
+      rgba(255,255,255,.98),
+      rgba(210,219,220,.64) 38%,
+      rgba(255,255,255,.52) 60%,
+      rgba(230,237,237,.84)
+    ) !important;
+  border-color:rgba(255,255,255,.68) !important;
+  opacity:.58 !important;
+  box-shadow:
+    inset 0 0 4px rgba(255,255,255,.42),
+    0 0 3px rgba(255,255,255,.18) !important;
+}
+
+/* 각 네모칸이 훨씬 강하게 번쩍임 */
+@keyframes lumielSilverCell{
+  0%,100%{
+    opacity:.32;
+    filter:brightness(.78);
+    box-shadow:
+      inset 0 0 3px rgba(255,255,255,.22),
+      0 0 2px rgba(255,255,255,.12);
+  }
+  26%{
+    opacity:.52;
+    filter:brightness(1.12);
+  }
+  42%{
+    opacity:.74;
+    filter:brightness(1.42);
+  }
+  49%{
+    opacity:1;
+    filter:brightness(3.1);
+    background:
+      linear-gradient(
+        135deg,
+        #ffffff 0%,
+        #ffffff 24%,
+        #d9e1e1 42%,
+        #ffffff 58%,
+        #bfc9c9 78%,
+        #ffffff 100%
+      );
+    border-color:#ffffff;
+    box-shadow:
+      inset 0 0 8px rgba(255,255,255,1),
+      0 0 8px rgba(255,255,255,1),
+      0 0 18px rgba(236,245,244,.78),
+      0 0 28px rgba(225,236,235,.36);
+  }
+  56%{
+    opacity:.72;
+    filter:brightness(1.38);
+  }
+  70%{
+    opacity:.40;
+    filter:brightness(.90);
+  }
+}
+
+/* 전체적으로도 짧은 은빛 플래시가 한 번씩 지나감 */
+#tab-char .faction-switch-btn[data-faction="lumiel"]::after{
+  content:"" !important;
+  display:block !important;
+  position:absolute !important;
+  z-index:4 !important;
+  inset:-45% -24% !important;
+  width:auto !important;
+  height:auto !important;
+  pointer-events:none !important;
+  background:
+    linear-gradient(
+      112deg,
+      transparent 0 40%,
+      rgba(255,255,255,.06) 44%,
+      rgba(255,255,255,.88) 49%,
+      rgba(255,255,255,.16) 54%,
+      transparent 60% 100%
+    ) !important;
+  transform:translateX(-72%) !important;
+  opacity:0 !important;
+  animation:lumielStrongSweep 3.4s ease-in-out infinite !important;
+}
+
+@keyframes lumielStrongSweep{
+  0%,44%{
+    transform:translateX(-72%);
+    opacity:0;
+  }
+  50%{
+    opacity:.95;
+  }
+  61%{
+    transform:translateX(72%);
+    opacity:.18;
+  }
+  62%,100%{
+    transform:translateX(72%);
+    opacity:0;
+  }
+}
+
+#tab-char .faction-switch-btn[data-faction="lumiel"] .lumiel-btn-label{
+  color:#ffffff !important;
+  text-shadow:
+    0 1px 3px rgba(0,0,0,1),
+    0 0 7px rgba(255,255,255,.26) !important;
+}
+
+#tab-char .faction-switch-btn[data-faction="lumiel"]:hover,
+#tab-char .faction-switch-btn[data-faction="lumiel"].active{
+  border-color:#ffffff !important;
+  background:
+    linear-gradient(145deg,#424a4c,#262d2f 50%,#151a1b) !important;
+  box-shadow:
+    inset 0 0 0 1px rgba(255,255,255,.22),
+    inset 0 0 24px rgba(255,255,255,.18),
+    0 0 16px rgba(255,255,255,.28) !important;
+}
+
+@media(prefers-reduced-motion:reduce){
+  #tab-char .faction-switch-btn[data-faction="lumiel"]::after{
+    animation:none !important;
+    display:none !important;
+  }
+  #tab-char .faction-switch-btn[data-faction="lumiel"] .lumiel-silver-tile{
+    animation:none !important;
+    opacity:.72 !important;
+    filter:brightness(1.25) !important;
+  }
+}
+</style>
+
+
+
+
+
+
+
+<style id="lumiel-agency-color-v1">
+/* =========================================================
+   LUMIEL ENTERTAINMENT
+   BLACK + HOT PINK + CYAN + SOFT GOLD
+   연예기획사 / 쇼케이스 / LED 스테이지 콘셉트
+   사진 영역은 건드리지 않음
+   ========================================================= */
+
+/* =========================
+   상단 세력 버튼
+   ========================= */
+#tab-char .faction-switch-btn[data-faction="lumiel"]{
+  position:relative !important;
+  isolation:isolate !important;
+  overflow:hidden !important;
+  min-width:168px !important;
+  color:#ffffff !important;
+  border:1px solid rgba(255,255,255,.92) !important;
+  border-radius:7px !important;
+  background:
+    radial-gradient(circle at 18% 30%,rgba(255,54,165,.08),transparent 32%),
+    radial-gradient(circle at 82% 70%,rgba(42,220,255,.08),transparent 34%),
+    linear-gradient(145deg,#171018 0%,#0b1014 48%,#081014 100%) !important;
+  box-shadow:
+    inset 0 0 0 1px rgba(255,255,255,.035),
+    inset 0 0 18px rgba(255,255,255,.025),
+    0 0 12px rgba(255,255,255,.08) !important;
+}
+
+#tab-char .faction-switch-btn[data-faction="lumiel"] .lumiel-btn-label{
+  position:relative !important;
+  z-index:10 !important;
+  color:#fff !important;
+  text-shadow:
+    0 1px 4px rgba(0,0,0,1),
+    0 0 7px rgba(0,0,0,.95),
+    0 0 10px rgba(255,255,255,.09) !important;
+}
+
+/* 각 미러 타일을 핑크/시안/화이트 계열로 교차 */
+#tab-char .faction-switch-btn[data-faction="lumiel"] .lumiel-silver-grid{
+  position:absolute !important;
+  inset:3px !important;
+  z-index:1 !important;
+  display:grid !important;
+  grid-template-columns:repeat(10,1fr) !important;
+  grid-template-rows:repeat(3,1fr) !important;
+  gap:2px !important;
+  pointer-events:none !important;
+}
+
+#tab-char .faction-switch-btn[data-faction="lumiel"] .lumiel-silver-tile{
+  display:block !important;
+  min-width:0 !important;
+  min-height:0 !important;
+  border-radius:1px !important;
+  opacity:.28 !important;
+  border:1px solid rgba(255,255,255,.16) !important;
+  background:linear-gradient(135deg,rgba(255,255,255,.20),rgba(255,255,255,.04)) !important;
+  animation:lumielColorMirror var(--dur) ease-in-out var(--delay) infinite !important;
+}
+
+#tab-char .faction-switch-btn[data-faction="lumiel"] .lumiel-silver-tile:nth-child(4n+1){
+  --flash:#ff3fa9;
+  --flash-rgb:255,63,169;
+}
+#tab-char .faction-switch-btn[data-faction="lumiel"] .lumiel-silver-tile:nth-child(4n+2){
+  --flash:#2ddcff;
+  --flash-rgb:45,220,255;
+}
+#tab-char .faction-switch-btn[data-faction="lumiel"] .lumiel-silver-tile:nth-child(4n+3){
+  --flash:#ffffff;
+  --flash-rgb:255,255,255;
+}
+#tab-char .faction-switch-btn[data-faction="lumiel"] .lumiel-silver-tile:nth-child(4n){
+  --flash:#e7c978;
+  --flash-rgb:231,201,120;
+}
+
+@keyframes lumielColorMirror{
+  0%,100%{
+    opacity:.10;
+    filter:brightness(.60);
+    background:rgba(var(--flash-rgb),.05);
+    box-shadow:none;
+  }
+  31%{
+    opacity:.24;
+    filter:brightness(.90);
+  }
+  46%{
+    opacity:.62;
+    filter:brightness(1.55);
+    background:rgba(var(--flash-rgb),.30);
+    border-color:rgba(var(--flash-rgb),.65);
+    box-shadow:0 0 5px rgba(var(--flash-rgb),.32);
+  }
+  50%{
+    opacity:1;
+    filter:brightness(2.55);
+    background:var(--flash);
+    border-color:#fff;
+    box-shadow:
+      inset 0 0 7px rgba(255,255,255,.70),
+      0 0 8px rgba(var(--flash-rgb),.95),
+      0 0 18px rgba(var(--flash-rgb),.52);
+  }
+  58%{
+    opacity:.38;
+    filter:brightness(1.05);
+  }
+}
+
+/* 스테이지 스윕 */
+#tab-char .faction-switch-btn[data-faction="lumiel"]::after{
+  content:"" !important;
+  position:absolute !important;
+  z-index:4 !important;
+  inset:-55% -28% !important;
+  width:auto !important;
+  height:auto !important;
+  background:
+    linear-gradient(
+      112deg,
+      transparent 0 38%,
+      rgba(255,63,169,.02) 43%,
+      rgba(255,255,255,.78) 48%,
+      rgba(45,220,255,.18) 52%,
+      transparent 59% 100%
+    ) !important;
+  transform:translateX(-76%) !important;
+  opacity:0 !important;
+  pointer-events:none !important;
+  animation:lumielStageSweep 3.0s ease-in-out infinite !important;
+}
+
+@keyframes lumielStageSweep{
+  0%,38%{transform:translateX(-76%);opacity:0}
+  46%{opacity:.88}
+  58%{transform:translateX(76%);opacity:.14}
+  59%,100%{transform:translateX(76%);opacity:0}
+}
+
+#tab-char .faction-switch-btn[data-faction="lumiel"]:hover,
+#tab-char .faction-switch-btn[data-faction="lumiel"].active{
+  border-color:#fff !important;
+  background:
+    radial-gradient(circle at 18% 30%,rgba(255,63,169,.13),transparent 34%),
+    radial-gradient(circle at 82% 70%,rgba(45,220,255,.13),transparent 34%),
+    linear-gradient(145deg,#21131e,#0d1519 50%,#091216) !important;
+  box-shadow:
+    inset 0 0 0 1px rgba(255,255,255,.055),
+    0 0 14px rgba(255,255,255,.12),
+    0 0 16px rgba(255,63,169,.06),
+    0 0 16px rgba(45,220,255,.06) !important;
+}
+
+/* =========================
+   루미엘 내부 패널
+   ========================= */
+#tab-char .faction-content-panel[data-faction-panel="lumiel"]{
+  position:relative !important;
+  overflow:hidden !important;
+  border:1px solid rgba(255,255,255,.16) !important;
+  border-radius:7px !important;
+  background:
+    radial-gradient(circle at 8% 10%,rgba(255,63,169,.06),transparent 22%),
+    radial-gradient(circle at 90% 16%,rgba(45,220,255,.055),transparent 24%),
+    linear-gradient(145deg,#151118 0%,#0c1215 56%,#081013 100%) !important;
+  box-shadow:
+    inset 0 0 0 1px rgba(255,255,255,.012),
+    inset 0 0 34px rgba(255,255,255,.012) !important;
+}
+
+#tab-char .faction-content-panel[data-faction-panel="lumiel"]::before{
+  content:"" !important;
+  position:absolute !important;
+  inset:0 !important;
+  pointer-events:none !important;
+  background:
+    linear-gradient(rgba(255,255,255,.016) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(255,255,255,.016) 1px,transparent 1px) !important;
+  background-size:24px 24px !important;
+  opacity:.52 !important;
+}
+
+#tab-char .faction-content-panel[data-faction-panel="lumiel"] > *{
+  position:relative !important;
+  z-index:2 !important;
+}
+
+/* 헤더 */
+#tab-char .faction-content-panel[data-faction-panel="lumiel"] .acc-head{
+  background:
+    linear-gradient(90deg,rgba(255,63,169,.055),transparent 30%,rgba(45,220,255,.04)),
+    rgba(7,10,12,.92) !important;
+  border-bottom:1px solid rgba(255,255,255,.12) !important;
+}
+
+#tab-char .faction-content-panel[data-faction-panel="lumiel"] .acc-num{
+  color:#ff78be !important;
+}
+
+#tab-char .faction-content-panel[data-faction-panel="lumiel"] .acc-head::before{
+  content:"SHOWCASE / LUMIEL" !important;
+  right:70px !important;
+  top:50% !important;
+  transform:translateY(-50%) !important;
+  color:rgba(45,220,255,.16) !important;
+  font-family:'JetBrains Mono',monospace !important;
+  font-size:8px !important;
+  letter-spacing:.15em !important;
+  background:none !important;
+}
+
+/* 회사 소개 */
+#tab-char .faction-content-panel[data-faction-panel="lumiel"] .faction-lead-desc{
+  position:relative !important;
+  overflow:hidden !important;
+  color:#e5e9e8 !important;
+  background:
+    linear-gradient(90deg,rgba(255,63,169,.040),transparent 36%,rgba(45,220,255,.025)),
+    #11171a !important;
+  border:1px solid rgba(255,255,255,.13) !important;
+  border-left:3px solid #ff4cac !important;
+  border-radius:5px !important;
+  box-shadow:inset 0 0 18px rgba(255,255,255,.012) !important;
+}
+
+#tab-char .faction-content-panel[data-faction-panel="lumiel"] .faction-lead-desc::after{
+  content:"COMPANY PROFILE" !important;
+  position:absolute !important;
+  right:12px !important;
+  top:8px !important;
+  color:rgba(45,220,255,.13) !important;
+  font-family:'JetBrains Mono',monospace !important;
+  font-size:7px !important;
+  letter-spacing:.13em !important;
+}
+
+#tab-char .faction-content-panel[data-faction-panel="lumiel"] .faction-lead-mark{
+  color:#ff5eb4 !important;
+  text-shadow:0 0 8px rgba(255,63,169,.26) !important;
+}
+
+/* BG33 장소 카드 */
+#tab-char .faction-content-panel[data-faction-panel="lumiel"] .lumiel-place-card{
+  overflow:hidden !important;
+  border:1px solid rgba(255,255,255,.14) !important;
+  border-radius:7px !important;
+  background:#0d1215 !important;
+  box-shadow:0 8px 20px rgba(0,0,0,.16) !important;
+}
+
+/* 사진은 건드리지 않음 */
+#tab-char .faction-content-panel[data-faction-panel="lumiel"] .lumiel-place-card .place-image{
+  background:#0a0d0f !important;
+}
+
+/* 사진 아래 정보부만 화려하게 */
+#tab-char .faction-content-panel[data-faction-panel="lumiel"] .lumiel-place-card .place-info{
+  position:relative !important;
+  overflow:hidden !important;
+  background:
+    radial-gradient(circle at 0% 20%,rgba(255,63,169,.055),transparent 24%),
+    radial-gradient(circle at 100% 30%,rgba(45,220,255,.045),transparent 24%),
+    linear-gradient(145deg,#151a1d,#0e1417) !important;
+  border-top:1px solid rgba(255,255,255,.13) !important;
+}
+
+#tab-char .faction-content-panel[data-faction-panel="lumiel"] .lumiel-place-card .place-info::before{
+  content:"" !important;
+  position:absolute !important;
+  left:16px !important;
+  right:16px !important;
+  top:0 !important;
+  height:3px !important;
+  background:
+    linear-gradient(90deg,
+      #ff3fa9,
+      #ff3fa9 22%,
+      transparent 22% 27%,
+      #2ddcff 27% 52%,
+      transparent 52% 57%,
+      #e7c978 57% 70%,
+      transparent 70% 76%,
+      #ffffff 76% 100%) !important;
+  opacity:.58 !important;
+  box-shadow:
+    0 0 7px rgba(255,63,169,.14),
+    0 0 7px rgba(45,220,255,.12) !important;
+}
+
+#tab-char .faction-content-panel[data-faction-panel="lumiel"] .place-title{
+  color:#f3f6f5 !important;
+  border-bottom:1px solid rgba(255,255,255,.10) !important;
+}
+
+#tab-char .faction-content-panel[data-faction-panel="lumiel"] .place-title::after{
+  content:"ENTERTAINMENT AGENCY" !important;
+  color:rgba(45,220,255,.22) !important;
+  font-family:'JetBrains Mono',monospace !important;
+  font-size:7px !important;
+  letter-spacing:.14em !important;
+}
+
+#tab-char .faction-content-panel[data-faction-panel="lumiel"] .place-desc{
+  color:#adb7b5 !important;
+}
+
+/* 아티스트 라인업 */
+#tab-char .faction-content-panel[data-faction-panel="lumiel"] .place-characters{
+  border-top:1px solid rgba(255,255,255,.10) !important;
+}
+
+#tab-char .faction-content-panel[data-faction-panel="lumiel"] .place-characters::before{
+  content:"ARTIST LINE-UP" !important;
+  color:rgba(255,255,255,.42) !important;
+  background:#11171a !important;
+}
+
+/* 그웬 / 세레인 카드 */
+#tab-char .faction-content-panel[data-faction-panel="lumiel"] .place-characters .char-card{
+  overflow:hidden !important;
+  border:1px solid rgba(255,255,255,.14) !important;
+  border-radius:6px !important;
+  background:#101619 !important;
+  box-shadow:0 5px 14px rgba(0,0,0,.14) !important;
+}
+
+/* 사진은 건드리지 않음 */
+#tab-char .faction-content-panel[data-faction-panel="lumiel"] .place-characters .char-portrait{
+  background:inherit !important;
+}
+
+/* 이름/역할 */
+#tab-char .faction-content-panel[data-faction-panel="lumiel"] .place-characters .char-name{
+  color:#f5f7f7 !important;
+  background:
+    linear-gradient(90deg,rgba(255,63,169,.07),transparent 62%),
+    #11171a !important;
+  border-top:1px solid rgba(255,255,255,.07) !important;
+}
+
+#tab-char .faction-content-panel[data-faction-panel="lumiel"] .place-characters .char-name::before{
+  content:"●" !important;
+  color:#ff4cac !important;
+  font-size:7px !important;
+  margin-right:6px !important;
+  vertical-align:2px !important;
+  text-shadow:0 0 7px rgba(255,63,169,.38) !important;
+}
+
+
+
+
+
+#tab-char .faction-content-panel[data-faction-panel="lumiel"] .place-characters .char-role{
+  color:#a7b2b0 !important;
+  background:#11171a !important;
+}
+
+#tab-char .faction-content-panel[data-faction-panel="lumiel"] .place-characters .char-card::after{
+  content:"" !important;
+  position:absolute !important;
+  left:10px !important;
+  right:10px !important;
+  bottom:5px !important;
+  height:1px !important;
+  background:linear-gradient(90deg,#ff3fa9,#2ddcff,transparent) !important;
+  opacity:.38 !important;
+}
+
+/* =========================
+   루미엘 전용 팝업
+   ========================= */
+.character-hover-detail.lumiel-character-detail{
+  overflow:hidden !important;
+  border:1px solid rgba(255,255,255,.18) !important;
+  border-radius:5px !important;
+  background:
+    radial-gradient(circle at 10% 85%,rgba(255,63,169,.045),transparent 28%),
+    radial-gradient(circle at 90% 20%,rgba(45,220,255,.035),transparent 26%),
+    linear-gradient(145deg,#13171a,#0b1013 72%) !important;
+  box-shadow:
+    0 22px 56px rgba(0,0,0,.58),
+    0 0 22px rgba(255,63,169,.025),
+    0 0 22px rgba(45,220,255,.025) !important;
+}
+
+/* 팝업 사진은 손대지 않음 */
+.character-hover-detail.lumiel-character-detail .character-detail-art::before,
+.character-hover-detail.lumiel-character-detail .character-detail-art::after{
+  content:none !important;
+  display:none !important;
+}
+
+/* 본문 */
+.character-hover-detail.lumiel-character-detail .character-detail-body{
+  position:relative !important;
+  overflow:hidden !important;
+  background:
+    linear-gradient(rgba(255,255,255,.014) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(255,255,255,.014) 1px,transparent 1px),
+    #0e1417 !important;
+  background-size:22px 22px,22px 22px,auto !important;
+}
+
+.character-hover-detail.lumiel-character-detail .character-detail-body::before{
+  content:"" !important;
+  position:absolute !important;
+  left:18px !important;
+  right:18px !important;
+  top:0 !important;
+  height:3px !important;
+  background:
+    linear-gradient(90deg,
+      #ff3fa9 0 33%,
+      transparent 33% 37%,
+      #2ddcff 37% 70%,
+      transparent 70% 74%,
+      #e7c978 74% 86%,
+      transparent 86% 90%,
+      #ffffff 90% 100%) !important;
+  opacity:.62 !important;
+}
+
+.character-hover-detail.lumiel-character-detail .character-detail-head{
+  padding-top:8px !important;
+  padding-bottom:12px !important;
+  border-bottom:1px solid rgba(255,255,255,.10) !important;
+}
+
+.character-hover-detail.lumiel-character-detail .character-detail-head::after{
+  content:"LUMIEL ARTIST PROFILE" !important;
+  position:absolute !important;
+  right:0 !important;
+  bottom:6px !important;
+  color:rgba(45,220,255,.16) !important;
+  font-family:'JetBrains Mono',monospace !important;
+  font-size:7px !important;
+  letter-spacing:.12em !important;
+}
+
+.character-hover-detail.lumiel-character-detail .character-detail-name{
+  color:#f5f7f7 !important;
+}
+
+.character-hover-detail.lumiel-character-detail .character-detail-meta{
+  color:#b9c2c1 !important;
+}
+
+.character-hover-detail.lumiel-character-detail .character-detail-role{
+  color:#ff89c5 !important;
+}
+
+
+
+.character-hover-detail.lumiel-character-detail .character-detail-code{
+  color:#f1f3f3 !important;
+  border:1px solid rgba(255,255,255,.15) !important;
+  background:rgba(255,255,255,.018) !important;
+  border-radius:3px !important;
+  padding:4px 7px !important;
+}
+
+/* 프로필 */
+.character-hover-detail.lumiel-character-detail .character-detail-profile{
+  color:#a0aaa8 !important;
+  border:1px solid rgba(255,255,255,.09) !important;
+  border-left:3px solid #e7c978 !important;
+  background:
+    linear-gradient(90deg,rgba(231,201,120,.035),transparent 48%),
+    rgba(255,255,255,.008) !important;
+}
+
+/* 능력 */
+.character-hover-detail.lumiel-character-detail .character-detail-ability{
+  position:relative !important;
+  overflow:hidden !important;
+  border:1px solid rgba(255,255,255,.10) !important;
+  border-left:3px solid #ff3fa9 !important;
+  background:
+    linear-gradient(90deg,rgba(255,63,169,.045),transparent 44%),
+    rgba(255,255,255,.008) !important;
+}
+
+
+
+.character-hover-detail.lumiel-character-detail .character-detail-ability strong{
+  color:#e9edec !important;
+}
+
+.character-hover-detail.lumiel-character-detail .character-detail-ability::after{
+  content:"" !important;
+  position:absolute !important;
+  right:10px !important;
+  top:10px !important;
+  width:22px !important;
+  height:10px !important;
+  background:
+    linear-gradient(90deg,#ff3fa9 0 30%,transparent 30% 38%,#2ddcff 38% 68%,transparent 68% 76%,#fff 76% 100%) !important;
+  opacity:.20 !important;
+}
+
+/* 대사 */
+.character-hover-detail.lumiel-character-detail .character-detail-quote{
+  position:relative !important;
+  color:#aab3b1 !important;
+  border-top:1px solid rgba(255,255,255,.08) !important;
+  border-left:0 !important;
+  border-right:0 !important;
+  border-bottom:0 !important;
+  background:transparent !important;
+  padding-left:24px !important;
+}
+
+.character-hover-detail.lumiel-character-detail .character-detail-quote::before{
+  content:"“" !important;
+  position:absolute !important;
+  left:0 !important;
+  top:0 !important;
+  right:auto !important;
+  color:#ff68b6 !important;
+  font-family:Georgia,'Times New Roman',serif !important;
+  font-size:21px !important;
+  line-height:1 !important;
+  opacity:.58 !important;
+}
+
+
+
+.character-hover-detail.lumiel-character-detail .character-detail-quote::after{
+  content:none !important;
+  display:none !important;
+}
+
+@media(prefers-reduced-motion:reduce){
+  #tab-char .faction-switch-btn[data-faction="lumiel"]::after{
+    animation:none !important;
+    display:none !important;
+  }
+  #tab-char .faction-switch-btn[data-faction="lumiel"] .lumiel-silver-tile{
+    animation:none !important;
+    opacity:.38 !important;
+  }
+}
+</style>
+
+
+<style id="lumiel-button-stronger-sparkle-v1">
+/* 기존 루미엘 디자인은 그대로 유지하고 버튼 반짝임만 강화 */
+
+/* 평상시에는 기존처럼 어두워서 글자가 잘 보이게 */
+#tab-char .faction-switch-btn[data-faction="lumiel"] .lumiel-silver-tile{
+  opacity:.22 !important;
+  border-color:rgba(255,255,255,.13) !important;
+}
+
+/* 개별 미러 타일의 명암 차를 크게 해서 확실하게 번쩍임 */
+@keyframes lumielColorMirror{
+  0%,100%{
+    opacity:.07;
+    filter:brightness(.45) saturate(.80);
+    background:rgba(var(--flash-rgb),.025);
+    border-color:rgba(var(--flash-rgb),.08);
+    box-shadow:none;
+  }
+  27%{
+    opacity:.16;
+    filter:brightness(.72) saturate(.90);
+  }
+  42%{
+    opacity:.48;
+    filter:brightness(1.42) saturate(1.15);
+    background:rgba(var(--flash-rgb),.24);
+    border-color:rgba(var(--flash-rgb),.54);
+    box-shadow:0 0 5px rgba(var(--flash-rgb),.28);
+  }
+  48%{
+    opacity:.82;
+    filter:brightness(2.25) saturate(1.28);
+    background:rgba(var(--flash-rgb),.68);
+    border-color:rgba(255,255,255,.84);
+    box-shadow:
+      inset 0 0 5px rgba(255,255,255,.58),
+      0 0 7px rgba(var(--flash-rgb),.68);
+  }
+  51%{
+    opacity:1;
+    filter:brightness(3.75) saturate(1.40);
+    background:var(--flash);
+    border-color:#ffffff;
+    box-shadow:
+      inset 0 0 9px rgba(255,255,255,1),
+      0 0 9px rgba(var(--flash-rgb),1),
+      0 0 20px rgba(var(--flash-rgb),.78),
+      0 0 31px rgba(var(--flash-rgb),.38);
+  }
+  55%{
+    opacity:.68;
+    filter:brightness(1.72) saturate(1.18);
+    background:rgba(var(--flash-rgb),.38);
+    box-shadow:
+      0 0 8px rgba(var(--flash-rgb),.48);
+  }
+  68%{
+    opacity:.18;
+    filter:brightness(.68);
+    box-shadow:none;
+  }
+}
+
+/* 반사광도 더 선명하게. 배경 자체 밝기는 올리지 않음 */
+#tab-char .faction-switch-btn[data-faction="lumiel"]::after{
+  background:
+    linear-gradient(
+      112deg,
+      transparent 0 39%,
+      rgba(255,63,169,.04) 43%,
+      rgba(255,255,255,.98) 48%,
+      rgba(255,255,255,.72) 50%,
+      rgba(45,220,255,.26) 53%,
+      transparent 60% 100%
+    ) !important;
+  animation:lumielStageSweepStrong 2.55s ease-in-out infinite !important;
+}
+
+@keyframes lumielStageSweepStrong{
+  0%,35%{
+    transform:translateX(-78%);
+    opacity:0;
+  }
+  43%{
+    opacity:.32;
+  }
+  49%{
+    opacity:1;
+  }
+  58%{
+    transform:translateX(78%);
+    opacity:.22;
+  }
+  59%,100%{
+    transform:translateX(78%);
+    opacity:0;
+  }
+}
+
+/* 버튼 글자는 반짝임 위에서도 선명하게 */
+#tab-char .faction-switch-btn[data-faction="lumiel"] .lumiel-btn-label{
+  z-index:12 !important;
+  color:#fff !important;
+  text-shadow:
+    0 1px 4px #000,
+    0 0 5px #000,
+    0 0 9px rgba(0,0,0,.95) !important;
+}
+</style>
+
+
+<style id="lumiel-gradient-brighter-v1">
+/* =========================================================
+   이전 버전의 부드러운 그라데이션 배치는 그대로 유지
+   색상만 한 단계 더 밝고 선명하게 조정
+   ========================================================= */
+
+/* 색을 원색처럼 튀게 하지 않고 기존 파스텔 네온 계열 유지 */
+#tab-char .faction-switch-btn[data-faction="lumiel"] .lumiel-silver-tile:nth-child(4n+1){
+  --flash:#ff62b9 !important;
+  --flash-rgb:255,98,185 !important;
+}
+#tab-char .faction-switch-btn[data-faction="lumiel"] .lumiel-silver-tile:nth-child(4n+2){
+  --flash:#67e8ff !important;
+  --flash-rgb:103,232,255 !important;
+}
+#tab-char .faction-switch-btn[data-faction="lumiel"] .lumiel-silver-tile:nth-child(4n+3){
+  --flash:#ffffff !important;
+  --flash-rgb:255,255,255 !important;
+}
+#tab-char .faction-switch-btn[data-faction="lumiel"] .lumiel-silver-tile:nth-child(4n){
+  --flash:#f2dc9a !important;
+  --flash-rgb:242,220,154 !important;
+}
+
+/* 기본 상태는 기존처럼 어둡고 자연스럽게 */
+#tab-char .faction-switch-btn[data-faction="lumiel"] .lumiel-silver-tile{
+  opacity:.22 !important;
+  border-color:rgba(255,255,255,.14) !important;
+}
+
+/* 기존의 부드러운 밝기 변화는 유지하되 피크만 조금 더 밝게 */
+@keyframes lumielColorMirror{
+  0%,100%{
+    opacity:.07;
+    filter:brightness(.48) saturate(.90);
+    background:rgba(var(--flash-rgb),.025);
+    border-color:rgba(var(--flash-rgb),.08);
+    box-shadow:none;
+  }
+  27%{
+    opacity:.17;
+    filter:brightness(.76) saturate(.98);
+  }
+  42%{
+    opacity:.50;
+    filter:brightness(1.50) saturate(1.08);
+    background:rgba(var(--flash-rgb),.23);
+    border-color:rgba(var(--flash-rgb),.52);
+    box-shadow:0 0 6px rgba(var(--flash-rgb),.27);
+  }
+  48%{
+    opacity:.84;
+    filter:brightness(2.38) saturate(1.12);
+    background:rgba(var(--flash-rgb),.62);
+    border-color:rgba(255,255,255,.82);
+    box-shadow:
+      inset 0 0 6px rgba(255,255,255,.55),
+      0 0 8px rgba(var(--flash-rgb),.65);
+  }
+  51%{
+    opacity:1;
+    filter:brightness(4.15) saturate(1.15);
+    background:
+      linear-gradient(
+        135deg,
+        rgba(255,255,255,.96) 0%,
+        var(--flash) 35%,
+        rgba(var(--flash-rgb),.86) 64%,
+        rgba(255,255,255,.88) 100%
+      );
+    border-color:#ffffff;
+    box-shadow:
+      inset 0 0 10px rgba(255,255,255,.95),
+      0 0 10px rgba(var(--flash-rgb),.92),
+      0 0 22px rgba(var(--flash-rgb),.64),
+      0 0 34px rgba(var(--flash-rgb),.28);
+  }
+  56%{
+    opacity:.70;
+    filter:brightness(1.80) saturate(1.08);
+    background:rgba(var(--flash-rgb),.35);
+    box-shadow:0 0 9px rgba(var(--flash-rgb),.42);
+  }
+  70%{
+    opacity:.18;
+    filter:brightness(.70) saturate(.94);
+    background:rgba(var(--flash-rgb),.05);
+    box-shadow:none;
+  }
+}
+
+/* 이전 버전처럼 핑크 → 화이트 → 시안이 부드럽게 이어지는 스윕 */
+#tab-char .faction-switch-btn[data-faction="lumiel"]::after{
+  background:
+    linear-gradient(
+      112deg,
+      transparent 0 37%,
+      rgba(255,98,185,.035) 41%,
+      rgba(255,98,185,.20) 45%,
+      rgba(255,255,255,.96) 49%,
+      rgba(103,232,255,.24) 53%,
+      rgba(103,232,255,.035) 58%,
+      transparent 63% 100%
+    ) !important;
+}
+</style>
+
+
+
+
+
+<style id="lumiel-gradient-continuous-v1">
+/* =========================================================
+   LUMIEL BUTTON
+   "칸마다 색이 따로 노는" 느낌 제거
+   버튼 전체에 하나의 연속 그라데이션을 깔고
+   네모 타일은 그 위에서 밝기만 반짝이도록 구성
+   ========================================================= */
+
+#tab-char .faction-switch-btn[data-faction="lumiel"]{
+  position:relative !important;
+  isolation:isolate !important;
+  overflow:hidden !important;
+
+  /* 진한 연속 그라데이션 */
+  background:
+    linear-gradient(
+      110deg,
+      rgba(255,50,161,.52) 0%,
+      rgba(255,104,190,.42) 20%,
+      rgba(245,235,255,.22) 39%,
+      rgba(72,215,255,.34) 61%,
+      rgba(42,198,255,.46) 79%,
+      rgba(255,210,106,.24) 100%
+    ),
+    linear-gradient(145deg,#151016,#0a1115 55%,#091014) !important;
+
+  border:1px solid rgba(255,255,255,.92) !important;
+
+  box-shadow:
+    inset 0 0 0 1px rgba(255,255,255,.05),
+    inset 0 0 18px rgba(255,255,255,.04),
+    0 0 10px rgba(255,255,255,.09) !important;
+}
+
+/* 전체 그라데이션을 부드럽게 한 번씩 움직임 */
+#tab-char .faction-switch-btn[data-faction="lumiel"]::before{
+  content:"" !important;
+  position:absolute !important;
+  inset:-20% !important;
+  z-index:0 !important;
+  pointer-events:none !important;
+
+  background:
+    linear-gradient(
+      105deg,
+      rgba(255,28,150,.30) 0%,
+      rgba(255,110,194,.16) 24%,
+      rgba(255,255,255,.10) 45%,
+      rgba(65,226,255,.22) 67%,
+      rgba(30,193,255,.28) 84%,
+      rgba(255,214,111,.15) 100%
+    ) !important;
+
+  filter:blur(7px) saturate(1.35) !important;
+  opacity:.82 !important;
+  transform:translateX(-8%) !important;
+  animation:lumielGradientDrift 5.8s ease-in-out infinite alternate !important;
+}
+
+@keyframes lumielGradientDrift{
+  from{transform:translateX(-8%) scale(1.03)}
+  to{transform:translateX(8%) scale(1.06)}
+}
+
+/* 타일은 색을 갖지 않고 투명한 유리 타일처럼 */
+#tab-char .faction-switch-btn[data-faction="lumiel"] .lumiel-silver-grid{
+  position:absolute !important;
+  inset:3px !important;
+  z-index:1 !important;
+  display:grid !important;
+  grid-template-columns:repeat(10,1fr) !important;
+  grid-template-rows:repeat(3,1fr) !important;
+  gap:2px !important;
+  pointer-events:none !important;
+}
+
+#tab-char .faction-switch-btn[data-faction="lumiel"] .lumiel-silver-tile{
+  background:
+    linear-gradient(
+      135deg,
+      rgba(255,255,255,.16),
+      rgba(255,255,255,.035) 48%,
+      rgba(255,255,255,.10)
+    ) !important;
+  border:1px solid rgba(255,255,255,.16) !important;
+  opacity:.34 !important;
+  box-shadow:
+    inset 0 0 3px rgba(255,255,255,.08) !important;
+
+  /* 기존 개별 색 변수 무시하고 밝기만 반짝임 */
+  animation:lumielGlassTileShine var(--dur) ease-in-out var(--delay) infinite !important;
+}
+
+@keyframes lumielGlassTileShine{
+  0%,100%{
+    opacity:.18;
+    filter:brightness(.72);
+    background:rgba(255,255,255,.035);
+    border-color:rgba(255,255,255,.10);
+    box-shadow:none;
+  }
+  40%{
+    opacity:.34;
+    filter:brightness(1.05);
+  }
+  50%{
+    opacity:.86;
+    filter:brightness(2.05);
+    background:
+      linear-gradient(
+        135deg,
+        rgba(255,255,255,.88),
+        rgba(255,255,255,.40) 44%,
+        rgba(255,255,255,.18) 68%,
+        rgba(255,255,255,.72)
+      );
+    border-color:rgba(255,255,255,.88);
+    box-shadow:
+      inset 0 0 6px rgba(255,255,255,.72),
+      0 0 7px rgba(255,255,255,.46),
+      0 0 15px rgba(255,255,255,.18);
+  }
+  62%{
+    opacity:.28;
+    filter:brightness(.90);
+  }
+}
+
+/* 스윕도 핑크→화이트→시안의 연속 띠로 */
+#tab-char .faction-switch-btn[data-faction="lumiel"]::after{
+  content:"" !important;
+  position:absolute !important;
+  z-index:4 !important;
+  inset:-55% -30% !important;
+  width:auto !important;
+  height:auto !important;
+  pointer-events:none !important;
+
+  background:
+    linear-gradient(
+      112deg,
+      transparent 0 36%,
+      rgba(255,54,164,.10) 40%,
+      rgba(255,95,187,.34) 44%,
+      rgba(255,255,255,.86) 49%,
+      rgba(78,225,255,.40) 54%,
+      rgba(42,204,255,.12) 58%,
+      transparent 64% 100%
+    ) !important;
+
+  transform:translateX(-76%) !important;
+  opacity:0 !important;
+  animation:lumielContinuousSweep 3.1s ease-in-out infinite !important;
+}
+
+@keyframes lumielContinuousSweep{
+  0%,38%{
+    transform:translateX(-76%);
+    opacity:0;
+  }
+  47%{opacity:.88}
+  59%{
+    transform:translateX(76%);
+    opacity:.18;
+  }
+  60%,100%{
+    transform:translateX(76%);
+    opacity:0;
+  }
+}
+
+#tab-char .faction-switch-btn[data-faction="lumiel"] .lumiel-btn-label{
+  position:relative !important;
+  z-index:10 !important;
+  color:#fff !important;
+  text-shadow:
+    0 1px 4px #000,
+    0 0 5px #000,
+    0 0 8px rgba(0,0,0,.96) !important;
+}
+
+@media(prefers-reduced-motion:reduce){
+  #tab-char .faction-switch-btn[data-faction="lumiel"]::before,
+  #tab-char .faction-switch-btn[data-faction="lumiel"]::after,
+  #tab-char .faction-switch-btn[data-faction="lumiel"] .lumiel-silver-tile{
+    animation:none !important;
+  }
+}
+</style>
+
+
+<style id="lumiel-mobile-grid-enhance-v1">
+/* =========================================================
+   LUMIEL — 기존 색감 유지
+   1) 격자마다 개별 반짝임 강화
+   2) 모바일 세력 버튼 2열 고정
+   ========================================================= */
+
+/* 개별 타일 반짝임을 더 확실하게 */
+#tab-char .faction-switch-btn[data-faction="lumiel"] .lumiel-silver-tile{
+  opacity:.30 !important;
+  border-color:rgba(255,255,255,.17) !important;
+  box-shadow:
+    inset 0 0 3px rgba(255,255,255,.08) !important;
+  animation:lumielGlassTileShineStrong var(--dur) ease-in-out var(--delay) infinite !important;
+}
+
+@keyframes lumielGlassTileShineStrong{
+  0%,100%{
+    opacity:.14;
+    filter:brightness(.68);
+    background:rgba(255,255,255,.025);
+    border-color:rgba(255,255,255,.08);
+    box-shadow:none;
+  }
+  30%{
+    opacity:.22;
+    filter:brightness(.90);
+  }
+  44%{
+    opacity:.48;
+    filter:brightness(1.32);
+    background:rgba(255,255,255,.12);
+    border-color:rgba(255,255,255,.30);
+    box-shadow:
+      inset 0 0 4px rgba(255,255,255,.18),
+      0 0 4px rgba(255,255,255,.14);
+  }
+  50%{
+    opacity:1;
+    filter:brightness(2.65);
+    background:
+      linear-gradient(
+        135deg,
+        rgba(255,255,255,.98),
+        rgba(255,255,255,.52) 40%,
+        rgba(255,255,255,.20) 67%,
+        rgba(255,255,255,.88)
+      );
+    border-color:#ffffff;
+    box-shadow:
+      inset 0 0 8px rgba(255,255,255,.95),
+      0 0 8px rgba(255,255,255,.76),
+      0 0 16px rgba(255,255,255,.30);
+  }
+  57%{
+    opacity:.58;
+    filter:brightness(1.45);
+    background:rgba(255,255,255,.18);
+    border-color:rgba(255,255,255,.40);
+    box-shadow:
+      0 0 6px rgba(255,255,255,.22);
+  }
+  72%{
+    opacity:.20;
+    filter:brightness(.78);
+    box-shadow:none;
+  }
+}
+
+/* 타일별 타이밍 차이를 더 크게 만들어 "각 칸이 따로" 반짝이는 느낌 강화 */
+#tab-char .faction-switch-btn[data-faction="lumiel"] .lumiel-silver-tile:nth-child(3n+1){
+  animation-duration:2.15s !important;
+}
+#tab-char .faction-switch-btn[data-faction="lumiel"] .lumiel-silver-tile:nth-child(3n+2){
+  animation-duration:2.75s !important;
+}
+#tab-char .faction-switch-btn[data-faction="lumiel"] .lumiel-silver-tile:nth-child(3n){
+  animation-duration:3.25s !important;
+}
+
+#tab-char .faction-switch-btn[data-faction="lumiel"] .lumiel-silver-tile:nth-child(5n+1){
+  animation-delay:-.35s !important;
+}
+#tab-char .faction-switch-btn[data-faction="lumiel"] .lumiel-silver-tile:nth-child(5n+2){
+  animation-delay:-1.15s !important;
+}
+#tab-char .faction-switch-btn[data-faction="lumiel"] .lumiel-silver-tile:nth-child(5n+3){
+  animation-delay:-1.85s !important;
+}
+#tab-char .faction-switch-btn[data-faction="lumiel"] .lumiel-silver-tile:nth-child(5n+4){
+  animation-delay:-2.45s !important;
+}
+#tab-char .faction-switch-btn[data-faction="lumiel"] .lumiel-silver-tile:nth-child(5n){
+  animation-delay:-3.05s !important;
+}
+
+/* 모바일: 세력 버튼 전체를 정확히 2열로 */
+@media (max-width:700px){
+  #tab-char .faction-switcher{
+    display:grid !important;
+    grid-template-columns:repeat(2,minmax(0,1fr)) !important;
+    gap:10px !important;
+    align-items:stretch !important;
+  }
+
+  #tab-char .faction-switcher .faction-switch-btn{
+    width:100% !important;
+    min-width:0 !important;
+    max-width:none !important;
+    grid-column:auto !important;
+    margin:0 !important;
+  }
+
+  /* 루미엘도 다른 버튼과 같은 1칸 폭 */
+  #tab-char .faction-switch-btn[data-faction="lumiel"]{
+    min-width:0 !important;
+  }
+
+  /* 모바일에서는 타일 칸이 너무 작아지지 않도록 8 x 3으로 보이게 */
+  #tab-char .faction-switch-btn[data-faction="lumiel"] .lumiel-silver-grid{
+    grid-template-columns:repeat(8,1fr) !important;
+    grid-template-rows:repeat(3,1fr) !important;
+    gap:2px !important;
+  }
+
+  #tab-char .faction-switch-btn[data-faction="lumiel"] .lumiel-btn-label{
+    font-size:13px !important;
+    white-space:nowrap !important;
+  }
+}
+</style>
+
+
+<style id="lumiel-gwen-serein-unify-v1">
+/* =========================================================
+   그웬 / 세레인 양식 완전 통일
+   - 이미지 파일/텍스트 내용은 각 캐릭터 그대로
+   - 초상화 카드 크기, 프레임, 이름부, 역할부 동일
+   - 팝업 구조, 색상, 능력 박스, 대사 장식 동일
+   ========================================================= */
+
+/* 초상화 카드 */
+#tab-char .faction-content-panel[data-faction-panel="lumiel"] .place-characters{
+  align-items:stretch !important;
+}
+
+#tab-char .faction-content-panel[data-faction-panel="lumiel"] .place-characters .char-card{
+  position:relative !important;
+  overflow:hidden !important;
+  border:1px solid rgba(255,255,255,.14) !important;
+  border-radius:6px !important;
+  background:#101619 !important;
+  box-shadow:0 5px 14px rgba(0,0,0,.14) !important;
+}
+
+/* 사진 자체에는 필터/색상 효과를 추가하지 않음 */
+#tab-char .faction-content-panel[data-faction-panel="lumiel"] .place-characters .char-card .char-portrait{
+  width:100% !important;
+  background:inherit !important;
+}
+
+#tab-char .faction-content-panel[data-faction-panel="lumiel"] .place-characters .char-card .char-name{
+  color:#f5f7f7 !important;
+  background:
+    linear-gradient(90deg,rgba(255,63,169,.07),transparent 62%),
+    #11171a !important;
+  border-top:1px solid rgba(255,255,255,.07) !important;
+}
+
+#tab-char .faction-content-panel[data-faction-panel="lumiel"] .place-characters .char-card .char-name::before{
+  content:"●" !important;
+  color:#ff4cac !important;
+  font-size:7px !important;
+  margin-right:6px !important;
+  vertical-align:2px !important;
+  text-shadow:0 0 7px rgba(255,63,169,.38) !important;
+}
+
+#tab-char .faction-content-panel[data-faction-panel="lumiel"] .place-characters .char-card .char-role{
+  color:#a7b2b0 !important;
+  background:#11171a !important;
+}
+
+/* 팝업: 그웬/세레인 모두 동일한 루미엘 공통 디자인 */
+.character-hover-detail.lumiel-character-detail[data-detail-popup="gwen"],
+.character-hover-detail.lumiel-character-detail[data-detail-popup="serein"]{
+  border:1px solid rgba(255,255,255,.18) !important;
+  border-radius:5px !important;
+  background:
+    radial-gradient(circle at 10% 85%,rgba(255,63,169,.045),transparent 28%),
+    radial-gradient(circle at 90% 20%,rgba(45,220,255,.035),transparent 26%),
+    linear-gradient(145deg,#13171a,#0b1013 72%) !important;
+  box-shadow:
+    0 22px 56px rgba(0,0,0,.58),
+    0 0 22px rgba(255,63,169,.025),
+    0 0 22px rgba(45,220,255,.025) !important;
+}
+
+/* 역할 색 */
+.character-hover-detail.lumiel-character-detail[data-detail-popup="gwen"] .character-detail-role,
+.character-hover-detail.lumiel-character-detail[data-detail-popup="serein"] .character-detail-role{
+  color:#ff89c5 !important;
+}
+
+/* 능력 박스 */
+.character-hover-detail.lumiel-character-detail[data-detail-popup="gwen"] .character-detail-ability,
+.character-hover-detail.lumiel-character-detail[data-detail-popup="serein"] .character-detail-ability{
+  border:1px solid rgba(255,255,255,.10) !important;
+  border-left:3px solid #ff3fa9 !important;
+  background:
+    linear-gradient(90deg,rgba(255,63,169,.045),transparent 44%),
+    rgba(255,255,255,.008) !important;
+}
+
+/* 대사: 둘 다 그웬과 같은 왼쪽 여는 따옴표 */
+.character-hover-detail.lumiel-character-detail[data-detail-popup="gwen"] .character-detail-quote::before,
+.character-hover-detail.lumiel-character-detail[data-detail-popup="serein"] .character-detail-quote::before{
+  content:"“" !important;
+  color:#ff68b6 !important;
+  opacity:.58 !important;
+}
+
+.character-hover-detail.lumiel-character-detail[data-detail-popup="gwen"] .character-detail-quote::after,
+.character-hover-detail.lumiel-character-detail[data-detail-popup="serein"] .character-detail-quote::after{
+  content:none !important;
+  display:none !important;
+}
+</style>
+
+
+<style id="lumiel-transparent-grid-strong-v1">
+/* =========================================================
+   LUMIEL BUTTON ONLY
+   기존 그라데이션 배경 유지
+   투명 유리 격자만 강하게 개별 반짝임
+   ========================================================= */
+
+/* 배경 그라데이션은 기존 스타일 그대로 사용 */
+
+/* 타일은 색을 갖지 않고 완전 투명 유리 느낌 */
+#tab-char .faction-switch-btn[data-faction="lumiel"] .lumiel-silver-tile{
+  background:
+    linear-gradient(
+      135deg,
+      rgba(255,255,255,.10),
+      rgba(255,255,255,.015) 44%,
+      rgba(255,255,255,.055) 68%,
+      rgba(255,255,255,.12)
+    ) !important;
+  border:1px solid rgba(255,255,255,.12) !important;
+  opacity:.20 !important;
+  box-shadow:
+    inset 0 0 2px rgba(255,255,255,.06) !important;
+  backdrop-filter:brightness(1.02) !important;
+  -webkit-backdrop-filter:brightness(1.02) !important;
+  animation:lumielTransparentGridFlash var(--dur) ease-in-out var(--delay) infinite !important;
+}
+
+/* 개별 칸이 번쩍일 때 배경 그라데이션을 그대로 비추면서
+   흰색 유리 반사만 강해지도록 */
+@keyframes lumielTransparentGridFlash{
+  0%,100%{
+    opacity:.08;
+    filter:brightness(.72);
+    background:rgba(255,255,255,.015);
+    border-color:rgba(255,255,255,.07);
+    box-shadow:none;
+  }
+
+  34%{
+    opacity:.18;
+    filter:brightness(.94);
+  }
+
+  45%{
+    opacity:.46;
+    filter:brightness(1.40);
+    background:
+      linear-gradient(
+        135deg,
+        rgba(255,255,255,.30),
+        rgba(255,255,255,.06) 46%,
+        rgba(255,255,255,.12) 70%,
+        rgba(255,255,255,.26)
+      );
+    border-color:rgba(255,255,255,.38);
+    box-shadow:
+      inset 0 0 4px rgba(255,255,255,.20),
+      0 0 4px rgba(255,255,255,.12);
+  }
+
+  50%{
+    opacity:1;
+    filter:brightness(2.90);
+    background:
+      linear-gradient(
+        135deg,
+        rgba(255,255,255,.98) 0%,
+        rgba(255,255,255,.55) 34%,
+        rgba(255,255,255,.12) 58%,
+        rgba(255,255,255,.68) 80%,
+        rgba(255,255,255,.98) 100%
+      );
+    border-color:#ffffff;
+    box-shadow:
+      inset 0 0 8px rgba(255,255,255,1),
+      0 0 8px rgba(255,255,255,.95),
+      0 0 16px rgba(255,255,255,.52),
+      0 0 24px rgba(255,255,255,.22);
+  }
+
+  56%{
+    opacity:.55;
+    filter:brightness(1.55);
+    background:
+      linear-gradient(
+        135deg,
+        rgba(255,255,255,.38),
+        rgba(255,255,255,.08) 52%,
+        rgba(255,255,255,.24)
+      );
+    border-color:rgba(255,255,255,.42);
+    box-shadow:
+      0 0 5px rgba(255,255,255,.18);
+  }
+
+  72%{
+    opacity:.14;
+    filter:brightness(.82);
+    background:rgba(255,255,255,.02);
+    border-color:rgba(255,255,255,.08);
+    box-shadow:none;
+  }
+}
+
+/* 각 타일 타이밍을 더 벌려 랜덤하게 느껴지도록 */
+#tab-char .faction-switch-btn[data-faction="lumiel"] .lumiel-silver-tile:nth-child(4n+1){
+  animation-duration:1.85s !important;
+}
+#tab-char .faction-switch-btn[data-faction="lumiel"] .lumiel-silver-tile:nth-child(4n+2){
+  animation-duration:2.35s !important;
+}
+#tab-char .faction-switch-btn[data-faction="lumiel"] .lumiel-silver-tile:nth-child(4n+3){
+  animation-duration:2.85s !important;
+}
+#tab-char .faction-switch-btn[data-faction="lumiel"] .lumiel-silver-tile:nth-child(4n){
+  animation-duration:3.20s !important;
+}
+
+#tab-char .faction-switch-btn[data-faction="lumiel"] .lumiel-silver-tile:nth-child(6n+1){
+  animation-delay:-.30s !important;
+}
+#tab-char .faction-switch-btn[data-faction="lumiel"] .lumiel-silver-tile:nth-child(6n+2){
+  animation-delay:-.95s !important;
+}
+#tab-char .faction-switch-btn[data-faction="lumiel"] .lumiel-silver-tile:nth-child(6n+3){
+  animation-delay:-1.55s !important;
+}
+#tab-char .faction-switch-btn[data-faction="lumiel"] .lumiel-silver-tile:nth-child(6n+4){
+  animation-delay:-2.10s !important;
+}
+#tab-char .faction-switch-btn[data-faction="lumiel"] .lumiel-silver-tile:nth-child(6n+5){
+  animation-delay:-2.65s !important;
+}
+#tab-char .faction-switch-btn[data-faction="lumiel"] .lumiel-silver-tile:nth-child(6n){
+  animation-delay:-3.15s !important;
+}
+
+/* 기존 전체 스윕은 약하게 줄여서 격자 반짝임이 주인공이 되게 */
+#tab-char .faction-switch-btn[data-faction="lumiel"]::after{
+  opacity:.16 !important;
+  filter:brightness(.95) !important;
+}
+
+/* 텍스트는 그대로 선명하게 */
+#tab-char .faction-switch-btn[data-faction="lumiel"] .lumiel-btn-label{
+  z-index:12 !important;
+  color:#fff !important;
+  text-shadow:
+    0 1px 4px #000,
+    0 0 6px rgba(0,0,0,.95) !important;
+}
+
+@media(prefers-reduced-motion:reduce){
+  #tab-char .faction-switch-btn[data-faction="lumiel"] .lumiel-silver-tile{
+    animation:none !important;
+    opacity:.32 !important;
+    filter:brightness(1.15) !important;
+  }
+}
+</style>
+
 </head>
 <body class="lr-loading">
 <div id="lr-entry-loader" role="status" aria-live="polite" aria-label="LAST RING 페이지 로딩 중">
@@ -25663,7 +27600,7 @@ body.lr-loading {
 </div>
 </div>
 <div class="tab-panel" id="tab-char">
-<div class="faction-switcher"><button class="faction-switch-btn faction-player active" data-faction="player" type="button">플레이어블 캐릭터</button><button class="faction-switch-btn faction-central" data-faction="central" type="button">오르비스 중앙연합</button><button class="faction-switch-btn faction-luminaris" data-faction="luminaris" type="button">루미나리스 신성제국</button><button class="faction-switch-btn faction-astra" data-faction="astra" type="button">아스트라 연방</button><button class="faction-switch-btn faction-sylvania" data-faction="sylvania" type="button">실바니아 자연동맹</button><button class="faction-switch-btn faction-cheonmyeong" data-faction="cheonmyeong" type="button">천명천관</button><button class="faction-switch-btn faction-pantheon" data-faction="pantheon" type="button">판테온 아카데미</button><button class="faction-switch-btn faction-phantom" data-faction="phantom" type="button">팬텀 스트라이크</button><button class="faction-switch-btn faction-noblesse" data-faction="noblesse" type="button">노블레스</button><button class="faction-switch-btn faction-wolha" data-faction="wolha" type="button">월하</button><button class="faction-switch-btn faction-freelance" data-faction="freelance" type="button">프리랜서</button><button class="faction-switch-btn faction-calamity faction-hostile" data-faction="hostile" type="button">재앙</button></div><div class="acc-group">
+<div class="faction-switcher"><button class="faction-switch-btn faction-player active" data-faction="player" type="button">플레이어블 캐릭터</button><button class="faction-switch-btn faction-central" data-faction="central" type="button">오르비스 중앙연합</button><button class="faction-switch-btn faction-luminaris" data-faction="luminaris" type="button">루미나리스 신성제국</button><button class="faction-switch-btn faction-astra" data-faction="astra" type="button">아스트라 연방</button><button class="faction-switch-btn faction-sylvania" data-faction="sylvania" type="button">실바니아 자연동맹</button><button class="faction-switch-btn faction-cheonmyeong" data-faction="cheonmyeong" type="button">천명천관</button><button class="faction-switch-btn faction-pantheon" data-faction="pantheon" type="button">판테온 아카데미</button><button class="faction-switch-btn faction-phantom" data-faction="phantom" type="button">팬텀 스트라이크</button><button class="faction-switch-btn faction-noblesse" data-faction="noblesse" type="button">노블레스</button><button class="faction-switch-btn faction-wolha" data-faction="wolha" type="button">월하</button><button class="faction-switch-btn faction-freelance" data-faction="freelance" type="button">프리랜서</button><button class="faction-switch-btn faction-lumiel" data-faction="lumiel" type="button"><span class="lumiel-silver-grid" aria-hidden="true"><span class="lumiel-silver-tile" style="--dur:1.70s;--delay:-0.00s;--base:0.14;--peak:0.70;"></span><span class="lumiel-silver-tile" style="--dur:2.40s;--delay:-0.56s;--base:0.25;--peak:0.83;"></span><span class="lumiel-silver-tile" style="--dur:3.10s;--delay:-1.12s;--base:0.18;--peak:0.96;"></span><span class="lumiel-silver-tile" style="--dur:1.90s;--delay:-1.68s;--base:0.29;--peak:0.82;"></span><span class="lumiel-silver-tile" style="--dur:2.60s;--delay:-2.24s;--base:0.22;--peak:0.95;"></span><span class="lumiel-silver-tile" style="--dur:3.30s;--delay:-2.80s;--base:0.15;--peak:0.81;"></span><span class="lumiel-silver-tile" style="--dur:2.10s;--delay:-3.36s;--base:0.26;--peak:0.94;"></span><span class="lumiel-silver-tile" style="--dur:2.80s;--delay:-3.92s;--base:0.19;--peak:0.80;"></span><span class="lumiel-silver-tile" style="--dur:3.50s;--delay:-4.48s;--base:0.30;--peak:0.93;"></span><span class="lumiel-silver-tile" style="--dur:2.30s;--delay:-0.44s;--base:0.23;--peak:0.79;"></span><span class="lumiel-silver-tile" style="--dur:3.00s;--delay:-3.70s;--base:0.16;--peak:0.92;"></span><span class="lumiel-silver-tile" style="--dur:1.80s;--delay:-4.26s;--base:0.27;--peak:0.78;"></span><span class="lumiel-silver-tile" style="--dur:2.50s;--delay:-0.22s;--base:0.20;--peak:0.91;"></span><span class="lumiel-silver-tile" style="--dur:3.20s;--delay:-0.78s;--base:0.31;--peak:0.77;"></span><span class="lumiel-silver-tile" style="--dur:2.00s;--delay:-1.34s;--base:0.24;--peak:0.90;"></span><span class="lumiel-silver-tile" style="--dur:2.70s;--delay:-1.90s;--base:0.17;--peak:0.76;"></span><span class="lumiel-silver-tile" style="--dur:3.40s;--delay:-2.46s;--base:0.28;--peak:0.89;"></span><span class="lumiel-silver-tile" style="--dur:2.20s;--delay:-3.02s;--base:0.21;--peak:0.75;"></span><span class="lumiel-silver-tile" style="--dur:2.90s;--delay:-3.58s;--base:0.14;--peak:0.88;"></span><span class="lumiel-silver-tile" style="--dur:1.70s;--delay:-4.14s;--base:0.25;--peak:0.74;"></span><span class="lumiel-silver-tile" style="--dur:2.40s;--delay:-2.80s;--base:0.18;--peak:0.87;"></span><span class="lumiel-silver-tile" style="--dur:3.10s;--delay:-3.36s;--base:0.29;--peak:0.73;"></span><span class="lumiel-silver-tile" style="--dur:1.90s;--delay:-3.92s;--base:0.22;--peak:0.86;"></span><span class="lumiel-silver-tile" style="--dur:2.60s;--delay:-4.48s;--base:0.15;--peak:0.72;"></span><span class="lumiel-silver-tile" style="--dur:3.30s;--delay:-0.44s;--base:0.26;--peak:0.85;"></span><span class="lumiel-silver-tile" style="--dur:2.10s;--delay:-1.00s;--base:0.19;--peak:0.71;"></span><span class="lumiel-silver-tile" style="--dur:2.80s;--delay:-1.56s;--base:0.30;--peak:0.84;"></span><span class="lumiel-silver-tile" style="--dur:3.50s;--delay:-2.12s;--base:0.23;--peak:0.70;"></span><span class="lumiel-silver-tile" style="--dur:2.30s;--delay:-2.68s;--base:0.16;--peak:0.83;"></span><span class="lumiel-silver-tile" style="--dur:3.00s;--delay:-3.24s;--base:0.27;--peak:0.96;"></span></span><span class="lumiel-btn-label">루미엘 엔터테인먼트</span></button><button class="faction-switch-btn faction-calamity faction-hostile" data-faction="hostile" type="button">재앙</button></div><div class="acc-group">
 <div class="acc-item faction-player faction-content-panel" data-faction-panel="player">
 <button class="acc-head">
 <span class="acc-num">PC</span>
@@ -26080,15 +28017,53 @@ body.lr-loading {
 <div class="char-card creamy-detail-trigger" data-character-detail="creamy"><div class="char-portrait"><img alt="크리미" src="img/ch/61.png"/></div><div class="char-name">크리미</div><div class="char-role">프리랜서·인간·B+</div></div>
 <div class="char-card psita-detail-trigger" data-character-detail="psita"><div class="char-portrait"><img alt="프시타" src="img/ch/62.png"/></div><div class="char-name">프시타</div><div class="char-role">프리랜서·앵무새수인·A+</div></div>
 <div class="char-card kirika-detail-trigger" data-character-detail="kirika"><div class="char-portrait"><img alt="키리카" src="img/ch/63.png"/></div><div class="char-name">키리카</div><div class="char-role">프리랜서·인간·S+</div></div>
-<div class="char-card gwen-detail-trigger" data-character-detail="gwen"><div class="char-portrait"><img alt="그웬" src="img/ch/64.png"/></div><div class="char-name">그웬</div><div class="char-role">아이돌&프리랜서·인간·B</div></div>
+<div class="char-card leonia-detail-trigger" data-character-detail="leonia"><div class="char-portrait"><img alt="레오니아" src="img/ch/64.png"/></div><div class="char-name">레오니아</div><div class="char-role">프리랜서·인간·A</div></div>
 </div>
+</div>
+</div>
+</div>
+</div>
+<div class="acc-item faction-lumiel faction-content-panel" data-faction-panel="lumiel" data-section-type="lumiel-only">
+<button class="acc-head">
+<span class="acc-num">11</span>
+<span class="acc-title">루미엘 엔터테인먼트</span>
+<span class="acc-chevron"></span>
+</button>
+<div class="acc-body">
+<div class="acc-body-inner">
+<div class="faction-desc faction-lead-desc"><span class="faction-lead-mark">◇</span>
+              그웬이 아스트라 시티 중심부에 설립한 엔터테인먼트 회사.
+              음악과 무대를 통해 사람들에게 희망을 전하는 것을 핵심 가치로 삼으며,
+              소속 아티스트들은 각자의 활동과 함께 헌터 의뢰에도 참여한다.
+            </div>
+
+<div class="place-card lumiel-place-card">
+  <div class="place-image">
+    <img alt="루미엘 엔터테인먼트" src="img/bg/33.png"/>
+  </div>
+  <div class="place-info">
+    <div class="place-title">◇ 루미엘 엔터테인먼트</div>
+    <div class="place-desc">아스트라 시티 중심부에 자리한 엔터테인먼트 회사. 음악과 무대를 통해 사람들에게 희망을 전하며, 소속 아티스트들은 각자의 활동과 함께 헌터 의뢰에도 참여한다.</div>
+    <div class="place-characters char-grid">
+      <div class="char-card gwen-detail-trigger" data-character-detail="gwen">
+        <div class="char-portrait"><img alt="그웬" src="img/ch/71.png"/></div>
+        <div class="char-name">그웬</div>
+        <div class="char-role">대표&amp;아이돌·인간·B+</div>
+      </div>
+      <div class="char-card serein-detail-trigger" data-character-detail="serein">
+        <div class="char-portrait"><img alt="세레인" src="img/ch/72.png"/></div>
+        <div class="char-name">세레인</div>
+        <div class="char-role">아티스트·인간·C+</div>
+      </div>
+    </div>
+  </div>
 </div>
 </div>
 </div>
 </div>
 <div class="acc-item faction-calamity faction-content-panel faction-hostile" data-faction-panel="hostile" data-section-type="hostile-only">
 <button class="acc-head">
-<span class="acc-num">11</span>
+<span class="acc-num">12</span>
 <span class="acc-title">재앙</span>
 <span class="acc-chevron"></span>
 </button>
@@ -27676,27 +29651,75 @@ document.addEventListener("DOMContentLoaded", function () {
       “...지키지 못한 죄는... 죽을 때까지 내가 짊어진다.”
     </blockquote>
 </div>
-</div><div aria-hidden="true" class="character-hover-detail freelancer-character-detail" data-detail-popup="gwen" id="characterDetail_gwen">
+</div><div aria-hidden="true" class="character-hover-detail freelancer-character-detail" data-detail-popup="leonia" id="characterDetail_leonia">
 <div class="character-detail-art">
-<img alt="그웬 상세 일러스트" src="img/at/64.png"/>
+<img alt="레오니아 상세 일러스트" src="img/at/64.png"/>
+</div>
+<div class="character-detail-body">
+<div class="character-detail-head">
+<div>
+<div class="character-detail-name">레오니아<span class="character-detail-meta">·女·24세</span></div>
+<div class="character-detail-role">프리랜서</div>
+</div>
+<div class="character-detail-code">M64</div>
+</div>
+<div class="character-detail-profile">
+      ESTP · 8w7(827) · so/sx
+    </div>
+<div class="character-detail-ability">
+<strong>세인트 러시</strong>
+<p>사자 형상의 성광을 전신에 둘러 육탄전을 펼치고, 연격할수록 타격의 광폭발과 관통력이 증폭되는 능력.</p>
+</div>
+<blockquote class="character-detail-quote">
+      “하 씨, 답답하네. 그냥 내가— 아니지. 기다릴게. 천천히 해봐.”
+    </blockquote>
+</div>
+</div>
+<div aria-hidden="true" class="character-hover-detail lumiel-character-detail" data-detail-popup="gwen" id="characterDetail_gwen">
+<div class="character-detail-art">
+<img alt="그웬 상세 일러스트" src="img/at/71.png"/>
 </div>
 <div class="character-detail-body">
 <div class="character-detail-head">
 <div>
 <div class="character-detail-name">그웬<span class="character-detail-meta">·女·23세</span></div>
-<div class="character-detail-role">아이돌 &amp; 프리랜서</div>
+<div class="character-detail-role">루미엘 엔터테인먼트 대표 &amp; 아이돌</div>
 </div>
-<div class="character-detail-code">M64</div>
+<div class="character-detail-code">O71</div>
 </div>
 <div class="character-detail-profile">
       ENTJ · 1w2(136) · so/sp
     </div>
 <div class="character-detail-ability">
 <strong>디바인 크러시</strong>
-<p>빛의 망치의 크기·질량을 증폭시켜 타격하고, 접촉지점을 광폭발·분쇄하는 능력.</p>
+<p>빛의 망치를 구현해 크기와 질량을 증폭시키고, 타격 지점에 광폭발과 분쇄를 일으키는 능력.</p>
 </div>
 <blockquote class="character-detail-quote">
       “내 노래가 너희에게 힘이 됐으면 좋겠어.”
+    </blockquote>
+</div>
+</div>
+<div aria-hidden="true" class="character-hover-detail lumiel-character-detail" data-detail-popup="serein" id="characterDetail_serein">
+<div class="character-detail-art">
+<img alt="세레인 상세 일러스트" src="img/at/72.png"/>
+</div>
+<div class="character-detail-body">
+<div class="character-detail-head">
+<div>
+<div class="character-detail-name">세레인<span class="character-detail-meta">·女·29세</span></div>
+<div class="character-detail-role">루미엘 엔터테인먼트 아티스트</div>
+</div>
+<div class="character-detail-code">O72</div>
+</div>
+<div class="character-detail-profile">
+      INFP · 4w5(459) · sp/sx
+    </div>
+<div class="character-detail-ability">
+<strong>글래스 메모리아</strong>
+<p>투명한 수정을 생성·조작하고, 파쇄된 잔편으로 깨지기 직전의 형상과 움직임을 한 차례 재현하는 능력.</p>
+</div>
+<blockquote class="character-detail-quote">
+      “완성하면… 부족한 곳만 보여요. 그래도 누군가 거기서 아름다운 걸 봤다면, 조금은 남겨둬도 되겠죠.”
     </blockquote>
 </div>
 </div><div aria-hidden="true" class="player-art-hover" data-player-art-popup="99">
@@ -29517,6 +31540,9 @@ document.addEventListener('DOMContentLoaded', () => {
   }, 9000);
 })();
 </script>
+
+
+
 </body>
 </html>
 <!-- redeploy -->
