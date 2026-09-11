@@ -36,7 +36,7 @@
 
   ::selection { background: var(--rift-dim); color: #fff; }
 
-  /* -------- HERO -------- */
+  /* --------- HERO --------- */
   .hero {
     position: relative;
     min-height: 100vh;
@@ -10928,7 +10928,7 @@ body::after {
    ========================================================= */
 
 /* 기존 max-width / hover:none 에서 display:none 처리된 것을 해제 */
-@media (max-width:700px), (hover:none), (pointer:coarse){
+@media (max-width:700px){
   .character-hover-detail{
     display:block !important;
   }
@@ -11014,7 +11014,7 @@ body::after {
    PLAYABLE CHARACTER — mobile/touch tap support
    기존 @media(max-width:700px),(hover:none){display:none} 무효화
    ========================================================= */
-@media (max-width:700px), (hover:none), (pointer:coarse){
+@media (max-width:700px){
   .player-art-hover{
     display:block !important;
     position:fixed !important;
@@ -29874,7 +29874,7 @@ document.addEventListener('DOMContentLoaded', () => {
   let touchTrigger = null;
 
   const isTouchLike = () =>
-    window.matchMedia('(hover:none), (pointer:coarse)').matches;
+    window.matchMedia('(max-width:700px)').matches;
 
   function popupFor(trigger){
     const key = trigger && trigger.getAttribute('data-character-detail');
@@ -29970,7 +29970,7 @@ document.addEventListener('DOMContentLoaded', () => {
   let activePlayerCard = null;
 
   const isTouchMode = () =>
-    window.matchMedia('(hover:none), (pointer:coarse)').matches;
+    window.matchMedia('(max-width:700px)').matches;
 
   function getPopup(card){
     if(!card) return null;
@@ -33103,7 +33103,7 @@ document.addEventListener('DOMContentLoaded', () => {
    모든 개별 캐릭터 테마보다 마지막에 적용되어
    모바일 상세 팝업의 잘림/스크롤 불일치를 제거한다.
    ========================================================= */
-@media (max-width:700px), (hover:none), (pointer:coarse){
+@media (max-width:700px){
   html body .character-hover-detail.character-hover-detail{
     display:block !important;
     position:fixed !important;
@@ -33147,7 +33147,7 @@ document.addEventListener('DOMContentLoaded', () => {
 }
 
 @supports not (height:100dvh){
-  @media (max-width:700px), (hover:none), (pointer:coarse){
+  @media (max-width:700px){
     html body .character-hover-detail.character-hover-detail{
       max-height:calc(100vh - 24px) !important;
     }
@@ -33163,7 +33163,7 @@ document.addEventListener('DOMContentLoaded', () => {
    overflow:hidden !important(ID 선택자)가 공통 모바일 규칙보다
    우선하므로 같은 ID 수준에서 마지막으로 스크롤을 강제한다.
    ========================================================= */
-@media (max-width:700px), (hover:none), (pointer:coarse){
+@media (max-width:700px){
   html body #characterDetail_nemesis.character-hover-detail,
   html body #characterDetail_revern.character-hover-detail{
     display:block !important;
@@ -33194,7 +33194,7 @@ document.addEventListener('DOMContentLoaded', () => {
 }
 
 @supports not (height:100dvh){
-  @media (max-width:700px), (hover:none), (pointer:coarse){
+  @media (max-width:700px){
     html body #characterDetail_nemesis.character-hover-detail,
     html body #characterDetail_revern.character-hover-detail{
       max-height:calc(100vh - 24px) !important;
@@ -33207,6 +33207,15 @@ document.addEventListener('DOMContentLoaded', () => {
 .character-hover-detail.pantheon-candidate-detail .pantheon-record-badge,
 .character-hover-detail.pantheon-regular-detail .pantheon-record-badge,
 .character-hover-detail.pantheon-elite-detail .pantheon-record-badge{
+  display:none !important;
+}
+
+/* FACULTY / CANDIDATE / STUDENT / HONORS RECORD는 ::before로도 생성되므로 제거 */
+.character-hover-detail.pantheon-staff-detail::before,
+.character-hover-detail.pantheon-candidate-detail::before,
+.character-hover-detail.pantheon-regular-detail::before,
+.character-hover-detail.pantheon-elite-detail::before{
+  content:none !important;
   display:none !important;
 }
 </style>
