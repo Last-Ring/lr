@@ -29866,15 +29866,15 @@ document.addEventListener('DOMContentLoaded', () => {
 </script>
 <script id="responsive-character-detail-tap-final">
 /* =========================================================
-   TOUCH / MOBILE CHARACTER DETAIL
-   모바일에서는 hover 대신 탭으로 열기
+   TOUCH CHARACTER DETAIL — ACTUAL INPUT TYPE BASED
+   화면 폭/hover media query로 모바일을 추측하지 않는다.
+   실제 pointerType === "touch" 입력일 때만 탭 팝업을 연다.
    ========================================================= */
 (() => {
   let touchPopup = null;
   let touchTrigger = null;
-
-  const isTouchLike = () =>
-    window.matchMedia('(hover: none) and (pointer: coarse)').matches;
+  let touchStart = null;
+  let suppressClickUntil = 0;
 
   function popupFor(trigger){
     const key = trigger && trigger.getAttribute('data-character-detail');
@@ -29884,7 +29884,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   function closeTouchPopup(){
     if(touchPopup){
-      touchPopup.classList.remove('visible');
+      touchPopup.classList.remove('visible', 'lr-touch-open');
       touchPopup.setAttribute('aria-hidden','true');
       touchPopup.style.left = '';
       touchPopup.style.right = '';
@@ -29904,45 +29904,71 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     closeTouchPopup();
-
     touchPopup = popup;
     touchTrigger = trigger;
 
     popup.style.left = '12px';
     popup.style.right = '12px';
     popup.style.top = '12px';
-
-    popup.classList.add('visible');
+    popup.classList.add('lr-touch-open', 'visible');
     popup.setAttribute('aria-hidden','false');
     popup.scrollTop = 0;
   }
 
-  /* 모바일/터치: 캐릭터 카드 한 번 탭하면 열림 */
-  document.addEventListener('click', (event) => {
-    if(!isTouchLike()) return;
+  document.addEventListener('pointerdown', (event) => {
+    if(event.pointerType !== 'touch') return;
+    touchStart = {
+      id: event.pointerId,
+      x: event.clientX,
+      y: event.clientY,
+      target: event.target
+    };
+  }, true);
+
+  document.addEventListener('pointerup', (event) => {
+    if(event.pointerType !== 'touch') return;
+
+    const start = touchStart && touchStart.id === event.pointerId ? touchStart : null;
+    touchStart = null;
+
+    /* 손가락 스크롤은 탭으로 오인하지 않는다. */
+    if(start){
+      const moved = Math.hypot(event.clientX - start.x, event.clientY - start.y);
+      if(moved > 12) return;
+    }
 
     const trigger = event.target.closest('[data-character-detail]');
     if(trigger){
-      event.preventDefault();
+      if(event.cancelable) event.preventDefault();
       event.stopPropagation();
+      suppressClickUntil = performance.now() + 700;
       openTouchPopup(trigger);
       return;
     }
 
-    /* 상세창 자체를 누른 경우에는 닫지 않음 */
+    /* 열린 상세창 내부는 스크롤/선택을 그대로 허용 */
     if(event.target.closest('.character-hover-detail')) return;
 
     closeTouchPopup();
   }, true);
 
-  /* Esc로도 닫기 */
-  document.addEventListener('keydown', (event) => {
-    if(event.key === 'Escape'){
-      closeTouchPopup();
+  /* touch pointerup 뒤에 생성되는 synthetic click이 다른 기존 로직을
+     다시 실행하지 못하도록 짧게 차단한다. */
+  document.addEventListener('click', (event) => {
+    if(performance.now() > suppressClickUntil) return;
+    if(
+      event.target.closest('[data-character-detail]') ||
+      event.target.closest('.character-hover-detail')
+    ){
+      event.preventDefault();
+      event.stopImmediatePropagation();
     }
+  }, true);
+
+  document.addEventListener('keydown', (event) => {
+    if(event.key === 'Escape') closeTouchPopup();
   });
 
-  /* 탭/세력 변경 시 닫기 */
   document.addEventListener('click', (event) => {
     if(
       event.target.closest('.faction-switch-btn') ||
@@ -29952,9 +29978,8 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 
-  /* 화면 방향/크기 변경 시 열려 있으면 화면 안에 유지 */
   window.addEventListener('resize', () => {
-    if(touchPopup && isTouchLike()){
+    if(touchPopup){
       touchPopup.style.left = '12px';
       touchPopup.style.right = '12px';
       touchPopup.style.top = '12px';
@@ -29967,10 +29992,8 @@ document.addEventListener('DOMContentLoaded', () => {
 <script id="player-mobile-tap-support">
 (() => {
   let activePlayerPopup = null;
-  let activePlayerCard = null;
-
-  const isTouchMode = () =>
-    window.matchMedia('(hover: none) and (pointer: coarse)').matches;
+  let touchStart = null;
+  let suppressClickUntil = 0;
 
   function getPopup(card){
     if(!card) return null;
@@ -29981,11 +30004,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
   function closePlayerPopup(){
     if(activePlayerPopup){
-      activePlayerPopup.classList.remove('visible');
+      activePlayerPopup.classList.remove('visible', 'lr-touch-open');
       activePlayerPopup.setAttribute('aria-hidden','true');
     }
     activePlayerPopup = null;
-    activePlayerCard = null;
   }
 
   function openPlayerPopup(card){
@@ -29998,53 +30020,47 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     closePlayerPopup();
-
-    activePlayerCard = card;
     activePlayerPopup = popup;
-
     popup.style.left = '12px';
     popup.style.right = '12px';
     popup.style.top = '12px';
-
-    popup.classList.add('visible');
+    popup.classList.add('lr-touch-open', 'visible');
     popup.setAttribute('aria-hidden','false');
   }
 
-  document.addEventListener('click', (event) => {
-    if(!isTouchMode()) return;
+  document.addEventListener('pointerdown', (event) => {
+    if(event.pointerType !== 'touch') return;
+    touchStart = {id:event.pointerId, x:event.clientX, y:event.clientY};
+  }, true);
+
+  document.addEventListener('pointerup', (event) => {
+    if(event.pointerType !== 'touch') return;
+    const start = touchStart && touchStart.id === event.pointerId ? touchStart : null;
+    touchStart = null;
+    if(start && Math.hypot(event.clientX-start.x, event.clientY-start.y) > 12) return;
 
     const card = event.target.closest('[data-player-art]');
     if(card){
-      event.preventDefault();
+      if(event.cancelable) event.preventDefault();
       event.stopPropagation();
+      suppressClickUntil = performance.now() + 700;
       openPlayerPopup(card);
       return;
     }
-
     if(event.target.closest('.player-art-hover')) return;
-
     closePlayerPopup();
+  }, true);
+
+  document.addEventListener('click', (event) => {
+    if(performance.now() > suppressClickUntil) return;
+    if(event.target.closest('[data-player-art]') || event.target.closest('.player-art-hover')){
+      event.preventDefault();
+      event.stopImmediatePropagation();
+    }
   }, true);
 
   document.addEventListener('keydown', (event) => {
     if(event.key === 'Escape') closePlayerPopup();
-  });
-
-  document.addEventListener('click', (event) => {
-    if(
-      event.target.closest('.faction-switch-btn') ||
-      event.target.closest('.tab-btn')
-    ){
-      closePlayerPopup();
-    }
-  });
-
-  window.addEventListener('resize', () => {
-    if(activePlayerPopup && isTouchMode()){
-      activePlayerPopup.style.left = '12px';
-      activePlayerPopup.style.right = '12px';
-      activePlayerPopup.style.top = '12px';
-    }
   });
 })();
 </script>
@@ -31542,6 +31558,107 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
 
+
+<style id="character-popup-unified-v5-final">
+/* =========================================================
+   FINAL POPUP BEHAVIOR
+   1) 이전 max-width:700px / hover:none 의 display:none을 항상 무효화
+   2) 마우스 팝업은 어떤 창 너비에서도 pointer-events:none → hover 떨림 방지
+   3) 실제 터치 입력으로 열린 팝업(.lr-touch-open)만 화면 오버레이 + 내부 스크롤
+   ========================================================= */
+html body .character-hover-detail.character-hover-detail{
+  display:block !important;
+  pointer-events:none !important;
+}
+
+/* 실제 touch pointer 이벤트로 열렸을 때만 모바일 오버레이 동작 */
+html body .character-hover-detail.character-hover-detail.lr-touch-open{
+  display:block !important;
+  position:fixed !important;
+  box-sizing:border-box !important;
+  left:12px !important;
+  right:12px !important;
+  top:12px !important;
+  bottom:auto !important;
+  width:auto !important;
+  min-width:0 !important;
+  max-width:none !important;
+  height:auto !important;
+  min-height:0 !important;
+  max-height:calc(100dvh - 24px) !important;
+  overflow-x:hidden !important;
+  overflow-y:auto !important;
+  -webkit-overflow-scrolling:touch !important;
+  overscroll-behavior:contain !important;
+  touch-action:pan-y !important;
+  pointer-events:auto !important;
+  transform-origin:center top !important;
+}
+
+html body .character-hover-detail.character-hover-detail.lr-touch-open.visible{
+  overflow-x:hidden !important;
+  overflow-y:auto !important;
+  transform:translateY(0) scale(1) !important;
+}
+
+html body .character-hover-detail.character-hover-detail.lr-touch-open .character-detail-body{
+  height:auto !important;
+  min-height:0 !important;
+  max-height:none !important;
+}
+
+/* 네메시스 / 레베른의 개별 overflow:hidden !important까지 확실히 해제 */
+html body #characterDetail_nemesis.character-hover-detail.lr-touch-open,
+html body #characterDetail_revern.character-hover-detail.lr-touch-open{
+  overflow-x:hidden !important;
+  overflow-y:auto !important;
+  height:auto !important;
+  min-height:0 !important;
+  max-height:calc(100dvh - 24px) !important;
+}
+
+@supports not (height:100dvh){
+  html body .character-hover-detail.character-hover-detail.lr-touch-open,
+  html body #characterDetail_nemesis.character-hover-detail.lr-touch-open,
+  html body #characterDetail_revern.character-hover-detail.lr-touch-open{
+    max-height:calc(100vh - 24px) !important;
+  }
+}
+
+/* 플레이어 상세도 동일하게 실제 터치로 열린 경우만 조작 가능 */
+html body .player-art-hover{
+  display:block !important;
+  pointer-events:none !important;
+}
+html body .player-art-hover.lr-touch-open{
+  position:fixed !important;
+  left:12px !important;
+  right:12px !important;
+  top:12px !important;
+  width:auto !important;
+  max-width:none !important;
+  max-height:calc(100dvh - 24px) !important;
+  overflow-y:auto !important;
+  -webkit-overflow-scrolling:touch !important;
+  touch-action:pan-y !important;
+  pointer-events:auto !important;
+}
+
+/* 판테온 RECORD 장식 제거 유지 */
+.character-hover-detail.pantheon-staff-detail .pantheon-record-badge,
+.character-hover-detail.pantheon-candidate-detail .pantheon-record-badge,
+.character-hover-detail.pantheon-regular-detail .pantheon-record-badge,
+.character-hover-detail.pantheon-elite-detail .pantheon-record-badge{
+  display:none !important;
+}
+.character-hover-detail.pantheon-staff-detail::before,
+.character-hover-detail.pantheon-candidate-detail::before,
+.character-hover-detail.pantheon-regular-detail::before,
+.character-hover-detail.pantheon-elite-detail::before{
+  content:none !important;
+  display:none !important;
+}
+</style>
 </body>
 </html>
 <!-- redeploy -->
