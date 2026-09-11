@@ -1864,6 +1864,292 @@
       font-size:13px;
     }
   }
+
+  /* ---------- LAST RING MUSIC PLAYER ---------- */
+  .tab-bar { position: relative; padding-top: 94px; }
+
+  .lr-music-player {
+    position:absolute;
+    top:0;
+    left:50%;
+    transform:translateX(-50%);
+    z-index:5;
+    width:min(760px, calc(100% - 32px));
+    min-height:66px;
+    display:grid;
+    grid-template-columns:46px minmax(190px, 1.1fr) minmax(190px, 1.35fr) minmax(168px, auto);
+    align-items:center;
+    gap:18px;
+    padding:10px 20px;
+    white-space:nowrap;
+    border-top:1px solid rgba(152,120,255,.48);
+    border-bottom:1px solid rgba(152,120,255,.30);
+    background:
+      radial-gradient(circle at 50% 120%, rgba(139,92,246,.08), transparent 44%),
+      linear-gradient(90deg, rgba(139,92,246,.045), rgba(11,12,18,.96) 18%, rgba(11,12,18,.96) 82%, rgba(139,92,246,.035));
+    box-shadow:0 14px 36px rgba(0,0,0,.28), inset 0 1px rgba(255,255,255,.018);
+    backdrop-filter:blur(14px);
+    font-family:'JetBrains Mono',monospace;
+  }
+
+  .lr-music-player::before,
+  .lr-music-player::after {
+    content:"";
+    position:absolute;
+    top:-1px;
+    bottom:-1px;
+    width:54px;
+    pointer-events:none;
+  }
+  .lr-music-player::before {
+    right:100%;
+    background:
+      linear-gradient(180deg, transparent 0 16px, rgba(139,92,246,.42) 16px 17px, transparent 17px),
+      linear-gradient(90deg, transparent, rgba(139,92,246,.10));
+    clip-path:polygon(100% 0, 100% 100%, 34% 100%, 0 50%, 34% 0);
+  }
+  .lr-music-player::after {
+    left:100%;
+    background:
+      linear-gradient(180deg, transparent 0 48px, rgba(139,92,246,.35) 48px 49px, transparent 49px),
+      linear-gradient(90deg, rgba(139,92,246,.10), transparent);
+    clip-path:polygon(0 0, 66% 0, 100% 50%, 66% 100%, 0 100%);
+  }
+
+  .lr-music-toggle {
+    position:relative;
+    width:42px;
+    height:42px;
+    padding:0;
+    border:0;
+    background:transparent;
+    color:#d9ceff;
+    cursor:pointer;
+    font-size:15px;
+    line-height:42px;
+    text-align:center;
+    transition:color .22s ease, text-shadow .22s ease, transform .22s ease;
+  }
+  .lr-music-toggle::before {
+    content:"";
+    position:absolute;
+    inset:4px;
+    border:1px solid rgba(157,126,255,.50);
+    transform:rotate(45deg);
+    box-shadow:inset 0 0 14px rgba(139,92,246,.06);
+    transition:border-color .22s ease, box-shadow .22s ease;
+  }
+  .lr-music-toggle::after {
+    content:"";
+    position:absolute;
+    left:50%;
+    top:50%;
+    width:4px;
+    height:4px;
+    transform:translate(-50%,-50%);
+    border:1px solid rgba(255,255,255,.06);
+  }
+  .lr-music-toggle:hover { color:#fff; text-shadow:0 0 10px rgba(170,143,255,.7); }
+  .lr-music-toggle:hover::before,
+  .lr-music-player.playing .lr-music-toggle::before {
+    border-color:#a98bff;
+    box-shadow:inset 0 0 16px rgba(139,92,246,.12), 0 0 16px rgba(139,92,246,.10);
+  }
+
+  .lr-track-info {
+    min-width:0;
+    overflow:visible;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    gap:5px;
+    line-height:1.05;
+  }
+  .lr-track-kicker {
+    display:flex;
+    align-items:center;
+    gap:8px;
+    min-width:0;
+    font-size:11px;
+    letter-spacing:.24em;
+    color:#716887;
+  }
+  .lr-track-kicker::before {
+    content:"";
+    width:18px;
+    height:1px;
+    background:linear-gradient(90deg,#8b5cf6,transparent);
+    box-shadow:0 0 6px rgba(139,92,246,.24);
+  }
+  .lr-music-title {
+    display:block;
+    min-width:0;
+    overflow:visible;
+    text-overflow:clip;
+    font-family:'Noto Serif KR',serif;
+    font-size:17px;
+    font-weight:500;
+    letter-spacing:.12em;
+    color:#d8d4df;
+  }
+
+  .lr-spectrum {
+    position:relative;
+    height:34px;
+    min-width:0;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    padding:0 16px;
+    overflow:hidden;
+  }
+  .lr-spectrum::before,
+  .lr-spectrum::after {
+    content:"";
+    position:absolute;
+    pointer-events:none;
+  }
+  .lr-spectrum::before {
+    left:0;
+    right:0;
+    top:50%;
+    height:1px;
+    background:linear-gradient(90deg,transparent 0%,rgba(126,99,208,.18) 14%,rgba(167,137,255,.34) 50%,rgba(126,99,208,.18) 86%,transparent 100%);
+  }
+  .lr-spectrum::after {
+    left:50%;
+    top:5px;
+    bottom:5px;
+    width:1px;
+    background:rgba(139,92,246,.16);
+    box-shadow:-58px 0 rgba(139,92,246,.055),58px 0 rgba(139,92,246,.055);
+  }
+  .lr-sound-bars {
+    position:relative;
+    z-index:1;
+    height:28px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:3px;
+    padding:0 8px;
+    background:rgba(8,9,12,.68);
+  }
+  .lr-sound-bars i {
+    display:block;
+    width:2px;
+    height:5px;
+    border-radius:2px;
+    background:linear-gradient(180deg,#d1c0ff,#8b5cf6 70%,#6540ca);
+    opacity:.34;
+    box-shadow:0 0 6px rgba(139,92,246,.20);
+    transform-origin:center;
+  }
+  .lr-music-player.playing .lr-sound-bars i { animation:lrSoundBar .88s ease-in-out infinite alternate; opacity:.96; }
+  .lr-music-player.playing .lr-sound-bars i:nth-child(1){animation-delay:.00s}
+  .lr-music-player.playing .lr-sound-bars i:nth-child(2){animation-delay:.13s}
+  .lr-music-player.playing .lr-sound-bars i:nth-child(3){animation-delay:.25s}
+  .lr-music-player.playing .lr-sound-bars i:nth-child(4){animation-delay:.08s}
+  .lr-music-player.playing .lr-sound-bars i:nth-child(5){animation-delay:.32s}
+  .lr-music-player.playing .lr-sound-bars i:nth-child(6){animation-delay:.18s}
+  .lr-music-player.playing .lr-sound-bars i:nth-child(7){animation-delay:.38s}
+  .lr-music-player.playing .lr-sound-bars i:nth-child(8){animation-delay:.11s}
+  .lr-music-player.playing .lr-sound-bars i:nth-child(9){animation-delay:.28s}
+  @keyframes lrSoundBar {
+    0%{height:5px;opacity:.48}
+    45%{height:15px}
+    100%{height:27px;opacity:1}
+  }
+
+  .lr-volume {
+    position:relative;
+    display:grid;
+    grid-template-columns:auto 92px auto;
+    align-items:center;
+    gap:9px;
+    padding-left:16px;
+    color:#777e8a;
+    font-size:14px;
+  }
+  .lr-volume::before {
+    content:"";
+    position:absolute;
+    left:0;
+    top:8px;
+    bottom:8px;
+    width:1px;
+    background:linear-gradient(transparent,rgba(255,255,255,.09),transparent);
+  }
+  .lr-volume-label {
+    font-size:11px;
+    letter-spacing:.18em;
+    color:#747a86;
+  }
+  .lr-volume input {
+    width:92px;
+    height:16px;
+    margin:0;
+    appearance:none;
+    -webkit-appearance:none;
+    background:transparent;
+    cursor:pointer;
+  }
+  .lr-volume input::-webkit-slider-runnable-track {
+    height:2px;
+    border-radius:2px;
+    background:linear-gradient(90deg,#9a6cff 0 var(--lr-vol,80%),#3d414b var(--lr-vol,80%) 100%);
+    box-shadow:0 0 8px rgba(139,92,246,.15);
+  }
+  .lr-volume input::-webkit-slider-thumb {
+    -webkit-appearance:none;
+    width:10px;
+    height:10px;
+    margin-top:-4px;
+    border-radius:50%;
+    border:1px solid #d2c5ff;
+    background:#9d73ff;
+    box-shadow:0 0 10px rgba(139,92,246,.5);
+  }
+  .lr-volume input::-moz-range-track {height:2px;background:#3d414b}
+  .lr-volume input::-moz-range-progress {height:2px;background:#9a6cff}
+  .lr-volume input::-moz-range-thumb {width:10px;height:10px;border:1px solid #d2c5ff;border-radius:50%;background:#9d73ff}
+  .lr-volume-value {
+    width:38px;
+    text-align:right;
+    font-size:14px;
+    color:#aeb3bd;
+  }
+
+  @media(max-width:800px){
+    .tab-bar{padding-top:88px}
+    .lr-music-player{
+      width:min(650px, calc(100% - 22px));
+      grid-template-columns:42px minmax(170px,1fr) minmax(120px,.9fr) auto;
+      gap:12px;
+      padding:9px 14px;
+    }
+    .lr-music-player::before,.lr-music-player::after{width:24px}
+    .lr-volume{grid-template-columns:70px auto;gap:6px;padding-left:10px}
+    .lr-volume-label{display:none}
+    .lr-volume input{width:70px}
+  }
+
+  @media(max-width:620px){
+    .tab-bar{padding-top:84px}
+    .lr-music-player{
+      width:calc(100% - 12px);
+      grid-template-columns:40px minmax(0,1fr) auto;
+      gap:10px;
+      padding:9px 11px;
+    }
+    .lr-spectrum{display:none}
+    .lr-track-kicker{font-size:9px;letter-spacing:.16em}
+    .lr-music-title{font-size:15px;letter-spacing:.07em}
+    .lr-volume{grid-template-columns:56px auto;padding-left:8px}
+    .lr-volume input{width:56px}
+    .lr-volume-value{width:34px;font-size:13px}
+  }
+
 </style>
 <style>
   /* =========================================================
@@ -27174,6 +27460,22 @@ body.lr-loading {
 </section>
 <section class="archive">
 <div class="tab-bar">
+<div class="lr-music-player" id="lrMusicPlayer">
+  <audio id="lrBgm" src="LASTRINGSONG.mp3" loop preload="auto"></audio>
+  <button class="lr-music-toggle" id="lrMusicToggle" type="button" aria-label="음악 재생/일시정지">▶</button>
+  <div class="lr-track-info">
+    <span class="lr-track-kicker">LAST RING MAIN THEME SONG</span>
+    <span class="lr-music-title">별이 지는 밤</span>
+  </div>
+  <div class="lr-spectrum" aria-hidden="true">
+    <span class="lr-sound-bars"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></span>
+  </div>
+  <label class="lr-volume" aria-label="배경음악 볼륨">
+    <span class="lr-volume-label">VOL</span>
+    <input id="lrVolume" type="range" min="0" max="100" value="80">
+    <span class="lr-volume-value" id="lrVolumeValue">80%</span>
+  </label>
+</div>
 <button class="tab-btn active" data-tab="world">
       세계관 소개
       <span class="tab-en">WORLD STORY</span>
@@ -31679,6 +31981,40 @@ html body .player-art-hover.lr-touch-open{
   display:none !important;
 }
 </style>
+
+<script>
+(function(){
+  const audio=document.getElementById('lrBgm');
+  const toggle=document.getElementById('lrMusicToggle');
+  const player=document.getElementById('lrMusicPlayer');
+  const volume=document.getElementById('lrVolume');
+  const volumeValue=document.getElementById('lrVolumeValue');
+  if(!audio||!toggle||!player||!volume||!volumeValue) return;
+  audio.volume=0.8;
+  const sync=()=>{
+    const playing=!audio.paused;
+    player.classList.toggle('playing',playing);
+    toggle.textContent=playing?'Ⅱ':'▶';
+    toggle.setAttribute('aria-label',playing?'음악 일시정지':'음악 재생');
+  };
+  toggle.addEventListener('click',async()=>{
+    if(audio.paused){ try{await audio.play();}catch(e){} } else { audio.pause(); }
+    sync();
+  });
+  const paintVolume=()=>{
+    const v=Number(volume.value);
+    audio.volume=v/100;
+    volumeValue.textContent=v+'%';
+    volume.style.background='transparent';
+    volume.style.setProperty('--lr-vol',v+'%');
+  };
+  volume.addEventListener('input',paintVolume);
+  paintVolume();
+  audio.addEventListener('play',sync); audio.addEventListener('pause',sync);
+  audio.play().catch(()=>sync());
+})();
+</script>
+
 </body>
 </html>
 <!-- redeploy -->
