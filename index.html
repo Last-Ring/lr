@@ -31619,6 +31619,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
 
+
+
+
 </body>
 </html>
 <!-- redeploy -->
@@ -33172,4 +33175,62 @@ document.addEventListener('DOMContentLoaded', () => {
       width: 100% !important;
     }
   }
+</style>
+
+<style id="character-mobile-scroll-absolute-final">
+/* =========================================================
+   CHARACTER DETAIL — MOBILE SCROLL ABSOLUTE FINAL OVERRIDE
+   모든 개별 캐릭터 테마보다 마지막에 적용되어
+   모바일 상세 팝업의 잘림/스크롤 불일치를 제거한다.
+   ========================================================= */
+@media (max-width:700px), (hover:none), (pointer:coarse){
+  html body .character-hover-detail.character-hover-detail{
+    display:block !important;
+    position:fixed !important;
+    box-sizing:border-box !important;
+    left:12px !important;
+    right:12px !important;
+    top:12px !important;
+    bottom:auto !important;
+    width:auto !important;
+    min-width:0 !important;
+    max-width:none !important;
+    height:auto !important;
+    min-height:0 !important;
+    max-height:calc(100dvh - 24px) !important;
+    overflow-x:hidden !important;
+    overflow-y:auto !important;
+    -webkit-overflow-scrolling:touch !important;
+    overscroll-behavior:contain !important;
+    touch-action:pan-y !important;
+    pointer-events:auto !important;
+    scrollbar-width:thin;
+  }
+
+  html body .character-hover-detail.character-hover-detail.visible{
+    overflow-x:hidden !important;
+    overflow-y:auto !important;
+  }
+
+  html body .character-hover-detail.character-hover-detail::before,
+  html body .character-hover-detail.character-hover-detail::after,
+  html body .character-hover-detail.character-hover-detail .character-detail-art::before,
+  html body .character-hover-detail.character-hover-detail .character-detail-art::after{
+    pointer-events:none !important;
+  }
+
+  html body .character-hover-detail.character-hover-detail .character-detail-body{
+    height:auto !important;
+    min-height:0 !important;
+    max-height:none !important;
+  }
+}
+
+@supports not (height:100dvh){
+  @media (max-width:700px), (hover:none), (pointer:coarse){
+    html body .character-hover-detail.character-hover-detail{
+      max-height:calc(100vh - 24px) !important;
+    }
+  }
+}
 </style>
