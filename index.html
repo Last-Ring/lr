@@ -32183,7 +32183,12 @@ html body .player-art-hover.lr-touch-open{
 
 <style id="last-ring-playlist-player-final">
   .tab-bar{padding-top:154px}
-  .lr-music-player{grid-template-columns:46px minmax(160px,1fr) minmax(150px,1.1fr) minmax(168px,auto);grid-template-rows:auto auto;row-gap:9px;overflow:visible}
+  .lr-music-player{grid-template-columns:46px minmax(0,1fr) minmax(168px,auto);grid-template-rows:auto auto;row-gap:9px;overflow:visible}
+  .lr-music-toggle{position:relative;z-index:20;pointer-events:auto!important;touch-action:manipulation;isolation:isolate}
+  .lr-music-toggle::before,.lr-music-toggle::after{pointer-events:none!important}
+  .lr-track-info{min-width:0;overflow:hidden;pointer-events:none}
+  .lr-music-title{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+  .lr-spectrum{display:none!important;pointer-events:none!important}
   .lr-music-actions{grid-column:1/-1;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:7px;width:100%}
   .lr-player-option{min-height:31px;padding:7px 9px;border:1px solid rgba(139,92,246,.20);background:rgba(139,92,246,.035);color:#777e8a;font-family:'Noto Serif KR',serif;font-size:11px;font-weight:600;letter-spacing:.06em;cursor:pointer;transition:.2s ease}
   .lr-player-option.active,.lr-player-option:first-child:hover{border-color:rgba(169,139,255,.62);background:rgba(139,92,246,.12);color:#ddd4ff;box-shadow:inset 0 0 14px rgba(139,92,246,.06)}
@@ -32198,7 +32203,7 @@ html body .player-art-hover.lr-touch-open{
   .lr-track-button b{min-width:0;white-space:normal;word-break:keep-all;overflow-wrap:anywhere;font:500 11px/1.55 'Noto Serif KR',serif;letter-spacing:-.01em}
   .lr-track-button:hover,.lr-track-button.active{border-color:rgba(169,139,255,.42);background:rgba(139,92,246,.09);color:#e1daf7}
   .lr-track-button.active b::after{content:' NOW';margin-left:7px;color:#9e7df8;font-size:8px;letter-spacing:.12em}
-  @media(max-width:800px){.tab-bar{padding-top:150px}.lr-music-player{grid-template-columns:42px minmax(150px,1fr) minmax(100px,.75fr) auto}}
+  @media(max-width:800px){.tab-bar{padding-top:150px}.lr-music-player{grid-template-columns:42px minmax(0,1fr) minmax(150px,auto)}}
   @media(max-width:620px){
     .tab-bar{padding-top:210px}
     .lr-music-player{width:calc(100% - 12px);grid-template-columns:42px minmax(0,1fr);grid-template-rows:auto auto auto;gap:9px 10px;padding:11px;white-space:normal}
