@@ -27530,11 +27530,11 @@ body.lr-mobile-popup-open{
 <section class="archive">
 <div class="tab-bar">
 <div class="lr-music-player" id="lrMusicPlayer">
-  <audio id="lrBgm" src="LASTRINGSONG.mp3" loop preload="auto"></audio>
+  <audio id="lrBgm" src="lr/msc/0.mp3" preload="auto"></audio>
   <button class="lr-music-toggle" id="lrMusicToggle" type="button" aria-label="음악 재생/일시정지">▶</button>
   <div class="lr-track-info">
-    <span class="lr-track-kicker">MAIN THEME SONG</span>
-    <span class="lr-music-title">별이 지는 밤</span>
+    <span class="lr-track-kicker">LAST RING PLAYLIST</span>
+    <span class="lr-music-title" id="lrMusicTitle">별이 지는 밤 - 메인 &amp; 뮬라 테마곡</span>
   </div>
   <div class="lr-spectrum" aria-hidden="true">
     <span class="lr-sound-bars"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></span>
@@ -27544,6 +27544,23 @@ body.lr-mobile-popup-open{
     <input id="lrVolume" type="range" min="0" max="100" value="80">
     <span class="lr-volume-value" id="lrVolumeValue">80%</span>
   </label>
+  <div class="lr-music-actions" aria-label="음악 재생 설정">
+    <button class="lr-player-option" id="lrPlaylistToggle" type="button" aria-expanded="false" aria-controls="lrPlaylist">목록 열기</button>
+    <button class="lr-player-option active" id="lrAutoplayToggle" type="button" aria-pressed="true">자동재생</button>
+    <button class="lr-player-option active" id="lrRepeatToggle" type="button" aria-pressed="true">반복재생</button>
+  </div>
+  <div class="lr-playlist" id="lrPlaylist" aria-label="음악 목록">
+    <div class="lr-playlist-head"><span>TRACK LIST</span><small>SELECT 01—07</small></div>
+    <div class="lr-playlist-grid">
+      <button class="lr-track-button active" type="button" data-track="0" aria-current="true"><span>01</span><b>별이 지는 밤 - 메인 &amp; 뮬라 테마곡</b></button>
+      <button class="lr-track-button" type="button" data-track="1"><span>02</span><b>하나의 밝은 하늘 아래 - 판테온 아카데미 테마곡</b></button>
+      <button class="lr-track-button" type="button" data-track="2"><span>03</span><b>어둠을 가르는 빛 - 그웬 테마곡</b></button>
+      <button class="lr-track-button" type="button" data-track="3"><span>04</span><b>옵시디언 레어 - 에이브릴 테마곡</b></button>
+      <button class="lr-track-button" type="button" data-track="4"><span>05</span><b>천귀궁 - 노타마야 테마곡</b></button>
+      <button class="lr-track-button" type="button" data-track="5"><span>06</span><b>선큰스론 - 칼립사 테마곡</b></button>
+      <button class="lr-track-button" type="button" data-track="6"><span>07</span><b>만상의 성소 - 닉스 테마곡</b></button>
+    </div>
+  </div>
 </div>
 <button class="tab-btn active" data-tab="world">
       세계관 소개
@@ -32034,17 +32051,75 @@ html body .player-art-hover.lr-touch-open{
   const player=document.getElementById('lrMusicPlayer');
   const volume=document.getElementById('lrVolume');
   const volumeValue=document.getElementById('lrVolumeValue');
-  if(!audio||!toggle||!player||!volume||!volumeValue) return;
+  const title=document.getElementById('lrMusicTitle');
+  const playlistToggle=document.getElementById('lrPlaylistToggle');
+  const playlist=document.getElementById('lrPlaylist');
+  const autoplayToggle=document.getElementById('lrAutoplayToggle');
+  const repeatToggle=document.getElementById('lrRepeatToggle');
+  const trackButtons=Array.from(document.querySelectorAll('.lr-track-button'));
+  if(!audio||!toggle||!player||!volume||!volumeValue||!title||!playlistToggle||!playlist||!autoplayToggle||!repeatToggle) return;
+  const trackTitles=[
+    '별이 지는 밤 - 메인 & 뮬라 테마곡',
+    '하나의 밝은 하늘 아래 - 판테온 아카데미 테마곡',
+    '어둠을 가르는 빛 - 그웬 테마곡',
+    '옵시디언 레어 - 에이브릴 테마곡',
+    '천귀궁 - 노타마야 테마곡',
+    '선큰스론 - 칼립사 테마곡',
+    '만상의 성소 - 닉스 테마곡'
+  ];
+  const tracks=trackTitles.map((title,index)=>({index,title,src:'lr/msc/'+index+'.mp3'}));
+  let currentTrack=0;
+  let autoplayEnabled=true;
+  let repeatEnabled=true;
   audio.volume=0.8;
+  audio.loop=repeatEnabled;
   const sync=()=>{
     const playing=!audio.paused;
     player.classList.toggle('playing',playing);
     toggle.textContent=playing?'Ⅱ':'▶';
     toggle.setAttribute('aria-label',playing?'음악 일시정지':'음악 재생');
   };
+  const tryPlay=async()=>{try{await audio.play();}catch(e){sync();}};
+  const setTrack=(index,playAfterSelect=true)=>{
+    currentTrack=index;
+    const track=tracks[index];
+    audio.src=track.src;
+    audio.load();
+    title.textContent=track.title;
+    trackButtons.forEach((button)=>{
+      const selected=Number(button.dataset.track)===index;
+      button.classList.toggle('active',selected);
+      if(selected) button.setAttribute('aria-current','true');
+      else button.removeAttribute('aria-current');
+    });
+    if(playAfterSelect) tryPlay();
+  };
   toggle.addEventListener('click',async()=>{
-    if(audio.paused){ try{await audio.play();}catch(e){} } else { audio.pause(); }
+    if(audio.paused) await tryPlay(); else audio.pause();
     sync();
+  });
+  playlistToggle.addEventListener('click',()=>{
+    const open=player.classList.toggle('playlist-open');
+    playlistToggle.textContent=open?'목록 닫기':'목록 열기';
+    playlistToggle.setAttribute('aria-expanded',String(open));
+  });
+  trackButtons.forEach((button)=>button.addEventListener('click',()=>{
+    setTrack(Number(button.dataset.track),true);
+    player.classList.remove('playlist-open');
+    playlistToggle.textContent='목록 열기';
+    playlistToggle.setAttribute('aria-expanded','false');
+  }));
+  autoplayToggle.addEventListener('click',()=>{
+    autoplayEnabled=!autoplayEnabled;
+    autoplayToggle.classList.toggle('active',autoplayEnabled);
+    autoplayToggle.setAttribute('aria-pressed',String(autoplayEnabled));
+    if(autoplayEnabled&&audio.paused) tryPlay();
+  });
+  repeatToggle.addEventListener('click',()=>{
+    repeatEnabled=!repeatEnabled;
+    audio.loop=repeatEnabled;
+    repeatToggle.classList.toggle('active',repeatEnabled);
+    repeatToggle.setAttribute('aria-pressed',String(repeatEnabled));
   });
   const paintVolume=()=>{
     const v=Number(volume.value);
@@ -32056,7 +32131,10 @@ html body .player-art-hover.lr-touch-open{
   volume.addEventListener('input',paintVolume);
   paintVolume();
   audio.addEventListener('play',sync); audio.addEventListener('pause',sync);
-  audio.play().catch(()=>sync());
+  audio.addEventListener('ended',()=>{
+    if(!repeatEnabled&&autoplayEnabled) setTrack((currentTrack+1)%tracks.length,true);
+  });
+  if(autoplayEnabled) tryPlay();
 })();
 </script>
 
@@ -32088,6 +32166,35 @@ html body .player-art-hover.lr-touch-open{
       width: auto;
     }
   }
+</style>
+
+<style id="last-ring-playlist-player-final">
+  .tab-bar{padding-top:154px}
+  .lr-music-player{grid-template-columns:46px minmax(160px,1fr) minmax(150px,1.1fr) minmax(168px,auto);grid-template-rows:auto auto;row-gap:9px;overflow:visible}
+  .lr-music-actions{grid-column:1/-1;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:7px;width:100%}
+  .lr-player-option{min-height:31px;padding:7px 9px;border:1px solid rgba(139,92,246,.20);background:rgba(139,92,246,.035);color:#777e8a;font-family:'Noto Serif KR',serif;font-size:11px;font-weight:600;letter-spacing:.06em;cursor:pointer;transition:.2s ease}
+  .lr-player-option:hover,.lr-player-option.active{border-color:rgba(169,139,255,.62);background:rgba(139,92,246,.12);color:#ddd4ff;box-shadow:inset 0 0 14px rgba(139,92,246,.06)}
+  .lr-player-option.active::before{content:'●';margin-right:7px;color:#a98bff;font-size:8px}
+  .lr-playlist{position:absolute;top:calc(100% + 1px);left:0;right:0;display:none;padding:15px 18px 18px;border:1px solid rgba(152,120,255,.28);border-top:0;background:linear-gradient(180deg,rgba(12,13,19,.985),rgba(8,9,13,.99));box-shadow:0 18px 34px rgba(0,0,0,.46);backdrop-filter:blur(14px)}
+  .lr-music-player.playlist-open .lr-playlist{display:block}
+  .lr-playlist-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:10px;color:#8f79ca;font-size:10px;letter-spacing:.2em}
+  .lr-playlist-head small{color:#5f6370;font-size:9px;letter-spacing:.12em}
+  .lr-playlist-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:6px}
+  .lr-track-button{display:grid;grid-template-columns:31px 1fr;align-items:start;min-width:0;padding:10px;border:1px solid rgba(255,255,255,.055);background:rgba(255,255,255,.018);color:#858b96;text-align:left;cursor:pointer;transition:.18s ease}
+  .lr-track-button span{color:#69569d;font:9px 'JetBrains Mono',monospace;letter-spacing:.08em}
+  .lr-track-button b{min-width:0;white-space:normal;word-break:keep-all;overflow-wrap:anywhere;font:500 11px/1.55 'Noto Serif KR',serif;letter-spacing:-.01em}
+  .lr-track-button:hover,.lr-track-button.active{border-color:rgba(169,139,255,.42);background:rgba(139,92,246,.09);color:#e1daf7}
+  .lr-track-button.active b::after{content:' NOW';margin-left:7px;color:#9e7df8;font-size:8px;letter-spacing:.12em}
+  @media(max-width:800px){.tab-bar{padding-top:150px}.lr-music-player{grid-template-columns:42px minmax(150px,1fr) minmax(100px,.75fr) auto}}
+  @media(max-width:620px){
+    .tab-bar{padding-top:210px}
+    .lr-music-player{width:calc(100% - 12px);grid-template-columns:42px minmax(0,1fr);grid-template-rows:auto auto auto;gap:9px 10px;padding:11px;white-space:normal}
+    .lr-music-toggle{grid-column:1;grid-row:1}.lr-track-info{grid-column:2;grid-row:1}.lr-spectrum{display:none}.lr-music-title{font-size:13px;line-height:1.45;letter-spacing:0;white-space:normal;word-break:keep-all}
+    .lr-volume{grid-column:1/-1;grid-row:2;grid-template-columns:auto minmax(0,1fr) 38px;padding:4px 2px 2px}.lr-volume::before{display:none}.lr-volume-label{display:block}.lr-volume input{width:100%}
+    .lr-music-actions{grid-column:1/-1;grid-row:3;grid-template-columns:repeat(2,minmax(0,1fr))}.lr-player-option:first-child{grid-column:1/-1}
+    .lr-playlist{padding:13px 11px 14px}.lr-playlist-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.lr-track-button{grid-template-columns:24px 1fr;padding:9px 7px}.lr-track-button.active b::after{display:none}
+  }
+  @media(max-width:360px){.lr-track-button b{font-size:11px}}
 </style>
 <style>
   @media (max-width: 900px) {
