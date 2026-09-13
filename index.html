@@ -36,7 +36,7 @@
 
   ::selection { background: var(--rift-dim); color: #fff; }
 
-  /* ---------- HERO ---------- */
+  /* --------- HERO --------- */
   .hero {
     position: relative;
     min-height: 100vh;
@@ -27396,33 +27396,72 @@ body.lr-loading {
 </style>
 
 
-<style id="mobile-popup-modal-lock-v1">
+<style id="mobile-popup-modal-lock-v2">
 /* =========================================================
-   MOBILE POPUP MODAL LOCK
-   팝업이 열려 있을 때 배경 클릭/스크롤을 막고, 팝업만 최상단에 유지
+   MOBILE POPUP TRUE MODAL LAYER
+   - 팝업과 배경 차단막을 하나의 최상위 레이어에 넣어 뒤쪽 요소 터치 완전 차단
+   - 짧게 한 번 탭하면 팝업 어디를 눌러도 닫힘
+   - 팝업 내부 세로 스와이프는 스크롤로 유지
    ========================================================= */
-.lr-mobile-popup-blocker{
+.lr-mobile-modal-layer{
   display:none;
   position:fixed;
   inset:0;
-  z-index:2147483646;
-  background:rgba(3,4,8,.34);
+  z-index:2147483647;
+  padding:16px;
+  background:rgba(3,4,8,.52);
   -webkit-tap-highlight-color:transparent;
-  touch-action:none;
   overscroll-behavior:none;
+  touch-action:pan-y;
+  align-items:center;
+  justify-content:center;
 }
-.lr-mobile-popup-blocker.visible{
-  display:block;
+.lr-mobile-modal-layer.visible{
+  display:flex;
   pointer-events:auto;
 }
 html.lr-mobile-popup-open,
 body.lr-mobile-popup-open{
   overflow:hidden !important;
   overscroll-behavior:none !important;
+  touch-action:none !important;
 }
-html body .character-hover-detail.lr-touch-open,
-html body .player-art-hover.lr-touch-open{
-  z-index:2147483647 !important;
+
+/* 모바일 모달 안에서는 기존 fixed 좌표 계산을 사용하지 않음 */
+.lr-mobile-modal-layer > .character-hover-detail.lr-touch-open,
+.lr-mobile-modal-layer > .player-art-hover.lr-touch-open{
+  position:relative !important;
+  left:auto !important;
+  right:auto !important;
+  top:auto !important;
+  bottom:auto !important;
+  margin:0 !important;
+  width:min(520px,100%) !important;
+  max-width:100% !important;
+  max-height:calc(100dvh - 32px) !important;
+  overflow-y:auto !important;
+  opacity:1 !important;
+  visibility:visible !important;
+  transform:none !important;
+  pointer-events:auto !important;
+  touch-action:pan-y !important;
+  overscroll-behavior:contain !important;
+  -webkit-overflow-scrolling:touch;
+  z-index:1 !important;
+}
+
+/* 플레이어 팝업도 화면을 꽉 채우지 않도록 여백 확보 */
+.lr-mobile-modal-layer > .player-art-hover.lr-touch-open{
+  max-height:calc(100dvh - 40px) !important;
+}
+
+@media(max-width:560px){
+  .lr-mobile-modal-layer{ padding:14px; }
+  .lr-mobile-modal-layer > .character-hover-detail.lr-touch-open,
+  .lr-mobile-modal-layer > .player-art-hover.lr-touch-open{
+    width:100% !important;
+    max-height:calc(100dvh - 28px) !important;
+  }
 }
 </style>
 </head>
@@ -30198,297 +30237,196 @@ document.addEventListener('DOMContentLoaded', () => {
 </script>
 <script id="responsive-character-detail-tap-final">
 /* =========================================================
-   TOUCH CHARACTER DETAIL — MOBILE MODAL LOCK
-   - 터치로 팝업이 열린 동안 배경 입력을 완전히 차단
-   - 다른 캐릭터/일러스트를 눌러도 새 팝업을 열지 않고 현재 팝업만 종료
-   - 팝업 자체 또는 바깥 영역을 한 번 탭하면 종료
-   - 팝업 내부의 세로 스크롤은 유지
+   TOUCH POPUPS — TRUE MODAL, SINGLE CONTROLLER
+   character-hover-detail + player-art-hover 공통 처리
    ========================================================= */
 (() => {
-  let touchPopup = null;
-  let touchTrigger = null;
+  let activePopup = null;
+  let activeTrigger = null;
+  let restoreParent = null;
+  let restoreNextSibling = null;
   let touchStart = null;
-  let suppressClickUntil = 0;
-  let unlockTimer = null;
+  let suppressUntil = 0;
 
-  const blocker = document.createElement('div');
-  blocker.className = 'lr-mobile-popup-blocker';
-  blocker.setAttribute('aria-hidden', 'true');
-  document.body.appendChild(blocker);
+  const layer = document.createElement('div');
+  layer.className = 'lr-mobile-modal-layer';
+  layer.setAttribute('aria-hidden','true');
+  document.body.appendChild(layer);
 
-  function popupFor(trigger){
-    const key = trigger && trigger.getAttribute('data-character-detail');
-    if(!key) return null;
-    return document.querySelector('[data-detail-popup="' + CSS.escape(key) + '"]');
+  function isTouchEvent(event){
+    return event.pointerType === 'touch' || event.pointerType === 'pen';
+  }
+
+  function popupForTrigger(trigger){
+    if(!trigger) return null;
+
+    if(trigger.hasAttribute('data-character-detail')){
+      const key = trigger.getAttribute('data-character-detail');
+      return key ? document.querySelector('[data-detail-popup="' + CSS.escape(key) + '"]') : null;
+    }
+
+    if(trigger.hasAttribute('data-player-art')){
+      const key = trigger.getAttribute('data-player-art');
+      return key ? document.querySelector('[data-player-art-popup="' + CSS.escape(key) + '"]') : null;
+    }
+
+    return null;
   }
 
   function lockPage(){
-    if(unlockTimer){ clearTimeout(unlockTimer); unlockTimer = null; }
-    blocker.classList.add('visible');
-    blocker.setAttribute('aria-hidden', 'false');
     document.documentElement.classList.add('lr-mobile-popup-open');
     document.body.classList.add('lr-mobile-popup-open');
+    layer.classList.add('visible');
+    layer.setAttribute('aria-hidden','false');
   }
 
-  function unlockPageDelayed(){
-    if(unlockTimer) clearTimeout(unlockTimer);
-    /* pointerup 직후 발생하는 synthetic click이 아래 카드로 재타깃되는 것을 막기 위해
-       차단막을 잠깐 더 유지한다. */
-    unlockTimer = setTimeout(() => {
-      blocker.classList.remove('visible');
-      blocker.setAttribute('aria-hidden', 'true');
-      document.documentElement.classList.remove('lr-mobile-popup-open');
-      document.body.classList.remove('lr-mobile-popup-open');
-      unlockTimer = null;
-    }, 450);
+  function unlockPage(){
+    layer.classList.remove('visible');
+    layer.setAttribute('aria-hidden','true');
+    document.documentElement.classList.remove('lr-mobile-popup-open');
+    document.body.classList.remove('lr-mobile-popup-open');
   }
 
-  function closeTouchPopup(){
-    if(touchPopup){
-      touchPopup.classList.remove('visible', 'lr-touch-open');
-      touchPopup.setAttribute('aria-hidden','true');
-      touchPopup.style.left = '';
-      touchPopup.style.right = '';
-      touchPopup.style.top = '';
+  function restorePopupNode(){
+    if(!activePopup || !restoreParent) return;
+    if(restoreNextSibling && restoreNextSibling.parentNode === restoreParent){
+      restoreParent.insertBefore(activePopup, restoreNextSibling);
+    }else{
+      restoreParent.appendChild(activePopup);
     }
-    touchPopup = null;
-    touchTrigger = null;
-    unlockPageDelayed();
   }
 
-  function openTouchPopup(trigger){
-    const popup = popupFor(trigger);
+  function closePopup(){
+    if(!activePopup) return;
+
+    const popup = activePopup;
+    popup.classList.remove('visible','lr-touch-open');
+    popup.setAttribute('aria-hidden','true');
+    popup.style.left='';
+    popup.style.right='';
+    popup.style.top='';
+    popup.style.bottom='';
+
+    restorePopupNode();
+
+    activePopup = null;
+    activeTrigger = null;
+    restoreParent = null;
+    restoreNextSibling = null;
+    unlockPage();
+
+    /* 닫기 탭 뒤 생성되는 compatibility click까지 차단 */
+    suppressUntil = performance.now() + 900;
+  }
+
+  function openPopup(trigger){
+    const popup = popupForTrigger(trigger);
     if(!popup) return;
 
-    closeTouchPopup();
-    touchPopup = popup;
-    touchTrigger = trigger;
+    if(activePopup) closePopup();
 
-    popup.style.left = '12px';
-    popup.style.right = '12px';
-    popup.style.top = '12px';
-    popup.classList.add('lr-touch-open', 'visible');
+    activePopup = popup;
+    activeTrigger = trigger;
+    restoreParent = popup.parentNode;
+    restoreNextSibling = popup.nextSibling;
+
+    /* 핵심: 팝업 자체를 최상위 모달 레이어 안으로 옮긴다.
+       따라서 레이어 아래에 있는 다른 캐릭터는 물리적으로 터치 대상이 될 수 없다. */
+    layer.appendChild(popup);
+    popup.classList.add('lr-touch-open','visible');
     popup.setAttribute('aria-hidden','false');
     popup.scrollTop = 0;
     lockPage();
+    suppressUntil = performance.now() + 500;
   }
 
+  /* 기존 모바일용 blocker가 이전 버전에서 남아 있더라도 사용하지 않음 */
+  document.querySelectorAll('.lr-mobile-popup-blocker').forEach(el => el.remove());
+
   document.addEventListener('pointerdown', (event) => {
-    if(event.pointerType !== 'touch') return;
+    if(!isTouchEvent(event)) return;
+
+    /* 모달이 열린 동안에는 레이어 밖 이벤트가 들어올 수 없지만,
+       혹시 브라우저가 재타깃하더라도 여기서 차단한다. */
+    if(activePopup && !layer.contains(event.target)){
+      if(event.cancelable) event.preventDefault();
+      event.stopImmediatePropagation();
+      return;
+    }
+
     touchStart = {
-      id: event.pointerId,
-      x: event.clientX,
-      y: event.clientY,
-      target: event.target
+      id:event.pointerId,
+      x:event.clientX,
+      y:event.clientY,
+      target:event.target,
+      scrollTop: activePopup ? activePopup.scrollTop : 0
     };
   }, true);
 
   document.addEventListener('pointerup', (event) => {
-    if(event.pointerType !== 'touch') return;
+    if(!isTouchEvent(event)) return;
 
     const start = touchStart && touchStart.id === event.pointerId ? touchStart : null;
     touchStart = null;
 
-    if(start){
-      const moved = Math.hypot(event.clientX - start.x, event.clientY - start.y);
-      if(moved > 12) return;
-    }
+    const moved = start ? Math.hypot(event.clientX-start.x, event.clientY-start.y) : 0;
 
-    /* 이미 팝업이 열려 있으면 어떤 짧은 탭도 현재 팝업 종료만 수행한다.
-       뒤쪽 카드/일러스트에는 절대 이벤트가 전달되지 않는다. */
-    if(touchPopup){
+    if(activePopup){
+      /* 스와이프는 팝업 스크롤이므로 닫지 않는다. */
+      if(moved > 12) return;
+
+      /* 팝업 안/바깥 구분 없이 한 번 짧게 탭하면 닫기만 한다. */
       if(event.cancelable) event.preventDefault();
       event.stopImmediatePropagation();
-      suppressClickUntil = performance.now() + 1000;
-      closeTouchPopup();
+      closePopup();
       return;
     }
 
-    const trigger = event.target.closest('[data-character-detail]');
+    if(moved > 12) return;
+
+    const trigger = event.target.closest('[data-character-detail],[data-player-art]');
     if(trigger){
       if(event.cancelable) event.preventDefault();
       event.stopImmediatePropagation();
-      suppressClickUntil = performance.now() + 1000;
-      openTouchPopup(trigger);
+      openPopup(trigger);
     }
   }, true);
 
-  /* touch 뒤 synthetic click이 아래 요소를 다시 누르는 현상 방지 */
+  /* iOS/Android compatibility click 및 ghost click 완전 차단 */
   document.addEventListener('click', (event) => {
-    if(performance.now() > suppressClickUntil) return;
-    event.preventDefault();
-    event.stopImmediatePropagation();
+    if(activePopup || performance.now() < suppressUntil){
+      event.preventDefault();
+      event.stopImmediatePropagation();
+    }
   }, true);
 
-  blocker.addEventListener('pointerdown', (event) => {
-    if(event.cancelable) event.preventDefault();
-    event.stopImmediatePropagation();
+  document.addEventListener('touchend', (event) => {
+    if(performance.now() < suppressUntil){
+      if(event.cancelable) event.preventDefault();
+      event.stopImmediatePropagation();
+    }
   }, true);
 
-  blocker.addEventListener('pointerup', (event) => {
-    if(event.cancelable) event.preventDefault();
-    event.stopImmediatePropagation();
-    suppressClickUntil = performance.now() + 1000;
-    if(touchPopup) closeTouchPopup();
-  }, true);
-
-  blocker.addEventListener('click', (event) => {
-    event.preventDefault();
-    event.stopImmediatePropagation();
-    suppressClickUntil = performance.now() + 1000;
-  }, true);
-
-  blocker.addEventListener('touchmove', (event) => {
-    if(event.cancelable) event.preventDefault();
-  }, {passive:false});
+  /* 모달이 열린 동안 뒤쪽 요소로 내려가는 touchstart 자체를 봉쇄 */
+  document.addEventListener('touchstart', (event) => {
+    if(activePopup && !layer.contains(event.target)){
+      if(event.cancelable) event.preventDefault();
+      event.stopImmediatePropagation();
+    }
+  }, {capture:true, passive:false});
 
   document.addEventListener('keydown', (event) => {
-    if(event.key === 'Escape') closeTouchPopup();
+    if(event.key === 'Escape' && activePopup) closePopup();
   });
 
+  /* 탭/세력 변경 시 열린 팝업 정리 */
   document.addEventListener('click', (event) => {
-    if(
+    if(!activePopup && (
       event.target.closest('.faction-switch-btn') ||
       event.target.closest('.tab-btn')
-    ){
-      closeTouchPopup();
+    )){
+      unlockPage();
     }
-  });
-
-  window.addEventListener('resize', () => {
-    if(touchPopup){
-      touchPopup.style.left = '12px';
-      touchPopup.style.right = '12px';
-      touchPopup.style.top = '12px';
-    }
-  });
-})();
-</script>
-
-
-<script id="player-mobile-tap-support">
-(() => {
-  let activePlayerPopup = null;
-  let touchStart = null;
-  let suppressClickUntil = 0;
-  let unlockTimer = null;
-
-  const blocker = document.createElement('div');
-  blocker.className = 'lr-mobile-popup-blocker lr-player-popup-blocker';
-  blocker.setAttribute('aria-hidden', 'true');
-  document.body.appendChild(blocker);
-
-  function getPopup(card){
-    if(!card) return null;
-    const n = card.getAttribute('data-player-art');
-    if(!n) return null;
-    return document.querySelector('[data-player-art-popup="' + CSS.escape(n) + '"]');
-  }
-
-  function lockPage(){
-    if(unlockTimer){ clearTimeout(unlockTimer); unlockTimer = null; }
-    blocker.classList.add('visible');
-    blocker.setAttribute('aria-hidden', 'false');
-    document.documentElement.classList.add('lr-mobile-popup-open');
-    document.body.classList.add('lr-mobile-popup-open');
-  }
-
-  function unlockPageDelayed(){
-    if(unlockTimer) clearTimeout(unlockTimer);
-    /* pointerup 직후 발생하는 synthetic click이 아래 카드로 재타깃되는 것을 막기 위해
-       차단막을 잠깐 더 유지한다. */
-    unlockTimer = setTimeout(() => {
-      blocker.classList.remove('visible');
-      blocker.setAttribute('aria-hidden', 'true');
-      document.documentElement.classList.remove('lr-mobile-popup-open');
-      document.body.classList.remove('lr-mobile-popup-open');
-      unlockTimer = null;
-    }, 450);
-  }
-
-  function closePlayerPopup(){
-    if(activePlayerPopup){
-      activePlayerPopup.classList.remove('visible', 'lr-touch-open');
-      activePlayerPopup.setAttribute('aria-hidden','true');
-    }
-    activePlayerPopup = null;
-    unlockPageDelayed();
-  }
-
-  function openPlayerPopup(card){
-    const popup = getPopup(card);
-    if(!popup) return;
-
-    closePlayerPopup();
-    activePlayerPopup = popup;
-    popup.style.left = '12px';
-    popup.style.right = '12px';
-    popup.style.top = '12px';
-    popup.classList.add('lr-touch-open', 'visible');
-    popup.setAttribute('aria-hidden','false');
-    popup.scrollTop = 0;
-    lockPage();
-  }
-
-  document.addEventListener('pointerdown', (event) => {
-    if(event.pointerType !== 'touch') return;
-    touchStart = {id:event.pointerId, x:event.clientX, y:event.clientY};
-  }, true);
-
-  document.addEventListener('pointerup', (event) => {
-    if(event.pointerType !== 'touch') return;
-    const start = touchStart && touchStart.id === event.pointerId ? touchStart : null;
-    touchStart = null;
-    if(start && Math.hypot(event.clientX-start.x, event.clientY-start.y) > 12) return;
-
-    /* 열린 상태에서는 다른 일러스트를 눌러도 전환하지 않고 현재 창만 닫음 */
-    if(activePlayerPopup){
-      if(event.cancelable) event.preventDefault();
-      event.stopImmediatePropagation();
-      suppressClickUntil = performance.now() + 1000;
-      closePlayerPopup();
-      return;
-    }
-
-    const card = event.target.closest('[data-player-art]');
-    if(card){
-      if(event.cancelable) event.preventDefault();
-      event.stopImmediatePropagation();
-      suppressClickUntil = performance.now() + 1000;
-      openPlayerPopup(card);
-    }
-  }, true);
-
-  document.addEventListener('click', (event) => {
-    if(performance.now() > suppressClickUntil) return;
-    event.preventDefault();
-    event.stopImmediatePropagation();
-  }, true);
-
-  blocker.addEventListener('pointerdown', (event) => {
-    if(event.cancelable) event.preventDefault();
-    event.stopImmediatePropagation();
-  }, true);
-
-  blocker.addEventListener('pointerup', (event) => {
-    if(event.cancelable) event.preventDefault();
-    event.stopImmediatePropagation();
-    suppressClickUntil = performance.now() + 1000;
-    if(activePlayerPopup) closePlayerPopup();
-  }, true);
-
-  blocker.addEventListener('click', (event) => {
-    event.preventDefault();
-    event.stopImmediatePropagation();
-    suppressClickUntil = performance.now() + 1000;
-  }, true);
-
-  blocker.addEventListener('touchmove', (event) => {
-    if(event.cancelable) event.preventDefault();
-  }, {passive:false});
-
-  document.addEventListener('keydown', (event) => {
-    if(event.key === 'Escape') closePlayerPopup();
   });
 })();
 </script>
