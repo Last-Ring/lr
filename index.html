@@ -27546,8 +27546,8 @@ body.lr-mobile-popup-open{
   </label>
   <div class="lr-music-actions" aria-label="음악 재생 설정">
     <button class="lr-player-option" id="lrPlaylistToggle" type="button" aria-expanded="false" aria-controls="lrPlaylist">목록 열기</button>
-    <button class="lr-player-option active" id="lrAutoplayToggle" type="button" aria-pressed="true">자동재생</button>
-    <button class="lr-player-option active" id="lrRepeatToggle" type="button" aria-pressed="true">반복재생</button>
+    <button class="lr-player-option active" id="lrAutoplayToggle" type="button" aria-pressed="true">순차 자동재생</button>
+    <button class="lr-player-option" id="lrRepeatToggle" type="button" aria-pressed="false">반복재생</button>
   </div>
   <div class="lr-playlist" id="lrPlaylist" aria-label="음악 목록">
     <div class="lr-playlist-head"><span>TRACK LIST</span><small>SELECT 01—07</small></div>
@@ -32070,9 +32070,9 @@ html body .player-art-hover.lr-touch-open{
   const tracks=trackTitles.map((title,index)=>({index,title,src:'lr/msc/'+index+'.mp3'}));
   let currentTrack=0;
   let autoplayEnabled=true;
-  let repeatEnabled=true;
+  let repeatEnabled=false;
   audio.volume=0.8;
-  audio.loop=repeatEnabled;
+  audio.loop=false;
   const sync=()=>{
     const playing=!audio.paused;
     player.classList.toggle('playing',playing);
@@ -32111,6 +32111,12 @@ html body .player-art-hover.lr-touch-open{
   }));
   autoplayToggle.addEventListener('click',()=>{
     autoplayEnabled=!autoplayEnabled;
+    if(autoplayEnabled){
+      repeatEnabled=false;
+      audio.loop=false;
+      repeatToggle.classList.remove('active');
+      repeatToggle.setAttribute('aria-pressed','false');
+    }
     autoplayToggle.classList.toggle('active',autoplayEnabled);
     autoplayToggle.setAttribute('aria-pressed',String(autoplayEnabled));
     if(autoplayEnabled&&audio.paused) tryPlay();
@@ -32118,8 +32124,14 @@ html body .player-art-hover.lr-touch-open{
   repeatToggle.addEventListener('click',()=>{
     repeatEnabled=!repeatEnabled;
     audio.loop=repeatEnabled;
+    if(repeatEnabled){
+      autoplayEnabled=false;
+      autoplayToggle.classList.remove('active');
+      autoplayToggle.setAttribute('aria-pressed','false');
+    }
     repeatToggle.classList.toggle('active',repeatEnabled);
     repeatToggle.setAttribute('aria-pressed',String(repeatEnabled));
+    if(repeatEnabled&&audio.paused) tryPlay();
   });
   const paintVolume=()=>{
     const v=Number(volume.value);
@@ -32132,7 +32144,8 @@ html body .player-art-hover.lr-touch-open{
   paintVolume();
   audio.addEventListener('play',sync); audio.addEventListener('pause',sync);
   audio.addEventListener('ended',()=>{
-    if(!repeatEnabled&&autoplayEnabled) setTrack((currentTrack+1)%tracks.length,true);
+    if(autoplayEnabled) setTrack((currentTrack+1)%tracks.length,true);
+    else sync();
   });
   if(autoplayEnabled) tryPlay();
 })();
@@ -32173,7 +32186,7 @@ html body .player-art-hover.lr-touch-open{
   .lr-music-player{grid-template-columns:46px minmax(160px,1fr) minmax(150px,1.1fr) minmax(168px,auto);grid-template-rows:auto auto;row-gap:9px;overflow:visible}
   .lr-music-actions{grid-column:1/-1;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:7px;width:100%}
   .lr-player-option{min-height:31px;padding:7px 9px;border:1px solid rgba(139,92,246,.20);background:rgba(139,92,246,.035);color:#777e8a;font-family:'Noto Serif KR',serif;font-size:11px;font-weight:600;letter-spacing:.06em;cursor:pointer;transition:.2s ease}
-  .lr-player-option:hover,.lr-player-option.active{border-color:rgba(169,139,255,.62);background:rgba(139,92,246,.12);color:#ddd4ff;box-shadow:inset 0 0 14px rgba(139,92,246,.06)}
+  .lr-player-option.active,.lr-player-option:first-child:hover{border-color:rgba(169,139,255,.62);background:rgba(139,92,246,.12);color:#ddd4ff;box-shadow:inset 0 0 14px rgba(139,92,246,.06)}
   .lr-player-option.active::before{content:'●';margin-right:7px;color:#a98bff;font-size:8px}
   .lr-playlist{position:absolute;top:calc(100% + 1px);left:0;right:0;display:none;padding:15px 18px 18px;border:1px solid rgba(152,120,255,.28);border-top:0;background:linear-gradient(180deg,rgba(12,13,19,.985),rgba(8,9,13,.99));box-shadow:0 18px 34px rgba(0,0,0,.46);backdrop-filter:blur(14px)}
   .lr-music-player.playlist-open .lr-playlist{display:block}
