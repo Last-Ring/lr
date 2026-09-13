@@ -27395,6 +27395,36 @@ body.lr-loading {
 }
 </style>
 
+
+<style id="mobile-popup-modal-lock-v1">
+/* =========================================================
+   MOBILE POPUP MODAL LOCK
+   팝업이 열려 있을 때 배경 클릭/스크롤을 막고, 팝업만 최상단에 유지
+   ========================================================= */
+.lr-mobile-popup-blocker{
+  display:none;
+  position:fixed;
+  inset:0;
+  z-index:2147482990;
+  background:rgba(3,4,8,.34);
+  -webkit-tap-highlight-color:transparent;
+  touch-action:none;
+  overscroll-behavior:none;
+}
+.lr-mobile-popup-blocker.visible{
+  display:block;
+  pointer-events:auto;
+}
+html.lr-mobile-popup-open,
+body.lr-mobile-popup-open{
+  overflow:hidden !important;
+  overscroll-behavior:none !important;
+}
+html body .character-hover-detail.lr-touch-open,
+html body .player-art-hover.lr-touch-open{
+  z-index:2147483000 !important;
+}
+</style>
 </head>
 <body class="lr-loading">
 <div id="lr-entry-loader" role="status" aria-live="polite" aria-label="LAST RING 페이지 로딩 중">
@@ -30168,9 +30198,11 @@ document.addEventListener('DOMContentLoaded', () => {
 </script>
 <script id="responsive-character-detail-tap-final">
 /* =========================================================
-   TOUCH CHARACTER DETAIL — ACTUAL INPUT TYPE BASED
-   화면 폭/hover media query로 모바일을 추측하지 않는다.
-   실제 pointerType === "touch" 입력일 때만 탭 팝업을 연다.
+   TOUCH CHARACTER DETAIL — MOBILE MODAL LOCK
+   - 터치로 팝업이 열린 동안 배경 입력을 완전히 차단
+   - 다른 캐릭터/일러스트를 눌러도 새 팝업을 열지 않고 현재 팝업만 종료
+   - 팝업 자체 또는 바깥 영역을 한 번 탭하면 종료
+   - 팝업 내부의 세로 스크롤은 유지
    ========================================================= */
 (() => {
   let touchPopup = null;
@@ -30178,10 +30210,29 @@ document.addEventListener('DOMContentLoaded', () => {
   let touchStart = null;
   let suppressClickUntil = 0;
 
+  const blocker = document.createElement('div');
+  blocker.className = 'lr-mobile-popup-blocker';
+  blocker.setAttribute('aria-hidden', 'true');
+  document.body.appendChild(blocker);
+
   function popupFor(trigger){
     const key = trigger && trigger.getAttribute('data-character-detail');
     if(!key) return null;
     return document.querySelector('[data-detail-popup="' + CSS.escape(key) + '"]');
+  }
+
+  function lockPage(){
+    blocker.classList.add('visible');
+    blocker.setAttribute('aria-hidden', 'false');
+    document.documentElement.classList.add('lr-mobile-popup-open');
+    document.body.classList.add('lr-mobile-popup-open');
+  }
+
+  function unlockPage(){
+    blocker.classList.remove('visible');
+    blocker.setAttribute('aria-hidden', 'true');
+    document.documentElement.classList.remove('lr-mobile-popup-open');
+    document.body.classList.remove('lr-mobile-popup-open');
   }
 
   function closeTouchPopup(){
@@ -30194,16 +30245,12 @@ document.addEventListener('DOMContentLoaded', () => {
     }
     touchPopup = null;
     touchTrigger = null;
+    unlockPage();
   }
 
   function openTouchPopup(trigger){
     const popup = popupFor(trigger);
     if(!popup) return;
-
-    if(touchPopup === popup){
-      closeTouchPopup();
-      return;
-    }
 
     closeTouchPopup();
     touchPopup = popup;
@@ -30215,6 +30262,7 @@ document.addEventListener('DOMContentLoaded', () => {
     popup.classList.add('lr-touch-open', 'visible');
     popup.setAttribute('aria-hidden','false');
     popup.scrollTop = 0;
+    lockPage();
   }
 
   document.addEventListener('pointerdown', (event) => {
@@ -30233,50 +30281,47 @@ document.addEventListener('DOMContentLoaded', () => {
     const start = touchStart && touchStart.id === event.pointerId ? touchStart : null;
     touchStart = null;
 
-    /* 손가락 스크롤은 탭으로 오인하지 않는다. */
     if(start){
       const moved = Math.hypot(event.clientX - start.x, event.clientY - start.y);
       if(moved > 12) return;
+    }
+
+    /* 이미 팝업이 열려 있으면 어떤 짧은 탭도 현재 팝업 종료만 수행한다.
+       뒤쪽 카드/일러스트에는 절대 이벤트가 전달되지 않는다. */
+    if(touchPopup){
+      if(event.cancelable) event.preventDefault();
+      event.stopPropagation();
+      suppressClickUntil = performance.now() + 800;
+      closeTouchPopup();
+      return;
     }
 
     const trigger = event.target.closest('[data-character-detail]');
     if(trigger){
       if(event.cancelable) event.preventDefault();
       event.stopPropagation();
-      suppressClickUntil = performance.now() + 700;
+      suppressClickUntil = performance.now() + 800;
       openTouchPopup(trigger);
-      return;
     }
+  }, true);
 
-    /* 열린 상세창을 짧게 다시 탭하면 닫는다.
-       단, 위에서 이동 거리 > 12px인 경우는 이미 return되므로
-       세로 스크롤/드래그는 닫힘으로 처리되지 않는다. */
-    const tappedPopup = event.target.closest('.character-hover-detail');
-    if(tappedPopup){
-      if(tappedPopup === touchPopup){
-        if(event.cancelable) event.preventDefault();
-        event.stopPropagation();
-        suppressClickUntil = performance.now() + 700;
-        closeTouchPopup();
-      }
-      return;
-    }
+  /* touch 뒤 synthetic click이 아래 요소를 다시 누르는 현상 방지 */
+  document.addEventListener('click', (event) => {
+    if(performance.now() > suppressClickUntil) return;
+    event.preventDefault();
+    event.stopImmediatePropagation();
+  }, true);
 
+  blocker.addEventListener('click', (event) => {
+    event.preventDefault();
+    event.stopImmediatePropagation();
+    suppressClickUntil = performance.now() + 800;
     closeTouchPopup();
   }, true);
 
-  /* touch pointerup 뒤에 생성되는 synthetic click이 다른 기존 로직을
-     다시 실행하지 못하도록 짧게 차단한다. */
-  document.addEventListener('click', (event) => {
-    if(performance.now() > suppressClickUntil) return;
-    if(
-      event.target.closest('[data-character-detail]') ||
-      event.target.closest('.character-hover-detail')
-    ){
-      event.preventDefault();
-      event.stopImmediatePropagation();
-    }
-  }, true);
+  blocker.addEventListener('touchmove', (event) => {
+    if(event.cancelable) event.preventDefault();
+  }, {passive:false});
 
   document.addEventListener('keydown', (event) => {
     if(event.key === 'Escape') closeTouchPopup();
@@ -30308,11 +30353,30 @@ document.addEventListener('DOMContentLoaded', () => {
   let touchStart = null;
   let suppressClickUntil = 0;
 
+  const blocker = document.createElement('div');
+  blocker.className = 'lr-mobile-popup-blocker lr-player-popup-blocker';
+  blocker.setAttribute('aria-hidden', 'true');
+  document.body.appendChild(blocker);
+
   function getPopup(card){
     if(!card) return null;
     const n = card.getAttribute('data-player-art');
     if(!n) return null;
     return document.querySelector('[data-player-art-popup="' + CSS.escape(n) + '"]');
+  }
+
+  function lockPage(){
+    blocker.classList.add('visible');
+    blocker.setAttribute('aria-hidden', 'false');
+    document.documentElement.classList.add('lr-mobile-popup-open');
+    document.body.classList.add('lr-mobile-popup-open');
+  }
+
+  function unlockPage(){
+    blocker.classList.remove('visible');
+    blocker.setAttribute('aria-hidden', 'true');
+    document.documentElement.classList.remove('lr-mobile-popup-open');
+    document.body.classList.remove('lr-mobile-popup-open');
   }
 
   function closePlayerPopup(){
@@ -30321,16 +30385,12 @@ document.addEventListener('DOMContentLoaded', () => {
       activePlayerPopup.setAttribute('aria-hidden','true');
     }
     activePlayerPopup = null;
+    unlockPage();
   }
 
   function openPlayerPopup(card){
     const popup = getPopup(card);
     if(!popup) return;
-
-    if(activePlayerPopup === popup){
-      closePlayerPopup();
-      return;
-    }
 
     closePlayerPopup();
     activePlayerPopup = popup;
@@ -30339,6 +30399,8 @@ document.addEventListener('DOMContentLoaded', () => {
     popup.style.top = '12px';
     popup.classList.add('lr-touch-open', 'visible');
     popup.setAttribute('aria-hidden','false');
+    popup.scrollTop = 0;
+    lockPage();
   }
 
   document.addEventListener('pointerdown', (event) => {
@@ -30352,34 +30414,40 @@ document.addEventListener('DOMContentLoaded', () => {
     touchStart = null;
     if(start && Math.hypot(event.clientX-start.x, event.clientY-start.y) > 12) return;
 
+    /* 열린 상태에서는 다른 일러스트를 눌러도 전환하지 않고 현재 창만 닫음 */
+    if(activePlayerPopup){
+      if(event.cancelable) event.preventDefault();
+      event.stopPropagation();
+      suppressClickUntil = performance.now() + 800;
+      closePlayerPopup();
+      return;
+    }
+
     const card = event.target.closest('[data-player-art]');
     if(card){
       if(event.cancelable) event.preventDefault();
       event.stopPropagation();
-      suppressClickUntil = performance.now() + 700;
+      suppressClickUntil = performance.now() + 800;
       openPlayerPopup(card);
-      return;
     }
-    const tappedPlayerPopup = event.target.closest('.player-art-hover');
-    if(tappedPlayerPopup){
-      if(tappedPlayerPopup === activePlayerPopup){
-        if(event.cancelable) event.preventDefault();
-        event.stopPropagation();
-        suppressClickUntil = performance.now() + 700;
-        closePlayerPopup();
-      }
-      return;
-    }
-    closePlayerPopup();
   }, true);
 
   document.addEventListener('click', (event) => {
     if(performance.now() > suppressClickUntil) return;
-    if(event.target.closest('[data-player-art]') || event.target.closest('.player-art-hover')){
-      event.preventDefault();
-      event.stopImmediatePropagation();
-    }
+    event.preventDefault();
+    event.stopImmediatePropagation();
   }, true);
+
+  blocker.addEventListener('click', (event) => {
+    event.preventDefault();
+    event.stopImmediatePropagation();
+    suppressClickUntil = performance.now() + 800;
+    closePlayerPopup();
+  }, true);
+
+  blocker.addEventListener('touchmove', (event) => {
+    if(event.cancelable) event.preventDefault();
+  }, {passive:false});
 
   document.addEventListener('keydown', (event) => {
     if(event.key === 'Escape') closePlayerPopup();
