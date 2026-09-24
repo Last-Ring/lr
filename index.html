@@ -27482,6 +27482,54 @@ body.lr-mobile-popup-open{
 #tab-char .faction-blackrose .char-card{border-color:rgba(146,60,85,.4);background:#180e13}
 .blackrose-character-detail{border-color:rgba(146,60,85,.55)!important}
 </style>
+<style id="blackrose-detail-art-design">
+/* 블랙로즈: 그림 원본을 살린 장미색 액자와 하단 연결부 */
+html body .character-hover-detail.blackrose-character-detail{
+  border-color:rgba(145,55,77,.62)!important;
+  background:radial-gradient(circle at 85% 0%,rgba(89,22,42,.12),transparent 44%),#0e0c12!important;
+  box-shadow:0 24px 64px rgba(0,0,0,.62),0 0 26px rgba(100,22,48,.16),inset 0 0 0 1px rgba(182,79,101,.08)!important;
+}
+html body .character-hover-detail.blackrose-character-detail .character-detail-art{
+  position:relative!important;
+  isolation:isolate;
+  aspect-ratio:1216 / 832!important;
+  background:#120c12!important;
+  border-bottom:2px solid rgba(171,67,91,.65)!important;
+  box-shadow:inset 0 -8px 15px rgba(0,0,0,.32)!important;
+}
+html body .character-hover-detail.blackrose-character-detail .character-detail-art img{
+  width:100%!important;height:100%!important;
+  object-fit:contain!important;object-position:center center!important;
+  transform:none!important;filter:none!important;
+}
+html body .character-hover-detail.blackrose-character-detail .character-detail-art::before{
+  content:""!important;position:absolute!important;inset:8px!important;z-index:2!important;
+  border:1px solid rgba(174,76,98,.32)!important;
+  background:linear-gradient(135deg,rgba(191,94,112,.62) 0 16px,transparent 16px) top left/22px 22px no-repeat,
+    linear-gradient(315deg,rgba(191,94,112,.62) 0 16px,transparent 16px) bottom right/22px 22px no-repeat!important;
+  box-shadow:inset 0 0 0 1px rgba(7,3,9,.25)!important;pointer-events:none!important;
+}
+html body .character-hover-detail.blackrose-character-detail .character-detail-art::after{
+  content:""!important;position:absolute!important;inset:0!important;z-index:1!important;
+  background:linear-gradient(to top,rgba(15,5,12,.34),transparent 19%),linear-gradient(90deg,rgba(23,5,16,.18),transparent 9%,transparent 91%,rgba(23,5,16,.18))!important;
+  pointer-events:none!important;
+}
+html body .character-hover-detail.blackrose-character-detail .character-detail-body{border-top:1px solid rgba(53,20,35,.75)!important}
+html body .character-hover-detail.blackrose-character-detail .character-detail-code{color:#bd758a!important}
+html body .character-hover-detail.blackrose-character-detail .character-detail-ability{border-left-color:rgba(164,73,105,.78)!important}
+html body .character-hover-detail.blackrose-character-detail .character-detail-name{color:#f1e5e7!important}
+html body .character-hover-detail.blackrose-character-detail .character-detail-meta{color:#c6afb5!important}
+html body .character-hover-detail.blackrose-character-detail .character-detail-role{color:#d58b9d!important}
+html body .character-hover-detail.blackrose-character-detail .character-detail-note,
+html body .character-hover-detail.blackrose-character-detail .character-detail-ability p,
+html body .character-hover-detail.blackrose-character-detail .character-detail-quote{color:#c9bdc1!important}
+html body .character-hover-detail.blackrose-character-detail .character-detail-profile{color:#baa9ae!important;border-color:rgba(143,76,91,.32)!important;background:rgba(72,27,43,.12)!important}
+html body .character-hover-detail.blackrose-character-detail .character-detail-ability{background:rgba(72,27,43,.11)!important;border-left-color:#9c5268!important}
+html body .character-hover-detail.blackrose-character-detail .character-detail-ability strong{color:#e2a2b1!important}
+html body .character-hover-detail.blackrose-character-detail .character-detail-quote{border-top-color:rgba(129,69,83,.27)!important}
+html body .character-hover-detail.blackrose-character-detail .character-detail-quote::before{color:#ae667d!important}
+@media(max-width:600px){html body .character-hover-detail.blackrose-character-detail .character-detail-art::before{inset:5px!important}}
+</style>
 </head>
 <body class="lr-loading">
 <div id="lr-entry-loader" role="status" aria-live="polite" aria-label="LAST RING 페이지 로딩 중">
