@@ -18130,7 +18130,7 @@ document.addEventListener('DOMContentLoaded',function(){
   panel.querySelectorAll('.facility-title, .char-card').forEach(function(el){
     if(el.classList.contains('facility-title')){
       var t=(el.textContent||'').replace(/\s+/g,'');
-      if(t.indexOf('교직원')!==-1) currentRank='staff';
+      if(t.indexOf('교직원')!==-1 || t.indexOf('조교')!==-1) currentRank='staff';
       else if(t.indexOf('후보생')!==-1) currentRank='candidate';
       else if(t.indexOf('정규생')!==-1) currentRank='regular';
       else if(t.indexOf('정예생')!==-1) currentRank='elite';
@@ -27551,7 +27551,6 @@ html body .character-hover-detail.void-sea-character-detail .character-detail-qu
 <style id="academy-assistants-style">
 #tab-char .faction-pantheon .academy-assistant .char-role{white-space:normal!important;overflow-wrap:anywhere;line-height:1.6}
 #tab-char .faction-pantheon .char-card.academy-assistant::before{content:"ASSISTANT"!important;font-size:8px!important}
-html body .character-hover-detail.academy-assistant-detail .character-detail-art::before{content:"PANTHEON · ASSISTANT RECORD"!important}
 </style>
 </head>
 <body class="lr-loading">
