@@ -27548,6 +27548,11 @@ html body .character-hover-detail.void-sea-character-detail .character-detail-pr
 html body .character-hover-detail.void-sea-character-detail .character-detail-ability{border-left-color:#758dbc!important;background:rgba(38,53,92,.13)!important}
 html body .character-hover-detail.void-sea-character-detail .character-detail-quote::before{color:#8ca4d3!important}
 </style>
+<style id="academy-assistants-style">
+#tab-char .faction-pantheon .academy-assistant .char-role{white-space:normal!important;overflow-wrap:anywhere;line-height:1.6}
+#tab-char .faction-pantheon .char-card.academy-assistant::before{content:"ASSISTANT"!important;font-size:8px!important}
+html body .character-hover-detail.academy-assistant-detail .character-detail-art::before{content:"PANTHEON · ASSISTANT RECORD"!important}
+</style>
 </head>
 <body class="lr-loading">
 <div id="lr-entry-loader" role="status" aria-live="polite" aria-label="LAST RING 페이지 로딩 중">
@@ -28310,6 +28315,15 @@ html body .character-hover-detail.void-sea-character-detail .character-detail-qu
 <div class="char-card hyourin-detail-trigger" data-character-detail="hyourin"><div class="char-portrait"><img alt="효우린" src="img/ch/31.png"/></div><div class="char-name">효우린</div><div class="char-role">무술학교수·인간·S</div></div>
 <div class="char-card hinoka-detail-trigger" data-character-detail="hinoka"><div class="char-portrait"><img alt="히노카" src="img/ch/32.png"/></div><div class="char-name">히노카</div><div class="char-role">인술학교수·인간·S+</div></div>
 <div class="char-card rin-detail-trigger" data-character-detail="rin"><div class="char-portrait"><img alt="린" src="img/ch/33.png"/></div><div class="char-name">린</div><div class="char-role">보건교사·인간·E+</div></div>
+</div>
+</div>
+<div class="facility-block academy-assistant-block">
+<div class="facility-title">◇ 조교</div>
+<div class="char-grid">
+<div class="char-card pantheon-staff academy-assistant noa-detail-trigger" data-character-detail="noa"><div class="char-portrait"><img alt="노아" src="img/ch/80.png"/></div><div class="char-name">노아</div><div class="char-role">마도&amp;과학기술조교·<wbr>인간·<wbr>A</div></div>
+<div class="char-card pantheon-staff academy-assistant ian-detail-trigger" data-character-detail="ian"><div class="char-portrait"><img alt="이안" src="img/ch/81.png"/></div><div class="char-name">이안</div><div class="char-role">검술&amp;신성조교·<wbr>인간·<wbr>A+</div></div>
+<div class="char-card pantheon-staff academy-assistant sakuya-detail-trigger" data-character-detail="sakuya"><div class="char-portrait"><img alt="사쿠야" src="img/ch/82.png"/></div><div class="char-name">사쿠야</div><div class="char-role">무술&amp;인술조교·<wbr>인간·<wbr>A+</div></div>
+<div class="char-card pantheon-staff academy-assistant arne-detail-trigger" data-character-detail="arne"><div class="char-portrait"><img alt="아르네" src="img/ch/83.png"/></div><div class="char-name">아르네</div><div class="char-role">정령&amp;생존조교·<wbr>봄여우수인·<wbr>S</div></div>
 </div>
 </div>
 <div class="facility-block">
@@ -29449,7 +29463,15 @@ document.addEventListener("DOMContentLoaded", function () {
 </div>
 <blockquote class="character-detail-quote">“물은 앞을 막는다고 멈추지 않습니다. 길을 바꿀 뿐이지요.”</blockquote>
 </div>
-</div><div aria-hidden="true" class="character-hover-detail academy-character-detail" data-detail-popup="kameko" id="characterDetail_kameko">
+</div><div aria-hidden="true" class="character-hover-detail academy-character-detail pantheon-staff-detail academy-assistant-detail" data-detail-popup="noa" id="characterDetail_noa">
+<div class="character-detail-art"><img alt="노아 상세 일러스트" src="img/at/80.png"/></div><div class="character-detail-body"><div class="character-detail-head"><div><div class="character-detail-name">노아<span class="character-detail-meta">·女·24세</span></div><div class="character-detail-role">판테온 아카데미 마도&amp;과학기술조교</div></div><div class="character-detail-code">R80</div></div><div class="character-detail-note">발랄하고 자신만만한 발명광으로, 기계를 보면 분해부터 하고 실패조차 실험 성과라고 우긴다. 판테온 아카데미 2기 출신으로, 재학 중 실습 설비를 멋대로 개조해 사고를 반복하다 경위서 작성 시간이 아까워 사고 유형별 경위서 자동작성 프로그램까지 개발했고 지금도 애용한다. 발명이 타인의 가능성을 넓히기를 바라며 호기심을 잃는 일을 가장 두려워한다. 자신을 언제나 ‘노아는’이라 부르고 ‘~인 것이다!’라는 말투를 쓴다.</div><div class="character-detail-profile">ENTP · 7w8(738) · so/sx</div><div class="character-detail-ability"><strong>에너지블라스트</strong><p>마력회로를 즉석에서 재배열해 에너지캐논을 전개하고 포격의 출력과 궤도를 조절하며, 주변 기계에 원격 접속해 무장으로 개조하는 능력.</p></div><blockquote class="character-detail-quote">“이 노아는 이번엔 폭발하지 않는 캐논을 만든 것이다! 아마도!”</blockquote></div></div>
+<div aria-hidden="true" class="character-hover-detail academy-character-detail pantheon-staff-detail academy-assistant-detail" data-detail-popup="ian" id="characterDetail_ian">
+<div class="character-detail-art"><img alt="이안 상세 일러스트" src="img/at/81.png"/></div><div class="character-detail-body"><div class="character-detail-head"><div><div class="character-detail-name">이안<span class="character-detail-meta">·女·25세</span></div><div class="character-detail-role">판테온 아카데미 검술&amp;신성조교</div></div><div class="character-detail-code">R81</div></div><div class="character-detail-note">차분하고 포용적이며 후배의 작은 발전에도 진심으로 기뻐한다. 실수에는 너그럽고 고민을 끝까지 들어주지만, 선을 넘거나 고집을 부리는 학생은 미소를 지으며 메이스를 내려쳐 멈춰 세운다. 판테온 아카데미 1기 시절 동기 키리카가 무너지는 모습을 지켜보면서도 돕지 못한 죄책감이 남아 있다. 방임을 존중으로 착각했던 자신을 용서하지 못하며, 후배들이 같은 길을 걷지 않도록 아카데미에 남아 돌보기로 결심했다.</div><div class="character-detail-profile">INFJ · 2w1(216) · so/sp</div><div class="character-detail-ability"><strong>그레이스폴</strong><p>메이스를 검처럼 유려하게 휘둘러 신성마력을 실은 타격과 정화파동을 일으키고, 마력 흐름을 읽어 술식을 끊거나 오염된 부분만 분쇄하며 충격을 조절해 제압하는 능력.</p></div><blockquote class="character-detail-quote">“괜찮아요. 한 대 맞으면 정신 차리실 거예요.”</blockquote></div></div>
+<div aria-hidden="true" class="character-hover-detail academy-character-detail pantheon-staff-detail academy-assistant-detail" data-detail-popup="sakuya" id="characterDetail_sakuya">
+<div class="character-detail-art"><img alt="사쿠야 상세 일러스트" src="img/at/82.png"/></div><div class="character-detail-body"><div class="character-detail-head"><div><div class="character-detail-name">사쿠야<span class="character-detail-meta">·女·25세</span></div><div class="character-detail-role">판테온 아카데미 무술&amp;인술조교</div></div><div class="character-detail-code">R82</div></div><div class="character-detail-note">극도로 무뚝뚝하고 표정 변화가 적어 지시도 칭찬도 짧게 끝낸다. 판테온 아카데미 1기 출신으로, 천명천관의 무녀 생활이 적성에 맞지 않아 돌아가기를 꺼린다. 기척을 지우는 데 능숙해 몸에 단 방울조차 소리를 내지 않는다. 실은 귀여운 인형과 작은 동물을 몹시 좋아하며 혼자 있을 때는 인형에 이름까지 붙여준다. 귀여운 것을 보면 시선을 떼지 못하지만 취향을 지적받으면 부정하며 귀끝을 붉힌다.</div><div class="character-detail-profile">ISTJ · 9w8(953) · sp/sx</div><div class="character-detail-ability"><strong>뇌명일섬(雷鳴一閃)</strong><p>검신에 압축한 뇌전마력을 발도 순간 방출하고, 신경 반응을 가속하며 발소리와 기척을 지워 상대가 검을 인지하기 전에 연속 참격을 가하는 능력.</p></div><blockquote class="character-detail-quote">“…귀여워. 아니, 아무것도 아닙니다. 계속하세요.”</blockquote></div></div>
+<div aria-hidden="true" class="character-hover-detail academy-character-detail pantheon-staff-detail academy-assistant-detail" data-detail-popup="arne" id="characterDetail_arne">
+<div class="character-detail-art"><img alt="아르네 상세 일러스트" src="img/at/83.png"/></div><div class="character-detail-body"><div class="character-detail-head"><div><div class="character-detail-name">아르네<span class="character-detail-meta">·女·24세</span></div><div class="character-detail-role">판테온 아카데미 정령&amp;생존조교</div></div><div class="character-detail-code">R83</div></div><div class="character-detail-note">쾌활한 수다쟁이로, 상대의 대답을 듣기도 전에 화제를 바꾸며 끊임없이 떠든다. 실바니아에서 정령들과 어울리며 자유분방하게 자랐고, 지나치게 활달해 주변을 곤란하게 만들곤 했지만 본인은 모두와 사이좋게 지냈다고 생각한다. 가벼워 보이는 언행 뒤에는 주변을 세심하게 살피는 따뜻함이 있으며, 친구와 후배들이 전장의 무거움을 잠시라도 잊고 웃기를 바란다. 전투가 시작되면 즉시 침묵하고 극도로 냉철해져 필요한 지시만 짧게 내린다.</div><div class="character-detail-profile">ENFP · 7w6(729) · so/sx</div><div class="character-detail-ability"><strong>백령공명</strong><p>정령과 영혼의 파장을 동조시켜 육체를 강화하고, 공명률이 높아질수록 피부가 순백으로 변하며 감각·근력·기동력을 증폭시키되 정령의 종류에 따라 강화 방향을 달리하는 능력.</p></div><blockquote class="character-detail-quote">“있잖아! 오늘 바람 정령이 말이야… 아, 어제 얘기부터 해야겠다!”</blockquote></div></div>
+<div aria-hidden="true" class="character-hover-detail academy-character-detail" data-detail-popup="kameko" id="characterDetail_kameko">
 <div class="character-detail-art">
 <img alt="카메코 상세 일러스트" src="img/at/23.png"/>
 </div>
