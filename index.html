@@ -18139,11 +18139,12 @@ document.addEventListener('DOMContentLoaded',function(){
     }
 
     if(!currentRank) return;
+    var cardRank=el.closest('.special-designation-block') && el.textContent.indexOf('정예생')!==-1 ? 'elite' : currentRank;
 
     el.classList.remove(
       'pantheon-staff','pantheon-candidate','pantheon-regular','pantheon-elite'
     );
-    el.classList.add('pantheon-'+currentRank);
+    el.classList.add('pantheon-'+cardRank);
 
     var key=el.getAttribute('data-character-detail');
     if(!key) return;
@@ -18159,8 +18160,8 @@ document.addEventListener('DOMContentLoaded',function(){
     );
     popup.classList.add(
       'academy-character-detail',
-      currentRank==='staff' ? 'pantheon-staff-detail' : 'student-character-detail',
-      'pantheon-'+currentRank+'-detail'
+      cardRank==='staff' ? 'pantheon-staff-detail' : 'student-character-detail',
+      'pantheon-'+cardRank+'-detail'
     );
   });
 });
@@ -27554,7 +27555,8 @@ html body .character-hover-detail.void-sea-character-detail .character-detail-qu
 </style>
 <style id="special-designation-student-style">
 #tab-char .faction-pantheon .special-designation-description{margin:-3px 0 18px;padding:10px 14px;border-left:2px solid rgba(121,155,159,.38);background:rgba(96,128,135,.045);color:#aab8bd;font-size:13px;line-height:1.9;word-break:keep-all;overflow-wrap:anywhere}
-#tab-char .faction-pantheon .luashe-detail-trigger .char-role{white-space:normal!important;overflow-wrap:anywhere;line-height:1.6}
+#tab-char .faction-pantheon .luashe-detail-trigger .char-role,
+#tab-char .faction-pantheon .xenon-detail-trigger .char-role{white-space:normal!important;overflow-wrap:anywhere;line-height:1.6}
 </style>
 </head>
 <body class="lr-loading">
@@ -28370,6 +28372,7 @@ html body .character-hover-detail.void-sea-character-detail .character-detail-qu
 <p class="special-designation-description">특수능력·잠재적 위험성·개인적 사정에 따라 개별 교육·보호·감독을 받는 학생이다. 위험성만으로 교육 기회와 자유를 과도하게 제한하지 않으며, 학생의 성장과 본인·주변의 안전을 함께 지원한다.</p>
 <div class="char-grid">
 <div class="char-card pantheon-regular luashe-detail-trigger" data-character-detail="luashe"><div class="char-portrait"><img alt="루아셰" src="img/ch/84.png"/></div><div class="char-name">루아셰</div><div class="char-role">정규생(특별지정생)·<wbr>인간·<wbr>SS</div></div>
+<div class="char-card pantheon-elite xenon-detail-trigger" data-character-detail="xenon"><div class="char-portrait"><img alt="제논" src="img/ch/85.png"/></div><div class="char-name">제논</div><div class="char-role">정예생(특별지정생)·<wbr>인간·<wbr>S+</div></div>
 </div></div>
 </div>
 </div>
@@ -29815,6 +29818,13 @@ document.addEventListener("DOMContentLoaded", function () {
 <div class="character-detail-profile">INFJ · 1w9(146) · sp/so</div>
 <div class="character-detail-ability"><strong>스텔라 루멘</strong><p>찬란한 별빛을 허공에 수놓아 자유롭게 생성·응축·방출하며, 쏟아지는 별무리와 고출력 광선으로 광범위를 휩쓰는 능력.</p></div>
 <blockquote class="character-detail-quote">“아름답죠, 별빛은. ……저는 그렇게 생각하지 않지만요.”</blockquote></div></div>
+<div aria-hidden="true" class="character-hover-detail elite-student-character-detail academy-character-detail student-character-detail pantheon-elite-detail" data-detail-popup="xenon" id="characterDetail_xenon">
+<div class="character-detail-art"><img alt="제논 상세 일러스트" src="img/at/85.png"/></div>
+<div class="character-detail-body"><div class="character-detail-head"><div><div class="character-detail-name">제논<span class="character-detail-meta">·女·22세</span></div><div class="character-detail-role">판테온 아카데미 정예생(특별지정생)</div></div><div class="character-detail-code">I85</div></div>
+<div class="character-detail-note">명랑하고 상냥하며 장난기 있는 모범생으로, 모두를 웃게 하려 하지만 슬픔과 공포를 없애야 할 대상으로 여긴다. 아스트라 외곽 고아원에서 자신의 힘으로 타인을 다치게 해 아이들과 어울리지 못했고, 아이들을 웃게 하던 카드리안을 영웅으로 동경했다. 마물의 습격에서 아이들을 지키다 치명상을 입은 카드리안이 죽음을 두려워하며 살려 달라 애원하자, 정신간섭으로 공포를 지우고 웃게 했다. 그의 죽음 뒤에도 이를 자신의 첫 구원으로 해석하며 인위적인 행복 역시 구원이라 확신한다. 타인의 진심보다 자신이 원하는 미소를 진실로 믿고 불편한 사실은 유리하게 재해석한다. 동의 없는 감정간섭으로 특별지정되었으며, 현재 정예생이지만 심리치료에는 진전이 없다.</div>
+<div class="character-detail-profile">ENFJ · 2w3 · so/sx</div>
+<div class="character-detail-ability"><strong>일렉트로니카</strong><p>전자기장을 조작해 전격을 방출하거나 광학투명화하고, 신경계에 간섭해 감각과 감정을 조절하는 능력.</p></div>
+<blockquote class="character-detail-quote">“누군가 아파하는 걸 지켜보는 게 더 잔인하지 않아?”</blockquote></div></div>
 <div aria-hidden="true" class="character-hover-detail regular-student-character-detail" data-detail-popup="ninya" id="characterDetail_ninya">
 <div class="character-detail-art"><img alt="니냐 상세 일러스트" src="img/at/43.png"/></div>
 <div class="character-detail-body">
