@@ -27608,6 +27608,27 @@ html body .altgard-character-detail .character-detail-quote::before{color:#b5807
 @keyframes sanctuary-stars{from{background-position:0 0,21px 18px}to{background-position:86px -62px,88px -29px}}
 @media(prefers-reduced-motion:reduce){.sanctuary-starsea,.sanctuary-starsea::before,.sanctuary-starsea::after{animation:none!important}}
 </style>
+<style id="sanctuary-design-aligned">
+/* Same DLC detail layout as the existing Altgard profiles; sanctuary palette. */
+html body .character-hover-detail.sanctuary-character-detail{border-color:#596d9e!important;background:radial-gradient(circle at 85% 0%,rgba(91,119,172,.17),transparent 45%),#0b1020!important;box-shadow:0 24px 60px #0009,0 0 24px #7aade522!important}
+html body .sanctuary-character-detail .character-detail-art{aspect-ratio:1216/832!important;border-bottom:1px solid #596d9e!important}
+html body .sanctuary-character-detail .character-detail-art img{object-fit:contain!important;filter:none!important}
+html body .sanctuary-character-detail .character-detail-name{color:#e1eaf6!important}
+html body .sanctuary-character-detail .character-detail-meta{color:#a6b9d1!important}
+html body .sanctuary-character-detail .character-detail-role,html body .sanctuary-character-detail .character-detail-code,html body .sanctuary-character-detail .character-detail-ability strong{color:#a4c9e8!important}
+html body .sanctuary-character-detail .character-detail-note,html body .sanctuary-character-detail .character-detail-ability p,html body .sanctuary-character-detail .character-detail-quote{color:#becce0!important}
+html body .sanctuary-character-detail .character-detail-profile{color:#b5c7df!important;border-color:#44587f!important;background:#28395c22!important}
+html body .sanctuary-character-detail .character-detail-ability{border-left-color:#829fc7!important;background:#28395c22!important}
+html body .sanctuary-character-detail .character-detail-quote::before{color:#9bb8db!important}
+
+#tab-char .faction-sanctuary .faction-lead-desc{color:#b6c8dc!important}
+#tab-char .faction-sanctuary .faction-lead-mark{color:#a4c9e8!important}
+#tab-char .faction-sanctuary .char-card{border-color:#596d9e73!important;background:linear-gradient(145deg,#17243b,#0b1020)!important}
+#tab-char .faction-sanctuary .char-name{color:#e1eaf6!important}
+#tab-char .faction-sanctuary .char-role{color:#a6b9d1!important;white-space:normal!important;overflow-wrap:anywhere;line-height:1.6}
+.sanctuary-character-detail .sanctuary-scenario-note{display:block!important;margin-top:0!important;line-height:1.7}
+#tab-world .sanctuary-world-chapter .world-kicker{color:#a4c9e8}
+</style>
 </head>
 <body class="lr-loading">
 <div id="lr-entry-loader" role="status" aria-live="polite" aria-label="LAST RING 페이지 로딩 중">
@@ -28075,6 +28096,11 @@ html body .altgard-character-detail .character-detail-quote::before{color:#b5807
   </div>
 </section>
 
+<section class="world-chapter reveal-on-scroll sanctuary-world-chapter">
+<div class="world-kicker">DLC · SILENT SANCTUARY</div><h2>침묵의 성역</h2>
+<p>구름바다 위로 백색 성도와 공중정원이 떠 있고, 성광의 하늘길로 도시들을 잇던 천족의 세계 아트레이아. 균열이 천공을 찢으며 성광이 오염되었고, 하늘길과 부유도시가 무너지며 문명과 생존 기반이 사라졌다. 지금은 빛을 잃은 신전과 부서진 공중회랑만이 허공에 남아 있다.</p>
+<p>무너진 천족 유적 너머에는 보랏빛 별무리가 흐르는 침묵의 성역이 남아 있다. 끊어진 길과 침식된 지형 탓에 접근과 탐사는 극히 제한되며, 마지막 천족 생존자이자 길잡이 노스텔이 오랜 세월 홀로 이곳을 지키고 있다.</p>
+</section>
 </div>
 </div>
 <div class="tab-panel" id="tab-char">
@@ -28400,6 +28426,7 @@ html body .altgard-character-detail .character-detail-quote::before{color:#b5807
 <div class="char-card elowen-detail-trigger" data-character-detail="elowen"><div class="char-portrait"><img alt="엘로웬" src="img/ch/38.png"/></div><div class="char-name">엘로웬</div><div class="char-role">후보생·엘프·D</div></div>
 <div class="char-card fuyu-detail-trigger" data-character-detail="fuyu"><div class="char-portrait"><img alt="후유" src="img/ch/39.png"/></div><div class="char-name">후유</div><div class="char-role">후보생·인간·C</div></div>
 <div class="char-card albesia-detail-trigger" data-character-detail="albesia"><div class="char-portrait"><img alt="알베시아" src="img/ch/40.png"/></div><div class="char-name">알베시아</div><div class="char-role">후보생·흰비둘기수인·D</div></div>
+<div class="char-card lucius-detail-trigger" data-character-detail="lucius"><div class="char-portrait"><img alt="루시우스" src="img/ch/100.png"/></div><div class="char-name">루시우스</div><div class="char-role">후보생·<wbr>인간·<wbr>A</div></div>
 </div>
 </div>
 <div class="facility-block">
@@ -28629,11 +28656,11 @@ html body .altgard-character-detail .character-detail-quote::before{color:#b5807
 <div class="place-card"><div class="place-image"><img alt="글룸하트" src="img/bg/44.png"/></div><div class="place-info"><div class="place-title">◇ 글룸하트 · SSS+ 게이트</div><div class="place-desc">마계 제2재앙 말리키아가 군림하는 거대한 포식영역. 붉은 육벽과 혈관 같은 조직이 동굴을 뒤덮고, 점액이 흐르는 통로는 수축과 팽창으로 길을 바꾸며 침입자를 심부로 몰아넣는다. 혈육과 마력에 반응하는 촉수와 아가리가 벽과 바닥에서 솟아나고, 소화액은 장비와 방호마법을 부식시킨다. 삼켜진 혈육과 마력은 말리키아의 힘이 되며, 훼손된 조직도 포식한 양분으로 재생한다.</div><div class="place-characters char-grid"><div class="char-card malikia-detail-trigger" data-character-detail="malikia"><div class="char-portrait"><img alt="말리키아" src="img/ch/97.png"/></div><div class="char-name">말리키아</div><div class="char-role">붉은 아귀·<wbr>악마·<wbr>SSS+</div></div></div></div></div>
 </div></div></div>
 <div class="acc-item faction-sanctuary faction-content-panel" data-faction-panel="sanctuary">
-<button class="acc-head"><span class="acc-num">DLC</span><span class="acc-title">침묵의 성역</span><span class="acc-chevron"></span></button>
-<div class="acc-body"><div class="acc-body-inner"><div class="faction-desc faction-lead-desc"><span class="faction-lead-mark">◇</span> Comming Soon</div>
-<div class="place-card"><div class="place-image"><img alt="망각은 날개 끝에 내려앉고" src="img/bg/51.png"/></div><div class="place-info"><div class="place-title">◇ 망각은 날개 끝에 내려앉고</div><div class="place-desc">Comming Soon</div></div></div>
-<div class="place-card"><div class="place-image"><img alt="침묵을 깨운 날개는 하늘을 가르며" src="img/bg/52.png"/></div><div class="place-info"><div class="place-title">◇ 침묵을 깨운 날개는 하늘을 가르며</div><div class="place-desc">Comming Soon</div></div></div>
-<div class="place-card"><div class="place-image"><img alt="마침내 제 깃털을 바람에 흩는다" src="img/bg/53.png"/></div><div class="place-info"><div class="place-title">◇ 마침내 제 깃털을 바람에 흩는다</div><div class="place-desc">Comming Soon</div></div></div>
+<button class="acc-head"><span class="acc-num">DLC</span><span class="acc-title">천계 아트레이아</span><span class="acc-chevron"></span></button>
+<div class="acc-body"><div class="acc-body-inner"><div class="faction-desc faction-lead-desc"><span class="faction-lead-mark">◇</span>구름바다 위로 백색 성도와 공중정원이 떠 있고, 성광의 하늘길로 도시들을 잇던 천족의 세계 아트레이아. 균열이 천공을 찢으며 성광이 오염되었고, 하늘길과 부유도시가 무너지며 문명과 생존 기반이 사라졌다. 지금은 빛을 잃은 신전과 부서진 공중회랑만이 허공에 남아 있다.</div>
+<div class="place-card"><div class="place-image"><img alt="침묵의 성역Ⅰ" src="img/bg/51.png"/></div><div class="place-info"><div class="place-title">◇ 침묵의 성역Ⅰ</div><div class="place-desc">멸망한 천계에 남은 봉인의 중심지. 무너진 백색 기둥과 아치 사이로 보랏빛 별무리가 흐르고, 거대한 십자형 광체와 겹겹의 빛고리가 제단 위에 떠 있다. 약 200년 전 오르비스로 번질 위기를 막고자 스스로 봉인한 아네트가 잠들어 있으며, 오랜 침식으로 봉인은 점차 약해지고 있다. 이곳을 알고 길을 안내하는 이는 마지막 천족 생존자 노스텔뿐이다.</div><div class="place-characters char-grid"><div class="char-card nostel-detail-trigger" data-character-detail="nostel"><div class="char-portrait"><img alt="노스텔" src="img/ch/101.png"/></div><div class="char-name">노스텔</div><div class="char-role">길잡이·<wbr>천족·<wbr>S</div></div><div class="char-card anette-detail-trigger" data-character-detail="anette"><div class="char-portrait"><img alt="ㅇAㄴNEㅌT" src="img/ch/102.png"/></div><div class="char-name">ㅇAㄴNEㅌT</div><div class="char-role">변이체·<wbr>엘프·<wbr>SSS+</div></div></div></div></div>
+<div class="place-card"><div class="place-image"><img alt="침묵의 성역Ⅱ" src="img/bg/52.png"/></div><div class="place-info"><div class="place-title">◇ 침묵의 성역Ⅱ</div><div class="place-desc">봉인 잔재가 끊어지며 드러나는 성역 중심부. 거대 광륜과 날개를 펼친 아네트의 완전 변이체가 창백한 육체에 청백색 마력을 두른다. 다중 광검과 깃털폭우가 생명과 마력을 지우며, 침입자를 제거 대상으로 인식한 공격이 끊이지 않는다.</div><div class="place-characters char-grid"><div class="char-card anette_phase2-detail-trigger" data-character-detail="anette_phase2"><div class="char-portrait"><img alt="ㅇㅏ네ㅌT" src="img/ch/103.png"/></div><div class="char-name">ㅇㅏ네ㅌT</div><div class="char-role">완전 변이체·<wbr>엘프·<wbr>EX</div></div></div></div></div>
+<div class="place-card"><div class="place-image"><img alt="침묵의 성역Ⅲ" src="img/bg/53.png"/></div><div class="place-info"><div class="place-title">◇ 침묵의 성역Ⅲ</div><div class="place-desc">금빛 입자가 흩날리는 마지막 교전의 무대. 금발·금안과 기억을 되찾은 아네트는 무너져가는 육체로 침식의 확산을 억누른다. 후대가 살아갈 세계를 지키기 위해 자신을 쓰러뜨리라 요구하며, 온화한 목소리에도 마지막을 향한 의지는 흔들리지 않는다.</div><div class="place-characters char-grid"><div class="char-card anette_phase3-detail-trigger" data-character-detail="anette_phase3"><div class="char-portrait"><img alt="아네트" src="img/ch/104.png"/></div><div class="char-name">아네트</div><div class="char-role">여명의 칠성·<wbr>엘프·<wbr>SSS</div></div></div></div></div>
 </div></div></div>
 </div>
 </div>
@@ -28871,6 +28898,40 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 });
 </script>
+<div aria-hidden="true" class="character-hover-detail student-character-detail" data-detail-popup="lucius" id="characterDetail_lucius">
+<div class="character-detail-art"><img alt="루시우스 상세 일러스트" src="img/at/100.png"/></div>
+<div class="character-detail-body"><div class="character-detail-head"><div><div class="character-detail-name">루시우스<span class="character-detail-meta">·男·20세</span></div><div class="character-detail-role">판테온 아카데미 후보생</div></div><div class="character-detail-code">G100</div></div>
+<div class="character-detail-note">오렐리아의 남동생으로, 뛰어난 재능을 인정받으며 자란 극도로 오만한 귀족 출신 후보생이다. 약자에게는 명령과 독설로 군림하고 강자에게는 공손하게 비위를 맞추지만, 굽히는 것조차 언젠가 그들 위에 서기 위한 수단으로 여긴다. 재능을 인정받지 못한 누나의 혹독한 수련을 조롱하며 오렐리아와 서로 혐오한다. 판테온에 입학한 뒤에도 누나를 깎아내리고, 자신의 패배에는 핑계를 대거나 책임을 떠넘긴다.</div><div class="character-detail-profile">ENTJ · 3w4(378) · so/sp</div>
+<div class="character-detail-ability"><strong>레이디언트 피어스</strong><p>성광을 레이피어 끝에 집속해 관통하고, 찌른 자리에 광점을 남겨 후속 찌르기로 연쇄폭발을 일으키는 능력.</p></div>
+<blockquote class="character-detail-quote">“설마 네가 나랑 같은 급이라고 생각한 건 아니겠지?”</blockquote>
+</div></div>
+<div aria-hidden="true" class="character-hover-detail sanctuary-character-detail" data-detail-popup="nostel" id="characterDetail_nostel">
+<div class="character-detail-art"><img alt="노스텔 상세 일러스트" src="img/at/101.png"/></div>
+<div class="character-detail-body"><div class="character-detail-head"><div><div class="character-detail-name">노스텔<span class="character-detail-meta">·女·???세</span></div><div class="character-detail-role">길잡이</div></div><div class="character-detail-code">Y101</div></div>
+<div class="character-detail-note">아트레이아의 마지막 천족 생존자이자 침묵의 성역의 길잡이다. 아네트를 모시던 천족으로, 그녀의 자발적 봉인 이후에도 남아 200여 년간 홀로 성역을 지키며 방문자를 안내했다. 극도로 초연하여 방문자의 조급함이나 적의에도 평정을 잃지 않고, 느리고 고요한 존댓말을 쓴다. 아네트의 변이가 재앙임을 알면서도 약해지는 봉인과 각성을 불가피한 흐름으로 받아들인다. 자신에게는 곁에서 바라보는 일만 남았다고 여기며, 답이나 선택을 강요하지 않고 타인의 봉인 해제 시도도 제지하지 않는다.</div><div class="character-detail-profile">INFJ · 9w1(954) · sp/so</div>
+<div class="character-detail-ability"><strong>사일런트 패스</strong><p>성광으로 은폐된 길과 결계의 흐름을 가시화한다. 빛의 이정표로 어둠을 몰아내고 이를 광창으로 전환해 적을 관통하며, 정적결계로 외부 마력간섭을 차단한다.</p></div>
+<blockquote class="character-detail-quote">“오래 기다렸습니다. 걸음을 재촉하지 않으셔도, 길은 사라지지 않아요.”</blockquote>
+</div></div>
+<div aria-hidden="true" class="character-hover-detail sanctuary-character-detail" data-detail-popup="anette" id="characterDetail_anette">
+<div class="character-detail-art"><img alt="ㅇAㄴNEㅌT 상세 일러스트" src="img/at/102.png"/></div>
+<div class="character-detail-body"><div class="character-detail-head"><div><div class="character-detail-name">ㅇAㄴNEㅌT<span class="character-detail-meta">·女·???세</span></div><div class="character-detail-role">변이체</div></div><div class="character-detail-code">Y102</div></div>
+<div class="character-detail-note">여명의 칠성을 이끈 엘프 지휘관 아네트의 변이체로, 미스텔라와 로웰의 스승이었다. 약 200년 전 멸망한 아트레이아에서 오르비스로 번질 위기를 자기희생으로 차단하고 스스로 봉인했다. 그러나 오랜 침식으로 인간성을 잃어, 세상을 지키려던 의지는 위협 제거와 생명 소거를 구분하지 못하게 되었다. 무표정과 침묵 속에서 시선과 움직임으로만 반응하며, 제자를 알아보거나 인간성을 회복하지 못한다. 봉인은 점차 약해지고 있으며 그녀의 각성은 새로운 재앙을 뜻한다.</div><div class="character-detail-profile">인격 판독 불가</div>
+<div class="character-detail-ability"><strong>페일 제네시스</strong><p>가슴에서 검을 뽑아 참격의 궤적을 백색영역으로 바꾸고 생명과 술식을 침식한다. 시간과 공간마저 베어내며, 깃털을 무수한 광창으로 변환해 광역 관통·소거를 일으킨다.</p></div>
+<blockquote class="character-detail-quote">“⋯⋯”</blockquote>
+</div></div>
+<div aria-hidden="true" class="character-hover-detail sanctuary-character-detail" data-detail-popup="anette_phase2" id="characterDetail_anette_phase2">
+<div class="character-detail-art"><img alt="ㅇㅏ네ㅌT 상세 일러스트" src="img/at/103.png"/></div>
+<div class="character-detail-body"><div class="character-detail-head"><div><div class="character-detail-name">ㅇㅏ네ㅌT<span class="character-detail-meta">·女·???세</span></div><div class="character-detail-role">완전 변이체</div></div><div class="character-detail-code">Y103</div></div>
+<div class="character-detail-note">봉인 잔재가 끊어진 뒤 거대 광륜과 날개를 펼친 아네트의 완전 변이체다. 상대를 제거 대상으로 인식하며 침묵 속에서 공격을 지속한다. 호명이나 설득에도 공격을 멈추지 않고, 기억과 자아를 회복하거나 옛 제자를 알아보지 못한다.</div>
+<div class="character-detail-ability"><strong>페일 제네시스</strong><p>다중 광검과 깃털폭우로 생명과 마력을 지우며, 광창과 영역소거로 제거 대상을 끊임없이 공격한다.</p></div>
+<blockquote class="character-detail-quote">“⋯⋯”</blockquote>
+</div></div>
+<div aria-hidden="true" class="character-hover-detail sanctuary-character-detail" data-detail-popup="anette_phase3" id="characterDetail_anette_phase3">
+<div class="character-detail-art"><img alt="아네트 상세 일러스트" src="img/at/104.png"/></div>
+<div class="character-detail-body"><div class="character-detail-head"><div><div class="character-detail-name">아네트<span class="character-detail-meta">·女·???세</span></div><div class="character-detail-role">여명의 칠성</div></div><div class="character-detail-code">Y104</div></div>
+<div class="character-detail-note">여명의 칠성을 이끈 지휘관이자 미스텔라와 로웰의 스승이다. 기억을 되찾은 뒤에도 육체의 소멸은 멈추지 않으며, 남은 힘으로 침식의 확산을 억누른다. 후대가 살아갈 세계를 위해 자신을 쓰러뜨리라 요구하고 마지막 교전에 임한다. 온화한 목소리에도 의지는 흔들리지 않으며, 감정의 흔들림은 정화의 실패와 성역의 재앙화를 뜻한다. 설득만으로 완치될 수 없고, 후대를 지키기 위한 최후를 피할 수 없다.</div>
+<div class="character-detail-ability"><strong>크로노 샌드스톰</strong><p>금빛 모래폭풍으로 영역 안의 시간 흐름을 비틀어 적의 움직임과 공격을 늦추고, 모래에 닿은 술식을 급격히 풍화시키는 능력.</p></div>
+</div></div>
 <div aria-hidden="true" class="character-hover-detail" data-detail-popup="mula" id="characterDetail_mula">
 <div class="character-detail-art">
 <img alt="뮬라 상세 일러스트" src="img/at/01.png"/>
@@ -29978,7 +30039,7 @@ document.addEventListener("DOMContentLoaded", function () {
 <div class="character-detail-name">오렐리아<span class="character-detail-meta">·女·21세</span></div><div class="character-detail-role">판테온 아카데미 정규생</div></div>
 <div class="character-detail-code">H46</div>
 </div>
-<div class="character-detail-note">오만하고 고고하며 상대의 부족함을 가차 없이 지적하고, 지위나 출신보다 오직 실력으로 사람을 평가해 무능한 자를 경멸하는 성격. 명예를 중시하는 귀족 가문에서 태어났으나 정작 가문으로부터 인정받지 못했고, 자신의 힘으로 정당한 인정을 얻기 위해 혹독한 수련을 거듭하며 성장했다. 타인에게 엄격한 만큼 자신에게는 더욱 가혹한 완벽주의자로, 실수와 부족함을 좀처럼 용납하지 않으며 스스로 실력이 부족하다고 느낄 때는 누구보다 냉정하게 자신을 몰아붙인다.</div>
+<div class="character-detail-note">오만하고 고고하며 상대의 부족함을 가차 없이 지적하고, 지위나 출신보다 오직 실력으로 사람을 평가해 무능한 자를 경멸하는 성격. 명예를 중시하는 귀족 가문에서 태어났으나 정작 가문으로부터 인정받지 못했고, 자신의 힘으로 정당한 인정을 얻기 위해 혹독한 수련을 거듭하며 성장했다. 타인에게 엄격한 만큼 자신에게는 더욱 가혹한 완벽주의자로, 실수와 부족함을 좀처럼 용납하지 않으며 스스로 실력이 부족하다고 느낄 때는 누구보다 냉정하게 자신을 몰아붙인다. 남동생 루시우스는 그녀의 노력을 재능의 격차로 조롱하며, 오렐리아 역시 그의 오만과 강자에게 비굴한 태도를 경멸한다. 두 사람은 남매라는 이유로 갈등이 무마되지 않는 상호혐오 관계다.</div>
 <div class="character-detail-profile">ESTJ · 1w2(136) · so/sp</div>
 <div class="character-detail-ability"><strong>산크타하스타</strong><p>성광방패로 받은 충격을 축적해 창으로 이전하고, 관통력·투창위력을 증폭하는 능력.</p></div>
 <blockquote class="character-detail-quote">“실력도 없이 입만 살아서는 곤란합니다.”</blockquote>
